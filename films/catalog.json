@@ -6,24 +6,31 @@
     "duration": "1:09",
     "seconds": 68.833333,
     "voice": "女性ナレーション・1.2倍速",
-    "description": "自分のAI音声、苦手に合わせた10問、いつものニュース。日常に溶け込む英語レッスン。"
-  },
-  {
-    "id": "lanclo",
-    "title": "シャドーイングの、その先へ。",
-    "edition": "Original",
-    "duration": "0:53",
-    "seconds": 52.566667,
-    "voice": "落ち着いた女性ナレーション",
-    "description": "お手本を探す悩みから、自分の声へ。ニュースが英語教材になり、学習が日常につながる。"
-  },
-  {
-    "id": "lanclo-osaka",
-    "title": "ワイの声で、ええやん。",
-    "edition": "Osaka remix",
-    "duration": "0:57",
-    "seconds": 56.766667,
-    "voice": "たこ先生の登録音声・大阪弁",
-    "description": "同じ映像に、ぼやきとツッコミを。声と台本で印象が変わる、大阪弁ナレーション版。"
+    "description": "自分のAI音声、苦手に合わせた10問、いつものニュース。日常に溶け込む英語レッスン。",
+    "project": "lanclo",
+    "extras": [
+      {
+        "id": "lanclo-osaka",
+        "title": "ワイの声で、ええやん。",
+        "edition": "Osaka remix",
+        "duration": "0:57",
+        "seconds": 56.766667,
+        "voice": "たこ先生の登録音声・大阪弁",
+        "description": "同じ映像に、ぼやきとツッコミを。声と台本で印象が変わる、大阪弁ナレーション版。",
+        "role": "bonus"
+      }
+    ],
+    "history": [
+      {
+        "id": "lanclo",
+        "title": "シャドーイングの、その先へ。",
+        "edition": "Original",
+        "duration": "0:53",
+        "seconds": 52.566667,
+        "voice": "落ち着いた女性ナレーション",
+        "description": "お手本を探す悩みから、自分の声へ。ニュースが英語教材になり、学習が日常につながる。",
+        "role": "previous-version"
+      }
+    ]
   }
 ]

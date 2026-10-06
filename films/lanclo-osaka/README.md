@@ -6,7 +6,7 @@
 
 同じ映像に、ぼやきとツッコミを。声と台本で印象が変わる、大阪弁ナレーション版。
 
-[ギャラリー](https://videos.maepace.com/#lanclo-osaka) · [制作プロンプト](PROMPT.md) · [台本](NARRATION.md) · [スタイル](../../styles/warm-illustrated-keynote/STYLE.md) · [編集ソース](source/) · [音声入力](TTS-PROMPTS.json) · [タイミング](TIMING.json) · [出典](CREDITS.md)
+[ギャラリー](https://videos.maepace.com/films/lanclo-daily/#extras) · [制作プロンプト](PROMPT.md) · [台本](NARRATION.md) · [スタイル](../../styles/warm-illustrated-keynote/STYLE.md) · [編集ソース](source/) · [音声入力](TTS-PROMPTS.json) · [タイミング](TIMING.json) · [出典](CREDITS.md)
 
 [MP4をダウンロード](https://github.com/ted-M-tech/tetsuya-creative-motions/releases/download/films/lanclo-osaka.mp4)
 

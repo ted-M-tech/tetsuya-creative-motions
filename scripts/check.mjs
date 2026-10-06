@@ -15,7 +15,7 @@ for(const file of files){
   if(!existsSync(resolve(dirname(path),decodeURIComponent(link))))errors.push(`Broken link ${file}: ${link}`);
  }
 }
-for(const item of JSON.parse(readFileSync(resolve(root,'films/catalog.json'),'utf8'))){
+for(const item of JSON.parse(readFileSync(resolve(root,'films/catalog.json'),'utf8')).flatMap(item=>[item,...(item.extras||[]),...(item.history||[])])){
  for(const file of ['README.md','PROMPT.md','NARRATION.md','CREDITS.md','TIMING.json','TTS-PROMPTS.json','source/index.html'])if(!existsSync(resolve(root,'films',item.id,file)))errors.push(`${item.id}: missing ${file}`);
  if(!existsSync(resolve(root,'site/posters',item.id+'.jpg')))errors.push(`${item.id}: missing poster`);
 }

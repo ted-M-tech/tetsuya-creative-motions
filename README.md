@@ -20,12 +20,12 @@
 
 A Japanese product film about your own AI voice, personalized lessons, and daily news.
 
-## 以前の作品
+## Lancloの番外編と制作の変遷
 
-<table><tr>
-<td width="50%" valign="top"><a href="films/lanclo/"><img src="site/posters/lanclo.jpg" alt="Lanclo 通常版"></a><br><b>Lanclo — シャドーイングの、その先へ。</b><br>0:53 · Product film<br>自分の声のお手本と、日常に溶け込む英語学習。<br><a href="films/lanclo/">制作ノートとプロンプト →</a></td>
-<td width="50%" valign="top"><a href="films/lanclo-osaka/"><img src="site/posters/lanclo-osaka.jpg" alt="Lanclo 大阪弁版"></a><br><b>Lanclo — ワイの声で、ええやん。</b><br>0:57 · Osaka narration remix<br>同じ映像に、ぼやきとツッコミ。声と台本の実験。<br><a href="films/lanclo-osaka/">制作ノートとプロンプト →</a></td>
-</tr></table>
+最新版・旧版・大阪弁版は、同じLancloプロジェクトの制作記録です。作品数としては1作品にまとめています。
+
+- [番外編：大阪弁ナレーション](https://videos.maepace.com/films/lanclo-daily/#extras)
+- [制作の変遷：初期版との比較](https://videos.maepace.com/films/lanclo-daily/#history)
 
 完成動画はHTML/SVGとGSAPによるアニメーションをHyperFramesでレンダリング。人物はunDraw、ナレーションはGemini TTSを使用しています。
 
