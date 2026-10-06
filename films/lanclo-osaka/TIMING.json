@@ -1,0 +1,63 @@
+{
+  "duration": 56.766667,
+  "fps": 30,
+  "voiceRate": 1,
+  "scenes": [
+    {
+      "id": "opening",
+      "start": 0,
+      "duration": 13.2,
+      "voiceSourceSeconds": 12.92,
+      "voiceFile": "assets/voice/tako-osaka-opening.wav",
+      "voiceGain": 1.58489
+    },
+    {
+      "id": "research",
+      "start": 13.2,
+      "duration": 8.8,
+      "voiceSourceSeconds": 8.52,
+      "voiceFile": "assets/voice/tako-osaka-research.wav",
+      "voiceGain": 2.21309
+    },
+    {
+      "id": "adaptive",
+      "start": 22.0,
+      "duration": 6.633333333333334,
+      "voiceSourceSeconds": 6.32,
+      "voiceFile": "assets/voice/tako-osaka-adaptive.wav",
+      "voiceGain": 2.42661
+    },
+    {
+      "id": "pivot",
+      "start": 28.633333,
+      "duration": 6.8,
+      "voiceSourceSeconds": 6.52,
+      "voiceFile": "assets/voice/tako-osaka-pivot.wav",
+      "voiceGain": 4.36516
+    },
+    {
+      "id": "news",
+      "start": 35.433333,
+      "duration": 10.966666666666667,
+      "voiceSourceSeconds": 10.68,
+      "voiceFile": "assets/voice/tako-osaka-news.wav",
+      "voiceGain": 1.6788
+    },
+    {
+      "id": "devices",
+      "start": 46.4,
+      "duration": 4.966666666666667,
+      "voiceSourceSeconds": 4.68,
+      "voiceFile": "assets/voice/tako-osaka-devices.wav",
+      "voiceGain": 3.34965
+    },
+    {
+      "id": "closing",
+      "start": 51.366667,
+      "duration": 5.4,
+      "voiceSourceSeconds": 5.12,
+      "voiceFile": "assets/voice/tako-osaka-closing.wav",
+      "voiceGain": 2.60016
+    }
+  ]
+}

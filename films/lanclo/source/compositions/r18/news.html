@@ -1,0 +1,94 @@
+<template><style>
+@font-face{font-family:R13News;src:url('assets/NotoSansJP.ttf') format('truetype');font-weight:100 900}
+#r18-news-root{position:relative;width:100%;height:100%;overflow:hidden;font-family:R13News,sans-serif;color:#183f39}#r18-news-root *{box-sizing:border-box}
+#r18-news-ground{position:absolute;inset:0;background:#fff9f0}
+.r18-news-title{position:absolute;left:180px;top:118px;margin:0;font-size:72px;letter-spacing:-.055em;font-weight:850;line-height:1.2;white-space:nowrap}
+.r18-news-card{position:absolute;width:320px;height:194px;background:#fff;border:2px solid #b8dacf;border-radius:25px;box-shadow:0 12px 24px #183f390c;transform-origin:50% 50%;overflow:hidden}
+.r18-news-card svg{position:absolute;left:24px;top:27px;width:89px;height:89px;fill:none;stroke:#176b61;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.r18-news-topic{position:absolute;left:129px;top:45px;font-size:24px;font-weight:800;white-space:nowrap}.r18-news-en{position:absolute;left:28px;bottom:24px;font-size:16px;font-weight:600;letter-spacing:.12em;color:#48645c}
+.r18-news-check{position:absolute;right:18px;bottom:14px;width:42px;height:42px;border-radius:50%;background:#176b61;color:#fff;text-align:center;line-height:42px;font-size:27px}
+#r18-news-ai{position:absolute;left:1390px;top:381px;width:245px;height:245px;border-radius:50%;background:#176b61;color:#fff;text-align:center;box-shadow:0 0 0 23px #dcefe6}#r18-news-ai b{display:block;font-size:100px;line-height:200px;font-weight:800}#r18-news-ai small{position:absolute;left:-60px;top:285px;width:365px;color:#183f39;font-size:29px;font-weight:750;white-space:nowrap}
+#r18-news-trail{position:absolute;left:1180px;top:475px;width:135px;height:50px;fill:none;stroke:#176b61;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+#r18-news-interest{position:absolute;left:180px;top:850px;display:flex;gap:16px;align-items:center;font-size:27px;font-weight:700}#r18-news-interest span{padding:10px 25px;background:#dcefe6;border-radius:40px;color:#176b61}
+#r18-news-package{position:absolute;left:550px;top:330px;width:670px;height:560px;border-radius:24px;border:2px solid #d8cebf;background:#fffdf8;box-shadow:0 14px 36px #6e553d12}#r18-news-package-label{position:absolute;left:36px;top:22px;font-size:29px;font-weight:850;color:#176b61}
+#r18-news-learner{position:absolute;left:1230px;top:365px;width:520px;height:470px;object-fit:contain}
+#r18-news-delivery{position:absolute;left:1135px;top:600px;width:120px;height:80px;fill:none;stroke:#176b61;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+#r18-news-benefit{position:absolute;left:180px;top:911px;font-size:43px;line-height:1.2;letter-spacing:-.025em;font-weight:800;margin:0}#r18-news-benefit strong{color:#176b61}
+
+#r18-news-night{position:absolute;inset:0;background:#183f39;opacity:1}
+#r18-news-title-a{color:#fff9f0}
+#r18-news-sleep{position:absolute;left:160px;top:345px;width:640px;height:520px}
+#r18-news-world{position:absolute;left:1020px;top:275px;width:570px;height:570px}
+#r18-news-world-label{position:absolute;left:1190px;top:508px;width:230px;text-align:center;background:#183f39;color:#fff9f0;font-size:73px;font-weight:850;border-radius:70px;padding:8px}
+
+#r18-news-sun{position:absolute;left:1470px;top:235px;width:145px;height:145px}
+#r18-news-sleep,#r18-news-world,#r18-news-world-label,#r18-news-sun,.r18-news-title,.r18-news-card,.r18-news-check,#r18-news-ai,#r18-news-trail,#r18-news-interest,#r18-news-package,#r18-news-package-label,#r18-news-learner,#r18-news-delivery,#r18-news-benefit{opacity:0}
+
+/* Paper bundle: colour belongs to the topic tab, never the whole news surface. */
+.r18-news-card{background:#fff;border-color:#d7ded7;box-shadow:0 6px 15px #6e553d0b}
+.r18-news-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:#dcefe6}
+#r18-news-card-0:before{background:#9ccabd}
+#r18-news-card-1:before{background:#f5bd98}
+#r18-news-card-2:before{background:#e9d9b8}
+#r18-news-card-3:before{background:#e9d9b8}
+#r18-news-card-4:before{background:#cadbcf}
+#r18-news-card-5:before{background:#f1cbb0}
+#r18-news-package:before{content:"";position:absolute;left:36px;right:36px;top:75px;height:2px;background:#e9dfd1}
+
+#r18-news-sleep{object-fit:contain;left:160px;top:395px;width:650px;height:425px}
+#r18-news-world-label{left:1225px;top:455px;width:166px;height:245px;padding:14px;border-radius:24px;background:#fff9f0;line-height:1}
+#r18-news-world-label img{width:100%;height:100%;object-fit:contain}
+#r18-news-ai{left:1390px;top:335px;width:280px;height:340px;border-radius:0;background:none;box-shadow:none}
+#r18-news-ai img{width:100%;height:100%;object-fit:contain}
+#r18-news-ai small{top:360px;left:-60px}
+#r18-news-lesson{position:absolute;left:490px;top:443px;width:555px;height:405px;background:#fffdf8;opacity:0;border-radius:18px;padding:25px 25px;color:#183f39}
+#r18-news-lesson-kicker{font-size:24px;color:#48645c;font-weight:700;margin-bottom:28px}
+#r18-news-lesson-sentence{font-family:R13News,sans-serif;font-size:44px;line-height:1.45;font-weight:800;letter-spacing:-.035em}
+#r18-news-lesson-sentence span{display:block}#r18-news-lesson-sentence em{font-style:normal;border-bottom:5px solid #f5bd98}
+#r18-news-lesson-play{display:flex;gap:20px;align-items:center;margin-top:32px;font-size:27px;font-weight:750;color:#176b61}
+#r18-news-lesson-play svg{width:66px;height:66px;flex-shrink:0}
+#r18-news-lesson-kicker{font-size:21px}#r18-news-ai small{left:-60px;width:380px}#r18-news-package-label{font-size:27px}</style><div id="r18-news-root" data-composition-id="r18-news" data-width="1920" data-height="1080" data-duration="10.700000"><div id="r18-news-ground" class="clip" data-start="0" data-duration="10.700000" data-track-index="0"></div>
+<div id="r18-news-night"></div>
+<div id="r18-news-sleep"><img style="width:100%;height:100%;object-fit:contain" src="assets/undraw/sleep-analysis.svg" alt="unDraw Sleep analysisの眠っている女性"><svg style="position:absolute;right:80px;top:-105px;width:100px;height:100px" viewBox="0 0 100 100" aria-label="夜の月"><path d="M60 8a42 42 0 1 0 32 66A44 44 0 0 1 60 8" fill="#f5bd98"/></svg></div>
+<svg id="r18-news-world" viewBox="0 0 600 600" aria-label="AIが世界の話題を探す"><circle cx="300" cy="300" r="213" fill="#176b61"/><g stroke="#b8dacf" fill="none" stroke-width="3"><circle cx="300" cy="300" r="213"/><ellipse cx="300" cy="300" rx="108" ry="213"/><path d="M87 300h426M108 210h384M108 390h384"/></g><g fill="#dcefe6"><path d="M156 156l53-21 55 19 7 31-43 19-5 42-40 24-51-27-9-36zM252 320l56 11 31 48-32 47-22 61-35-17-9-72-23-39zM373 147l61 39 52 18-7 46-55-5-19 46-41-12-34-42 23-42zM416 384l44 15 17 31-43 21-40-21z"/></g><g id="r18-news-world-ring"><circle cx="300" cy="300" r="268" fill="none" stroke="#f5bd98" stroke-width="5" stroke-dasharray="200 1484"/><circle cx="559" cy="367" r="13" fill="#f5bd98"/></g></svg><div id="r18-news-world-label"><img src="assets/undraw/ai-intelligence.svg" alt="unDraw Artificial Intelligence"></div>
+<svg id="r18-news-sun" viewBox="0 0 150 150" aria-label="朝日"><g stroke="#f5bd98" stroke-width="7" stroke-linecap="round"><path d="M75 4v15M75 131v15M4 75h15M131 75h15M25 25l11 11M115 115l11 11M25 125l11-11M115 35l11-11"/></g><circle cx="75" cy="75" r="38" fill="#f5bd98"/></svg>
+<h2 id="r18-news-title-a" class="r18-news-title">眠っている間に、AIが世界を探す。</h2><h2 id="r18-news-title-b" class="r18-news-title">あなたが、いつも探しているニュース。</h2><h2 id="r18-news-title-c" class="r18-news-title">いつものニュースが、英語記事で届く。</h2>
+<div id="r18-news-package"><div id="r18-news-package-label">あなたのニュースを、英語で。</div></div>
+<article id="r18-news-card-0" class="r18-news-card" style="left:180px;top:334px"><svg viewBox="0 0 96 96" aria-hidden="true"><rect x="16" y="18" width="64" height="46" rx="5"/><path d="M8 78h80M38 64v14M58 64v14"/></svg><div class="r18-news-topic">テクノロジー</div><div class="r18-news-en">TECHNOLOGY</div><div class="r18-news-check" id="r18-news-check-0">✓</div></article><article id="r18-news-card-1" class="r18-news-card" style="left:532px;top:334px"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M38 12v27L17 74q-4 10 8 10h48q12 0 8-10L58 39V12M32 12h32M30 60h37"/><circle cx="42" cy="68" r="3"/></svg><div class="r18-news-topic">サイエンス</div><div class="r18-news-en">SCIENCE</div><div class="r18-news-check" id="r18-news-check-1">✓</div></article><article id="r18-news-card-2" class="r18-news-card" style="left:884px;top:334px"><svg viewBox="0 0 96 96" aria-hidden="true"><rect x="14" y="30" width="68" height="48" rx="6"/><path d="M34 30V18h28v12M14 48h68M43 48v10h10V48"/></svg><div class="r18-news-topic">ビジネス</div><div class="r18-news-en">BUSINESS</div><div class="r18-news-check" id="r18-news-check-2">✓</div></article><article id="r18-news-card-3" class="r18-news-card" style="left:180px;top:558px"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M11 47l74-29-27 68-11-27zM47 59l38-41"/></svg><div class="r18-news-topic">トラベル</div><div class="r18-news-en">TRAVEL</div><div class="r18-news-check" id="r18-news-check-3">✓</div></article><article id="r18-news-card-4" class="r18-news-card" style="left:532px;top:558px"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M16 78V30l32-17 32 17v48M11 82h74M28 38v31M48 38v31M68 38v31M16 30h64"/></svg><div class="r18-news-topic">カルチャー</div><div class="r18-news-en">CULTURE</div><div class="r18-news-check" id="r18-news-check-4">✓</div></article><article id="r18-news-card-5" class="r18-news-card" style="left:884px;top:558px"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="34"/><path d="M48 14v68M14 48h68M25 23q45 20 47 48M72 23Q27 43 24 72"/></svg><div class="r18-news-topic">スポーツ</div><div class="r18-news-en">SPORT</div><div class="r18-news-check" id="r18-news-check-5">✓</div></article>
+<div id="r18-news-lesson"><div id="r18-news-lesson-kicker">TECHNOLOGY / 今日の英語記事</div><div id="r18-news-lesson-sentence"><span>A new <em>AI tool</em></span><span>helps us learn.</span></div><div id="r18-news-lesson-play"><svg viewBox="0 0 66 66" aria-hidden="true"><circle cx="33" cy="33" r="31" fill="#176b61"/><path d="M27 19l21 14-21 14z" fill="#fff"/></svg><span>聴く → 声に出す</span></div></div><svg id="r18-news-trail" viewBox="0 0 135 50" aria-hidden="true"><path d="M5 25h115m-20-19 20 19-20 19"/></svg><div id="r18-news-ai"><img src="assets/undraw/ai-intelligence.svg" alt="AIが資料を調べるイラスト"><small>あなたの興味で選ぶ。</small></div>
+<div id="r18-news-interest">あなたの興味<span>テクノロジー</span><span>サイエンス</span><span>トラベル</span></div>
+<img id="r18-news-learner" src="assets/undraw/learning.svg" alt="好きなニュースを読む学習者"><svg id="r18-news-delivery" viewBox="0 0 120 80" aria-hidden="true"><path d="M6 40h100M77 13l29 27-29 27"/></svg><p id="r18-news-benefit">英語学習を、<strong>自然に生活の一部へ。</strong></p>
+</div><script>(()=>{const tl=gsap.timeline({paused:true}),chosen=[0,1,3],other=[2,4,5];
+
+tl.fromTo('#r18-news-title-a',{y:35,opacity:0},{y:0,opacity:1,duration:.3,ease:'power3.out'},0);
+tl.fromTo('#r18-news-sleep',{x:-100,opacity:0},{x:0,opacity:1,duration:.4,ease:'power3.out'},.08);
+tl.fromTo('#r18-news-world',{scale:.78,opacity:0},{scale:1,opacity:1,duration:.45,ease:'power3.out'},.15);
+tl.fromTo('#r18-news-world-label',{scale:.65,opacity:0},{scale:1,opacity:1,duration:.3,ease:'back.out(1.4)'},.45);
+tl.fromTo('#r18-news-world-ring',{rotation:-30,svgOrigin:'300 300'},{rotation:310,svgOrigin:'300 300',duration:2.25,ease:'power1.inOut'},.2);
+// Six real topic categories are pulled out of the world; they are illustrative categories, not fabricated news.
+const orbit=[[975,240],[1430,290],[1455,570],[1040,700],[770,535],[780,300]];
+for(let i=0;i<6;i++){const x=180+(i%3)*352,y=334+Math.floor(i/3)*224;
+tl.fromTo('#r18-news-card-'+i,{x:1120-x,y:460-y,scale:.1,opacity:0},{x:orbit[i][0]-x,y:orbit[i][1]-y,scale:.52,opacity:1,duration:.36,ease:'power3.out'},.62+i*.16);
+tl.to('#r18-news-card-'+i,{x:0,y:0,scale:1,rotation:0,duration:.43,ease:'power3.inOut'},2.12+i*.05)}
+tl.to('#r18-news-title-a',{y:-35,opacity:0,duration:.24},1.94);
+tl.to('#r18-news-sleep',{x:-130,opacity:0,duration:.35,ease:'power3.in'},2.0);
+tl.set('#r18-news-world-label',{autoAlpha:0},2.11);tl.to('#r18-news-world',{scale:.7,opacity:0,duration:.3},2.12);tl.fromTo('#r18-news-night',{opacity:1},{opacity:0,duration:.38,immediateRender:false},2.13);
+tl.fromTo('#r18-news-title-b',{y:35,opacity:0},{y:0,opacity:1,duration:.3,ease:'power3.out'},2.38);
+tl.fromTo('#r18-news-ai',{x:100,scale:.8,opacity:0},{x:0,scale:1,opacity:1,duration:.35},2.5);
+tl.fromTo('#r18-news-interest',{y:30,opacity:0},{y:0,opacity:1,duration:.3},2.72);
+chosen.forEach((i,j)=>{tl.to('#r18-news-card-'+i,{backgroundColor:'#ffffff',borderColor:'#9eafa8',duration:.2},2.98+j*.15);tl.fromTo('#r18-news-check-'+i,{scale:.1,opacity:0},{scale:1,opacity:1,duration:.26,ease:'back.out(1.4)'},3.08+j*.15)});
+other.forEach((i,j)=>tl.to('#r18-news-card-'+i,{x:-180,y:80,opacity:0,scale:.6,duration:.3,ease:'power3.in'},3.88+j*.055));
+tl.to('#r18-news-ai,#r18-news-interest',{opacity:0,y:45,duration:.28},4.04);
+tl.fromTo('#r18-news-package',{scale:.8,opacity:0},{scale:1,opacity:1,duration:.35},4.21);
+chosen.forEach((i,j)=>{const x=180+(i%3)*352,y=334+Math.floor(i/3)*224;tl.to('#r18-news-card-'+i,{x:720-x,y:380+j*165-y,rotation:0,scale:.83,duration:.4,ease:'power3.inOut'},4.22+(j===0?.28:j===1?0:.14))});
+tl.fromTo('#r18-news-package-label',{opacity:0,y:-10},{opacity:1,y:0,duration:.2},4.96);
+tl.to('#r18-news-title-b',{y:-35,opacity:0,duration:.24},4.8);tl.fromTo('#r18-news-title-c',{y:35,opacity:0},{y:0,opacity:1,duration:.3,ease:'power3.out'},5.05);
+tl.fromTo('#r18-news-sun',{y:100,scale:.65,opacity:0},{y:0,scale:1,opacity:1,duration:.5,ease:'power3.out'},5.02);
+tl.fromTo('#r18-news-learner',{x:160,opacity:0},{x:0,opacity:1,duration:.4,ease:'power3.out'},5.27);
+tl.to('#r18-news-package',{x:-110,duration:.38,ease:'power3.inOut'},5.66);chosen.forEach(i=>tl.to('#r18-news-card-'+i,{x:'-=110',duration:.38,ease:'power3.inOut'},5.66));
+tl.fromTo('#r18-news-delivery',{x:-55,opacity:0},{x:0,opacity:1,duration:.3,ease:'power3.out'},5.95);
+chosen.forEach(i=>tl.to('#r18-news-card-'+i,{opacity:0,scale:.65,duration:.3,ease:'power3.in'},5.35));
+tl.fromTo('#r18-news-lesson',{y:35,opacity:0},{y:0,opacity:1,duration:.35,ease:'power3.out'},5.79);
+tl.fromTo('#r18-news-benefit',{y:35,opacity:0},{y:0,opacity:1,duration:.35},6.42);
+tl.to('#r18-news-delivery',{x:18,duration:.22},7.0);tl.to('#r18-news-delivery',{x:0,duration:.24},7.23);
+tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*0.908333333333);c.startTime(at*0.908333333333);});tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*1.472476996675);c.startTime(at*1.472476996675);});window.__timelines['r18-news']=tl;})();</script></template>

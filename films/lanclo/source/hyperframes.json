@@ -1,0 +1,55 @@
+{
+  "$schema": "https://hyperframes.heygen.com/schema/hyperframes.json",
+  "registry": "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
+  "paths": {
+    "blocks": "compositions",
+    "components": "compositions/components",
+    "assets": "assets"
+  },
+  "media": {
+    "autoProxy": true
+  },
+  "authoringSkill": "product-launch-video",
+  "registryItems": [
+    {
+      "name": "text-stagger",
+      "type": "hyperframes:component",
+      "target": "compositions/components/text-stagger.html"
+    },
+    {
+      "name": "grain-overlay",
+      "type": "hyperframes:component",
+      "target": "compositions/components/grain-overlay.html"
+    },
+    {
+      "name": "animated-bar-chart",
+      "type": "hyperframes:component",
+      "target": "compositions/components/animated-bar-chart.html"
+    },
+    {
+      "name": "marker-highlight",
+      "type": "hyperframes:component",
+      "target": "compositions/components/marker-highlight.html"
+    },
+    {
+      "name": "notification-pileup",
+      "type": "hyperframes:component",
+      "target": "compositions/components/notification-pileup.html"
+    },
+    {
+      "name": "hw-arrow",
+      "type": "hyperframes:component",
+      "target": "compositions/components/hw-arrow.html"
+    },
+    {
+      "name": "pull-back-reveal",
+      "type": "hyperframes:component",
+      "target": "compositions/components/pull-back-reveal.html"
+    },
+    {
+      "name": "svg-stroke-trace",
+      "type": "hyperframes:component",
+      "target": "compositions/components/svg-stroke-trace.html"
+    }
+  ]
+}

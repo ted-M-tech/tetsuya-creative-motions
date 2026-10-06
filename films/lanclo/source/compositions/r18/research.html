@@ -1,0 +1,76 @@
+<template>
+<style>
+@font-face{font-family:R13ResearchJP;src:url('assets/NotoSansJP.ttf')}
+#r18-research-root{position:absolute;inset:0;overflow:hidden;font-family:R13ResearchJP,sans-serif;color:#183f39;font-variant-numeric:tabular-nums}
+#r18-research-root *{box-sizing:border-box}
+#r18-research-ground{position:absolute;inset:0;background:#fff9f0}
+#r18-research-kicker{position:absolute;left:128px;top:75px;font-size:28px;font-weight:600;letter-spacing:.055em}
+#r18-research-heading{position:absolute;left:128px;top:150px;width:1190px}
+#r18-research-heading p{margin:0;font-size:52px;font-weight:750;line-height:1.55;letter-spacing:-.045em}
+#r18-research-heading p:last-child{font-size:75px;line-height:1.35;font-weight:850;color:#176b61}
+#r18-research-ratio{position:absolute;left:1410px;top:158px;width:390px;height:225px;text-align:center}
+#r18-research-ratio .caption{position:absolute;left:0;top:0;width:390px;height:42px;font-size:27px;line-height:42px;font-weight:650}
+#r18-research-ratio .number{position:absolute;left:0;top:62px;width:390px;height:155px;font-size:116px;font-weight:850;letter-spacing:-.075em;line-height:1.3;color:#176b61;white-space:nowrap}
+#r18-research-ratio .number small{font-size:35px;letter-spacing:0}
+#r18-research-chart{position:absolute;left:0;top:390px;width:1920px;height:445px}
+#r18-research-root .row-label{position:absolute;left:128px;width:495px;font-size:37px;font-weight:750;line-height:1.4;letter-spacing:-.045em}
+#r18-research-root .before-after{font-size:27px;font-weight:500;color:#48645c;margin-top:14px;letter-spacing:0}
+#r18-research-root .bar{position:absolute;left:650px;height:70px;transform-origin:left center}
+#r18-research-native{top:56px;width:655.2px;background:#819a94;border-radius:0 7px 7px 0}
+#r18-research-self{top:274px;width:866.1px;background:#176b61;border-radius:0 7px 7px 0}
+#r18-research-root .value{position:absolute;font-size:44px;font-weight:800;letter-spacing:-.035em;line-height:70px;white-space:nowrap}
+#r18-research-native-value{left:1330px;top:56px}
+#r18-research-self-value{left:1542px;top:274px;color:#176b61}
+#r18-research-baseline{position:absolute;left:649px;top:26px;width:2px;height:354px;background:#607e75}
+#r18-research-guide{position:absolute;left:1304.2px;top:133px;height:137px;width:0;border-left:3px dashed #819a94}
+#r18-research-axis{position:absolute;left:650px;top:387px;width:1000px;height:1px;background:#a3b7ae}
+#r18-research-root .tick{position:absolute;top:405px;font-size:23px;color:#48645c;width:150px}
+#r18-research-difference{position:absolute;left:1275px;top:173px;width:280px;height:174px}
+#r18-research-difference .difference-label{position:absolute;left:0;top:0;width:280px;text-align:center;font-size:29px;font-weight:750;white-space:nowrap}
+#r18-research-difference svg{position:absolute;left:13px;top:0;width:253px;height:174px;overflow:visible}
+#r18-research-tail-mark{position:absolute;left:1292px;top:263px;width:238px;height:93px;overflow:visible}
+#r18-research-tail-mark path,#r18-research-difference path{fill:none;stroke:#183f39;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+#r18-research-tail-mark path{stroke:#f5bd98;stroke-width:5}
+#r18-research-note{position:absolute;left:128px;top:916px;width:1664px;border-top:1px solid #b5cbc0;padding-top:17px;font-size:23px;line-height:1.65;color:#48645c}
+#r18-research-note p{margin:0}
+</style>
+<div id="r18-research-root" data-composition-id="r18-research" data-width="1920" data-height="1080" data-duration="8.400000">
+ <div id="r18-research-ground" class="clip" data-start="0" data-duration="8.400000" data-track-index="0"></div>
+ <div id="r18-research-kicker">66名の比較研究 / 英語の抑揚テスト</div>
+ <div id="r18-research-heading"><p>ネイティブのお手本より、</p><p>得点の伸びが大きい。</p></div>
+ <div id="r18-research-ratio"><div class="caption">得点の上昇幅</div><div class="number"><small>約</small>1.3<small>倍</small></div></div>
+ <div id="r18-research-chart">
+  <div id="r18-research-baseline"></div>
+  <div class="row-label" style="top:40px">ネイティブのお手本<div class="before-after">練習前 210 → 練習後 275.52</div></div>
+  <div class="row-label" style="top:258px;color:#176b61">自分の声のお手本<div class="before-after">練習前 213.48 → 練習後 300.09</div></div>
+  <div id="r18-research-native" class="bar"></div><div id="r18-research-native-value" class="value">+65.52点</div>
+  <div id="r18-research-self" class="bar"></div><div id="r18-research-self-value" class="value">+86.61点</div>
+  <div id="r18-research-guide"></div>
+  <div id="r18-research-difference"><div class="difference-label">さらに +21.09点</div><svg viewBox="0 0 253 174" aria-hidden="true"><path id="r18-research-bracket" d="M17 83 L17 63 L228 63 L228 83"/></svg></div>
+  <svg id="r18-research-tail-mark" viewBox="0 0 238 93" aria-hidden="true"><path id="r18-research-marker" d="M18 13 C72 9 160 10 221 13 L222 80 C173 83 68 81 16 80"/></svg>
+  <div id="r18-research-axis"></div><span class="tick" style="left:644px">0</span><span class="tick" style="left:1136px">50</span><span class="tick" style="left:1595px">100点</span>
+ </div>
+ <div id="r18-research-note"><p>Li et al. (2020) / 各群33名・12週間・380点満点。棒は平均点の上昇幅を表示。</p><p>別システムの研究であり、Lancloの効果検証ではありません。</p></div>
+</div>
+<script>
+(()=>{
+ const tl=gsap.timeline({paused:true});
+ tl.fromTo('#r18-research-heading',{y:24,opacity:0},{y:0,opacity:1,duration:.32,ease:'power3.out'},0);
+ // A common zero and linear 10px/point scale make the exact gains comparable.
+ tl.fromTo('#r18-research-native',{scaleX:0},{scaleX:1,duration:.66,ease:'power2.out'},.65);
+ tl.fromTo('#r18-research-native-value',{opacity:0,x:-15},{opacity:1,x:0,duration:.2},1.2);
+ // First meet the native group's gain, pause, then reveal the extra 21.09 points.
+ tl.fromTo('#r18-research-self',{scaleX:0},{scaleX:65.52/86.61,duration:.75,ease:'power2.out'},2.05);
+ tl.fromTo('#r18-research-guide',{opacity:0,scaleY:0,transformOrigin:'center top'},{opacity:1,scaleY:1,duration:.3},2.8);
+ tl.to('#r18-research-self',{scaleX:1,duration:.65,ease:'power3.out'},3.4);
+ tl.fromTo('#r18-research-self-value',{opacity:0,x:-15},{opacity:1,x:0,duration:.24},3.9);
+ tl.fromTo('#r18-research-difference .difference-label',{opacity:0,y:12},{opacity:1,y:0,duration:.25},4.2);
+ for(const [id,start,duration] of [['r18-research-bracket',4.08,.45],['r18-research-marker',4.7,.55]]){
+  const path=document.getElementById(id),length=path.getTotalLength();path.style.strokeDasharray=String(length);
+  tl.fromTo(path,{strokeDashoffset:length},{strokeDashoffset:0,duration,ease:'power2.out'},start);
+ }
+ tl.fromTo('#r18-research-ratio',{opacity:0,y:18,scale:.95},{opacity:1,y:0,scale:1,duration:.35,ease:'power3.out'},5.1);
+ tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*0.788888888889);c.startTime(at*0.788888888889);});tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*1.183098591549);c.startTime(at*1.183098591549);});window.__timelines['r18-research']=tl;
+})();
+</script>
+</template>

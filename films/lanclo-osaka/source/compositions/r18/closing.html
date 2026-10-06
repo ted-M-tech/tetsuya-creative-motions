@@ -1,0 +1,60 @@
+<template>
+<style>
+@font-face{font-family:R13ClosingJP;src:url('assets/NotoSansJP.ttf')}
+#r18-closing-root{position:absolute;inset:0;overflow:hidden;font-family:R13ClosingJP,sans-serif;color:#273B4B}
+#r18-closing-root *{box-sizing:border-box}
+#r18-closing-ground{position:absolute;inset:0;background:#fff}
+#r18-closing-logo{position:absolute;left:400px;top:376px;width:256px;height:256px;object-fit:contain}
+#r18-closing-concept{position:absolute;left:760px;top:280px;width:1060px;font-size:35px;font-weight:650;color:#273B4B;opacity:0}
+#r18-closing-word{position:absolute;left:760px;top:390px;width:1100px;height:195px;font-family:system-ui,sans-serif;font-size:140px;font-weight:400;letter-spacing:1.556px;line-height:1.3;white-space:nowrap;transform-origin:left center;opacity:0}
+#r18-closing-word .part{position:absolute;top:0;height:190px;display:block;transform-origin:left center;opacity:0}
+#r18-closing-initial,#r18-closing-final{position:absolute;left:0;top:0;margin:0;white-space:pre}
+#r18-closing-final{opacity:0}
+#r18-closing-guage,#r18-closing-ne{color:#8ca69b}
+#r18-closing-lower{opacity:0;color:#273B4B}
+#r18-closing-upper{color:#273B4B}
+#r18-closing-tag{position:absolute;left:760px;top:670px;width:1070px;font-size:47px;font-weight:750;letter-spacing:-.03em;opacity:0}
+#r18-closing-rule{position:absolute;left:760px;top:617px;width:570px;height:5px;border-radius:3px;background:#f5bd98;transform-origin:left center;opacity:0}
+</style>
+<div id="r18-closing-root" data-composition-id="r18-closing" data-width="1920" data-height="1080" data-duration="5.4">
+ <div id="r18-closing-ground" class="clip" data-start="0" data-duration="3.800000" data-track-index="0"></div>
+ <img id="r18-closing-logo" src="assets/brand/mark.svg" alt="Lancloロゴ">
+ <div id="r18-closing-concept">自分のクローンが、ネイティブ発音。</div>
+ <div id="r18-closing-word" aria-label="Language Clone から Lanclo へ">
+  <div id="r18-closing-initial">Language Clone</div><div id="r18-closing-final">Lanclo</div>
+  <span id="r18-closing-lan" class="part">Lan</span><span id="r18-closing-guage" class="part">guage</span><span id="r18-closing-upper" class="part">Clo</span><span id="r18-closing-ne" class="part">ne</span>
+ </div>
+ <div id="r18-closing-rule"></div>
+ <div id="r18-closing-tag">シャドーイングの、その先へ。</div>
+</div>
+<script>
+(()=>{
+ // The wordmark uses the local system font, so its DOM metrics are synchronous.
+ const root=document.getElementById('r18-closing-root');
+ // Measure the actual browser-shaped text, including the real space and kerning.
+ const initial=root.querySelector('#r18-closing-initial'),final=root.querySelector('#r18-closing-final');
+ function spanRect(el,start,end){const range=document.createRange();range.setStart(el.firstChild,start);range.setEnd(el.firstChild,end);return range.getBoundingClientRect();}
+ const origin=initial.getBoundingClientRect(),endOrigin=final.getBoundingClientRect();
+ const rangeSpecs={lan:[0,3],guage:[3,8],upper:[9,12],ne:[12,14]};
+ const measured=Object.fromEntries(Object.entries(rangeSpecs).map(([key,[start,end]])=>{const box=spanRect(initial,start,end);return[key,{x:box.left-origin.left,width:box.width}]}));
+ const finalC=spanRect(final,3,6).left-endOrigin.left;
+ for(const[key,box]of Object.entries(measured)){const el=root.querySelector('#r18-closing-'+key);el.style.left=box.x+'px';el.style.width=(box.width+2)+'px';}
+ const tl=gsap.timeline({paused:true});
+ tl.fromTo('#r18-closing-logo',{x:-35,scale:.96,opacity:0},{x:0,scale:1,opacity:1,duration:.36,ease:'power3.out'},0);
+ tl.fromTo('#r18-closing-concept',{y:18,opacity:0},{y:0,opacity:1,duration:.3,ease:'power3.out'},.06);
+ tl.fromTo('#r18-closing-word',{y:20,opacity:0},{y:0,opacity:1,duration:.34,ease:'power3.out'},.16);
+ // Hold one naturally spaced text node first. At contraction, reveal measured
+ // fragments; at rest, replace them with one naturally kerned Lanclo text node.
+ tl.set('#r18-closing-initial',{opacity:0},1.05);
+ tl.set('#r18-closing-word .part',{opacity:1},1.05);
+ tl.to('#r18-closing-guage',{scaleX:0,opacity:0,duration:.4,ease:'power3.in'},1.05);
+ tl.to('#r18-closing-ne',{scaleX:0,opacity:0,x:finalC-measured.upper.x,duration:.4,ease:'power3.in'},1.05);
+ tl.to('#r18-closing-upper',{x:finalC-measured.upper.x,duration:.64,ease:'power3.inOut'},1.05);
+ tl.set('#r18-closing-word .part',{opacity:0},1.70);
+ tl.set('#r18-closing-final',{opacity:1},1.70);
+ tl.fromTo('#r18-closing-rule',{scaleX:0,opacity:0},{scaleX:1,opacity:1,duration:.35,ease:'power3.out'},1.92);
+ tl.fromTo('#r18-closing-tag',{y:24,opacity:0},{y:0,opacity:1,duration:.35,ease:'power3.out'},2.15);
+ tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*0.696296296296);c.startTime(at*0.696296296296);});tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*1.212766086464);c.startTime(at*1.212766086464);});tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*1.4210526315789476);c.startTime(at*1.4210526315789476);});window.__timelines['r18-closing']=tl;
+})();
+</script>
+</template>

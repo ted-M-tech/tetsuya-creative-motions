@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://videos.maepace.com/sitemap.xml

@@ -1,0 +1,20 @@
+{
+  "name": "lanclo-undraw-44s",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.137 preview",
+    "check": "npx --yes hyperframes@0.8.137 check",
+    "render": "npx --yes hyperframes@0.8.137 render",
+    "publish": "npx --yes hyperframes@0.8.137 publish",
+    "build:motion": "esbuild motion/runtime.js --bundle --format=iife --outfile=assets/motion-runtime.js"
+  },
+  "dependencies": {
+    "motion": "14.0.0"
+  },
+  "devDependencies": {
+    "@hyperframes/core": "0.8.137",
+    "esbuild": "0.28.2",
+    "playwright": "1.63.0"
+  }
+}

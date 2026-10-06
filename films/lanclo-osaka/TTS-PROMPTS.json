@@ -1,0 +1,52 @@
+{
+  "provider": "gemini",
+  "tts_model": "gemini-3.8-flash-tts",
+  "voice": "YOUR_CONSENTED_VOICE_ID",
+  "lang": "ja",
+  "playbackRate": 1,
+  "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects.",
+  "lines": [
+    {
+      "id": "opening",
+      "text": "何万人のネイティブ、シャドーイングしてきた思てんねん！ いや、人数は盛った。でも発音、変わらへん！ 似た声のお手本？ 探すだけで日ぃ暮れるわ。ほな、ワイの声でええやん！",
+      "targetSeconds": 14,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 14 seconds. Start boastful, immediately self-correct the exaggerated number, then exasperated complaint, end with a delighted solution."
+    },
+    {
+      "id": "research",
+      "text": "研究では、抑揚テストの得点の伸びが、ネイティブのお手本の約1.3倍。ワイの声、意外とやるやん！",
+      "targetSeconds": 8.4,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 8.4 seconds. Read the factual research clearly, then genuinely surprised comic pride on the last line."
+    },
+    {
+      "id": "adaptive",
+      "text": "AIが苦手を見つけて、次の練習まで用意。そこ苦手なん、バレてたんかい！",
+      "targetSeconds": 6.133333,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 6.133333 seconds. Matter of fact first, playful startled tsukkomi at the end."
+    },
+    {
+      "id": "pivot",
+      "text": "せやけど、続かへんねん。三日坊主にも定休日あんねん。せやから、自然に続く仕組みや！",
+      "targetSeconds": 6.2,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 6.2 seconds. Deadpan absurd excuse on 定休日 then bounce confidently into the solution."
+    },
+    {
+      "id": "news",
+      "text": "ワイが寝てる間に、AIが世界のニュースをチェック。いつも探してる話題が、毎朝、英語記事で届く。ニュース読みに来ただけやのに、英語の勉強してもうてるやん！",
+      "targetSeconds": 10.7,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 10.7 seconds. Sleepy casual first clause, pleasantly impressed through the article delivery, amused realization at the final punchline."
+    },
+    {
+      "id": "devices",
+      "text": "スマホも、タブレットも、パソコンも。逃げ道ないやん！",
+      "targetSeconds": 3.333333,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 3.333333 seconds. Light quick list of devices, short mock alarm on the punchline."
+    },
+    {
+      "id": "closing",
+      "text": "ランクロ。シャドーイングの、その先へ。ワイも連れてって！",
+      "targetSeconds": 3.8,
+      "style": "Use the registered speaker’s authentic natural voice and identity consistently across every clip. Native adult Japanese Osaka comedian, broad authentic Osaka-ben, cheeky and likeable. Preserve the registered speaker’s natural pitch and timbre, with smiling lively intonation; do not imitate a preset voice or force a higher pitch. Full-on manzai-style self-deprecation and crisp tsukkomi. Perform jokes with a tiny comic beat, not long silences. Natural conversational commercial pace, clear syllables, no rushed auctioneer delivery. Use distinctly Osaka pitch accent and endings, never Kansai words with standard Tokyo prosody. Say only the supplied text; no extra words or literal laughter syllables. No background music or effects. Target approximately 3.8 seconds. Brand confident and clean, then softer pleading comic aside on ワイも連れてって."
+    }
+  ]
+}

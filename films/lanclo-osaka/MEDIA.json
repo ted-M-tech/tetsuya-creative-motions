@@ -1,0 +1,15 @@
+{
+  "includedInGit": false,
+  "requiredFiles": [
+    ".media/audio/bgm/previous-catalog.wav",
+    ".media/audio/sfx/sfx_001.mp3",
+    "assets/voice/tako-osaka-adaptive.wav",
+    "assets/voice/tako-osaka-closing.wav",
+    "assets/voice/tako-osaka-devices.wav",
+    "assets/voice/tako-osaka-news.wav",
+    "assets/voice/tako-osaka-opening.wav",
+    "assets/voice/tako-osaka-pivot.wav",
+    "assets/voice/tako-osaka-research.wav"
+  ],
+  "note": "音声と音楽は配布対象外。自分の利用許諾を持つ音源を同じ相対パスに配置。"
+}

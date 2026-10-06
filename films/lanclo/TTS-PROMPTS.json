@@ -1,0 +1,59 @@
+{
+  "provider": "gemini",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Leda",
+  "language": "ja",
+  "playbackRate": 1,
+  "note": "Exact accepted input per scene; opening uses phonetic せいしつ. Use saved WAV for faithful reproduction. Regeneration may vary.",
+  "lines": [
+    {
+      "id": "opening",
+      "text": "いろんなネイティブで、シャドーイングしてきたのに。上達した実感がない。自分とせいしつが近いお手本を探すのも、大変。なら、お手本を、自分の声に。",
+      "style": "Native Japanese narration by one young adult woman in her twenties. Voice identity Leda, calm, natural, warm and clear. Comfortable normal conversational pace, not rushed, no exaggerated pauses. Never anime-like or childlike. Speak only the Japanese script. Empathic frustration becomes hopeful at なら. The research sentence is confident and factual.",
+      "acceptedFile": "assets/voice/opening-r18-corrected.wav",
+      "sha256": "7ffe61185cafbee47c56580b995e83c890b5a34d6fa39ecf597c3df28e6fd931"
+    },
+    {
+      "id": "research",
+      "text": "研究では、英語の抑揚テストの得点の伸びが、ネイティブのお手本と比べ、約1.3倍。",
+      "style": "Native Japanese narration by one young adult woman in her twenties. Voice identity Leda, calm, natural, warm and clear. Comfortable normal conversational pace, not rushed, no exaggerated pauses. Never anime-like or childlike. Speak only the Japanese script. Empathic frustration becomes hopeful at なら. The research sentence is confident and factual.",
+      "acceptedFile": "assets/voice/research-r18.wav",
+      "sha256": "3a53ae4448b713c20ad83424ca4b26f8ea699838d4abf9675e7b7c81a71a1088"
+    },
+    {
+      "id": "adaptive",
+      "text": "毎レッスン、AIが苦手を分析。次は、あなたに必要な練習へ。",
+      "style": "Native Japanese narration by one young adult woman in her twenties: calm, natural, warm, poised, clear diction, brisk conversational commercial pacing. Never anime-like, childlike, breathy, overly cute, salesy or robotic. Keep the same voice identity throughout. Follow the scene-specific emotional direction and duration. Speak only the provided Japanese text; do not read directions. Target spoken duration approximately 6.7 seconds. Upbeat but grounded; emphasize 苦手 then あなたに合わせて. Crisp transition.",
+      "acceptedFile": "assets/voice/adaptive.wav",
+      "sha256": "d3f7eb964ddca161dac2bd403b204f57c25f40ef815d3ec12900d75a1c7feda6"
+    },
+    {
+      "id": "pivot",
+      "text": "でも、これだけだと続かない。毎日、自然に続けられる仕組みが必要。",
+      "style": "Native Japanese narration by one young adult woman in her twenties. Voice identity Leda, calm, natural, warm and clear. Comfortable normal conversational pace, not rushed, no exaggerated pauses. Never anime-like or childlike. Speak only the Japanese script. Empathic frustration becomes hopeful at なら. The research sentence is confident and factual.",
+      "acceptedFile": "assets/voice/pivot-r18.wav",
+      "sha256": "f5f956e2d8c493e232b3a12b371a0a9c7fa9d0c85c539a07e8d3fa698554ca7e"
+    },
+    {
+      "id": "news",
+      "text": "眠っている間に、AIが世界のニュースをチェック。あなたがいつも探しているニュースを、英語記事にして、毎朝お届け。",
+      "style": "Native Japanese narration by one young adult woman in her twenties. Voice identity Leda, calm, natural, warm and clear. Comfortable normal conversational pace, not rushed, no exaggerated pauses. Never anime-like or childlike. Speak only the Japanese script. Empathic frustration becomes hopeful at なら. The research sentence is confident and factual.",
+      "acceptedFile": "assets/voice/news-r18.wav",
+      "sha256": "e5666568776b4815aad07dd1fafb68fba61a82f9356a1d6d47f9ec635628c66f"
+    },
+    {
+      "id": "devices",
+      "text": "スマホでも、タブレットでも、パソコンでも。",
+      "style": "Native Japanese narration by one young adult woman in her twenties: calm, natural, warm, poised, clear diction, brisk conversational commercial pacing. Never anime-like, childlike, breathy, overly cute, salesy or robotic. Keep the same voice identity throughout. Follow the scene-specific emotional direction and duration. Speak only the provided Japanese text; do not read directions. Target spoken duration 2.85 seconds. Light, brisk and confident, evenly articulate the three devices, no long pauses.",
+      "acceptedFile": "assets/voice/devices.wav",
+      "sha256": "0190afdb8e8f9f52ee6784bdb18c13046b338ce8c55a464da6e7171b28b23d51"
+    },
+    {
+      "id": "closing",
+      "text": "ランクロ。シャドーイングの、その先へ。",
+      "style": "Native Japanese narration by one young adult woman in her twenties: calm, natural, warm, poised, clear diction, brisk conversational commercial pacing. Never anime-like, childlike, breathy, overly cute, salesy or robotic. Keep the same voice identity throughout. Follow the scene-specific emotional direction and duration. Speak only the provided Japanese text; do not read directions. Target spoken duration approximately 4.1 seconds. Brand name simple and assured, short pause, aspirational final line with relaxed falling finish and a little space after it.",
+      "acceptedFile": "assets/voice/closing.wav",
+      "sha256": "4131640aa6d2fc9a89728547586c601e909ec1d7e8151938b04146c7ae3434e4"
+    }
+  ]
+}
