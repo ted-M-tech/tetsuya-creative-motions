@@ -1,6 +1,6 @@
 # Lanclo — ワイの声で、ええやん。
 
-> Lancloの大阪弁ナレーションの番外編です。[最新版と制作ノートへ](../../README.md)。
+> Lancloの大阪弁ナレーションの番外編です。[最新版と制作ノートへ](../../README.ja.md)。
 ![Osaka remix](../../../../site/posters/lanclo-osaka.jpg)
 
 **0:57 · 1920×1080 · 30fps · たこ先生の登録音声・大阪弁**

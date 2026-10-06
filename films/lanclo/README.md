@@ -1,39 +1,48 @@
-# Lanclo — 自分の声で、毎日の英語を。
+# Lanclo — Your voice. Your daily English.
 
-**日本語** · [English](README.en.md)
+[日本語](README.ja.md) · **English**
 
-![Lanclo Daily](../../site/posters/lanclo-daily.jpg)
+[![Lanclo](../../site/posters/lanclo-daily.jpg)](https://videos.maepace.com/en/films/lanclo-daily/)
 
-**1:09 · 1920×1080 · 30fps · 日本語ナレーション / Japanese audio**
+**1:09 · 1920×1080 · 30fps · Japanese audio**
 
-自分のAI音声、苦手に合わせた10問、いつものニュース。発音のレッスンが生活に溶け込むまでを描く完成版です。
+A product film about learning with your own AI voice, personalized ten-question lessons, and daily news that becomes English learning material.
 
-A Japanese product film about learning with your own AI voice, personalized ten-question lessons, and daily news that becomes English learning material.
+[Watch & read the making of](https://videos.maepace.com/en/films/lanclo-daily/) · [Editable source](source/) · [Timeline](TIMING.json)
 
-[動画と制作ノートをまとめて見る](https://videos.maepace.com/films/lanclo-daily/) · [統合プロンプト](PROMPT.md) · [全台本](NARRATION.md) · [音声入力](TTS-PROMPTS.json) · [編集ソース](source) · [タイミング](TIMING.json) · [出典](CREDITS.md)
+## Creative decisions
 
-## 制作の判断
+- Catch attention with a question in the first second, then introduce the learner's own AI voice.
+- Show the full experience: record, hear the voice model, and speak.
+- Turn analysis into ten sentence cards so the benefit of automatic lesson assembly is visible. This illustrates selecting and assembling candidate sentences, not unrestricted real-time sentence generation.
+- Bridge into news with “And your daily news becomes your English learning material,” followed by overnight discovery and morning delivery.
+- Keep the research claim specific: approximately 1.3× the average gain on an intonation test. It is not a claim about general learning efficiency or Lanclo's effectiveness.
 
-- 冒頭1秒で問いを提示し、すぐ自分のAI音声という価値を見せる。
-- 苦手の分析だけで終わらず、次の10問が自動で組み上がる過程まで可視化。
-- 「さらに、いつものニュースも、あなたの英語教材に。」を挟み、機能の羅列を毎日の学習という話につなぐ。
-- 研究の見出しは簡潔に、条件と出典は保持。約1.3倍は抑揚テスト得点の伸びの比較。
+## Production
 
-## 番外編と制作の変遷
+HTML/SVG and GSAP animation, rendered with HyperFrames. unDraw characters, navy opening titles, and an ivory/teal palette. Japanese narration uses Gemini 3.8 Flash TTS / Leda at 1.2× playback with pitch preserved. The two English demonstration lines use the same synthetic Aoede take; they are not actual learner recordings.
 
-r26完成版。以前の[通常版](history/r18)と[大阪弁版](extras/osaka)も保存。大阪弁版は初期版の映像を使った番外編です。
+## Production files
 
-[再編集手順](../../docs/REPRODUCE.md)。分離音声はGitに含めません。必要ファイルは[MEDIA.json](MEDIA.json)。
+The following are original production artifacts, primarily in Japanese. The English making-of page explains the creative intent while preserving these inputs for reference.
 
-## 制作ファイル
-
-| ファイル | 内容 |
+| File | Contents |
 |---|---|
-| [PROMPT.md](PROMPT.md) | 完成形を再制作するための統合指示 |
-| [NARRATION.md](NARRATION.md) | 最新版の全台本 |
-| [TTS-PROMPTS.json](TTS-PROMPTS.json) | 音声生成時の入力。採用テイクはTIMING.jsonで確認 |
-| [TIMING.json](TIMING.json) | シーンと音声の配置 |
-| [CREDITS.md](CREDITS.md) | 素材・研究の出典、利用条件 |
-| [source/](source/) | 最新版の編集ソース |
-| [extras/osaka/](extras/osaka/) | 大阪弁ナレーションの番外編 |
-| [history/r18/](history/r18/) | 初期版の制作記録とソース |
+| [PROMPT.md](PROMPT.md) | Consolidated final brief, not a single original input |
+| [NARRATION.md](NARRATION.md) | Full current narration script |
+| [TTS-PROMPTS.json](TTS-PROMPTS.json) | Historical generation inputs; see the timeline for selected takes |
+| [TIMING.json](TIMING.json) | Scene and audio placement |
+| [CREDITS.md](CREDITS.md) | Research sources, assets, and licensing conditions |
+| [MEDIA.json](MEDIA.json) | Audio files needed for re-editing; audio is excluded from Git |
+| [source/](source/) | Current editable composition |
+
+## Research context
+
+Li, Lian, and Yodkamlue (2020) compared two groups of 33 learners over 12 weeks. Mean intonation-test gains were 65.52 points for the native-speaker model and 86.61 for the self-voice model: 86.61 ÷ 65.52 ≈ 1.3. This is a ratio of score gains, not final scores or learning speed. The study evaluated a different system. Full citation and before/after scores appear in [CREDITS.md](CREDITS.md).
+
+## Bonus and history
+
+- [Osaka-dialect bonus](https://videos.maepace.com/en/films/lanclo-daily/#extras): a comic narration experiment using the early visuals. [Original production files](extras/osaka/).
+- [Early version](https://videos.maepace.com/en/films/lanclo-daily/#history): compare the opening, lesson explanation, and news transition. [Archived files](history/r18/).
+
+For re-editing, follow the [Japanese reproduction guide](../../docs/REPRODUCE.md). Supply licensed audio separately; original recordings, API credentials, and private voice identifiers are not included.

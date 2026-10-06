@@ -2,67 +2,67 @@
 
 # Tetsuya Creative Motions
 
-**日本語** · [English](README.en.md)
+[日本語](README.ja.md) · **English**
 
-**動画と、その作り方。**
+**Films, and how they were made.**
 
-コードとAIで作る映像の作品集。完成動画、台本、プロンプト、演出、編集ソースを一緒に残します。
+A portfolio of motion work made with code and AI. Finished films sit alongside their scripts, prompts, creative decisions, and editable source.
 
-[▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#作品) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
+[▶ Watch the gallery](https://videos.maepace.com/en/) · [Films](#films) · [Styles](styles/README.md) · [Re-edit a film](docs/REPRODUCE.md)
 
 </div>
 
-## 作品
+## Films
 
-[![Lanclo Daily](site/posters/lanclo-daily.jpg)](https://videos.maepace.com/films/lanclo-daily/)
+[![Lanclo](site/posters/lanclo-daily.jpg)](https://videos.maepace.com/en/films/lanclo-daily/)
 
-**Lanclo — 自分の声で、毎日の英語を。** · 1:09 · 日本語
+**Lanclo — Your voice. Your daily English.** · 1:09 · Japanese audio
 
-[動画・制作ノート・台本・プロンプト](https://videos.maepace.com/films/lanclo-daily/) · [ソースと制作記録](films/lanclo)
+Your own AI voice, ten personalized questions, and daily news that becomes English learning material.
 
-A Japanese product film about your own AI voice, personalized lessons, and daily news.
+[Watch & read the making of](https://videos.maepace.com/en/films/lanclo-daily/) · [Production files](films/lanclo/README.md)
 
-完成動画はHTML/SVGとGSAPによるアニメーションをHyperFramesでレンダリング。人物はunDraw、ナレーションはGemini TTSを使用しています。
+The visuals are authored in HTML/SVG and GSAP, then rendered with HyperFrames. Characters come from unDraw and narration uses Gemini TTS.
 
-## この作品集の使い方
+## Explore the work
 
-1. **作品から入る** — 気になるサムネイルから、ねらいと見どころを読む。
-2. **プロンプトを見る** — `PROMPT.md`で全体の指示、`NARRATION.md`でセリフ、`TTS-PROMPTS.json`で演技指示を読む。
-3. **スタイルを借りる** — `STYLE.md`を参考に、題材・ブランド・素材を自分のものへ置き換える。
-4. **ソースを動かす** — [再編集手順](docs/REPRODUCE.md)に沿ってプレビューする。
+1. **Watch** — Start with the finished film and its creative intent.
+2. **Read** — `PROMPT.md` describes the final brief, `NARRATION.md` contains the script, and `TTS-PROMPTS.json` records voice-generation inputs.
+3. **Adapt** — Use the style notes as a starting point with your own subject, brand, and licensed materials.
+4. **Re-edit** — Open the source using the [reproduction guide, in Japanese](docs/REPRODUCE.md).
 
-`PROMPT.md`は制作中の判断を完成形へ統合した再制作用プロンプトです。最初に一度だけ入力した原文ではありません。音声生成入力は個人の登録IDを除いて保存しています。
+The consolidated prompt records decisions made during production. It is not a claim that the film was produced from a single prompt. Original scripts and generation inputs retain their original languages; private voice identifiers are excluded.
 
-## ギャラリー
+## Run the gallery
 
-ビルド不要の静的サイトを[`site/`](site)に用意しています。サブドメインにもサブディレクトリにも配置できます。公開先：**https://videos.maepace.com/**。
+The static site lives in [`site/`](site/). It is published at [videos.maepace.com](https://videos.maepace.com/en/).
 
 ```sh
 npm run dev
-# http://localhost:4173
+# http://localhost:4173/en/
 ```
 
-最新版は `site/media/lanclo-daily-r26.mp4`、初期版は `site/media/lanclo.mp4`、番外編は `site/media/lanclo-osaka.mp4` に配置してください。完成MP4・音声はGitに含めず、[公開手順](docs/PUBLISHING.md)に沿って配信します。
+Finished media is distributed separately from Git. Place `lanclo-daily-r26.mp4` (current), `lanclo.mp4` (early version), and `lanclo-osaka.mp4` (bonus) in `site/media/`. See the [publishing guide, in Japanese](docs/PUBLISHING.md).
 
-## ファイル構成
+## Repository layout
 
 ```text
 films/
-  lanclo/    作品の入口・最新版の台本・プロンプト
-    source/  最新版の編集ソース
-    extras/  大阪弁などの番外編
-    history/ 以前の版の記録
-styles/      次の作品にも使えるビジュアルスタイル
-site/        ポートフォリオ用の動画ギャラリー
-scripts/     ギャラリーのビルドと公開前チェック
-docs/        再編集・公開・ライセンスの案内
-templates/   新しい作品を追加する雛形
+  lanclo/    Project overview, current script and prompts
+    source/  Current editable composition
+    extras/  Bonus experiments, including the Osaka remix
+    history/ Earlier versions and production records
+styles/      Reusable visual direction
+site/        Japanese gallery and English pages under en/
+scripts/     Build and publication checks
+docs/        Reproduction, publishing, and licensing guides
+templates/   Starting point for the next project
 ```
 
-[新しい作品を追加する](docs/ADDING-A-FILM.md)
+One project gets one gallery entry. Revisions stay within that project; alternate narration belongs under extras. See [how to add a film, in Japanese](docs/ADDING-A-FILM.md).
 
-## 参考とライセンス
+## Inspiration and licensing
 
-構成の参考は [Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)。見本動画とスタイル、制作プロンプトをセットで見せる考え方を参考にしました。説明文とサイト実装はこの作品集向けに制作しています。
+The presentation draws inspiration from [Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar): show the film, the style, and the prompts together. This portfolio has its own copy and site implementation.
 
-本リポジトリの自作コード・文書は[MIT](LICENSE)。動画、第三者素材、ブランド、本人の声には別の条件が適用されます。[ライセンスの適用範囲](docs/LICENSING.md)と各作品の `CREDITS.md` を確認してください。
+Original code and documentation use the [MIT license](LICENSE). Films, third-party assets, brand materials, and personal voices have separate conditions. Consult each film's `CREDITS.md` and the [licensing scope, in Japanese](docs/LICENSING.md).
