@@ -1,5 +1,14 @@
 [
   {
+    "id": "lanclo-daily",
+    "title": "自分の声で、毎日の英語を。",
+    "edition": "Daily / Final r26",
+    "duration": "1:09",
+    "seconds": 68.833333,
+    "voice": "女性ナレーション・1.2倍速",
+    "description": "自分のAI音声、苦手に合わせた10問、いつものニュース。日常に溶け込む英語レッスン。"
+  },
+  {
     "id": "lanclo",
     "title": "シャドーイングの、その先へ。",
     "edition": "Original",

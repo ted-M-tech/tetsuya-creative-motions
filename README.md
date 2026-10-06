@@ -6,11 +6,21 @@
 
 コードとAIで作る映像の作品集。完成動画、台本、プロンプト、演出、編集ソースを一緒に残します。
 
-[▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#作品) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
+[▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#最新作) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
 
 </div>
 
-## 作品
+## 最新作
+
+[![Lanclo Daily](site/posters/lanclo-daily.jpg)](https://videos.maepace.com/films/lanclo-daily/)
+
+**Lanclo — 自分の声で、毎日の英語を。** · 1:09 · 日本語
+
+[動画・制作ノート・台本・プロンプト](https://videos.maepace.com/films/lanclo-daily/) · [ソースと制作記録](films/lanclo-daily/)
+
+A Japanese product film about your own AI voice, personalized lessons, and daily news.
+
+## 以前の作品
 
 <table><tr>
 <td width="50%" valign="top"><a href="films/lanclo/"><img src="site/posters/lanclo.jpg" alt="Lanclo 通常版"></a><br><b>Lanclo — シャドーイングの、その先へ。</b><br>0:53 · Product film<br>自分の声のお手本と、日常に溶け込む英語学習。<br><a href="films/lanclo/">制作ノートとプロンプト →</a></td>

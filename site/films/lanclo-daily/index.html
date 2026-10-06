@@ -1,0 +1,249 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lanclo Daily — 制作ノート | Tetsuya Creative Motions</title><meta name="description" content="Lanclo完成版。動画、構成、台本、プロンプト、研究と素材の出典を1ページで。"><link rel="canonical" href="https://videos.maepace.com/films/lanclo-daily/"><link rel="stylesheet" href="../../style.css"><style>.case{max-width:1000px;padding:48px 0}.case h1{font-size:clamp(32px,5vw,58px)}.case p,.case li{line-height:1.9}.case h2{margin:42px 0 20px}.case .screen{margin:32px 0}.case a{text-decoration:underline}.case details{border-top:1px solid #c8ccc1;padding:24px 0}.case summary{font-size:18px;cursor:pointer;font-weight:600}.case pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;font-family:inherit;font-size:14px;padding:24px;background:#eeeee7;border-radius:8px}.case .en{color:#5d645d}</style></head><body><header><a class="brand" href="../../">TETSUYA<span>CREATIVE MOTIONS</span></a><nav><a href="../../#films">作品一覧</a><a href="https://github.com/ted-M-tech/tetsuya-creative-motions/tree/main/films/lanclo-daily">GitHub ↗</a></nav></header><main class="case"><div class="eyebrow">MAKING OF / LANClO DAILY / FINAL r26</div><h1>自分の声で、<br>毎日の英語を。</h1><p>1:09 · 日本語音声 · 1920×1080 · 30fps</p><p class="en" lang="en">A Japanese product film about learning with your own AI voice, personalized ten-question lessons, and daily news that becomes English learning material.</p><div class="screen"><video controls playsinline preload="metadata" poster="../../posters/lanclo-daily.jpg" src="../../media/lanclo-daily-r26.mp4"></video><p class="video-note" hidden>動画を読み込めませんでした。</p></div><p><a href="../../media/lanclo-daily-r26.mp4" download>完成動画をダウンロード</a> · <a href="#notes">台本とプロンプトへ ↓</a></p><h2>何を伝えたかったか</h2><p>自分に合うお手本を探す負担から、自分の声で始めるレッスンへ。AIが苦手を分析し、次の10問を用意する。さらにいつものニュースも教材になり、英語が生活の一部になる。その体験を人物・波形・図解で見せました。</p><h2>演出で変えたこと</h2><ul><li>紺色の冒頭に大きな問いを置き、最初の1秒で注意を引く。</li><li>分析結果から英文カードが組み上がり、読むだけで進める手軽さを可視化。</li><li>「さらに、いつものニュースも、あなたの英語教材に。」を挟み、夜の収集から朝の配信へつなぐ。</li><li>抑揚テストの上達幅「約1.3倍」を強調し、棒の比率と研究条件を保持。</li></ul><h2>制作方法</h2><p>HTML / SVG + GSAPで動きを作り、HyperFramesで書き出し。人物はunDraw。Gemini 3.8 Flash TTSのナレーションを1.2倍速、ピッチを維持して配置しています。動画生成モデルによる映像ではありません。</p><p>録音とお手本の場面は合成音声による説明用デモ。研究は別システムの比較で、Lanclo自体の効果検証ではありません。</p><h2 id="notes">制作ノートを開く</h2><p>台本と指示をこのページで読めます。統合プロンプトは完成形の制作条件をまとめたもので、一回の入力だけで完成したことを意味しません。</p><details><summary>制作プロンプト / Production prompt</summary><pre># 再制作用の統合プロンプト — Lanclo Daily
+
+完成版r26の判断を統合したプロンプトです。最初の一回の入力原文ではありません。音声の実際の生成指示はTTS-PROMPTS.json、採用ファイルと尺はTIMING.jsonを参照。
+
+Lancloの日本語プロモーション映像を、HTML/SVG、GSAP、HyperFramesで制作する。1920×1080、30fps、約69秒。unDrawの人物で統一。アイボリーとティールを基本に、冒頭と習慣化の転換には紺背景・白文字。LancloのLCフラットマークと軽いワードマークを使う。
+
+## 構成
+
+1. 開始1秒から「まだシャドーイングしてるの？」を大きく。自分のAIボイスでデイリーレッスンができるアプリと伝える。
+2. 自分の声の波形が右へ流れ、クローンが登場。リングが広がり「聞く→発音する」が順に点灯。
+3. 様々なネイティブでシャドーイングしてきたが、似た声のお手本を探すのも大変。困った人物と異なる人物カードで一場面にまとめる。
+4. 録音→できた自分のAI音声→自分で発音、を体験として見せる。Could you say that again? の2回は同一合成音声テイクを使う。実ユーザー録音とは表示しない。
+5. 「自分の声のお手本 vs ネイティブのお手本」。抑揚テスト得点の上昇幅、約1.3倍を大きく。2本の棒を共通ゼロ起点から一度で伸ばす。細かい点数を画面に詰めない。出典・条件・Lanclo自体の検証ではないことは脚注に残す。
+6. 五軸（発音・アクセント・リズム・抑揚・流暢さ）のレーダーで苦手を示す。
+7. 「でも、それだけじゃ続かない」→「自然に続く仕組みが必要」。この流れを省略しない。
+8. レッスンの結果から次の10問が組み上がる。短文・長文・復習・新しいパターンを混ぜ、長めの英文へ寄る。「あなたは、目の前の英文を発音するだけ」。候補文からの自動構成であり、リアルタイムの自由な新規英文生成とは言わない。
+9. 一日10分、ボタンひとつでデイリーレッスンへ。
+10. 「さらに、いつものニュースも、あなたの英語教材に。」読書する人物と記事カード。見出し「いつものニュースが、英語の時間に。」
+11. 眠っている間にAIが世界の話題を集め、興味で選び、朝に英語記事で届ける。記事が英語教材になる変化まで見せる。
+12. 左に端末をまとめ、右に屋外で学ぶ人物。Language Cloneが縮み、小文字へ自然につながりLancloで終わる。「シャドーイングの、その先へ。」
+
+## 声と動き
+
+日本語ナレーターはGemini 3.8 Flash TTS / Leda。若い成人女性の明るく自然な語り。原音を1.2倍速、ピッチ維持で配置。BGMは等速で、声の区間をダッキング。英語デモは同一Aoedeテイクで統一。GSAPは任意時刻へ順逆シークしても同じ絵になるようにする。
+
+研究の1.3倍は86.61÷65.52。英語全般の学習効率130%や製品の効果立証に言い換えない。詳しい出典はCREDITS.md。
+</pre></details><details><summary>ナレーション全台本 / Full script</summary><pre># r26 ナレーション
+
+全音声：1.2倍速。ピッチ維持。BGMは等速。追加2行はGemini 3.8 Flash TTS / Leda。
+
+- 0.03s：まだシャドーイングしてるの？
+- 1.76s：あなた自身の、ネイティブ音声をご用意。
+- 4.59s：理想の自分の声を聞きながら、発音矯正しよう。
+- 8.20s：いろんなネイティブで、シャドーイングしてきた。でも、自分と似た声を探すのも、大変。
+- 13.63s：最初に、自分の声を録音。
+- 16.41s：こうして出来た自分のAIネイティブ音声で、
+- 19.80s：Could you say that again?
+- 21.32s：同じ文を、声に出す。
+- 23.76s：Could you say that again?
+- 25.30s：自分の声のお手本は、ネイティブのお手本より、抑揚テストの得点の伸びが、約1.3倍。
+- 31.73s：AIが、あなたの苦手を分析。
+- 35.43s：でも、それだけじゃ続かない。自然に続く仕組みが必要。
+- 39.44s：レッスンのたびに、AIが苦手を分析。次のレッスンも自動で用意。あなたは、目の前の英文を発音するだけ。
+- 47.67s：まずは、一日10分。ボタンひとつで、デイリーレッスンへ。
+- 51.80s：さらに、いつものニュースも、あなたの英語教材に。
+- 55.27s：寝ている間に、AIが世界のニュースをチェック。あなたの興味に合わせた英語記事が、毎朝届きます。
+- 62.23s：スマホでも、タブレットでも、パソコンでも。
+- 65.47s：ランクロ。シャドーイングの、その先へ。
+</pre></details><details><summary>音声への演技指示 / Voice prompts</summary><pre>{
+  &quot;note&quot;: &quot;Historical generation inputs. TIMING.json identifies the audio files used in this edition. Source takes are played at 1.2x. The English model and learner demonstration use the same synthetic take.&quot;,
+  &quot;inputs&quot;: {
+    &quot;TTS-PROMPTS-r19.json&quot;: {
+      &quot;model&quot;: &quot;gemini-3.8-flash-tts&quot;,
+      &quot;playbackRate&quot;: 1,
+      &quot;demo&quot;: &quot;Synthetic demonstration audio, not an actual user recording or a product output.&quot;,
+      &quot;lines&quot;: [
+        {
+          &quot;id&quot;: &quot;hook&quot;,
+          &quot;text&quot;: &quot;英語のお手本が、自分の声に。発音練習アプリ、ランクロ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;record&quot;,
+          &quot;text&quot;: &quot;最初に、自分の声を録音。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;listen&quot;,
+          &quot;text&quot;: &quot;できたお手本を聞いて、&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;model&quot;,
+          &quot;text&quot;: &quot;Could you say that again?&quot;,
+          &quot;voice&quot;: &quot;Aoede&quot;,
+          &quot;style&quot;: &quot;Natural adult woman, clear friendly native US English, gently rising question, relaxed confident model pronunciation. No introduction or extra words.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;repeat&quot;,
+          &quot;text&quot;: &quot;同じ文を、声に出す。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;learner&quot;,
+          &quot;text&quot;: &quot;Could you say that again?&quot;,
+          &quot;voice&quot;: &quot;Aoede&quot;,
+          &quot;style&quot;: &quot;Same natural adult female voice, conversational practice repetition of a question. A person speaking into their phone, light thoughtful delivery. No extra words.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;research&quot;,
+          &quot;text&quot;: &quot;自分の声のお手本は、ネイティブのお手本より、抑揚テストの得点の伸びが、約1.3倍。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects. Explain the comparison clearly and precisely, with delighted discovery, not a guarantee of general learning efficiency.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;adaptive&quot;,
+          &quot;text&quot;: &quot;AIが苦手を見つけて、次の問題まで用意。あなたは、目の前の文を読むだけ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;easy&quot;,
+          &quot;text&quot;: &quot;まずは、一日10分。ボタンひとつで、今日の練習へ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;news&quot;,
+          &quot;text&quot;: &quot;あなたが寝ている間に、AIがニュースをチェック。好きな話題が、毎朝、英語教材で届きます。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;devices&quot;,
+          &quot;text&quot;: &quot;スマホでも、タブレットでも、パソコンでも。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;closing&quot;,
+          &quot;text&quot;: &quot;ランクロ。シャドーイングの、その先へ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        }
+      ]
+    },
+    &quot;TTS-PROMPTS-r24.json&quot;: {
+      &quot;model&quot;: &quot;gemini-3.8-flash-tts&quot;,
+      &quot;playbackRate&quot;: 1,
+      &quot;demo&quot;: &quot;Synthetic demonstration audio, not an actual user recording or a product output.&quot;,
+      &quot;lines&quot;: [
+        {
+          &quot;id&quot;: &quot;analysis&quot;,
+          &quot;text&quot;: &quot;AIが、あなたの苦手を分析。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;autolesson&quot;,
+          &quot;text&quot;: &quot;レッスンのたびに、AIが苦手を分析。次のレッスンも自動で用意。あなたは、目の前の英文を発音するだけ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        }
+      ]
+    },
+    &quot;TTS-PROMPTS-r26.json&quot;: {
+      &quot;model&quot;: &quot;gemini-3.8-flash-tts&quot;,
+      &quot;playbackRate&quot;: 1,
+      &quot;demo&quot;: &quot;Synthetic demonstration audio, not an actual user recording or a product output.&quot;,
+      &quot;lines&quot;: [
+        {
+          &quot;id&quot;: &quot;bridge&quot;,
+          &quot;text&quot;: &quot;さらに、いつものニュースも、あなたの英語教材に。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;news&quot;,
+          &quot;text&quot;: &quot;寝ている間に、AIが世界のニュースをチェック。あなたの興味に合わせた英語記事が、毎朝届きます。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        }
+      ]
+    },
+    &quot;TTS-PROMPTS-r21.json&quot;: {
+      &quot;model&quot;: &quot;gemini-3.8-flash-tts&quot;,
+      &quot;playbackRate&quot;: 1,
+      &quot;demo&quot;: &quot;Synthetic demonstration audio, not an actual user recording or a product output.&quot;,
+      &quot;lines&quot;: [
+        {
+          &quot;id&quot;: &quot;listen&quot;,
+          &quot;text&quot;: &quot;できた自分のエーアイネイティブ音声で&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;落ち着いた若い女性が、友達に使い方を説明している口調。これは説明文の途中の一節です。喜びの歓声ではありません。「できたじぶんの」を一息のまとまりとして滑らかにつなぎ、できたの後には全く間を置かず、ピッチを上げず、じぶんのまで同じ低めのイントネーションで読みます。「できた」は後ろの名詞を修飾する連体形です。末尾の「で」は次に音声の実演が続く自然な接続。早口ではなく普通の会話速度。指定テキスト以外は読みません。&quot;,
+          &quot;displayText&quot;: &quot;出来た自分のAIネイティブ音声で、&quot;
+        },
+        {
+          &quot;id&quot;: &quot;easy&quot;,
+          &quot;text&quot;: &quot;まずは、一日10分。ボタンひとつで、デイリーレッスンへ。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        }
+      ]
+    },
+    &quot;TTS-PROMPTS-r20.json&quot;: {
+      &quot;model&quot;: &quot;gemini-3.8-flash-tts&quot;,
+      &quot;playbackRate&quot;: 1,
+      &quot;demo&quot;: &quot;Synthetic demonstration audio, not an actual user recording or a product output.&quot;,
+      &quot;lines&quot;: [
+        {
+          &quot;id&quot;: &quot;question&quot;,
+          &quot;text&quot;: &quot;まだシャドーイングしてるの？&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects. Playfully provocative opening question, friendly not scolding. Start immediately.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;promise&quot;,
+          &quot;text&quot;: &quot;あなた自身の、ネイティブ音声をご用意。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;invitation&quot;,
+          &quot;text&quot;: &quot;理想の自分の声を聞きながら、発音矯正しよう。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;problem&quot;,
+          &quot;text&quot;: &quot;いろんなネイティブで、シャドーイングしてきた。でも、自分と似た声を探すのも、大変。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        },
+        {
+          &quot;id&quot;: &quot;pivot&quot;,
+          &quot;text&quot;: &quot;でも、それだけじゃ続かない。自然に続く仕組みが必要。&quot;,
+          &quot;voice&quot;: &quot;Leda&quot;,
+          &quot;style&quot;: &quot;Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects.&quot;
+        }
+      ]
+    }
+  }
+}
+</pre></details><details><summary>研究と素材の出典 / Credits & research</summary><pre># 出典・素材
+
+- イラスト：[unDraw](https://undraw.co/) / [独自ライセンス](https://undraw.co/license)。作品に使った人物・AI・睡眠・学習素材の色と構図を調整。MIT/CC0素材ではありません。
+- フォント：Noto Sans JP、SIL Open Font License。本文は[source/assets/OFL.txt](source/assets/OFL.txt)。
+- アニメーション：GSAP。配布ファイルの著作権・ライセンス表記を保持。
+- レンダリング：HyperFrames。依存バージョンはsource/package-lock.jsonに固定。
+- ブランド：LancloのLCロゴ・ワードマーク・画面。一般用途の再利用素材ではありません。
+- 音声：Gemini 3.8 Flash TTS。本人の登録音声を使う版は同意済み音声を使用。個人の登録ID・元録音・分離音声は配布しません。
+- 音楽・効果音：制作時の音源カタログを使用。単体音源をこのリポジトリのライセンスで再配布しません。
+- 演出参考：[Lemo-Opuscar / Dark Tech Keynote](https://github.com/lemomo-ai/lemo-opuscar/tree/main/styles/dark-keynote)。構成とテンポを参考にしたもので、この動画の制作者や研究への推薦を意味しません。
+
+## 研究結果の読み方
+
+Li, Z., Lian, A.-P., &amp; Yodkamlue, B. (2020), GEMA 20(1), 54–76. [原論文](https://ejournal.ukm.my/gema/article/download/35992/10245) / DOI: 10.17576/gema-2020-2001-04。
+
+| 英語抑揚テスト | Before | After | 得点の伸び |
+|---|---:|---:|---:|
+| ネイティブのお手本 | 210.00 | 275.52 | 65.52 |
+| 自声のお手本 | 213.48 | 300.09 | 86.61 |
+
+66名、各群33名、12週間。約1.3倍は86.61÷65.52という**得点の伸びの比**。最終得点比、学習速度、全般的な英語能力、Lanclo自体の効果を示す数値ではありません。
+</pre></details><h2>ソースと以前の版</h2><p><a href="https://github.com/ted-M-tech/tetsuya-creative-motions/tree/main/films/lanclo-daily/source">編集ソース</a> · <a href="https://github.com/ted-M-tech/tetsuya-creative-motions/blob/main/films/lanclo-daily/TIMING.json">タイミング</a> · <a href="../../#lanclo">初期通常版</a> · <a href="../../#lanclo-osaka">大阪弁版</a></p></main><footer><span>© 2026 Tetsuya</span><a href="../../">作品一覧へ</a></footer><script src="../../gallery.js"></script></body></html>

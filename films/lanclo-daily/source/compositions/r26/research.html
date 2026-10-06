@@ -1,0 +1,36 @@
+<template>
+<style>
+@font-face{font-family:R22ResearchJP;src:url('assets/NotoSansJP.ttf')}
+#r21-research{font-family:R22ResearchJP,sans-serif}
+#r21-research-root{position:absolute;inset:0;overflow:hidden;background:#fff9f0;color:#183f39;font-family:R22ResearchJP,sans-serif}
+#r21-research-root *{box-sizing:border-box}
+#research-title{position:absolute;left:120px;top:85px;font-size:48px;font-weight:700;letter-spacing:-.035em}
+#research-message{position:absolute;left:120px;top:240px;font-size:68px;font-weight:800;line-height:1.5}
+#research-message strong{color:#176b61}
+#research-ratio{position:absolute;right:145px;top:190px;display:flex;align-items:baseline;gap:10px;color:#176b61;transform-origin:70% 60%;line-height:1}
+#research-ratio small{font-size:62px;font-weight:750}#research-ratio b{font-size:248px;font-weight:850;letter-spacing:-.065em}
+#research-chart{position:absolute;left:120px;top:530px;width:1680px;height:300px}
+#research-chart .label{position:absolute;left:0;top:17px;font-size:43px;font-weight:700;width:490px}
+#research-chart .self-label{top:187px;color:#176b61}
+#research-chart .bar{position:absolute;left:545px;height:92px;transform-origin:left center;border-radius:0 10px 10px 0}
+#research-native{top:0;width:756.4957857px;background:#91a5a1}
+#research-self{top:170px;width:1000px;background:#176b61}
+#research-base{position:absolute;left:543px;top:-17px;width:2px;height:300px;background:#b8c7c0}
+#research-note{position:absolute;left:120px;right:120px;top:932px;padding-top:18px;border-top:1px solid #cbd7cf;font-size:22px;line-height:1.6;color:#48645c}
+</style>
+<div id="r21-research-root" data-composition-id="r21-research" data-width="1920" data-height="1080" data-duration="6.433333333333334">
+<div id="research-title">自分の声のお手本 vs ネイティブのお手本</div>
+<div id="research-message"><strong>自分の声のお手本で、</strong><br>抑揚の上達幅が</div>
+<div id="research-ratio"><small>約</small><b>1.3</b><small>倍</small></div>
+<div id="research-chart"><div id="research-base"></div><div class="label">ネイティブのお手本</div><div class="label self-label">自分の声のお手本</div><div id="research-native" class="bar"></div><div id="research-self" class="bar"></div></div>
+<div id="research-note">Li et al. (2020) ／ 各群33名・12週間。棒は抑揚テストの平均得点の上昇幅を比較。<br>別システムの研究であり、Lancloの効果検証ではありません。</div>
+</div>
+<script>(()=>{const tl=gsap.timeline({paused:true});
+tl.fromTo('#research-title',{opacity:0,y:16},{opacity:1,y:0,duration:.25,ease:'power3.out'},0);
+tl.fromTo('#research-message',{opacity:0,y:22},{opacity:1,y:0,duration:.35,ease:'power3.out'},.2);
+// One uninterrupted rise per bar, identical zero and linear gain scale.
+tl.fromTo('#research-native,#research-self',{scaleX:0},{scaleX:1,duration:1.2,ease:'power2.out'},.7);
+tl.fromTo('#research-ratio',{opacity:0,scale:.84,y:14},{opacity:1,scale:1.045,y:0,duration:.26,ease:'power3.out'},1.68);
+tl.to('#research-ratio',{scale:1,duration:.24,ease:'power2.out'},1.94);
+tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*0.9190476190476191);c.startTime(at*0.9190476190476191);});window.__timelines['r21-research']=tl;})();</script>
+</template>

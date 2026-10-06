@@ -1,0 +1,179 @@
+{
+  "note": "Historical generation inputs. TIMING.json identifies the audio files used in this edition. Source takes are played at 1.2x. The English model and learner demonstration use the same synthetic take.",
+  "inputs": {
+    "TTS-PROMPTS-r19.json": {
+      "model": "gemini-3.8-flash-tts",
+      "playbackRate": 1,
+      "demo": "Synthetic demonstration audio, not an actual user recording or a product output.",
+      "lines": [
+        {
+          "id": "hook",
+          "text": "英語のお手本が、自分の声に。発音練習アプリ、ランクロ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "record",
+          "text": "最初に、自分の声を録音。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "listen",
+          "text": "できたお手本を聞いて、",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "model",
+          "text": "Could you say that again?",
+          "voice": "Aoede",
+          "style": "Natural adult woman, clear friendly native US English, gently rising question, relaxed confident model pronunciation. No introduction or extra words."
+        },
+        {
+          "id": "repeat",
+          "text": "同じ文を、声に出す。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "learner",
+          "text": "Could you say that again?",
+          "voice": "Aoede",
+          "style": "Same natural adult female voice, conversational practice repetition of a question. A person speaking into their phone, light thoughtful delivery. No extra words."
+        },
+        {
+          "id": "research",
+          "text": "自分の声のお手本は、ネイティブのお手本より、抑揚テストの得点の伸びが、約1.3倍。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects. Explain the comparison clearly and precisely, with delighted discovery, not a guarantee of general learning efficiency."
+        },
+        {
+          "id": "adaptive",
+          "text": "AIが苦手を見つけて、次の問題まで用意。あなたは、目の前の文を読むだけ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "easy",
+          "text": "まずは、一日10分。ボタンひとつで、今日の練習へ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "news",
+          "text": "あなたが寝ている間に、AIがニュースをチェック。好きな話題が、毎朝、英語教材で届きます。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "devices",
+          "text": "スマホでも、タブレットでも、パソコンでも。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "closing",
+          "text": "ランクロ。シャドーイングの、その先へ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        }
+      ]
+    },
+    "TTS-PROMPTS-r24.json": {
+      "model": "gemini-3.8-flash-tts",
+      "playbackRate": 1,
+      "demo": "Synthetic demonstration audio, not an actual user recording or a product output.",
+      "lines": [
+        {
+          "id": "analysis",
+          "text": "AIが、あなたの苦手を分析。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "autolesson",
+          "text": "レッスンのたびに、AIが苦手を分析。次のレッスンも自動で用意。あなたは、目の前の英文を発音するだけ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        }
+      ]
+    },
+    "TTS-PROMPTS-r26.json": {
+      "model": "gemini-3.8-flash-tts",
+      "playbackRate": 1,
+      "demo": "Synthetic demonstration audio, not an actual user recording or a product output.",
+      "lines": [
+        {
+          "id": "bridge",
+          "text": "さらに、いつものニュースも、あなたの英語教材に。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "news",
+          "text": "寝ている間に、AIが世界のニュースをチェック。あなたの興味に合わせた英語記事が、毎朝届きます。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        }
+      ]
+    },
+    "TTS-PROMPTS-r21.json": {
+      "model": "gemini-3.8-flash-tts",
+      "playbackRate": 1,
+      "demo": "Synthetic demonstration audio, not an actual user recording or a product output.",
+      "lines": [
+        {
+          "id": "listen",
+          "text": "できた自分のエーアイネイティブ音声で",
+          "voice": "Leda",
+          "style": "落ち着いた若い女性が、友達に使い方を説明している口調。これは説明文の途中の一節です。喜びの歓声ではありません。「できたじぶんの」を一息のまとまりとして滑らかにつなぎ、できたの後には全く間を置かず、ピッチを上げず、じぶんのまで同じ低めのイントネーションで読みます。「できた」は後ろの名詞を修飾する連体形です。末尾の「で」は次に音声の実演が続く自然な接続。早口ではなく普通の会話速度。指定テキスト以外は読みません。",
+          "displayText": "出来た自分のAIネイティブ音声で、"
+        },
+        {
+          "id": "easy",
+          "text": "まずは、一日10分。ボタンひとつで、デイリーレッスンへ。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        }
+      ]
+    },
+    "TTS-PROMPTS-r20.json": {
+      "model": "gemini-3.8-flash-tts",
+      "playbackRate": 1,
+      "demo": "Synthetic demonstration audio, not an actual user recording or a product output.",
+      "lines": [
+        {
+          "id": "question",
+          "text": "まだシャドーイングしてるの？",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects. Playfully provocative opening question, friendly not scolding. Start immediately."
+        },
+        {
+          "id": "promise",
+          "text": "あなた自身の、ネイティブ音声をご用意。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "invitation",
+          "text": "理想の自分の声を聞きながら、発音矯正しよう。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "problem",
+          "text": "いろんなネイティブで、シャドーイングしてきた。でも、自分と似た声を探すのも、大変。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        },
+        {
+          "id": "pivot",
+          "text": "でも、それだけじゃ続かない。自然に続く仕組みが必要。",
+          "voice": "Leda",
+          "style": "Young adult Japanese woman, warm bright conversational smile, naturally excited to show a useful app to a friend. Clear and lively, not formal announcer or theatrical advertising. Natural 1.0x conversational pace with short breaths, no long pauses, no rushed syllables. Meaningful pitch variation. Read only the supplied words. No music or sound effects."
+        }
+      ]
+    }
+  }
+}

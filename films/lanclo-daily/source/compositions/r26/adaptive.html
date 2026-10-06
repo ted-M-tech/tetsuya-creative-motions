@@ -1,0 +1,157 @@
+<template>
+<style>
+@font-face{font-family:LancloJP;src:url('assets/NotoSansJP.ttf')}
+#r21-adaptive-root{position:absolute;inset:0;overflow:hidden;font-family:LancloJP,sans-serif;color:#183f39}#r21-adaptive-root *{box-sizing:border-box}
+#r21-adaptive-ground{position:absolute;inset:0;background:#fff9f0}
+.r21-adaptive-title{position:absolute;left:130px;top:95px;width:1700px;font-size:72px;letter-spacing:-.045em;line-height:1.3;font-weight:850;margin:0}
+#r21-adaptive-learner{position:absolute;left:100px;top:505px;width:440px;height:430px;object-fit:contain}
+#r21-adaptive-sentence{position:absolute;left:575px;top:325px;width:1200px;font-size:64px;letter-spacing:-.035em;line-height:1.4;font-weight:650}
+#r21-adaptive-label{position:absolute;left:580px;top:266px;font-size:26px;font-weight:650;letter-spacing:.1em;color:#36645a}
+#r21-adaptive-pen{position:absolute;left:1070px;top:410px;width:270px;height:40px;overflow:visible}
+#r21-adaptive-route{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+.r21-adaptive-tag{position:absolute;top:605px;width:290px;height:128px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:48px;background:#dcefe6}
+#r21-adaptive-pronunciation{left:580px}#r21-adaptive-rhythm{left:940px}#r21-adaptive-intonation{left:785px;top:825px;width:250px;height:100px;font-size:44px;background:#f5bd98;border:3px solid #183f39;z-index:4}
+#r21-adaptive-ai{position:absolute;left:630px;top:474px;width:310px;text-align:left;font-size:28px;font-weight:650;color:#36645a}
+#r21-adaptive-next-ground{position:absolute;left:685px;top:345px;width:1090px;height:580px;background:#dcefe6;border-radius:52px}
+#r21-adaptive-next-label{position:absolute;left:760px;top:397px;font-size:27px;letter-spacing:.08em;font-weight:650}
+#r21-adaptive-next-english{position:absolute;left:760px;top:585px;width:950px;font-size:61px;font-weight:650;letter-spacing:-.04em;line-height:1.4}
+#r21-adaptive-next-english span{color:#176b61}
+#r21-adaptive-again{position:relative;display:inline-block}
+#r21-adaptive-intonation-arrow{position:absolute;left:0;bottom:100%;width:100%;height:58px;overflow:visible;pointer-events:none}
+#r21-adaptive-next-instruction{position:absolute;left:760px;top:738px;font-size:35px;font-weight:700}
+#r21-adaptive-loop{position:absolute;left:105px;top:945px;width:550px;white-space:nowrap;font-size:29px;text-align:center;font-weight:700;color:#176b61}
+#r21-adaptive-title-after,#r21-adaptive-next-ground,#r21-adaptive-next-label,#r21-adaptive-next-english,#r21-adaptive-intonation-arrow,#r21-adaptive-next-instruction,#r21-adaptive-loop{opacity:0}
+#r21-adaptive-radar{position:absolute;left:720px;top:435px;width:820px;height:485px;opacity:0}
+#r21-adaptive-radar svg{width:100%;height:100%;overflow:visible}
+#r21-adaptive-radar-fill{opacity:0}
+.r21-adaptive-axis-label{position:absolute;font-size:34px;font-weight:750;line-height:1.3}
+#r21-adaptive-axis-pron{left:1095px;top:450px}
+#r21-adaptive-axis-rhythm{left:1280px;top:872px}
+#r21-adaptive-axis-stress{left:1365px;top:615px}
+#r21-adaptive-axis-fluency{left:815px;top:615px}
+#r21-adaptive-radar-note{position:absolute;left:1105px;top:940px;font-size:22px;color:#496c62;letter-spacing:.04em}
+#r21-adaptive-ipa{position:absolute;left:1280px;top:680px;font-size:30px;line-height:1.4;color:#176b61;opacity:0;letter-spacing:.03em}
+#r24-preview{position:absolute;left:140px;top:310px;width:440px;height:150px;border:3px dashed #7bada2;border-radius:25px;background:#fff9f0;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#176b61}#r24-preview-svg{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none}</style>
+<div id="r21-adaptive-root" data-composition-id="r21-adaptive" data-width="1920" data-height="1080" data-duration="3.7">
+<div id="r21-adaptive-ground" class="clip" data-start="0" data-duration="3.7" data-track-index="0"></div>
+<h2 id="r21-adaptive-title-before" class="r21-adaptive-title">AIが、あなたの苦手を分析。</h2>
+<h2 id="r21-adaptive-title-after" class="r21-adaptive-title">あなたは、目の前の文を読むだけ。</h2>
+<img id="r21-adaptive-learner" src="assets/undraw/learning.svg" alt="自分の苦手に合わせて英語のレッスンを受ける学習者">
+<div id="r21-adaptive-before">
+<div id="r21-adaptive-label">あなたの発話</div>
+<div id="r21-adaptive-sentence">Could you say that again?</div>
+<svg id="r21-adaptive-pen" viewBox="0 0 470 40" aria-hidden="true"><path id="r21-adaptive-pen-stroke" d="M8 19 Q225 2 460 17" fill="none" stroke="#176b61" stroke-width="10" stroke-linecap="round" /></svg>
+<div id="r21-adaptive-ai">AIが苦手を見つける</div>
+<div id="r21-adaptive-radar" role="img" aria-label="発音・アクセント・リズム・抑揚・流暢さの五軸で苦手を見つける分析イメージ。実測値ではありません。">
+<svg viewBox="0 0 820 485" aria-hidden="true">
+<g fill="none" stroke="#a8c8bb" stroke-width="2"><path d="M430.0 218.8 L474.0 250.7 L457.2 302.4 L402.8 302.4 L386.0 250.7 Z" />
+<path d="M430.0 172.5 L518.0 236.4 L484.4 339.8 L375.6 339.8 L342.0 236.4 Z" />
+<path d="M430.0 126.2 L562.0 222.1 L511.6 377.3 L348.4 377.3 L298.0 222.1 Z" />
+<path d="M430.0 80.0 L605.9 207.8 L538.7 414.7 L321.3 414.7 L254.1 207.8 Z" /><path d="M430 265 L430.0 80.0 M430 265 L605.9 207.8 M430 265 L538.7 414.7 M430 265 L321.3 414.7 M430 265 L254.1 207.8" /></g>
+<path id="r21-adaptive-radar-fill" fill="#176b61" stroke="none" />
+<path id="r21-adaptive-radar-stroke" fill="none" stroke="#176b61" stroke-width="5" stroke-linejoin="round" />
+<circle cx="430" cy="265" r="5" fill="#176b61" />
+<circle id="r21-adaptive-radar-focus" cx="397.4" cy="309.9" r="11" fill="#f5bd98" stroke="#183f39" stroke-width="4" />
+<path id="r21-adaptive-radar-pointer" d="M381.4 321.9 L330 440 L315 440" fill="none" stroke="#176b61" stroke-width="3" stroke-linecap="round" />
+</svg></div>
+<div id="r21-adaptive-axis-pron" class="r21-adaptive-axis-label">発音</div>
+<div id="r21-adaptive-axis-rhythm" class="r21-adaptive-axis-label">リズム</div>
+<div id="r21-adaptive-axis-stress" class="r21-adaptive-axis-label">アクセント</div>
+<div id="r21-adaptive-axis-fluency" class="r21-adaptive-axis-label">流暢さ</div>
+<div id="r21-adaptive-radar-note">分析イメージ</div>
+</div>
+<div id="r21-adaptive-next-ground"></div>
+<div id="r21-adaptive-next-label">次のレッスン</div>
+<div id="r21-adaptive-intonation" class="r21-adaptive-tag">抑揚</div>
+<div id="r21-adaptive-next-english">Could you say <span>that <span id="r21-adaptive-again">again?<svg id="r21-adaptive-intonation-arrow" viewBox="0 0 380 180" preserveAspectRatio="none" aria-hidden="true"><path id="r21-adaptive-pitch-path" d="M 2.9 131.7 C 125.2 137.6, 262.1 63.5, 370.1 50.4 M 370.1 50.4 l -32.9 -13.1 M 370.1 50.4 l -27.5 19.6" fill="none" stroke="#176b61" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" /></svg></span></span></div>
+<div id="r21-adaptive-ipa" lang="en">/əˈɡen/</div>
+<div id="r21-adaptive-next-instruction">文末を上げて、もう一度。</div>
+<div id="r21-adaptive-loop">レッスンのたび、あなたに合う。</div><svg id="r24-preview-svg" viewBox="0 0 1920 1080"><path id="r24-preview-route" d="M785 875 H650 V530 H560 V460" fill="none" stroke="#7bada2" stroke-width="4" stroke-linejoin="round"/></svg><div id="r24-preview">あなた向けのレッスン</div>
+</div>
+<script>(()=>{
+// One learner stays on stage. An observed weakness becomes the next practice topic.
+// The sentence and rising-arrow exercise are explanatory examples, not measured scores.
+// HyperFrames registry hw-arrow: actual seeded path generator, scoped locally.
+// Compact straight pose sits above the exact word receiving rising intonation.
+const r13AdaptiveHwHash = function (n, seed) {
+          var x = Math.sin(n * 127.1 + (seed || 1) * 311.7) * 43758.5453;
+          return (x - Math.floor(x)) * 2 - 1;
+        };
+const r13AdaptiveHwArrowPath = function (w, h, curve, seed) {
+          seed = seed || 1;
+          var bend = curve === "swoop" ? 0.55 : curve === "gentle" ? 0.28 : 0.06;
+          function wob(v, n, range) {
+            return v + r13AdaptiveHwHash(n, seed) * range;
+          }
+          var x0 = wob(4, 1, 3),
+            y0 = wob(h * 0.72, 2, 4),
+            x1 = wob(w - 10, 3, 4),
+            y1 = wob(h * 0.3, 4, 4);
+          var cx1 = wob(w * 0.35, 5, 10),
+            cy1 = wob(h * (0.72 + bend * 0.5), 6, 8);
+          var cx2 = wob(w * 0.7, 7, 10),
+            cy2 = wob(h * (0.3 + bend), 8, 8);
+          var ang = Math.atan2(y1 - cy2, x1 - cx2);
+          function head(da, len) {
+            var a = ang + Math.PI + da;
+            return (
+              "M " +
+              x1.toFixed(1) +
+              " " +
+              y1.toFixed(1) +
+              " l " +
+              (Math.cos(a) * len).toFixed(1) +
+              " " +
+              (Math.sin(a) * len).toFixed(1)
+            );
+          }
+          return (
+            "M " +
+            x0.toFixed(1) +
+            " " +
+            y0.toFixed(1) +
+            " C " +
+            cx1.toFixed(1) +
+            " " +
+            cy1.toFixed(1) +
+            ", " +
+            cx2.toFixed(1) +
+            " " +
+            cy2.toFixed(1) +
+            ", " +
+            x1.toFixed(1) +
+            " " +
+            y1.toFixed(1) +
+            " " +
+            head(0.5, wob(34, 9, 6)) +
+            " " +
+            head(-0.5, wob(34, 10, 6))
+          );
+        };
+document.querySelector("#r21-adaptive-pitch-path").setAttribute("d",r13AdaptiveHwArrowPath(380,180,"straight",3));
+const tl=gsap.timeline({paused:true});
+// CSS and explicit fromTo opacity states agree before every later reveal.
+tl.fromTo('#r21-adaptive-title-before',{y:34,opacity:0},{y:0,opacity:1,duration:.35,ease:'power3.out'},0);
+tl.fromTo('#r21-adaptive-learner',{x:-75,opacity:0},{x:0,opacity:1,duration:.55,ease:'power3.out'},.08);
+tl.fromTo('#r21-adaptive-label,#r21-adaptive-sentence',{y:40,opacity:0},{y:0,opacity:1,duration:.4,stagger:.08,ease:'power3.out'},.25);
+tl.fromTo('#r21-adaptive-ai',{opacity:0},{opacity:1,duration:.22},1.02);
+// App axis order/labels: shared/pronunciationDimensions.mjs and src/pronunciation/LessonRadar.jsx.
+// Registry svg-stroke-trace integration: measured closed path + distinct fill layer.
+// Relative vertices are illustrative only; never label these as measured user scores.
+const radarPath='M430.0 117.0 L553.2 225.0 L500.7 362.3 L397.4 309.9 L298.0 222.1 Z';
+const radarStroke=document.querySelector('#r21-adaptive-radar-stroke'),radarFill=document.querySelector('#r21-adaptive-radar-fill');
+radarStroke.setAttribute('d',radarPath);radarFill.setAttribute('d',radarPath);
+const radarLength=radarStroke.getTotalLength();
+radarStroke.style.strokeDasharray=radarLength+' '+radarLength;
+radarStroke.style.strokeDashoffset=String(radarLength);
+tl.fromTo('#r21-adaptive-radar',{opacity:0,scale:.94},{opacity:1,scale:1,duration:.3,ease:'power3.out'},.9);
+tl.fromTo('#r21-adaptive-axis-pron,#r21-adaptive-axis-stress,#r21-adaptive-axis-rhythm,#r21-adaptive-axis-fluency,#r21-adaptive-radar-note',{opacity:0,y:12},{opacity:1,y:0,duration:.25,stagger:.09,ease:'power2.out'},1.02);
+tl.fromTo(radarStroke,{strokeDashoffset:radarLength},{strokeDashoffset:0,duration:.72,ease:'sine.inOut'},1.18);
+tl.fromTo(radarFill,{opacity:0},{opacity:.16,duration:.24,ease:'power2.out'},1.9);
+tl.fromTo('#r21-adaptive-radar-focus',{opacity:0,scale:.5,transformOrigin:'center'},{opacity:1,scale:1,duration:.24,ease:'back.out(1.3)'},2.05);
+const radarPointer=document.querySelector('#r21-adaptive-radar-pointer'),rp=radarPointer.getTotalLength();
+tl.fromTo(radarPointer,{strokeDasharray:rp,strokeDashoffset:rp},{strokeDashoffset:0,duration:.25,ease:'power2.out'},2.18);
+tl.fromTo('#r21-adaptive-intonation',{y:24,opacity:0,scale:.94},{y:0,opacity:1,scale:1,duration:.28,ease:'back.out(1.15)'},2.3);
+const underline=document.querySelector('#r21-adaptive-pen-stroke'),ul=underline.getTotalLength();tl.fromTo(underline,{strokeDasharray:ul,strokeDashoffset:ul},{strokeDashoffset:0,duration:.36,ease:'power2.out'},2.05);
+
+tl.fromTo('#r24-preview',{opacity:0,scale:.94},{opacity:1,scale:1,duration:.35},3.05);const route=document.querySelector('#r24-preview-route');const length=route.getTotalLength();tl.fromTo(route,{strokeDasharray:length,strokeDashoffset:length},{strokeDashoffset:0,duration:.45},2.65);tl.getChildren(false,true,true).forEach(c=>{const at=c.startTime();c.duration(c.duration()*0.925);c.startTime(at*0.925);});window.__timelines['r21-adaptive']=tl;})();</script></template>
