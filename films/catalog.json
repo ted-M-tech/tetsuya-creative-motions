@@ -1,6 +1,6 @@
 [
   {
-    "id": "lanclo-daily",
+    "id": "lanclo",
     "title": "自分の声で、毎日の英語を。",
     "edition": "Daily / Final r26",
     "duration": "1:09",
@@ -17,7 +17,9 @@
         "seconds": 56.766667,
         "voice": "たこ先生の登録音声・大阪弁",
         "description": "同じ映像に、ぼやきとツッコミを。声と台本で印象が変わる、大阪弁ナレーション版。",
-        "role": "bonus"
+        "role": "bonus",
+        "path": "lanclo/extras/osaka",
+        "poster": "lanclo-osaka.jpg"
       }
     ],
     "history": [
@@ -29,8 +31,13 @@
         "seconds": 52.566667,
         "voice": "落ち着いた女性ナレーション",
         "description": "お手本を探す悩みから、自分の声へ。ニュースが英語教材になり、学習が日常につながる。",
-        "role": "previous-version"
+        "role": "previous-version",
+        "path": "lanclo/history/r18",
+        "poster": "lanclo.jpg"
       }
-    ]
+    ],
+    "path": "lanclo",
+    "poster": "lanclo-daily.jpg",
+    "media": "lanclo-daily-r26.mp4"
   }
 ]

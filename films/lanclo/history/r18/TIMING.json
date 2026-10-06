@@ -1,0 +1,63 @@
+{
+  "duration": 52.566667,
+  "fps": 30,
+  "voiceRate": 1,
+  "scenes": [
+    {
+      "id": "opening",
+      "start": 0,
+      "duration": 14.0,
+      "voiceSourceSeconds": 13.64,
+      "voiceFile": "assets/voice/opening-r18-corrected.wav",
+      "voiceGain": 0.6166
+    },
+    {
+      "id": "research",
+      "start": 14.0,
+      "duration": 8.4,
+      "voiceSourceSeconds": 8.08,
+      "voiceFile": "assets/voice/research-r18.wav",
+      "voiceGain": 0.63096
+    },
+    {
+      "id": "adaptive",
+      "start": 22.4,
+      "duration": 6.133333,
+      "voiceSourceSeconds": 5.88,
+      "voiceFile": "assets/voice/adaptive.wav",
+      "voiceGain": 0.59566
+    },
+    {
+      "id": "pivot",
+      "start": 28.533333,
+      "duration": 6.2,
+      "voiceSourceSeconds": 5.92,
+      "voiceFile": "assets/voice/pivot-r18.wav",
+      "voiceGain": 0.83176
+    },
+    {
+      "id": "news",
+      "start": 34.733333,
+      "duration": 10.7,
+      "voiceSourceSeconds": 10.4,
+      "voiceFile": "assets/voice/news-r18.wav",
+      "voiceGain": 0.58884
+    },
+    {
+      "id": "devices",
+      "start": 45.433333,
+      "duration": 3.333333,
+      "voiceSourceSeconds": 3.12,
+      "voiceFile": "assets/voice/devices.wav",
+      "voiceGain": 0.5559
+    },
+    {
+      "id": "closing",
+      "start": 48.766667,
+      "duration": 3.8,
+      "voiceSourceSeconds": 3.16,
+      "voiceFile": "assets/voice/closing.wav",
+      "voiceGain": 0.64565
+    }
+  ]
+}

@@ -28,3 +28,7 @@ CloudflareとGoogleの公開DNSで解決を確認。初回検証時はローカ�
 MP4: `lanclo-daily-r26.mp4` / SHA-256: `d977f59ec3370988b357c57385681502b676e92676971da656569c31b74b6610`
 
 公開確認：制作ノート200、MP4 Range 206（1024 bytes）。Chromeで68.833333秒の再生開始と終盤シーク後の終了を確認。Worker version: `4a6f5b7c-04a9-4d97-9688-01baf2a83dfb`。GitHub Releasesにも独立したファイル名で保存。
+
+## GitHub構成整理 — 2026-10-06
+
+Lancloを1作品としてfilms/lancloに集約。最新版を直下、番外編をextras/osaka、初期版をhistory/r18に保存。全100ソースファイルを移動前とバイト比較し一致。公開サイトのGitHubリンクも新しい場所へ更新。既存の動画URLは維持。

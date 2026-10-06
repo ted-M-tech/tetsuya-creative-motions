@@ -1,0 +1,15 @@
+{
+  "includedInGit": false,
+  "requiredFiles": [
+    ".media/audio/bgm/previous-catalog.wav",
+    ".media/audio/sfx/sfx_001.mp3",
+    "assets/voice/adaptive.wav",
+    "assets/voice/closing.wav",
+    "assets/voice/devices.wav",
+    "assets/voice/news-r18.wav",
+    "assets/voice/opening-r18-corrected.wav",
+    "assets/voice/pivot-r18.wav",
+    "assets/voice/research-r18.wav"
+  ],
+  "note": "音声と音楽は配布対象外。自分の利用許諾を持つ音源を同じ相対パスに配置。"
+}

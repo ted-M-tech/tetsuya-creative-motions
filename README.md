@@ -6,26 +6,19 @@
 
 コードとAIで作る映像の作品集。完成動画、台本、プロンプト、演出、編集ソースを一緒に残します。
 
-[▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#最新作) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
+[▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#作品) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
 
 </div>
 
-## 最新作
+## 作品
 
 [![Lanclo Daily](site/posters/lanclo-daily.jpg)](https://videos.maepace.com/films/lanclo-daily/)
 
 **Lanclo — 自分の声で、毎日の英語を。** · 1:09 · 日本語
 
-[動画・制作ノート・台本・プロンプト](https://videos.maepace.com/films/lanclo-daily/) · [ソースと制作記録](films/lanclo-daily/)
+[動画・制作ノート・台本・プロンプト](https://videos.maepace.com/films/lanclo-daily/) · [ソースと制作記録](films/lanclo)
 
 A Japanese product film about your own AI voice, personalized lessons, and daily news.
-
-## Lancloの番外編と制作の変遷
-
-最新版・旧版・大阪弁版は、同じLancloプロジェクトの制作記録です。作品数としては1作品にまとめています。
-
-- [番外編：大阪弁ナレーション](https://videos.maepace.com/films/lanclo-daily/#extras)
-- [制作の変遷：初期版との比較](https://videos.maepace.com/films/lanclo-daily/#history)
 
 完成動画はHTML/SVGとGSAPによるアニメーションをHyperFramesでレンダリング。人物はunDraw、ナレーションはGemini TTSを使用しています。
 
@@ -40,19 +33,23 @@ A Japanese product film about your own AI voice, personalized lessons, and daily
 
 ## ギャラリー
 
-ビルド不要の静的サイトを[`site/`](site/)に用意しています。サブドメインにもサブディレクトリにも配置できます。公開先：**https://videos.maepace.com/**。
+ビルド不要の静的サイトを[`site/`](site)に用意しています。サブドメインにもサブディレクトリにも配置できます。公開先：**https://videos.maepace.com/**。
 
 ```sh
 npm run dev
 # http://localhost:4173
 ```
 
-手元に完成MP4がある場合は `site/media/lanclo.mp4` と `site/media/lanclo-osaka.mp4` に配置してください。完成MP4・音声はGitに含めず、[公開手順](docs/PUBLISHING.md)に沿って配信します。
+最新版は `site/media/lanclo-daily-r26.mp4`、初期版は `site/media/lanclo.mp4`、番外編は `site/media/lanclo-osaka.mp4` に配置してください。完成MP4・音声はGitに含めず、[公開手順](docs/PUBLISHING.md)に沿って配信します。
 
 ## ファイル構成
 
 ```text
-films/       作品ごとの説明・プロンプト・台本・編集ソース
+films/
+  lanclo/    作品の入口・最新版の台本・プロンプト
+    source/  最新版の編集ソース
+    extras/  大阪弁などの番外編
+    history/ 以前の版の記録
 styles/      次の作品にも使えるビジュアルスタイル
 site/        ポートフォリオ用の動画ギャラリー
 scripts/     ギャラリーのビルドと公開前チェック

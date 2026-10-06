@@ -1,15 +1,26 @@
 {
   "includedInGit": false,
   "requiredFiles": [
-    ".media/audio/bgm/previous-catalog.wav",
+    ".media/audio/bgm/bgm_001.wav",
     ".media/audio/sfx/sfx_001.mp3",
-    "assets/voice/adaptive.wav",
-    "assets/voice/closing.wav",
-    "assets/voice/devices.wav",
-    "assets/voice/news-r18.wav",
-    "assets/voice/opening-r18-corrected.wav",
-    "assets/voice/pivot-r18.wav",
-    "assets/voice/research-r18.wav"
+    "assets/voice/r19-closing.wav",
+    "assets/voice/r19-devices.wav",
+    "assets/voice/r19-model.wav",
+    "assets/voice/r19-record.wav",
+    "assets/voice/r19-repeat.wav",
+    "assets/voice/r19-research.wav",
+    "assets/voice/r20-invitation.wav",
+    "assets/voice/r20-pivot.wav",
+    "assets/voice/r20-problem.wav",
+    "assets/voice/r20-promise.wav",
+    "assets/voice/r20-question.wav",
+    "assets/voice/r21-easy.wav",
+    "assets/voice/r21-listen.wav",
+    "assets/voice/r24-analysis.wav",
+    "assets/voice/r24-autolesson.wav",
+    "assets/voice/r26-bridge.wav",
+    "assets/voice/r26-news.wav"
   ],
-  "note": "音声と音楽は配布対象外。自分の利用許諾を持つ音源を同じ相対パスに配置。"
+  "note": "Audio is excluded. Supply licensed audio or regenerate from the public prompts.",
+  "renderSha256": "d977f59ec3370988b357c57385681502b676e92676971da656569c31b74b6610"
 }

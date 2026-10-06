@@ -20,5 +20,5 @@ Dark Tech Keynoteは構成と動きの参照。色・人物・ブランド・台
 
 ## このスタイルで作った動画
 
-- [Lanclo 通常版](../../films/lanclo/)
-- [Lanclo 大阪弁版](../../films/lanclo-osaka/)
+- [Lanclo](../../films/lanclo/)
+- [Lanclo 大阪弁版](../../films/lanclo/extras/osaka)

@@ -16,7 +16,7 @@ for(const file of files){
  }
 }
 for(const item of JSON.parse(readFileSync(resolve(root,'films/catalog.json'),'utf8')).flatMap(item=>[item,...(item.extras||[]),...(item.history||[])])){
- for(const file of ['README.md','PROMPT.md','NARRATION.md','CREDITS.md','TIMING.json','TTS-PROMPTS.json','source/index.html'])if(!existsSync(resolve(root,'films',item.id,file)))errors.push(`${item.id}: missing ${file}`);
- if(!existsSync(resolve(root,'site/posters',item.id+'.jpg')))errors.push(`${item.id}: missing poster`);
+ for(const file of ['README.md','PROMPT.md','NARRATION.md','CREDITS.md','TIMING.json','TTS-PROMPTS.json','source/index.html'])if(!existsSync(resolve(root,'films',item.path||item.id,file)))errors.push(`${item.id}: missing ${file}`);
+ if(!existsSync(resolve(root,'site/posters',item.poster||item.id+'.jpg')))errors.push(`${item.id}: missing poster`);
 }
 if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}else console.log(`Checked ${files.length} public files: links, film records and private-data exclusions passed.`);

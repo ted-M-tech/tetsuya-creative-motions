@@ -1,22 +1,37 @@
-# Lanclo — シャドーイングの、その先へ。
+# Lanclo — 自分の声で、毎日の英語を。
 
-![Original](../../site/posters/lanclo.jpg)
+![Lanclo Daily](../../site/posters/lanclo-daily.jpg)
 
-**0:53 · 1920×1080 · 30fps · 落ち着いた女性ナレーション**
+**1:09 · 1920×1080 · 30fps · 日本語ナレーション / Japanese audio**
 
-お手本を探す悩みから、自分の声へ。ニュースが英語教材になり、学習が日常につながる。
+自分のAI音声、苦手に合わせた10問、いつものニュース。発音のレッスンが生活に溶け込むまでを描く完成版です。
 
-[ギャラリー](https://videos.maepace.com/films/lanclo-daily/#history) · [制作プロンプト](PROMPT.md) · [台本](NARRATION.md) · [スタイル](../../styles/warm-illustrated-keynote/STYLE.md) · [編集ソース](source/) · [音声入力](TTS-PROMPTS.json) · [タイミング](TIMING.json) · [出典](CREDITS.md)
+A Japanese product film about learning with your own AI voice, personalized ten-question lessons, and daily news that becomes English learning material.
 
-[MP4をダウンロード](https://github.com/ted-M-tech/tetsuya-creative-motions/releases/download/films/lanclo.mp4)
+[動画と制作ノートをまとめて見る](https://videos.maepace.com/films/lanclo-daily/) · [統合プロンプト](PROMPT.md) · [全台本](NARRATION.md) · [音声入力](TTS-PROMPTS.json) · [編集ソース](source) · [タイミング](TIMING.json) · [出典](CREDITS.md)
 
-## 見どころ
+## 制作の判断
 
-- 人物カードが積み重なり、似た声を探す悩みが「自分の声」という解決につながる。
-- 研究結果は同じゼロ起点の棒グラフ。強調するのは得点の伸びの差。
-- 夜のニュース収集から、朝の英語教材までを一連の動きで見せる。
-- Language CloneからLancloへ文字が縮約するブランドエンディング。
+- 冒頭1秒で問いを提示し、すぐ自分のAI音声という価値を見せる。
+- 苦手の分析だけで終わらず、次の10問が自動で組み上がる過程まで可視化。
+- 「さらに、いつものニュースも、あなたの英語教材に。」を挟み、機能の羅列を毎日の学習という話につなぐ。
+- 研究の見出しは簡潔に、条件と出典は保持。約1.3倍は抑揚テスト得点の伸びの比較。
 
-## 再編集
+## 番外編と制作の変遷
 
-[共通の再編集手順](../../docs/REPRODUCE.md)を参照。第三者素材は[CREDITS.md](CREDITS.md)の条件が適用されます。音声の再生成は別途APIアクセスが必要です。台本・演技指示は公開しますが、個人の登録音声IDと音声ファイルは公開用Gitに含めません。
+r26完成版。以前の[通常版](history/r18)と[大阪弁版](extras/osaka)も保存。大阪弁版は初期版の映像を使った番外編です。
+
+[再編集手順](../../docs/REPRODUCE.md)。分離音声はGitに含めません。必要ファイルは[MEDIA.json](MEDIA.json)。
+
+## 制作ファイル
+
+| ファイル | 内容 |
+|---|---|
+| [PROMPT.md](PROMPT.md) | 完成形を再制作するための統合指示 |
+| [NARRATION.md](NARRATION.md) | 最新版の全台本 |
+| [TTS-PROMPTS.json](TTS-PROMPTS.json) | 音声生成時の入力。採用テイクはTIMING.jsonで確認 |
+| [TIMING.json](TIMING.json) | シーンと音声の配置 |
+| [CREDITS.md](CREDITS.md) | 素材・研究の出典、利用条件 |
+| [source/](source/) | 最新版の編集ソース |
+| [extras/osaka/](extras/osaka/) | 大阪弁ナレーションの番外編 |
+| [history/r18/](history/r18/) | 初期版の制作記録とソース |

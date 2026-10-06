@@ -50,16 +50,6 @@
       "name": "svg-stroke-trace",
       "type": "hyperframes:component",
       "target": "compositions/components/svg-stroke-trace.html"
-    },
-    {
-      "name": "beat-accent",
-      "type": "hyperframes:component",
-      "target": "compositions/components/beat-accent.html"
-    },
-    {
-      "name": "micro-transitions",
-      "type": "hyperframes:component",
-      "target": "compositions/components/micro-transitions.html"
     }
   ]
 }
