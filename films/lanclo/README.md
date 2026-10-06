@@ -1,5 +1,7 @@
 # Lanclo — 自分の声で、毎日の英語を。
 
+**日本語** · [English](README.en.md)
+
 ![Lanclo Daily](../../site/posters/lanclo-daily.jpg)
 
 **1:09 · 1920×1080 · 30fps · 日本語ナレーション / Japanese audio**

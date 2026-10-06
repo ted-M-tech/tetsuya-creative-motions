@@ -2,6 +2,8 @@
 
 # Tetsuya Creative Motions
 
+**日本語** · [English](README.en.md)
+
 **動画と、その作り方。**
 
 コードとAIで作る映像の作品集。完成動画、台本、プロンプト、演出、編集ソースを一緒に残します。
