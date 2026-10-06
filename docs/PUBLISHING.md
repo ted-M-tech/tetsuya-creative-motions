@@ -1,6 +1,6 @@
 # ギャラリーを公開する
 
-公開先は **https://videos.maepace.com/**。Cloudflare Workersの静的アセットでギャラリーと完成MP4を配信します。Worker名は `tetsuya-creative-motions`。ポートフォリオ本体のWorkerとは独立しています。
+公開先は **https://videos.maepace.com/**。Cloudflare Workersの静的アセットでギャラリーと完成MP4を配信します。動画パス `/media/*` だけは小さなWorkerでHTTP Rangeに対応し、途中シークを可能にしています。Worker名は `tetsuya-creative-motions`。ポートフォリオ本体のWorkerとは独立しています。
 
 ## 構成
 

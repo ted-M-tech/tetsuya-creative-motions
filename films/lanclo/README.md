@@ -8,6 +8,8 @@
 
 [ギャラリー](https://videos.maepace.com/#lanclo) · [制作プロンプト](PROMPT.md) · [台本](NARRATION.md) · [スタイル](../../styles/warm-illustrated-keynote/STYLE.md) · [編集ソース](source/) · [音声入力](TTS-PROMPTS.json) · [タイミング](TIMING.json) · [出典](CREDITS.md)
 
+[MP4をダウンロード](https://github.com/ted-M-tech/tetsuya-creative-motions/releases/download/films/lanclo.mp4)
+
 ## 見どころ
 
 - 人物カードが積み重なり、似た声を探す悩みが「自分の声」という解決につながる。
