@@ -26,3 +26,5 @@ CloudflareとGoogleの公開DNSで解決を確認。初回検証時はローカ�
 公開前確認：公開ファイルの個人情報・リンク検査、Range配信4テスト、1440px/390pxの一覧・制作ノートで横はみ出しなし。
 
 MP4: `lanclo-daily-r26.mp4` / SHA-256: `d977f59ec3370988b357c57385681502b676e92676971da656569c31b74b6610`
+
+公開確認：制作ノート200、MP4 Range 206（1024 bytes）。Chromeで68.833333秒の再生開始と終盤シーク後の終了を確認。Worker version: `4a6f5b7c-04a9-4d97-9688-01baf2a83dfb`。GitHub Releasesにも独立したファイル名で保存。
