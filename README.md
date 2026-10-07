@@ -1,6 +1,6 @@
 <div align="center">
 
-# Tetsuya Creative Motions
+# Tetsuya Open Works
 
 [日本語](README.ja.md) · **English**
 
@@ -11,6 +11,15 @@ A portfolio of motion work made with code and AI. Finished films sit alongside t
 [▶ Watch the gallery](https://videos.maepace.com/en/) · [Films](#films) · [Styles](styles/README.md) · [Re-edit a film](docs/REPRODUCE.md)
 
 </div>
+
+
+## Web, slides & reproducible process
+
+[Lanclo LP: runnable source and making of](projects/lanclo-lp/README.md) · [Companion slides](https://videos.maepace.com/slides/lanclo-making/) · [Open handoff skill](skills/open-creative-handoff/SKILL.md)
+
+The portfolio now includes websites, films and teaching slides. One project can have several formats. Historical film claims are preserved as creative records, not current product specifications.
+
+To build the whole site: `npm ci --prefix projects/lanclo-lp/source`, then `npm run check && npm test && npm run build`. Media-inclusive deployment still uses the separately licensed release MP4s described below.
 
 ## Films
 

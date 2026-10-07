@@ -1,0 +1,349 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "790e3169bc19b046fe55ba1da6d13b976c28363c8c00462a2195fe5faf260910"
+    },
+    {
+      "path": "index.html",
+      "sha256": "075f3091a83f522171bd212e9a79ed3239ede98402fcb4f156310650856e8bc4"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "d717aa2110bb83c8c041e3188c1fdbe3070f12459c3cb11cfb966c91bb400569"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d80e46f09c85c4bf11a7935b3fc883e01b2c280c4f6271f3867d79074ddf507c"
+    },
+    {
+      "path": "public/brand/icon-180.png",
+      "sha256": "a03b1fec1f3689200dd2f6dc12e6be8db2ac8048c15b0e95204b048e31389fda"
+    },
+    {
+      "path": "public/brand/icon-32.png",
+      "sha256": "6bfd884e3eb9d84939a0977f984752e836b30266769466067727144f74f6041b"
+    },
+    {
+      "path": "public/brand/mark.svg",
+      "sha256": "9e45fdf27322246849f845c002b6d5c6e934be6f4f03a9104e1a7bf0eb167b30"
+    },
+    {
+      "path": "public/illustrations/curiosity.webp",
+      "sha256": "2aad77e065617529c8c93e089a6656fb15b0972b018eba578ed376bf9d3b2094"
+    },
+    {
+      "path": "public/illustrations/voice-journey.webp",
+      "sha256": "db505be71aab96be932de4984f17f71b79cac2f1b81ce33efbd4616a583009a9"
+    },
+    {
+      "path": "public/screens/device-desktop.webp",
+      "sha256": "1dc7a98d3a6eb9e645e963411f95110e52bc7d70470571d5bc30d8b10fa4336c"
+    },
+    {
+      "path": "public/screens/device-phone.webp",
+      "sha256": "fcc733b92f9d872f117fd6439920a0dd93f98a7f967900290553ab4c0e7e5839"
+    },
+    {
+      "path": "public/screens/device-tablet.webp",
+      "sha256": "abe0bed5a48dd564c92f32b4395bd0b9079b9154708af6d28045793605d8d436"
+    },
+    {
+      "path": "public/screens/news-list.webp",
+      "sha256": "274aa940d7d38943f375772b2c8c894ea23314542ee884cb5837eed98abf71c7"
+    },
+    {
+      "path": "public/screens/news-reader.webp",
+      "sha256": "fdf74f6084e7265a40b2d20b03e7a608941b8b78066fb229149a2e430218dc76"
+    },
+    {
+      "path": "shared/newsInterests.mjs",
+      "sha256": "1abff10bd47de095ffb49e4de7f9b98a951ac5c094e0e52b414da5fcff78030a"
+    },
+    {
+      "path": "shared/pronunciationDimensions.mjs",
+      "sha256": "a2501901557378d941f40697c7ad3ec6257c0ee1f85eb9a4440ffb5e83b6e2b2"
+    },
+    {
+      "path": "src/brand.css",
+      "sha256": "3e24d5232b463f4a0cfe83e7c0efe4f4193673c9dcdf0604fa6a9d5d781604d7"
+    },
+    {
+      "path": "src/Brand.jsx",
+      "sha256": "0519c52aef2f139678451b1ae75440f4731e5e9944ab7d6d69c536f07930dc4f"
+    },
+    {
+      "path": "src/landing/App.jsx",
+      "sha256": "d007abfd7759555380858c72bfa800af9485b4e49c8c8757c9beab52200d987b"
+    },
+    {
+      "path": "src/landing/assets/closing-waterfront.webp",
+      "sha256": "8c7dbe11308070e94f08d35c4e13a7f0f8d07e01d6dcf23b48750cd331d0e2ef"
+    },
+    {
+      "path": "src/landing/assets/fonts/OFL-ZenKakuGothicNew.txt",
+      "sha256": "0fac78a235c98d640cb06332eb5362c211d86fa03c011df438c35005d22ad2c7"
+    },
+    {
+      "path": "src/landing/assets/fonts/README.md",
+      "sha256": "b8cfc30f61e98973a885ef8fa1e64dac395dd04abf51159abc7abfd80b2d023d"
+    },
+    {
+      "path": "src/landing/assets/fonts/zen-kaku-medium-lp.woff",
+      "sha256": "956f118d39ad7da4f5cbcd0f793c05a6b67e2c286472517350253be7fb703dc9"
+    },
+    {
+      "path": "src/landing/assets/hero-cafe.webp",
+      "sha256": "c0e0a7303b0bcb2a7df4c843fcadc35516caf1399fe781faca93fc93ffe207ff"
+    },
+    {
+      "path": "src/landing/assets/hero.webp",
+      "sha256": "8e46b6ace9eb1b3f4cce5953c385d7fca66a003be8aba52d3a631bf0236ebf5c"
+    },
+    {
+      "path": "src/landing/assets/lesson-scenes.webp",
+      "sha256": "fdbea2b7edd3561c93bdb3d2f55cd222206496ebe32fc065a6d77db10a89fab0"
+    },
+    {
+      "path": "src/landing/assets/news-genres.webp",
+      "sha256": "65f4f2690dfbec69db7ac6d3a3fef55523b0e94e487ee272198f5df311028c88"
+    },
+    {
+      "path": "src/landing/assets/photos/ai.jpg",
+      "sha256": "44ae3bcad5a82382a5658de08191b53c3e746177aacb28b3ed1d2e81e8c1c93d"
+    },
+    {
+      "path": "src/landing/assets/photos/business.jpg",
+      "sha256": "fe76b82b5ccc6aa5929e7399e06b1ef7bf96bb39ba2f9bed5366c769bc6f352b"
+    },
+    {
+      "path": "src/landing/assets/photos/culture.jpg",
+      "sha256": "fec8d75c42d70ee46a575e8801508a51ad9121fc6b8f5541970d67415ce863b7"
+    },
+    {
+      "path": "src/landing/assets/photos/science.jpg",
+      "sha256": "2e1e8c7c3f0e39db24a24d04b97f7fe8d0f222ab8dfc6556191b264e9f713ab0"
+    },
+    {
+      "path": "src/landing/assets/photos/society.jpg",
+      "sha256": "9755e93bc3ab0d732395ca875c1e9c149049bd2dcf56d05b21ab53ed798c3868"
+    },
+    {
+      "path": "src/landing/assets/photos/sports.jpg",
+      "sha256": "1b1c8a40d9619765294ec007283491695f51893161fbe6ded0243207cfd666fe"
+    },
+    {
+      "path": "src/landing/assets/photos/technology.jpg",
+      "sha256": "c3344e74cb0a9a2d40aeefc21dab1766e0052f6f8adc4ecf92aadfc15887bbf0"
+    },
+    {
+      "path": "src/landing/assets/photos/travel.jpg",
+      "sha256": "b9dee5741ed76c333410bdc9febb5d7841fd60381f978ab0525b1cc9cbf8b9e9"
+    },
+    {
+      "path": "src/landing/assets/practice-film-poster.webp",
+      "sha256": "ffc9fdaba243f58b6f5ea11a9c263d91a5d4137f76d3d92559b5166e1c0fd199"
+    },
+    {
+      "path": "src/landing/assets/screens/device-desktop.webp",
+      "sha256": "1dc7a98d3a6eb9e645e963411f95110e52bc7d70470571d5bc30d8b10fa4336c"
+    },
+    {
+      "path": "src/landing/assets/screens/device-phone.webp",
+      "sha256": "fcc733b92f9d872f117fd6439920a0dd93f98a7f967900290553ab4c0e7e5839"
+    },
+    {
+      "path": "src/landing/assets/screens/device-tablet.webp",
+      "sha256": "abe0bed5a48dd564c92f32b4395bd0b9079b9154708af6d28045793605d8d436"
+    },
+    {
+      "path": "src/landing/assets/screens/news-list.webp",
+      "sha256": "274aa940d7d38943f375772b2c8c894ea23314542ee884cb5837eed98abf71c7"
+    },
+    {
+      "path": "src/landing/assets/screens/news-reader.webp",
+      "sha256": "fdf74f6084e7265a40b2d20b03e7a608941b8b78066fb229149a2e430218dc76"
+    },
+    {
+      "path": "src/landing/assets/undraw/ai-intelligence.svg",
+      "sha256": "bc7530422898c66644e9a6e48ffe81dc3bbf7af3fb02f95b298eba0ef01e699a"
+    },
+    {
+      "path": "src/landing/assets/undraw/continuous-learning-r23.svg",
+      "sha256": "40e650f00b4e4acd4657e6b74967e28b7e1ee4c352dcc2cc60c3bb796d850e0e"
+    },
+    {
+      "path": "src/landing/assets/undraw/CREDITS.md",
+      "sha256": "0a1b7ba0718064d9732a0ad2dc2a0e1d22362a648f641c91921f9fb4b12c1d94"
+    },
+    {
+      "path": "src/landing/assets/undraw/learning.svg",
+      "sha256": "e5eeb44e28d656368974572af51d8d10eeebf0646518365acc31cbd5c28e4499"
+    },
+    {
+      "path": "src/landing/assets/undraw/outdoor-lesson.svg",
+      "sha256": "bc94040bfa8908961a2081c6da13fd59f3a96bc9d48072db1202f7b43c026ddb"
+    },
+    {
+      "path": "src/landing/assets/undraw/practice-speaker.svg",
+      "sha256": "dd0b9fa52124a87b3d53721ed95e53e0d9538b421c371488d5857fcbd014c07f"
+    },
+    {
+      "path": "src/landing/assets/undraw/speaker.svg",
+      "sha256": "3446b5006dc38ab3bd141d48b18d197e29eb4757a72536cd5c3bab2e1a3613af"
+    },
+    {
+      "path": "src/landing/assets/undraw/worried-person.svg",
+      "sha256": "932bac8c011b4036a392a7358cbe0a1d56bcc0c19801f2e775d068b3dc864887"
+    },
+    {
+      "path": "src/landing/Availability.jsx",
+      "sha256": "6856e04432837304c86104388b55726b594b04f1c80a1cb349740478e55a3f49"
+    },
+    {
+      "path": "src/landing/Comparison.jsx",
+      "sha256": "93d331fcc3a47923f2921354513da7d95af78960e64057ac101dc6cbaf96c86d"
+    },
+    {
+      "path": "src/landing/copy.js",
+      "sha256": "176878efe6d656a8b5ba48e85b81d83a458e52408a08618bb51d71065d959877"
+    },
+    {
+      "path": "src/landing/Experience.jsx",
+      "sha256": "1fae0b1d7ac4c7617d507264a4cb54131748276ea1bba7f724f49f43ac7f72bc"
+    },
+    {
+      "path": "src/landing/film-story.css",
+      "sha256": "53035ed44149ab9544d6a3b28648e2535c0ca2885493311f14e4db3bc4392ede"
+    },
+    {
+      "path": "src/landing/FilmStory.jsx",
+      "sha256": "8426775f44a03a8a98cc00a1b9c6ee357df9749a72d311d3c6a387d4c0588e9c"
+    },
+    {
+      "path": "src/landing/HabitStory.jsx",
+      "sha256": "043e5b9ee199f3e6e5a94c47b79fc3904588d7b55e4d7494bad17b09e608cc0b"
+    },
+    {
+      "path": "src/landing/impeccable.css",
+      "sha256": "a188d116a31d6ccfb057c19feb3e99fc08fd5c91a01c4da1c59f782c08fc639e"
+    },
+    {
+      "path": "src/landing/ImpeccableHero.jsx",
+      "sha256": "5217f83a8f16e12b77db83c66273548e52e91b4eef3176da0df96254bb7ec2a8"
+    },
+    {
+      "path": "src/landing/main.jsx",
+      "sha256": "9644ae5839d537ba02f4d9a97b1906e48c2a92b7a610b0a7e877da48420e8fff"
+    },
+    {
+      "path": "src/landing/narrative.js",
+      "sha256": "367ef77026cc9e1ebcbe63c0517e514180f094762ba8d51f38be9e44250021cb"
+    },
+    {
+      "path": "src/landing/NewsCarousel.jsx",
+      "sha256": "6186f5ab5522e8d7a1d110234f4c9f16b8a1e5b77189fa53252d0d59d2965d69"
+    },
+    {
+      "path": "src/landing/NewsDevices.jsx",
+      "sha256": "c6f48c8104458c2e47b3dca5780303c24d68cc8240dbf403a8a12ede8d2930b1"
+    },
+    {
+      "path": "src/landing/NewsPersonalization.jsx",
+      "sha256": "4f06945203303e41e151e7ebbd6ae568776f30fbb3606d625f446e0c01e51353"
+    },
+    {
+      "path": "src/landing/PracticeFilm.jsx",
+      "sha256": "5166f24ba34fe40b8e28e838eff50f973fe7e14ba0f812e5134e33a057218637"
+    },
+    {
+      "path": "src/landing/premium.css",
+      "sha256": "dc596d769a73ce5b9622f2853b957b34e086979e87d7ed686f1c7ae03f672e3e"
+    },
+    {
+      "path": "src/landing/PremiumDevices.jsx",
+      "sha256": "532bb8c6f672397b4eaa6a9272097b18c2201cd76317fda768fb00db0c244e9e"
+    },
+    {
+      "path": "src/landing/Pricing.jsx",
+      "sha256": "940af32288dc56eb6426d12bd011e9ab73000f9afc6a4f623d65a3d4e6eeab75"
+    },
+    {
+      "path": "src/landing/ReadableText.jsx",
+      "sha256": "c5b0b5a8b12a61ec158a02334dd70602ea8d5c9c258b977077b3758583dd9d85"
+    },
+    {
+      "path": "src/landing/ResearchEvidence.jsx",
+      "sha256": "1ec1a2e9eafcd64608483abaa9991b26d269f4616bfdb4a0e70b6c40afc11538"
+    },
+    {
+      "path": "src/landing/ShadowingProblem.jsx",
+      "sha256": "5de1cebe12c88c1de5c3680d9cee50a488c18aadacebb3518effd80014d077d3"
+    },
+    {
+      "path": "src/landing/StoryMotion.jsx",
+      "sha256": "2302054bce90423925dc3c3654bce112b8050a08e0fd3daa90702b890c308af8"
+    },
+    {
+      "path": "src/landing/styles.css",
+      "sha256": "62975ee05fa8e5340a4e6e275e244a273e28c38225137f47f66dff1aafe73e81"
+    },
+    {
+      "path": "src/landing/taste.css",
+      "sha256": "09ed70646dbae0e55c04d5db96bc8a314be38a7d4b842a6edd8abf41c07a7be3"
+    },
+    {
+      "path": "src/landing/VoiceMechanism.jsx",
+      "sha256": "31aadb7e9e0d1146ac0f3cd592a16b317b536f9f98d2e3912a141969c8a726bb"
+    },
+    {
+      "path": "src/pronunciation/LessonRadar.jsx",
+      "sha256": "002ba792a5083eca6b016e72aca1509da15625492dec7f82637839b65f7a1253"
+    },
+    {
+      "path": "src/pronunciation/pronunciation.module.css",
+      "sha256": "83025c832cf84eaa23b0565f002e4d684ae66978bf929d0682ef5029a80a0aea"
+    },
+    {
+      "path": "src/simple/scoreColor.mjs",
+      "sha256": "d551768639302312506c9c63109077f831ea62d53a8b2f4e4b9367f74bed79f5"
+    },
+    {
+      "path": "src/ui/obsidian/flip-text.css",
+      "sha256": "21aaf8ad6885340f0fadb51d1e93378b839376b5ef60df0ca9de4c63a7e66acf"
+    },
+    {
+      "path": "src/ui/obsidian/FlipText.jsx",
+      "sha256": "3362a40a455448874df39d245cd40fc915445c1ff1aa19ba69fecc5ab9f4a9dc"
+    },
+    {
+      "path": "src/ui/obsidian/LICENSE",
+      "sha256": "c5690890ef590f50db6ae46654c33b1ae69fd943a178930c183a52ccaf1af1a4"
+    },
+    {
+      "path": "src/ui/obsidian/loader-gooey-blobs.css",
+      "sha256": "75ba0834bbfb5b3fab7ff4e1501fe9f8d6850b22bdd01062a84ad18b19632947"
+    },
+    {
+      "path": "src/ui/obsidian/LoaderGooeyBlobs.jsx",
+      "sha256": "9b3c39851bc37e03753bb8e70b64557888c569ab1de86463422780e711750ef2"
+    },
+    {
+      "path": "src/ui/select.css",
+      "sha256": "f225859d98408650a371c334f1c81f69906c26cd875fabbfc30dc1ecf0c64d74"
+    },
+    {
+      "path": "src/ui/Select.jsx",
+      "sha256": "2b9a46c60893fc64f7a3afbc09342ffb759b77fe7aaaed119e7b19f8629892c2"
+    },
+    {
+      "path": "src/ui/tokens.css",
+      "sha256": "14d472ef13620f73268f4c88276a70e66d184286fb27331ef9339e80c0e517ee"
+    },
+    {
+      "path": "vite.config.js",
+      "sha256": "ec182cf18f9d5d6c426d686b60d801fa517ac4353100688a61ee6242a13e7a91"
+    }
+  ]
+}

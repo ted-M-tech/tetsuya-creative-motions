@@ -1,0 +1,3 @@
+import React from 'react';
+import {ArrowRight} from '@phosphor-icons/react';
+export default function NewsPersonalization({lang}){const c={ja:{label:'あなたに合わせる、3つの選択',rows:[['好きな話題','AI・ビジネス・スポーツ…'],['読みやすい難しさ','Easy / Standard'],['発音のお手本','あなたのAIボイス']]},en:{label:'Three ways to make it yours',rows:[['Your interests','AI · business · sports…'],['Your reading level','Easy / Standard'],['Your pronunciation model','Your AI voice']]},ko:{label:'나에게 맞추는 세 가지 선택',rows:[['좋아하는 주제','AI·비즈니스·스포츠…'],['읽기 편한 난이도','Easy / Standard'],['발음 예시','내 AI 목소리']]}}[lang];return <dl className="news-personalization" aria-label={c.label}>{c.rows.map(([label,value])=><div key={label}><dt>{label}</dt><ArrowRight size={17} aria-hidden="true"/><dd>{value}</dd></div>)}</dl>}

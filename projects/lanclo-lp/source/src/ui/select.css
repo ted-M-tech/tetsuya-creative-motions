@@ -1,0 +1,12 @@
+@import './tokens.css';
+.ui-select { position:relative; display:inline-flex; vertical-align:middle; min-width:0; max-width:100%; }
+.ui-select--full { display:flex; width:100%; }
+.ui-select>select { appearance:none; -webkit-appearance:none; box-sizing:border-box; width:100%; min-width:0; max-width:100%; min-height:var(--control-min-height); font:inherit; font-size:16px; line-height:1.5; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:var(--control-radius); padding:9px 36px 9px 12px; cursor:pointer; text-overflow:ellipsis; }
+.ui-select--quiet>select { background:var(--soft); border-color:transparent; }
+.ui-select>svg { position:absolute; inset-inline-end:12px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--muted); pointer-events:none; }
+.ui-select>select:hover:not(:disabled) { background:var(--soft); }
+.ui-select>select:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+.ui-select>select:disabled { cursor:default; opacity:.55; }
+.ui-select>select:disabled+svg { opacity:.55; }
+.ui-select>select { padding-inline:12px 36px; }
+@media(forced-colors:active) { .ui-select>select { border-color:ButtonText; }.ui-select>svg { color:ButtonText; }.ui-select>select:disabled,.ui-select>select:disabled+svg { color:GrayText; opacity:1; } }

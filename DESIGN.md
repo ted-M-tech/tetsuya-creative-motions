@@ -1,0 +1,2 @@
+# Design
+Extend the incumbent warm-paper editorial system: off-white, dark ink, restrained rust links, generous whitespace and thin rules. Actual work is the visual centerpiece. The LP is the large featured work; film and teaching slides follow as two different views of the same project. No fabricated portfolio projects. On maepace.com use its own tokens and a slow, focus-pausable work strip. Mobile presents readable work previews without relying on hover.

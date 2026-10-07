@@ -1,6 +1,6 @@
 <div align="center">
 
-# Tetsuya Creative Motions
+# Tetsuya Open Works
 
 **日本語** · [English](README.md)
 
@@ -71,3 +71,12 @@ templates/   新しい作品を追加する雛形
 構成の参考は [Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)。見本動画とスタイル、制作プロンプトをセットで見せる考え方を参考にしました。説明文とサイト実装はこの作品集向けに制作しています。
 
 本リポジトリの自作コード・文書は[MIT](LICENSE)。動画、第三者素材、ブランド、本人の声には別の条件が適用されます。[ライセンスの適用範囲](docs/LICENSING.md)と各作品の `CREDITS.md` を確認してください。
+
+
+## Web, slides & reproducible process
+
+[Lanclo LP: runnable source and making of](projects/lanclo-lp/README.md) · [Companion slides](https://videos.maepace.com/slides/lanclo-making/) · [Open handoff skill](skills/open-creative-handoff/SKILL.md)
+
+The portfolio now includes websites, films and teaching slides. One project can have several formats. Historical film claims are preserved as creative records, not current product specifications.
+
+To build the whole site: `npm ci --prefix projects/lanclo-lp/source`, then `npm run check && npm test && npm run build`. Media-inclusive deployment still uses the separately licensed release MP4s described below.

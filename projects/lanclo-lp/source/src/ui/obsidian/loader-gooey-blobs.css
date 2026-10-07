@@ -1,0 +1,4 @@
+/* Also enforce the preference at the rendering layer on WebKit. */
+@media (prefers-reduced-motion: reduce) {
+ .obsidian-gooey-dot { transform: none !important; }
+}
