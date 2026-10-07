@@ -22,7 +22,7 @@ JavaScriptの配信量と運用費は別問題です。React/Viteにも静的配
 | [Impeccable](https://github.com/pbakaus/impeccable) | 主な設計・整理・仕上げ | 構成、情報階層、必要に応じたdistill/adapt/audit/polish。全部を毎回実行しない |
 | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | 別案・批評 | 題材に合った独自性を検討。Impeccableと無条件に重ねない |
 | Product Design | 課題整理・体験設計・デザイン案の検討 | 必要な場合に使用。通常の実装ごとに全工程を実行しない |
-| [Web Production](../skills/web-production/SKILL.md) | この制作工程・公開記録 | 技術選択、製品事実、再現情報をつなぐ |
+| [LP Create](../skills/lp-create/SKILL.md) | この制作工程・公開記録 | 技術選択、製品事実、再現情報をつなぐ |
 
 Taste Skillのローカル名は `design-taste-frontend`。配布元のReact/Next.js等の既定値は、このAstro標準より優先しません。スキルはデザイン判断の支援で、サイトの実行依存ではありません。承認済みブランドとユーザーの要望を優先します。
 
@@ -60,7 +60,7 @@ AIへの同じ指示から同じピクセルが出るとは保証しません。
 ## はじめるための指示
 
 ```text
-$web-production で、この製品のLPを制作してください。
+$lp-create で、この製品のLPを制作してください。
 目的・対象者・製品の現行仕様は添付のBRIEFを根拠にしてください。
 新規実装はAstro＋TypeScript strict＋CSS、静的出力を標準に。
 Impeccableを主なデザイン支援にし、Taste Skillは別案が必要な場合に使ってください。
@@ -73,7 +73,7 @@ Impeccableを主なデザイン支援にし、Taste Skillは別案が必要な�
 
 ```sh
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/web-production "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/lp-create "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
 ImpeccableとTaste Skillは各公式リポジトリの導入方法を使用してください。このスキルには第三者スキル本体を同梱していません。導入時の版と実際に使用した版を分けて記録します。
@@ -81,3 +81,7 @@ ImpeccableとTaste Skillは各公式リポジトリの導入方法を使用し�
 ## 道具と実行できる検証
 
 [過去のツール・スキル一覧](WEB-TOOLCHAIN.ja.md) · [Playwrightによるレスポンシブ確認](WEB-QA.ja.md)
+
+## 工程ごとの道具選び
+
+[lp-createの道具選択ガイド](../skills/lp-create/references/stage-tools.md)には、過去に役立った調査・素材選び・画像最適化・動き・Playwright検証を組み込みました。すべてを毎回呼び出す設定ではなく、その工程が必要なときだけ読みます。動画生成・TTS・レンダリングは独立した動画制作フローとして扱います。

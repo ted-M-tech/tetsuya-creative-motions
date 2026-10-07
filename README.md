@@ -83,6 +83,6 @@ Original code and documentation use the [MIT license](LICENSE). Films, third-par
 
 ## Web production standard
 
-[Workflow: Astro + TypeScript, static-first (Japanese)](docs/WEB-WORKFLOW.ja.md) · [Installable Web skill](skills/web-production/SKILL.md) · [Reproduction record](templates/web/REPRODUCTION.md)
+[Workflow: Astro + TypeScript, static-first (Japanese)](docs/WEB-WORKFLOW.ja.md) · [Installable Web skill](skills/lp-create/SKILL.md) · [Reproduction record](templates/web/REPRODUCTION.md)
 
 Impeccable is the primary design aid; Taste Skill supports alternatives and critique when useful. Record actual usage, revisions, prompts and pinned source. Existing works retain their documented implementation and historical provenance.
