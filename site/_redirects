@@ -1,0 +1,16 @@
+# Legacy links use static redirects; no Worker executes.
+/ https://maepace.com/works?lang=ja 302
+/works/lanclo-lp https://maepace.com/works/lanclo-lp?lang=ja 302
+/works/lanclo-lp/ https://maepace.com/works/lanclo-lp?lang=ja 302
+/films/lanclo-daily https://maepace.com/works/lanclo-film?lang=ja 302
+/films/lanclo-daily/ https://maepace.com/works/lanclo-film?lang=ja 302
+/slides/lanclo-making https://maepace.com/works/lanclo-lp?lang=ja#making 302
+/slides/lanclo-making/ https://maepace.com/works/lanclo-lp?lang=ja#making 302
+/en https://maepace.com/works?lang=en 302
+/en/ https://maepace.com/works?lang=en 302
+/en/works/lanclo-lp https://maepace.com/works/lanclo-lp?lang=en 302
+/en/works/lanclo-lp/ https://maepace.com/works/lanclo-lp?lang=en 302
+/en/films/lanclo-daily https://maepace.com/works/lanclo-film?lang=en 302
+/en/films/lanclo-daily/ https://maepace.com/works/lanclo-film?lang=en 302
+/en/slides/lanclo-making https://maepace.com/works/lanclo-lp?lang=en#making 302
+/en/slides/lanclo-making/ https://maepace.com/works/lanclo-lp?lang=en#making 302

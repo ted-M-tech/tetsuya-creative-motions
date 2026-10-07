@@ -7,17 +7,12 @@
   "preview_urls": false,
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page",
-    "binding": "ASSETS",
-    "run_worker_first": [
-      "/media/*", "/", "/en", "/en/", "/works/*", "/films/*", "/slides/*", "/en/works/*", "/en/films/*", "/en/slides/*"
-    ]
+    "not_found_handling": "404-page"
   },
   "routes": [
     {
       "pattern": "videos.maepace.com",
       "custom_domain": true
     }
-  ],
-  "main": "server/media.mjs"
+  ]
 }

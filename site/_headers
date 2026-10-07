@@ -1,0 +1,3 @@
+/media/*
+  Access-Control-Allow-Origin: https://maepace.com
+  Cache-Control: public, max-age=86400
