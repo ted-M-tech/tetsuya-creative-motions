@@ -4,9 +4,9 @@
 
 [日本語](README.ja.md) · **English**
 
-**Films, and how they were made.**
+**Websites, films, slides — and how they were made.**
 
-A portfolio of motion work made with code and AI. Finished films sit alongside their scripts, prompts, creative decisions, and editable source.
+A public collection of finished work, creative decisions, prompts and runnable source. Learn from the artifact, then make the next one your own.
 
 [▶ Watch the gallery](https://videos.maepace.com/en/) · [Films](#films) · [Styles](styles/README.md) · [Re-edit a film](docs/REPRODUCE.md)
 
