@@ -24,6 +24,10 @@ Your own AI voice, ten personalized questions, and daily news that becomes Engli
 
 The visuals are authored in HTML/SVG and GSAP, then rendered with HyperFrames. Characters come from unDraw and narration uses Gemini TTS.
 
+## Use my filmmaking workflow
+
+[Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.
+
 ## Explore the work
 
 1. **Watch** — Start with the finished film and its creative intent.
@@ -52,6 +56,7 @@ films/
     source/  Current editable composition
     extras/  Bonus experiments, including the Osaka remix
     history/ Earlier versions and production records
+skills/      Reusable filmmaking workflow
 styles/      Reusable visual direction
 site/        Japanese gallery and English pages under en/
 scripts/     Build and publication checks

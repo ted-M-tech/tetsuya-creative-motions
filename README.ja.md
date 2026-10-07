@@ -24,6 +24,10 @@ A Japanese product film about your own AI voice, personalized lessons, and daily
 
 完成動画はHTML/SVGとGSAPによるアニメーションをHyperFramesでレンダリング。人物はunDraw、ナレーションはGemini TTSを使用しています。
 
+## この動画制作フローを使う
+
+[専用スキルの導入と制作手順](docs/VIDEO-WORKFLOW.ja.md)を公開しています。Lancloの改善例を見ながら、自分の動画へ応用できます。構成・改善・記録を支えるスキルで、レンダラーや音声APIは別途必要です。
+
 ## この作品集の使い方
 
 1. **作品から入る** — 気になるサムネイルから、ねらいと見どころを読む。
@@ -52,6 +56,7 @@ films/
     source/  最新版の編集ソース
     extras/  大阪弁などの番外編
     history/ 以前の版の記録
+skills/      共有できる動画制作スキル
 styles/      次の作品にも使えるビジュアルスタイル
 site/        ポートフォリオ用の動画ギャラリー
 scripts/     ギャラリーのビルドと公開前チェック
