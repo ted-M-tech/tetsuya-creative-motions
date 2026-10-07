@@ -25,7 +25,10 @@ Prefer actual product UI when explaining a feature. Mark synthetic scores or con
 
 ## Icons
 
-- Lucide is a supported choice for new LPs with a neutral outline icon style. Inspect existing dependencies first; preserve an established family such as Phosphor when refining an existing site. Lanclo's published LP uses Phosphor, not Lucide.
+- Use Lucide icons actively to reduce copy and improve scanning in new LPs. This is a communication principle, not merely a library option: when an icon, short label or simple diagram communicates the same meaning more directly than a sentence, use that visual and remove the redundant sentence.
+- For example, replace a device-support paragraph with phone/tablet/laptop icons and a short label; show a recording → AI model → practice sequence with icons and brief step titles; pair concise feature labels with meaningful icons instead of explanatory paragraphs repeating the title.
+- Keep a short visible label when the icon's meaning is ambiguous. Preserve decision-critical details such as price, conditions and research qualifications. Review the result at mobile size: the visitor should understand it faster, not have to decode unexplained symbols.
+- Inspect existing dependencies first. For scoped refinements, apply the same copy-reduction principle with the established icon family rather than mixing families. Lanclo's published LP uses Phosphor; that historical fact is not a constraint on new LPs.
 - Choose one interface-icon family per page and define consistent size, stroke/weight and alignment tokens. User-selected Lucide is valid even if a design aid discourages it as a generic default. Do not add multiple libraries for cosmetic variations.
 - Use the official package or licensed SVGs appropriate to the stack. Static Astro icons should not require React hydration or a client runtime solely to draw them. Import only needed icons; retain required license notices and record the library/version.
 - Decorative icons accompanying readable text are hidden from assistive technology. Icon-only buttons need an accessible name on the control and an adequate clickable area independent of glyph size.
