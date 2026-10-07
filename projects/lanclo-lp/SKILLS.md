@@ -16,3 +16,5 @@ Local entry SHA-256 values are in [provenance.json](provenance.json). These do n
 The Lanclo prototype document requested Product Design on 2026-10-01. The later pronunciation-practice refinement record explicitly cites Product Design get-context/user-context guidance as design grounding. These concern the product UI; they do not establish that every final LP stage used Product Design. The video-to-LP handoff recommended it as appropriate, which is not evidence of execution. Full historical invocation logs and package versions were not preserved.
 
 Source records in the Lanclo repository: `docs/self-voice-practice/prototype.md` and `docs/self-voice-practice/feedback-practice-refinement.md`. No private handoff content or full source documents are republished here.
+
+[Tools beyond design skills](../../docs/WEB-TOOLCHAIN.ja.md) distinguish historical image-generation experiments, final assets, implementation and browser verification. [Runnable responsive QA](../../docs/WEB-QA.ja.md) makes the verification workflow reusable.

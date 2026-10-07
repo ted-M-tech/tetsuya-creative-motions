@@ -77,3 +77,7 @@ cp -R skills/web-production "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
 ImpeccableとTaste Skillは各公式リポジトリの導入方法を使用してください。このスキルには第三者スキル本体を同梱していません。導入時の版と実際に使用した版を分けて記録します。
+
+## 道具と実行できる検証
+
+[過去のツール・スキル一覧](WEB-TOOLCHAIN.ja.md) · [Playwrightによるレスポンシブ確認](WEB-QA.ja.md)
