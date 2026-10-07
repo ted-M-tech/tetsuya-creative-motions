@@ -4,9 +4,9 @@
 
 **日本語** · [English](README.md)
 
-**動画と、その作り方。**
+**Web・映像・スライド。完成物から、つくり方まで。**
 
-コードとAIで作る映像の作品集。完成動画、台本、プロンプト、演出、編集ソースを一緒に残します。
+コードとAIでつくる作品集。完成物と、判断・プロンプト・動かせるソースを一緒に公開します。
 
 [▶ ギャラリーを見る](https://videos.maepace.com/) · [作品一覧](#作品) · [スタイルを探す](styles/README.md) · [自分で作る](docs/REPRODUCE.md)
 
@@ -73,10 +73,10 @@ templates/   新しい作品を追加する雛形
 本リポジトリの自作コード・文書は[MIT](LICENSE)。動画、第三者素材、ブランド、本人の声には別の条件が適用されます。[ライセンスの適用範囲](docs/LICENSING.md)と各作品の `CREDITS.md` を確認してください。
 
 
-## Web, slides & reproducible process
+## Web・スライド・再現用ソース
 
-[Lanclo LP: runnable source and making of](projects/lanclo-lp/README.md) · [Companion slides](https://videos.maepace.com/slides/lanclo-making/) · [Open handoff skill](skills/open-creative-handoff/SKILL.md)
+[Lanclo LPのソースと制作ノート](projects/lanclo-lp/README.md) · [制作解説スライド](https://videos.maepace.com/slides/lanclo-making/) · [公開用ハンドオフスキル](skills/open-creative-handoff/SKILL.md)
 
-The portfolio now includes websites, films and teaching slides. One project can have several formats. Historical film claims are preserved as creative records, not current product specifications.
+同じプロジェクトを、Web・映像・解説スライドから見る構成です。過去の映像は制作記録であり、現在の製品仕様の保証ではありません。
 
-To build the whole site: `npm ci --prefix projects/lanclo-lp/source`, then `npm run check && npm test && npm run build`. Media-inclusive deployment still uses the separately licensed release MP4s described below.
+サイト全体のビルド: `npm ci --prefix projects/lanclo-lp/source` の後、`npm run check && npm test && npm run build`。映像入りの公開には、別途配布している許諾済みのリリースMP4を使います。
