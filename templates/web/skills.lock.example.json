@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "exampleOnly": true,
+  "artifactSourceRevision": null,
+  "model": {"id": null, "settings": null},
+  "skills": [
+    {
+      "name": "impeccable",
+      "upstream": "https://github.com/pbakaus/impeccable",
+      "upstreamRevision": null,
+      "reportedVersion": null,
+      "capturedAt": null,
+      "localModified": null,
+      "filesRead": [],
+      "fileEntryExample": {"path": "SKILL.md", "sha256": null},
+      "stage": null,
+      "usageStatus": "not-recorded",
+      "selectedForFinal": null
+    }
+  ],
+  "notes": "Replace example fields with observed evidence. Unknown values remain null. Hash all actually read support files, not only SKILL.md. Do not record installation as historical use."
+}

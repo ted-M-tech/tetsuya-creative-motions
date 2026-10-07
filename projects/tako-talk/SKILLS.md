@@ -7,3 +7,7 @@
 再制作では構成→実装→レスポンシブ確認→アクセシビリティ確認→公開確認を順に行います。任意のデザインスキルを補助に使う場合も、その配布元・版・適用した工程を記録してください。
 
 No original authoring-skill invocation is asserted. The techniques above are observed in the implementation, not evidence that an identically named skill was used.
+
+## 今後の共通制作フロー
+
+[LP・Web制作標準](../../docs/WEB-WORKFLOW.ja.md)と[再現記録テンプレート](../../templates/web/REPRODUCTION.md)を公開しています。これは今後の新作・改修の方針で、この作品の技術移行や過去のスキル使用を主張するものではありません。
