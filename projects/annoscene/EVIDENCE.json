@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-07",
+  "live": "https://annoscene.maepace.com/",
+  "sourceHead": "84bf6bad8249b5c303132f0516b19f7b2647520b",
+  "scope": "Curated making-of documentation only. Source files may include local published changes; hashes identify inspected files, not a claimed exact production commit.",
+  "evidence": [
+    "lp/index.html: current Atlas page, actual country/year screens and demo.",
+    "scripts/lp-check.mjs: rejects obsolete Journey Replay copy and checks required media size budgets.",
+    "c9dc484: regional Atlas navigation; 20328fc: every Regional Atlas made free."
+  ],
+  "files": [
+    {
+      "path": "lp/index.html",
+      "sha256": "6be81121627903e4dcd64d0cc77b606e6d55ff4638434d5b346721191e3ba458"
+    },
+    {
+      "path": "lp/styles.css",
+      "sha256": "174497d84eb21260bd14451ac64d6006172850460b77b74c96393d6732859b42"
+    },
+    {
+      "path": "scripts/lp-check.mjs",
+      "sha256": "cfc7cdd965601f71619d663b1ad8355deef4d04a5e1d375ec1c84c897299e499"
+    },
+    {
+      "path": "docs/BRAND_CONCEPT.md",
+      "sha256": "2b8835dbe9213258cd9a373fef4404d46782fc5a1db0136d2af6b73d861d705d"
+    }
+  ],
+  "promptProvenance": "Reconstructed after production from inspected implementation and documents; not a verbatim conversation transcript."
+}
