@@ -28,5 +28,17 @@
     "type": "web",
     "path": "projects/annoscene",
     "url": "https://maepace.com/works/annoscene"
+  },
+  {
+    "id": "tako-stickers",
+    "type": "film",
+    "path": "films/tako-stickers",
+    "url": "https://maepace.com/works/tako-stickers"
+  },
+  {
+    "id": "tako-trip",
+    "type": "film",
+    "path": "films/tako-trip",
+    "url": "https://maepace.com/works/tako-trip"
   }
 ]
