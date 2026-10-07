@@ -1,6 +1,16 @@
-// Only /media/* runs this Worker. Other requests are served as static assets.
+// Legacy gallery routes now share the MaePace site shell. Media still supports byte ranges.
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname.replace(/\/$/, '') || '/';
+    const english = path === '/en' || path.startsWith('/en/');
+    const route = english ? (path.slice(3) || '/') : path;
+    const redirects = {'/':'/works', '/works/lanclo-lp':'/works/lanclo-lp', '/films/lanclo-daily':'/works/lanclo-film', '/slides/lanclo-making':'/works/lanclo-lp#making'};
+    if (redirects[route] && ['GET','HEAD'].includes(request.method)) {
+      const target = new URL(redirects[route], 'https://maepace.com');
+      target.searchParams.set('lang', english ? 'en' : 'ja');
+      return Response.redirect(target.href, 302);
+    }
     const headers = new Headers(request.headers);
     const range = headers.get('range');
     headers.delete('range');

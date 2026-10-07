@@ -10,7 +10,7 @@
     "not_found_handling": "404-page",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/media/*"
+      "/media/*", "/", "/en", "/en/", "/works/*", "/films/*", "/slides/*", "/en/works/*", "/en/films/*", "/en/slides/*"
     ]
   },
   "routes": [
