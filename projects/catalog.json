@@ -36,9 +36,27 @@
     "url": "https://maepace.com/works/tako-stickers"
   },
   {
-    "id": "tako-trip",
+    "id": "tako-4280",
     "type": "film",
-    "path": "films/tako-trip",
-    "url": "https://maepace.com/works/tako-trip"
+    "path": "films/tako-4280",
+    "url": "https://maepace.com/works/tako-4280"
+  },
+  {
+    "id": "tokyo-osaka",
+    "type": "film",
+    "path": "films/tokyo-osaka",
+    "url": "https://maepace.com/works/tokyo-osaka"
+  },
+  {
+    "id": "kansai-talk",
+    "type": "film",
+    "path": "films/kansai-talk",
+    "url": "https://maepace.com/works/kansai-talk"
+  },
+  {
+    "id": "tako-line-stickers",
+    "type": "stickers",
+    "path": "projects/tako-line-stickers",
+    "url": "https://maepace.com/works/tako-line-stickers"
   }
 ]
