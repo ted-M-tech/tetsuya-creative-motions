@@ -23,6 +23,14 @@ Prefer actual product UI when explaining a feature. Mark synthetic scores or con
 - Use existing image tooling (for example Sharp) to produce appropriately sized WebP/AVIF or other supported assets. Preserve originals outside the public bundle, set dimensions and review cropping at mobile sizes. Avoid adding an image pipeline for one already optimized file.
 - Reuse an existing film only after checking current claims and asset rights. Making or editing the film is a separate workflow: enter through HyperFrames when available/applicable. TTS, FFmpeg and rendering packages are not baseline LP dependencies. Paid generation needs its own authorization.
 
+## Icons
+
+- Lucide is a supported choice for new LPs with a neutral outline icon style. Inspect existing dependencies first; preserve an established family such as Phosphor when refining an existing site. Lanclo's published LP uses Phosphor, not Lucide.
+- Choose one interface-icon family per page and define consistent size, stroke/weight and alignment tokens. User-selected Lucide is valid even if a design aid discourages it as a generic default. Do not add multiple libraries for cosmetic variations.
+- Use the official package or licensed SVGs appropriate to the stack. Static Astro icons should not require React hydration or a client runtime solely to draw them. Import only needed icons; retain required license notices and record the library/version.
+- Decorative icons accompanying readable text are hidden from assistive technology. Icon-only buttons need an accessible name on the control and an adequate clickable area independent of glyph size.
+- Brand logos, platform/store badges and approved product marks use their canonical assets; do not substitute a generic library glyph. Use meaningful icons to support comprehension, not one ornamental icon for every paragraph.
+
 ## Implementation and motion
 
 For a new content-first LP use Astro static output, strict TypeScript and CSS unless the user's project calls for another stack. Existing React/Vite LPs remain valid.
