@@ -6,3 +6,7 @@
 - [Open creative handoff](../../skills/open-creative-handoff/SKILL.md): newly extracted workflow for publishing a reusable case study.
 
 Local entry SHA-256 values are in [provenance.json](provenance.json). These do not pin every referenced upstream file. Complete historical skill packages were not archived; exact prompt-level replay is therefore not claimed. Upstream instructions change: inspect their current licenses and installation documentation. We link to them rather than relicense their contents. No private tool configuration is required for the runnable LP.
+
+## 今後の共通制作フロー
+
+[LP・Web制作標準](../../docs/WEB-WORKFLOW.ja.md)と[再現記録テンプレート](../../templates/web/REPRODUCTION.md)を公開しています。これは今後の新作・改修の方針で、この作品の技術移行や過去のスキル使用を主張するものではありません。

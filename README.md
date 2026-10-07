@@ -80,3 +80,9 @@ One project gets one gallery entry. Revisions stay within that project; alternat
 The presentation draws inspiration from [Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar): show the film, the style, and the prompts together. This portfolio has its own copy and site implementation.
 
 Original code and documentation use the [MIT license](LICENSE). Films, third-party assets, brand materials, and personal voices have separate conditions. Consult each film's `CREDITS.md` and the [licensing scope, in Japanese](docs/LICENSING.md).
+
+## Web production standard
+
+[Workflow: Astro + TypeScript, static-first (Japanese)](docs/WEB-WORKFLOW.ja.md) · [Installable Web skill](skills/tetsuya-creative-web/SKILL.md) · [Reproduction record](templates/web/REPRODUCTION.md)
+
+Impeccable is the primary design aid; Taste Skill supports alternatives and critique when useful. Record actual usage, revisions, prompts and pinned source. Existing works retain their documented implementation and historical provenance.
