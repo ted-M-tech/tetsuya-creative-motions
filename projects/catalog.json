@@ -1,3 +1,4 @@
 [
-  {"id":"lanclo-lp","type":"web","title":"Lanclo landing page","path":"projects/lanclo-lp","url":"https://videos.maepace.com/works/lanclo-lp/","related":[{"type":"film","url":"https://videos.maepace.com/films/lanclo-daily/"},{"type":"slides","url":"https://videos.maepace.com/slides/lanclo-making/"}]}
+ {"id":"lanclo-lp","type":"web","path":"projects/lanclo-lp","url":"https://maepace.com/works/lanclo-lp"},
+ {"id":"lanclo-film","type":"film","path":"films/lanclo","url":"https://maepace.com/works/lanclo-film"}
 ]
