@@ -1,0 +1,33 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {motion,useReducedMotion} from 'motion/react';
+import {ArrowDown,ArrowUpRight,Pause,Play} from '@phosphor-icons/react';
+import PracticeFilm from './PracticeFilm.jsx';
+import Availability from './Availability.jsx';
+import poster from './assets/practice-film-poster.webp';
+import worried from './assets/undraw/worried-person.svg';
+import speaker from './assets/undraw/learning.svg';
+import intelligence from './assets/undraw/ai-intelligence.svg';
+import outdoors from './assets/undraw/outdoor-lesson.svg';
+import closing from './assets/undraw/continuous-learning-r23.svg';
+const filmUrl=import.meta.env.VITE_LP_PRACTICE_FILM_URL||'';
+const content={
+ ja:{title:'シャドーイング、\n続けてきた。',sub:'でも、目指す発音はまだ遠い。',body:'自分に似た声のお手本を探す。何度もまねする。\nそれでも、どこを直せばいいのかわからない。',turn:'そのお手本が、',future:'英語を自然に話す\n自分の声だったら？',intro:'声の個性は、あなたのまま。\nAIでつくるお手本から、目指す発音を練習する。',steps:['あなたの声を録音','自分の声のお手本に','聴いて、声に出す'],bodies:['声を登録して、練習をはじめる準備。','あなたの声質をもとに、AIが発音のお手本をつくります。','目指す音と自分の発音を、聴き比べて練習。'],promise:'お手本は、自分の声。\n次の練習は、自分の課題から。',note:'初回に音声登録と同意が必要です。映像は利用イメージです。',scroll:'自分の声で学ぶ、その仕組み',pause:'映像を止める',play:'映像を動かす',close:'次は、あなたの声で。',closeBody:'「こんなふうに話したい」を、今日の一文から。',caption:'録音 → 自声モデル → 発音練習'},
+ en:{title:'You kept\nshadowing.',sub:'But the pronunciation you want still feels far away.',body:'Find a voice like yours. Listen. Repeat.\nStill wondering what to change?',turn:'What if your model sounded like',future:'you, speaking\nnaturally?',intro:'Your vocal identity. An AI pronunciation model.\nA voice to practice toward.',steps:['Record your voice','Meet your voice model','Listen. Say it yourself.'],bodies:['Register your voice to get ready.','AI creates a pronunciation model based on your voice.','Compare the model with your own pronunciation and practice.'],promise:'Your voice as the model.\nYour needs shape the practice.',note:'Voice setup and consent are required first. Film shows an illustrative experience.',scroll:'Explore own-voice practice',pause:'Pause film',play:'Play film',close:'Your voice. Your next step.',closeBody:'Start with one sentence toward the way you want to speak.',caption:'Record → voice model → practice'},
+ ko:{title:'쉐도잉,\n계속해 왔어요.',sub:'하지만 원하는 발음은 아직 멀게 느껴져요.',body:'나와 비슷한 목소리를 찾고, 반복해서 따라 해요.\n그래도 무엇을 고쳐야 할지 모르겠다면?',turn:'발음 예시가',future:'영어를 자연스럽게 말하는\n내 목소리라면?',intro:'목소리의 개성은 그대로.\nAI가 만든 예시로 원하는 발음을 연습하세요.',steps:['내 목소리 녹음','내 목소리의 발음 예시','듣고, 소리 내어 말하기'],bodies:['목소리를 등록하고 연습을 준비해요.','AI가 내 목소리를 바탕으로 발음 예시를 만들어요.','예시와 내 발음을 비교하며 연습해요.'],promise:'발음 예시는 내 목소리로.\n다음 연습은 내 과제로.',note:'처음에는 목소리 등록과 동의가 필요합니다. 영상은 이용 예시입니다.',scroll:'내 목소리로 배우는 방법',pause:'영상 멈추기',play:'영상 재생',close:'다음은, 내 목소리로.',closeBody:'말하고 싶은 모습에, 오늘 한 문장 더 가까이.',caption:'녹음 → 목소리 모델 → 발음 연습'}
+};
+function Rise({children,className=''}){const reduced=useReducedMotion();return <motion.div className={className} initial={reduced?false:{opacity:0,y:25}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.2}} transition={{duration:.6}}>{children}</motion.div>}
+export function BackgroundFilm({c}){
+ const video=useRef(null),container=useRef(null);
+ const [reduced,setReduced]=useState(()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+ const [paused,setPaused]=useState(false),[failed,setFailed]=useState(false);
+ useEffect(()=>{const query=window.matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setReduced(query.matches);query.addEventListener('change',update);update();return()=>query.removeEventListener('change',update);},[]);
+ useEffect(()=>{const el=video.current;if(!el||reduced||paused||failed){el?.pause();return;}let visible=false;const sync=()=>{if(visible&&!document.hidden)el.play().catch(()=>{});else el.pause();};const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();},{threshold:.15});observer.observe(container.current);document.addEventListener('visibilitychange',sync);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',sync);el.pause();};},[reduced,paused,failed]);
+ return <div className="cinema-window" ref={container}><div className="cinema-picture"><img src={poster} alt="" fetchPriority="high" width="1280" height="720"/>{filmUrl&&!reduced&&!failed&&<video ref={video} src={filmUrl} muted loop playsInline preload="metadata" poster={poster} aria-hidden="true" onError={()=>setFailed(true)}/>}</div><div className="cinema-caption"><span>{c.caption}</span>{filmUrl&&!reduced&&!failed&&<button onClick={()=>setPaused(!paused)} aria-label={paused?c.play:c.pause}>{paused?<Play size={16}/>:<Pause size={16}/>}<span>{paused?c.play:c.pause}</span></button>}</div></div>;
+}
+const headlines={ja:{title:'シャドーイング、\nその先へ。',body:'目指す発音を、自分の声で。あなたに合わせて練習する、AI発音トレーニング。',pain:'聴いて、まねして。\nそれでも、しっくりこない。'},en:{title:'Beyond\nshadowing.',body:'Your voice as the model. Your pronunciation shapes the practice.',pain:'Listen. Repeat.\nStill not quite you.'},ko:{title:'쉐도잉,\n그다음으로.',body:'원하는 발음을 내 목소리로. 나에게 맞춰 연습하는 AI 발음 트레이닝.',pain:'듣고, 따라 해도.\n아직 내 발음은 낯설다면.'}};
+export function FilmHero({lang,cta}){
+ const c=content[lang],h=headlines[lang];
+ return <><section className="taste-hero wrap"><Rise className="taste-hero-title"><h1>{h.title}</h1></Rise><div className="taste-hero-bottom"><p>{h.body}</p><div className="taste-actions"><a className="action" href="https://voice.maepace.com/">{cta}<ArrowUpRight size={20}/></a><PracticeFilm lang={lang}/></div></div><div className="taste-film-stage"><BackgroundFilm c={c}/></div></section><section className="taste-problem wrap"><img src={worried} alt="" loading="lazy"/><Rise><h2>{h.pain}</h2><p>{c.body}</p></Rise></section></>;
+}
+export function VoiceStory({lang}){const c=content[lang];return <section id="voice" className="voice-film-section section"><div className="wrap"><Rise className="voice-film-heading"><p className="voice-turn">{c.turn}</p><h2>{c.future}</h2><p>{c.intro}</p></Rise><div className="voice-film-sequence">{[speaker,intelligence,outdoors].map((img,i)=><Rise key={img} className="voice-film-scene"><div className="scene-art"><img src={img} alt="" loading="lazy"/></div><h3>{c.steps[i]}</h3><p>{c.bodies[i]}</p></Rise>)}</div><p className="film-small-note">{c.note}</p><Rise className="voice-promise"><h2>{c.promise}</h2><ArrowDown size={32}/></Rise></div></section>}
+export function FilmClosing({lang,cta}){const c=content[lang];return <section className="film-closing"><div className="wrap"><div><h2>{lang==='ja'?<><span className="phrase">次は、</span><span className="phrase">あなたの声で。</span></>:c.close}</h2><p>{c.closeBody}</p><Availability lang={lang} action/></div><img src={closing} alt="" loading="lazy"/></div></section>}

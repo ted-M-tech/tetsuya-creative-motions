@@ -1,0 +1,4 @@
+.obsidian-flip-text{display:inline-block;perspective:800px;white-space:nowrap}
+.obsidian-flip-char{display:inline-block;transform-style:preserve-3d}
+.obsidian-flip-accessible{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(prefers-reduced-motion:reduce){.obsidian-flip-char{transform:none!important}}

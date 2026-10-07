@@ -1,0 +1,21 @@
+{
+  "name": "lanclo-lp-open-study",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "motion": "14.0.0",
+    "@phosphor-icons/react": "2.1.10",
+    "vite": "6.4.3",
+    "@vitejs/plugin-react": "5.0.4"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-05",
+  "license": "https://www.pexels.com/license/",
+  "usage": "Genre imagery only; not photographs of reported news events or endorsements. Website use and cropping permitted; attribution optional.",
+  "photos": [
+    {
+      "file": "voice-web/src/landing/assets/photos/technology.jpg",
+      "author": "Lukas Blazek",
+      "source": "https://www.pexels.com/photo/person-using-laptop-574089/",
+      "sha256": "c3344e74cb0a9a2d40aeefc21dab1766e0052f6f8adc4ecf92aadfc15887bbf0"
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/travel.jpg",
+      "author": "Rosivan Morais",
+      "source": "https://www.pexels.com/photo/eiffel-tower-in-paris-france-11657032/",
+      "sha256": "b9dee5741ed76c333410bdc9febb5d7841fd60381f978ab0525b1cc9cbf8b9e9"
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/culture.jpg",
+      "author": "Siarhei Malets",
+      "source": "https://www.pexels.com/photo/a-man-in-a-suit-holding-a-saxophone-7332734/",
+      "sha256": "fec8d75c42d70ee46a575e8801508a51ad9121fc6b8f5541970d67415ce863b7"
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/science.jpg",
+      "author": "Mikhail Nilov",
+      "source": "https://www.pexels.com/photo/scientist-looking-through-microscope-8851548/",
+      "sha256": "2e1e8c7c3f0e39db24a24d04b97f7fe8d0f222ab8dfc6556191b264e9f713ab0"
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/ai.jpg",
+      "source": "https://www.pexels.com/photo/futuristic-robot-server-in-modern-food-court-34434133/",
+      "sha256": "44ae3bcad5a82382a5658de08191b53c3e746177aacb28b3ed1d2e81e8c1c93d",
+      "usage": "Genre illustration; not a reported event or endorsement."
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/society.jpg",
+      "source": "https://www.pexels.com/photo/busy-city-crosswalk-in-downtown-area-31231798/",
+      "sha256": "9755e93bc3ab0d732395ca875c1e9c149049bd2dcf56d05b21ab53ed798c3868",
+      "usage": "Genre illustration; not a reported event or endorsement."
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/business.jpg",
+      "source": "https://www.pexels.com/photo/tall-skyscrapers-in-singapore-business-district-33376979/",
+      "sha256": "fe76b82b5ccc6aa5929e7399e06b1ef7bf96bb39ba2f9bed5366c769bc6f352b",
+      "usage": "Genre illustration; not a reported event or endorsement."
+    },
+    {
+      "file": "voice-web/src/landing/assets/photos/sports.jpg",
+      "source": "https://www.pexels.com/photo/soccer-ball-on-green-grass-in-perth-30767214/",
+      "sha256": "1b1c8a40d9619765294ec007283491695f51893161fbe6ded0243207cfd666fe",
+      "usage": "Genre illustration; not a reported event or endorsement."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "upstream": "https://github.com/ted-M-tech/native-voice-clone",
+  "revision": "1ef47dab0e6f0bd10bcd8cb1e4ccb4bcb8216709",
+  "exportedPaths": [
+    "src/landing",
+    "src/Brand.jsx",
+    "src/brand.css",
+    "src/ui/Select.jsx",
+    "src/ui/select.css",
+    "src/ui/obsidian",
+    "src/pronunciation/LessonRadar.jsx",
+    "src/pronunciation/pronunciation.module.css",
+    "src/simple/scoreColor.mjs",
+    "shared/pronunciationDimensions.mjs",
+    "shared/newsInterests.mjs",
+    "src/ui/tokens.css"
+  ],
+  "adaptations": [
+    "Standalone Vite entry and dependency subset",
+    "Asset URLs follow BASE_URL",
+    "Actions link to live product; no backend or authentication copied"
+  ],
+  "skillInputs": [
+    {
+      "name": "impeccable",
+      "sha256": "e1a965737ca8255934bad358d5cfb8788ce013867910efd97d1daac68375e941",
+      "note": "Local entry fingerprint, not an upstream revision or AI-output guarantee."
+    },
+    {
+      "name": "design-taste-frontend",
+      "sha256": "aa194351b246b8b4799099d4ed7b033d29eab6e6e3d58d8d2172978be7b3ec89",
+      "note": "Local entry fingerprint, not an upstream revision or AI-output guarantee."
+    }
+  ],
+  "skillFingerprintCapturedAt": "2026-10-07; current installed entries at export time, not archived full historical packages"
+}
