@@ -1,9 +1,9 @@
 ---
-name: web-production
-description: Create or revise landing pages and portfolio websites with a static-first workflow, preserving prompts, design decisions, skill provenance and runnable source for a public case study. Use for LP/Web production or reproducibility standardization, not application backends or films.
+name: lp-create
+description: Plan, create and improve landing pages, from product facts and visual direction through static implementation, responsive browser checks and reproducible delivery. Also supports marketing and portfolio pages using the same workflow; not application backends or video production.
 ---
 
-# Web Production
+# LP Create
 
 Standardize the process, not every site's appearance. Preserve the user's approved brand and chosen design direction.
 
@@ -11,6 +11,7 @@ Standardize the process, not every site's appearance. Preserve the user's approv
 - For new content-first sites default to Astro static output, TypeScript strict and CSS. Keep existing React/Vite/HTML on scoped edits. Isolate complex interactive features into optional React/TSX islands; do not add a server or paid service without a concrete requirement.
 - Use Impeccable as the primary design aid when installed. Use Taste Skill (`design-taste-frontend`) for an alternative or critique when useful. Read each selected skill's instructions. The user's Astro choice and brand override conflicting stack/aesthetic defaults. Do not run both mechanically or label an installed skill as used.
 - Use Product Design for explicit design exploration, user/problem framing or flow work when appropriate and available. Follow its own entrypoint. Keep product-UI usage distinct from final LP usage; recommendations in a handoff are not proof of execution.
+- For research, asset selection, image optimization, motion or browser checks, read [stage tools](references/stage-tools.md) only for the relevant stage. Choose actual available tools; the names are not a requirement to install or run every tool.
 - Define the audience, action and section narrative before implementation. Record product truth separately from visual decisions. Let real artifacts demonstrate value; use motion to explain, with a readable reduced-motion state.
 - Verify project check/build commands and actual mobile/laptop layouts, Japanese line breaks, overflow, keyboard access, links and media loading. Make a bounded correction pass based on observed defects.
 - Deliver source plus lockfile, runtime/build commands, asset credits, source revision and a compact making-of. Record authentic prompt excerpts separately from a reconstructed reproduction prompt. Record model/version only if known.

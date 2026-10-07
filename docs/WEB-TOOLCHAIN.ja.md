@@ -14,7 +14,7 @@
 | 動画 | HyperFrames系スキル、HTML/SVG、GSAP、Gemini TTS、FFmpeg | [動画制作フロー](VIDEO-WORKFLOW.ja.md)と[Lanclo素材記録](../films/lanclo/CREDITS.md)。すべての版で同じ工程を使ったとは限らない |
 | レスポンシブ・挙動確認 | Playwright、Chromium、WebKit、スクリーンショット目視 | Lancloの多言語・幅別検証、比較表のセル確認。エンジン検証は実機Safari確認とは異なる |
 | 作業・公開 | Git、GitHub CLI、ビルド、Cloudflareの静的配信 | ソースを固定して公開。プロジェクト別の公開手順と権限に従う |
-| 再現記録の整備 | skill-creator、web-production、open-creative-handoff | 完成物・指示・判断・素材・実行手順の保存。Web標準は今回抽出した工程 |
+| 再現記録の整備 | skill-creator、lp-create、open-creative-handoff | 完成物・指示・判断・素材・実行手順の保存。Web標準は今回抽出した工程 |
 
 Lanclo側の根拠文書：`docs/self-voice-practice/lp-taste-direction.md`、`lp-impeccable-direction.md`、`lp-visual-assets.md`、`lp-video-integration.md`、`lp-publication.json`、`feedback-practice-refinement.md`。履歴には途中で廃止した動画モーダルや停止ボタンの検証もあるため、そのすべてを現在のUI仕様として扱わないでください。
 
