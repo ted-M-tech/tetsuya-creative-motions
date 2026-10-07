@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-07",
+  "live": "https://maepace.com/",
+  "sourceHead": "3c774250f95758061f7573f88a937c361ecf2d21",
+  "scope": "Curated making-of documentation only. Source files may include local published changes; hashes identify inspected files, not a claimed exact production commit.",
+  "evidence": [
+    "1172743: rebuild on Astro with real content and the MaePace brand.",
+    "9344f47: promote the tool universe to the hero.",
+    "3c77425: completed works gallery under the shared MaePace site."
+  ],
+  "files": [
+    {
+      "path": "CLAUDE.md",
+      "sha256": "f6d0b542b1497e47402dbf59decf8ae6a93afb668d685ac8806cfcb151b694d9"
+    },
+    {
+      "path": "docs/brand/maepace.md",
+      "sha256": "260f5e3ff6297d24481150f3cc0fd003a5f2b3881689a794e116ff02c9d52590"
+    },
+    {
+      "path": "src/components/ToolUniverse.astro",
+      "sha256": "08ec0d3c3c6db37d6000f73754e311f7eb61173ad6d07f69223602c98282ea80"
+    },
+    {
+      "path": "src/components/WorkGallery.astro",
+      "sha256": "80a15c645784e9aefd1ea0f55619d1fd703dde05b562f216430ba5cc30d7c017"
+    }
+  ],
+  "promptProvenance": "Reconstructed after production from inspected implementation and documents; not a verbatim conversation transcript."
+}

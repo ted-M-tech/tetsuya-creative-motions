@@ -1,0 +1,34 @@
+{
+  "observedAt": "2026-10-07",
+  "live": "https://helpkansai.maepace.com/",
+  "sourceHead": "a755ffe3fda55df3eed6eae364ebc30f23217d56",
+  "scope": "Curated making-of documentation only. Source files may include local published changes; hashes identify inspected files, not a claimed exact production commit.",
+  "evidence": [
+    "site/README.md records recovery of the deployed static site; it explicitly says the original commit was not identified.",
+    "cf9c4454: conversation review and daily kanji habit integration.",
+    "8a3e6adc: legal page layout and simpler section curves."
+  ],
+  "files": [
+    {
+      "path": "site/README.md",
+      "sha256": "ee448a972148ce19406ede277a1fdcb53cf1388d0896208f0a628d14c3ee825e"
+    },
+    {
+      "path": "site/index.html",
+      "sha256": "b129bfbeda5c9e2d14977950e8b5ea38248740b6346e551bc293fc3c5a3139a9"
+    },
+    {
+      "path": "site/style.css",
+      "sha256": "4c7825a9d8ce04de18eeb3ab11914117a812d021806efda8a8f1f016e6d5db78"
+    },
+    {
+      "path": "site/script.js",
+      "sha256": "93627bf0ba794544a7f9ccc9577de64199f6f1d3ffb0e16b9e4b825323fa1d44"
+    },
+    {
+      "path": "site/motion.js",
+      "sha256": "44d7c8c16e1499fe074e806736fdeddc041fb775d98bafd9640cc8b1e2c747f8"
+    }
+  ],
+  "promptProvenance": "Reconstructed after production from inspected implementation and documents; not a verbatim conversation transcript."
+}
