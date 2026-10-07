@@ -28,3 +28,7 @@ No API keys, Firebase project, recordings or paid generation are required. Produ
 [provenance.json](provenance.json) records the original source revision, export boundaries and local skill fingerprints. AI generation is not deterministic: the committed source and dependency lock reproduce the implementation; a prompt alone does not reproduce identical pixels.
 
 The root MIT license covers original code and documentation. Third-party media and Lanclo branding retain their own terms; see credits before adapting.
+
+## Fixed edition
+
+For this published study, check out the `open-works-v1` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.
