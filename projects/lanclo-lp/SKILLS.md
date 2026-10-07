@@ -10,3 +10,9 @@ Local entry SHA-256 values are in [provenance.json](provenance.json). These do n
 ## 今後の共通制作フロー
 
 [LP・Web制作標準](../../docs/WEB-WORKFLOW.ja.md)と[再現記録テンプレート](../../templates/web/REPRODUCTION.md)を公開しています。これは今後の新作・改修の方針で、この作品の技術移行や過去のスキル使用を主張するものではありません。
+
+## Product Design: related product work, not an asserted final-LP pass
+
+The Lanclo prototype document requested Product Design on 2026-10-01. The later pronunciation-practice refinement record explicitly cites Product Design get-context/user-context guidance as design grounding. These concern the product UI; they do not establish that every final LP stage used Product Design. The video-to-LP handoff recommended it as appropriate, which is not evidence of execution. Full historical invocation logs and package versions were not preserved.
+
+Source records in the Lanclo repository: `docs/self-voice-practice/prototype.md` and `docs/self-voice-practice/feedback-practice-refinement.md`. No private handoff content or full source documents are republished here.
