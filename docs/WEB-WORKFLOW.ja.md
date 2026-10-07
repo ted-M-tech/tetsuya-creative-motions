@@ -21,11 +21,20 @@ JavaScriptの配信量と運用費は別問題です。React/Viteにも静的配
 |---|---|---|
 | [Impeccable](https://github.com/pbakaus/impeccable) | 主な設計・整理・仕上げ | 構成、情報階層、必要に応じたdistill/adapt/audit/polish。全部を毎回実行しない |
 | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | 別案・批評 | 題材に合った独自性を検討。Impeccableと無条件に重ねない |
-| [Tetsuya Creative Web](../skills/tetsuya-creative-web/SKILL.md) | この制作工程・公開記録 | 技術選択、製品事実、再現情報をつなぐ |
+| Product Design | 課題整理・体験設計・デザイン案の検討 | 必要な場合に使用。通常の実装ごとに全工程を実行しない |
+| [Web Production](../skills/web-production/SKILL.md) | この制作工程・公開記録 | 技術選択、製品事実、再現情報をつなぐ |
 
 Taste Skillのローカル名は `design-taste-frontend`。配布元のReact/Next.js等の既定値は、このAstro標準より優先しません。スキルはデザイン判断の支援で、サイトの実行依存ではありません。承認済みブランドとユーザーの要望を優先します。
 
 **実際のLanclo制作：Taste Skillで初期案・批評 → 比較 → Impeccable案を選択・改良。** [使用記録](../projects/lanclo-lp/SKILLS.md)。他の過去作品で使用記録がないスキルを、後から「使用済み」にしません。
+
+## Product Designなどの使用履歴
+
+Lancloの製品側では、2026-10-01のプロトタイプ文書にProduct Design使用の指定があり、後続の発音練習改善記録にもProduct Designのget-context/user-contextガイダンスを設計根拠にした記載があります。これは製品UIの記録です。今回の最終LP全体をProduct Designで制作したという意味ではありません。
+
+LPへの動画引継ぎにもProduct Designを必要に応じて使う推奨がありましたが、推奨は実行の証拠ではありません。最終LPで明確に確認できるデザイン比較はTaste SkillとImpeccableです。全会話・全スキル呼出しの完全な監査ログは残っていないため、この一覧を全履歴とは扱いません。
+
+補助工程には調査、ブラウザ確認、動画引継ぎ、記録整備があります。agent-reach、orca-cli、HyperFrames、skill-creator等も、実際に使った対象工程が確認できる作品で記録します。デザインスキル、技術スタック、素材ライブラリを混同しません。
 
 ## 制作の順序
 
@@ -51,7 +60,7 @@ AIへの同じ指示から同じピクセルが出るとは保証しません。
 ## はじめるための指示
 
 ```text
-$tetsuya-creative-web で、この製品のLPを制作してください。
+$web-production で、この製品のLPを制作してください。
 目的・対象者・製品の現行仕様は添付のBRIEFを根拠にしてください。
 新規実装はAstro＋TypeScript strict＋CSS、静的出力を標準に。
 Impeccableを主なデザイン支援にし、Taste Skillは別案が必要な場合に使ってください。
@@ -64,7 +73,7 @@ Impeccableを主なデザイン支援にし、Taste Skillは別案が必要な�
 
 ```sh
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/tetsuya-creative-web "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R skills/web-production "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
 ImpeccableとTaste Skillは各公式リポジトリの導入方法を使用してください。このスキルには第三者スキル本体を同梱していません。導入時の版と実際に使用した版を分けて記録します。

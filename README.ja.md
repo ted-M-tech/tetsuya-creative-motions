@@ -83,6 +83,6 @@ templates/   新しい作品を追加する雛形
 
 ## LP・Web制作の標準
 
-[Astro＋TypeScriptを基本にした制作フロー](docs/WEB-WORKFLOW.ja.md) · [導入できるWeb制作スキル](skills/tetsuya-creative-web/SKILL.md) · [制作記録テンプレート](templates/web/REPRODUCTION.md)
+[Astro＋TypeScriptを基本にした制作フロー](docs/WEB-WORKFLOW.ja.md) · [導入できるWeb制作スキル](skills/web-production/SKILL.md) · [制作記録テンプレート](templates/web/REPRODUCTION.md)
 
 Impeccableを主なデザイン支援、Taste Skillを必要に応じた別案・批評に使います。実際の使用工程・版・プロンプト・固定ソースを残し、過去作への未確認の使用実績は追加しません。
