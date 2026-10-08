@@ -12,3 +12,6 @@ site/media/
 **/renders/
 **/snapshots/
 .wrangler/
+
+__pycache__/
+*.pyc

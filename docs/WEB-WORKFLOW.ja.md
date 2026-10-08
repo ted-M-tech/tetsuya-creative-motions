@@ -69,14 +69,13 @@ Impeccableを主なデザイン支援にし、Taste Skillは別案が必要な�
 原文がない指示は再構成と明記してください。公開はこのプロジェクトの承認範囲に従ってください。
 ```
 
-公開スキルの導入例（このリポジトリのルートから）：
+公開スキルは `lp-create`・Impeccable・Taste Skillをまとめて導入できます。このリポジトリのルートから：
 
 ```sh
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/lp-create "${CODEX_HOME:-$HOME/.codex}/skills/"
+python3 scripts/install-lp-skills.py
 ```
 
-ImpeccableとTaste Skillは各公式リポジトリの導入方法を使用してください。このスキルには第三者スキル本体を同梱していません。導入時の版と実際に使用した版を分けて記録します。
+更新も同じコマンドです。固定バージョン・変更済みファイルの保護・環境別の指定は[導入と保守の手順](LP-SKILL-INSTALL.ja.md)を参照してください。
 
 ## 道具と実行できる検証
 

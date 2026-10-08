@@ -86,3 +86,7 @@ templates/   新しい作品を追加する雛形
 [Astro＋TypeScriptを基本にした制作フロー](docs/WEB-WORKFLOW.ja.md) · [導入できるWeb制作スキル](skills/lp-create/SKILL.md) · [制作記録テンプレート](templates/web/REPRODUCTION.md)
 
 Impeccableを主なデザイン支援、Taste Skillを必要に応じた別案・批評に使います。実際の使用工程・版・プロンプト・固定ソースを残し、過去作への未確認の使用実績は追加しません。
+
+## LPスキルをまとめて導入
+
+このリポジトリで `python3 scripts/install-lp-skills.py` を実行すると、**lp-create・Impeccable・Taste Skill**を同時に導入できます。更新も同じコマンドです。[導入・更新・保守の手順](docs/LP-SKILL-INSTALL.ja.md)を参照してください。
