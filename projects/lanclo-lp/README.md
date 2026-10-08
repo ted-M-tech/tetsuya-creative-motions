@@ -1,6 +1,8 @@
 # Lanclo landing page — open study
 
-A runnable export of the published LP, with the decisions that produced it. This is a front-end study, not the Lanclo application.
+A runnable, pinned **pre-Astro edition** of the LP, with the decisions that produced it. This is a front-end study, not the Lanclo application or the current production build.
+
+The production LP moved to Astro static output with TypeScript page orchestration on 2026-10-07 (upstream PRs #166 and #167, source `9bf6c361a5ac71db4b0af5f27927cb240c85277b`). Existing React/JSX interactions were preserved. This exported Vite edition intentionally retains its original source manifest and provenance; do not treat it as a current Astro reproduction kit.
 
 ## Run
 
