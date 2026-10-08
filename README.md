@@ -21,6 +21,10 @@ The portfolio now includes websites, films and teaching slides. One project can 
 
 To build the whole site: `npm ci --prefix projects/lanclo-lp/source`, then `npm run check && npm test && npm run build`. Media-inclusive deployment still uses the separately licensed release MP4s described below.
 
+## Install the LP skill bundle
+
+From this checkout, run `python3 scripts/install-lp-skills.py` to install **lp-create + Impeccable + Taste Skill** together. Requires Python 3.9+ and Git. The same command updates managed installations to the reviewed, pinned bundle; locally edited skills are preserved. [Installation and maintenance](docs/LP-SKILL-INSTALL.ja.md).
+
 ## Films
 
 [![Lanclo](site/posters/lanclo-daily.jpg)](https://videos.maepace.com/en/films/lanclo-daily/)

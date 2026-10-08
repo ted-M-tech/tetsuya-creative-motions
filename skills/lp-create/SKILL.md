@@ -24,3 +24,5 @@ Public workflow and templates: https://github.com/ted-M-tech/tetsuya-creative-mo
 Use the project's own commands and paths; do not require that public repository to be cloned when an existing project already provides equivalent records.
 
 For responsive verification, use the public Playwright procedure at https://github.com/ted-M-tech/tetsuya-creative-motions/blob/main/docs/WEB-QA.ja.md or an equivalent existing suite. Run it against a built local preview and record actual browser/viewport/locale results. Inspect screenshots for text wrapping and visual balance; separately verify normal motion and keyboard behavior. A skill invocation or viewport emulation alone is not verification or a physical-device test.
+
+Bundle installation and managed updates: https://github.com/ted-M-tech/tetsuya-creative-motions/blob/main/docs/LP-SKILL-INSTALL.ja.md . The installer supplies lp-create, Impeccable and Taste Skill at pinned revisions. Product Design plugins and research/browser services remain optional environment capabilities; use available alternatives when absent. Do not install tools silently during an ordinary LP task.

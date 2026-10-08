@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "name": "lp-create",
+      "path": "skills/lp-create",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "sha256": "f0269bd7c813e3d46758852ce35bee709f9ea452f7630d39aaceef7c4ea0709e"
+    },
+    {
+      "name": "impeccable",
+      "repo": "pbakaus/impeccable",
+      "ref": "778c8a7b71ccd5bfe3ca6ac68c15d9d872d0f87d",
+      "path": ".agents/skills/impeccable",
+      "licenseFiles": [
+        "LICENSE",
+        "NOTICE.md"
+      ],
+      "sha256": "f5c2c44ddf5a20930dc9c8184f142f787011ff53011886e3049721d1cd645cc5"
+    },
+    {
+      "name": "design-taste-frontend",
+      "repo": "Leonxlnx/taste-skill",
+      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
+      "path": "skills/taste-skill",
+      "licenseFiles": [
+        "LICENSE"
+      ],
+      "sha256": "2aa346a8a894c7218ddaa0cd066c27dea5ed445bb4c0d39311d947a29717c222"
+    }
+  ]
+}
