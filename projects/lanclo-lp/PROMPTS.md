@@ -38,3 +38,7 @@ keyboard access, image loading, links and reduced motion. Show the preview.
 ## Iteration method
 
 Change one problem class per pass: narrative → visual mechanism → typography → motion → mobile → evidence → publication. Compare the actual rendered page, not only the source. Save deliberate product images; keep repetitive QA captures out of Git.
+
+## Navy edition — 2026-10-08
+
+Actual user excerpts: 「ヘッダーも同じ色に。ほぼ黒くらいまでの色にしたら？」 / 「苦手分析→レッスン生成→ボタン押して読むだけ」 / 「濃い紺色を他のとこにも水平展開。サイトとして統一感持たせて。美しく」. Reconstructed brief: unify the navy palette while retaining light sections, layer two pointer-responsive waves and illustrate the three-step practice flow.

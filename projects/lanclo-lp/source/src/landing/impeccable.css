@@ -111,7 +111,7 @@ html[data-lp-design=impeccable] .habit-copy h2{font-size:clamp(42px,5.4vw,74px);
 .film-closing .availability{justify-content:flex-start}.film-closing .availability-web{justify-content:flex-start}
 @media(max-width:767px){.habit-story{padding-top:60px}.habit-stage{grid-template-columns:1fr;gap:34px}.habit-copy>p:first-child{font-size:18px;margin-bottom:18px}html[data-lp-design=impeccable] .habit-copy h2{font-size:44px}.habit-body{font-size:15px}.habit-focus{gap:10px;font-size:11px}.habit-paper{padding:25px 24px;transform:none}.habit-paper p{font-size:23px}.habit-daily{display:block;margin-top:40px;padding-top:28px}.habit-daily h3{font-size:27px}.habit-daily p{font-size:15px;margin-top:16px}.habit-bridge{font-size:15px;padding:30px 0;gap:10px}.habit-bridge svg{flex-shrink:0}.availability{gap:16px}.availability .action{font-size:14px;padding:17px 22px!important}.availability-store{font-size:16px}.availability-store small{font-size:11px}}
 /* One bold opening statement; release information belongs to the closing. */
-html[data-lp-design=impeccable] .im-hero{background:#344f69}
+html[data-lp-design=impeccable] .im-hero{background:#0b1722}
 html[data-lp-design=impeccable] .im-opening{padding:48px 30px 44px;color:#fffaf0}
 html[data-lp-design=impeccable] .im-pain{color:#dce8ed;margin-bottom:24px}
 html[data-lp-design=impeccable] .im-opening h1{font-size:clamp(36px,4.3vw,62px);line-height:1.5;white-space:normal;letter-spacing:-.025em}
@@ -217,10 +217,10 @@ html[data-lp-design=impeccable] .film-closing{margin-top:55px}
 @media(max-width:767px){html[data-lp-design=impeccable] .im-film::before,html[data-lp-design=impeccable] .habit-story::before,html[data-lp-design=impeccable] .news-compact::before,html[data-lp-design=impeccable] .film-closing::before{top:-25px;height:26px}html[data-lp-design=impeccable] .im-opening{padding-bottom:60px}html[data-lp-design=impeccable] .habit-story{padding-bottom:30px}html[data-lp-design=impeccable] .film-closing{margin-top:25px}}
 
 /* One continuous hero, including the three-step illustration. */
-html[data-lp-design=impeccable] .header{background:#344f69;color:#fffaf0;border-bottom:0;box-shadow:none;backdrop-filter:none}
+html[data-lp-design=impeccable] .header{background:#0b1722;color:#fffaf0;border-bottom:0;box-shadow:none;backdrop-filter:none}
 html[data-lp-design=impeccable] .header a,html[data-lp-design=impeccable] .header .vt-brand{color:#fffaf0}
 html[data-lp-design=impeccable] .header .vt-brand-icon{filter:brightness(0) invert(1)}
-html[data-lp-design=impeccable] .header .ui-select{--ink:#fffaf0;--soft:#425f78;--surface:#344f69;--muted:#dce8ed;--blue:#cce9df;color-scheme:dark}
+html[data-lp-design=impeccable] .header .ui-select{--ink:#fffaf0;--soft:#172a3a;--surface:#0b1722;--muted:#dce8ed;--blue:#cce9df;color-scheme:dark}
 html[data-lp-design=impeccable] .im-opening{padding-top:22px;padding-bottom:65px}
 html[data-lp-design=impeccable] .im-pain{margin-bottom:16px;font-size:15px}
 html[data-lp-design=impeccable] .im-opening h1{font-size:clamp(32px,3.7vw,54px);line-height:1.35;margin:0}
@@ -295,3 +295,8 @@ html:lang(ja)[data-lp-design=impeccable] .film-closing h2{text-wrap:initial}
 }
 /* Keep breathing room when the redundant hero subtitle is omitted. */
 html[data-lp-design=impeccable] .im-opening>h1+.action{margin-top:28px}
+
+/* Quiet voice traces behind the opening; content stays on its own layer. */
+html[data-lp-design=impeccable] .im-hero-heading{background:#0b1722;position:relative;isolation:isolate;overflow:hidden;flex:1;display:flex}
+html[data-lp-design=impeccable] .im-hero-wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+html[data-lp-design=impeccable] .im-hero-heading .im-opening{width:100%}

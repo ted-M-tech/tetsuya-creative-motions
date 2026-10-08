@@ -1,6 +1,6 @@
 import React,{useRef,useState} from 'react';
 import {Play,X} from '@phosphor-icons/react';
-import poster from './assets/practice-film-poster.webp';
+import poster from './assets/practice-film-poster.webp?url';
 
 const copy={
  ja:{action:'12秒で、練習の流れを見る',title:'録音して、聴いて、声に出す。',note:'無音・日本語の紹介映像。画面と発音は利用イメージで、学習者の実測結果ではありません。初回は声の登録・同意が必要です。',close:'動画を閉じる',error:'動画を読み込めませんでした。下のページでも練習の流れをご覧いただけます。'},

@@ -9,3 +9,6 @@ A source build reproduces a historical marketing page, not backend functionality
 ## Runnable responsive checks
 
 [Public Playwright workflow (Japanese)](../../docs/WEB-QA.ja.md) provides a newly extracted local-preview runner for Chromium/WebKit, locales and viewport widths. It is not the original historical temporary test script. Run it after the preview server is ready, then review the screenshots and test normal motion, keyboard and CTA behavior separately.
+
+## Navy edition validation
+Standalone Node 24 install/build passed. Local preview renders the three original SVG illustrations and pointer wave; exported images use BASE_URL, and CTA links resolve to the live product. Root check/test/build are run independently. This edition is a Vite adaptation of upstream e133711, not the production Astro build.

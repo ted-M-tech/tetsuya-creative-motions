@@ -11,3 +11,7 @@
 | Preview still showed old branding | Update the social image as well as header assets | Publication includes unfurls and caches |
 
 The 1.3× figure compares score gains in an external intonation study. It is not a Lanclo efficacy result. The historical film and current product may describe different question counts or delivery behavior. Keep those contexts separate.
+
+## Navy edition — 2026-10-08
+
+Navy #0B1722 anchors the header, hero, practice section, free-trial card and closing. Two line groups share one canvas and respond to the mouse; reduced motion is static and offscreen animation pauses. The illustrated flow is exactly analysis → lesson generation → press and read. Redundant captions were removed.

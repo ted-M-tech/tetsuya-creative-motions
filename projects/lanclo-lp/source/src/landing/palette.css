@@ -1,0 +1,23 @@
+/* Shared LP palette: deep navy anchors, cream light fields, mint highlights. */
+html[data-lp-design=impeccable]{--lp-navy:#0b1722;--lp-cream:#fffaf0;--lp-mint:#cce9df;--im-ink:#182f42;--im-accent:var(--lp-navy);--im-surface:#f1f5f7;--im-muted:#526872;--im-line:#ccd8df}
+html[data-lp-design=impeccable] :is(.header,.im-hero,.im-hero-heading,.habit-story,.film-closing){background:var(--lp-navy)}
+html[data-lp-design=impeccable] ::selection{background:var(--lp-mint);color:var(--lp-navy)}
+html[data-lp-design=impeccable] :is(.im-film,.voice-triptych){color:var(--im-ink)}
+html[data-lp-design=impeccable] .voice-illustrated-steps h2{color:var(--im-ink)}
+html[data-lp-design=impeccable] .voice-illustrated-steps li{border-bottom-color:var(--im-line)}
+html[data-lp-design=impeccable] .voice-illustrated-steps li.current{border-bottom-color:var(--lp-navy)}
+html[data-lp-design=impeccable] :is(.shadowing-problem,.voice-film-section,.lesson-step-story,.news-compact,.premium-devices,#research,#comparison,#pricing,#faq) :is(h2,h3){color:var(--im-ink)}
+html[data-lp-design=impeccable] .news-compact{background:#edf3f5}
+html[data-lp-design=impeccable] :is(.research-big-result>p,.voice-promise svg,.comparison-symbol){color:var(--lp-navy)}
+html[data-lp-design=impeccable] .launch-pricing .launch-plan-trial{background:var(--lp-navy);border-color:var(--lp-navy);color:var(--lp-cream)}
+html[data-lp-design=impeccable] #pricing .launch-plan-trial h3{color:var(--lp-cream)}
+html[data-lp-design=impeccable] .launch-pricing .launch-plan-trial .action{background:var(--lp-cream);color:var(--lp-navy)}
+html[data-lp-design=impeccable] .launch-balloon{background:var(--lp-navy)}
+html[data-lp-design=impeccable] .launch-balloon::before{border-right-color:var(--lp-navy)}
+html[data-lp-design=impeccable] .launch-daily{color:var(--lp-navy)}
+html[data-lp-design=impeccable] .film-closing{color:var(--lp-cream)}
+html[data-lp-design=impeccable] .film-closing h2{color:var(--lp-cream)}
+html[data-lp-design=impeccable] .film-closing :is(p:not(.eyebrow),.availability-store,.availability-store small,.availability-web,.availability-web strong){color:var(--lp-mint)}
+html[data-lp-design=impeccable] .film-closing .action{background:var(--lp-cream);color:var(--lp-navy)}
+html[data-lp-design=impeccable] :is(.header,.im-hero-heading,.habit-story,.film-closing,.launch-plan-trial) :focus-visible{outline-color:var(--lp-mint)}
+html[data-lp-design=impeccable] footer{color:var(--im-ink);border-color:var(--im-line)}

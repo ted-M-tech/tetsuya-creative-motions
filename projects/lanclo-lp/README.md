@@ -1,8 +1,8 @@
 # Lanclo landing page — open study
 
-A runnable, pinned **pre-Astro edition** of the LP, with the decisions that produced it. This is a front-end study, not the Lanclo application or the current production build.
+A runnable front-end study of the approved navy LP published on 2026-10-08, upstream source `e133711` (PR179). Includes the two-layer pointer-responsive wave, three illustrated practice steps, current pricing presentation and shared navy palette.
 
-The production LP moved to Astro static output with TypeScript page orchestration on 2026-10-07 (upstream PRs #166 and #167, source `9bf6c361a5ac71db4b0af5f27927cb240c85277b`). Existing React/JSX interactions were preserved. This exported Vite edition intentionally retains its original source manifest and provenance; do not treat it as a current Astro reproduction kit.
+Production uses Astro static output. This export uses Vite with the React/TypeScript components for a standalone API-free study. It is not the Lanclo application or backend. The original edition remains at `open-works-v1`.
 
 ## Run
 
@@ -33,4 +33,4 @@ The root MIT license covers original code and documentation. Third-party media a
 
 ## Fixed edition
 
-For this published study, check out the `open-works-v1` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.
+For this updated study, check out the `lanclo-lp-navy-v2` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.
