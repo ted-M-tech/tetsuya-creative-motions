@@ -1,8 +1,12 @@
 # Lanclo landing page — open study
 
-A runnable front-end study of the approved navy LP published on 2026-10-08, upstream source `e133711` (PR179). Includes the two-layer pointer-responsive wave, three illustrated practice steps, current pricing presentation and shared navy palette.
+A runnable front-end study of the approved navy LP published on 2026-10-08, upstream source `ffc2ca7` (PR189). Includes three illustrated practice steps, personalized practice and news, research, pricing, and two developer voices over the Canadian Rockies.
 
 Production uses Astro static output. This export uses Vite with the React/TypeScript components for a standalone API-free study. It is not the Lanclo application or backend. The original edition remains at `open-works-v1`.
+
+## Create this page with your agent
+
+[Copy the creation prompt (Japanese)](CREATE.ja.md) · [English](CREATE.en.md). The prompt starts from this complete fixed kit and takes you through a working preview.
 
 ## Run
 
@@ -33,4 +37,4 @@ The root MIT license covers original code and documentation. Third-party media a
 
 ## Fixed edition
 
-For this updated study, check out the `lanclo-lp-navy-v2` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.
+For this updated study, check out the `lanclo-lp-create-v3` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.

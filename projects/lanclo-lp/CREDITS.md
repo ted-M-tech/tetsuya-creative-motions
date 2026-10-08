@@ -12,3 +12,7 @@ The repository MIT license covers original source and writing, not third-party p
 ## Navy edition — 2026-10-08
 
 PracticeStepArt.jsx is original code-authored SVG. HeroWave.jsx is independently authored Canvas2D, visually inspired by SiriWave (https://github.com/kopiro/siriwave), not copied library code. No new AI-generated images were used.
+
+## Developer voices edition
+
+Source revision `ffc2ca7`. [Developer and background photo sources](developer-photo-sources.json). User-supplied portraits and quotations are included only as part of the Lanclo study, not licensed for another product or general reuse. The Canadian Rockies photo is by David Wirzba on Unsplash; its linked license applies.

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-08",
+  "photos": [
+    {
+      "file": "voice-web/src/landing/assets/developer-pink-shirt.webp",
+      "sha256": "d2998d6eafc2b558ca5f60ab07c84d5175e3673a5831263a93685e5b0cb3a2df",
+      "source": "User supplied for this LP developer section on 2026-10-08",
+      "usage": "User-authorized LP portrait; no general redistribution license granted. WebP without EXIF; circular crop applied in CSS."
+    },
+    {
+      "file": "voice-web/src/landing/assets/developer-ballpark.webp",
+      "sha256": "21b2da3cd3861d16a4eb1a873bd40edd5ba5de398009744d25a890a48096702c",
+      "source": "User supplied for this LP developer section on 2026-10-08",
+      "usage": "User-authorized LP portrait; no general redistribution license granted. WebP without EXIF; circular crop applied in CSS."
+    },
+    {
+      "file": "voice-web/src/landing/assets/developer-rockies.webp",
+      "sha256": "5d175209a2a9bf389f828b0f5203d79f78be67aebe7b569a946a7b2b0594894a",
+      "author": "David Wirzba",
+      "source": "https://unsplash.com/photos/moraine-lake-canada-wxalerEiUVQ",
+      "license": "https://unsplash.com/license",
+      "usage": "Decorative Moraine Lake background, not a developer travel photograph. Resized WebP with a subtle dark CSS overlay behind white quotation cards."
+    }
+  ]
+}
