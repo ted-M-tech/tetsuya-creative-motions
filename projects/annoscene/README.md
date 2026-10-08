@@ -26,7 +26,7 @@ Move from misty mountains into a personal Atlas. A world → country → region 
 
 完全な会話ログ・原制作時のモデル版・全依存バージョンは揃っていません。この公開は同一画面を自動生成する完全なビルドキットではなく、同じ設計判断を辿れる制作ノートです。実装の観察・履歴と、後からの再構成を区別しています。
 
-- lp/index.html: current Atlas page, actual country/year screens and demo.
+- At the recorded design revision, `lp/index.html` held the Atlas page. The 2026-10-07 Astro migration moved the authoritative page to `lp/src/pages/index.astro` (upstream PR #97, source `5f5296cebeedf0cbc74a3c67cf2adbf11f138758`). Existing screenshots and the demo were preserved.
 - scripts/lp-check.mjs: rejects obsolete Journey Replay copy and checks required media size budgets.
 - c9dc484: regional Atlas navigation; 20328fc: every Regional Atlas made free.
 

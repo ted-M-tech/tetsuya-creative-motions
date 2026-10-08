@@ -31,3 +31,7 @@ LPの復元記録と更新履歴から整理。制作時の会話ログ全体や
 - 8a3e6adc: legal page layout and simpler section curves.
 
 確認したファイルのSHAは [EVIDENCE.json](EVIDENCE.json)。使用技術は [SKILLS.md](SKILLS.md)、権利と素材の扱いは [CREDITS.md](CREDITS.md)。
+
+## 現行実装への移行
+
+2026-10-07にAstro静的出力・TypeScriptへ移行して公開。正本は `site/src/pages/` と `site/src/scripts/`、公開出力は `site/dist/` です（upstream PR #255、source `55b19814a9d8546768d7b63eb7c68e7fa1c9fb68`）。以下の制作記録・EVIDENCEは当時の記録として保持し、移行後の検証結果と混同しません。

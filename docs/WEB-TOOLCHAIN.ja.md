@@ -9,7 +9,8 @@
 | 根拠・出典の調査 | agent-reach、GitHub CLI、Web検索・一次資料 | 研究・参照元の確認。調査結果は作品の出典へ。全検索履歴は未保存 |
 | 旧版のイラスト案 | imagegen、Sharp | Lanclo旧版に生成イラストと画像最適化の記録あり。現在の主な人物画はunDrawで、生成案を最終採用素材と混同しない |
 | 最終LP素材 | unDraw、Pexels、製品UI | 素材ライブラリ・写真・実装画面。[権利と出典](../projects/lanclo-lp/CREDITS.md)。スキルではない |
-| LP実装 | React / JSX、Vite、Motion、CSS、Phosphor | Lanclo公開ソースの依存と実装。新規標準のAstroへ移行済みという意味ではない |
+| LP実装（現行） | Astro静的出力、TypeScript、CSS | 2026-10-07にLanclo・Tako Talk・AnnoSceneを移行・公開。Lancloの既存React/JSX・Motion・Phosphorは維持 |
+| LP実装（固定公開教材） | React / JSX、Vite、Motion、CSS、Phosphor | このリポジトリのLanclo再現用ソースは移行前の固定版。現行本番と区別し、当時のmanifestとprovenanceを維持 |
 | Web作品集 | Astro、TypeScript、CSS | MaePaceの実装。作品ごとの記録に従う |
 | 動画 | HyperFrames系スキル、HTML/SVG、GSAP、Gemini TTS、FFmpeg | [動画制作フロー](VIDEO-WORKFLOW.ja.md)と[Lanclo素材記録](../films/lanclo/CREDITS.md)。すべての版で同じ工程を使ったとは限らない |
 | レスポンシブ・挙動確認 | Playwright、Chromium、WebKit、スクリーンショット目視 | Lancloの多言語・幅別検証、比較表のセル確認。エンジン検証は実機Safari確認とは異なる |

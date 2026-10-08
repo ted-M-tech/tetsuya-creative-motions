@@ -50,6 +50,14 @@ Test normal motion, reduced motion, keyboard order, CTA targets and any video lo
 
 Bound review to an initial mobile/desktop pass, a defect-driven correction and targeted confirmation. Broaden only for unresolved concerns or changes. Save screenshots/reports in ignored artifacts and a concise result in the source record.
 
+## Migration and publication checks
+
+When changing a framework, keep one authoritative source/build path. Compare the old and new built pages at the same locale, viewport and motion state; preserve appearance when the brief requires it. Retire superseded entrypoints and update hosting build directories together. Keep production app routes and bindings outside an LP migration's scope.
+
+Exercise hydration and actual controls under the target production CSP and headers before publication. Inspect browser console policy violations as well as page exceptions: a blocked inline bootstrap may leave a correct-looking but inert prerendered page. Prefer framework-supported compatible output or same-origin external scripts over weakening the existing policy. After an authorized deployment, repeat the relevant interactions on the live URL and verify the source/deployment revision and asset receipt.
+
+At handoff, distinguish active source, generated output, immutable reproduction editions and temporary QA artifacts. Remove a superseded file only after checking callers; remove a worktree only after checking its owner, uncommitted work, merged history and artifact custody. Do not delete historical prompts, licenses or reproducible editions as build debris. Label old public exports clearly and point to the current implementation rather than silently claiming parity.
+
 ## Delivery
 
 Record each tool or skill actually used, its role and known version; do not copy the entire installed catalog into credits. Link prompts, design decisions, licensed assets, fixed source and runnable checks. Use the existing build/Git/publication flow; keep site runtime independent of AI authoring tools. This reference does not authorize deployment or introduce a service subscription.
