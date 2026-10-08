@@ -1,6 +1,6 @@
 {
   "upstream": "https://github.com/ted-M-tech/native-voice-clone",
-  "revision": "1ef47dab0e6f0bd10bcd8cb1e4ccb4bcb8216709",
+  "revision": "e133711",
   "exportedPaths": [
     "src/landing",
     "src/Brand.jsx",
@@ -16,9 +16,10 @@
     "src/ui/tokens.css"
   ],
   "adaptations": [
-    "Standalone Vite entry and dependency subset",
+    "Standalone Vite entry; production is Astro static output",
+    "Current React/TypeScript components and existing dependency subset",
     "Asset URLs follow BASE_URL",
-    "Actions link to live product; no backend or authentication copied"
+    "Actions link to live product; no backend, authentication or recordings copied"
   ],
   "skillInputs": [
     {
@@ -32,5 +33,7 @@
       "note": "Local entry fingerprint, not an upstream revision or AI-output guarantee."
     }
   ],
-  "skillFingerprintCapturedAt": "2026-10-07; current installed entries at export time, not archived full historical packages"
+  "skillFingerprintCapturedAt": "2026-10-07; current installed entries at export time, not archived full historical packages",
+  "previousRevision": "1ef47dab0e6f0bd10bcd8cb1e4ccb4bcb8216709",
+  "edition": "lanclo-lp-navy-v2"
 }

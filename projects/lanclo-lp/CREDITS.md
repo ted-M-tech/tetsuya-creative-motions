@@ -8,3 +8,7 @@
 - Dependencies retain their respective licenses; exact versions are in the source lockfile.
 
 The repository MIT license covers original source and writing, not third-party photos, trademarks or a right to impersonate the featured product. Replace brand assets for your own project. Portfolio screenshots are deliberate work previews, not an archive of QA captures.
+
+## Navy edition — 2026-10-08
+
+PracticeStepArt.jsx is original code-authored SVG. HeroWave.jsx is independently authored Canvas2D, visually inspired by SiriWave (https://github.com/kopiro/siriwave), not copied library code. No new AI-generated images were used.

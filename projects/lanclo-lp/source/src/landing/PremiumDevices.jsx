@@ -49,7 +49,7 @@ export default function PremiumDevices({lang}) {
             <div className="laptop-lid">
               <i className="hardware-camera" aria-hidden="true"/>
               <div className="hardware-screen">
-                <img src={import.meta.env.BASE_URL+"screens/device-desktop.webp"} width="1280" height="800" alt={c.desktop} loading="lazy"/>
+                <img src={`${import.meta.env.BASE_URL}screens/device-desktop.webp`} width="1280" height="800" alt={c.desktop} loading="lazy"/>
               </div>
             </div>
             <div className="laptop-base" aria-hidden="true"><span/></div>
@@ -58,7 +58,7 @@ export default function PremiumDevices({lang}) {
             <div className="tablet-rim">
               <i className="hardware-camera" aria-hidden="true"/>
               <div className="hardware-screen">
-                <img src={import.meta.env.BASE_URL+"screens/device-tablet.webp"} width="820" height="1100" alt={c.tablet} loading="lazy"/>
+                <img src={`${import.meta.env.BASE_URL}screens/device-tablet.webp`} width="820" height="1100" alt={c.tablet} loading="lazy"/>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default function PremiumDevices({lang}) {
               <div className="phone-glass">
                 <div className="phone-top" aria-hidden="true"><span className="phone-island"/></div>
                 <div className="hardware-screen">
-                  <img src={import.meta.env.BASE_URL+"screens/device-phone.webp"} width="390" height="844" alt={c.phone} loading="lazy"/>
+                  <img src={`${import.meta.env.BASE_URL}screens/device-phone.webp`} width="390" height="844" alt={c.phone} loading="lazy"/>
                 </div>
                 <div className="phone-bottom" aria-hidden="true"><span/></div>
               </div>

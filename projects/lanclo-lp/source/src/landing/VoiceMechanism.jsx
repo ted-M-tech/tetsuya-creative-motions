@@ -1,6 +1,6 @@
 import React from 'react';
 import {Microphone,Headphones,ArrowDown,SpeakerHigh} from '@phosphor-icons/react';
-import speaker from './assets/undraw/speaker.svg';
+import speaker from './assets/undraw/speaker.svg?url';
 const copy={
  ja:{title:'探していたお手本は、\nあなたの声。',intro:'似た声の人を、もう探さなくていい。\n声の個性はそのままに、目指す発音を聴く。',steps:['あなたの声を登録','AIが、発音のお手本に','お手本と、聴き比べる'],bodies:['まずは自分の声を録音。','声質をもとに、英語の発音モデルを作成。','同じ文を話して、音の違いを確かめる。'],voice:'あなたの声質',pronunciation:'目指す発音',model:'AIのお手本',recording:'自分の録音',note:'仕組みのイメージ。初回に音声登録と同意が必要です。',next:'そして、苦手な音から次の練習へ。'},
  en:{title:'The model you were\nlooking for is you.',intro:'Stop searching for someone with a similar voice.\nHear the pronunciation you aim for in a voice like yours.',steps:['Register your voice','AI creates your model','Listen. Compare. Practice.'],bodies:['Start by recording your own voice.','Your vocal identity shapes the pronunciation model.','Say the same sentence and listen for differences.'],voice:'Your vocal identity',pronunciation:'Target pronunciation',model:'AI model',recording:'Your recording',note:'Illustration of the process. Voice registration and consent are required.',next:'Then, practice the sounds that need attention.'},

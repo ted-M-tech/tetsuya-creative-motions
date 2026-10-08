@@ -1,0 +1,25 @@
+/* Analysis → generated lesson → one simple practice action. */
+html[data-lp-design=impeccable] .habit-story{background:#0b1722}
+.habit-practice{margin:0;min-width:0;color:#fffaf0}
+.habit-flow{list-style:none;padding:0;margin:0}
+.habit-flow>li{position:relative;padding:0 0 42px 48px;border-left:1px solid #35505e;margin-left:13px}
+.habit-flow>li:last-child{padding-bottom:0;border-left-color:transparent}
+.habit-flow-heading{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:#cce9df}
+.habit-flow-heading>span{position:absolute;left:-14px;top:0;background:#0b1722;padding:5px 0;font-size:12px;letter-spacing:.04em}
+.habit-flow-heading h3{font-size:20px;line-height:1.45;margin:0;color:#fffaf0}
+.habit-flow-heading>svg{flex-shrink:0}
+.habit-flow-arrow{position:absolute;left:-12px;bottom:9px;background:#0b1722;color:#8cafbd}
+.habit-analysis{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.habit-analysis small{font-size:12px;color:#afc5cc}.habit-analysis strong{font-size:32px;font-weight:500}.habit-analysis>span{font-size:18px}.habit-analysis mark{background:none;color:#cce9df;text-decoration:underline;text-underline-offset:5px}
+.habit-generated{padding:20px 24px;background:#fffaf0;color:#182f42;border-radius:12px}.habit-generated small{font-size:12px;color:#476271}.habit-generated p{font-size:25px;line-height:1.55;margin:10px 0 0;letter-spacing:-.02em}.habit-generated mark{background:#cce9df;color:#182f42;padding:0 2px}
+.habit-read{display:flex;align-items:center;justify-content:space-between;gap:16px}.habit-read img{width:125px;height:125px;object-fit:contain}.habit-read p{font-size:13px;margin:12px 0 0;color:#cce9df}.habit-demo-start{display:inline-flex;align-items:center;gap:9px;background:#cce9df;color:#182f42;border-radius:9px;padding:14px 18px;font-size:14px;font-weight:600}
+.habit-practice figcaption{font-size:11px;color:#afc5cc;margin:20px 0 0 61px}
+@media(max-width:767px){.habit-flow>li{padding-left:30px}.habit-flow-heading{gap:8px}.habit-flow-heading h3{font-size:18px}.habit-flow-heading>svg{width:21px}.habit-generated{padding:18px}.habit-generated p{font-size:22px}.habit-analysis{gap:12px}.habit-analysis strong{font-size:28px}.habit-read{gap:8px}.habit-read img{width:90px;height:108px}.habit-demo-start{font-size:12px;padding:12px}.habit-practice figcaption{margin-left:43px}}
+
+/* Each step is a visual scene, with a short readable example alongside it. */
+.habit-flow-scene{display:grid;grid-template-columns:160px minmax(0,1fr);align-items:center;gap:16px}
+.practice-step-art{display:block;width:100%;height:auto}
+.habit-flow-scene .habit-analysis{gap:8px;align-items:flex-start;flex-direction:column}
+.habit-flow-scene .habit-generated{padding:15px 18px}
+.habit-flow-scene .habit-generated p{font-size:20px}
+.habit-flow-scene .habit-read{display:block}
+@media(max-width:767px){.habit-flow-scene{grid-template-columns:105px minmax(0,1fr);gap:10px}.habit-flow-scene .habit-generated{padding:12px}.habit-flow-scene .habit-generated p{font-size:17px}.habit-flow-scene .habit-generated small{font-size:10px}.habit-demo-start{padding:10px 8px;font-size:11px;gap:5px}.habit-read p{font-size:11px}}

@@ -3,12 +3,12 @@ import {motion,useReducedMotion} from 'motion/react';
 import {ArrowDown,ArrowUpRight,Pause,Play} from '@phosphor-icons/react';
 import PracticeFilm from './PracticeFilm.jsx';
 import Availability from './Availability.jsx';
-import poster from './assets/practice-film-poster.webp';
-import worried from './assets/undraw/worried-person.svg';
-import speaker from './assets/undraw/learning.svg';
-import intelligence from './assets/undraw/ai-intelligence.svg';
-import outdoors from './assets/undraw/outdoor-lesson.svg';
-import closing from './assets/undraw/continuous-learning-r23.svg';
+import poster from './assets/practice-film-poster.webp?url';
+import worried from './assets/undraw/worried-person.svg?url';
+import speaker from './assets/undraw/learning.svg?url';
+import intelligence from './assets/undraw/ai-intelligence.svg?url';
+import outdoors from './assets/undraw/outdoor-lesson.svg?url';
+import closing from './assets/undraw/continuous-learning-r23.svg?url';
 const filmUrl=import.meta.env.VITE_LP_PRACTICE_FILM_URL||'';
 const content={
  ja:{title:'シャドーイング、\n続けてきた。',sub:'でも、目指す発音はまだ遠い。',body:'自分に似た声のお手本を探す。何度もまねする。\nそれでも、どこを直せばいいのかわからない。',turn:'そのお手本が、',future:'英語を自然に話す\n自分の声だったら？',intro:'声の個性は、あなたのまま。\nAIでつくるお手本から、目指す発音を練習する。',steps:['あなたの声を録音','自分の声のお手本に','聴いて、声に出す'],bodies:['声を登録して、練習をはじめる準備。','あなたの声質をもとに、AIが発音のお手本をつくります。','目指す音と自分の発音を、聴き比べて練習。'],promise:'お手本は、自分の声。\n次の練習は、自分の課題から。',note:'初回に音声登録と同意が必要です。映像は利用イメージです。',scroll:'自分の声で学ぶ、その仕組み',pause:'映像を止める',play:'映像を動かす',close:'次は、あなたの声で。',closeBody:'「こんなふうに話したい」を、今日の一文から。',caption:'録音 → 自声モデル → 発音練習'},
@@ -18,7 +18,7 @@ const content={
 function Rise({children,className=''}){const reduced=useReducedMotion();return <motion.div className={className} initial={reduced?false:{opacity:0,y:25}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.2}} transition={{duration:.6}}>{children}</motion.div>}
 export function BackgroundFilm({c}){
  const video=useRef(null),container=useRef(null);
- const [reduced,setReduced]=useState(()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+ const [reduced,setReduced]=useState(false);
  const [paused,setPaused]=useState(false),[failed,setFailed]=useState(false);
  useEffect(()=>{const query=window.matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setReduced(query.matches);query.addEventListener('change',update);update();return()=>query.removeEventListener('change',update);},[]);
  useEffect(()=>{const el=video.current;if(!el||reduced||paused||failed){el?.pause();return;}let visible=false;const sync=()=>{if(visible&&!document.hidden)el.play().catch(()=>{});else el.pause();};const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();},{threshold:.15});observer.observe(container.current);document.addEventListener('visibilitychange',sync);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',sync);el.pause();};},[reduced,paused,failed]);
