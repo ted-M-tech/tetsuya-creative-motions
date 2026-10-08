@@ -18,3 +18,7 @@ The Lanclo prototype document requested Product Design on 2026-10-01. The later 
 Source records in the Lanclo repository: `docs/self-voice-practice/prototype.md` and `docs/self-voice-practice/feedback-practice-refinement.md`. No private handoff content or full source documents are republished here.
 
 [Tools beyond design skills](../../docs/WEB-TOOLCHAIN.ja.md) distinguish historical image-generation experiments, final assets, implementation and browser verification. [Runnable responsive QA](../../docs/WEB-QA.ja.md) makes the verification workflow reusable.
+
+## Creation prompt edition
+
+The CREATE.ja.md / CREATE.en.md prompts are new, complete instructions for opening the fixed source kit, not incremental redesign notes. Running this kit needs no design skill installation. For new adaptations, the bundled lp-create / Impeccable / Taste installer remains available in docs/LP-SKILL-INSTALL.ja.md. lp-create guided this edition’s prompt, asset provenance and responsive verification; no additional historical skill usage is asserted.

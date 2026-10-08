@@ -21,6 +21,7 @@ import VoiceMechanism from './VoiceMechanism.jsx';
 import HabitStory from './HabitStory.jsx';
 import ShadowingProblem from './ShadowingProblem.jsx';
 import Pricing from './Pricing.jsx';
+import DeveloperVoices from './DeveloperVoices';
 import './impeccable.css';
 import './palette.css';
 
@@ -64,7 +65,7 @@ export default function App(){
  {impeccable?<VoiceMechanism lang={lang}/>:<VoiceStory lang={lang}/>}
  <LessonExperience lang={lang} compact={impeccable}/>{impeccable&&<HabitStory lang={lang}/>}<NewsExperience lang={lang}/><PremiumDevices lang={lang}/>
  <section id="research" className="section wrap"><Reveal className="section-heading"><h2>{impeccable?(lang==='ja'?'自分の声を、お手本に。':lang==='ko'?'내 목소리를 발음의 모델로.':'Your voice. Your model.'):n.researchTitle}</h2>{!impeccable&&<p>{t.researchIntro}</p>}</Reveal><ResearchEvidence lang={lang} compact={impeccable}/><details className="further"><summary>{impeccable?({ja:"参考にした研究",en:"Research references",ko:"참고 연구"}[lang]):t.moreResearch}<Plus size={22}/></summary><div>{(impeccable?t.otherStudies.slice(0,3):t.otherStudies).map((s,i)=><article key={s.title}><h3><a href={s.url} target="_blank" rel="noreferrer">{impeccable&&lang==='ja'&&i===2?<><span className="phrase">AIでつくった自声</span><span className="phrase">による練習 · 2026</span></>:s.title}<ArrowUpRight size={16}/></a></h3><p>{impeccable?referenceSummaries[lang][i]:s.body}</p></article>)}</div></details></section>
- <div className="wrap"><Reveal className="founder"><span className="quote-mark">“</span><blockquote>{t.founderQuote}<cite>{t.founderLabel}</cite></blockquote></Reveal></div><Comparison lang={lang}/><Pricing lang={lang}/><section id="faq" className="section faq-section wrap"><div className="section-heading"><h2>{t.faqTitle}</h2></div><div>{t.faqs.map(f=><details key={f.q}><summary>{f.q}<Plus size={22}/></summary><p>{f.a}</p></details>)}</div></section>
+ <DeveloperVoices lang={lang}/><Comparison lang={lang}/><Pricing lang={lang}/><section id="faq" className="section faq-section wrap"><div className="section-heading"><h2>{t.faqTitle}</h2></div><div>{t.faqs.map(f=><details key={f.q}><summary>{f.q}<Plus size={22}/></summary><p>{f.a}</p></details>)}</div></section>
 
  <FilmClosing lang={lang} cta={t.cta}/>
  </main><footer className="wrap"><Brand/><p>{t.footer}</p><span>© {new Date().getFullYear()} Lanclo</span></footer></>;

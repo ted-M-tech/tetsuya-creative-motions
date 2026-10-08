@@ -1,6 +1,6 @@
 {
   "upstream": "https://github.com/ted-M-tech/native-voice-clone",
-  "revision": "e133711",
+  "revision": "ffc2ca7907df34f5944f346cf4410047b788f5d8",
   "exportedPaths": [
     "src/landing",
     "src/Brand.jsx",
@@ -34,6 +34,6 @@
     }
   ],
   "skillFingerprintCapturedAt": "2026-10-07; current installed entries at export time, not archived full historical packages",
-  "previousRevision": "1ef47dab0e6f0bd10bcd8cb1e4ccb4bcb8216709",
-  "edition": "lanclo-lp-navy-v2"
+  "previousRevision": "e133711",
+  "edition": "lanclo-lp-create-v3"
 }
