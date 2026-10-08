@@ -3,7 +3,7 @@
 .developer-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .developer-story{display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;align-items:start;margin:0;min-width:0;padding:26px;background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(16,35,44,.12)}
 .developer-portrait{position:relative;width:80px;height:80px;overflow:hidden;border-radius:50%;background:#dac5ab}
-.developer-portrait img{position:absolute;width:180%;max-width:none;height:auto;left:-65%;top:-32%}
+.developer-portrait img{position:absolute;width:280%;max-width:none;height:auto;left:-90%;top:-183%}
 .developer-portrait-ballpark img{width:250%;left:-57%;top:-119%}
 .developer-story blockquote{margin:0}
 .developer-story p{font-size:16px;line-height:1.9;color:#273b4b;margin:0;text-wrap:pretty;overflow-wrap:normal}
