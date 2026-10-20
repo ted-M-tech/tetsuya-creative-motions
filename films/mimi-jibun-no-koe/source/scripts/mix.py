@@ -25,7 +25,7 @@ PERK = 6.4
 JUMP = (7.5, 8.03)              # launch, land
 PUMP = 8.2
 SHADOW = 9.6                    # she speaks along with the model (practice shot frame 12)
-NAILED = 11.4                   # result on the phone
+RESULT = 11.4                   # radar card pops; score lands at 12.15
 END = 14.0
 BED = (1.3, 14.0)
 
@@ -147,8 +147,11 @@ def main():
     place(sfx, pofu() * 0.6, JUMP[1])
     for i, m in enumerate([81, 85, 88]):
         place(sfx, bell(m, 0.9, 0.12), PUMP + i * 0.07)
-    for i, m in enumerate([88, 93]):                                        # "nailed it" ding
-        place(sfx, bell(m, 1.0, 0.16), NAILED + i * 0.08)
+    place(sfx, whoosh(0.25, 0.25), RESULT)                                 # card in
+    for i in range(5):                                                      # radar axes fill
+        place(sfx, tap() * 0.35, RESULT + 0.15 + i * 0.07)
+    for i, m in enumerate([86, 90]):                                        # score lands
+        place(sfx, bell(m, 0.9, 0.12), RESULT + 0.75 + i * 0.07)
     music = bed()
     env = lowpass(np.abs(voice), 0.002)
     duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12), 0, 1), 0.0008)

@@ -59,6 +59,7 @@ POSES = {
     'jump': dict(image='art/cut/jump.png', height=1150),
     'success': dict(image='art/success.png', height=970),
     'master': dict(image='art/master.png', height=970),
+    'think': dict(image='art/thinking.png', height=970),
     'speak': dict(image='art/cut/speak-closed.png', alt='art/cut/speak-open.png', height=1000),
 }
 
@@ -285,15 +286,22 @@ def mouth_open_frames(start_f, clip='model.mp3', length=1.78, threshold=0.28):
 
 def act_practice(anim, hp, cp, n):
     """Shadowing: she speaks along with the her-voice model (mouth follows its loudness), then a proud little nod."""
-    body(anim, hp, cp, n, squash=lambda f: breathe(f) + spring(f, 120, -10, 14), rot=lambda f: wave(f, 40, 0.025) * (f < 118))
-    bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04) * (f < 118) + spring(f, 120, 0.08, 12))
-    bone_rot(anim, '0:45', n, lambda f: wave(f, 24, 0.05) * (f < 118))
+    body(anim, hp, cp, n, squash=breathe, rot=lambda f: wave(f, 40, 0.025))
+    bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04))
+    bone_rot(anim, '0:45', n, lambda f: wave(f, 24, 0.05))
     flaps = mouth_open_frames(12)
     seq = [(0, 0)] + [(f, 1 if o else 0) for f, o in flaps if f < n] + [(min(n, flaps[-1][0] + 4), 0), (n, 0)]
     obj = el('KeyedObject', anim, objectId='0:51')
     kp = el('KeyedProperty', obj, propertyKey=18)
     for f, v in seq:
         el('KeyFrameDouble', kp, frame=f, value=v, interpolationType='hold')
+
+
+def act_think(anim, hp, cp, n):
+    """Reads the result: a slow tilt, then two convinced nods (head dips) from frame 40."""
+    nod = lambda f: 14 * max(0.0, math.sin(math.pi * (f - 40) / 14)) if 40 <= f < 68 else 0.0
+    body(anim, hp, cp, n, squash=lambda f: breathe(f) + nod(f), rot=lambda f: 0.05 * smooth(f / 30) - 0.05 * smooth((f - 40) / 20))
+    bone_rot(anim, '0:41', n, lambda f: spring(f, 40, 0.06, 14) + spring(f, 54, 0.06, 14))
 
 
 # shot -> pose, frames, performance. Timing matches shots.py TIMELINE.
@@ -308,8 +316,9 @@ SHOTS = {
     'perk': dict(pose='perk', frames=66, act=act_perk),
     'jump': dict(pose='jump', frames=42, act=act_jump),
     'success': dict(pose='success', frames=72, act=act_success),
-    'practice': dict(pose='speak', frames=168, act=act_practice),
-    'master': dict(pose='master', frames=108, act=act_master),
+    'practice': dict(pose='speak', frames=120, act=act_practice),
+    'think': dict(pose='think', frames=96, act=act_think),
+    'master': dict(pose='master', frames=60, act=act_master),
 }
 
 if __name__ == '__main__':
