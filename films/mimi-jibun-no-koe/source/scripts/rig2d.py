@@ -59,6 +59,7 @@ POSES = {
     'jump': dict(image='art/cut/jump.png', height=1150),
     'success': dict(image='art/success.png', height=970),
     'master': dict(image='art/master.png', height=970),
+    'speak': dict(image='art/cut/speak-closed.png', alt='art/cut/speak-open.png', height=1000),
 }
 
 
@@ -128,16 +129,21 @@ def build(shot):
     bs = set(border)
     pts = border + [(x, y) for y in ys for x in xs if (x, y) not in bs]
     tri = [int(i) for t in Delaunay(pts).simplices for i in t]
-    image = el('Image', a, name=f'{spec["pose"]} • skin', assetId='0:60')
-    mesh = el('Mesh', image, triangleIndexBytes=vi(tri))
-    for i, (x, y) in enumerate(pts):
-        px, py = A(x, y)
-        v = el('ContourMeshVertex' if i < len(border) else 'MeshVertex', mesh, x=px, y=py, u=x / W, v=y / H)
-        idx, val = weight(x, y)
-        el('Weight', v, indices=idx, values=val)
-    sk = el('Skin', mesh)
-    for ident, pt in binds:
-        el('Tendon', sk, boneId=ident, tx=pt[0], ty=pt[1])
+    def skin(ident, asset, name, opacity=1):
+        image = el('Image', a, id=ident, name=name, assetId=asset, opacity=opacity)
+        mesh = el('Mesh', image, triangleIndexBytes=vi(tri))
+        for i, (x, y) in enumerate(pts):
+            px, py = A(x, y)
+            v = el('ContourMeshVertex' if i < len(border) else 'MeshVertex', mesh, x=px, y=py, u=x / W, v=y / H)
+            idx, val = weight(x, y)
+            el('Weight', v, indices=idx, values=val)
+        sk = el('Skin', mesh)
+        for bone, pt in binds:
+            el('Tendon', sk, boneId=bone, tx=pt[0], ty=pt[1])
+
+    if 'alt' in P:  # lip-sync: the open-mouth drawing sits on top and is shown by opacity keys
+        skin('0:51', '0:62', f'{spec["pose"]} • alt', opacity=0)
+    skin('0:50', '0:60', f'{spec["pose"]} • skin')
     el('Image', a, name='Background • desk', assetId='0:61', x=AW / 2, y=AH / 2)  # first sibling draws on top: background last
 
     n = spec['frames']
@@ -152,6 +158,8 @@ def build(shot):
     el('AnimationState', layer, id='0:9', animationId='0:6', reset='true', x=100, y=0)
     el('ImageAsset', r, id='0:60', name=spec['pose'], file=str(Path('../..') / P['image']))
     el('ImageAsset', r, id='0:61', name='desk', file='../../art/bg-desk.png')
+    if 'alt' in P:
+        el('ImageAsset', r, id='0:62', name=spec['pose'] + ' alt', file=str(Path('../..') / P['alt']))
     E.indent(r)
     out = ROOT / 'rive' / shot
     out.mkdir(parents=True, exist_ok=True)
@@ -257,6 +265,37 @@ def act_master(anim, hp, cp, n):
     bone_rot(anim, '0:41', n, lambda f: wave(f, 120, 0.05, 0.8))
 
 
+def mouth_open_frames(start_f, clip='model.mp3', length=1.78, threshold=0.28):
+    """Frames (60 fps, from start_f) where the her-voice model is loud enough to show the open mouth."""
+    import subprocess
+    import numpy as np
+    pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ROOT / 'assets/voice' / clip), '-t', str(length), '-ac', '1', '-ar', '6000',
+                          '-f', 's16le', '-'], capture_output=True, check=True).stdout
+    x = np.frombuffer(pcm, np.int16).astype(float)
+    hop = 6000 // 15                                  # 15 mouth decisions per second
+    rms = np.array([np.sqrt(np.mean(x[i:i + hop] ** 2)) for i in range(0, len(x) - hop, hop)])
+    rms /= rms.max()
+    local = np.convolve(rms, np.ones(5) / 5, mode='same')          # open on syllable peaks, not on loudness alone
+    opens = [bool(v > threshold and v >= local[i]) for i, v in enumerate(rms)]
+    for i in range(1, len(opens)):                                  # never hold the mouth open for more than two steps
+        if opens[i] and opens[i - 1] and i > 1 and opens[i - 2]:
+            opens[i] = False
+    return [(start_f + i * 4, o) for i, o in enumerate(opens)]
+
+
+def act_practice(anim, hp, cp, n):
+    """Shadowing: she speaks along with the her-voice model (mouth follows its loudness), then a proud little nod."""
+    body(anim, hp, cp, n, squash=lambda f: breathe(f) + spring(f, 120, -10, 14), rot=lambda f: wave(f, 40, 0.025) * (f < 118))
+    bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04) * (f < 118) + spring(f, 120, 0.08, 12))
+    bone_rot(anim, '0:45', n, lambda f: wave(f, 24, 0.05) * (f < 118))
+    flaps = mouth_open_frames(12)
+    seq = [(0, 0)] + [(f, 1 if o else 0) for f, o in flaps if f < n] + [(min(n, flaps[-1][0] + 4), 0), (n, 0)]
+    obj = el('KeyedObject', anim, objectId='0:51')
+    kp = el('KeyedProperty', obj, propertyKey=18)
+    for f, v in seq:
+        el('KeyFrameDouble', kp, frame=f, value=v, interpolationType='hold')
+
+
 # shot -> pose, frames, performance. Timing matches shots.py TIMELINE.
 SHOTS = {
     'hook': dict(pose='hide', frames=60, act=act_hide),
@@ -268,8 +307,9 @@ SHOTS = {
     'peek': dict(pose='peek', frames=42, act=act_peek),
     'perk': dict(pose='perk', frames=66, act=act_perk),
     'jump': dict(pose='jump', frames=42, act=act_jump),
-    'success': dict(pose='success', frames=108, act=act_success),
-    'master': dict(pose='master', frames=156, act=act_master),
+    'success': dict(pose='success', frames=72, act=act_success),
+    'practice': dict(pose='speak', frames=168, act=act_practice),
+    'master': dict(pose='master', frames=108, act=act_master),
 }
 
 if __name__ == '__main__':

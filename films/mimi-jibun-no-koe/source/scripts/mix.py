@@ -24,8 +24,10 @@ MODEL = 5.7
 PERK = 6.4
 JUMP = (7.5, 8.03)              # launch, land
 PUMP = 8.2
-END = 12.6
-BED = (1.3, 12.6)
+SHADOW = 9.6                    # she speaks along with the model (practice shot frame 12)
+NAILED = 11.4                   # result on the phone
+END = 14.0
+BED = (1.3, 14.0)
 
 
 def t(d):
@@ -134,6 +136,7 @@ def main():
     place(voice, load('own.mp3', off, ln), s)
     place(voice, load('own.mp3', 0, 2.76), OWN_FULL)
     place(voice, load('model.mp3', 0, 1.78), MODEL)
+    place(voice, load('model.mp3', 0, 1.78), SHADOW, 0.9)
     place(sfx, rewind_fx(), REWIND)
     place(sfx, tap(), TAP_REC)
     place(sfx, pofu(), POFU)
@@ -144,6 +147,8 @@ def main():
     place(sfx, pofu() * 0.6, JUMP[1])
     for i, m in enumerate([81, 85, 88]):
         place(sfx, bell(m, 0.9, 0.12), PUMP + i * 0.07)
+    for i, m in enumerate([88, 93]):                                        # "nailed it" ding
+        place(sfx, bell(m, 1.0, 0.16), NAILED + i * 0.08)
     music = bed()
     env = lowpass(np.abs(voice), 0.002)
     duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12), 0, 1), 0.0008)
