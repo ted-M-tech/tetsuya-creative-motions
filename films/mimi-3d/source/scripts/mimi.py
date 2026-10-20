@@ -345,7 +345,7 @@ def rig(body, head_parts, ears):
     bone('head', (0, 0, 0.5), (0, 0, 1.0), 'torso')
     for s, (e, base) in ears.items():
         tip = base + e.matrix_world.to_3x3() @ Vector((0, 0, 0.45))
-        bone(f'ear{s}', base, tip, 'head')
+        bone(f'ear{s}', base, tip, 'head').use_deform = False  # rigid ears: must not pull the head surface
     for s in (-1, 1):
         bone(f'arm{s}', (0.12 * s, -0.06, 0.42), (0.16 * s, -0.17, 0.27), 'torso')
     bpy.ops.object.mode_set(mode='OBJECT')

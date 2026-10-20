@@ -16,3 +16,4 @@ site/media/
 __pycache__/
 *.pyc
 films/lanclo-one-line/source/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/assets/fonts/*.ttf
