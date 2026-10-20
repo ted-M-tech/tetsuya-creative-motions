@@ -2,6 +2,8 @@
 
 **English** · [日本語](3D-CHARACTER-WORKFLOW.ja.md)
 
+> 2026-10-20: mascot shorts default to 2D (the owner chose 2D in a side-by-side comparison). Use 3D for turns, camera moves, spatial scenes and as reference. See [2D character animation](2D-CHARACTER-ANIMATION.md).
+
 How to turn a 2D character into a 3D master and use it for short animations, as done for Mimi (Lanclo). The full record is in [films/mimi-3d](../films/mimi-3d/PROCESS.md) (Japanese); a ready-to-use instruction is in [films/mimi-3d/PROMPT.md](../films/mimi-3d/PROMPT.md) (Japanese).
 
 ## Approach

@@ -36,6 +36,12 @@ Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカ�
 
 2DのMimiをBlenderのPythonだけで3Dに。Claude CodeとCodexで9往復レビューし合って仕上げた。
 
+**自分の声、むり — Mimi 2Dショート** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
+
+[制作過程・プロンプト・ソース](films/mimi-jibun-no-koe/README.ja.md) · [2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md)
+
+録音した自分の英語が恥ずかしいMimiが、自分の声のお手本で驚き、練習して、点数と直すポイントで納得するまで。
+
 ## この動画制作フローを使う
 
 [専用スキルの導入と制作手順](docs/VIDEO-WORKFLOW.ja.md)を公開しています。Lancloの改善例を見ながら、自分の動画へ応用できます。構成・改善・記録を支えるスキルで、レンダラーや音声APIは別途必要です。

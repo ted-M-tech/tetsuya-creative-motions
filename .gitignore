@@ -16,3 +16,15 @@ site/media/
 __pycache__/
 *.pyc
 films/lanclo-one-line/source/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/hf-hook/assets/*.mp4
+films/mimi-jibun-no-koe/source/hf-hook/assets/*.mp3
+films/mimi-jibun-no-koe/source/hf-hook/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/hf-hook/.hyperframes/
+films/mimi-jibun-no-koe/source/rive/*/build/
+films/mimi-jibun-no-koe/source/hf-hook/.thumbnails/
+films/mimi-jibun-no-koe/source/hf-short/assets/shots/*.mp4
+films/mimi-jibun-no-koe/source/hf-short/assets/mix.wav
+films/mimi-jibun-no-koe/source/hf-short/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/hf-short/.hyperframes/
+films/mimi-jibun-no-koe/source/hf-short/.thumbnails/

@@ -20,7 +20,7 @@ Default to code-based HTML/SVG animation for diagrams, typography, UI, and deter
 
 If HyperFrames skills are installed, enter through `hyperframes` and use the relevant workflow (`product-launch-video` or `general-video`). Load animation, audio, registry, and media skills only for the task at hand. Do not copy their internals into this skill or modify upstream skills to store personal preferences.
 
-For a recurring 3D character (Blender), read [3d-character.md](references/3d-character.md) before modelling or animating.
+For a recurring mascot short, default to 2D in the approved art style and read [2d-character.md](references/2d-character.md). For a recurring 3D character (Blender), read [3d-character.md](references/3d-character.md) before modelling or animating.
 
 Without those skills, you can still produce the brief, storyboard, script, and records. State which production dependencies are missing before attempting a render; use a documented alternative if available. This package alone does not install a renderer, provide API access, or guarantee identical generated audio.
 
