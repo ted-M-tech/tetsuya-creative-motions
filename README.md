@@ -43,6 +43,12 @@ The visuals are authored in HTML/SVG and GSAP, then rendered with HyperFrames. C
 
 Borrows the structure of Duolingo's spec ad "The Path": one line and a camera flight through the features. Every frame and sound is generated in Python (pycairo, numpy).
 
+**Mimi 3D — the mascot as a soft vinyl toy.** · Blender, 3D character
+
+[Process, prompts & reviews](films/mimi-3d/README.md) · [3D character workflow](docs/3D-CHARACTER-WORKFLOW.md)
+
+The 2D mascot rebuilt in Blender from Python alone, finished through nine Claude Code × Codex review rounds.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

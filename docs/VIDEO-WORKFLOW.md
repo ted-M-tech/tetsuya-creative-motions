@@ -68,3 +68,5 @@ Adapt these prompts to your own authorized scope. Invoking the skill does not it
 Maintain the skill here in Git. Record a reason when changing it; promote repeated, transferable lessons rather than every comment from one film. Keep upstream skills separate, and record production versions per project. The [recordkeeping contract](../skills/tetsuya-creative-motions/references/project-records.md) explains what to preserve.
 
 The skill and original documentation use this repository's [MIT license](../LICENSE). Third-party skills, assets, brands, and voices retain their own conditions.
+
+For a 3D character in Blender, see the [3D character workflow](3D-CHARACTER-WORKFLOW.md).
