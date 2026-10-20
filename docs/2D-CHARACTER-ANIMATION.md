@@ -2,7 +2,7 @@
 
 **English** · [日本語](2D-CHARACTER-ANIMATION.ja.md)
 
-How to animate an approved 2D character in its own art style for short videos, as done for Mimi's 「自分の声、むり」. The work: [films/mimi-jibun-no-koe](../films/mimi-jibun-no-koe/README.md) (full making-of and prompts are shared privately). For 3D see the [3D character workflow](3D-CHARACTER-WORKFLOW.md).
+How to animate an approved 2D character in its own art style for short videos, as done for Mimi's 「自分の声、むり」. Record: [films/mimi-jibun-no-koe](../films/mimi-jibun-no-koe/PROCESS.md) (Japanese); ready-to-use instruction: [PROMPT.md](../films/mimi-jibun-no-koe/PROMPT.md) (Japanese). For 3D see the [3D character workflow](3D-CHARACTER-WORKFLOW.md).
 
 ## 2D or 3D
 
@@ -36,4 +36,4 @@ Captions at the top; keep the bottom ~400 px clear for platform UI; phone UI is 
 
 ## Keep every work reproducible
 
-Each work keeps a consolidated prompt, the making-of, verbatim prompts and reviews, progress images, source with build steps and credits: the finished video and a summary in public, the rest in the private vault. See [Adding a film](ADDING-A-FILM.md).
+Each work keeps, in `films/<id>/`: a consolidated prompt, the making-of (owner directions, AI prompts, reviews, decisions), verbatim prompts and reviews, progress images, source with build steps, and credits. See [Adding a film](ADDING-A-FILM.md).
