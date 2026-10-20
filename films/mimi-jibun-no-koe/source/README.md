@@ -1,16 +1,17 @@
-# 「自分の声、むり」 — source (work in progress)
+# 「自分の声、むり」 — source
 
-15-second vertical short with the 3D Mimi master. Stage: previs and animatic.
+15-second vertical Mimi short for Reels/TikTok, in the official 2D illustration style (chosen over 3D after a side-by-side comparison).
 
-```sh
-cd films/mimi-jibun-no-koe/source
-./fetch-fonts.sh                                               # Zen Maru Gothic
-uv run --no-project --with pillow python scripts/screens.py    # phone screens
-blender -b -P scripts/previs.py -- --pct 40                    # one still per key pose
-uv run --no-project --with numpy --with pillow python scripts/animatic.py   # renders/animatic.mp4
-```
+## Pipeline
 
-- `scripts/shots.py`: poses, key stills and the shot timeline (captions, timing, notes).
-- `scripts/previs.py`: desk set, phone with screens, cameras, posing on the Mimi rig (imports `films/mimi-3d/source/scripts/mimi.py`).
-- `scripts/animatic.py`: stills on the timeline with the voice clips, placeholder SFX, captions, end card.
-- `assets/voice/` (not in Git): `own.mp3` and `model.mp3`, the LP comparison clips.
+1. **Poses** — drawn by Codex (`codex-p`) from the approved Mimi PNGs: `art/hide, droop, perk, reach, hide-reach, peek, jump`; official `listening, success, master` used as is. Desk background `art/bg-desk.png` drawn the same way.
+2. **Cut-outs** — `scripts/cutout.sh <pose>` (white flood fill from the corners) → `art/cut/`.
+3. **Rig and acting** — `scripts/rig2d.py` builds one Rive project per shot under `rive/<shot>/`: grid+Delaunay skinned mesh, five bones (head, ears, two paws, contact), performances as keyed bones (shiver, reach and tap, droop, pop, hop...). Pose scale is tuned so the head reads the same size in every pose.
+4. **Frames** — `scripts/render_rive.sh <shot> <frames>`: one headless `rive --screenshot --advance=N` per frame, 4 in parallel → `renders/rive/<shot>.mp4`. Rive screenshots are opaque, so the background is inside the artboard; the camera lives in HyperFrames.
+5. **Sound** — `scripts/mix.py`: the LP voice clips (own take and her-voice model), code-made SFX and a 100 BPM bed ducked under the voices → `hf-short/assets/mix.wav`.
+6. **Edit** — `hf-short/` (HyperFrames): shots back to back inside one camera wrapper, Lanclo UI on the phone screen, captions, playback tags, rewind treatment, sparkles, end card. `npx hyperframes check`, then `npx hyperframes render --output ../renders/mimi-jibun-no-koe.mp4 --fps 60`.
+
+Earlier stages kept for reference: `scripts/previs.py` + `animatic.py` (3D previs and animatic), `hf-hook/` (the approved 1.3 s hook test), `scripts/npr.py` (3D toon comparison).
+
+Rive rules that bite: the first sibling draws on top; one screenshot per invocation; no transparent background.
+`assets/voice/` and rendered media are not in Git.

@@ -23,3 +23,8 @@ films/mimi-jibun-no-koe/source/hf-hook/assets/fonts/*.ttf
 films/mimi-jibun-no-koe/source/hf-hook/.hyperframes/
 films/mimi-jibun-no-koe/source/rive/*/build/
 films/mimi-jibun-no-koe/source/hf-hook/.thumbnails/
+films/mimi-jibun-no-koe/source/hf-short/assets/shots/*.mp4
+films/mimi-jibun-no-koe/source/hf-short/assets/mix.wav
+films/mimi-jibun-no-koe/source/hf-short/assets/fonts/*.ttf
+films/mimi-jibun-no-koe/source/hf-short/.hyperframes/
+films/mimi-jibun-no-koe/source/hf-short/.thumbnails/
