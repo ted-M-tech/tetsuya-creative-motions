@@ -1,7 +1,0 @@
-Use your image generation tool. The attached images are the official 2D art of Mimi plus poses already drawn for this short. Keep EXACTLY the same illustration style, line weight, colours, proportions, head size, headphone design ("L" on the cup at the viewer's LEFT) and the same three-quarter view turned slightly toward the viewer's RIGHT. Plain pure white background, full body, centred, same scale as the attached poses, no text, no props.
-
-Draw ONE pose as TWO images that are identical in every line except the mouth, so they can be swapped for lip-sync:
-Pose: Mimi practising English by speaking along with a recording — focused, motivated, eyes open and bright looking slightly to the viewer's right, both ears up (one slightly tilted), one mitten hand pressing her headphone cup (the cup on the viewer's LEFT), the other hand in a small fist at her chest.
-1) art/speak-open.png — mouth open mid-word (a rounded "a" shape, pink inside).
-2) art/speak-closed.png — mouth closed in a small determined smile.
-Everything else (pose, ears, hands, outline positions, size, position in frame) must match pixel-for-pixel as closely as possible. Save both PNGs in art/ relative to the current directory. Do not modify other files. List the saved paths.

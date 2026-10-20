@@ -2,7 +2,7 @@
 
 [English](2D-CHARACTER-ANIMATION.md) · **日本語**
 
-承認済みの2Dキャラクターを、その絵柄のまま動かしてショート動画にする手順です。Mimi（Lanclo）の「自分の声、むり」で通した流れをまとめています。記録は [films/mimi-jibun-no-koe](../films/mimi-jibun-no-koe/PROCESS.md)、そのまま渡せる指示は [PROMPT.md](../films/mimi-jibun-no-koe/PROMPT.md)。3Dの手順は [3Dキャラクター制作ガイド](3D-CHARACTER-WORKFLOW.ja.md)。
+承認済みの2Dキャラクターを、その絵柄のまま動かしてショート動画にする手順です。Mimi（Lanclo）の「自分の声、むり」で通した流れをまとめています。作品は [films/mimi-jibun-no-koe](../films/mimi-jibun-no-koe/README.ja.md)（詳しい制作記録とプロンプトは限定公開）。3Dの手順は [3Dキャラクター制作ガイド](3D-CHARACTER-WORKFLOW.ja.md)。
 
 ## 2Dと3Dの使い分け
 
@@ -54,4 +54,4 @@ Duolingoもアプリ内のキャラクターは2DのRive。3Dは2Dに見せる�
 
 ## 記録の残し方
 
-作品ごとに `films/<id>/` に、完成形の統合プロンプト、制作過程（依頼者の指示・AIへのプロンプト・レビュー・判断）、プロンプトとレビューの原文、途中経過の画像、ソースと書き出し手順、素材の権利を残す（[作品を追加する](ADDING-A-FILM.md)）。
+作品ごとに、完成形の統合プロンプト、制作過程、プロンプトとレビューの原文、途中経過の画像、ソースと書き出し手順、素材の権利を残す。公開側には完成動画と要約、詳細は限定公開の保管庫へ（[作品を追加する](ADDING-A-FILM.md)）。
