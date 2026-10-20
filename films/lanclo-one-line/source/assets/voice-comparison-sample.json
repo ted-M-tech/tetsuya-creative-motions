@@ -1,0 +1,264 @@
+{
+  "language": "en",
+  "text": "Could you let me know if you're available for a quick call tomorrow afternoon?",
+  "modelName": "gemini-3.8-flash-tts",
+  "recorded": {
+    "src": "/lp-audio/quick-call-now-trimmed.mp3",
+    "sha256": "822bb99d40a20fea0d6db3361a56040c20c59057952668ebb2ef786c4ae571d8",
+    "waveform": [
+      0.055,
+      0.599,
+      0.454,
+      0.827,
+      1.0,
+      0.96,
+      0.527,
+      0.67,
+      0.287,
+      0.523,
+      0.725,
+      0.704,
+      0.67,
+      0.298,
+      0.542,
+      0.095,
+      0.165,
+      0.822,
+      0.663,
+      0.618,
+      0.476,
+      0.446,
+      0.599,
+      0.689,
+      0.627,
+      0.4,
+      0.438,
+      0.155,
+      0.362,
+      0.511,
+      0.358,
+      0.192,
+      0.247,
+      0.541,
+      0.059,
+      0.07,
+      0.567,
+      0.542,
+      0.11,
+      0.365,
+      0.571,
+      0.494,
+      0.51,
+      0.396,
+      0.061,
+      0.564,
+      0.659,
+      0.541,
+      0.265,
+      0.03,
+      0.004
+    ],
+    "words": [
+      {
+        "text": "Could",
+        "start": 0.0,
+        "end": 0.24
+      },
+      {
+        "text": "you",
+        "start": 0.24,
+        "end": 0.54
+      },
+      {
+        "text": "let",
+        "start": 0.54,
+        "end": 0.86
+      },
+      {
+        "text": "me",
+        "start": 0.86,
+        "end": 1.12
+      },
+      {
+        "text": "know",
+        "start": 1.12,
+        "end": 1.38
+      },
+      {
+        "text": "if",
+        "start": 1.38,
+        "end": 1.68
+      },
+      {
+        "text": "you're",
+        "start": 1.68,
+        "end": 2.22
+      },
+      {
+        "text": "available",
+        "start": 2.22,
+        "end": 2.76
+      },
+      {
+        "text": "for",
+        "start": 2.76,
+        "end": 3.18
+      },
+      {
+        "text": "a",
+        "start": 3.18,
+        "end": 3.4
+      },
+      {
+        "text": "quick",
+        "start": 3.4,
+        "end": 3.66
+      },
+      {
+        "text": "call",
+        "start": 3.66,
+        "end": 4.06
+      },
+      {
+        "text": "tomorrow",
+        "start": 4.06,
+        "end": 4.4
+      },
+      {
+        "text": "afternoon?",
+        "start": 4.4,
+        "end": 4.98
+      }
+    ]
+  },
+  "model": {
+    "src": "/lp-audio/quick-call-native.mp3",
+    "sha256": "b67fe096966efca44d58851daa909206a8351efc0eb27258188a4dff59b21f48",
+    "waveform": [
+      0.019,
+      0.008,
+      0.053,
+      0.408,
+      0.502,
+      0.541,
+      0.561,
+      0.611,
+      0.562,
+      0.536,
+      0.759,
+      0.763,
+      0.592,
+      0.302,
+      0.769,
+      0.932,
+      0.867,
+      0.607,
+      0.608,
+      0.478,
+      0.58,
+      0.62,
+      0.046,
+      0.536,
+      0.553,
+      0.571,
+      0.43,
+      0.323,
+      0.123,
+      0.638,
+      0.68,
+      0.693,
+      0.283,
+      0.523,
+      1.0,
+      0.473,
+      0.217,
+      0.534,
+      0.614,
+      0.513,
+      0.476,
+      0.381,
+      0.333,
+      0.258,
+      0.1,
+      0.005,
+      0.002,
+      0.002,
+      0.002,
+      0.002,
+      0.001
+    ],
+    "words": [
+      {
+        "text": "Could",
+        "start": 0.0,
+        "end": 0.4
+      },
+      {
+        "text": "you",
+        "start": 0.4,
+        "end": 0.54
+      },
+      {
+        "text": "let",
+        "start": 0.54,
+        "end": 0.7
+      },
+      {
+        "text": "me",
+        "start": 0.7,
+        "end": 0.82
+      },
+      {
+        "text": "know",
+        "start": 0.82,
+        "end": 1.02
+      },
+      {
+        "text": "if",
+        "start": 1.02,
+        "end": 1.2
+      },
+      {
+        "text": "you're",
+        "start": 1.2,
+        "end": 1.42
+      },
+      {
+        "text": "available",
+        "start": 1.42,
+        "end": 1.78
+      },
+      {
+        "text": "for",
+        "start": 1.78,
+        "end": 2.16
+      },
+      {
+        "text": "a",
+        "start": 2.16,
+        "end": 2.4
+      },
+      {
+        "text": "quick",
+        "start": 2.4,
+        "end": 2.78
+      },
+      {
+        "text": "call",
+        "start": 2.78,
+        "end": 3.1
+      },
+      {
+        "text": "tomorrow",
+        "start": 3.1,
+        "end": 3.3
+      },
+      {
+        "text": "afternoon?",
+        "start": 3.3,
+        "end": 3.74
+      }
+    ]
+  },
+  "wordTimingSource": "Local mlx-community/whisper-small-mlx word timestamps from each SHA256-bound audio; you + are merged to display contraction."
+}

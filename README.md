@@ -37,6 +37,12 @@ Your own AI voice, ten personalized questions, and daily news that becomes Engli
 
 The visuals are authored in HTML/SVG and GSAP, then rendered with HyperFrames. Characters come from unDraw and narration uses Gemini TTS.
 
+**Lanclo One line — one line shows it all.** · 0:26 promo (16:9) + feature shorts (9:16) · Japanese type, English subtitles
+
+[Source, reproduction prompt & style](films/lanclo-one-line/README.md)
+
+Borrows the structure of Duolingo's spec ad "The Path": one line and a camera flight through the features. Every frame and sound is generated in Python (pycairo, numpy).
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.
