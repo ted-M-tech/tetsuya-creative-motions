@@ -1,6 +1,6 @@
 """Previs for 「自分の声、むり」: Mimi on a desk with a phone; one still per key pose and camera.
 
-usage: python3 scripts/screens.py && blender -b -P scripts/previs.py -- [--only S4a,S7b] [--pct 50] [--cycles]
+usage: python3 scripts/screens.py && blender -b -P scripts/previs.py -- [--only S4a,S7b] [--pct 50] [--hq (Cycles)]
 Outputs renders/previs/<key>.png. Shot timing lives in shots.py (shared with the animatic).
 """
 import math
@@ -140,10 +140,13 @@ def main():
     M.ARGS[:] = []
     M.reset()
     rig, _ = M.build()
-    cam = M.stage('--cycles' in ARGS, 64)
+    cam = M.stage('--hq' in ARGS, 64)
     scn = bpy.context.scene
     scn.render.resolution_percentage = int(arg('--pct', 50))
     scr = build_set()
+    if '--npr' in ARGS:
+        import npr
+        npr.apply()
     only = set(arg('--only', '').split(',')) - {''}
     for key, k in KEYS.items():
         if only and key not in only:
@@ -151,7 +154,7 @@ def main():
         pose(rig, k['pose'])
         set_screen(scr, k.get('screen', 'rec'))
         frame_camera(cam, k['cam'])
-        scn.render.filepath = str(ROOT / f'renders/previs/{key}.png')
+        scn.render.filepath = str(ROOT / arg('--outdir', 'renders/previs') / f'{key}.png')
         bpy.ops.render.render(write_still=True)
 
 
