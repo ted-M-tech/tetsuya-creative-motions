@@ -26,19 +26,19 @@ A Japanese product film about your own AI voice, personalized lessons, and daily
 
 **Lanclo One line — 1本の線で、全部見せる。** · 0:26 PV（16:9）＋ 機能ショート（9:16） · 文字と英語字幕
 
-[作品ページ](films/lanclo-one-line/README.ja.md)
+[ソース・再制作用プロンプト・スタイル](films/lanclo-one-line/README.ja.md)
 
 Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカメラ移動で機能を見せる。全フレームと音をPython（pycairo・numpy）で生成。
 
 **Mimi 3D — マスコットを、ソフビのように。** · Blender・3Dキャラクター
 
-[作品ページ](films/mimi-3d/README.ja.md) · [3Dキャラクター制作ガイド](docs/3D-CHARACTER-WORKFLOW.ja.md)
+[制作過程・プロンプト・レビュー](films/mimi-3d/README.ja.md) · [3Dキャラクター制作ガイド](docs/3D-CHARACTER-WORKFLOW.ja.md)
 
 2DのMimiをBlenderのPythonだけで3Dに。Claude CodeとCodexで9往復レビューし合って仕上げた。
 
 **自分の声、むり — Mimi 2Dショート** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
 
-[作品ページ](films/mimi-jibun-no-koe/README.ja.md) · [2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md)
+[制作過程・プロンプト・ソース](films/mimi-jibun-no-koe/README.ja.md) · [2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md)
 
 録音した自分の英語が恥ずかしいMimiが、自分の声のお手本で驚き、練習して、点数と直すポイントで納得するまで。
 

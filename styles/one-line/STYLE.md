@@ -20,3 +20,4 @@
 ## このスタイルで作った動画
 
 - [Lanclo One line](../../films/lanclo-one-line/README.ja.md)
+- [Lanclo 英語日記ショート](../../films/lanclo-one-line/shorts/journal/README.md)

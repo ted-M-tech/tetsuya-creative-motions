@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Zen Maru Gothic";
+        src: url("assets/fonts/ZenMaruGothic-Bold.ttf") format("truetype");
+        font-weight: 700;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #eef3f9; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Zen Maru Gothic", sans-serif; }
+      /* Punch-in wrapper: untimed, transform origin on Mimi's face */
+      .stage { position: absolute; inset: 0; transform-origin: 42% 46%; }
+      .stage video, .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .caption { position: absolute; left: 0; right: 0; top: 230px; display: flex; justify-content: center; }
+      .caption span {
+        display: block; background: #ffffff; color: #273b4b; font-size: 66px; font-weight: 700;
+        padding: 22px 48px; border-radius: 60px; box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14);
+      }
+      .scan {
+        position: absolute; inset: 0;
+        background: repeating-linear-gradient(0deg, rgba(20, 36, 74, 0.22) 0 4px, rgba(255, 255, 255, 0) 4px 12px);
+        mix-blend-mode: multiply;
+      }
+      .rewind-label { position: absolute; left: 0; right: 0; top: 860px; display: flex; justify-content: center; }
+      .rewind-label span {
+        display: block; color: #ffffff; font-size: 120px; font-weight: 700; letter-spacing: 0.04em;
+        text-shadow: 0 0 2px #14244a, 5px 5px 0 #14244a, -5px 5px 0 #14244a, 5px -5px 0 #14244a, -5px -5px 0 #14244a,
+          0 7px 0 #14244a, 0 -7px 0 #14244a, 7px 0 0 #14244a, -7px 0 0 #14244a;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-gedc" id="root" data-composition-id="main" data-start="0" data-duration="1.3" data-width="1080" data-height="1920">
+      <!-- 0.0-1.0: Mimi hides in her ears and shivers (Rive render), slow punch-in to her face -->
+      <div data-hf-id="hf-anu8" class="stage" id="stage-a">
+        <video data-hf-id="hf-2qfy" id="mimi" class="clip" src="assets/hook-rive.mp4" muted playsinline
+               data-start="0" data-duration="1.0" data-track-index="0"></video>
+      </div>
+      <div data-hf-id="hf-ugel" id="cap" class="caption clip" data-start="0" data-duration="1.0" data-track-index="2">
+        <span data-hf-id="hf-s3vz" id="cap-text">自分の英語、聴ける？</span>
+      </div>
+
+      <!-- 1.0-1.3: rewind; the last frame jitters back with scanlines and the label -->
+      <div data-hf-id="hf-ljbv" class="stage" id="stage-b">
+        <img data-hf-id="hf-8f7g" id="rw" class="clip" src="assets/last-frame.png" alt=""
+             data-start="1.0" data-duration="0.3" data-track-index="1" />
+      </div>
+      <div data-hf-id="hf-s39d" id="scan" class="scan clip" data-start="1.0" data-duration="0.3" data-track-index="3"></div>
+      <div data-hf-id="hf-r1g8" id="rw-label" class="rewind-label clip" data-start="1.0" data-duration="0.3" data-track-index="4">
+        <span data-hf-id="hf-4dyv" id="rw-text">3秒前</span>
+      </div>
+
+      <!-- The tail of her own take ("...if you're available") under the opening -->
+      <audio data-hf-id="hf-64uo" id="own-tail" src="assets/own.mp3" data-start="0" data-duration="1.0" data-media-start="1.76"
+             data-track-index="5" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Opening: caption pops in on the first frames, camera eases toward her face.
+      tl.fromTo("#cap-text", { scale: 0.86, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);
+      tl.fromTo("#stage-a", { scale: 1.02 }, { scale: 1.14, duration: 0.98, ease: "power1.inOut" }, 0);
+      // Rewind: hold the punch, shove the frame sideways in steps, scanlines roll, label slams in.
+      tl.set("#stage-b", { scale: 1.14 }, 1.0);
+      tl.fromTo("#rw", { x: 0, filter: "blur(0px) saturate(1)" },
+        { keyframes: [ { x: -46, filter: "blur(3px) saturate(0.6)", duration: 0.05 },
+                       { x: 38, duration: 0.05 }, { x: -30, duration: 0.05 },
+                       { x: 22, duration: 0.05 }, { x: -12, duration: 0.05 }, { x: 0, filter: "blur(1px) saturate(0.8)", duration: 0.04 } ] }, 1.0);
+      tl.fromTo("#scan", { backgroundPositionY: "0px" }, { backgroundPositionY: "-96px", duration: 0.29, ease: "none" }, 1.0);
+      tl.fromTo("#rw-text", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.1, ease: "power3.out" }, 1.0);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -39,19 +39,19 @@ The visuals are authored in HTML/SVG and GSAP, then rendered with HyperFrames. C
 
 **Lanclo One line — one line shows it all.** · 0:26 promo (16:9) + feature shorts (9:16) · Japanese type, English subtitles
 
-[Work page](films/lanclo-one-line/README.md)
+[Source, reproduction prompt & style](films/lanclo-one-line/README.md)
 
 Borrows the structure of Duolingo's spec ad "The Path": one line and a camera flight through the features. Every frame and sound is generated in Python (pycairo, numpy).
 
 **Mimi 3D — the mascot as a soft vinyl toy.** · Blender, 3D character
 
-[Work page](films/mimi-3d/README.md) · [3D character workflow](docs/3D-CHARACTER-WORKFLOW.md)
+[Process, prompts & reviews](films/mimi-3d/README.md) · [3D character workflow](docs/3D-CHARACTER-WORKFLOW.md)
 
 The 2D mascot rebuilt in Blender from Python alone, finished through nine Claude Code × Codex review rounds.
 
 **My own voice? No way — a 2D Mimi short** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
 
-[Work page](films/mimi-jibun-no-koe/README.md) · [2D character animation](docs/2D-CHARACTER-ANIMATION.md)
+[Process, prompts & source](films/mimi-jibun-no-koe/README.md) · [2D character animation](docs/2D-CHARACTER-ANIMATION.md)
 
 Mimi cringes at her own recorded English, hears her-voice native model, practises along and is convinced by a score and one fix.
 

@@ -1,0 +1,7 @@
+Use your image generation tool. The attached images are the approved 2D art of Mimi, a white bunny mascot (navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on one cup, pink cheeks, mitten hands, small feet; three-quarter view; one ear tall, the other ear out to the side). Keep EXACTLY this drawing style, line weight, colours and proportions — the result must look like the same official illustration, only posed differently. Plain white background, same three-quarter view, full body, 9:16 portrait.
+
+Generate three separate images and save them as PNG files in renders/compare/2d/ (relative to the current directory):
+1) renders/compare/2d/hide.png — embarrassed: Mimi has pulled both long ears down over her eyes to hide her face, head slightly lowered, shoulders hunched, hands near her cheeks, small trembling marks.
+2) renders/compare/2d/droop.png — deflated: both ears droop down to the sides, eyes are flat lines like "= =", small mouth, a single sweat drop near the head.
+3) renders/compare/2d/perk.png — delighted surprise: both ears shoot straight up, eyes big and sparkling, mouth open in a happy "oh!", a few small sparkles around her.
+Do not modify any other files. When done, list the saved paths.
