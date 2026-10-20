@@ -1,8 +1,0 @@
-Use your image generation tool. The attached images are the official 2D art of Mimi (white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet) plus three poses already drawn for this short (hide, droop, perk). Draw four NEW poses that look like the same official illustration: exactly the same line weight, colours, proportions, head size, headphone design and the same three-quarter view with Mimi turned slightly toward the viewer's RIGHT (where her phone is). Plain pure white background, full body, centred, same scale as the attached poses, no text, no extra props (the phone is not drawn; it exists in the background plate).
-
-Save each as PNG in art/ (relative to the current directory):
-1) art/reach.png — curious and focused: ears up, eyes open looking to the viewer's right, one mitten hand (the one nearer the viewer's right) stretched out to the right at chest height as if about to tap a screen, the other hand near her body.
-2) art/hide-reach.png — still hiding: both long ears pulled down over her eyes exactly like the "hide" pose, but one mitten hand stretched out to the viewer's right as if blindly tapping a screen; slight lean to the right.
-3) art/peek.png — peeking: the viewer-right ear is lifted a little so ONE eye peeks out (wide, curious, a tiny sparkle), the other ear still covers the other eye; mouth a small "o"; hands near cheeks.
-4) art/jump.png — joyful jump: both feet off the ground, both ears straight up, both arms raised high, eyes happy closed arches "^ ^", big open smile, a few small sparkles.
-Do not modify other files. List the saved paths when done.
