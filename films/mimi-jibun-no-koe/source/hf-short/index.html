@@ -54,15 +54,14 @@
                 box-shadow: 0 18px 50px rgba(39, 59, 75, 0.2); display: grid; grid-template-columns: 330px 1fr; grid-template-rows: auto 1fr;
                 column-gap: 22px; align-items: center; }
       .result .radar { grid-row: 1 / span 2; }
-      .result .r-head { grid-column: 2; align-self: end; }
-      .result .r-tip { grid-column: 2; align-self: start; margin-top: 14px; }
+      .result .r-side { grid-column: 2; grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+      .r-again { align-self: flex-start; background: #344f69; color: #ffffff; font-size: 30px; font-weight: 700; padding: 12px 26px; border-radius: 30px; }
       .r-head { display: flex; justify-content: space-between; align-items: center; }
       .r-head span { font-size: 38px; font-weight: 700; color: #273b4b; }
-      .r-head em { font-style: normal; font-size: 22px; color: #596875; background: #eef2f5; padding: 6px 16px; border-radius: 20px; }
       .radar { display: block; width: 100%; height: auto; font-family: "Zen Maru Gothic", sans-serif; }
       .r-tip { display: flex; flex-direction: column; gap: 6px; background: #fff3f3; border-radius: 22px; padding: 16px 22px; }
       .r-tip b { font-size: 24px; color: #e5484d; }
-      .r-tip span { font-size: 36px; font-weight: 700; color: #273b4b; }
+      .r-tip span { font-size: 40px; font-weight: 700; color: #273b4b; }
       .end { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; padding-top: 420px; }
       .end img.mimi { width: 520px; height: auto; }
       .end .lockup { display: flex; align-items: center; gap: 22px; margin-top: 30px; }
@@ -151,14 +150,16 @@
 
       <!-- Result: five-axis radar, score and one thing to fix (demo values) -->
       <div id="result" class="result clip" data-start="11.4" data-duration="1.6" data-track-index="10">
-        <div class="r-head"><span>発音チェック</span><em>デモ表示</em></div>
         <svg viewBox="0 0 360 380" class="radar"><polygon points="180.0,150.7 217.4,177.8 203.1,221.8 156.9,221.8 142.6,177.8" fill="none" stroke="#ccd8df" stroke-width="2"/><polygon points="180.0,111.3 254.8,165.7 226.2,253.6 133.8,253.6 105.2,165.7" fill="none" stroke="#ccd8df" stroke-width="2"/><polygon points="180.0,72.0 292.2,153.5 249.4,285.5 110.6,285.5 67.8,153.5" fill="none" stroke="#ccd8df" stroke-width="2"/><line x1="180" y1="190" x2="180.0" y2="72.0" stroke="#ccd8df" stroke-width="2"/><line x1="180" y1="190" x2="292.2" y2="153.5" stroke="#ccd8df" stroke-width="2"/><line x1="180" y1="190" x2="249.4" y2="285.5" stroke="#ccd8df" stroke-width="2"/><line x1="180" y1="190" x2="110.6" y2="285.5" stroke="#ccd8df" stroke-width="2"/><line x1="180" y1="190" x2="67.8" y2="153.5" stroke="#ccd8df" stroke-width="2"/>
           <g id="r-shape" style="transform-origin:180px 190px"><polygon points="180.0,95.6 260.8,163.7 218.8,243.5 132.8,254.9 94.7,162.3" fill="rgba(91,127,159,0.30)" stroke="#5b7f9f" stroke-width="5" stroke-linejoin="round"/></g>
           <text x="180.0" y="38.0" text-anchor="middle" dominant-baseline="middle" font-size="22" font-weight="700" fill="#273b4b">流暢さ</text><text x="324.6" y="143.0" text-anchor="middle" dominant-baseline="middle" font-size="22" font-weight="700" fill="#273b4b">発音</text><text x="269.3" y="313.0" text-anchor="middle" dominant-baseline="middle" font-size="22" font-weight="700" fill="#e5484d">アクセント</text><text x="90.7" y="313.0" text-anchor="middle" dominant-baseline="middle" font-size="22" font-weight="700" fill="#273b4b">リズム</text><text x="35.4" y="143.0" text-anchor="middle" dominant-baseline="middle" font-size="22" font-weight="700" fill="#273b4b">抑揚</text>
           <circle cx="180" cy="190" r="44" fill="#ffffff"/>
           <text id="r-score" x="180" y="192" text-anchor="middle" dominant-baseline="middle" font-size="46" font-weight="700" fill="#344f69">70</text>
         </svg>
+        <div class="r-side"><div class="r-head"><span>発音チェック</span></div>
+        
         <div id="r-tip" class="r-tip"><b>直すポイント</b><span>available は「vái」を強く</span></div>
+          <div id="r-again" class="r-again">▶ お手本でもう一度</div></div>
       </div>
 
       <!-- End card -->
@@ -225,6 +226,7 @@
       tl.fromTo(sc, { v: 0 }, { v: 70, duration: 0.6, ease: "power2.out",
         onUpdate: () => { document.getElementById("r-score").textContent = Math.round(sc.v); } }, 11.55);
       tl.fromTo("#r-tip", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 12.15);
+      tl.fromTo("#r-again", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 12.4);
       document.querySelectorAll("#wave-practice i").forEach((b, i) =>
         tl.fromTo(b, { height: 8 }, { height: 14 + 24 * Math.abs(Math.sin(i * 1.1 + 2)), duration: 0.16, yoyo: true, repeat: 10, ease: "sine.inOut" }, 9.6 + i * 0.02));
 
