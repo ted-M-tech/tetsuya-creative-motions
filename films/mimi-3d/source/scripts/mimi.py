@@ -81,16 +81,16 @@ HEAD_C = Vector((0, 0, 0.77))
 def fused_body(mat):
     """Head, torso, legs and hugging arms as one soft mesh (voxel remesh + smoothing)."""
     parts = []
-    head = ellipsoid('p_head', HEAD_C, (0.40, 0.34, 0.315))
+    head = ellipsoid('p_head', HEAD_C, (0.455, 0.35, 0.38))
     # mochi head: fuller cheeks low, slightly flatter crown
-    shape(head, lambda c: Vector((c.x * (1 + 0.07 * max(0, -c.z / 0.3)), c.y, c.z * (0.97 if c.z > 0 else 1.0))))
+    shape(head, lambda c: Vector((c.x * (1 + 0.10 * max(0, -c.z / 0.3)), c.y, c.z * (0.97 if c.z > 0 else 1.0))))
     parts.append(head)
     torso = ellipsoid('p_torso', (0, 0.01, 0.28), (0.255, 0.225, 0.245))
     shape(torso, lambda c: Vector((c.x * (1 + 0.1 * max(0, -c.z / 0.25)), c.y * (1 + 0.06 * max(0, -c.z / 0.25)), c.z)))
     parts.append(torso)
     for s in (-1, 1):
-        parts.append(ellipsoid(f'p_leg{s}', (0.105 * s, -0.01, 0.07), (0.11, 0.115, 0.09)))
-        arm = ellipsoid(f'p_arm{s}', (0.155 * s, -0.165, 0.37), (0.078, 0.07, 0.08), rot=(math.radians(-20), math.radians(22 * s), 0))
+        parts.append(ellipsoid(f'p_leg{s}', (0.12 * s, -0.035, 0.07), (0.115, 0.14, 0.095)))
+        arm = ellipsoid(f'p_arm{s}', (0.2 * s, -0.15, 0.3), (0.088, 0.082, 0.098), rot=(math.radians(-20), math.radians(22 * s), 0))
         parts.append(arm)
     bpy.ops.object.select_all(action='DESELECT')
     for p in parts:
@@ -132,11 +132,11 @@ def decal(name, body, x, z, size, mat, lift=0.0):
 
 def ear(name, s, tilt, flop, mats):
     """Paddle ear: narrow root, wide rounded middle, flat blue inner panel on the front."""
-    e = ellipsoid(name, (0, 0, 0.28), (0.15, 0.085, 0.285), mats['white'])
+    e = ellipsoid(name, (0, 0, 0.295), (0.18, 0.12, 0.30), mats['white'])
     bpy.ops.object.transform_apply(location=True)  # mesh starts at the ear root, origin at the pivot
-    shape(e, lambda c: Vector((c.x * (0.55 + 0.45 * min(1, max(0, c.z / 0.22))), c.y * (0.8 + 0.2 * min(1, c.z / 0.3)), c.z)))
-    inner = ellipsoid(name + '_in', (0, -0.072, 0.31), (0.102, 0.014, 0.205), mats['blue'])
-    shape(inner, lambda c: Vector((c.x * (0.7 + 0.3 * min(1, max(0, (c.z - 0.1) / 0.2))), c.y, c.z)))
+    shape(e, lambda c: Vector((c.x * (0.40 + 0.60 * min(1, max(0, c.z / 0.22))), c.y * (0.8 + 0.2 * min(1, c.z / 0.3)), c.z)))
+    inner = ellipsoid(name + '_in', (0, -0.112, 0.32), (0.105, 0.014, 0.205), mats['blue'])
+    shape(inner, lambda c: Vector((c.x * (0.65 + 0.35 * min(1, max(0, (c.z + 0.205) / 0.30))), c.y, c.z)))  # c.z is centred
     inner.parent = e
     base = HEAD_C + Vector((0.13 * s, -0.03, 0.245))
     e.matrix_world = Matrix.Translation(base) @ (Matrix.Rotation(math.radians(tilt), 4, 'Y') @
@@ -147,7 +147,7 @@ def ear(name, s, tilt, flop, mats):
 
 def headphones(mats):
     objs = []
-    bpy.ops.mesh.primitive_torus_add(major_radius=0.435, minor_radius=0.036, major_segments=96, minor_segments=16,
+    bpy.ops.mesh.primitive_torus_add(major_radius=0.48, minor_radius=0.029, major_segments=96, minor_segments=16,
                                      location=HEAD_C + Vector((0, 0.04, -0.01)), rotation=(math.radians(90), 0, 0))
     band = bpy.context.object
     band.name = 'band'
@@ -155,7 +155,7 @@ def headphones(mats):
     bpy.ops.object.transform_apply(scale=True)
     bm = bmesh.new()
     bm.from_mesh(band.data)
-    bmesh.ops.delete(bm, geom=[v for v in bm.verts if (band.matrix_world @ v.co).z < HEAD_C.z - 0.03], context='VERTS')
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if (band.matrix_world @ v.co).z < HEAD_C.z + 0.08], context='VERTS')
     bm.to_mesh(band.data)
     bm.free()
     bpy.ops.object.transform_apply(location=True, rotation=True)
@@ -166,14 +166,14 @@ def headphones(mats):
         p.use_smooth = True
     objs.append(band)
     for s in (-1, 1):
-        c = HEAD_C + Vector((0.415 * s, 0.035, -0.03))
-        bpy.ops.mesh.primitive_cylinder_add(radius=0.16, depth=0.12, vertices=96, location=c, rotation=(0, math.radians(90), 0))
+        c = HEAD_C + Vector((0.445 * s, 0.035, -0.03))
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.195, depth=0.12, vertices=96, location=c, rotation=(0, math.radians(90), 0))
         cup = bpy.context.object
         cup.name = f'cup{s}'
         b = cup.modifiers.new('bev', 'BEVEL')
-        b.width, b.segments, b.limit_method = 0.035, 8, 'ANGLE'
+        b.width, b.segments, b.limit_method = 0.045, 8, 'ANGLE'
         cup.data.materials.append(mats['navy'])
-        bpy.ops.mesh.primitive_cylinder_add(radius=0.138, depth=0.045, vertices=96, location=c + Vector((0.07 * s, 0, 0)),
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.17, depth=0.045, vertices=96, location=c + Vector((0.07 * s, 0, 0)),
                                             rotation=(0, math.radians(90), 0))
         face = bpy.context.object
         face.name = f'cupface{s}'
@@ -192,7 +192,7 @@ def headphones(mats):
             t.data.body = 'L'
             t.data.font = bpy.data.fonts.load(FONT)
             t.data.align_x, t.data.align_y = 'CENTER', 'CENTER'
-            t.data.size, t.data.extrude, t.data.bevel_depth = 0.15, 0.003, 0.002
+            t.data.size, t.data.extrude, t.data.bevel_depth = 0.17, 0.003, 0.002
             t.data.materials.append(mats['letter'])
             objs.append(t)
     return objs
@@ -200,13 +200,13 @@ def headphones(mats):
 
 def mouth_curve(body, mat):
     cu = bpy.data.curves.new('mouth', 'CURVE')
-    cu.dimensions, cu.bevel_depth, cu.bevel_resolution = '3D', 0.0082, 4
+    cu.dimensions, cu.bevel_depth, cu.bevel_resolution = '3D', 0.009, 4
     cu.use_fill_caps = True
     sp = cu.splines.new('POLY')
     pts = []
-    for i in range(41):
-        t = i / 20 - 1
-        loc, nrm = surface(body, 0.058 * t, HEAD_C.z - 0.11 - 0.024 * abs(math.sin(math.pi * t)) + 0.006 * (abs(t) > 0.9))
+    for i in range(81):
+        t = i / 40 - 1
+        loc, nrm = surface(body, 0.075 * t, HEAD_C.z - 0.142 - 0.028 * math.sqrt(max(0, 1 - (2 * abs(t) - 1) ** 2)))
         pts.append(loc + nrm * 0.002)
     sp.points.add(len(pts) - 1)
     for pt, co in zip(sp.points, pts):
@@ -216,7 +216,7 @@ def mouth_curve(body, mat):
     return o
 
 
-def blush(mat, point, radius=0.07, color='#f7a2b2'):
+def blush(mat, point, radius=0.065, color='#ff9eaa'):
     """Soft cheek blush painted into the body shader around a surface point (no geometry)."""
     nt = mat.node_tree
     bsdf = nt.nodes['Principled BSDF']
@@ -229,7 +229,7 @@ def blush(mat, point, radius=0.07, color='#f7a2b2'):
     nt.links.new(coord.outputs['Object'], dist.inputs[0])
     ramp = nt.nodes.new('ShaderNodeMapRange')
     ramp.interpolation_type = 'SMOOTHERSTEP'
-    ramp.inputs['From Min'].default_value, ramp.inputs['From Max'].default_value = radius * 0.35, radius
+    ramp.inputs['From Min'].default_value, ramp.inputs['From Max'].default_value = radius * 0.78, radius
     ramp.inputs['To Min'].default_value, ramp.inputs['To Max'].default_value = 0.85, 0.0
     nt.links.new(dist.outputs['Value'], ramp.inputs['Value'])
     mix = nt.nodes.new('ShaderNodeMix')
@@ -244,23 +244,22 @@ def blush(mat, point, radius=0.07, color='#f7a2b2'):
 
 
 def build():
-    mats = dict(white=material('vinyl_white', '#f5f6f9', 0.58, sss=0.04, sheen=0.2),
-                blue=material('vinyl_blue', '#3f8ff0', 0.5), navy=material('vinyl_navy', '#1b2f6b', 0.42, coat=0.12),
-                eye=material('eye', '#172a5c', 0.08, coat=1.0), pink=material('cheek', '#f6a9b4', 0.75),
+    mats = dict(white=material('vinyl_white', '#f7f7fa', 0.58, sss=0.04, sheen=0.05),
+                blue=material('vinyl_blue', '#159bfa', 0.55), navy=material('vinyl_navy', '#142953', 0.34, coat=0.12),
+                eye=material('eye', '#071b45', 0.2, coat=0.35), pink=material('cheek', '#f6a9b4', 0.75),
                 shine=material('shine', '#ffffff', 0.3), letter=material('letter', '#ffffff', 0.45))
     body = fused_body(mats['white'])
     face = []
     for s in (-1, 1):
-        face.append(decal(f'eye{s}', body, 0.168 * s, HEAD_C.z - 0.055, (0.06, 0.022, 0.072), mats['eye'], 0.004))
-        loc, nrm = surface(body, 0.168 * s + 0.022, HEAD_C.z - 0.022)
-        face.append(ellipsoid(f'eyehi{s}', loc + nrm * 0.022, (0.021, 0.012, 0.021), mats['shine'], 24))
-        loc, nrm = surface(body, 0.168 * s - 0.02, HEAD_C.z - 0.09)
-        face.append(ellipsoid(f'eyehi2{s}', loc + nrm * 0.02, (0.009, 0.006, 0.009), mats['shine'], 16))
-        blush(mats['white'], surface(body, 0.245 * s, HEAD_C.z - 0.12)[0])
-    face.append(decal('nose', body, 0, HEAD_C.z - 0.078, (0.02, 0.012, 0.014), mats['eye'], -0.002))
+        ex, ez = 0.178 * s, HEAD_C.z - 0.085
+        face.append(decal(f'eye{s}', body, ex, ez, (0.05, 0.02, 0.069), mats['eye'], 0.001))
+        loc, nrm = surface(body, ex + 0.02, ez + 0.03)  # one catchlight, upper right on both eyes
+        face.append(ellipsoid(f'eyehi{s}', loc + nrm * 0.022, (0.016, 0.006, 0.016), mats['shine'], 24))
+        blush(mats['white'], surface(body, 0.25 * s, HEAD_C.z - 0.165)[0])
+    face.append(decal('nose', body, 0, HEAD_C.z - 0.125, (0.024, 0.014, 0.015), mats['eye'], 0.0))
     face.append(mouth_curve(body, mats['eye']))
     ears = {}
-    for s, tilt, flop in ((-1, -62, 6), (1, 8, -6)):
+    for s, tilt, flop in ((-1, -48, 6), (1, 12, -6)):
         ears[s] = ear(f'ear{s}', s, tilt, flop, mats)
     gear = headphones(mats)
     root = rig(body, face + gear, ears)
@@ -327,11 +326,11 @@ def stage(cycles=True, samples=96):
     scn.render.resolution_x, scn.render.resolution_y = 1080, 1920
     scn.render.resolution_percentage = int(arg('--pct', 100))
     scn.view_settings.view_transform = arg('--view', 'Standard')
-    scn.view_settings.exposure = float(arg('--exposure', 0.0))
+    scn.view_settings.exposure = float(arg('--exposure', -1.0))
     world = bpy.data.worlds.new('world')
     world.use_nodes = True
-    world.node_tree.nodes['Background'].inputs['Color'].default_value = lin('#f3f6fa')
-    world.node_tree.nodes['Background'].inputs['Strength'].default_value = 0.35
+    world.node_tree.nodes['Background'].inputs['Color'].default_value = lin('#f4f6f8')
+    world.node_tree.nodes['Background'].inputs['Strength'].default_value = 0.2
     scn.world = world
     # seamless sweep: floor curving up into a back wall
     bpy.ops.mesh.primitive_plane_add(size=1)
@@ -353,7 +352,7 @@ def stage(cycles=True, samples=96):
     bg = material('sweep', '#f2f5f9', 0.9)
     b = bg.node_tree.nodes['Principled BSDF']
     b.inputs['Emission Color'].default_value = lin('#eef3f9')
-    b.inputs['Emission Strength'].default_value = float(arg('--bg', 0.45))
+    b.inputs['Emission Strength'].default_value = float(arg('--bg', 0.35))
     sweep.data.materials.append(bg)
 
     def area(name, loc, energy, size, color='#ffffff'):
@@ -364,17 +363,17 @@ def stage(cycles=True, samples=96):
         o.rotation_mode = 'QUATERNION'
         o.rotation_quaternion = (Vector((0, 0, 0.6)) - Vector(loc)).to_track_quat('-Z', 'Y')
 
-    area('key', (-2.0, -2.6, 2.8), 230, 3.0, '#fff6ee')
-    area('fill', (2.6, -2.0, 1.4), 45, 3.5, '#eef3ff')
+    area('key', (-2.0, -2.6, 2.8), 230, 1.8, '#ffffff')
+    area('fill', (2.6, -2.0, 1.4), 35, 3.5, '#fbfcff')
     area('rim', (1.2, 2.2, 2.6), 90, 2.0)
-    area('top', (0, -0.4, 3.4), 35, 3.0)
+    area('top', (0, -0.4, 3.4), 15, 3.0)
     cam = link(bpy.data.objects.new('cam', bpy.data.cameras.new('cam')))
     cam.data.lens = 70
     scn.camera = cam
     return cam
 
 
-def aim(cam, yaw_deg, dist=4.3, height=0.75, target=(0, 0, 0.66)):
+def aim(cam, yaw_deg, dist=4.35, height=0.9, target=(0, 0, 0.74)):
     a = math.radians(yaw_deg)
     cam.location = (dist * math.sin(a), -dist * math.cos(a), height)
     cam.rotation_mode = 'QUATERNION'
