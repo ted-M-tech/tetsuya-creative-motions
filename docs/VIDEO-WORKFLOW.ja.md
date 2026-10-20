@@ -68,3 +68,5 @@ ln -s "$PWD/skills/tetsuya-creative-motions" ~/.agents/skills/tetsuya-creative-m
 原本はこのGitHubで管理します。繰り返し使える判断だけスキルへ、色・声・秒数など作品固有の選択は作品フォルダへ残します。上流の技術スキルは別途更新し、完成作品の依存バージョンは固定して記録します。詳細は[記録のルール](../skills/tetsuya-creative-motions/references/project-records.md)。
 
 自作スキルと説明文は[MIT](../LICENSE)。第三者のスキル・素材・ブランド・声にはそれぞれの条件が適用されます。
+
+3Dキャラクター（Blender）を使う場合は [3Dキャラクター制作ガイド](3D-CHARACTER-WORKFLOW.ja.md) を参照。

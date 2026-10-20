@@ -1,4 +1,6 @@
-# Mimi 3D
+# Mimi 3D — source (v1 snapshot)
+
+Snapshot of the approved v1 (2026-10-20). The master copy, including `mimi.blend`, is in Lanclo's product repository at `design/mimi-3d/`.
 
 Mimi as a soft matte vinyl toy, built entirely by Python in Blender 5.2 and rendered with Cycles. Target look: `source/ref/codex/toy-look.png` (generated with Codex from the 2D mascot art).
 

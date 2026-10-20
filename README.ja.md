@@ -30,6 +30,12 @@ A Japanese product film about your own AI voice, personalized lessons, and daily
 
 Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカメラ移動で機能を見せる。全フレームと音をPython（pycairo・numpy）で生成。
 
+**Mimi 3D — マスコットを、ソフビのように。** · Blender・3Dキャラクター
+
+[制作過程・プロンプト・レビュー](films/mimi-3d/README.ja.md) · [3Dキャラクター制作ガイド](docs/3D-CHARACTER-WORKFLOW.ja.md)
+
+2DのMimiをBlenderのPythonだけで3Dに。Claude CodeとCodexで9往復レビューし合って仕上げた。
+
 ## この動画制作フローを使う
 
 [専用スキルの導入と制作手順](docs/VIDEO-WORKFLOW.ja.md)を公開しています。Lancloの改善例を見ながら、自分の動画へ応用できます。構成・改善・記録を支えるスキルで、レンダラーや音声APIは別途必要です。
