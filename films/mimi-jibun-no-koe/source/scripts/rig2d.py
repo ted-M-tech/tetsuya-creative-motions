@@ -267,9 +267,15 @@ def act_master(anim, hp, cp, n):
 
 
 def mouth_open_frames(start_f, clip='model.mp3', length=1.78, threshold=0.28):
-    """Frames (60 fps, from start_f) where the her-voice model is loud enough to show the open mouth."""
+    """Frames (60 fps, from start_f) that show the open mouth: syllable peaks of the her-voice model.
+    The pattern is saved to scripts/lipsync-model.json so the rig rebuilds without the voice file (not in Git)."""
+    import json
     import subprocess
     import numpy as np
+    cache = ROOT / 'scripts/lipsync-model.json'
+    if not (ROOT / 'assets/voice' / clip).exists():
+        opens = json.loads(cache.read_text())['opens']
+        return [(start_f + i * 4, o) for i, o in enumerate(opens)]
     pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ROOT / 'assets/voice' / clip), '-t', str(length), '-ac', '1', '-ar', '6000',
                           '-f', 's16le', '-'], capture_output=True, check=True).stdout
     x = np.frombuffer(pcm, np.int16).astype(float)
@@ -281,6 +287,7 @@ def mouth_open_frames(start_f, clip='model.mp3', length=1.78, threshold=0.28):
     for i in range(1, len(opens)):                                  # never hold the mouth open for more than two steps
         if opens[i] and opens[i - 1] and i > 1 and opens[i - 2]:
             opens[i] = False
+    cache.write_text(json.dumps({'clip': clip, 'step_frames': 4, 'opens': opens}) + '\n')
     return [(start_f + i * 4, o) for i, o in enumerate(opens)]
 
 

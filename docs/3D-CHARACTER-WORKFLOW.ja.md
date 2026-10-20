@@ -2,6 +2,8 @@
 
 [English](3D-CHARACTER-WORKFLOW.md) · **日本語**
 
+> 2026-10-20：マスコットのショートは2Dを基本にした（同じポーズの比較で依頼者が2Dを選択）。3Dは振り向き・回り込み・空間が要る回と参照用。2Dの手順は [2Dキャラクターアニメ制作ガイド](2D-CHARACTER-ANIMATION.ja.md)。
+
 2Dのキャラクターを3Dにし、その3Dキャラクターでショートアニメを作るための手順です。Mimi（Lanclo）で実際に通した流れと、そこで分かったことをまとめています。個別の記録は [films/mimi-3d](../films/mimi-3d/PROCESS.md)、そのまま渡せる指示は [films/mimi-3d/PROMPT.md](../films/mimi-3d/PROMPT.md) を見てください。
 
 ## 方針
