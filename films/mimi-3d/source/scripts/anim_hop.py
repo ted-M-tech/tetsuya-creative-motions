@@ -55,7 +55,7 @@ def main():
     scn = bpy.context.scene
     scn.render.fps = FPS
     cam.data.lens = 50
-    M.aim(cam, -24, dist=4.6, height=0.6, target=(0, 0, 0.7))
+    M.aim(cam, -24, dist=5.4, height=0.8, target=(0, 0, 0.72))
     pb = rig.pose.bones
     for b_ in pb:
         b_.rotation_mode = 'XYZ'
