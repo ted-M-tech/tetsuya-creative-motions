@@ -227,6 +227,9 @@
       k.pop("#c1", 3.95); k.pop("#c2", 5.9); k.pop("#c3", 7.1); k.pop("#c4", 8.5);
       ["#hl1", "#hl2", "#hl3", "#hl4"].forEach((s) => tl.fromTo(s, { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" },
         parseFloat(document.querySelector(s).dataset.start)));
+      // the 16x scroll (8.5-9.0) passes other fixture cards with "デモ：" lines: blurred so nothing is readable
+      tl.fromTo("#a-app", { filter: "blur(0px)" }, { filter: "blur(9px)", duration: 0.04, immediateRender: false }, 8.48);
+      tl.to("#a-app", { filter: "blur(0px)", duration: 0.06 }, 8.96);
       tl.fromTo("#device", { scale: 1.15 }, { scale: 1.2, duration: 1.2, ease: "power1.inOut", immediateRender: false }, 9.05);
 
       // "...how does she know?" (10.3-11.4)

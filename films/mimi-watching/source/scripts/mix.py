@@ -3,7 +3,10 @@
 usage: uv run --no-project --with numpy python films/mimi-watching/source/scripts/mix.py
 No voices: every line is a speech bubble or caption. The owner dislikes loud SFX, so the "horror" is a low, quiet drone with a little hiss.
 """
+import json
+import subprocess
 import sys
+import wave
 from pathlib import Path
 
 import numpy as np
@@ -43,25 +46,40 @@ def drone(d, vel=0.22):
 
 
 m = Mix(DUR)
-m.sfx(drone(SHOCK + 1.2, 0.035), HOOK)          # a faint room tone under every dark scene
-m.sfx(drone(2.5, 0.07), HOOK)
-m.sfx(whoosh(0.5, 0.12), EYES - 0.2)
-m.sfx(ding(0.12), NOTIFY)
+m.sfx(drone(SHOCK + 1.2, 0.012), HOOK)          # a faint room tone under every dark scene
+m.sfx(drone(2.5, 0.015), HOOK)
+m.sfx(whoosh(0.5, 0.012), EYES - 0.2)
+m.sfx(ding(0.025), NOTIFY)
 m.sfx(tap() * 0.5, OPEN)
 m.sfx(whoosh(0.3, 0.2), APP)
 for at in CAPS:
     m.sfx(tap() * 0.25, at)
-m.sfx(drone(1.3, 0.06), SHOCK - 0.1)
+m.sfx(drone(1.3, 0.02), SHOCK - 0.1)
 m.sfx(pochi(0.35), LIGHTS - 0.05)       # the light switch
 m.sfx(pop_seq(3, 0.05, base=79), LIGHTS + 0.1)
 m.sfx(whoosh(0.3, 0.25), COPY - 0.1)
 m.sfx(pop_seq(2, 0.06, base=76), COPY + 0.05)
 m.sfx(pofu() * 0.4, SKIP)
 m.sfx(pochi(0.3), DARK)                 # lights off
-m.sfx(drone(1.0, 0.06), DARK)
+m.sfx(drone(1.0, 0.02), DARK)
 m.bed(LIGHTS, END)
 tt = np.arange(m.n) / SR
 m.m *= np.interp(tt, [0, DARK, DARK + 0.3, END - 0.1, END + 0.1], [1, 1, 0.15, 0.15, 1])   # the bed sinks while it's dark
 m.end_chord(END)
 m.sfx(pochi(), CTA_TAP)
-print(m.write(SRC / 'hf/assets/mix.wav'))
+# Static loudness: the kit's Mix.write ends with a one-pass (dynamic) loudnorm, which lifted the quiet dark opening by ~15 dB
+# (there is no voice to anchor it). Same bus balance as Mix.write, then one gain for the whole film to -14 LUFS and a peak limiter.
+mix = 0.35 * lowpass(m.s, 0.35) + 0.55 * m.m
+mix /= np.abs(mix).max() / 0.9
+out = SRC / 'hf/assets/mix.wav'
+raw = out.with_suffix('.pre.wav')
+with wave.open(str(raw), 'wb') as w:
+    w.setnchannels(2)
+    w.setsampwidth(2)
+    w.setframerate(SR)
+    w.writeframes((np.stack([mix, mix], 1) * 32767).astype(np.int16).tobytes())
+meas = subprocess.run(['ffmpeg', '-hide_banner', '-i', str(raw), '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr
+lufs = float(meas[meas.rindex('I:'):].split()[1])
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(raw), '-af', f'volume={-14.0 - lufs:.2f}dB,alimiter=limit=0.84:level=false', '-ar', str(SR), str(out)], check=True)
+raw.unlink()
+print(out)
