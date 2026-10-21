@@ -1,4 +1,8 @@
-"""Mimi shorts sound kit: voice placement, code-made SFX, a light 100 BPM bed, ducking and loudness.
+"""Mimi shorts sound kit: voice placement, code-made SFX, the Lanclo SNS theme bed, ducking and loudness.
+
+The bed is the Lanclo SNS theme, OpenTracks「Everyone Get Up」(Anonyment), read from library/bgm/everyone-get-up.mp3.
+It is not in Git (the licence forbids passing the file on): copy it from Lanclo's Google Drive, 002.SNS/_BGM/.
+Without it the code-made 100 BPM mallet bed plays instead.
 
 An episode's mix.py builds a Mix, places its cues, and calls write():
 
@@ -17,6 +21,8 @@ from pathlib import Path
 import numpy as np
 
 SR = 48000
+THEME = Path(__file__).resolve().parent.parent / 'library/bgm/everyone-get-up.mp3'
+THEME_GAIN = 0.1  # with the 0.55 music bus: about 21 dB under the narration
 _rng = np.random.default_rng(7)
 
 
@@ -188,7 +194,15 @@ class Mix:
         self._place(self.s, x, at, g)
 
     def bed(self, start, end, joy_from=None):
-        """100 BPM D-major mallet arpeggio over a pad; an octave lift on off-beats from joy_from."""
+        """The theme from start, eased in, running on to the end of the film (end_chord fades it out).
+        Without the theme file: a 100 BPM D-major mallet arpeggio over a pad, an octave lift on off-beats from joy_from."""
+        if THEME.exists():
+            x = load(THEME, 0.0, self.duration - start)
+            f = int(0.4 * SR)
+            x[:f] *= np.linspace(0, 1, f)
+            self._place(self.m, x, start, THEME_GAIN)
+            self.themed = True
+            return
         beat = 60 / 100
         chords = [[62, 66, 69], [59, 62, 66], [55, 59, 62], [57, 61, 64]]
         pattern = [0, 2, 1, 2, 0, 2, 1, 2]
@@ -203,6 +217,10 @@ class Mix:
             at += beat / 2
 
     def end_chord(self, at):
+        if getattr(self, 'themed', False):  # the theme carries on and fades out over the end card
+            tt = np.arange(self.n) / SR
+            self.m *= np.interp(tt, [0, at, self.duration], [1, 1, 0])
+            return
         for i, m in enumerate([74, 78, 81, 86]):
             self._place(self.m, bell(m, 2.2, 0.16), at + 0.02 * i)
         self._place(self.m, pad([50, 57, 62, 66], max(0.5, self.duration - at), 0.08), at)
@@ -210,7 +228,8 @@ class Mix:
     def write(self, out, lufs=-14):
         env = lowpass(np.abs(self.v), 0.002)
         duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12 + 1e-9), 0, 1), 0.0008)
-        mix = self.v + 0.6 * self.s + 0.55 * self.m * duck
+        # SFX quieter and softened (a one-pole lowpass, ~3 kHz): high bells were piercing on earphones
+        mix = self.v + 0.35 * lowpass(self.s, 0.35) + 0.55 * self.m * duck
         mix /= np.abs(mix).max() / 0.9
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
