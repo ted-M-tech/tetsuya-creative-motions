@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      .prop { position: absolute; width: 310px; height: auto; transform-origin: 50% 100%; }
+      #sink1 { left: -14px; top: 1052px; }
+      #sink2 { left: 4px; top: 780px; }
+      #bulb { position: absolute; left: 770px; top: 430px; width: 150px; height: auto; filter: drop-shadow(0 0 30px rgba(255, 216, 74, 0.9)); }
+      .puff { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, #ffffff 0 45%, rgba(255, 255, 255, 0) 70%); }
+      .r-tip span { font-size: 44px; }
+      .phone .ok { font-size: 40px; color: #2a8dff; margin-top: 20px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1080" data-height="1920">
+      <div id="cam">
+        <!-- Rive shots, back to back (../scripts/shots.py) -->
+        <video id="v-hook" class="clip" src="assets/shots/hook.mp4" muted playsinline data-start="0" data-duration="1.0" data-track-index="0"></video>
+        <video id="v-stun" class="clip" src="assets/shots/stun.mp4" muted playsinline data-start="1.0" data-duration="1.2" data-track-index="0"></video>
+        <video id="v-reach" class="clip" src="assets/shots/reach.mp4" muted playsinline data-start="2.2" data-duration="0.7" data-track-index="0"></video>
+        <video id="v-listen" class="clip" src="assets/shots/listen.mp4" muted playsinline data-start="2.9" data-duration="1.5" data-track-index="0"></video>
+        <video id="v-perk" class="clip" src="assets/shots/perk.mp4" muted playsinline data-start="4.4" data-duration="0.6" data-track-index="0"></video>
+        <video id="v-think" class="clip" src="assets/shots/think.mp4" muted playsinline data-start="5.0" data-duration="1.8" data-track-index="0"></video>
+        <video id="v-practice" class="clip" src="assets/shots/practice.mp4" muted playsinline data-start="6.8" data-duration="2.2" data-track-index="0"></video>
+        <video id="v-clear" class="clip" src="assets/shots/clear.mp4" muted playsinline data-start="9.0" data-duration="1.2" data-track-index="0"></video>
+        <video id="v-jump" class="clip" src="assets/shots/jump.mp4" muted playsinline data-start="10.2" data-duration="0.7" data-track-index="0"></video>
+        <video id="v-success" class="clip" src="assets/shots/success.mp4" muted playsinline data-start="10.9" data-duration="1.2" data-track-index="0"></video>
+        <video id="v-proud" class="clip" src="assets/shots/proud.mp4" muted playsinline data-start="12.1" data-duration="1.9" data-track-index="0"></video>
+
+        <!-- The sinks: one per wrong "think", gone once she says it right -->
+        <img id="sink1" class="prop clip" src="assets/props/sink.webp" alt="" data-start="0.05" data-duration="9.25" data-track-index="1" />
+        <img id="sink2" class="prop clip" src="assets/props/sink.webp" alt="" data-start="1.62" data-duration="7.5" data-track-index="2" />
+        <div id="puff1" class="puff clip" style="left:-10px; top:1110px" data-start="9.1" data-duration="0.4" data-track-index="3"></div>
+        <div id="puff2" class="puff clip" style="left:16px; top:860px" data-start="9.35" data-duration="0.4" data-track-index="4"></div>
+        <img id="bulb" class="clip" src="assets/props/bulb.webp" alt="" data-start="9.7" data-duration="0.5" data-track-index="3" />
+
+        <!-- Lanclo on the phone: record -> her own voice, native -> practise -> done -->
+        <div id="ui-rec" class="phone clip" data-start="2.2" data-duration="0.7" data-track-index="5">
+          <div class="brand">Lanclo</div>
+          <div class="sentence">I think so.</div>
+          <div id="rec-btn" class="rec"></div>
+          <div class="label">録音</div>
+        </div>
+        <div id="ui-model" class="phone clip" data-start="2.9" data-duration="3.9" data-track-index="5">
+          <div class="brand">Lanclo</div>
+          <div class="sentence">I think so.</div>
+          <div class="btn own">▶ 自分の声</div>
+          <div class="btn model">▶ 自分の声のお手本</div>
+          <div class="wave blue" id="wave-model"></div>
+        </div>
+        <div id="ui-practice" class="phone clip" data-start="6.8" data-duration="2.2" data-track-index="5">
+          <div class="brand">Lanclo</div>
+          <div class="sentence">I think so.</div>
+          <div class="label" style="margin-top:10px">● 一緒に話す</div>
+          <div class="wave blue" id="wave-practice"></div>
+        </div>
+        <div id="ui-done" class="phone clip" data-start="9.0" data-duration="5.0" data-track-index="5">
+          <div class="brand">Lanclo</div>
+          <div class="sentence">I <b>th</b>ink so.</div>
+          <div class="ok">✓</div>
+          <div class="label">言えた！</div>
+        </div>
+        <div id="tap1" class="ripple clip" style="left:903px; top:1110px" data-start="2.63" data-duration="0.27" data-track-index="6"></div>
+      </div>
+
+      <div id="spark" class="sparkles clip" data-start="4.4" data-duration="1.4" data-track-index="7"></div>
+      <div id="spark2" class="sparkles clip" data-start="9.0" data-duration="3.1" data-track-index="8"></div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-1" class="caption clip" data-start="0" data-duration="1.0" data-track-index="9"><span id="c1" style="font-size:88px">“I <em>sink</em> so!”</span></div>
+      <div id="cap-2" class="caption clip" data-start="1.0" data-duration="1.2" data-track-index="9"><span id="c2">think のつもりが<br /><em>sink＝流し台!?</em></span></div>
+      <div id="cap-3" class="caption small clip" data-start="3.0" data-duration="1.4" data-track-index="9"><span id="c3">自分の声が<br /><strong>“I think so.”</strong></span></div>
+      <div id="cap-4" class="caption clip" data-start="4.4" data-duration="0.6" data-track-index="9"><span id="c4">言えてる…！</span></div>
+      <div id="cap-5" class="caption clip" data-start="5.0" data-duration="1.8" data-track-index="9"><span id="c5">直すのは、ここだけ。</span></div>
+      <div id="cap-6" class="caption small clip" data-start="6.8" data-duration="2.2" data-track-index="9"><span id="c6">お手本に合わせて、<br />言ってみる。</span></div>
+      <div id="cap-7" class="caption clip" data-start="9.0" data-duration="1.2" data-track-index="9"><span id="c7">シンク、消えた！</span></div>
+      <div id="cap-8" class="caption small clip" data-start="10.9" data-duration="1.2" data-track-index="9"><span id="c8">声はあなたのまま、<br />発音だけネイティブに。</span></div>
+      <div id="cap-9" class="caption clip" data-start="12.1" data-duration="1.9" data-track-index="9"><span id="c9">“I <strong>think</strong> so.”</span></div>
+
+      <div id="tag-model" class="tag model clip" data-start="3.0" data-duration="1.4" data-track-index="10"><span id="t1">▶ 自分の声のお手本</span></div>
+      <div id="tag-practice" class="tag model clip" data-start="6.8" data-duration="2.2" data-track-index="10"><span id="t2">● お手本と一緒に話す</span></div>
+
+      <!-- Result: five-axis radar, score and one thing to fix (illustrative values) -->
+      <div id="result" class="result clip" data-start="5.0" data-duration="1.8" data-track-index="11">
+        <svg id="radar" viewBox="0 0 360 380" class="radar"></svg>
+        <div class="r-side">
+          <div class="r-head"><span>発音チェック</span></div>
+          <div class="r-tip"><b>直すポイント</b><span>th は、舌先を<br />軽く歯の間に</span></div>
+          <div class="r-again">▶ お手本でもう一度</div>
+        </div>
+      </div>
+
+      <div id="end" class="end clip" data-start="14.0" data-duration="1.0" data-track-index="12"></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15" data-track-index="13" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.radar(document.getElementById("radar"), { labels: ["流暢さ", "発音", "アクセント", "リズム", "抑揚"], values: [0.8, 0.42, 0.72, 0.76, 0.7], score: 64, warn: 1 });
+      K.bars(document.getElementById("wave-model"));
+      K.bars(document.getElementById("wave-practice"));
+      K.sparkles(document.getElementById("spark"), [[250, 560], [720, 520], [180, 860, "#7cc3ff"], [770, 820, "#7cc3ff"]]);
+      K.sparkles(document.getElementById("spark2"), [[230, 600], [700, 560, "#7cc3ff"], [160, 900], [780, 860, "#7cc3ff"]]);
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Camera: punch in on emotion, wide for actions with the phone.
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.1, duration: 0.95, ease: "power1.inOut" }, 0);                                   // hook
+      tl.fromTo("#cam", { scale: 1.16 }, { scale: 1.08, immediateRender: false, duration: 0.4, ease: "power3.out" }, 1.0);             // stunned punch
+      tl.fromTo("#cam", { scale: 1.1 }, { scale: 1.04, immediateRender: false, duration: 0.3, ease: "power3.out" }, 1.8);              // second sink
+      tl.set("#cam", { scale: 1.0 }, 2.2);                                                                                             // reach, wide
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.08, immediateRender: false, duration: 1.5, ease: "power1.inOut" }, 2.9);            // listen
+      tl.fromTo("#cam", { scale: 1.16 }, { scale: 1.1, immediateRender: false, duration: 0.4, ease: "power3.out" }, 4.4);              // realisation
+      tl.set("#cam", { scale: 1.0 }, 5.0);                                                                                             // result card, wide
+      tl.fromTo("#cam", { scale: 1.02 }, { scale: 1.08, immediateRender: false, duration: 2.2, ease: "power1.inOut" }, 6.8);           // practice
+      tl.set("#cam", { scale: 1.0 }, 9.0);                                                                                             // sinks go, wide
+      tl.fromTo("#cam", { scale: 1.0 }, { scale: 1.04, immediateRender: false, duration: 1.2, ease: "none" }, 10.9);                   // celebrate
+      tl.fromTo("#cam", { scale: 1.04 }, { scale: 1.12, immediateRender: false, duration: 1.9, ease: "power1.inOut" }, 12.1);          // says it right
+
+      // Sinks drop with the wrong word and land with a bounce (cue times = ../scripts/mix.py).
+      tl.fromTo("#sink1", { y: -900, rotation: -12 }, { y: 0, rotation: 0, duration: 0.4, ease: "power2.in" }, 0.05);
+      tl.fromTo("#sink1", { scaleY: 0.82, scaleX: 1.1 }, { scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1, 0.4)", immediateRender: false }, 0.45);
+      tl.fromTo("#sink2", { y: -1100, rotation: 14 }, { y: 0, rotation: -7, duration: 0.18, ease: "power2.in" }, 1.62);
+      tl.fromTo("#sink2", { scaleY: 0.82, scaleX: 1.1 }, { scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1, 0.4)", immediateRender: false }, 1.8);
+      tl.to("#sink1", { scale: 0, opacity: 0, duration: 0.18, ease: "back.in(2)" }, 9.1);
+      tl.to("#sink2", { scale: 0, opacity: 0, duration: 0.18, ease: "back.in(2)" }, 9.35);
+      tl.fromTo("#puff1", { scale: 0.3, opacity: 1 }, { scale: 1.3, opacity: 0, duration: 0.4, ease: "power2.out" }, 9.1);
+      tl.fromTo("#puff2", { scale: 0.3, opacity: 1 }, { scale: 1.3, opacity: 0, duration: 0.4, ease: "power2.out" }, 9.35);
+      tl.fromTo("#bulb", { scale: 0, y: 30 }, { scale: 1, y: 0, duration: 0.25, ease: "back.out(3)" }, 9.7);
+
+      // Phone
+      k.ripple("#tap1", 2.63); k.press("#rec-btn", 2.64, 0.85);
+      k.wave("#wave-model", 3.05, 0.9, 1); k.wave("#wave-practice", 7.2, 0.9, 2);
+
+      k.twinkle("#spark", 4.42); k.twinkle("#spark2", 9.72);
+
+      // Captions and tags
+      tl.set("#c1", { opacity: 1, scale: 1 }, 0);
+      k.pop("#c2", 1.0); k.pop("#c3", 3.0); k.pop("#c4", 4.4); k.pop("#c5", 5.0); k.pop("#c6", 6.8); k.pop("#c7", 9.0); k.pop("#c8", 10.9); k.pop("#c9", 12.1);
+      k.tagIn("#t1", 3.0); k.tagIn("#t2", 6.8);
+
+      k.result("#result", 5.0, 64);
+      k.end(14.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

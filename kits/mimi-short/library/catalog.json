@@ -1,0 +1,22 @@
+{
+  "style": "Official Mimi illustration: navy outlines, flat fills, blue inner ears, headphones with the white L on the cup at the viewer's LEFT, three-quarter view turned slightly toward the viewer's RIGHT.",
+  "official": {
+    "note": "Approved app art, used as is from voice-web/public/mascot/mimi/.",
+    "poses": ["master", "listening", "success", "thinking", "encourage"]
+  },
+  "poses": [
+    {"id": "hide", "file": "poses/hide.webp", "status": "approved-in-video", "use": "embarrassed, hiding the face in both ears", "prompt": "prompts/01-codex-2d-key-poses.txt"},
+    {"id": "droop", "file": "poses/droop.webp", "status": "approved-in-video", "use": "deflated, = = eyes, sweat drop", "prompt": "prompts/01-codex-2d-key-poses.txt"},
+    {"id": "perk", "file": "poses/perk.webp", "status": "approved-in-video", "use": "delighted surprise, ears up, sparkles", "prompt": "prompts/01-codex-2d-key-poses.txt"},
+    {"id": "reach", "file": "poses/reach.webp", "status": "approved-in-video", "use": "reaching to tap a screen on the right", "prompt": "prompts/03-codex-more-poses.txt"},
+    {"id": "hide-reach", "file": "poses/hide-reach.webp", "status": "approved-in-video", "use": "still hiding, one paw tapping blindly", "prompt": "prompts/03-codex-more-poses.txt"},
+    {"id": "peek", "file": "poses/peek.webp", "status": "approved-in-video", "use": "one eye peeking out from under an ear", "prompt": "prompts/03-codex-more-poses.txt"},
+    {"id": "jump", "file": "poses/jump.webp", "status": "approved-in-video", "use": "joyful jump, ^ ^ eyes", "prompt": "prompts/03-codex-more-poses.txt"},
+    {"id": "speak-closed", "file": "poses/speak-closed.webp", "status": "approved-in-video", "use": "speaking practice, mouth closed (lip-sync pair)", "prompt": "prompts/04-codex-lip-sync-pair.txt"},
+    {"id": "speak-open", "file": "poses/speak-open.webp", "status": "approved-in-video", "use": "speaking practice, mouth open (lip-sync pair, same crop as closed)", "prompt": "prompts/04-codex-lip-sync-pair.txt"}
+  ],
+  "backgrounds": [
+    {"id": "desk", "file": "backgrounds/desk.webp", "status": "approved-in-video", "use": "study desk, phone on a stand at the right (screen 853,981 161x322 at 1080x1920)", "prompt": "prompts/02-codex-desk-background.txt"}
+  ],
+  "first_used_in": "「自分の声、むり」 (2026-10-20)"
+}

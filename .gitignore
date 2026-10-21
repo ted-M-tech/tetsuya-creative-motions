@@ -28,3 +28,10 @@ films/mimi-jibun-no-koe/source/hf-short/assets/mix.wav
 films/mimi-jibun-no-koe/source/hf-short/assets/fonts/*.ttf
 films/mimi-jibun-no-koe/source/hf-short/.hyperframes/
 films/mimi-jibun-no-koe/source/hf-short/.thumbnails/
+kits/mimi-short/fonts/
+**/assets/kit/
+films/mimi-think-sink/source/rive/*/build/
+films/mimi-think-sink/source/hf/assets/shots/*.mp4
+films/mimi-think-sink/source/hf/assets/mix.wav
+films/mimi-think-sink/source/hf/.hyperframes/
+films/mimi-think-sink/source/hf/.thumbnails/

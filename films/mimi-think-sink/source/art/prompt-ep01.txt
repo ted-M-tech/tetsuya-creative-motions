@@ -1,0 +1,8 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet) and poses already drawn in the same style (hide, droop, perk, speak). Keep EXACTLY the same illustration style, line weight, colours, proportions, head size, headphone design and the same three-quarter view turned slightly toward the viewer's RIGHT. Plain pure white background, full body, centred, same scale as the attached poses, no text.
+
+Save each as PNG in art/ (relative to the current directory):
+1) art/confident.png — proudly saying an English phrase: chest out, eyes closed in a confident smile, mouth open mid-word, one mitten hand raised with the index paw up like making a point, the other on her hip; ears up.
+2) art/stunned.png — stunned and blank: big round eyes staring to the viewer's right, tiny "o" mouth, both ears stiff and straight up, arms hanging limp, a single sweat drop, small vertical lines of shock above her head.
+3) art/sink.png — a PROP only, no character: a classic stainless kitchen sink basin with a curved faucet, drawn in the same flat style with the same navy outline weight, light grey-blue metal tones, a small sparkle highlight; three-quarter view; isolated on white.
+4) art/bulb.png — a PROP only: a cute idea light bulb with a soft yellow glow and three short rays, same flat style and navy outline; isolated on white.
+Do not modify other files. List the saved paths when done.
