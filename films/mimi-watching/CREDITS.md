@@ -11,5 +11,5 @@
 | Lanclo mark, end-card Mimi | Lanclo brand | © Lanclo, not licensed for reuse | |
 | Zen Maru Gothic | Google Fonts | SIL OFL 1.1 | |
 | Download on the App Store badge | Apple | Apple marketing guidelines | |
-| SFX, drone, film grain | Made in code (`source/scripts/mix.py`, `kits/mimi-short/scripts/sfx.py`, canvas grain in `hf/index.html`) | MIT with the repository code | |
+| SFX, horror bed (music-box lullaby, heartbeat, string cluster), film grain | Made in code (`source/scripts/mix.py`, `kits/mimi-short/scripts/sfx.py`, canvas grain in `hf/index.html`) | MIT with the repository code | |
 | Bed music | 「Everyone Get Up」, [OpenTracks](https://opentracks.com/bgm/detail/22155), Music : Anonyment | OpenTracks licence (commercial use OK, credit optional; no redistribution, no Content ID) | Lanclo SNS theme, not in Git |

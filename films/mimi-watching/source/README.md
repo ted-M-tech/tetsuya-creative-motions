@@ -8,7 +8,7 @@ sh $F/scripts/app_track.sh            # -> hf/assets/app/app.mp4 (6.4 s from 3.9
 # 2. poses: codex-p with prompts/01-codex-poses.txt (art/*.png), then cut out
 for p in mimi-peek mimi-smile friend-shock; do kits/mimi-short/scripts/cutout.sh $F/art/$p.png $F/art/cut/$p.webp; done
 # art/cut/friend-bed.webp is films/mimi-loop's (branch feat/mimi-loop)
-# 3. sound (drone, SFX, theme bed)
+# 3. sound (horror bed for the dark scenes, SFX, theme bed)
 uv run --no-project --with numpy python $F/scripts/mix.py
 # 4. edit and render
 kits/mimi-short/stage.sh $F/hf
