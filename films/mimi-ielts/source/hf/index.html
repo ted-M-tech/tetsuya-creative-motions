@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      #morning { position: absolute; inset: 0; background: linear-gradient(#fff4df, #fdf7ee 55%, #eef3f9); opacity: 0; }
+      #sun { position: absolute; right: 90px; top: 380px; width: 170px; height: 170px; border-radius: 50%;
+             background: radial-gradient(circle, #ffd27a 0 55%, rgba(255, 210, 122, 0.25) 56% 70%, rgba(255, 210, 122, 0) 71%); }
+      /* The tear-off daily calendar: binder on top, pages stacked (30 on top, the test-day page at the bottom) */
+      #cal { position: absolute; left: 290px; top: 400px; width: 500px; height: 600px; transform-origin: 50% 0; }
+      #cal .binder { position: absolute; left: -10px; right: -10px; top: 0; height: 70px; background: #344f69; border-radius: 22px 22px 8px 8px;
+                     box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25); z-index: 50; }
+      #cal .binder i { position: absolute; top: 46px; width: 26px; height: 44px; border-radius: 13px; background: #c9d5df; border: 5px solid #273b4b; }
+      #cal .stack { position: absolute; left: 0; right: 0; top: 54px; bottom: 0; background: #e6ecf1; border-radius: 0 0 26px 26px;
+                    box-shadow: 0 22px 50px rgba(39, 59, 75, 0.22); }
+      .page { position: absolute; left: 0; right: 0; top: 54px; bottom: 6px; background: #ffffff; border-radius: 0 0 24px 24px; overflow: hidden;
+              display: flex; flex-direction: column; align-items: center; transform-origin: 8% 0; border-top: 3px dashed #dbe3ea; opacity: 0; }
+      #pg30 { opacity: 1; }
+      .page .hd { width: 100%; padding: 38px 0 14px; background: #e5484d; color: #fff; font-size: 44px; font-weight: 700; text-align: center; letter-spacing: 0.04em; }
+      .page .num { display: flex; align-items: baseline; gap: 10px; margin-top: 18px; color: #273b4b; font-weight: 700; }
+      .page .num b { font-size: 300px; line-height: 1; letter-spacing: -0.03em; }
+      .page .num small { font-size: 54px; }
+      .page.day .hd { background: #2a8dff; }
+      .page.day .num b { font-size: 190px; color: #e5484d; margin-top: 50px; letter-spacing: 0.02em; }
+      .page.day .num small { font-size: 50px; }
+      .pose { position: absolute; height: auto; transform-origin: 50% 100%; }
+      #hm { left: 330px; top: 1010px; width: 420px; }
+      /* the phone, same place as the other real-app shorts */
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #efeff3; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* "デモデータ" (QA fixture label) covered with the app's canvas colour */
+      .mask { position: absolute; left: 0; width: 36%; background: #efeff3; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #pm { left: 30px; top: 930px; width: 470px; }
+      #note { position: absolute; left: 40px; right: 40px; top: 1538px; display: flex; justify-content: center; }
+      #note span { background: #ffffff; color: #596875; font-size: 30px; font-weight: 700; padding: 10px 26px; border-radius: 26px; box-shadow: 0 6px 18px rgba(39, 59, 75, 0.1); }
+      /* the mock exam's progress, as in the app's header (模擬試験 n / 9), large beside the phone */
+      .count { position: absolute; left: 50px; top: 740px; background: #344f69; color: #fff; font-size: 40px; font-weight: 700; padding: 12px 30px; border-radius: 40px; }
+      .count b { font-size: 56px; margin-left: 8px; }
+      /* the copy card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 70px; }
+      .type .big { font-size: 104px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .pill { font-size: 40px; font-weight: 700; padding: 16px 34px; border-radius: 44px; background: #344f69; color: #ffffff; }
+      /* test morning: the two friends */
+      #mc { left: 70px; top: 930px; width: 470px; }
+      #fr { left: 580px; top: 960px; width: 430px; }
+      .bubble.hi { top: 720px; }
+      #sparkle { position: absolute; inset: 0; }
+      /* English subtitles: one track, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.9" data-width="1080" data-height="1920">
+      <div id="cam">
+        <div id="morning" class="clip" data-start="12.4" data-duration="3.3" data-track-index="1"><div id="sun"></div></div>
+
+        <!-- Mimi in the hook and the montage -->
+        <img id="hm-nervous" class="pose clip" style="left:330px; top:1010px; width:420px" src="assets/art/nervous.webp" alt="" data-start="0" data-duration="1.65" data-track-index="2" />
+        <img id="hm-tear" class="pose clip" style="left:300px; top:1000px; width:470px" src="assets/art/tear.webp" alt="" data-start="9.4" data-duration="1.2" data-track-index="2" />
+        <img id="hm-practice" class="pose clip" style="left:310px; top:1000px; width:450px" src="assets/art/practice.webp" alt="" data-start="10.6" data-duration="0.95" data-track-index="2" />
+        <img id="hm-confident" class="pose clip" style="left:330px; top:1010px; width:430px" src="assets/art/confident.webp" alt="" data-start="11.55" data-duration="0.9" data-track-index="2" />
+
+        <!-- Day 30 in the app: Mimi beside the phone -->
+        <img id="pm-practice" class="pose clip" style="left:30px; top:930px; width:470px" src="assets/art/practice.webp" alt="" data-start="2.8" data-duration="3.7" data-track-index="3" />
+        <img id="pm-point" class="pose clip" style="left:40px; top:950px; width:450px" src="assets/art/point.webp" alt="" data-start="6.5" data-duration="2.95" data-track-index="3" />
+
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="2.8" data-duration="6.6" data-track-index="5"></video>
+            <div class="mask clip" style="top:22.2%; height:2%" data-start="2.8" data-duration="0.8" data-track-index="6"></div>
+            <div class="mask clip" style="top:27.1%; height:1.7%" data-start="3.6" data-duration="2.9" data-track-index="6"></div>
+            <div class="mask clip" style="top:22.2%; height:2%" data-start="6.5" data-duration="1.5" data-track-index="6"></div>
+            <div id="tap1" class="tap clip" style="left:50%; top:91.5%" data-start="3.45" data-duration="0.3" data-track-index="7"></div>
+            <div id="tap2" class="tap clip" style="left:50%; top:89%" data-start="4.35" data-duration="0.3" data-track-index="7"></div>
+            <div id="tap3" class="tap clip" style="left:50%; top:91.5%" data-start="6.92" data-duration="0.3" data-track-index="7"></div>
+          </div>
+        </div>
+
+        <!-- The calendar -->
+        <div id="cal">
+          <div class="stack"></div>
+          <div id="pages"></div>
+          <div class="binder"><i style="left:110px"></i><i style="left:364px"></i></div>
+        </div>
+
+        <!-- Test morning -->
+        <img id="mc" class="pose clip" src="assets/art/calm.webp" alt="" data-start="12.45" data-duration="3.2" data-track-index="8" />
+        <img id="fr" class="pose clip" src="assets/art/friend-oops.webp" alt="" data-start="12.45" data-duration="3.2" data-track-index="9" />
+        <div id="sparkle" class="sparkles clip" data-start="13.9" data-duration="1.75" data-track-index="10"></div>
+      </div>
+
+      <div id="say0" class="bubble from-right clip" style="top:240px" data-start="0.15" data-duration="1.5" data-track-index="11">あと1か月しかない…！</div>
+      <div id="say1" class="bubble hi from-right clip" data-start="12.7" data-duration="1.2" data-track-index="11">本番、緊張しない？</div>
+      <div id="say2" class="bubble hi from-left clip" data-start="13.9" data-duration="1.75" data-track-index="11">1か月、毎日やったし。</div>
+
+      <div class="count clip" data-start="3.6" data-duration="1.5" data-track-index="17">模擬試験<b>1 / 9</b></div>
+      <div class="count clip" data-start="5.1" data-duration="0.25" data-track-index="17">模擬試験<b>2 / 9</b></div>
+      <div class="count clip" data-start="5.35" data-duration="0.25" data-track-index="17">模擬試験<b>4 / 9</b></div>
+      <div class="count clip" data-start="5.6" data-duration="0.4" data-track-index="17">模擬試験<b>7 / 9</b></div>
+      <div class="count clip" data-start="6.0" data-duration="0.25" data-track-index="17">模擬試験<b>8 / 9</b></div>
+      <div class="count clip" data-start="6.25" data-duration="0.25" data-track-index="17">模擬試験<b>9 / 9</b></div>
+      <div id="note" class="clip" data-start="6.5" data-duration="2.95" data-track-index="12"><span>AIの練習用フィードバックです（公式スコアではありません）</span></div>
+
+      <div id="copy" class="type clip" data-start="1.65" data-duration="1.2" data-track-index="13">
+        <div id="big1" class="big">本番の流れで、<br /><strong>毎日1回</strong>。</div>
+        <div id="pill" class="pill">スピーキング試験対策 · 模擬試験</div>
+      </div>
+
+      <!-- Captions (one track) -->
+      <div class="caption small clip" data-start="2.85" data-duration="2.25" data-track-index="14"><span id="c1">Part 1〜3を、<br />本番と同じ順番で。</span></div>
+      <div class="caption small clip" data-start="5.1" data-duration="1.4" data-track-index="14"><span id="c2">全9問、<strong>通しで</strong>答える。</span></div>
+      <div class="caption small clip" data-start="6.5" data-duration="2.95" data-track-index="14"><span id="c3">最後に、まとめて振り返り。</span></div>
+      <div class="caption clip" data-start="9.45" data-duration="2.95" data-track-index="14"><span id="c4">毎日1回、<strong>通しで</strong>。</span></div>
+      <div class="caption small clip" data-start="12.45" data-duration="3.2" data-track-index="14"><span id="c5">そして、本番の朝。</span></div>
+
+      <div id="end" class="end clip" data-start="15.65" data-duration="1.25" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.65" data-track-index="24"><span>30 days to the IELTS test. “Only one month left…!”</span></div>
+      <div class="sub clip" data-start="1.65" data-duration="1.2" data-track-index="24"><span>The real test flow, once a day. (Speaking Exam Prep · Mock exam)</span></div>
+      <div class="sub clip" data-start="2.85" data-duration="2.25" data-track-index="24"><span>Parts 1 to 3, in the same order as the real test.</span></div>
+      <div class="sub clip" data-start="5.1" data-duration="1.4" data-track-index="24"><span>Answer all nine questions in one go.</span></div>
+      <div class="sub clip" data-start="6.5" data-duration="2.95" data-track-index="24"><span>Then look back at all your answers.<br />AI practice feedback, not an official score.</span></div>
+      <div class="sub clip" data-start="9.45" data-duration="2.95" data-track-index="24"><span>Once a day, start to finish.</span></div>
+      <div class="sub clip" data-start="12.45" data-duration="1.45" data-track-index="24"><span>Then, test morning. “Aren’t you nervous?”</span></div>
+      <div class="sub clip" data-start="13.9" data-duration="1.75" data-track-index="24"><span>“I practised every day for a month.”</span></div>
+      <div class="sub clip" data-start="15.65" data-duration="1.25" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="16.9" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("sparkle"), [[90, 900], [470, 860], [60, 1240], [500, 1180]]);
+
+      // Calendar pages: the test-day page at the bottom, then 1 ... 30 on top. Same tear times as scripts/tears.py.
+      const pages = document.getElementById("pages");
+      let html = '<div class="page day" id="pg0"><div class="hd">IELTS</div><div class="num"><b>本番</b></div><div class="num"><small>当日</small></div></div>';
+      for (let d = 1; d <= 30; d++) html += `<div class="page" id="pg${d}"><div class="hd">IELTS本番まで</div><div class="num"><small>あと</small><b>${d}</b><small>日</small></div></div>`;
+      pages.innerHTML = html;
+      const TEARS = Array.from({ length: 30 }, (_, i) => +(9.6 + 2.75 * Math.pow(i / 29, 0.55)).toFixed(3));
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Hook (0-1.65): 30 days to go, Mimi hugging her textbook
+      tl.fromTo("#cal", { scale: 1.25, y: 60 }, { scale: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#hm-nervous", { y: 0 }, { y: -8, rotation: 0, duration: 0.09, yoyo: true, repeat: 15, ease: "sine.inOut" }, 0.1);
+      tl.fromTo("#say0", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.15);
+
+      // Copy (1.65-2.85)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 1.65);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 1.7);
+      tl.fromTo("#pill", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2 }, 2.0);
+      tl.to("#copy", { opacity: 0, duration: 0.15 }, 2.7);
+
+      // Day 30 in the app (2.8-9.45): the calendar small in the corner, Mimi beside the phone
+      tl.set("#cal", { opacity: 0 }, 1.78);   // behind the opaque copy card
+      tl.set("#cal", { x: -255, y: 10, scale: 0.42, opacity: 1 }, 2.75);
+      tl.fromTo("#device", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 2.8);
+      tl.fromTo("#pm-practice", { y: 0 }, { y: -10, duration: 0.2, yoyo: true, repeat: 17, ease: "sine.inOut" }, 2.85);
+      tl.fromTo("#pm-point", { scale: 0.9 }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, 6.5);
+      k.ripple("#tap1", 3.45); k.ripple("#tap2", 4.35); k.ripple("#tap3", 6.92);
+      tl.fromTo("#note", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2 }, 6.6);
+      k.pop("#c1", 2.85); k.pop("#c2", 5.1); k.pop("#c3", 6.5);
+
+      // Montage (9.45-12.45): back to the big calendar, the pages fly off faster and faster
+      tl.to("#device", { x: 200, opacity: 0, duration: 0.2, ease: "power2.in" }, 9.3);
+      tl.to("#cal", { x: 0, y: 0, scale: 1, duration: 0.3, ease: "power3.inOut" }, 9.3);
+      TEARS.forEach((at, i) => {
+        const d = 30 - i, gap = i < 29 ? TEARS[i + 1] - at : 0.3, dur = Math.max(0.14, Math.min(0.4, gap * 1.4));
+        tl.fromTo("#pg" + d, { x: 0, y: 0, rotation: 0, opacity: 1 },
+          { x: 160, y: 520, rotation: 28, opacity: 0, duration: dur, ease: "power2.in", immediateRender: false }, at);
+        tl.set("#pg" + (d - 1), { opacity: 1 }, at);   // only the page underneath is shown
+      });
+      tl.fromTo("#hm-tear", { y: 0 }, { y: -24, duration: 0.12, yoyo: true, repeat: 1 }, 9.6);
+      tl.fromTo("#hm-practice", { y: 0 }, { y: -12, duration: 0.12, yoyo: true, repeat: 3 }, 10.6);
+      tl.fromTo("#hm-confident", { scale: 0.92 }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, 11.55);
+      k.pop("#c4", 9.45);
+
+      // Test morning (12.45-15.65): the calendar says 本番, calm Mimi, nervous friend
+      tl.fromTo("#morning", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 12.4);
+      tl.to("#cal", { y: -10, scale: 0.5, duration: 0.35, ease: "power3.inOut" }, 12.4);
+      tl.fromTo("#mc", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 12.45);
+      tl.fromTo("#fr", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 12.5);
+      tl.fromTo("#fr", { rotation: 0 }, { rotation: 3, duration: 0.08, yoyo: true, repeat: 9, immediateRender: false }, 12.75);
+      tl.fromTo("#say1", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 12.7);
+      tl.fromTo("#say2", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 13.9);
+      tl.fromTo("#mc", { y: 0 }, { y: -14, duration: 0.5, yoyo: true, repeat: 2, ease: "sine.inOut", immediateRender: false }, 13.9);
+      k.twinkle("#sparkle", 14.0);
+      k.pop("#c5", 12.45);
+
+      k.end(15.65);
+      k.tapCta(16.25);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
