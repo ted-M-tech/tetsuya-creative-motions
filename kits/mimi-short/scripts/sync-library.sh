@@ -11,6 +11,6 @@ git -C "$repo" archive "$ref" design/mimi-2d voice-web/public/mascot/mimi | tar 
 rm -rf "$kit/library"; mkdir -p "$kit/library/official"
 cp -R "$tmp/design/mimi-2d/poses" "$tmp/design/mimi-2d/backgrounds" "$tmp/design/mimi-2d/props" "$tmp/design/mimi-2d/catalog.json" "$kit/library/"
 cp "$tmp/design/mimi-2d/scripts/lipsync-model.json" "$kit/library/"
-cp "$tmp"/voice-web/public/mascot/mimi/*.png "$kit/library/official/"
+cp "$tmp"/voice-web/public/mascot/mimi/*.png "$tmp"/voice-web/public/mascot/mimi/*.webp "$kit/library/official/"
 echo "$(git -C "$repo" rev-parse "$ref") $ref" > "$kit/library/SOURCE"
 echo "library <- $(cat "$kit/library/SOURCE")"

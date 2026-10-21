@@ -149,6 +149,15 @@ def pop_seq(n, gap, base=79, vel=0.16):
     return x
 
 
+def pencil(d=1.0, vel=0.18):
+    """Pencil or brush strokes: band-limited scratchy noise in short strokes."""
+    tt = t(d)
+    x = _rng.standard_normal(len(tt))
+    x = lowpass(x, 0.35) - lowpass(x, 0.05)
+    strokes = np.clip(np.sin(2 * np.pi * 3.2 * tt), 0, None) ** 0.6
+    return vel * x * strokes
+
+
 def ding(vel=0.14):
     gap = int(0.07 * SR)
     a, b = bell(86, 0.9, vel), bell(90, 0.9, vel)

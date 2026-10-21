@@ -8,7 +8,7 @@ Shared parts of every 15-second Mimi short (2D official style, Rive + HyperFrame
 | `scripts/rig2d.py` | The library rig plus `add_pose()` (episode poses by path), `lipsync()` (mouth from any voice clip, cached) and `build_shots()` |
 | `scripts/render_rive.sh` | Rive project → PNG frames → MP4 (60 fps) |
 | `scripts/cutout.sh` | Drawn image on white → trimmed transparent WebP (`FUZZ=30` for props with a soft glow) |
-| `scripts/sfx.py` | `Mix` (voice / SFX / music buses, ducking, -14 LUFS), the 100 BPM bed, end chord, SFX: tap, whoosh, pofu, boing, clang, poof, freeze, shatter, mokugyo, pop_seq, ding, bell |
+| `scripts/sfx.py` | `Mix` (voice / SFX / music buses, ducking, -14 LUFS), the 100 BPM bed, end chord, SFX: tap, whoosh, pofu, boing, clang, poof, freeze, shatter, mokugyo, pencil, pop_seq, ding, bell |
 | `hf/kit.css`, `hf/kit.js` | The look and motion helpers: camera wrapper, phone UI on the desk plate, captions, speech bubble, playback tags, radar result card, sparkles, end card |
 | `brand/` | End-card Mimi, Lanclo mark, App Store badge |
 | `stage.sh` | Copies `hf/`, `brand/`, the fonts and `library/props/` into an episode's HyperFrames project as `assets/kit/` (not in Git) |

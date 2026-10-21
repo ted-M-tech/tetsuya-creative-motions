@@ -4933,7 +4933,7 @@
       </Mesh>
     </Image>
     <Image name="Background • desk" assetId="0:61" x="540.0" y="960.0" />
-    <LinearAnimation name="think" id="0:6" fps="60" duration="108" loopValue="oneShot">
+    <LinearAnimation name="think" id="0:6" fps="60" duration="90" loopValue="oneShot">
       <KeyedObject objectId="0:40">
         <KeyedProperty propertyKey="90">
           <KeyFrameDouble frame="0" value="480.0" interpolationType="cubic">
@@ -5072,33 +5072,6 @@
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
           <KeyFrameDouble frame="90" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="480.0" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
         </KeyedProperty>
@@ -5241,33 +5214,6 @@
           <KeyFrameDouble frame="90" value="1029.3" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="1029.7175" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="1030.1269" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="1030.5202" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="1030.8898" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="1031.2284" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="1031.5294" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="1031.7871" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="1031.9964" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="1032.1532" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
         </KeyedProperty>
         <KeyedProperty propertyKey="15">
           <KeyFrameDouble frame="0" value="0.0" interpolationType="cubic">
@@ -5406,33 +5352,6 @@
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
           <KeyFrameDouble frame="90" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="0.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="0.0" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
         </KeyedProperty>
@@ -5577,33 +5496,6 @@
           <KeyFrameDouble frame="90" value="480.0" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="480.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
         </KeyedProperty>
         <KeyedProperty propertyKey="91">
           <KeyFrameDouble frame="0" value="1330.0" interpolationType="cubic">
@@ -5742,33 +5634,6 @@
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
           <KeyFrameDouble frame="90" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="1330.0" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="1330.0" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
         </KeyedProperty>
@@ -5911,33 +5776,6 @@
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
           <KeyFrameDouble frame="90" value="-0.004" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="92" value="-0.0008" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="94" value="0.002" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="96" value="0.0028" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="98" value="0.0015" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="100" value="-0.0004" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="102" value="-0.0015" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="104" value="-0.0013" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="106" value="-0.0003" interpolationType="cubic">
-            <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
-          </KeyFrameDouble>
-          <KeyFrameDouble frame="108" value="0.0007" interpolationType="cubic">
             <CubicEaseInterpolator x1="0.35" y1="0" x2="0.25" y2="1" />
           </KeyFrameDouble>
         </KeyedProperty>
