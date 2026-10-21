@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .solo { left: 270px; width: 540px; }
+      .friend { left: 30px; width: 480px; }
+      .mimi { right: 30px; width: 500px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.first { top: 300px; }
+      .stage .bubble.reply { top: 470px; }
+      .stage .bubble.big { font-size: 66px; }
+      .stage .tag { top: 1450px; }
+      .stage .tag span { display: flex; align-items: center; gap: 16px; }
+      .stage .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
+      .stage .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
+      .tag.brit span { background: #2a8dff; }
+      /* The real app, big in the centre */
+      #device { position: absolute; left: 300px; top: 530px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #pulse { position: absolute; left: 4%; right: 4%; top: 87.4%; height: 6.6%; border-radius: 40px; border: 6px solid #e5484d; opacity: 0; }
+      #pick { position: absolute; left: 3%; right: 3%; top: 55.5%; height: 15.5%; border-radius: 26px; border: 6px solid #e5484d; opacity: 0; }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 40px; font-size: 24px; color: #53606b; text-align: center; line-height: 1.4; }
+      .caption .step { display: inline-block; background: #344f69; color: #fff; border-radius: 40px; padding: 2px 22px; margin-right: 14px; font-size: 48px; }
+      .caption .hint { display: block; font-style: normal; font-size: 44px; color: #2a8dff; margin-top: 6px; }
+      /* Clean type card: the hook */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 110px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big .one { font-size: 150px; color: #e5484d; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
+      <!-- Opening (0-2.9): Mimi hears her AI voice and tilts her head -->
+      <div id="open" class="stage clip" data-start="0" data-duration="2.9" data-track-index="1">
+        <img id="o-mimi" class="solo" src="assets/art/mimi-tilt.webp" alt="" />
+        <div id="b-hmm" class="bubble from-right first big">……あれ？</div>
+        <div id="b-notme" class="bubble from-right reply">なんか、ちょっと<br />私っぽくない…？</div>
+        <div id="t-mine" class="tag model"><span><span class="wave" id="w1"></span>私のAIボイス</span></div>
+      </div>
+
+      <!-- The hook card (2.9-4.1) -->
+      <div id="copy" class="type clip" data-start="2.9" data-duration="1.2" data-track-index="2">
+        <div id="big1" class="big">AIボイスは<br /><span class="one">アクセント</span>も<br />リクエストできる！</div>
+      </div>
+
+      <!-- The real app (4.1-11.45): 声の調整 in the simulator, fixture data -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="4.1" data-duration="7.35" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:26%; top:48.5%" data-start="4.62" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp2" class="tap clip" style="left:72%; top:28.7%" data-start="5.095" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp3" class="tap clip" style="left:21%; top:54.2%" data-start="5.725" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp4" class="tap clip" style="left:21%; top:68.6%" data-start="6.345" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp5" class="tap clip" style="left:50%; top:85.6%" data-start="6.6" data-duration="0.3" data-track-index="5"></div>
+            <div id="pulse"></div>
+            <div id="pick"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step captions on the app (the app's own labels) -->
+      <div id="cap-1" class="caption small clip" data-start="4.1" data-duration="2.45" data-track-index="6"><span id="c1"><b class="step">1</b>話し方を選ぶ</span></div>
+      <div id="cap-2" class="caption small clip" data-start="6.55" data-duration="2.6" data-track-index="6"><span id="c2"><b class="step">2</b>発音・話し方のリクエスト<i class="hint">「イギリス英語っぽく」</i></span></div>
+      <div id="cap-3" class="caption small clip" data-start="9.15" data-duration="0.75" data-track-index="6"><span id="c3"><b class="step">3</b>試聴音声を作る</span></div>
+      <div id="cap-4" class="caption small clip" data-start="9.9" data-duration="1.55" data-track-index="6"><span id="c4">できた試聴音声を<strong>聴きくらべ</strong></span></div>
+
+      <!-- The preview (11.45-14.0): a British-sounding voice (stand-in) -->
+      <div id="hear" class="stage clip" data-start="11.45" data-duration="2.55" data-track-index="1">
+        <img id="h-mimi" class="solo" src="assets/art/mimi-sparkle.webp" alt="" />
+        <div id="b-ooh" class="bubble from-right first big">これこれ〜！</div>
+        <div id="t-brit" class="tag model brit"><span><span class="wave" id="w2"></span>試聴音声（イメージ）</span></div>
+        <div class="note">※英語の声は動画用の合成音声によるイメージです。<br />The English voices are illustrative synthetic stand-ins.</div>
+      </div>
+
+      <!-- The punchline (14.0-16.0) -->
+      <div id="punch" class="stage clip" data-start="14.0" data-duration="2.0" data-track-index="1">
+        <img id="p-friend" class="friend" src="assets/art/friend-tsukkomi.webp" alt="" style="opacity:0" />
+        <img id="p-mimi" class="mimi" src="assets/art/mimi-tea.webp" alt="" />
+        <div id="b-uk" class="bubble from-right first big">……イギリス帰りの私</div>
+        <div id="b-never" class="bubble from-left reply big">行ったことないでしょ！</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="16.0" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.25" data-track-index="8"><span>…Huh? (My AI voice)</span></div>
+      <div class="sub clip" data-start="1.25" data-duration="1.65" data-track-index="8"><span>It doesn’t quite sound like me…?</span></div>
+      <div class="sub clip" data-start="2.9" data-duration="1.2" data-track-index="8"><span>Your AI voice takes requests — even for accent!</span></div>
+      <div class="sub clip" data-start="4.1" data-duration="2.45" data-track-index="8"><span>1 Choose a speaking style</span></div>
+      <div class="sub clip" data-start="6.55" data-duration="2.6" data-track-index="8"><span>2 Pronunciation request: “Sound a bit British”</span></div>
+      <div class="sub clip" data-start="9.15" data-duration="0.75" data-track-index="8"><span>3 Create preview</span></div>
+      <div class="sub clip" data-start="9.9" data-duration="1.55" data-track-index="8"><span>Compare the previews</span></div>
+      <div class="sub clip" data-start="11.45" data-duration="2.55" data-track-index="8"><span>That’s the one! (Preview, illustrated)</span></div>
+      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="8"><span>…Me, just back from England.</span></div>
+      <div class="sub clip" data-start="15.0" data-duration="1.0" data-track-index="8"><span>You’ve never even been!</span></div>
+      <div class="sub clip" data-start="16.0" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.4" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.bars(document.getElementById("w1"), 7);
+      K.bars(document.getElementById("w2"), 7);
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Opening (0-2.9): her AI voice plays; the head tilts further
+      k.tagIn("#t-mine", 0.15); k.wave("#w1", 0.35, 1.45, 0);
+      tl.fromTo("#o-mimi", { rotation: 0 }, { rotation: 6, duration: 0.5, ease: "back.out(2)" }, 0.9);
+      k.pop("#b-hmm", 0.9);
+      tl.to("#b-hmm", { opacity: 0, duration: 0.12 }, 1.2);
+      k.pop("#b-notme", 1.25);
+
+      // The hook card (2.9-4.1)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.9);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 2.93);
+      tl.fromTo("#big1 .one", { scale: 1.5 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 2.95);
+
+      // The app (4.1-11.45)
+      tl.set("#app", { opacity: 1 }, 4.1); tl.set("#app", { opacity: 0 }, 11.45);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.1, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.1);
+      ["#tp1", "#tp2", "#tp3", "#tp4", "#tp5"].forEach((s) => k.ripple(s, parseFloat(document.querySelector(s).dataset.start)));
+      tl.fromTo("#pulse", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1.04, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }, 9.15);
+      tl.set("#pulse", { opacity: 0 }, 9.88);
+      tl.fromTo("#pick", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 10.0);
+      k.pop("#c1", 4.1); k.pop("#c2", 6.55); k.pop("#c3", 9.15); k.pop("#c4", 9.9);
+
+      // The preview (11.45-14.0)
+      tl.fromTo("#h-mimi", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 11.45);
+      tl.fromTo("#h-mimi", { rotation: -3 }, { rotation: 3, duration: 0.45, yoyo: true, repeat: 4, ease: "sine.inOut", immediateRender: false }, 11.7);
+      k.tagIn("#t-brit", 11.55); k.wave("#w2", 11.7, 1.7, 3);
+      k.pop("#b-ooh", 13.2);
+
+      // The punchline (14.0-16.0)
+      tl.fromTo("#p-mimi", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 14.0);
+      tl.fromTo("#p-mimi", { rotation: 0 }, { rotation: -3, duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 14.3);
+      k.pop("#b-uk", 14.15);
+      tl.to("#b-uk", { opacity: 0, duration: 0.12 }, 14.95);
+      tl.fromTo("#p-friend", { x: -220, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "power3.out", immediateRender: false }, 15.0);
+      k.pop("#b-never", 15.05);
+      tl.fromTo("#p-mimi", { x: 0 }, { x: 12, duration: 0.06, yoyo: true, repeat: 5, immediateRender: false }, 15.2);
+
+      k.end(16.0);
+      k.tapCta(16.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -94,3 +94,8 @@ films/mimi-voice/source/hf/.hyperframes/
 films/mimi-voice/source/hf/.thumbnails/
 films/mimi-voice/source/renders/
 !films/mimi-voice/source/assets/voice/
+films/mimi-tuning/source/hf/assets/
+films/mimi-tuning/source/hf/.hyperframes/
+films/mimi-tuning/source/hf/.thumbnails/
+films/mimi-tuning/source/renders/
+!films/mimi-tuning/source/assets/voice/
