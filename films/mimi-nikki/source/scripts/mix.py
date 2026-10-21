@@ -1,8 +1,10 @@
-"""「日記、3日で終わる」 sound: Kokoro voice lines, kit SFX, the kit bed -> hf/assets/mix.wav.
+"""「日記、3日で終わる」 sound: the owner's own voice lines, kit SFX, the kit bed -> hf/assets/mix.wav.
 
 usage: uv run --no-project --with numpy python films/mimi-nikki/source/scripts/mix.py
-Voices in assets/voice/ (rebuild with scripts/voices.sh), all af_heart: Mimi's rough diary "Yesterday... I go to cafe."
-and the corrected line "Yesterday, I went to a cafe." (stands in for her own voice with native pronunciation).
+Voices: the owner's registered Lanclo voice (Gemini gemini-3.8-flash-tts) from ../own-voice.json via
+kits/mimi-short/scripts/ownvoice.py -> assets/own-voice/ (not in Git; copies in the Drive folder Mimi_04_Journal_Ends_in_3_Days_assets/own-voice/):
+rough.wav "Yesterday... I go to cafe." (learner accent, speech 2.48 s) and model.wav "Yesterday, I went to a cafe."
+(General American, 2.10 s). Cue times are the first sound; the clips' lead silence is trimmed with start=.
 """
 import sys
 from pathlib import Path
@@ -15,27 +17,28 @@ from sfx import Mix, bell, boing, ding, mokugyo, pencil, pochi, pofu, pop_seq, t
 POK = (0.12, 0.42, 0.72)   # the monk taps the wooden fish
 DESK = 1.0
 TAP = 2.83                 # taps the journal mic
-ROUGH = 3.2                # she talks about her day
-RESULT = 4.9               # the diary check card
-MODEL = 6.45               # the corrected diary in her own voice
-PAINT = 8.0                # Mimi paints the day
-CAL = 9.8                  # the picture calendar: days 4..6 fill in
-JUMP = (9.85, 10.28)
-PUMP = 10.55
-PROUD = 12.4
-END = 14.0
+ROUGH = 3.35               # she talks about her day (ends 5.83)
+RESULT = 5.9               # the diary check card
+MODEL = 7.45               # the corrected diary in her own voice (ends 9.55)
+PAINT = 9.6                # Mimi paints the day
+CAL = 11.4                 # the picture calendar: days 4..6 fill in
+JUMP = (11.45, 11.88)
+PUMP = 12.15
+PROUD = 14.0
+END = 15.6
 
-m = Mix(15.0, voice_dir=SRC / 'assets/voice')
+LEAD_ROUGH, LEAD_MODEL = 0.19, 0.23   # speech starts 0.23 / 0.27 s into the clips
+m = Mix(16.6, voice_dir=SRC / 'assets/own-voice')
 for at in POK:
     m.sfx(mokugyo(), at)
 m.sfx(whoosh(0.25, 0.25), DESK - 0.12)
 m.sfx(tap(), TAP)
-m.voice('rough-af_heart.wav', ROUGH)
+m.voice('rough.wav', ROUGH - 0.04, start=LEAD_ROUGH)
 m.sfx(whoosh(0.25, 0.25), RESULT)
 for i in range(5):
     m.sfx(tap() * 0.35, RESULT + 0.15 + i * 0.07)
 m.sfx(ding(0.12), RESULT + 0.75)
-m.voice('model-af_heart.wav', MODEL)
+m.voice('model.wav', MODEL - 0.04, start=LEAD_MODEL)
 m.sfx(pencil(1.2), PAINT + 0.3)
 for i, n in enumerate([86, 90, 93, 98]):
     m.sfx(bell(n, 1.0, 0.07), PAINT + 1.5 + i * 0.06)
