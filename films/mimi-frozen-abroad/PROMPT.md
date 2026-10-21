@@ -4,7 +4,7 @@ This is a consolidated prompt for rebuilding the finished film, written after th
 
 Make a 21-second vertical (1080×1920, 60 fps) Lanclo Mimi short on the shared kit (`kits/mimi-short`), a follow-up to films/mimi-roleplay. Only use roleplay scenes that exist in the app's catalogue.
 
-1. 0–1.6 s, hook: from frame 1 a white card 「カフェで固まった人、手を挙げて。」 over the café (#17's plate and counter) with Mimi frozen in the library ice block; at 0.45 s she raises a mitten inside the ice (`hand-up`), 「はい…」.
+1. 0–1.6 s, hook: from frame 1 a white card 「カフェで固まった人、手を挙げて。」 over the café (#17's plate and counter) with Mimi frozen in the library ice block; at 0.45 s she raises a mitten inside the ice (`hand-up-v2`), 「はい…」.
 2. 1.6–7.5 s, three quick freezes, each with a dark label (「空港でも」「ホテルでも」「バスでも」), Mimi's friend as staff behind a counter cut from the plate, an English bubble with a small Japanese gloss, and カチッ! + ice on the last word: airport check-in "May I see your passport?" (Kokoro `bf_emma`), hotel "Do you have a reservation?" (`af_bella`), bus driver "Hello. Where are you going?" (`am_michael`).
 3. 7.5–8.5 s: white copy card 「固まる場面ごと、先に練習。」 + pill 「Lanclo 会話練習」.
 4. 8.5–14.3 s: the real app (simulator, `--qa-situations` + capture-only patch with the airport scene's authored lines, Japanese UI, English study language) on a phone with Mimi beside it: catalogue (空港・交通・ホテル) → 空港 → 飛行機の搭乗手続きをする → loading → "May I see your passport?" with its meaning → hints "Here you are." → 録音 → シチュエーション完了. Captions 「空港・交通・ホテル…場面を選んで」「AIの相手が話しかけてくる」「言い方に迷ったらヒント」「返せた！」. Mask 「デモデータ」.

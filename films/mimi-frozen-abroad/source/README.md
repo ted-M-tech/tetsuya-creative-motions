@@ -10,7 +10,7 @@ PATCH=$F/app-capture/airport-lines.patch LANCLO_REPO=~/Develop/native-voice-clon
 sh $F/scripts/app_track.sh                 # hf/assets/app/app.mp4 (film 8.5-14.3) and catalog.mp4 (film 18.7-)
 # 1. art (Codex drawings in art/*.png, art/friend/*.png) -> cut-outs, plates and counter fronts
 for p in airport-ask hotel-ask driver-ask; do kits/mimi-short/scripts/cutout.sh $F/art/friend/$p.png $F/art/$p.webp; done
-kits/mimi-short/scripts/cutout.sh $F/art/hand-up.png $F/art/hand-up.webp
+kits/mimi-short/scripts/cutout.sh $F/art/hand-up-v2.png $F/art/hand-up-v2.webp
 for b in airport hotel bus; do magick $F/art/$b.png -resize 1080x1920! -quality 90 $F/art/$b.webp; done
 magick $F/art/airport.png -crop 1080x800+0+1110 +repage -define webp:lossless=true $F/art/airport-counter.webp
 magick $F/art/hotel.png -crop 1080x860+0+1060 +repage -define webp:lossless=true $F/art/hotel-counter.webp
