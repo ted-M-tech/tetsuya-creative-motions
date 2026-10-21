@@ -10,3 +10,4 @@
 | Zen Maru Gothic | Google Fonts | SIL OFL 1.1 | |
 | Download on the App Store badge | Apple | Apple marketing guidelines | |
 | SFX and music | Made in code (`kits/mimi-short/scripts/sfx.py`) | MIT with the repository code | |
+| Bed music (since 2026-10-21) | 「Everyone Get Up」, [OpenTracks](https://opentracks.com/bgm/detail/22155), Music : Anonyment | OpenTracks licence (commercial use OK, credit optional; no redistribution, no Content ID) | Lanclo SNS theme, read by the kit from `kits/mimi-short/library/bgm/` (not in Git) |

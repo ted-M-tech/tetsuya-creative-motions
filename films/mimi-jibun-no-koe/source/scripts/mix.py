@@ -1,12 +1,16 @@
-"""Sound for 「自分の声、むり」: the two LP voice clips, code-made SFX and a light 100 BPM bed, ducked under the voices.
+"""Sound for 「自分の声、むり」: the two LP voice clips, code-made SFX and the Lanclo SNS theme bed, ducked under the voices.
 
 usage: uv run --no-project --with numpy python scripts/mix.py   -> hf-short/assets/mix.wav (48 kHz stereo, -14 LUFS)
 """
 import subprocess
+import sys
 import wave
 from pathlib import Path
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'kits/mimi-short/scripts'))
+from sfx import THEME, THEME_GAIN, load as load_path  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SR, DUR = 48000, 15.0
@@ -111,6 +115,13 @@ def rewind_fx():
 
 
 def bed():
+    if THEME.exists():  # the Lanclo SNS theme from BED[0], faded out over the end card
+        bus = np.zeros(N)
+        x = load_path(THEME, 0.0, DUR - BED[0])
+        f = int(0.4 * SR)
+        x[:f] *= np.linspace(0, 1, f)
+        place(bus, x, BED[0], THEME_GAIN)
+        return bus * np.interp(np.arange(N) / SR, [0, END, DUR], [1, 1, 0])
     bus = np.zeros(N)
     beat = 60 / 100
     chords = [[62, 66, 69], [59, 62, 66], [55, 59, 62], [57, 61, 64]]   # D Bm G A
@@ -155,7 +166,7 @@ def main():
     music = bed()
     env = lowpass(np.abs(voice), 0.002)
     duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12), 0, 1), 0.0008)
-    mix = voice + 0.6 * sfx + 0.55 * music * duck
+    mix = voice + 0.35 * lowpass(sfx, 0.35) + 0.55 * music * duck  # SFX softened, as in the kit
     mix /= np.abs(mix).max() / 0.9
     out = ROOT / 'hf-short/assets/mix.wav'
     out.parent.mkdir(parents=True, exist_ok=True)

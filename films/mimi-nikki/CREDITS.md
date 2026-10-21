@@ -11,3 +11,4 @@
 | SFX and music | Made in code (`kits/mimi-short/scripts/sfx.py`) | MIT with the repository code | |
 | Radar score and values | Illustrative | — | Not a real measurement |
 | Journal pictures (cafe, park, laptop, book, shoes, ramen) | Lanclo app journal demo art | © Lanclo, not licensed for reuse | `source/art/journal/` |
+| Bed music (since 2026-10-21) | 「Everyone Get Up」, [OpenTracks](https://opentracks.com/bgm/detail/22155), Music : Anonyment | OpenTracks licence (commercial use OK, credit optional; no redistribution, no Content ID) | Lanclo SNS theme, read by the kit from `kits/mimi-short/library/bgm/` (not in Git) |

@@ -62,3 +62,6 @@ films/mimi-daily/source/hf/.hyperframes/
 films/mimi-daily/source/hf/.thumbnails/
 films/mimi-daily/source/hf/assets/app/
 !films/mimi-daily/source/assets/voice/
+
+# Lanclo SNS theme BGM (OpenTracks licence: do not redistribute); kept in Lanclo's Google Drive 002.SNS/_BGM/
+kits/mimi-short/library/bgm/
