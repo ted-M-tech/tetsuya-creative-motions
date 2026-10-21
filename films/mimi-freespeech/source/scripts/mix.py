@@ -9,26 +9,27 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, bell, boing, ding, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import Mix, bell, boing, ding, freeze, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); hf/index.html uses the same times.
-HOOK = 0.0
-APP = 1.6              # the photo screen, 最大 3:00
-TALK = 3.7             # Mimi speaks on her own, the clock runs (fast-forwarded)
-VOICE = 3.75
-TIME_UP = 7.45         # the clock reaches 3:00
-RESULT = 7.7           # AI feedback: scores and transcript
-ZOOM = 9.2
-FRIEND = 10.6          # the French friend
-COURT = 10.85
-REPLY = 13.0           # Mimi: …こっちは3分が長いんだけど
-MESSAGE = 14.8
-END = 16.3
-CTA_TAP = 16.9
-TOTAL = 17.7
+HOOK = 0.0             # Mimi's despair: 「こんなの学校でやったことなかったもん！」
+APP = 2.0              # the photo screen, 最大 3:00
+TALK = 4.1             # Mimi speaks on her own, the clock runs (fast-forwarded)
+VOICE = 4.15
+TIME_UP = 7.85         # the clock reaches 3:00
+RESULT = 8.1           # AI feedback: scores and transcript
+ZOOM = 9.6
+FRIEND = 11.0          # the French friend
+COURT = 11.25
+REPLY = 13.4           # Mimi: …こっちは3分が長いんだけど
+MESSAGE = 15.2         # “使える”英語は… (Swain 1985, Output Hypothesis)
+END = 17.2
+CTA_TAP = 17.8
+TOTAL = 18.6
 
 m = Mix(TOTAL, voice_dir=SRC / 'assets/voice')
-m.sfx(pop_seq(3, 0.06, base=76), HOOK + 0.1)
+m.sfx(freeze(0.4), HOOK)
+m.sfx(boing(False) * 0.7, HOOK + 0.15)
 m.sfx(whoosh(0.35, 0.3), APP - 0.05)
 m.sfx(whoosh(0.3, 0.25), TALK - 0.05)
 m.voice('describe-af_heart.wav', VOICE, g=0.9)
