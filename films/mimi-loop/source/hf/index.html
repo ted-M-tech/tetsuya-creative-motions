@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* The phone: one element; the hook puts a generic AI chat in it, the loop puts Lanclo (the real app) in it */
+      #device { position: absolute; left: 300px; top: 478px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      #zoom video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 21px; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 20px; background: #000; }
+      #status u { position: absolute; right: 9%; top: 36%; width: 34px; height: 17px; border: 2px solid #111; border-radius: 5px; }
+      #status u::after { content: ""; position: absolute; inset: 2px; background: #111; border-radius: 2px; }
+      .mask { position: absolute; background: #ffffff; opacity: 0; border-radius: 4px; font-family: -apple-system, "Helvetica Neue", sans-serif; font-size: 21px; font-weight: 700; color: #111; line-height: 1; display: flex; align-items: center; }
+      .ring1 { position: absolute; left: 9%; top: 89.5%; width: 80px; height: 80px; margin: -40px 0 0 -40px; border-radius: 50%; border: 6px solid #2a8dff; opacity: 0; }
+      /* A generic AI chat (no brand) */
+      #chat { position: absolute; inset: 0; background: #ffffff; font-family: "Zen Maru Gothic", sans-serif; color: #1d2733; }
+      #chat .bar { position: absolute; left: 0; right: 0; top: 0; height: 128px; background: #f7f7fa; border-bottom: 1px solid #e3e6ea; }
+      #chat .bar .t { position: absolute; left: 13%; top: 24px; font-size: 21px; font-weight: 700; }
+      #chat .bar .isl { position: absolute; left: 36%; top: 16px; width: 28%; height: 34px; border-radius: 20px; background: #000; }
+      #chat .bar .nm { position: absolute; left: 0; right: 0; top: 74px; text-align: center; font-size: 24px; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px; }
+      #chat .bar .nm i { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(140deg, #a58bff, #6d4fe0); display: inline-block; }
+      #chat .body { position: absolute; left: 0; right: 0; top: 128px; bottom: 112px; overflow: hidden; }
+      #chat .feed { position: absolute; left: 0; right: 0; top: 0; padding: 22px 20px; display: flex; flex-direction: column; gap: 18px; }
+      .me { align-self: flex-end; max-width: 82%; background: #6d4fe0; color: #fff; font-size: 23px; line-height: 1.4; padding: 14px 18px; border-radius: 22px 22px 6px 22px; }
+      .ai { align-self: flex-start; max-width: 94%; font-size: 21px; line-height: 1.6; color: #273b4b; }
+      .ai b { color: #1d2733; }
+      #chat .input { position: absolute; left: 16px; right: 16px; bottom: 34px; height: 64px; border-radius: 32px; background: #f1f2f5; border: 1px solid #dfe3e8;
+                     font-size: 21px; color: #596875; display: flex; align-items: center; padding: 0 22px; gap: 4px; }
+      #chat .input .typed { color: #1d2733; white-space: nowrap; overflow: hidden; }
+      #chat .input .cur { width: 3px; height: 30px; background: #6d4fe0; }
+      #chat .input .send { position: absolute; right: 8px; top: 8px; width: 48px; height: 48px; border-radius: 50%; background: #6d4fe0; }
+      /* the three pains, inside the chat */
+      .pane { position: absolute; left: 0; right: 0; top: 128px; bottom: 112px; background: #ffffff; padding: 22px 20px; opacity: 0; }
+      .pane h4 { font-size: 22px; color: #596875; margin-bottom: 14px; }
+      .hist { display: flex; justify-content: space-between; align-items: center; font-size: 22px; padding: 16px 14px; border-radius: 14px; margin-bottom: 8px; background: #f6f7f9; }
+      .hist small { font-size: 18px; color: #596875; }
+      .hist.dup { background: #fff1d6; box-shadow: inset 0 0 0 3px #f0a92a; }
+      .empty { position: absolute; left: 0; right: 0; top: 34%; text-align: center; font-size: 26px; color: #a3b0bb; line-height: 1.6; }
+      .voice { align-self: flex-end; display: flex; gap: 5px; align-items: center; background: #6d4fe0; padding: 16px 22px; border-radius: 22px 22px 6px 22px; }
+      .voice i { display: block; width: 6px; border-radius: 3px; background: #ffffff; }
+      .qbig { position: absolute; width: 120px; height: 120px; border-radius: 50%; background: #f0a92a; color: #fff; font-size: 84px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+      /* the other study apps piling up behind the phone (generic, no brands) */
+      .win { position: absolute; width: 290px; height: 380px; border-radius: 30px; background: #ffffff; box-shadow: 0 18px 40px rgba(39, 59, 75, 0.2); overflow: hidden; }
+      .win .hd { height: 92px; display: flex; align-items: center; gap: 14px; padding: 0 20px; color: #fff; font-size: 30px; font-weight: 700; }
+      .win .hd svg { width: 46px; height: 46px; }
+      .win .ln { margin: 20px 22px 0; height: 16px; border-radius: 8px; background: #e7ebef; }
+      #h-friend, .fr { position: absolute; left: -20px; top: 1060px; width: 470px; height: auto; }
+      #say0, #say1, #say2, #say3 { left: 30px; top: 800px; font-size: 46px; max-width: 470px; }
+      /* Two-shots */
+      .two { position: absolute; inset: 0; background: #eef3f9; }
+      .two img { position: absolute; height: auto; }
+      #t1-friend { left: 20px; top: 920px; width: 520px; }
+      #t1-mimi { left: 560px; top: 760px; width: 480px; }
+      #t1-say { top: 470px; right: 40px; font-size: 62px; }
+      #t2-friend { left: 10px; top: 820px; width: 560px; }
+      #t2-mimi { left: 610px; top: 900px; width: 430px; }
+      #t2-say { top: 380px; left: 40px; font-size: 60px; max-width: 1000px; }
+      /* One week later: night */
+      #night { position: absolute; inset: 0; background: linear-gradient(180deg, #16223a 0%, #24365a 100%); }
+      #night .star { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #fff7c2; }
+      #n-moon { position: absolute; left: 820px; top: 380px; width: 120px; height: 120px; border-radius: 50%; box-shadow: -26px 10px 0 0 #ffe9a3; }
+      #n-friend { position: absolute; left: 0px; top: 980px; width: 700px; height: auto; }
+      #mini { position: absolute; left: 660px; top: 830px; width: 330px; height: 718px; border-radius: 52px; background: #1d2733; padding: 10px;
+              box-shadow: 0 0 80px rgba(160, 200, 255, 0.45); }
+      #mini .ms { position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: #f2f2f7; }
+      #mini video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #mini .mstatus { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #n-say { left: 40px; top: 560px; font-size: 54px; }
+      #n-mimi { position: absolute; left: 700px; top: 1180px; width: 340px; height: auto; }
+      #n-mimi-say { right: 40px; top: 860px; font-size: 52px; }
+      #later { position: absolute; left: 0; right: 0; top: 200px; display: flex; justify-content: center; }
+      #later span { font-size: 64px; font-weight: 700; color: #16223a; background: #fff7c2; padding: 14px 44px; border-radius: 50px; }
+      /* Clean type card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 104px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      /* The loop */
+      #loop { position: absolute; inset: 0; }
+      #ring { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+      .node { position: absolute; width: 104px; height: 104px; margin: -52px 0 0 -52px; border-radius: 50%; background: #ffffff; border: 7px solid #c9d6e0;
+              display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 700; color: #6f7d89;
+              box-shadow: 0 8px 22px rgba(39, 59, 75, 0.14); }
+      .node .lab { position: absolute; top: 112px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 30px; font-weight: 700;
+                   color: #273b4b; background: #ffffff; padding: 6px 18px; border-radius: 26px; box-shadow: 0 6px 16px rgba(39, 59, 75, 0.12); }
+      .node .on { position: absolute; inset: -7px; border-radius: 50%; background: #2a8dff; color: #ffffff; display: flex; align-items: center; justify-content: center; opacity: 0; }
+      #runner { position: absolute; left: 0; top: 0; width: 132px; height: 150px; }
+      #runner .bob { position: absolute; inset: 0; }
+      #runner img { position: absolute; left: 0; bottom: 0; width: 132px; height: auto; }
+      #lscreen { position: absolute; inset: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+      #lscreen img { width: 120px; height: 120px; }
+      #lscreen span { font-size: 40px; font-weight: 700; color: #273b4b; }
+      /* Step titles: top safe zone. Title, the pain it answers (blue), the app's own words (small) */
+      .step { position: absolute; left: 30px; right: 30px; top: 44px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .step b { display: block; background: #ffffff; color: #273b4b; font-size: 54px; font-weight: 700; padding: 10px 36px; border-radius: 46px;
+                box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14); white-space: nowrap; }
+      .step b em { font-style: normal; color: #2a8dff; margin-right: 12px; }
+      .step .ans { font-size: 44px; font-weight: 700; color: #2a8dff; white-space: nowrap; }
+      .step span { display: block; font-size: 28px; font-weight: 700; color: #596875; white-space: nowrap; }
+      #score { position: absolute; left: 540px; top: 1240px; width: 420px; margin-left: -210px; background: #ffffff; border-radius: 34px; padding: 18px 26px 14px;
+               box-shadow: 0 18px 50px rgba(39, 59, 75, 0.25); text-align: center; }
+      #score .k { font-size: 30px; font-weight: 700; color: #596875; }
+      #score .v { font-size: 92px; font-weight: 700; color: #2a8dff; line-height: 1.1; }
+      #score .v small { font-size: 40px; color: #273b4b; margin-left: 6px; }
+      #score .n { font-size: 22px; color: #6f7d89; }
+      /* The ranking (Mimi's own pick) */
+      #rank { position: absolute; inset: 0; background: #eef3f9; }
+      #board { position: absolute; left: 40px; right: 40px; top: 110px; background: #ffffff; border-radius: 44px; padding: 34px 34px 26px; box-shadow: 0 18px 50px rgba(39, 59, 75, 0.16); }
+      #board h3 { text-align: center; font-size: 56px; font-weight: 700; color: #273b4b; line-height: 1.25; }
+      #board h3 small { display: block; font-size: 34px; color: #2a8dff; }
+      #board .dok { text-align: right; margin-top: 14px; font-size: 26px; color: #596875; }
+      .row { display: flex; align-items: center; gap: 18px; margin-top: 18px; padding: 16px 18px; border-radius: 24px; background: #f4f7fa; }
+      .row b { flex: none; width: 92px; height: 66px; border-radius: 33px; background: #344f69; color: #fff; font-size: 34px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+      .row span { font-size: 37px; white-space: nowrap; font-weight: 700; color: #273b4b; line-height: 1.3; }
+      .row.top { background: #fff1d6; box-shadow: inset 0 0 0 4px #f0a92a; }
+      .row.top b { background: #e5484d; }
+      .row.top span { font-size: 42px; }
+      #r-friend { position: absolute; left: 0px; top: 1215px; width: 440px; height: auto; }
+      #r-mimi { position: absolute; left: 610px; top: 1110px; width: 460px; height: auto; }
+      #r-say { left: 360px; top: 1225px; font-size: 52px; }
+      /* Action Button beat */
+      #abtn { position: absolute; left: -9px; top: 190px; width: 9px; height: 58px; border-radius: 4px 0 0 4px; background: #2b3946; }
+      #dark { position: absolute; inset: 0; background: #05080b; transform-origin: 100% 50%; }
+      #flash { position: absolute; left: -40px; top: 160px; width: 120px; height: 120px; border-radius: 50%;
+               background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(124, 195, 255, 0.5) 45%, rgba(124, 195, 255, 0) 70%); opacity: 0; }
+      #paw { position: absolute; left: -220px; top: 665px; width: 220px; height: auto; }
+      #abnote { position: absolute; left: 0; right: 0; top: 230px; text-align: center; font-size: 24px; color: #596875; }
+      .stamp { display: inline-block; font-style: normal; font-size: 32px; color: #ffffff; background: #e5484d; border-radius: 30px; padding: 2px 16px; margin-right: 12px; vertical-align: 4px; }
+      .node .stp { position: absolute; right: -24px; top: -20px; min-width: 58px; height: 40px; padding: 0 8px; border-radius: 20px; background: #e5484d; color: #fff;
+                   font-size: 24px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0; border: 3px solid #fff; }
+      /* Pain cards on the ring: the stop's name, the struggle (struck out), then Lanclo's answer */
+      .pc { position: absolute; width: 300px; opacity: 0; }
+      .pc .face { background: #ffffff; border: 4px solid #d6e0e8; border-radius: 24px; padding: 10px 16px 12px; box-shadow: 0 10px 24px rgba(39, 59, 75, 0.16); transform-origin: 50% 50%; }
+      .pc em { display: block; font-style: normal; font-size: 21px; font-weight: 700; color: #1b6fd6; margin-bottom: 4px; }
+      .pc .pain { position: relative; display: block; font-size: 24px; font-weight: 700; color: #4a5a68; line-height: 1.3; }
+      .pc .strike { position: absolute; left: -4px; right: -4px; top: 50%; height: 5px; margin-top: -2px; background: #e5484d; border-radius: 3px; transform-origin: 0 50%; transform: scaleX(0); }
+      .pc .ok { display: none; font-size: 25px; font-weight: 700; color: #1b6fd6; line-height: 1.3; }
+      .top2 { position: absolute; left: 30px; right: 30px; top: 70px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .top2 s { font-size: 34px; font-weight: 700; color: #6f7d89; text-decoration-color: #e5484d; text-decoration-thickness: 4px; white-space: nowrap; }
+      .top2 b { display: block; background: #ffffff; color: #1b6fd6; font-size: 46px; font-weight: 700; padding: 10px 30px; border-radius: 40px; box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14); white-space: nowrap; }
+      /* the entrance: home screen with the daily-lesson widget (medium) */
+      #homew { position: absolute; inset: 0; background: linear-gradient(160deg, #cfe0f1 0%, #e9d9ef 55%, #f6e6d8 100%); }
+      #homew .hs-time { position: absolute; left: 13%; top: 2.6%; font-size: 21px; font-weight: 700; color: #1d2733; }
+      #homew .hs-island { position: absolute; left: 36%; top: 1.5%; width: 28%; height: 3%; border-radius: 20px; background: #000; }
+      .wid { position: absolute; left: 20px; right: 20px; top: 13%; height: 196px; background: #ffffff; border-radius: 40px; display: flex; align-items: center; gap: 12px; padding: 16px; box-shadow: 0 8px 20px rgba(39, 59, 75, 0.15); }
+      .wid img { width: 104px; height: auto; }
+      .wbody { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+      .wtop { display: flex; justify-content: space-between; align-items: center; }
+      .wtop b { font-size: 20px; color: #111; white-space: nowrap; }
+      .flame { font-size: 17px; font-weight: 700; color: #f08a24; white-space: nowrap; }
+      .flame small { font-size: 14px; color: #6f7d89; margin: 0 2px; }
+      .wsub { font-size: 18px; color: #6f7d89; }
+      .wgo { font-size: 19px; font-weight: 700; color: #1b6fd6; }
+      .wlab { position: absolute; left: 0; right: 0; top: 33.5%; text-align: center; font-size: 17px; color: #4a5a68; }
+      #homew .icons { position: absolute; left: 34px; right: 34px; top: 40%; display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 40px; justify-items: center; }
+      #homew .icons i { width: 84px; height: 84px; border-radius: 22px; background: rgba(255, 255, 255, 0.55); display: flex; align-items: center; justify-content: center; }
+      #homew .icons i.lc { background: #ffffff; }
+      #homew .icons i.lc img { width: 56px; height: 56px; }
+      .hs-tap { position: absolute; left: 50%; top: 22%; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); opacity: 0; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.1" data-width="1080" data-height="1920">
+      <div id="cam">
+        <!-- Hook: the other study apps piled up behind the phone -->
+        <div id="pile" class="clip" data-start="0" data-duration="2.5" data-track-index="0"></div>
+
+        <!-- The loop (11.4-23.45): ring, seven pain cards on their stops, Lanclo in the middle, Mimi running -->
+        <div id="loop" class="clip" data-start="11.4" data-duration="12.05" data-track-index="1">
+          <svg id="ring" viewBox="0 0 1080 1920">
+            <path d="M540,460 A455,540 0 1,1 540,1540 A455,540 0 1,1 540,460" fill="none" stroke="#d6e0e8" stroke-width="14" />
+            <path id="trail" d="M540,460 A455,540 0 1,1 540,1540 A455,540 0 1,1 540,460" pathLength="1" fill="none" stroke="#2a8dff" stroke-width="14" stroke-linecap="round" stroke-dasharray="1 1" stroke-dashoffset="1" />
+          </svg>
+        </div>
+
+        <div id="device">
+          <i id="abtn"></i>
+          <div id="flash"></div>
+          <div id="screen">
+            <div id="chat" class="clip" data-start="0" data-duration="2.5" data-track-index="2">
+              <div class="bar"><div class="t">9:41</div><div class="isl"></div><div class="nm"><i></i>AIチャット</div></div>
+              <div class="body">
+                <div class="feed" id="feed">
+                  <div class="me" id="q1">「touch base」ってどういう意味？</div>
+                  <div class="ai" id="a1"><b>「touch base」</b>は「（軽く）連絡を取る」「状況を確認し合う」という意味の口語表現です。主にビジネスの場面で使われ、野球でベースに触れることに由来すると言われています。<br /><br /><b>例文：</b>Let's touch base next week.（来週また連絡を取り合いましょう）<br /><br /><b>似た表現：</b>get in touch／check in／follow up などがあります。ニュアンスの違いとしては、get in touch はしばらく連絡していない相手に使うことが多く、check in は進み具合をたずねるとき、follow up は前の話の続きを確認するときに……<br /><br />また、touch base with 〜 の形で「〜と連絡を取る」となり、メールの書き出しや会議の締めくくりにもよく使われます。カジュアルすぎず、丁寧すぎない……</div>
+                </div>
+              </div>
+              <div class="pane" id="p1">
+                <h4>履歴</h4>
+                <div class="hist dup">「touch base」ってどういう意味？<small>今日</small></div>
+                <div class="hist">「circle back」の意味は？<small>今日</small></div>
+                <div class="hist dup">「touch base」ってどういう意味？<small>昨日</small></div>
+                <div class="hist">「circle back」ってどういう意味？<small>2日前</small></div>
+                <div class="hist dup">「touch base」ってどういう意味？<small>3日前</small></div>
+              </div>
+              <div class="input"><span class="typed" id="typed"></span><span class="cur" id="cur"></span><span id="ph">メッセージを入力</span><i class="send"></i></div>
+            </div>
+            <!-- the entrance: home screen with Lanclo's daily-lesson widget (drawn after the real widget) -->
+            <div id="homew" class="clip" data-start="11.4" data-duration="2.45" data-track-index="2">
+              <div class="hs-time">9:41</div><div class="hs-island"></div>
+              <div class="wid" id="wid">
+                <img src="assets/art/listening.png" alt="" />
+                <div class="wbody">
+                  <div class="wtop"><b>デイリーレッスン</b><span class="flame">🔥<small>連続</small>3日</span></div>
+                  <div class="wsub">今日も、自分の声で練習。</div>
+                  <div class="wgo">はじめる →</div>
+                </div>
+              </div>
+              <div class="wlab">ウィジェット</div>
+              <div class="icons"><i></i><i></i><i></i><i class="lc"><img src="assets/kit/brand/mark.png" alt="" /></i><i></i><i></i><i></i><i></i></div>
+              <div id="wtap" class="hs-tap"></div>
+            </div>
+            <div id="lscreen" class="clip" data-start="13.5" data-duration="0.35" data-track-index="5">
+              <img src="assets/kit/brand/mark.png" alt="" /><span>Lanclo</span>
+            </div>
+            <div id="zoom">
+              <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="13.85" data-duration="9.6" data-track-index="3"></video>
+              <div id="masks"></div>
+            </div>
+            <div id="status" class="clip" data-start="13.85" data-duration="9.6" data-track-index="4"><b>9:41</b><i></i><u></u></div>
+            <div id="ring1" class="ring1"></div>
+            <div id="ring5" class="ring1" style="left:88%; top:63%"></div>
+          </div>
+        </div>
+        <img id="paw" class="clip" src="assets/art/paw.webp" alt="" data-start="12.6" data-duration="0.6" data-track-index="23" />
+
+        <div id="cards"></div>
+
+        <div id="runner" class="clip" data-start="11.5" data-duration="11.95" data-track-index="6">
+          <div class="bob"><img id="run-r" src="assets/art/run.webp" alt="" /><img id="run-l" src="assets/art/run-left.webp" alt="" style="opacity:0" /></div>
+        </div>
+        <div id="score" class="clip" data-start="22.55" data-duration="0.9" data-track-index="7">
+          <div class="k">発音スコア</div><div class="v"><span id="sv">64</span><small>点</small></div><div class="n">※数値はイメージ</div>
+        </div>
+
+        <img id="f-type" class="fr clip" src="assets/art/friend-type.webp" alt="" data-start="0" data-duration="1.5" data-track-index="8" />
+        <img id="f-oops" class="fr clip" src="assets/art/friend-oops.webp" alt="" data-start="1.5" data-duration="1.0" data-track-index="8" />
+      </div>
+      <div id="say0" class="bubble from-left clip" style="max-width: 600px" data-start="0.1" data-duration="1.4" data-track-index="20">「touch base」って<br />どういう意味…？</div>
+      <div id="say1" class="bubble from-left clip" data-start="1.55" data-duration="0.95" data-track-index="20">昨日も同じこと<br />聞いてる…</div>
+
+      <!-- 2.5-9.8 Mimi's ranking -->
+      <div id="rank" class="clip" data-start="2.5" data-duration="7.3" data-track-index="9">
+        <div id="board">
+          <h3 id="r-title">AI英語学習の悩み TOP7<small>（Mimi調べ）</small></h3>
+          <div id="rows"></div>
+          <div class="dok">※Mimiの独断です</div>
+        </div>
+        <img id="r-friend" src="assets/art/friend-sigh.webp" alt="" />
+        <img id="r-mimi" src="assets/art/presenter.webp" alt="" />
+      </div>
+      <div id="r-say" class="bubble from-left clip" data-start="8.9" data-duration="0.9" data-track-index="21">わかる…</div>
+
+      <div id="two1" class="two clip" data-start="9.8" data-duration="0.8" data-track-index="10">
+        <img id="t1-friend" src="assets/art/friend-sigh.webp" alt="" />
+        <img id="t1-mimi" src="assets/art/confident.webp" alt="" />
+        <div id="t1-say" class="bubble from-right">Lancloなら、<br />全部まとめて回るよ</div>
+      </div>
+      <div id="copy" class="type clip" data-start="10.6" data-duration="0.85" data-track-index="11">
+        <div id="big1" class="big">続けられて、<br /><strong>変化が見える。</strong></div>
+      </div>
+
+      <!-- Top line during the loop: the struggle, struck out, and Lanclo's answer -->
+      <div class="top2 clip" id="tp0" data-start="12.6" data-duration="1.25" data-track-index="12"><s>開いて、毎回チャットを打つのが面倒</s><b>ボタン・ウィジェットから、すぐ開始</b></div>
+      <div class="top2 clip" id="tp1" data-start="13.85" data-duration="1.25" data-track-index="12"><s>なんとなくAIと会話して終わり</s><b>あなたの過去から、毎回あなた専用のレッスン</b></div>
+      <div class="top2 clip" id="tp2" data-start="15.1" data-duration="1.25" data-track-index="12"><s>普通のAIの声でしかきけない</s><b>お手本は、自分の声</b></div>
+      <div class="top2 clip" id="tp3" data-start="16.35" data-duration="1.25" data-track-index="12"><s>変化を楽しんで学習する仕組みがない</s><b>自分の癖に気づいて、変化を楽しめる</b></div>
+      <div class="top2 clip" id="tp4" data-start="17.6" data-duration="1.25" data-track-index="12"><s>AIに聞いた内容を別のアプリに入れるのが面倒</s><b>ワンタップで保存、そのまま復習へ</b></div>
+      <div class="top2 clip" id="tp5" data-start="18.85" data-duration="1.25" data-track-index="12"><s>聞いたら終わりで、すぐ忘れる</s><b>忘れかけたころに、また出てくる</b></div>
+      <div class="top2 clip" id="tp6" data-start="20.1" data-duration="1.25" data-track-index="12"><s>学習記録がつけれない</s><b>学習記録は、勝手にたまる</b></div>
+      <div class="top2 clip" id="tp7" data-start="21.35" data-duration="1.2" data-track-index="12"><b>→ 次のレッスンに反映</b></div>
+      <div class="top2 clip" id="tp8" data-start="22.55" data-duration="0.9" data-track-index="12"><b>回すほど、伸びていく。</b></div>
+      <div id="abnote" class="clip" data-start="12.6" data-duration="1.25" data-track-index="21">※アクションボタン：iPhone 15 Pro・iPhone 16以降</div>
+
+      <div id="two2" class="two clip" data-start="23.45" data-duration="2.0" data-track-index="14">
+        <img id="t2-friend" src="assets/art/friend-nod.webp" alt="" />
+        <img id="t2-mimi" src="assets/art/perk.webp" alt="" />
+        <div id="t2-say" class="bubble from-left">自然に続けられて、<br />変化が見れる…<br />これが大事なんだよね</div>
+      </div>
+
+      <div id="night" class="clip" data-start="25.45" data-duration="3.4" data-track-index="17">
+        <div id="stars"></div><div id="n-moon"></div>
+        <img id="n-friend" src="assets/art/friend-bed.webp" alt="" />
+        <div id="mini"><div class="ms"><video id="a-bed" class="clip" src="assets/app/bed.mp4" muted playsinline data-start="25.75" data-duration="3.1" data-track-index="18"></video><div class="mstatus"></div></div></div>
+        <img id="n-mimi" src="assets/art/jump.webp" alt="" />
+        <div id="later"><span id="later-t">1週間後</span></div>
+      </div>
+      <div id="n-say" class="bubble from-left clip" data-start="25.85" data-duration="1.6" data-track-index="19">やば…<br />Lanclo沼から<br />抜けられない…</div>
+      <div id="n-mimi-say" class="bubble from-right clip" data-start="27.6" data-duration="1.25" data-track-index="19">それ、<br />続いてるってことだよ</div>
+
+      <div id="end" class="end clip" data-start="28.85" data-duration="1.25" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.1" data-duration="1.4" data-track-index="24"><span>What does “touch base” mean…?</span></div>
+      <div class="sub clip" data-start="1.5" data-duration="1.0" data-track-index="24"><span>I asked the same thing yesterday…</span></div>
+      <div class="sub clip" data-start="2.5" data-duration="0.3" data-track-index="24"><span>Top 7 struggles of studying English with AI (Mimi’s survey — just her opinion)</span></div>
+      <div class="sub clip" data-start="2.8" data-duration="1.0" data-track-index="24"><span>No. 7: Moving what AI told you into another app is a hassle</span></div>
+      <div class="sub clip" data-start="3.8" data-duration="1.0" data-track-index="24"><span>No. 6: You only hear a generic AI voice</span></div>
+      <div class="sub clip" data-start="4.8" data-duration="1.0" data-track-index="24"><span>No. 5: You can’t keep a study record</span></div>
+      <div class="sub clip" data-start="5.8" data-duration="1.0" data-track-index="24"><span>No. 4: Nothing makes seeing your progress fun</span></div>
+      <div class="sub clip" data-start="6.8" data-duration="1.0" data-track-index="24"><span>No. 3: You just chat with AI, and that’s it</span></div>
+      <div class="sub clip" data-start="7.8" data-duration="1.0" data-track-index="24"><span>No. 2: Opening it and typing a chat every time is a hassle</span></div>
+      <div class="sub clip" data-start="8.8" data-duration="1.0" data-track-index="24"><span>No. 1: Once you’ve asked, that’s it — you forget right away. “So true…”</span></div>
+      <div class="sub clip" data-start="9.8" data-duration="0.8" data-track-index="24"><span>With Lanclo, it all runs together.</span></div>
+      <div class="sub clip" data-start="10.6" data-duration="0.8" data-track-index="24"><span>Keep going, and see the change.</span></div>
+      <div class="sub clip" data-start="12.6" data-duration="1.25" data-track-index="24"><span>“Opening it and typing every time” → start right away from the Action Button or the widget.</span></div>
+      <div class="sub clip" data-start="13.85" data-duration="1.25" data-track-index="24"><span>“Just chatting with AI” → every lesson is built for you, from your past practice.</span></div>
+      <div class="sub clip" data-start="15.1" data-duration="1.25" data-track-index="24"><span>“Only a generic AI voice” → the model is your own voice.</span></div>
+      <div class="sub clip" data-start="16.35" data-duration="1.25" data-track-index="24"><span>“Nothing makes progress fun” → notice your own habits and enjoy the change.</span></div>
+      <div class="sub clip" data-start="17.6" data-duration="1.25" data-track-index="24"><span>“Moving it into another app” → save in one tap, straight into review.</span></div>
+      <div class="sub clip" data-start="18.85" data-duration="1.25" data-track-index="24"><span>“You forget right away” → it comes back right before you’d forget.</span></div>
+      <div class="sub clip" data-start="20.1" data-duration="1.25" data-track-index="24"><span>“No study record” → your record builds up by itself.</span></div>
+      <div class="sub clip" data-start="21.35" data-duration="1.2" data-track-index="24"><span>…and it feeds into your next lesson.</span></div>
+      <div class="sub clip" data-start="22.55" data-duration="0.9" data-track-index="24"><span>The more you loop, the more you grow. (Score: illustration)</span></div>
+      <div class="sub clip" data-start="23.45" data-duration="2.0" data-track-index="24"><span>Keeping it up naturally and seeing the change… that’s what matters.</span></div>
+      <div class="sub clip" data-start="25.45" data-duration="0.4" data-track-index="24"><span>One week later</span></div>
+      <div class="sub clip" data-start="25.85" data-duration="1.6" data-track-index="24"><span>Oh no… I can’t get out of the Lanclo rabbit hole…</span></div>
+      <div class="sub clip" data-start="27.6" data-duration="1.25" data-track-index="24"><span>That just means you’re keeping it up.</span></div>
+      <div class="sub clip" data-start="28.85" data-duration="1.25" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="30.1" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const G = {
+        talk: '<path d="M6 12h30a5 5 0 0 1 5 5v14a5 5 0 0 1-5 5H18l-8 7v-7H6a5 5 0 0 1-5-5V17a5 5 0 0 1 5-5z" fill="#fff"/><path d="M58 26H34a5 5 0 0 0-5 5v12a5 5 0 0 0 5 5h12l8 7v-7h4a5 5 0 0 0 5-5V31a5 5 0 0 0-5-5z" fill="#d6f5e3"/>',
+        cards: '<rect x="16" y="8" width="36" height="46" rx="6" fill="#bfe6f0" transform="rotate(10 34 31)"/><rect x="12" y="12" width="36" height="46" rx="6" fill="#fff"/>',
+        memo: '<rect x="12" y="8" width="40" height="50" rx="6" fill="#fff"/><path d="M20 22h24M20 31h24M20 40h16" stroke="#f0b429" stroke-width="4" stroke-linecap="round"/>',
+        play: '<rect x="6" y="14" width="52" height="36" rx="9" fill="#fff"/><path d="M27 23l14 9-14 9z" fill="#ef5a5a"/>'
+      };
+      const WINS = [["talk", "AI会話", "#22a06b", 380, 300, -12], ["cards", "単語カード", "#1690a8", 720, 280, 11], ["memo", "コピペメモ", "#f0a92a", 120, 560, -9], ["play", "発音動画", "#e04848", 790, 1150, 8]];
+      document.getElementById("pile").innerHTML = WINS.map(([g, n, c, x, y, r], i) =>
+        `<div class="win" id="w${i}" style="left:${x}px; top:${y}px; transform:rotate(${r}deg)"><div class="hd" style="background:${c}"><svg viewBox="0 0 64 64">${G[g]}</svg>${n}</div>` +
+        `<div class="ln" style="width:80%"></div><div class="ln" style="width:60%"></div><div class="ln" style="width:72%"></div><div class="ln" style="width:50%"></div></div>`).join("");
+      const stars = [[80, 120], [210, 300], [420, 160], [610, 260], [960, 180], [330, 470], [700, 520], [150, 700], [980, 640]];
+      document.getElementById("stars").innerHTML = stars.map(([x, y]) => `<i class="star" style="left:${x}px; top:${y}px"></i>`).join("");
+
+      // ---- the ranking (owner's wording), rows 1..7 top-down, revealed 7 -> 1 ----
+      const RANK = ["聞いたら終わりで、すぐ忘れる", "開いて、毎回チャットを打つのが面倒", "なんとなくAIと会話して終わり", "変化を楽しんで学習する仕組みがない",
+                    "学習記録がつけれない", "普通のAIの声でしかきけない", "AIに聞いた内容を別のアプリに入れるのが面倒"];
+      document.getElementById("rows").innerHTML = RANK.map((t, i) => `<div class="row${i ? "" : " top"}" id="row${i + 1}"><b>${i + 1}位</b><span>${t}</span></div>`).join("");
+      const REVEAL = (r) => 2.8 + (7 - r) * 1.0;
+
+      // ---- the loop: ellipse centre (540,1000), radii 455 x 540; stop k at k/7 of a lap, clockwise from the top, in learning order ----
+      const CX = 540, CY = 1000, RX = 455, RY = 540;
+      const at = (p) => { const a = 2 * Math.PI * p; return [CX + RX * Math.sin(a), CY - RY * Math.cos(a)]; };
+      // [stop label, ranked struggle (index into RANK), Lanclo's answer, English subtitle]
+      const STOP = [
+        ["入口", 1, "ボタン・ウィジェットから、すぐ開始", "“Opening it and typing every time” → start right away from the Action Button or the widget."],
+        ["あなた専用のレッスン", 2, "あなたの過去から、毎回あなた専用のレッスン", "“Just chatting with AI” → every lesson is built for you, from your past practice."],
+        ["お手本", 5, "お手本は、自分の声", "“Only a generic AI voice” → the model is your own voice."],
+        ["Mimiのアドバイス", 3, "自分の癖に気づいて、変化を楽しめる", "“Nothing makes progress fun” → notice your own habits and enjoy the change."],
+        ["しおりで保存", 6, "ワンタップで保存、そのまま復習へ", "“Moving it into another app” → save in one tap, straight into review."],
+        ["スワイプ復習", 0, "忘れかけたころに、また出てくる", "“You forget right away” → it comes back right before you’d forget."],
+        ["学習記録", 4, "学習記録は、勝手にたまる", "“No study record” → your record builds up by itself."],
+      ];
+      const STOPS = [12.6, 13.85, 15.1, 16.35, 17.6, 18.85, 20.1];   // 1.25 s each
+      const BACK = 21.35, LAP = 22.55;
+      const cardXY = (k) => { let [x, y] = at(k / 7); x = Math.min(Math.max(x, 162), 918); return [x, k === 0 ? y - 50 : y]; };
+      document.getElementById("cards").innerHTML = STOP.map(([lab, r, ans], k) => {
+        const [x, y] = cardXY(k);
+        return `<div class="pc" id="pc${k}" style="left:${(x - 150).toFixed(0)}px; top:${(y - 62).toFixed(0)}px"><div class="face" id="pf${k}"><em>${lab}</em>` +
+          `<span class="pain">${RANK[r]}<i class="strike"></i></span><span class="ok">✓ ${ans}</span></div></div>`;
+      }).join("");
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // ---- 0-1.5 hook ----
+      tl.set("#device", { x: 150, y: -60, scale: 0.98, opacity: 1 }, 0);
+      WINS.forEach((w, i) => tl.fromTo(`#w${i}`, { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "bounce.out" }, 0.02 + i * 0.18));
+      tl.fromTo("#f-type", { y: 0 }, { y: 6, duration: 0.12, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.0);
+      const Q = "「touch base」ってどういう意味？", typed = document.getElementById("typed"), ph = document.getElementById("ph"), ty = { n: 0 };
+      const showTyped = () => { const n = Math.round(ty.n); typed.textContent = Q.slice(0, n); ph.style.display = n ? "none" : ""; };
+      tl.fromTo(ty, { n: 6 }, { n: Q.length, duration: 0.25, ease: "none", onUpdate: showTyped }, 0.0);
+      tl.fromTo(ty, { n: 0 }, { n: 0, duration: 0.01, onUpdate: showTyped, immediateRender: false }, 0.3);
+      tl.fromTo("#q1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.12 }, 0.3);
+      tl.fromTo("#a1", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0.42);
+      tl.fromTo("#feed", { y: 0 }, { y: -600, duration: 1.05, ease: "power1.in" }, 0.45);
+      tl.fromTo("#say0", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 0.1);
+      tl.fromTo("#p1", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 1.5);
+      tl.set("#feed", { opacity: 0 }, 1.6);
+      tl.fromTo(".hist.dup", { scale: 1 }, { scale: 1.05, duration: 0.12, yoyo: true, repeat: 3, stagger: 0.08, immediateRender: false }, 1.6);
+      tl.fromTo("#say1", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 1.55);
+      tl.set("#device", { opacity: 0 }, 2.5);
+
+      // ---- 2.5-9.8 the ranking ----
+      tl.fromTo("#board", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 2.5);
+      tl.fromTo("#r-mimi", { x: 300 }, { x: 0, duration: 0.25, ease: "back.out(1.6)" }, 2.5);
+      for (let r = 7; r >= 1; r--) {
+        const t = REVEAL(r);
+        tl.fromTo(`#row${r}`, { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "back.out(1.8)" }, t);
+        tl.fromTo(`#row${r} b`, { scale: 0.4 }, { scale: 1, duration: 0.2, ease: "back.out(3)" }, t + 0.04);
+        tl.fromTo("#r-mimi", { rotation: 0, transformOrigin: "50% 100%" }, { rotation: -4, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, t);
+        tl.fromTo("#r-friend", { rotation: 0, y: 0, transformOrigin: "50% 100%" }, { rotation: 5, y: 10, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t + 0.3);
+      }
+      tl.fromTo("#row1", { scale: 1 }, { scale: 1.05, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 9.0);
+      tl.fromTo("#r-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 8.9);
+
+      // ---- 9.8-10.6 Mimi; 10.6-11.45 the copy ----
+      tl.fromTo("#t1-mimi", { x: 240, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 9.8);
+      tl.fromTo("#t1-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 9.85);
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 10.6);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 10.62);
+
+      // ---- 11.4-12.6 the ring; the seven struggles fly onto the stops that solve them ----
+      tl.set("#device", { x: 0, y: 0, scale: 0.8, opacity: 1 }, 11.4);
+      tl.fromTo("#ring", { opacity: 0, scale: 0.92, transformOrigin: "540px 1000px" }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.6)" }, 11.4);
+      tl.fromTo("#device", { scale: 0.6 }, { scale: 0.8, duration: 0.25, ease: "back.out(1.6)", immediateRender: false }, 11.4);
+      STOP.forEach(([lab, r], kk) => {
+        const [x, y] = cardXY(kk);
+        // from a ranking-like list at the top (row r), in rank order
+        const fx = 540 - x, fy = 170 + r * 64 - y;
+        tl.set(`#pc${kk}`, { opacity: 0 }, 0);
+        tl.set(`#pf${kk} .pain`, { display: "block" }, 0); tl.set(`#pf${kk} .ok`, { display: "none" }, 0);
+        tl.set(`#pf${kk}`, { backgroundColor: "#ffffff", borderColor: "#d6e0e8" }, 0);
+        tl.fromTo(`#pc${kk}`, { x: fx, y: fy, scale: 0.8, rotation: 0, opacity: 1 },
+          { x: 0, y: 0, scale: 1, rotation: kk % 2 ? 2 : -2, opacity: 1, duration: 0.5, ease: "power3.inOut", immediateRender: false }, 11.5 + r * 0.08);
+        tl.set(`#pc${kk}`, { opacity: 0 }, 23.45);
+      });
+
+      const runR = document.getElementById("run-r"), runL = document.getElementById("run-l"), runner = document.getElementById("runner"), trail = document.getElementById("trail");
+      const M = { p: 0, trail: 0 };
+      const place = () => {
+        const [x, y] = at(M.p);
+        const dir = Math.cos(2 * Math.PI * M.p) >= -0.02 ? 1 : -1;
+        runner.style.transform = `translate(${(x - 66).toFixed(1)}px, ${(y - 150 - 70).toFixed(1)}px)`;
+        runR.style.opacity = dir > 0 ? 1 : 0; runL.style.opacity = dir > 0 ? 0 : 1;
+        trail.style.strokeDashoffset = (1 - Math.min(1, M.trail)).toFixed(4);
+      };
+      const RUN = 0.3;
+      tl.fromTo(M, { p: 0, trail: 0 }, { p: 0, trail: 0, duration: 0.01, onUpdate: place }, 12.2);
+      tl.fromTo("#runner .bob", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "bounce.out" }, 12.2);
+      // each stop: the card lights, the struggle is struck out, the card flips to Lanclo's answer
+      const flip = (kk, t) => {
+        tl.fromTo(`#pc${kk}`, { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power2.out", immediateRender: false }, t);
+        tl.fromTo(`#pf${kk} .strike`, { scaleX: 0 }, { scaleX: 1, duration: 0.18, ease: "power2.out" }, t + 0.15);
+        tl.to(`#pf${kk}`, { scaleX: 0, duration: 0.1, ease: "power2.in" }, t + 0.42);
+        tl.set(`#pf${kk} .pain`, { display: "none" }, t + 0.52);
+        tl.set(`#pf${kk} .ok`, { display: "block" }, t + 0.52);
+        tl.set(`#pf${kk}`, { backgroundColor: "#e6f1ff", borderColor: "#2a8dff" }, t + 0.52);
+        tl.to(`#pf${kk}`, { scaleX: 1, duration: 0.12, ease: "power2.out" }, t + 0.52);
+        tl.to(`#pc${kk}`, { scale: 1, duration: 0.15 }, t + 0.7);
+        tl.fromTo(`#tp${kk} b`, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.16, ease: "power2.out" }, t + 0.3);
+      };
+      flip(0, STOPS[0]);
+      for (let n = 1; n < 7; n++) {
+        tl.fromTo(M, { p: (n - 1) / 7, trail: (n - 1) / 7 }, { p: n / 7, trail: n / 7, duration: RUN, ease: "power1.inOut", onUpdate: place, immediateRender: false }, STOPS[n] - RUN);
+        flip(n, STOPS[n]);
+      }
+      STOPS.forEach((t) => tl.fromTo("#runner .bob", { y: 0 }, { y: -16, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, t + 0.1));
+      // back to the lesson stop (21.35-21.85): it feeds the next lesson
+      tl.fromTo(M, { p: 6 / 7, trail: 6 / 7 }, { p: 8 / 7, trail: 8 / 7, duration: 0.5, ease: "power1.inOut", onUpdate: place, immediateRender: false }, BACK);
+      tl.fromTo("#pc1", { scale: 1 }, { scale: 1.15, duration: 0.15, yoyo: true, repeat: 3, immediateRender: false }, BACK + 0.5);
+      k.pop("#tp7 b", BACK + 0.4);
+      // a fast lap with the score
+      tl.fromTo(M, { p: 8 / 7, trail: 0 }, { p: 15 / 7, trail: 1, duration: 0.9, ease: "none", onUpdate: place, immediateRender: false }, LAP);
+      for (let n = 1; n <= 7; n++) tl.fromTo(`#pc${(n + 1) % 7}`, { scale: 1 }, { scale: 1.1, duration: 0.06, yoyo: true, repeat: 1, immediateRender: false }, LAP + (0.9 * n) / 7);
+      k.pop("#tp8 b", LAP);
+      const sc = { v: 64 }, sv = document.getElementById("sv");
+      tl.fromTo("#score", { y: 60, scale: 0.85, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.18, ease: "back.out(1.8)" }, LAP);
+      tl.fromTo(sc, { v: 64 }, { v: 81, duration: 0.6, ease: "power2.out", onUpdate: () => { sv.textContent = Math.round(sc.v); } }, LAP + 0.15);
+      tl.fromTo("#score .v", { scale: 1 }, { scale: 1.18, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, LAP + 0.7);
+
+      // ---- the entrance stop: home screen widget and the Action Button ----
+      tl.fromTo("#paw", { x: 0 }, { x: 343, duration: 0.12, ease: "power2.out" }, 12.6);
+      tl.to("#paw", { x: 353, duration: 0.05, yoyo: true, repeat: 1 }, 12.72);
+      tl.to("#paw", { x: -40, duration: 0.15, ease: "power2.in" }, 12.85);
+      tl.to("#abtn", { x: 4, duration: 0.05, yoyo: true, repeat: 1 }, 12.72);
+      tl.fromTo("#flash", { scale: 0.2, opacity: 1 }, { scale: 2.4, opacity: 0, duration: 0.3, ease: "power2.out" }, 12.73);
+      tl.fromTo("#wtap", { scale: 0.3, opacity: 1 }, { scale: 2.0, opacity: 0, duration: 0.25, ease: "power2.out" }, 13.3);
+      tl.fromTo("#wid", { scale: 1 }, { scale: 0.95, duration: 0.08, yoyo: true, repeat: 1, immediateRender: false }, 13.3);
+
+      // ---- masks over the fixtures' QA/demo labels (film clock) ----
+      const LAPS = (kk) => LAP + (0.9 * kk) / 7;
+      const MASKS = [
+        [13.85, 15.1, 16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"], [BACK, LAP, 16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"],  // lesson title "QA："
+        [15.1, 16.35, 67.8, 8.7, 3, 94],                                                    // daily lesson feedback "QA用データ"
+        [16.95, 18.85, 73.4, 4.8, 7, 86, "#e8eef6"],                                        // advice rewrite note "デモ："
+        [20.1, 21.35, 75.4, 3.0, 8, 18, "#fcfcfc"],                                         // record "デモデータ"
+      ];
+      [[0, [16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"]], [1, [16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"]], [2, [67.8, 8.7, 3, 94]],
+       [4, [73.4, 4.8, 7, 86, "#e8eef6"]], [6, [75.4, 3.0, 8, 18, "#fcfcfc"]]].forEach(([kk, m]) => MASKS.push([LAPS(kk), LAPS(kk + 1), ...m]));
+      document.getElementById("masks").innerHTML = MASKS.map((m, i) =>
+        `<div class="mask" id="mk${i}" style="top:${m[2]}%; height:${m[3]}%; left:${m[4]}%; width:${m[5]}%; background:${m[6] || "#ffffff"}">${m[7] || ""}</div>`).join("");
+      MASKS.forEach((m, i) => { tl.set(`#mk${i}`, { opacity: 0 }, 0); tl.set(`#mk${i}`, { opacity: 1 }, m[0]); tl.set(`#mk${i}`, { opacity: 0 }, m[1]); });
+      [15.2, 15.75].forEach((t) => tl.fromTo("#ring1", { scale: 0.6, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, t));   // the model button
+      [17.75, 18.2].forEach((t) => tl.fromTo("#ring5", { scale: 0.6, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.4, ease: "power2.out", immediateRender: false }, t));  // the bookmark
+
+      // ---- 23.45-25.45 the key line ----
+      tl.fromTo("#t2-friend", { rotation: 0, transformOrigin: "50% 100%" }, { rotation: 3, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 23.5);
+      tl.fromTo("#t2-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 23.5);
+      tl.fromTo("#t2-mimi", { y: 0 }, { y: -24, duration: 0.2, yoyo: true, repeat: 3, ease: "power2.out" }, 24.15);
+
+      // ---- 25.45-28.85 one week later, in bed ----
+      tl.fromTo("#later", { scale: 1.6, opacity: 0, y: 500 }, { scale: 1.6, opacity: 1, y: 500, duration: 0.12 }, 25.45);
+      tl.to("#later", { scale: 1, y: 0, duration: 0.3, ease: "power3.inOut" }, 25.7);
+      tl.fromTo(["#n-friend", "#mini"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 25.7);
+      tl.fromTo("#n-friend", { y: 0 }, { y: -8, duration: 0.2, yoyo: true, repeat: 7, ease: "sine.inOut", immediateRender: false }, 25.85);
+      tl.fromTo("#n-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 25.85);
+      tl.fromTo(".star", { opacity: 0.3 }, { opacity: 1, duration: 0.3, yoyo: true, repeat: 5, stagger: 0.1 }, 25.45);
+      tl.fromTo("#n-mimi", { y: 800, rotation: -20, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.3, ease: "back.out(1.8)" }, 27.45);
+      tl.fromTo("#n-mimi-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 27.6);
+
+      k.end(28.85);
+      k.tapCta(29.3);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
