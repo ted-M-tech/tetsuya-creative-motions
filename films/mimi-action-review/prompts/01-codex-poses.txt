@@ -1,0 +1,8 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet) and poses already drawn in the same style. Keep EXACTLY the same illustration style, line weight, colours, proportions, head size, headphone design and the same three-quarter view turned slightly toward the viewer's RIGHT. Plain pure white background, centred, same scale as the attached poses, no text. Wholesome and cute, suitable for all ages.
+
+Save each as PNG in art/ (relative to the current directory):
+1) art/toilet.png — Mimi sitting on a simple white western toilet with its lid up (toilet drawn in the same flat style, light grey-blue shading, seen from the front-side), fully absorbed in a smartphone held in both mittens, eyes wide and sparkling, a happy focused smile, feet dangling. Only the toilet and Mimi.
+2) art/sheepish.png — Mimi standing, embarrassed and caught out: one mitten scratching the back of her head, an awkward wide smile, one sweat drop, ears drooping slightly, the other mitten holding a smartphone.
+3) art/bed.png — Mimi lying on her tummy in a cosy bed under a light-blue blanket, head and arms out, chin up, absorbed in a smartphone held in both mittens, sparkling focused eyes, a white pillow; the bed is a simple flat-style single bed seen from the side-front.
+4) art/wakeup.png — Mimi jolting awake and hopping out of bed: both feet off the ground mid-hop, arms up in surprise, eyes wide, mouth open "!", ears straight up, a small "!" shock mark shape (a drawn symbol, not text) above her head.
+Do not modify other files. List the saved paths when done.

@@ -91,6 +91,18 @@ Mimi's English books pile up unread; the daily lesson picks today's sentence, pl
 
 One press on the Action Button and a tiny Mimi opens Add phrase; the AI meaning reveals her friend's "Bless your heart" was a jab. First of a three-part Action Button series.
 
+**Action Button ② Start review — in the toilet** · 0:17 vertical · 2D Mimi + simulator recording
+
+[Process & source](films/mimi-action-review/README.md)
+
+One press and review is already running; card after card until someone bangs on the door.
+
+**Action Button ③ Today's lesson — morning in bed** · 0:17 vertical · 2D Mimi + simulator recording
+
+[Process & source](films/mimi-action-lesson/README.md)
+
+"Five more minutes" — but today's lesson is already open; mum's wake-up call comes too late.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

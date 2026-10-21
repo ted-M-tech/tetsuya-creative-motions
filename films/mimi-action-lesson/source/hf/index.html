@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* Mimi shots are full frames on the page colour; the wrapper moves and scales them. */
+      #mimi { position: absolute; inset: 0; transform-origin: 480px 1330px; }
+      #mimi video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #mimi .pose { position: absolute; left: 230px; bottom: 600px; width: 560px; height: auto; transform-origin: 50% 100%; }
+      #mimi .pose.bed { left: 120px; width: 760px; }
+      .mask { position: absolute; left: 5%; right: 5%; background: #ffffff; border-radius: 6px; }
+      #sun { position: absolute; right: 60px; top: 150px; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #ffe08a 45%, rgba(255, 224, 138, 0) 70%); }
+      /* The phone: same place as the other real-app shorts; the hook moves it to the centre */
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #device .side { position: absolute; left: -9px; width: 9px; border-radius: 4px 0 0 4px; background: #2b3946; }
+      #abtn { top: 190px; height: 58px; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 38%; }
+      #zoom video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* the recording's status bar (time, recording dot) under a clean one */
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 21px; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 20px; background: #000; }
+      #status u { position: absolute; right: 9%; top: 36%; width: 34px; height: 17px; border: 2px solid #111; border-radius: 5px; }
+      #status u::after { content: ""; position: absolute; inset: 2px; background: #111; border-radius: 2px; }
+      .hl { position: absolute; background: rgba(244, 169, 184, 0.55); border-radius: 6px; transform-origin: 0 50%; }
+      #dark { position: absolute; inset: 0; background: #05080b; transform-origin: 100% 50%; }
+      #flash { position: absolute; left: -40px; top: 160px; width: 120px; height: 120px; border-radius: 50%;
+               background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(124, 195, 255, 0.5) 45%, rgba(124, 195, 255, 0) 70%); opacity: 0; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #paw { position: absolute; left: -220px; top: 605px; width: 220px; height: auto; }
+      #tiny { position: absolute; left: 540px; top: 640px; width: 190px; height: auto; opacity: 0; }
+      #puller { position: absolute; left: 300px; top: 760px; width: 230px; height: auto; opacity: 0; }
+      /* Clean type card: one line of copy on white, the three shortcuts as a row of pills */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 80px; }
+      .type .big { font-size: 100px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .row { display: flex; gap: 12px; flex-wrap: nowrap; justify-content: center; padding: 0 30px; }
+      .type .pill { font-size: 40px; font-weight: 700; padding: 16px 24px; border-radius: 44px; background: #eef2f5; color: #a3b0bb; white-space: nowrap; }
+      .type .pill.on { background: #344f69; color: #ffffff; }
+      .type .pill small { font-size: 30px; margin-left: 10px; }
+      /* the close: question, the three, the in-app settings on a small phone */
+      .type.close { justify-content: flex-start; padding-top: 190px; gap: 44px; }
+      .type.close .big { font-size: 88px; }
+      #mini { width: 420px; height: 913px; border-radius: 66px; background: #1d2733; padding: 12px; box-shadow: 0 24px 60px rgba(39, 59, 75, 0.25); }
+      #mini .mscreen { position: relative; width: 100%; height: 100%; border-radius: 50px; overflow: hidden; background: #f2f2f7; }
+      #mini video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #mini .mstatus { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      .type .note { position: absolute; right: 40px; bottom: 50px; font-size: 24px; color: #8a97a3; text-align: right; line-height: 1.4; }
+      #chip { position: absolute; left: 600px; top: 760px; background: #2a8dff; color: #fff; font-size: 40px; font-weight: 700;
+              padding: 16px 30px; border-radius: 40px; box-shadow: 0 12px 30px rgba(42, 141, 255, 0.35); }
+      /* the friends' two-shot before the button, and the friend when Mimi gets angry */
+      #talk { position: absolute; inset: 0; background: #eef3f9; }
+      #talk img { position: absolute; bottom: 520px; height: auto; }
+            #t-mimi { left: 120px; width: 840px; }
+      #talk .bubble { top: 420px; right: 80px; font-size: 64px; }
+      #steam { position: absolute; left: 150px; top: 820px; width: 300px; height: 200px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.8" data-width="1080" data-height="1920">
+      <div id="cam">
+        <div id="mimi">
+          <img id="m-bed" class="pose bed clip" src="assets/art/bed.webp" alt="" data-start="0.8" data-duration="7.6" data-track-index="0" />
+          <img id="m-wake" class="pose clip" src="assets/art/wakeup.webp" alt="" data-start="8.4" data-duration="1.4" data-track-index="0" />
+          <img id="m-proud" class="pose clip" src="assets/art/success.png" alt="" data-start="9.8" data-duration="2.4" data-track-index="0" />
+        </div>
+
+        <!-- The real app on the owner's iPhone (screen recording) -->
+        <div id="device">
+          <i id="abtn" class="side"></i>
+          <div id="flash"></div>
+          <div id="screen">
+            <div id="zoom">
+              <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="1.4" data-duration="12.4" data-track-index="3"></video>
+            </div>
+            <div class="mask clip" style="top:72.5%; height:8%" data-start="3.1" data-duration="2.4" data-track-index="5"></div>
+            <div class="mask clip" style="top:67.5%; height:6%" data-start="5.5" data-duration="2.4" data-track-index="5"></div>
+            <div class="mask clip" style="top:26.5%; height:7%" data-start="7.9" data-duration="4.4" data-track-index="5"></div>
+            <div class="mask clip" style="top:54%; height:5%" data-start="7.9" data-duration="4.4" data-track-index="6"></div>
+            <div id="tap1" class="tap clip" style="left:37%; top:87%" data-start="5.6" data-duration="0.3" data-track-index="7"></div>
+            <div id="status"><b>9:41</b><i></i><u></u></div>
+            <div id="dark" class="clip" data-start="0.8" data-duration="1.2" data-track-index="4"></div>
+          </div>
+        </div>
+        <img id="paw" class="clip" src="assets/art/paw.webp" alt="" data-start="0.8" data-duration="0.7" data-track-index="8" />
+      </div>
+
+      <!-- Morning (0-0.8): still in bed -->
+      <div id="talk" class="clip" data-start="0" data-duration="0.85" data-track-index="19">
+        <div id="sun"></div>
+        <img id="t-mimi" src="assets/art/bed.webp" alt="" />
+        <div id="t-say" class="bubble from-right">……あと5分。</div>
+      </div>
+      <div id="mom" class="bubble from-left clip" style="top:250px; font-size:56px" data-start="8.45" data-duration="1.95" data-track-index="23">ミミー！<br />早く起きなさーい！</div>
+
+      <!-- Hook: the Action Button, a tiny Mimi pops out of it and opens the screen -->
+      <img id="tiny" class="clip" src="assets/art/jump.webp" alt="" data-start="1.1" data-duration="0.35" data-track-index="9" />
+      <img id="puller" class="clip" src="assets/art/reach.webp" alt="" data-start="1.42" data-duration="1.6" data-track-index="9" />
+
+      <!-- The copy and the three shortcuts; this episode is ③ -->
+      <div id="copy" class="type clip" data-start="1.95" data-duration="1.15" data-track-index="11">
+        <div id="big1" class="big">起きたら、<br />もう<strong>今日のレッスン</strong>。</div>
+        <div class="row"><span id="p1" class="pill">① フレーズ追加</span><span id="p2" class="pill">② 復習</span><span id="p3" class="pill on">③ 今日のレッスン</span></div>
+      </div>
+      <div id="copy2" class="type close clip" data-start="12.2" data-duration="3.5" data-track-index="11">
+        <div id="big2" class="big">アクションボタン、<br /><strong>使えてる？</strong></div>
+        <div class="row"><span id="q1" class="pill">① フレーズ追加<small>済</small></span><span id="q2" class="pill">② 復習<small>済</small></span><span id="q3" class="pill on">③ レッスン<small>✓</small></span></div>
+        <div id="mini">
+          <div class="mscreen">
+            <video id="a-set" class="clip" src="assets/app/settings.mp4" muted playsinline data-start="12.4" data-duration="3.3" data-track-index="17"></video>
+            <div class="mstatus"></div>
+            <div id="st1" class="tap clip" style="left:90.5%; top:9.5%" data-start="12.63" data-duration="0.3" data-track-index="18"></div>
+            <div id="st2" class="tap clip" style="left:30%; top:45%" data-start="13.3" data-duration="0.3" data-track-index="18"></div>
+            <div id="st3" class="tap clip" style="left:37%; top:71%" data-start="14.25" data-duration="0.3" data-track-index="18"></div>
+          </div>
+        </div>
+        <div class="note">※アクションボタンは iPhone 15 Pro・iPhone 16 以降<br />Action Button: iPhone 15 Pro, iPhone 16 and later</div>
+      </div>
+
+
+      <!-- Captions (one track) -->
+      <div id="cap-3" class="caption small clip" data-start="3" data-duration="2.5" data-track-index="14"><span id="c3">今日の1文を、<br /><strong>自分の声</strong>のお手本で。</span></div>
+      <div id="cap-4" class="caption small clip" data-start="5.5" data-duration="2.9" data-track-index="14"><span id="c4">まねして話せば、<br />苦手な音までわかる。</span></div>
+      <div id="cap-6" class="caption clip" data-start="10.4" data-duration="1.8" data-track-index="14"><span id="c6">……もう起きてるもん。</span></div>
+
+      <div id="end" class="end clip" data-start="15.7" data-duration="1.1" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="0.85" data-track-index="24"><span>…Five more minutes.</span></div>
+      <div class="sub clip" data-start="1.95" data-duration="1.15" data-track-index="24"><span>Wake up — today’s lesson is already open.</span></div>
+      <div class="sub clip" data-start="3.0" data-duration="2.5" data-track-index="24"><span>Today’s sentence, modeled in your own voice.</span></div>
+      <div class="sub clip" data-start="5.5" data-duration="2.9" data-track-index="24"><span>Repeat it, and see which sounds to fix.</span></div>
+      <div class="sub clip" data-start="8.45" data-duration="1.95" data-track-index="24"><span>Mimi! Get up already!</span></div>
+      <div class="sub clip" data-start="10.4" data-duration="1.8" data-track-index="24"><span>…I’m already up.</span></div>
+      <div class="sub clip" data-start="12.2" data-duration="3.5" data-track-index="24"><span>Are you using your Action Button? Set it up in Lanclo’s settings.</span></div>
+      <div class="sub clip" data-start="15.7" data-duration="1.1" data-track-index="24"><span>Native pronunciation, in your own voice. Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="16.8" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Morning (0-0.8): sleepy in bed
+      tl.fromTo("#t-mimi", { y: 0 }, { y: 6, duration: 0.25, yoyo: true, repeat: 2, ease: "sine.inOut" }, 0);
+      tl.fromTo("#t-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.1);
+      // Hook (0-1.2): the phone big in the centre, dark; the paw presses the Action Button
+      tl.set("#device", { x: -270, y: 40, scale: 1.18 }, 0.8);
+      tl.set("#mimi", { x: -330, y: 420, scale: 0.5 }, 0.8);
+      tl.set("#mimi", { opacity: 0 }, 0.8);
+      tl.fromTo("#cam", { x: 300, y: 200, scale: 3.2, transformOrigin: "227px 674px" }, { x: 300, y: 200, scale: 3.2, transformOrigin: "227px 674px", duration: 0.3 }, 0.8);
+      tl.to("#cam", { x: 0, y: 0, scale: 1, duration: 0.45, ease: "power3.inOut" }, 1.1);
+      tl.fromTo("#paw", { x: 0 }, { x: 222, duration: 0.15, ease: "power2.out" }, 0.8);
+      tl.to("#paw", { x: 232, duration: 0.06, yoyo: true, repeat: 1 }, 0.95);
+      tl.to("#paw", { x: -40, duration: 0.18, ease: "power2.in" }, 1.08);
+      tl.to("#abtn", { x: 4, duration: 0.06, yoyo: true, repeat: 1 }, 0.95);
+      tl.fromTo("#flash", { scale: 0.2, opacity: 1 }, { scale: 2.4, opacity: 0, duration: 0.35, ease: "power2.out" }, 0.96);
+      // a tiny Mimi pops out of the button, spins and lands on the screen
+      tl.fromTo("#tiny", { x: -408, y: -71, scale: 0.2, rotation: -200, opacity: 1 }, { x: -260, y: 150, scale: 1, rotation: 0, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 1.1);
+      // she grabs the dark screen and pulls it open to the right
+      tl.fromTo("#puller", { x: -263, opacity: 1 }, { x: 270, opacity: 1, duration: 0.45, ease: "power3.inOut" }, 1.45);
+      tl.fromTo("#dark", { scaleX: 1 }, { scaleX: 0, duration: 0.45, ease: "power3.inOut" }, 1.45);
+      tl.to("#puller", { y: -30, duration: 0.12, yoyo: true, repeat: 1 }, 1.9);
+
+      // The copy (1.15-2.3): one line on white, then the three shortcuts with ① lit
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 1.95);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 2);
+      tl.fromTo(["#p1", "#p2", "#p3"], { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, stagger: 0.06 }, 2.35);
+      tl.fromTo("#p3", { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 2.65);
+      tl.to("#copy", { opacity: 0, duration: 0.15 }, 2.95);
+      // The app (2.2-): the phone to its usual place, Mimi beside it
+      tl.to("#device", { x: 0, y: 0, scale: 1, duration: 0.35, ease: "power3.inOut" }, 2.85);
+      tl.fromTo("#mimi", { x: -170, y: 120, scale: 0.75, opacity: 0 }, { x: -170, y: 120, scale: 0.75, opacity: 1, duration: 0.2, immediateRender: false }, 2.85);
+      tl.to("#m-bed", { y: -8, duration: 0.3, yoyo: true, repeat: 15, ease: "sine.inOut" }, 3.0);
+      k.ripple("#tap1", 5.6);
+      // Mom calls from downstairs (8.4): Mimi jumps out of bed, then is proud she was already up
+      tl.fromTo("#mom", { x: -60, opacity: 0 }, { x: 20, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 8.45);
+      tl.fromTo("#m-wake", { y: 40 }, { y: -50, duration: 0.25, ease: "power2.out", immediateRender: false }, 8.4);
+      tl.to("#m-wake", { y: 0, duration: 0.3, ease: "bounce.out" }, 8.65);
+      tl.fromTo("#m-proud", { scale: 0.9 }, { scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, 9.8);
+      tl.fromTo("#c6", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 10.4);
+
+      // The close (11.4-14.9): the question, ③ done (① ② earlier)
+      tl.fromTo("#copy2", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 12.2);
+      tl.to(["#device", "#mimi"], { opacity: 0, duration: 0.05 }, 12.35);  // fully behind the card
+      tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 12.25);
+      tl.fromTo(["#q1", "#q2", "#q3"], { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, stagger: 0.06 }, 12.35);
+      tl.fromTo("#mini", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 12.3);
+      k.ripple("#st1", 12.63); k.ripple("#st2", 13.3); k.ripple("#st3", 14.25);
+      tl.fromTo("#a-set", { scale: 1, transformOrigin: "50% 12%" }, { scale: 1.2, transformOrigin: "50% 12%", duration: 0.35, ease: "power2.inOut", immediateRender: false }, 14.8);
+
+      k.pop("#c3", 3); k.pop("#c4", 5.3);
+      k.end(15.7);
+      k.tapCta(16.15);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

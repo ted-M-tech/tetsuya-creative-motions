@@ -13,7 +13,8 @@ uv run --no-project --with numpy python $F/scripts/mix.py
 kits/mimi-short/stage.sh $F/hf
 mkdir -p $F/hf/assets/art && cp $F/art/paw.webp $F/art/blush.webp $F/art/friend-aww.webp $F/art/friend-oops.webp \
   kits/mimi-short/library/poses/jump.webp kits/mimi-short/library/poses/reach.webp $F/hf/assets/art/
-cd $F/hf && npx --yes hyperframes@0.8.181 check && npx --yes hyperframes@0.8.181 render --output ../renders/mimi-action-add.mp4 --fps 60
+(cd $F/hf && npx --yes hyperframes@0.8.181 check)
+kits/mimi-short/render-cuts.sh $F/hf mimi-action-add   # -en.mp4 with English subtitles, .mp4 Japanese only
 ```
 
 | File | Role |
