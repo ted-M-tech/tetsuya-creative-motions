@@ -1,0 +1,15 @@
+You are an art director for short-form vertical video (Instagram Reels / TikTok) reviewing a 15 s mascot short for Lanclo, a Japanese app that turns the learner's own voice into native English pronunciation.
+
+Attached: a contact sheet of the cut at 2 frames per second (frame n is at n*0.5 s).
+
+Mimi uses the REAL app (a simulator recording with QA fixture data) for the daily lesson, the app's core feature:
+0-2.0 hook: a tower of English books grows beside drooping Mimi and topples (英語の本、増えるだけ… then 積読。, the Japanese word for buying books and never reading them).
+2.0-3.4 the phone slides in: home, today's tasks, tap デイリーレッスン (やることは、毎日アプリが決める。).
+3.4-5.6 the lesson sentence "Please leave the light on." and her own voice reading it natively (今日の1文を、自分の声のお手本で。 + tag).
+5.6-7.6 she records, saying "right" for "light" (まねして、言うだけ。 + tag).
+7.6-9.6 five-axis score 81 (5つの視点で、すぐ採点。).
+9.6-11.8 the sound to fix: a card "Please leave the right → light on. / light の L は、舌先を上の歯ぐきに。" (苦手な音が、ひと目でわかる。).
+11.8-14.0 Mimi celebrates (1日10分、自分の声で。). 14.0-15.0 end card (approved, shared by the series).
+White blocks inside the phone hide QA-only text in the fixture.
+
+Review it as a viewer scrolling on a phone. List at most 6 concrete problems ranked by impact on (1) the first-second hook, (2) whether the daily lesson's value reads without sound, (3) whether the real screens are readable, (4) visual clarity. For each: the time, what is wrong, and the smallest fix. Say clearly what should not change. Japanese captions: flag anything unnatural. Be brief.

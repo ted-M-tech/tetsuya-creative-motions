@@ -1,7 +1,7 @@
 # 2D characters (Rive)
 
-Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked records: `films/mimi-jibun-no-koe/`, `films/mimi-think-sink/`, `films/mimi-michi/`, `films/mimi-nikki/`, `films/mimi-shashin/` (real app).
-- Real app screens: record the app in the simulator with its QA fixtures via a walkthrough UI test (`kits/mimi-short/app-capture/`); resample the VFR take to 60 fps before cutting; zoom and add a large card for the one point that must be read.
+Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked records: `films/mimi-jibun-no-koe/`, `films/mimi-think-sink/`, `films/mimi-michi/`, `films/mimi-nikki/`, `films/mimi-shashin/`, `films/mimi-daily/` (real app).
+- Real app screens: record the app in the simulator with its QA fixtures via a walkthrough UI test (`kits/mimi-short/app-capture/`); resample the VFR take to 60 fps before cutting; zoom and add a large card for the one point that must be read. Check how far the fixtures go (a retake may fail) before writing the story; mask fixture-only text in the edit.
 - Feature episodes: make the feature's most enjoyable part the reason the story resolves (the journal's pictures are why the diary lasts).
 
 - Mimi series: start from `kits/mimi-short/` (synced library, rig, sound, look); an episode adds only new art, its acts, a cue sheet and its edit. New poses go back to Lanclo `design/mimi-2d` by PR after approval, then `sync-library.sh`.

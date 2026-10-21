@@ -79,6 +79,12 @@ Three days in, Mimi has become a monk (三日坊主); the English journal turns 
 
 Mimi uses the real Lanclo app: a photo, her answer, the mistake marked, and a better sentence in her own voice.
 
+**Tsundoku — Mimi short #6, daily lesson** · 0:15 vertical · 2D Mimi + simulator recording
+
+[Process, prompts & source](films/mimi-daily/README.md)
+
+Mimi's English books pile up unread; the daily lesson picks today's sentence, plays it natively in her own voice, scores her take and shows the one sound to fix.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

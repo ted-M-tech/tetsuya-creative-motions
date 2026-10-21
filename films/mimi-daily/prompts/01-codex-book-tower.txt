@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi and props already drawn in the same style (notebook). Keep EXACTLY the same flat illustration style, navy outline weight and palette.
+
+Save as PNG in source/art/ (relative to the current directory):
+1) source/art/books.png — a PROP only, no character: a tall, slightly leaning tower of about twelve English study books stacked on top of each other (mixed sizes, spines facing the viewer in calm blues, cream, pale yellow and soft pink, with abstract stripes on the spines instead of letters), the top three books tilting as if about to fall. Same flat style and navy outline. Plain pure white background, no text or letters anywhere.
+Do not modify other files. List the saved path when done.
