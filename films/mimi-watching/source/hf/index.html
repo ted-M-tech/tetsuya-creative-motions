@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #0a0f1c; }
+      /* Rooms: dark (only the phone glows) and lit */
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage.dark { background: radial-gradient(ellipse at 40% 62%, #1a2438 0%, #0c1220 55%, #05080f 100%); }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 500px; }
+      .mimi { right: 30px; width: 480px; }
+      .stage .bubble { font-size: 56px; max-width: none; white-space: nowrap; top: 330px; }
+      .stage .bubble.big { font-size: 72px; }
+      .dark .bubble { background: #1d2738; color: #e9eef6; border-color: #8ea3bd; }
+      /* Hook: the friend in bed, her phone the only light; Mimi leans in from the right edge */
+      #h-bed { left: -10px; width: 700px; bottom: 470px; filter: brightness(0.42) saturate(0.7); }
+      .glow { position: absolute; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%;
+              background: radial-gradient(circle, rgba(170, 205, 255, 0.55) 0%, rgba(120, 165, 240, 0.18) 38%, rgba(0, 0, 0, 0) 70%); }
+      .peek { position: absolute; inset: 0; filter: brightness(0.3) saturate(0.6); }
+      .peek img { position: static; width: 100%; height: auto; display: block; }
+      .peek-wrap { position: absolute; }
+      .eye { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: #fffbe8;
+             box-shadow: 0 0 18px 8px rgba(255, 238, 170, 0.75), 0 0 60px 24px rgba(255, 220, 120, 0.35); opacity: 0; }
+      .whisper { position: absolute; left: 0; right: 0; top: 250px; text-align: center; color: #dfe7f3; font-size: 70px; font-weight: 700;
+                 line-height: 1.5; text-shadow: 0 0 22px rgba(160, 190, 255, 0.55); letter-spacing: 0.04em; }
+      .whisper i { font-style: normal; display: inline-block; opacity: 0; }
+      #noise { position: absolute; inset: 0; width: 1080px; height: 1920px; mix-blend-mode: screen; opacity: 0; pointer-events: none; }
+      .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%); }
+      /* The phone, big in the centre: the lock screen with the reminder, then the real app */
+      #phone { position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at 50% 55%, #1a2438 0%, #0b111d 60%, #05080f 100%); }
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 0 120px 30px rgba(130, 175, 255, 0.28), 0 30px 70px rgba(0, 0, 0, 0.5); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #lock { position: absolute; inset: 0; background: linear-gradient(170deg, #26385a 0%, #141d33 55%, #0b1020 100%); color: #fff; text-align: center; }
+      #lock .date { margin-top: 120px; font-size: 26px; font-weight: 700; opacity: 0.9; }
+      #lock .time { font-size: 128px; font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; }
+      .banner { position: absolute; left: 14px; right: 14px; top: 300px; background: rgba(238, 241, 247, 0.94); border-radius: 30px; padding: 16px 16px 16px 16px;
+                display: grid; grid-template-columns: 60px 1fr 84px; column-gap: 12px; align-items: center; text-align: left; color: #1c2430;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+      .banner .icon { width: 60px; height: 60px; border-radius: 13px; background: #fff; display: flex; align-items: center; justify-content: center; }
+      .banner .icon img { width: 44px; height: 44px; }
+      .banner .head { display: flex; justify-content: space-between; font-size: 23px; font-weight: 700; }
+      .banner .head small { font-size: 19px; font-weight: 400; color: #6b7480; }
+      .banner .body { font-size: 24px; line-height: 1.35; margin-top: 2px; }
+      .banner .thumb { width: 84px; height: 84px; border-radius: 12px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+      .banner .thumb img { width: 78px; height: auto; }
+      #paw { position: absolute; left: -620px; top: 700px; width: 560px; height: auto; transform-origin: 0% 50%; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      .hl { position: absolute; left: 3%; right: 3%; border: 6px solid #ffc83d; border-radius: 22px; box-shadow: 0 0 24px rgba(255, 200, 61, 0.7); }
+      .mask { position: absolute; background: #e8eef6; }
+      .caption .hint { display: block; font-size: 34px; color: #5b7f9f; margin-top: 4px; }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 46px; font-size: 30px; color: #53606b; text-align: center; line-height: 1.4; }
+      /* Copy card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .type .big { font-size: 118px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; display: inline-block; }
+      /* Lights off again: a spotlight on Mimi that closes */
+      .shot { position: absolute; left: 60px; right: 60px; border-radius: 34px; overflow: hidden; background: #fff; box-shadow: 0 18px 50px rgba(39, 59, 75, 0.2); }
+      .stage .shot img { position: static; display: block; width: 100%; height: auto; }
+      .shot .hl { left: 2%; right: 2%; }
+      .chip { position: absolute; left: 420px; top: 945px; background: #344f69; color: #fff; font-size: 44px; font-weight: 700; padding: 16px 30px; border-radius: 40px;
+              box-shadow: 0 10px 26px rgba(39, 59, 75, 0.3); opacity: 0; white-space: nowrap; }
+      #forget { top: 300px; font-size: 76px; line-height: 1.6; }
+      #forget .long { display: inline-block; position: relative; height: 1em; vertical-align: -0.12em; width: 0; }
+      #forget .long b { position: absolute; left: 6px; right: 6px; top: 50%; height: 9px; margin-top: -4px; border-radius: 5px; background: #dfe7f3;
+                        box-shadow: 0 0 18px rgba(160, 190, 255, 0.55); }
+      #dim { position: absolute; inset: 0; background: #eef3f9; opacity: 0; pointer-events: none; }
+      #flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; }
+      /* English subtitles: one track, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.0" data-width="1080" data-height="1920">
+      <!-- Hook (0-2.0): dark room, only her phone glows; Mimi's eyes in the dark; a whisper -->
+      <div id="hook" class="stage dark clip" data-start="0" data-duration="2.0" data-track-index="1">
+        <img id="h-bed" src="assets/art/friend-bed.webp" alt="" />
+        <div class="glow" id="h-glow" style="left: 470px; top: 1060px"></div>
+        <div class="peek-wrap" id="h-peek" style="right: 0; top: 820px; width: 430px; height: 628px">
+          <div class="peek"><img src="assets/art/mimi-peek.webp" alt="" /></div>
+          <i class="eye" style="left: 51.1%; top: 59.7%"></i><i class="eye" style="left: 80.8%; top: 52.6%"></i>
+        </div>
+        <div class="whisper" id="whisper"></div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- The phone (2.0-10.3): the reminder on the lock screen, then Mimi's advice in the real app -->
+      <div id="phone">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="3.9" data-duration="6.4" data-track-index="4"></video>
+            <div id="hl1" class="hl clip" style="top: 47.5%; height: 8%" data-start="4.1" data-duration="1.0" data-track-index="5"></div>
+            <div id="hl2" class="hl clip" style="top: 37.5%; height: 7.5%" data-start="6.05" data-duration="1.05" data-track-index="5"></div>
+            <div id="hl3" class="hl clip" style="top: 39.3%; height: 6.8%" data-start="7.75" data-duration="0.75" data-track-index="5"></div>
+            <div id="m1" class="mask clip" style="left: 10%; width: 66%; top: 73.4%; height: 4.6%" data-start="8.98" data-duration="1.32" data-track-index="5"></div>
+            <div id="hl4" class="hl clip" style="top: 61%; height: 12.6%" data-start="9.15" data-duration="1.15" data-track-index="6"></div>
+            <div id="lock" class="clip" data-start="2.0" data-duration="1.95" data-track-index="5">
+              <div class="date">10月20日 火曜日</div>
+              <div class="time">20:00</div>
+              <div class="banner" id="banner">
+                <div class="icon"><img src="assets/kit/brand/mark.png" alt="" /></div>
+                <div><div class="head">Mimi · Lanclo<small>今</small></div><div class="body">Mimiが今日のまとめで気づいたことがあるよ。見てみよう！</div></div>
+                <div class="thumb"><img src="assets/art/listening.png" alt="" /></div>
+              </div>
+              <div id="tp1" class="tap clip" style="left: 16%; top: 35%" data-start="3.7" data-duration="0.3" data-track-index="6"></div>
+            </div>
+          </div>
+        </div>
+        <img id="paw" class="clip" src="assets/art/paw.webp" alt="" data-start="3.0" data-duration="0.9" data-track-index="7" />
+      </div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-0" class="caption small clip" data-start="2.1" data-duration="1.8" data-track-index="8"><span id="c0">20:00<i class="hint">いつもの練習リマインダーの時間</i></span></div>
+      <div id="cap-1" class="caption small clip" data-start="3.95" data-duration="1.95" data-track-index="8"><span id="c1">あなたの癖：<em>“And then”</em> 4回</span></div>
+      <div id="cap-2" class="caption small clip" data-start="5.9" data-duration="1.2" data-track-index="8"><span id="c2">発音の癖：<em>/l/</em> 録音4回</span></div>
+      <div id="cap-3" class="caption small clip" data-start="7.1" data-duration="1.4" data-track-index="8"><span id="c3">ほかの言い方 <strong>“After that,”</strong></span></div>
+      <div id="cap-4" class="caption small clip" data-start="8.5" data-duration="1.8" data-track-index="8"><span id="c4"><strong>ネイティブなら</strong>こう言うかも</span></div>
+
+      <!-- "...how does she know?" (10.3-11.4) -->
+      <div id="shock" class="stage dark clip" data-start="10.3" data-duration="1.1" data-track-index="1">
+        <img id="s-friend" class="friend" src="assets/art/friend-shock.webp" alt="" style="left: 90px; width: 560px; filter: brightness(0.62) saturate(0.8)" />
+        <div class="glow" style="left: 360px; top: 1180px; opacity: 0.8"></div>
+        <div class="peek-wrap" id="s-peek" style="right: 0; top: 760px; width: 380px; height: 555px">
+          <div class="peek"><img src="assets/art/mimi-peek.webp" alt="" /></div>
+          <i class="eye" style="left: 51.1%; top: 59.7%"></i><i class="eye" style="left: 80.8%; top: 52.6%"></i>
+        </div>
+        <div id="b-know" class="bubble from-left big">……なんで<br />知ってるの</div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- Lights on (11.4-13.0): Mimi explains -->
+      <div id="lights" class="stage clip" data-start="11.4" data-duration="1.6" data-track-index="1">
+        <img id="l-friend" class="friend" src="assets/art/friend-aww.webp" alt="" />
+        <img id="l-mimi" class="mimi" src="assets/art/jump.webp" alt="" />
+        <div id="b-find" class="bubble from-right">自分では気づかない癖、<br />Mimiが見つけるよ！</div>
+      </div>
+
+      <!-- Your habit (13.0-14.6) and the native version, saved to review (14.6-16.4): stills from the same app take -->
+      <div id="explain" class="stage clip" data-start="13.0" data-duration="3.4" data-track-index="1">
+        <div id="x-habit" class="shot" style="top: 560px"><img src="assets/app/habit.png" alt="" /><i class="hl" style="top: 26%; height: 34%; left: 2%; right: 2%"></i></div>
+        <div id="x-native" class="shot" style="top: 600px; opacity: 0"><img src="assets/app/native.png" alt="" />
+          <div id="tp2" class="tap" style="left: 89.7%; top: 29%"></div></div>
+        <div id="x-chip" class="chip">＋ マイノート（復習リスト）</div>
+        <img id="x-point" class="mimi" src="assets/art/point.webp" alt="" style="left: 40px; right: auto; width: 380px; bottom: 380px" />
+        <img id="x-conf" class="mimi" src="assets/art/confident.webp" alt="" style="left: 40px; right: auto; width: 380px; bottom: 380px; opacity: 0" />
+      </div>
+      <div id="cap-5" class="caption clip" data-start="13.0" data-duration="1.6" data-track-index="8"><span id="c5">いつも同じ表現・<br />同じ単語ばっかり…</span></div>
+      <div id="cap-6" class="caption clip" data-start="14.6" data-duration="1.8" data-track-index="8"><span id="c6"><strong>ネイティブなら</strong>、<br />こう言うよ！</span></div>
+
+      <!-- Copy (16.4-17.9) -->
+      <div id="copy" class="type clip" data-start="16.4" data-duration="1.5" data-track-index="2">
+        <div id="big1" class="big">気づかない癖まで、<br /><strong>Mimiが見つける。</strong></div>
+      </div>
+
+      <!-- Ending (17.9-20.6): the lights dim again; "so... don't ever forget me..." -->
+      <div id="ending" class="stage dark clip" data-start="17.9" data-duration="2.7" data-track-index="1">
+        <div class="peek-wrap" id="e-peek" style="right: 0; top: 860px; width: 560px; height: 818px">
+          <div class="peek"><img src="assets/art/mimi-peek.webp" alt="" /></div>
+          <i class="eye" style="left: 51.1%; top: 59.7%"></i><i class="eye" style="left: 80.8%; top: 52.6%"></i>
+        </div>
+        <div class="whisper" id="forget"><span id="f1">だから…僕のこと、</span><br /><span id="f2">ず<b class="long"><b></b></b>っと</span><br /><span id="f3">忘れないでね…</span></div>
+        <div class="vignette"></div>
+        <div id="dim"></div>
+      </div>
+
+      <div id="flash"></div>
+      <canvas id="noise" width="270" height="480"></canvas>
+
+      <div id="end" class="end clip" data-start="20.6" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="2.0" data-track-index="9"><span>Mimi is always… watching you grow…</span></div>
+      <div class="sub clip" data-start="2.0" data-duration="1.9" data-track-index="9"><span>8 pm, your practice reminder: “Mimi found something in today’s summary. Take a look!”</span></div>
+      <div class="sub clip" data-start="3.9" data-duration="2.0" data-track-index="9"><span>Your habits: “And then”, 4 times</span></div>
+      <div class="sub clip" data-start="5.9" data-duration="1.2" data-track-index="9"><span>Pronunciation: /l/, in 4 recordings</span></div>
+      <div class="sub clip" data-start="7.1" data-duration="1.4" data-track-index="9"><span>Other ways to say it: “After that,”</span></div>
+      <div class="sub clip" data-start="8.5" data-duration="1.8" data-track-index="9"><span>A native speaker might say…</span></div>
+      <div class="sub clip" data-start="10.3" data-duration="1.1" data-track-index="9"><span>…How does she know?</span></div>
+      <div class="sub clip" data-start="11.4" data-duration="1.6" data-track-index="9"><span>I find the habits you can’t see yourself!</span></div>
+      <div class="sub clip" data-start="13.0" data-duration="1.6" data-track-index="9"><span>Always the same phrases, the same words… (“And then”, 4 times)</span></div>
+      <div class="sub clip" data-start="14.6" data-duration="0.75" data-track-index="9"><span>A native speaker would say it like this!</span></div>
+      <div class="sub clip" data-start="15.35" data-duration="1.05" data-track-index="9"><span>+ My Notes (your review list)</span></div>
+      <div class="sub clip" data-start="16.4" data-duration="1.5" data-track-index="9"><span>Mimi finds even the habits you don’t notice.</span></div>
+      <div class="sub clip" data-start="17.9" data-duration="2.7" data-track-index="9"><span>So… don’t ever, ever forget me…</span></div>
+      <div class="sub clip" data-start="20.6" data-duration="1.4" data-track-index="9"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="22.0" data-track-index="10" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      const W = "Mimiは、ずっと…\nあなたの成長を見てるよ…";
+      document.getElementById("whisper").innerHTML = [...W].map((c) => (c === "\n" ? "<br />" : `<i>${c}</i>`)).join("");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Film grain for the dark scenes: redrawn 24 times a second from the timeline's time (deterministic)
+      const nc = document.getElementById("noise"), nx = nc.getContext("2d"), img = nx.createImageData(270, 480);
+      const grain = (t) => {
+        let s = (Math.floor(t * 24) * 2654435761) >>> 0;
+        for (let i = 0; i < img.data.length; i += 4) {
+          s = (s * 1664525 + 1013904223) >>> 0; const v = s >>> 24;
+          img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255;
+        }
+        nx.putImageData(img, 0, 0);
+      };
+      const gt = { t: 0 };
+      tl.fromTo(gt, { t: 0 }, { t: 22.0, duration: 22.0, ease: "none", onUpdate: () => grain(gt.t) }, 0);
+      tl.fromTo("#noise", { opacity: 0.09 }, { opacity: 0.09, duration: 2.0 }, 0);
+      tl.to("#noise", { opacity: 0.05, duration: 0.3 }, 2.0);
+      tl.to("#noise", { opacity: 0, duration: 0.3 }, 3.9);
+      tl.to("#noise", { opacity: 0.08, duration: 0.15 }, 10.3);
+      tl.set("#noise", { opacity: 0 }, 11.4);
+      tl.to("#noise", { opacity: 0.08, duration: 0.4 }, 17.9);
+      tl.set("#noise", { opacity: 0 }, 20.6);
+
+      // Hook (0-2.0): the room breathes, Mimi leans in, her eyes light up, the whisper writes itself
+      tl.fromTo("#h-glow", { opacity: 0.75 }, { opacity: 1, duration: 0.25, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
+      tl.fromTo("#h-peek", { x: 260 }, { x: 0, duration: 0.6, ease: "power2.out" }, 0.35);
+      tl.fromTo("#h-peek .eye", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, 0.95);
+      tl.to("#h-peek .eye", { opacity: 0.2, duration: 0.05, yoyo: true, repeat: 1 }, 1.25);
+      tl.fromTo("#whisper i", { opacity: 0, y: 8, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.2, stagger: 0.045, ease: "power1.out" }, 0.1);
+      tl.fromTo("#whisper", { x: 0 }, { x: 3, duration: 0.05, yoyo: true, repeat: 3, immediateRender: false }, 1.6);
+
+      // The phone (2.0-10.3)
+      tl.set("#phone", { opacity: 1 }, 2.0); tl.set("#phone", { opacity: 0 }, 10.3);
+      tl.fromTo("#device", { y: 80, scale: 0.95, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, 2.0);
+      k.pop("#c0", 2.1);
+      tl.to("#device", { scale: 1.6, transformOrigin: "50% 33%", duration: 0.35, ease: "power2.inOut" }, 2.55);
+      tl.to("#device", { scale: 1.15, duration: 0.15, ease: "power2.inOut" }, 3.8);
+      tl.set("#device", { transformOrigin: "50% 50%" }, 3.95);
+      tl.fromTo("#banner", { y: -360, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(1.4)" }, 2.3);
+      // her paw creeps in, trembling, and taps the banner
+      tl.fromTo("#paw", { x: 0, y: 0 }, { x: 500, duration: 0.55, ease: "power1.inOut" }, 3.05);
+      tl.fromTo("#paw", { rotation: -2 }, { rotation: 2, duration: 0.05, yoyo: true, repeat: 9, ease: "none", immediateRender: false }, 3.05);
+      tl.to("#paw", { x: 535, duration: 0.08, yoyo: true, repeat: 1 }, 3.62);
+      k.ripple("#tp1", 3.7);
+      tl.to("#banner", { scale: 0.96, duration: 0.08, yoyo: true, repeat: 1 }, 3.68);
+      tl.to("#lock", { opacity: 0, scale: 1.05, duration: 0.12 }, 3.82);
+      // the app: captions and highlights on the rows Mimi noticed
+      k.pop("#c1", 3.95); k.pop("#c2", 5.9); k.pop("#c3", 7.1); k.pop("#c4", 8.5);
+      ["#hl1", "#hl2", "#hl3", "#hl4"].forEach((s) => tl.fromTo(s, { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" },
+        parseFloat(document.querySelector(s).dataset.start)));
+      // the 16x scroll (8.5-9.0) passes other fixture cards with "デモ：" lines: blurred so nothing is readable
+      tl.fromTo("#a-app", { filter: "blur(0px)" }, { filter: "blur(9px)", duration: 0.04, immediateRender: false }, 8.48);
+      tl.to("#a-app", { filter: "blur(0px)", duration: 0.06 }, 8.96);
+      tl.fromTo("#device", { scale: 1.15 }, { scale: 1.2, duration: 1.2, ease: "power1.inOut", immediateRender: false }, 9.05);
+
+      // "...how does she know?" (10.3-11.4)
+      tl.fromTo("#s-friend", { x: 0 }, { x: -8, duration: 0.05, yoyo: true, repeat: 9, immediateRender: false }, 10.35);
+      k.pop("#b-know", 10.4);
+      tl.fromTo("#s-peek", { x: 220 }, { x: 0, duration: 0.4, ease: "power2.out" }, 10.55);
+      tl.fromTo("#s-peek .eye", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 10.9);
+
+      // Lights on (11.4-13.0)
+      tl.fromTo("#flash", { opacity: 0.9 }, { opacity: 0, duration: 0.25, ease: "power2.out", immediateRender: false }, 11.4);
+      tl.fromTo("#l-mimi", { y: 0 }, { y: -60, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 11.45);
+      k.pop("#b-find", 11.55);
+      tl.fromTo("#l-friend", { scale: 1 }, { scale: 1.04, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 12.2);
+
+      // Your habit (13.0-14.6)
+      k.pop("#c5", 13.0);
+      tl.fromTo("#x-habit", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 13.05);
+      tl.fromTo("#x-habit .hl", { scale: 1.06, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 13.45);
+      tl.fromTo("#x-point", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 13.1);
+      tl.to("#x-habit", { opacity: 0, y: -40, duration: 0.15 }, 14.55);
+      // The native version; Mimi taps its bookmark and the phrase flies to My Notes (14.6-16.4)
+      k.pop("#c6", 14.6);
+      tl.set("#x-point", { opacity: 0 }, 14.6); tl.set("#x-conf", { opacity: 1 }, 14.6);
+      tl.fromTo("#x-native", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)", immediateRender: false }, 14.65);
+      k.ripple("#tp2", 15.3);
+      tl.fromTo("#x-chip", { x: 0, y: 0, scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 15.35);
+      tl.to("#x-chip", { x: -40, y: 200, duration: 0.6, ease: "power2.inOut" }, 15.55);
+
+      // Copy (16.4-17.9)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 16.4);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 16.43);
+      tl.fromTo("#big1 strong", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 16.7);
+
+      // Ending (17.9-20.6): the room goes dark from the lit look, Mimi leans in, the whisper stretches its ずーーーっと
+      tl.fromTo("#dim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.in", immediateRender: false }, 17.9);
+      tl.fromTo("#e-peek", { x: 300 }, { x: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, 18.0);
+      tl.fromTo("#e-peek .eye", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 18.55);
+      tl.to("#e-peek .eye", { opacity: 0.2, duration: 0.05, yoyo: true, repeat: 1 }, 19.9);
+      tl.fromTo("#f1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, 18.3);
+      tl.fromTo("#f2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25 }, 18.85);
+      tl.fromTo("#forget .long", { width: 0 }, { width: 520, duration: 0.85, ease: "none" }, 18.95);
+      tl.fromTo("#f3", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35 }, 19.85);
+      tl.fromTo("#forget", { x: 0 }, { x: 3, duration: 0.05, yoyo: true, repeat: 3, immediateRender: false }, 20.3);
+
+      k.end(20.6);
+      k.tapCta(21.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

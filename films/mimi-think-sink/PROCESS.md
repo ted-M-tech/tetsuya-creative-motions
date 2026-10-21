@@ -4,7 +4,7 @@ LancloのマスコットMimiの15秒ショート2本目の制作記録です。�
 
 - 制作日：2026-10-20
 - 役割：Claude Code（構成・キット化・リグ・演技・音・編集・判断）、Codex（`codex-p`：絵の生成とレビュー）
-- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS（ローカル）、ffmpeg、ImageMagick、Python（numpy / scipy / pillow）
+- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS（ローカル、2026-10-21に依頼者本人の声へ差し替え）、ffmpeg、ImageMagick、Python（numpy / scipy / pillow）
 
 ![完成フレーム](process/00-final-frames.jpg)
 
@@ -84,3 +84,15 @@ Kokoro（ローカルのTTS）で "I sink so!" と "I think so." を作った。
 - 言い間違いネタは、文字起こしで確認できない。人の耳で確かめる。
 - 小道具は編集側で動かすと、Riveの書き出しを待たずに何度でも直せる。
 - 見立て（sink＝流し台）は冒頭0.5秒以内に物を出し、字幕と同時に読ませる。
+
+## 8. 依頼者本人の声に差し替え（2026-10-21）
+
+> 「今まで英語で発音シーンがあった動画、この声で変えて。010以外。」
+
+Gemini `gemini-3.8-flash-tts`（Lanclo専用プロジェクトに登録された依頼者本人の声 "Lanclo private practice"）を `kits/mimi-short/scripts/ownvoice.py` で呼び、`source/own-voice.json` の行を作った。声の素材は依頼者の生体データなのでGitに入れない（Gitには `own-voice.json` と `own-voice.receipt.json` だけ。WAVはDriveの エピソードフォルダの `<接頭辞>_assets/own-voice/`）。
+
+- `wrong` "I sink so!"：`learner`（日本人学習者の発音）。最初の版は1.26秒と長くゆっくりだったので、「得意げに、速く、sinkの s をはっきり」と指示を足して1回作り直し（0.96秒）。文字起こし（whisper）は "think" に補正してしまうため、4 kHz以上の音の強さで「s」の摩擦音（強い）を確かめた。
+- `right` "I think so."：`us`（アメリカ英語のお手本、0.76秒）。
+- どちらも頭に約0.3秒の無音があるので、`mix.py` で `start=` で切り、合図の時刻を最初の音に合わせた。1回目の "I sink so!" は0.09秒から（"sink" の s が0.29秒、1台目のシンクが0.45秒に落ちる）、2回目は1.22秒から2.18秒まで（以前の0.92倍速はやめ、等速）。お手本・練習・最後の "I think so." の時刻は変えていない。練習の口パクは新しい声から作り直した（`lipsync-right.json`、practiceショットを再書き出し）。
+- 画面のMimiは女の子のキャラクターだが、声は依頼者（若い男性）の声になる。絵は変えていない。
+- Kokoroの声2本（`af_heart`）と `scripts/voices.sh` は使わなくなったので消した。
