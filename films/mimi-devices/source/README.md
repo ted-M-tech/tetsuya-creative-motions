@@ -13,6 +13,7 @@ ffmpeg -ss 15 -i <take>.mov -frames:v 1 $F/renders/app/ios-mimi-report.png; ffmp
 sh $F/scripts/screens.sh                          # -> hf/assets/app/*.jpg (paints over 「デモデータ」)
 # 3. poses: codex-p with prompts/0*.txt, run in $F with --image art/ref/… copies of: kits/mimi-short/library/official/master.png,
 #    films/mimi-action-add/source/art/friend/{chosen-2,b-lop}.png, films/mimi-action-add/source/art/friend-aww.webp, films/mimi-loop/source/art/friend/type.png; then cut out
+# the lop poses were then redrawn with headphones by prompts/03-codex-lop-headphones.txt (inputs: master.png, chosen-2.png and the previous art/lop/*.png from commit 4a4bde1)
 kits/mimi-short/scripts/cutout.sh $F/art/friend/giggle.png $F/art/cut/friend-giggle.webp   # likewise desk, train, lop/ask, lop/sulk, lop/cheer
 # 4. sound and edit
 uv run --no-project --with numpy python $F/scripts/mix.py
