@@ -11,46 +11,69 @@ sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
 from sfx import Mix, bell, boing, ding, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); hf/index.html uses the same times.
-APP_TAPS = (0.35, 0.8, 1.25, 1.7, 2.15)   # each app starts... and stops 0.45 s later
-SIGH = 2.6                                 # 「勉強が続かない…」
-MIMI = 4.0                                 # 「それ、全部ひとつで回るよ」
-COPY = (5.15, 5.7)                         # the scattered words, then they line up
-LOOP = 6.3                                 # the ring and Lanclo appear
-STOPS = (6.8, 9.2, 11.6, 14.4, 17.0, 19.4, 21.8)
-RUN = 0.45
-LAPS = ((24.0, 1.4), (25.4, 1.0), (26.4, 0.6))
-SCORE = (24.1, 25.4, 26.4)
-WOW = 27.05
-END = 29.0
-CTA_TAP = 29.45
-SCALE = (72, 74, 76, 77, 79, 81, 83)       # one rising note per stop
+TYPING = (0.1, 0.75)                      # the question is typed
+SEND = 0.85
+PILE = (0.5, 0.95, 1.4, 1.85)             # the other apps drop in behind the phone
+RANK = 3.0                                # the ranking board
+REVEALS = [3.45 + (7 - r) * 0.85 for r in range(7, 0, -1)]   # No. 7 ... No. 1
+WAKARU = 8.6
+MIMI = 9.4                                # 「Lancloなら、勝手に回るよ」
+COPY = 10.5
+PRESS = 11.95                             # the Action Button
+OPEN = 12.1
+LOOP = 12.7
+STOPS = (13.0, 14.7, 16.4, 18.1, 19.8, 21.5, 23.2)
+STAMPED = (True, True, True, True, False, True, True)
+RUN = 0.4
+LAPS = ((24.9, 1.0), (25.9, 0.6))
+SCORE = (24.9, 25.4, 25.9)
+KEY = 26.6
+NIGHT = 28.6
+NUMA = 29.3
+POP = 30.7
+END = 32.1
+CTA_TAP = 32.55
+SCALE = (72, 74, 76, 77, 79, 81, 83)      # one rising note per stop
 
-m = Mix(30.2, voice_dir=SRC / 'assets/voice')
-for at in APP_TAPS:
-    m.sfx(tap() * 0.5, at)
-    m.sfx(pofu() * 0.35, at + 0.45)
-m.sfx(boing(False), SIGH)
+m = Mix(33.3, voice_dir=SRC / 'assets/voice')
+n = 8
+for i in range(n):
+    m.sfx(tap() * 0.18, TYPING[0] + (TYPING[1] - TYPING[0]) * i / n)
+m.sfx(whoosh(0.2, 0.2), SEND)
+for at in PILE:
+    m.sfx(pofu() * 0.4, at)
+m.sfx(pop_seq(4, 0.05, base=74), RANK)
+for i, at in enumerate(REVEALS):
+    m.sfx(tap() * 0.45, at)
+    m.sfx(bell(67 + i, 0.4, 0.05), at + 0.05)
+m.sfx(ding(), REVEALS[-1] + 0.05)
+m.sfx(boing(False), WAKARU)
 m.sfx(whoosh(0.3, 0.3), MIMI)
-m.sfx(boing(True), MIMI + 0.12)
-m.sfx(pop_seq(5, 0.04, base=76), COPY[0])
-m.sfx(ding(), COPY[1])
-m.sfx(whoosh(0.4, 0.35), LOOP)
-m.sfx(bell(84, 0.8, 0.07), LOOP + 0.2)
+m.sfx(boing(True), MIMI + 0.1)
+m.sfx(pop_seq(3, 0.05, base=76), COPY)
+m.sfx(tap() * 0.8, PRESS)
+m.sfx(whoosh(0.4, 0.35), OPEN)
+m.sfx(tap() * 0.5, 11.65 + 0.3)            # the Action Button stamp
+m.sfx(bell(84, 0.8, 0.07), LOOP)
 for i, at in enumerate(STOPS):
     if i:
         m.sfx(whoosh(0.3, 0.14), at - RUN)
     m.sfx(bell(SCALE[i], 0.7, 0.09), at)
-    m.sfx(tap() * 0.35, at)
+    if STAMPED[i]:
+        m.sfx(tap() * 0.5, at + 0.35)
 m.sfx(whoosh(0.3, 0.14), LAPS[0][0] - RUN)
 for t0, d in LAPS:
-    for n in range(1, 8):
-        m.sfx(tap() * 0.22, t0 + d * n / 7)
+    for k in range(1, 8):
+        m.sfx(tap() * 0.22, t0 + d * k / 7)
     m.sfx(whoosh(min(d, 0.6), 0.18), t0)
+m.sfx(pop_seq(3, 0.05, base=79), SCORE[0])
 for at in SCORE[1:]:
     m.sfx(ding(), at)
-m.sfx(pop_seq(3, 0.05, base=79), SCORE[0])
-m.sfx(boing(True), WOW)
-m.sfx(pop_seq(3, 0.05, base=76), WOW + 0.1)
+m.sfx(bell(79, 1.0, 0.07), KEY)
+m.sfx(whoosh(0.5, 0.25), NIGHT)
+for i in range(6):                          # swipe, swipe, swipe...
+    m.sfx(whoosh(0.15, 0.1), NUMA + 0.1 + i * 0.45)
+m.sfx(boing(True), POP)
 m.bed(0.0, END)
 m.end_chord(END)
 m.sfx(pochi(), CTA_TAP)
