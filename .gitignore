@@ -104,3 +104,7 @@ films/mimi-watching/source/renders/
 
 # The owner's own registered voice: biometric, never in this public repo (kept in Drive <prefix>_assets/own-voice/)
 **/assets/own-voice/
+films/mimi-disaster-sit/source/hf/assets/
+films/mimi-disaster-sit/source/hf/.hyperframes/
+films/mimi-disaster-sit/source/hf/.thumbnails/
+films/mimi-disaster-sit/source/renders/
