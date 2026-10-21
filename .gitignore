@@ -111,6 +111,11 @@ films/mimi-import/source/hf/.hyperframes/
 films/mimi-import/source/hf/.thumbnails/
 films/mimi-import/source/renders/
 !films/mimi-import/source/assets/voice/
+films/mimi-freespeech/source/hf/assets/
+films/mimi-freespeech/source/hf/.hyperframes/
+films/mimi-freespeech/source/hf/.thumbnails/
+films/mimi-freespeech/source/renders/
+!films/mimi-freespeech/source/assets/voice/
 
 # The owner's own registered voice: biometric, never in this public repo (kept in Drive <prefix>_assets/own-voice/)
 **/assets/own-voice/
