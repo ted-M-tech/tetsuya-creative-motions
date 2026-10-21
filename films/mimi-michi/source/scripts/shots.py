@@ -26,10 +26,11 @@ def act_freeze(anim, hp, cp, n):
 
 def act_say(anim, hp, cp, n):
     """Practice: says the answer with the model; mouth from the voice line, a small nod after."""
-    body(anim, hp, cp, n, squash=lambda f: breathe(f) + (10 * max(0.0, math.sin(math.pi * (f - 110) / 14)) if 110 <= f < 124 else 0),
+    body(anim, hp, cp, n, squash=lambda f: breathe(f) + (10 * max(0.0, math.sin(math.pi * (f - 118) / 14)) if 118 <= f < 132 else 0),
          rot=lambda f: wave(f, 40, 0.02))
     bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04))
-    R.lipsync(anim, 24, SRC / 'assets/voice/answer-af_heart.wav', SRC / 'scripts/lipsync-answer.json')
+    # placed at SAY - 0.04 with 0.15 s trimmed, so clip time 0 falls on shot frame 7 (speech from frame 18)
+    R.lipsync(anim, 7, SRC / 'assets/own-voice/answer.wav', SRC / 'scripts/lipsync-answer.json')
 
 
 def act_direct(anim, hp, cp, n):
@@ -48,8 +49,8 @@ SHOTS = {
     'think': dict(pose='think', act=A['think'], frames=108),                  # 6.0  result card
     'practice': dict(pose='speak', act=act_say, frames=132),                  # 7.8  says it with the model
     'thaw': dict(pose='perk', act=A['perk'], frames=72, bg=STREET),           # 10.0 back on the street, the ice shatters
-    'direct': dict(pose='point', act=act_direct, frames=108, bg=STREET),      # 11.2 gives the directions
-    'thanks': dict(pose='success', act=A['success'], frames=60, bg=STREET),   # 13.0 "Thank you!"
+    'direct': dict(pose='point', act=act_direct, frames=126, bg=STREET),      # 11.2 gives the directions
+    'thanks': dict(pose='success', act=A['success'], frames=60, bg=STREET),   # 13.3 "Thank you!"
 }
 
 if __name__ == '__main__':

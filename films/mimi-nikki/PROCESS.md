@@ -4,7 +4,7 @@ Mimiショート4本目の制作記録です。共通キットは [films/mimi-th
 
 - 制作日：2026-10-20
 - 役割：Claude Code（構成・演技・音・編集・判断）、Codex（`codex-p`：絵の生成とレビュー）
-- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS、ffmpeg、ImageMagick、Python
+- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS（2026-10-21に依頼者本人の声へ差し替え）、ffmpeg、ImageMagick、Python
 
 ![完成フレーム](process/00-final-frames.jpg)
 
@@ -69,3 +69,15 @@ Codexのレビュー（[reviews/final-cut-review.md](reviews/final-cut-review.md
 - 機能紹介の回は、機能の一番楽しいところをオチの理由にする（「続く理由」＝絵）。依頼者の視点が効いた。
 - 台本の英語と字幕の説明は、時制や日付まで矛盾しないか確認する（Today と過去形）。
 - アプリの公式イラストは小さいことがある。動画で大きく使うなら同じデザインで描き直す。
+
+## 依頼者本人の声に差し替え（2026-10-21）
+
+> 「今まで英語で発音シーンがあった動画、この声で変えて。010以外。」
+
+Gemini `gemini-3.8-flash-tts`（Lanclo専用プロジェクトに登録された依頼者本人の声 "Lanclo private practice"）を `kits/mimi-short/scripts/ownvoice.py` で呼び、`source/own-voice.json` の行を作った。声の素材は依頼者の生体データなのでGitに入れない（Gitには `own-voice.json` と `own-voice.receipt.json` だけ。WAVはDriveの エピソードフォルダの `<接頭辞>_assets/own-voice/`）。
+
+- `rough` "Yesterday... I go to cafe."：`learner`。最初の版は話し部分が3.9秒（Yesterdayだけで1.6秒）と遅すぎたので、「普通の速さで、Yesterdayの後に短い間だけ」と足して1回作り直し（2.48秒）。
+- `model` "Yesterday, I went to a cafe."：`us`（2.10秒）。
+- 本物の声はKokoroより長いので、話すショット `talk` を1.8→2.8秒、お手本を聴く `listen` を1.6→2.2秒に延ばした。話す声は3.35〜5.83秒、お手本は7.45〜9.55秒。それより後（日記チェック、絵、カレンダー、締め、エンドカード）は+1.0秒／+1.6秒ずらし、全体は16.6秒。口パク（`lipsync-rough.json`）とうなずきを作り直し、字幕・タグ・波形・カメラ・効果音も同じ時刻に合わせた。
+- 画面のMimiは女の子のキャラクターだが、声は依頼者（若い男性）の声になる。絵は変えていない。
+- Kokoroの声2本（`af_heart`）と `scripts/voices.sh` は使わなくなったので消した。
