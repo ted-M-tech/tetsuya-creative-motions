@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img.char { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 500px; }
+      .mimi { right: 30px; width: 480px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.big { font-size: 64px; }
+      .stage .tag span { display: flex; align-items: center; gap: 16px; }
+      .stage .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
+      .stage .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
+      /* The real app, big in the centre */
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #efeff3; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* "デモデータ" above the photo: covered with the screen colour */
+      #demo-mask { position: absolute; left: 0; top: 15.2%; width: 100%; height: 3%; background: #f1f1f5; }
+      .ring { position: absolute; border: 6px solid #e5484d; border-radius: 40px; transform: translate(-50%, -50%); }
+      #ring-limit { left: 50%; top: 89.1%; width: 150px; height: 54px; }
+      #ring-text { left: 50%; top: 70%; width: 430px; height: 170px; border-radius: 26px; }
+      /* Mimi talks on her own */
+      .photo-card { position: absolute; left: 40px; top: 420px; width: 520px; background: #ffffff; border-radius: 36px; padding: 16px;
+                    box-shadow: 0 18px 40px rgba(39, 59, 75, 0.16); }
+      .photo-card img { display: block; width: 100%; border-radius: 24px; }
+      #timer { position: absolute; right: 40px; top: 430px; width: 420px; background: #273b4b; color: #fff; border-radius: 40px; padding: 18px 0 16px;
+               text-align: center; font-variant-numeric: tabular-nums; }
+      #timer b { display: block; font-size: 84px; line-height: 1.05; }
+      #timer b small { font-size: 50px; opacity: 0.7; font-weight: 700; }
+      #timer i { display: block; font-style: normal; font-size: 26px; opacity: 0.8; margin-top: 4px; }
+      #timer .bar { margin: 12px auto 0; width: 340px; height: 14px; border-radius: 7px; background: rgba(255, 255, 255, 0.2); overflow: hidden; }
+      #timer .bar u { display: block; height: 100%; width: 100%; background: #2a8dff; transform-origin: 0 50%; transform: scaleX(0); }
+      #t-bubble1, #t-bubble2 { top: 840px; font-size: 44px; }
+      #talk .mimi { width: 520px; right: 20px; }
+      /* Clean type cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .type .big { font-size: 118px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .big em { font-style: normal; color: #e5484d; }
+      .caption .hint { display: block; font-style: normal; font-size: 38px; color: #5b7f9f; margin-top: 6px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.7" data-width="1080" data-height="1920">
+      <!-- The hook (0-1.6) -->
+      <div id="hook" class="type clip" data-start="0" data-duration="1.6" data-track-index="2">
+        <div id="big1" class="big">今まで<br /><em>こんな練習</em>、<br />したことあった？</div>
+      </div>
+
+      <!-- The real app: the photo (1.6-3.65), then the AI feedback (7.7-10.6). Simulator take, QA fixture data. -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-photo" class="clip" src="assets/app/photo.mp4" muted playsinline data-start="1.6" data-duration="2.05" data-track-index="4"></video>
+            <video id="a-result" class="clip" src="assets/app/result.mp4" muted playsinline data-start="7.7" data-duration="2.9" data-track-index="4"></video>
+            <div id="demo-mask" class="clip" data-start="1.6" data-duration="2.05" data-track-index="5"></div>
+            <div id="ring-limit" class="ring clip" data-start="2.3" data-duration="1.35" data-track-index="5"></div>
+            <div id="ring-text" class="ring clip" data-start="9.3" data-duration="1.3" data-track-index="5"></div>
+          </div>
+        </div>
+      </div>
+      <div id="cap-1" class="caption small clip" data-start="1.6" data-duration="2.05" data-track-index="6"><span id="c1">写真を見て、<strong>自分の言葉</strong>で話す<i class="hint">最大 3:00</i></span></div>
+      <div id="cap-3" class="caption small clip" data-start="7.7" data-duration="1.5" data-track-index="6"><span id="c3"><strong>AI</strong>が5つの観点でフィードバック</span></div>
+      <div id="cap-4" class="caption small clip" data-start="9.2" data-duration="1.4" data-track-index="6"><span id="c4">話した内容も、<strong>文字</strong>で確認</span></div>
+
+      <!-- Mimi keeps talking on her own (3.65-7.7) -->
+      <div id="talk" class="stage clip" data-start="3.65" data-duration="4.05" data-track-index="1">
+        <div id="cap-2" class="caption small"><span><em>台本なし</em>。ひとりで話しつづける</span></div>
+        <div class="photo-card" id="photo"><img src="assets/art/cafe-photo.png" alt="" /></div>
+        <div id="timer"><b><span id="tm">0:00</span><small> / 3:00</small></b><i>経過時間（早送り）</i><div class="bar"><u id="tbar"></u></div></div>
+        <img id="t-mimi" class="char mimi" src="assets/art/mimi-talk.webp" alt="" />
+        <div id="t-bubble1" class="bubble from-left">Um… there are people…</div>
+        <div id="t-bubble2" class="bubble from-left">…a lamp. It’s… nice?</div>
+      </div>
+
+      <!-- The French friend (10.6-13.0) -->
+      <div id="fr" class="stage clip" data-start="10.6" data-duration="2.4" data-track-index="1">
+        <div id="cap-5" class="caption small"><span style="font-size:48px; white-space:nowrap">フランス人の友達に使ってもらったら…</span></div>
+        <img id="f-chat" class="char friend" style="left:250px; width:560px" src="assets/art/friend-french-chat.webp" alt="" />
+        <img id="f-point" class="char friend" style="left:250px; width:560px; opacity:0" src="assets/art/friend-french.webp" alt="" />
+        <div id="b-court" class="bubble from-left big" style="top:440px; left:120px">3分じゃ短いから、<br />もっと録音伸ばせない？</div>
+        <div id="t-court" class="tag model" style="top:1450px"><span><span class="wave" id="w1"></span>Trois minutes, c’est trop court !</span></div>
+      </div>
+
+      <!-- Mimi's reply (13.0-14.8) -->
+      <div id="reply" class="stage clip" data-start="13.0" data-duration="1.8" data-track-index="1">
+        <img id="r-friend" class="char friend" src="assets/art/friend-french.webp" alt="" />
+        <img id="r-mimi" class="char mimi" src="assets/art/mimi-flat.webp" alt="" />
+        <div id="b-long" class="bubble from-right big" style="top:470px">…こっちは<br />3分が長いんだけど</div>
+      </div>
+
+      <!-- The message (14.8-16.3) -->
+      <div id="msg" class="type clip" data-start="14.8" data-duration="1.5" data-track-index="2">
+        <div id="big2" class="big"><strong>自分で考えて</strong><br />話す力を、<br />伸ばす。</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="16.3" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.6" data-track-index="8"><span>Ever practised like this before?</span></div>
+      <div class="sub clip" data-start="1.6" data-duration="2.05" data-track-index="8"><span>Look at a photo and speak in your own words. Up to 3:00.</span></div>
+      <div class="sub clip" data-start="3.65" data-duration="4.05" data-track-index="8"><span>No script. Keep talking on your own. (Elapsed time, fast-forwarded)</span></div>
+      <div class="sub clip" data-start="7.7" data-duration="1.5" data-track-index="8"><span>AI feedback on five points</span></div>
+      <div class="sub clip" data-start="9.2" data-duration="1.4" data-track-index="8"><span>…and what you said, in writing.</span></div>
+      <div class="sub clip" data-start="10.6" data-duration="0.75" data-track-index="8"><span>I let my French friend try it…</span></div>
+      <div class="sub clip" data-start="11.35" data-duration="1.65" data-track-index="8"><span>“Three minutes is too short. Can’t you make the recording longer?”</span></div>
+      <div class="sub clip" data-start="13.0" data-duration="1.8" data-track-index="8"><span>…For me, three minutes is long.</span></div>
+      <div class="sub clip" data-start="14.8" data-duration="1.5" data-track-index="8"><span>Build the skill to think and speak for yourself.</span></div>
+      <div class="sub clip" data-start="16.3" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.7" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.bars(document.getElementById("w1"), 7);
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // The hook (0-1.6)
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 0.05);
+      tl.fromTo("#big1 em", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 0.1);
+
+      // The app: photo (1.6-3.65), feedback (7.7-10.6)
+      tl.set("#app", { opacity: 1 }, 1.6); tl.set("#app", { opacity: 0 }, 3.65);
+      tl.set("#app", { opacity: 1 }, 7.7); tl.set("#app", { opacity: 0 }, 10.6);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, 1.6);
+      k.pop("#c1", 1.6);
+      tl.fromTo("#ring-limit", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 2.3);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, 7.7);
+      k.pop("#c3", 7.7);
+      // zoom onto 話した内容 (the transcript, ~70% down the screen)
+      tl.to("#device", { scale: 1.5, y: -260, duration: 0.45, ease: "power2.inOut" }, 9.2);
+      k.pop("#c4", 9.2);
+      tl.fromTo("#ring-text", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 9.5);
+
+      // Mimi talks (3.65-7.7): the clock runs 0:00 -> 3:00, fast-forwarded
+      tl.fromTo("#photo", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 3.65);
+      tl.fromTo("#timer", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 3.75);
+      tl.fromTo("#t-mimi", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 3.65);
+      tl.fromTo("#t-mimi", { rotation: -2 }, { rotation: 2, duration: 0.35, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, 3.9);
+      const clock = { s: 0 };
+      tl.fromTo(clock, { s: 0 }, { s: 180, duration: 3.6, ease: "power1.in", onUpdate: () => {
+        const s = Math.min(180, Math.floor(clock.s));
+        document.getElementById("tm").textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+      } }, 3.85);
+      tl.fromTo("#tbar", { scaleX: 0 }, { scaleX: 1, duration: 3.6, ease: "power1.in" }, 3.85);
+      tl.fromTo("#timer", { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 7.45);
+      k.pop("#t-bubble1", 3.8);
+      tl.to("#t-bubble1", { opacity: 0, duration: 0.12 }, 5.6);
+      k.pop("#t-bubble2", 5.65);
+
+      // The French friend (10.6-13.0)
+      tl.fromTo("#f-chat", { x: -260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 10.6);
+      k.pop("#cap-5 span", 10.6);
+      tl.to("#cap-5", { opacity: 0, duration: 0.15 }, 11.3);
+      k.tagIn("#t-court", 10.85); k.wave("#w1", 10.85, 1.5, 2);
+      k.pop("#b-court", 11.35);
+      tl.set("#f-chat", { opacity: 0 }, 12.0); tl.set("#f-point", { opacity: 1 }, 12.0);
+      tl.fromTo("#f-point", { y: 0 }, { y: -24, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 12.0);
+
+      // Mimi's reply (13.0-14.8)
+      tl.fromTo("#r-mimi", { x: 160, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, 13.0);
+      tl.fromTo("#r-mimi", { y: 0 }, { y: 10, duration: 0.5, yoyo: true, repeat: 2, ease: "sine.inOut", immediateRender: false }, 13.3);
+      k.pop("#b-long", 13.2);
+      tl.fromTo("#r-friend", { rotation: 0 }, { rotation: -4, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 13.9);
+
+      // The message (14.8-16.3)
+      tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 14.85);
+      tl.fromTo("#big2 strong", { scale: 1.3 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 14.9);
+
+      k.end(16.3);
+      k.tapCta(16.9);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

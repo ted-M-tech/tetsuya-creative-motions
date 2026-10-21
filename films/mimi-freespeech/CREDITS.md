@@ -1,0 +1,13 @@
+# Credits
+
+| Material | Source | Terms | Notes |
+|---|---|---|---|
+| Lanclo app screens | Simulator recording with QA fixture data (`--qa-describe --qa-free-speech-v3`: silent synthetic take, synthetic AI feedback, no backend); "デモデータ" covered in the edit | © Lanclo, not licensed for reuse | Kept in Drive `021/FreeSpeech_assets/` |
+| Café photo (hook of Mimi's scene) | The app's Describe photo, taken from the recording (`films/mimi-shashin/source/art/cafe-photo.png`) | As in the app | |
+| Poses mimi-talk, mimi-flat, friend-french, friend-french-chat | Generated with Codex image generation from the official Mimi art and the friend design ([prompt](prompts/01-codex-poses.txt)) | © Lanclo, not licensed for reuse | |
+| Voices | Kokoro TTS (af_heart for Mimi's English, ff_siwis for the friend's French), local through HyperFrames | Apache 2.0 model | `source/assets/voice/` |
+| Lanclo mark, end-card Mimi | Lanclo brand | © Lanclo, not licensed for reuse | |
+| Zen Maru Gothic | Google Fonts | SIL OFL 1.1 | |
+| Download on the App Store badge | Apple | Apple marketing guidelines | |
+| SFX | Made in code (`kits/mimi-short/scripts/sfx.py`) | MIT with the repository code | |
+| Bed music | 「Everyone Get Up」, [OpenTracks](https://opentracks.com/bgm/detail/22155), Music : Anonyment | OpenTracks licence (commercial use OK, credit optional; no redistribution, no Content ID) | Lanclo SNS theme, not in Git |
