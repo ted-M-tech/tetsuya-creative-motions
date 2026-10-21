@@ -8,7 +8,8 @@
 | friend-oops | `films/mimi-action-add` | © Lanclo, not licensed for reuse | |
 | sheepish | `films/mimi-action-review` | © Lanclo, not licensed for reuse | |
 | stunned, droop, confident | Lanclo Mimi 2D library (`kits/mimi-short/library/poses/`) | © Lanclo, not licensed for reuse | |
-| English voices | Kokoro TTS (af_bella, af_heart), local through HyperFrames | Apache 2.0 model | `source/assets/voice/` |
+| Mimi's English answer | The owner's own registered Lanclo voice (Tetsuya), Gemini gemini-3.8-flash-tts, accent us | © the owner; biometric, not in Git | Drive `019. Lost an Argument in English/Debate_assets/own-voice/`; `source/own-voice.json` |
+| The friend's English | Kokoro TTS (af_bella), local through HyperFrames | Apache 2.0 model | `source/assets/voice/` |
 | Lanclo mark, end-card Mimi | Lanclo brand | © Lanclo, not licensed for reuse | |
 | Zen Maru Gothic | Google Fonts | SIL OFL 1.1 | |
 | Download on the App Store badge | Apple | Apple marketing guidelines | |
