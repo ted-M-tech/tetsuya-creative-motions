@@ -6,6 +6,8 @@ Mimi is embarrassed by her own recorded English, hears the "her-voice model" (he
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D: official art style drawn with Codex + Rive bones + HyperFrames
 
+Two cuts: Japanese only (`mimi-jibun-no-koe.mp4`) and with English subtitles (`mimi-jibun-no-koe-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/004. My Own Voice, No Way/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files

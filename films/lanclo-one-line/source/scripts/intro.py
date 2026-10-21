@@ -1,7 +1,8 @@
 """Render the app intro (9:16, 30 s) frame by frame (cairo) and pipe to ffmpeg.
 
 Same drawing language as the "One line" promo (render.py): one line runs through every station.
-usage: intro.py OUT.mp4 [--scale 0.5] [--fps 30] [--from 0 --to 30] [--still T,T,...] [--audio mix.wav]
+usage: intro.py OUT.mp4 [--scale 0.5] [--fps 30] [--from 0 --to 30] [--still T,T,...] [--audio mix.wav] [--en]
+--en draws English subtitles in the bottom safe zone (the English-subtitle cut); without it the picture is unchanged.
 """
 import argparse
 import math
@@ -584,6 +585,44 @@ def shake(t):
     return out
 
 
+# ---------- English subtitles (--en) ----------
+# (start, end, lines): one per on-screen Japanese line (the Osaka-dialect type), timed to when it is readable.
+SUBS = [
+    (TYPE_1[0], CARD_2, ['Your English still sounds Japanese.']),
+    (CARD_2 + 0.15, MOVE1[0] + 0.15, ['And you can’t hear what’s off yourself.']),
+    (Q_IN[0], MOVE2[0], ['What if you could hear native pronunciation', 'in your own voice?']),
+    (REC_CLICK, FREEZE, ['My voice']),
+    (MODEL_LABEL, MERGE[0], ['The model · sound on']),
+    (H_VOICE[0], MOVE3[0] + 0.25, ['Still your voice, just native pronunciation.']),
+    (H_RADAR[0], TIP_IN - 0.3, ['Let’s see the gap to your goal from five angles.']),
+    (H_TIP[0], MOVE4[0] + 0.25, ['You know which sound to fix, so no more guessing.',
+                                 'Next: tongue tip lightly between your teeth.']),
+    (LANG_EN, LANG_ALL, ['English, Korean…']),
+    (CONVERGE + 0.45, MOVE5[0] + 0.25, ['17 languages.']),  # not while the 15 greetings fill the bottom
+    (TAG[0], MOVE6[0] + 0.25, ['With that voice, go be who you want to be.']),
+    (END_CARD, DURATION, ['Start free for 7 days.', 'Check your voice in just one minute.']),
+]
+SUB_SIZE, SUB_LEAD, SUB_BOTTOM = 38, 1.35, 150  # px at 1080 wide, like the Mimi shorts' .sub
+EN = False
+
+
+def subtitles(ctx, t, S):
+    for t0, t1, lines in SUBS:
+        if t0 <= t < t1:
+            ctx.save()
+            ctx.scale(S, S)
+            lh = SUB_SIZE * SUB_LEAD
+            w = max(text_width(s, SUB_SIZE) for s in lines) + 52
+            h = lh * len(lines) + 24
+            y = H0 - SUB_BOTTOM - h
+            round_rect(ctx, (W0 - w) / 2, y, w, h, 22)
+            ctx.set_source_rgba(*rgb('#273b4b', 0.88))
+            ctx.fill()
+            for i, s in enumerate(lines):
+                draw_text(ctx, s, W0 / 2, y + 12 + lh * (i + 0.5), SUB_SIZE, 'b', '#ffffff')
+            ctx.restore()
+
+
 GRAIN = None
 
 
@@ -599,6 +638,9 @@ def frame(t, W, H, S):
     ctx.translate(0, -cy)
     for s in SCENES:
         s(ctx, t)
+    if EN:
+        ctx.identity_matrix()
+        subtitles(ctx, t, S)
     surf.flush()
     stride = surf.get_stride()
     arr = np.ndarray((H, stride // 4, 4), np.uint8, surf.get_data())[:, :W]
@@ -608,7 +650,7 @@ def frame(t, W, H, S):
 
 
 def main():
-    global GRAIN
+    global GRAIN, EN
     ap = argparse.ArgumentParser()
     ap.add_argument('out')
     ap.add_argument('--scale', type=float, default=1.0)
@@ -617,7 +659,9 @@ def main():
     ap.add_argument('--to', dest='t1', type=float, default=DURATION)
     ap.add_argument('--still', default='')
     ap.add_argument('--audio', default='')
+    ap.add_argument('--en', action='store_true', help='English subtitles')
     a = ap.parse_args()
+    EN = a.en
     W, H = int(W0 * a.scale) // 2 * 2, int(H0 * a.scale) // 2 * 2
     GRAIN = [np.random.default_rng(i).integers(-3, 4, (H, W)).astype(np.int16) for i in range(6)]
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)

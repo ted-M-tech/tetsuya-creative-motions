@@ -22,7 +22,8 @@ uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/sh
 $F/scripts/render.sh                                   # about 6 minutes
 uv run --no-project --with numpy python $F/scripts/mix.py
 kits/mimi-short/stage.sh $F/hf
-cd $F/hf && npx --yes hyperframes@0.8.181 check && npx --yes hyperframes@0.8.181 render --output ../renders/mimi-nikki.mp4 --fps 60
+(cd $F/hf && npx --yes hyperframes@0.8.181 check)
+kits/mimi-short/render-cuts.sh $F/hf mimi-nikki       # renders/mimi-nikki-en.mp4 (English subtitles) and renders/mimi-nikki.mp4 (Japanese only)
 ```
 
 Not in Git: `renders/`, `hf/assets/shots/`, `hf/assets/mix.wav`, `hf/assets/kit/` and the final MP4.

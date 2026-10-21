@@ -6,6 +6,8 @@ A passer-by asks Mimi the way in English and she freezes into a block of ice. At
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voices / 2D: official art style drawn with Codex + Rive bones + HyperFrames
 
+Two cuts: Japanese only (`mimi-michi.mp4`) and with English subtitles (`mimi-michi-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/006. Frozen When Asked for Directions/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files

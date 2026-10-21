@@ -6,6 +6,8 @@ Mimi tries to describe a cafe photo and manages only "People is sitting...". The
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D Mimi (Rive) beside a simulator recording of the app
 
+Two cuts: Japanese only (`mimi-shashin.mp4`) and with English subtitles (`mimi-shashin-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/008. English from a Photo/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files

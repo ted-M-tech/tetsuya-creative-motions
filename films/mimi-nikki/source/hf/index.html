@@ -27,6 +27,11 @@
       .cal .d { position: relative; aspect-ratio: 1; border-radius: 18px; background: #eef2f5; overflow: hidden; border: 3px solid #e4ebf0; }
       .cal .d img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
       .cal .d span { position: absolute; left: 8px; top: 6px; font-size: 22px; font-weight: 700; color: #344f69; background: rgba(255,255,255,0.85); border-radius: 10px; padding: 0 8px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
     </style>
   </head>
   <body>
@@ -111,6 +116,17 @@
       </div>
 
       <div id="end" class="end clip" data-start="14.0" data-duration="1.0" data-track-index="12"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.0" data-track-index="24"><span>My English journal lasted three days.</span></div>
+      <div class="sub clip" data-start="1.0" data-duration="1.4" data-track-index="24"><span>Writing in English is such a chore…</span></div>
+      <div class="sub clip" data-start="3.1" data-duration="1.8" data-track-index="24"><span>No writing. Just talk.</span></div>
+      <div class="sub clip" data-start="4.9" data-duration="1.5" data-track-index="24"><span>It fixes it into natural English:<br />go → went (yesterday is past tense).</span></div>
+      <div class="sub clip" data-start="6.4" data-duration="1.6" data-track-index="24"><span>Hear the fixed journal in your own voice.</span></div>
+      <div class="sub clip" data-start="8.0" data-duration="1.8" data-track-index="24"><span>Your day becomes a Mimi picture.<br />Day 4: A break at a cafe</span></div>
+      <div class="sub clip" data-start="9.8" data-duration="2.6" data-track-index="24"><span>Like a picture diary, it’s fun to look back on.</span></div>
+      <div class="sub clip" data-start="12.4" data-duration="1.6" data-track-index="24"><span>No more quitting after three days.</span></div>
+      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15" data-track-index="13" data-volume="1"></audio>
     </div>

@@ -23,6 +23,11 @@
       #photo-card { position: absolute; left: 280px; top: 430px; width: 760px; border-radius: 26px; overflow: hidden; border: 8px solid #ffffff;
                     box-shadow: 0 20px 50px rgba(39, 59, 75, 0.22); transform: rotate(4deg); }
       #photo-card img { display: block; width: 100%; height: auto; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
     </style>
   </head>
   <body>
@@ -77,6 +82,16 @@
       <div id="fixcard" class="fixcard clip" data-start="7.6" data-duration="1.6" data-track-index="11"><span>People <s>is</s> sitting</span><br /><span>→ People <b>are</b> sitting</span></div>
 
       <div id="end" class="end clip" data-start="14.0" data-duration="1.0" data-track-index="12"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.0" data-track-index="24"><span>Can you describe this photo in English?</span></div>
+      <div class="sub clip" data-start="2.1" data-duration="1.5" data-track-index="24"><span>Just look at the photo and talk.</span></div>
+      <div class="sub clip" data-start="3.6" data-duration="2.2" data-track-index="24"><span>Say what you think, in English.</span></div>
+      <div class="sub clip" data-start="5.8" data-duration="1.8" data-track-index="24"><span>See your mistakes at a glance.</span></div>
+      <div class="sub clip" data-start="7.6" data-duration="1.6" data-track-index="24"><span>Not “is” — “are.”</span></div>
+      <div class="sub clip" data-start="9.2" data-duration="3.0" data-track-index="24"><span>Your own voice becomes a model of natural English.</span></div>
+      <div class="sub clip" data-start="12.2" data-duration="1.8" data-track-index="24"><span>One photo becomes an English lesson.</span></div>
+      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15" data-track-index="13" data-volume="1"></audio>
     </div>

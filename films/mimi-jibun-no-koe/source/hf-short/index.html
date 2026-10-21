@@ -74,6 +74,11 @@
       .end .cta .touch { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: rgba(255, 255, 255, 0.45);
                          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 8px 24px rgba(39, 59, 75, 0.35); }
       .end img.store { height: 96px; width: auto; margin-top: 34px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
     </style>
   </head>
   <body>
@@ -174,6 +179,19 @@
         <div id="end-cta" class="cta">7日間無料ではじめる<i id="end-ring" class="ring"></i><i id="end-touch" class="touch"></i></div>
         <img id="end-store" class="store" src="assets/brand/appstore.png" alt="App Store" />
       </div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="1.0" data-track-index="24"><span>Can you stand to hear your own English?</span></div>
+      <div class="sub clip" data-start="1.0" data-duration="0.3" data-track-index="24"><span>3 seconds earlier</span></div>
+      <div class="sub clip" data-start="2.0" data-duration="2.2" data-track-index="24"><span>▶ My recording</span></div>
+      <div class="sub clip" data-start="4.2" data-duration="0.9" data-track-index="24"><span>My own voice… I can’t.</span></div>
+      <div class="sub clip" data-start="5.2" data-duration="1.2" data-track-index="24"><span>A model in my own voice</span></div>
+      <div class="sub clip" data-start="6.4" data-duration="1.8" data-track-index="24"><span>But it’s my voice…!</span></div>
+      <div class="sub clip" data-start="8.2" data-duration="1.7" data-track-index="24"><span>Still your voice, now with native pronunciation.</span></div>
+      <div class="sub clip" data-start="9.9" data-duration="1.5" data-track-index="24"><span>Practice right along with the model.</span></div>
+      <div class="sub clip" data-start="11.4" data-duration="1.6" data-track-index="24"><span>See your score and what to fix:<br />stress “vái” in available.</span></div>
+      <div class="sub clip" data-start="13.0" data-duration="1.0" data-track-index="24"><span>Tomorrow, I’ll say it even better.</span></div>
+      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15" data-track-index="8" data-volume="1"></audio>
     </div>
