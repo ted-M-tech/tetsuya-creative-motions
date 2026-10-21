@@ -3,7 +3,7 @@
 | Material | Source | Terms | Notes |
 |---|---|---|---|
 | Lanclo app screens | Simulator recording with QA fixture data; the language switch answers with a silent WAV from `source/app-capture/voice-stub.patch`, applied only in the capture checkout | © Lanclo, not licensed for reuse | Kept in Drive `022/Multilang_assets/` |
-| Voices (all) | **TTS stand-in, not a voice clone**: Kokoro TTS, local through HyperFrames — af_bella (en), ff_siwis (fr), ef_dora (es), zf_xiaobei (zh), if_sara (it), pf_dora (pt-BR), hf_alpha (hi). Lanclo's own-voice generation was not used | Apache 2.0 model | `source/assets/voice/` |
+| Voices (all) | The owner's own registered Lanclo voice (Tetsuya), Gemini gemini-3.8-flash-tts via `kits/mimi-short/scripts/ownvoice.py` (`native` + `language`): en, fr, es, zh, ko, it, pt-BR, hi and the French passage | Owner's own voice; biometric, not for reuse | Not in Git: Drive `022/Multilang_assets/own-voice/`; `source/own-voice.json` + receipt in Git |
 | French passage | The app's AI-voice passage (`native-ios/Lanclo/Resources/voice-readings.json`, auditions.fr) | © Lanclo | |
 | Poses friend-hello, friend-trip | Generated with Codex image generation from the official Mimi art and the friend design ([prompt](prompts/01-codex-poses.txt)) | © Lanclo, not licensed for reuse | |
 | friend-amazed, mimi-phone | `films/mimi-voice` | © Lanclo, not licensed for reuse | |
