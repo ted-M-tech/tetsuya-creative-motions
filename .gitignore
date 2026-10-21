@@ -55,3 +55,10 @@ films/mimi-shashin/source/hf/.hyperframes/
 films/mimi-shashin/source/hf/.thumbnails/
 films/mimi-shashin/source/hf/assets/app/
 !films/mimi-shashin/source/assets/voice/
+films/mimi-daily/source/rive/*/build/
+films/mimi-daily/source/hf/assets/shots/*.mp4
+films/mimi-daily/source/hf/assets/mix.wav
+films/mimi-daily/source/hf/.hyperframes/
+films/mimi-daily/source/hf/.thumbnails/
+films/mimi-daily/source/hf/assets/app/
+!films/mimi-daily/source/assets/voice/
