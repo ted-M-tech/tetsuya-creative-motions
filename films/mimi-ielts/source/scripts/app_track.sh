@@ -2,7 +2,7 @@
 # Cut the simulator mock-exam take into one track on the film's clock: hf/assets/app/app.mp4 starts at 2.8 s.
 # Source (not in Git): renders/app/mock.mov (app-capture/MockWalkthrough.swift; kept in Drive 016/IELTS_assets).
 # It is resampled to 60 fps first (the simulator take is variable frame rate): renders/app/mock-60.mp4.
-# Measured on it: mock overview 37.7 | Q1 1/9 43.7, recording 48.3, stopped 52.4 | Q2 55.2 | Q3 67.0 | Q4 78.9 | Q5 90.7
+# Measured on it: mock overview 37.7 | Q1 43.7, recording 48.3, stopped 52.4 | Q2 55.2 | Q3 67.0 | Q4 78.9 | Q5 90.7
 # | Q6 102.7 | Q7 (Part 2) 114.7, preparing 119.8 | Q8 130.7 | Q9 142.4 | finished 154.4 | Band + answers 164.7 | Q1 feedback 175.0
 # Film: overview 2.8-3.6 | Q1 3.6-4.4 | recording 4.4-5.1 | Q2 5.1, Q4 5.35, Q7 5.6 (0.4), Q8 6.0, Q9 6.25 | finished, tap 6.97, Band 6.5-8.0 | feedback 8.0-9.4
 set -e

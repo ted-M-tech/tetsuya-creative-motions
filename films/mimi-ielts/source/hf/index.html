@@ -41,7 +41,7 @@
       #pm { left: 30px; top: 930px; width: 470px; }
       #note { position: absolute; left: 40px; right: 40px; top: 1538px; display: flex; justify-content: center; }
       #note span { background: #ffffff; color: #596875; font-size: 30px; font-weight: 700; padding: 10px 26px; border-radius: 26px; box-shadow: 0 6px 18px rgba(39, 59, 75, 0.1); }
-      /* the mock exam's progress, as in the app's header (模擬試験 n / 9), large beside the phone */
+      /* which Part the mock exam is in, large beside the phone (no question count: it is only the current catalogue) */
       .count { position: absolute; left: 50px; top: 740px; background: #344f69; color: #fff; font-size: 40px; font-weight: 700; padding: 12px 30px; border-radius: 40px; }
       .count b { font-size: 56px; margin-left: 8px; }
       /* the copy card */
@@ -81,6 +81,7 @@
             <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="2.8" data-duration="6.6" data-track-index="5"></video>
             <div class="mask clip" style="top:22.2%; height:2%" data-start="2.8" data-duration="0.8" data-track-index="6"></div>
             <div class="mask clip" style="top:27.1%; height:1.7%" data-start="3.6" data-duration="2.9" data-track-index="6"></div>
+            <div class="mask clip" style="top:20.7%; height:2.2%; left:auto; right:0; width:28%" data-start="3.6" data-duration="2.9" data-track-index="8"></div>
             <div class="mask clip" style="top:22.2%; height:2%" data-start="6.5" data-duration="1.5" data-track-index="6"></div>
             <div id="tap1" class="tap clip" style="left:50%; top:91.5%" data-start="3.45" data-duration="0.3" data-track-index="7"></div>
             <div id="tap2" class="tap clip" style="left:50%; top:89%" data-start="4.35" data-duration="0.3" data-track-index="7"></div>
@@ -105,12 +106,9 @@
       <div id="say1" class="bubble hi from-right clip" data-start="12.7" data-duration="1.2" data-track-index="11">本番、緊張しない？</div>
       <div id="say2" class="bubble hi from-left clip" data-start="13.9" data-duration="1.75" data-track-index="11">1か月、毎日やったし。</div>
 
-      <div class="count clip" data-start="3.6" data-duration="1.5" data-track-index="17">模擬試験<b>1 / 9</b></div>
-      <div class="count clip" data-start="5.1" data-duration="0.25" data-track-index="17">模擬試験<b>2 / 9</b></div>
-      <div class="count clip" data-start="5.35" data-duration="0.25" data-track-index="17">模擬試験<b>4 / 9</b></div>
-      <div class="count clip" data-start="5.6" data-duration="0.4" data-track-index="17">模擬試験<b>7 / 9</b></div>
-      <div class="count clip" data-start="6.0" data-duration="0.25" data-track-index="17">模擬試験<b>8 / 9</b></div>
-      <div class="count clip" data-start="6.25" data-duration="0.25" data-track-index="17">模擬試験<b>9 / 9</b></div>
+      <div class="count clip" data-start="3.6" data-duration="2.0" data-track-index="17">模擬試験<b>Part 1</b></div>
+      <div class="count clip" data-start="5.6" data-duration="0.4" data-track-index="17">模擬試験<b>Part 2</b></div>
+      <div class="count clip" data-start="6.0" data-duration="0.5" data-track-index="17">模擬試験<b>Part 3</b></div>
       <div id="note" class="clip" data-start="6.5" data-duration="2.95" data-track-index="12"><span>AIの練習用フィードバックです（公式スコアではありません）</span></div>
 
       <div id="copy" class="type clip" data-start="1.65" data-duration="1.2" data-track-index="13">
@@ -120,7 +118,7 @@
 
       <!-- Captions (one track) -->
       <div class="caption small clip" data-start="2.85" data-duration="2.25" data-track-index="14"><span id="c1">Part 1〜3を、<br />本番と同じ順番で。</span></div>
-      <div class="caption small clip" data-start="5.1" data-duration="1.4" data-track-index="14"><span id="c2">全9問、<strong>通しで</strong>答える。</span></div>
+      <div class="caption small clip" data-start="5.1" data-duration="1.4" data-track-index="14"><span id="c2">最初から最後まで、<br /><strong>通しで</strong>答える。</span></div>
       <div class="caption small clip" data-start="6.5" data-duration="2.95" data-track-index="14"><span id="c3">最後に、まとめて振り返り。</span></div>
       <div class="caption clip" data-start="9.45" data-duration="2.95" data-track-index="14"><span id="c4">毎日1回、<strong>通しで</strong>。</span></div>
       <div class="caption small clip" data-start="12.45" data-duration="3.2" data-track-index="14"><span id="c5">そして、本番の朝。</span></div>
@@ -131,7 +129,7 @@
       <div class="sub clip" data-start="0.0" data-duration="1.65" data-track-index="24"><span>30 days to the IELTS test. “Only one month left…!”</span></div>
       <div class="sub clip" data-start="1.65" data-duration="1.2" data-track-index="24"><span>The real test flow, once a day. (Speaking Exam Prep · Mock exam)</span></div>
       <div class="sub clip" data-start="2.85" data-duration="2.25" data-track-index="24"><span>Parts 1 to 3, in the same order as the real test.</span></div>
-      <div class="sub clip" data-start="5.1" data-duration="1.4" data-track-index="24"><span>Answer all nine questions in one go.</span></div>
+      <div class="sub clip" data-start="5.1" data-duration="1.4" data-track-index="24"><span>Answer from start to finish, in one go.</span></div>
       <div class="sub clip" data-start="6.5" data-duration="2.95" data-track-index="24"><span>Then look back at all your answers.<br />AI practice feedback, not an official score.</span></div>
       <div class="sub clip" data-start="9.45" data-duration="2.95" data-track-index="24"><span>Once a day, start to finish.</span></div>
       <div class="sub clip" data-start="12.45" data-duration="1.45" data-track-index="24"><span>Then, test morning. “Aren’t you nervous?”</span></div>
