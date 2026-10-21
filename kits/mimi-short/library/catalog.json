@@ -28,11 +28,12 @@
     {"id": "sink", "file": "props/sink.webp", "status": "approved-in-video", "use": "kitchen sink (the think/sink gag)", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
     {"id": "bulb", "file": "props/bulb.webp", "status": "approved-in-video", "use": "idea light bulb with rays (glow added in the edit)", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
     {"id": "ice", "file": "props/ice.webp", "status": "approved-in-video", "use": "ice block to freeze a character (overlay at ~0.78 opacity)", "prompt": "prompts/06-codex-street-point-ice.txt"},
-    {"id": "notebook", "file": "props/notebook.webp", "status": "approved-in-video", "use": "open paper diary with a pencil", "prompt": "prompts/07-codex-bozu-notebook.txt"}
+    {"id": "notebook", "file": "props/notebook.webp", "status": "approved-in-video", "use": "open paper diary with a pencil", "prompt": "prompts/07-codex-bozu-notebook.txt"},
+    {"id": "books", "file": "props/books.webp", "status": "approved-in-video", "use": "leaning tower of unread study books (積読); grows and topples in the edit", "prompt": "prompts/09-codex-book-tower.txt"}
   ],
   "riv": {
     "note": "App-ready unsigned builds, transparent artboard, one performance each (scripts/build_riv.sh). Production use follows design/mimi-welcome and needs the owner's approval.",
     "files": ["artist-paint.riv", "bozu-pok.riv", "confident-boast.riv", "droop-droop.riv", "hide-hide.riv", "hide-reach-hide-reach.riv", "jump-jump.riv", "listen-listen.riv", "master-master.riv", "peek-peek.riv", "perk-perk.riv", "point-direct.riv", "reach-reach.riv", "speak-practice.riv", "stunned-stun.riv", "success-success.riv", "think-think.riv"]
   },
-  "used_in": ["「自分の声、むり」 (2026-10-20)", "「think が sink に」 (2026-10-20)", "「道を聞かれて固まる」 (2026-10-20)", "「日記、3日で終わる」 (2026-10-20)"]
+  "used_in": ["「自分の声、むり」 (2026-10-20)", "「think が sink に」 (2026-10-20)", "「道を聞かれて固まる」 (2026-10-20)", "「日記、3日で終わる」 (2026-10-20)", "「写真で英語」 (2026-10-20)", "「積読」 (2026-10-20)"]
 }

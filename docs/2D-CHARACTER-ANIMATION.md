@@ -36,7 +36,7 @@ From the second episode on, start from a kit instead of copying the last film. F
 
 ## Showing the real app
 
-Record the product in its simulator with QA fixture data (no personal data, the same screens every time) while a UI test walks through the feature; `simctl io recordVideo` captures it. Simulator takes are variable frame rate: resample to constant 60 fps before cutting. Put the character on a flat plate in the page colour and scale it beside a phone frame; keep the phone untimed and time only the clips inside it. Screen text is unreadable on a phone, so zoom and add a large card for the one point that matters. Example: [films/mimi-shashin](../films/mimi-shashin/PROCESS.md).
+Record the product in its simulator with QA fixture data (no personal data, the same screens every time) while a UI test walks through the feature; `simctl io recordVideo` captures it. Simulator takes are variable frame rate: resample to constant 60 fps before cutting. Put the character on a flat plate in the page colour and scale it beside a phone frame; keep the phone untimed and time only the clips inside it. Screen text is unreadable on a phone, so zoom and add a large card for the one point that matters. QA fixtures may not support a second pass (a retake, for instance): check how far they go before writing the story, and mask fixture-only text in the edit. Examples: [films/mimi-shashin](../films/mimi-shashin/PROCESS.md), [films/mimi-daily](../films/mimi-daily/PROCESS.md).
 
 ## Screen rules
 
