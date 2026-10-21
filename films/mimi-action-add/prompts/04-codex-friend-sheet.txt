@@ -1,0 +1,15 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi and the chosen friend concept (art/friend/c3.png: white bunny with an orange patch around one eye, a grey tip on one ear, Mimi's same headphones). Make ONE concept sheet image: a 5 x 2 grid of TEN variations of this friend, all in exactly Mimi's flat style, navy outline weight, proportions and the same headphones (navy band, blue cups, white "L" on the cup at the viewer's LEFT), same pose as c3 (three-quarter view, one mitten raised near the mouth), plain white background, generous spacing, no text, no numbers, no labels.
+
+The main change: LINE EYES instead of dot eyes, giving a relaxed "yuru-chara" look. Vary the eye line style and the patch colours across the ten:
+1) gentle closed-eye arcs (upside-down U), orange patch, grey ear tip
+2) flat sleepy lines (– –), orange patch, grey ear tip
+3) happy ^ ^ eyes, orange patch, grey ear tip
+4) relaxed = = eyes, orange patch, grey ear tip
+5) gentle closed arcs, light brown patch, dark brown ear tip
+6) flat sleepy lines, peach-pink patch, grey ear tip
+7) happy ^ ^ eyes, cream-yellow patch, light grey ear tip
+8) one line eye inside the patch and one tiny dot eye (lazy wink look), orange patch, grey ear tip
+9) gentle closed arcs, grey patch around the eye, orange ear tip (colours swapped)
+10) flat sleepy lines with tiny lower lashes, caramel patch, black ear tip
+
+Save as art/friend/sheet-line-eyes.png (relative to the current directory), large enough that each character is clearly visible. Do not modify other files.

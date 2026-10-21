@@ -65,3 +65,8 @@ films/mimi-daily/source/hf/assets/app/
 
 # Lanclo SNS theme BGM (OpenTracks licence: do not redistribute); kept in Lanclo's Google Drive 002.SNS/_BGM/
 kits/mimi-short/library/bgm/
+films/mimi-action-add/source/rive/*/build/
+films/mimi-action-add/source/hf/assets/
+films/mimi-action-add/source/hf/.hyperframes/
+films/mimi-action-add/source/hf/.thumbnails/
+!films/mimi-action-add/source/assets/voice/

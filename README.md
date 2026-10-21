@@ -85,6 +85,12 @@ Mimi uses the real Lanclo app: a photo, her answer, the mistake marked, and a be
 
 Mimi's English books pile up unread; the daily lesson picks today's sentence, plays it natively in her own voice, scores her take and shows the one sound to fix.
 
+**Action Button ① Add a phrase — "Bless your heart"** · 0:17 vertical · 2D Mimi + her friend + iPhone recordings
+
+[Process, prompts & source](films/mimi-action-add/README.md)
+
+One press on the Action Button and a tiny Mimi opens Add phrase; the AI meaning reveals her friend's "Bless your heart" was a jab. First of a three-part Action Button series.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

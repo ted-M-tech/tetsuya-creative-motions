@@ -1,0 +1,6 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi and the chosen design of Mimi's friend (art/friend/chosen-2.png): a white bunny like Mimi with sleepy flat line eyes (– –), a soft orange patch around one eye, a dark-grey tip on one ear, pink inner ears, and the SAME headphones as Mimi (navy band, blue cups, white "L" on the cup at the viewer's LEFT). Keep EXACTLY this character design and Mimi's flat style, outline weight and proportions. Three-quarter view turned slightly toward the viewer's RIGHT. Plain pure white background, full body, centred, same scale as Mimi, no text.
+
+Save each as PNG in art/friend/ (relative to the current directory):
+1) art/friend/aww.png — saying "aww~" sweetly but a little patronising: one mitten held near the mouth, head tilted, the same sleepy line eyes, a small smug smile with the mouth slightly open.
+2) art/friend/oops.png — caught out and nervous after being shouted at: leaning back, both mittens raised in front of the chest as if saying "whoa, sorry", the same line eyes but with a wobbly nervous smile, one big sweat drop, ears slightly drooping.
+Do not modify other files. List the saved paths when done.
