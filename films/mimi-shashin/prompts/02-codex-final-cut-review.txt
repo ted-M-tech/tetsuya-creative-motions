@@ -1,0 +1,14 @@
+You are an art director for short-form vertical video (Instagram Reels / TikTok) reviewing a 15 s mascot short for Lanclo, a Japanese app that turns the learner's own voice into native English pronunciation.
+
+Attached: a contact sheet of the cut at 2 frames per second (frame n is at n*0.5 s).
+
+This is the first episode where Mimi uses the REAL app: the phone shows a simulator recording of Lanclo's photo description feature (fixture data), Mimi stands beside it.
+0-2.1 hook: Mimi next to a cafe photo; caption この写真、英語で言える？ then her attempt "People is sitting..." (is in red).
+2.1-3.6 the phone slides in: practice menu, tap 写真描写, the photo list (写真を見て、話すだけ。).
+3.6-5.8 the cafe photo in the app, tap record, Mimi speaks (思ったまま、英語で。 + tag ● 話す).
+5.8-7.6 score 66 and what she said, the mistake underlined (間違いが、ひと目でわかる。).
+7.6-9.2 zoom on People is sitting -> People are sitting (is じゃなくて、are。).
+9.2-12.2 a more natural sentence "The hanging lamp lights the counter where people are gathered." plays in her own voice (もっと自然な言い方を、自分の声で。 + tag).
+12.2-14.0 Mimi jumps and celebrates (写真1枚が、英語の教材に。). 14.0-15.0 end card (approved, shared by the series).
+
+Review it as a viewer scrolling on a phone. List at most 6 concrete problems ranked by impact on (1) the first-second hook, (2) whether the app's value reads without sound, (3) whether the real screens are readable on a phone, (4) visual clarity. For each: the time, what is wrong, and the smallest fix. Say clearly what should not change. Japanese captions: flag anything unnatural. Be brief.
