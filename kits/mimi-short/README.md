@@ -4,7 +4,7 @@ Shared parts of every 15-second Mimi short (2D official style, Rive + HyperFrame
 
 | Path | Role |
 |---|---|
-| `library/` | Synced copy of the Lanclo Mimi 2D library (`design/mimi-2d`: poses, props, desk plate, lip-sync cache; plus the official art). `library/SOURCE` names the commit. Refresh with `scripts/sync-library.sh`; never edit by hand |
+| `library/` | Synced copy of the Lanclo Mimi 2D library (`design/mimi-2d`: poses, props, plates, lip-sync cache; plus the official art). App-ready `.riv` files live in the library itself (`design/mimi-2d/riv/`). `library/SOURCE` names the commit. Refresh with `scripts/sync-library.sh`; never edit by hand |
 | `scripts/rig2d.py` | The library rig plus `add_pose()` (episode poses by path), `lipsync()` (mouth from any voice clip, cached) and `build_shots()` |
 | `scripts/render_rive.sh` | Rive project → PNG frames → MP4 (60 fps) |
 | `scripts/cutout.sh` | Drawn image on white → trimmed transparent WebP (`FUZZ=30` for props with a soft glow) |

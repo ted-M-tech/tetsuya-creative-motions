@@ -362,7 +362,44 @@ def build_shots(shots, out_root, bg='desk'):
         build(name, spec, Path(out_root).resolve() / name, spec.get('bg', bg))
 
 
-ACTS = {'hide': act_hide, 'reach': act_reach, 'listen': act_listen, 'droop': act_droop, 'hide-reach': act_hide_reach,
+def act_boast(anim, hp, cp, n):
+    """Showing off (confident): leans back, finger wags in time with the words, a proud bounce."""
+    body(anim, hp, cp, n, squash=lambda f: -5 * abs(math.sin(math.pi * f / 22)), rot=lambda f: -0.04 * smooth(f / 14) + wave(f, 44, 0.015))
+    bone_rot(anim, '0:45', n, lambda f: wave(f, 11, 0.06))
+    bone_rot(anim, '0:41', n, lambda f: wave(f, 22, 0.05, 1))
+
+
+def act_stun(anim, hp, cp, n):
+    """Stunned: a jolt, then frozen with a fine tremble."""
+    body(anim, hp, cp, n, squash=lambda f: spring(f, 0, -18, 10, 0.12), dx=lambda f: wave(f, 3, 1.6), rot=lambda f: wave(f, 3, 0.006))
+    bone_rot(anim, '0:41', n, lambda f: spring(f, 0, 0.1, 10))
+
+
+def act_direct(anim, hp, cp, n):
+    """Pointing the way (point): the pointing arm beats gently, a confident little bounce."""
+    body(anim, hp, cp, n, squash=lambda f: -4 * abs(math.sin(math.pi * f / 20)), rot=lambda f: 0.02 * smooth(f / 12))
+    bone_rot(anim, '0:45', n, lambda f: wave(f, 20, 0.05))
+    bone_rot(anim, '0:41', n, lambda f: wave(f, 24, 0.05, 1))
+
+
+def act_pok(anim, hp, cp, n):
+    """三日坊主 (bozu): the mallet paw knocks the wooden fish three times, a resigned sway."""
+    knocks = (7, 25, 43)
+    knock = lambda f: max(0.35 * math.exp(-((f - k) / 3.0) ** 2) for k in knocks)
+    body(anim, hp, cp, n, squash=lambda f: breathe(f) + 3 * sum(math.exp(-((f - k) / 3.0) ** 2) for k in knocks), rot=lambda f: wave(f, 60, 0.015))
+    bone_rot(anim, '0:45', n, lambda f: -knock(f))
+    bone_rot(anim, '0:43', n, lambda f: -knock(f))
+
+
+def act_paint(anim, hp, cp, n):
+    """Painting (artist): the brush paw sweeps in strokes, a happy sway."""
+    body(anim, hp, cp, n, squash=breathe, rot=lambda f: wave(f, 36, 0.03))
+    bone_rot(anim, '0:45', n, lambda f: 0.14 * math.sin(2 * math.pi * f / 26))
+    bone_rot(anim, '0:41', n, lambda f: wave(f, 26, 0.05, 1))
+
+
+ACTS = {'boast': act_boast, 'stun': act_stun, 'direct': act_direct, 'pok': act_pok, 'paint': act_paint,
+        'hide': act_hide, 'reach': act_reach, 'listen': act_listen, 'droop': act_droop, 'hide-reach': act_hide_reach,
         'peek': act_peek, 'perk': act_perk, 'jump': act_jump, 'success': act_success, 'practice': act_practice,
         'think': act_think, 'master': act_master}
 
