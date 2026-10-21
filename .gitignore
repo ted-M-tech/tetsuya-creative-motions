@@ -42,3 +42,9 @@ films/mimi-michi/source/hf/assets/mix.wav
 films/mimi-michi/source/hf/.hyperframes/
 films/mimi-michi/source/hf/.thumbnails/
 !films/mimi-michi/source/assets/voice/
+films/mimi-nikki/source/rive/*/build/
+films/mimi-nikki/source/hf/assets/shots/*.mp4
+films/mimi-nikki/source/hf/assets/mix.wav
+films/mimi-nikki/source/hf/.hyperframes/
+films/mimi-nikki/source/hf/.thumbnails/
+!films/mimi-nikki/source/assets/voice/

@@ -65,6 +65,8 @@ POSES = {
     'confident': dict(image='poses/confident.webp', height=1000),
     'stunned': dict(image='poses/stunned.webp', height=1180),
     'point': dict(image='poses/point.webp', height=1100),
+    'bozu': dict(image='poses/bozu.webp', height=1000),
+    'artist': dict(image='poses/artist.webp', height=1000),
 }
 
 

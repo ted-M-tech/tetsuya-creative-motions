@@ -67,6 +67,12 @@ Every "I sink so!" drops a kitchen sink; her own voice saying "I think so." and 
 
 Asked for directions in English, Mimi turns into a block of ice; rehearsing the answer in her own voice cracks it.
 
+**The diary ends on day three — Mimi short #4** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
+
+[Process, prompts & source](films/mimi-nikki/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
+
+Three days in, Mimi has become a monk (三日坊主); the English journal turns each day into a picture worth looking back on.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

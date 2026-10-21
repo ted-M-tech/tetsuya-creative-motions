@@ -1,0 +1,12 @@
+You are an art director for short-form vertical video reviewing a revised 15 s mascot short for Lanclo (Japanese app: your own voice with native pronunciation; its English journal turns what you say into natural English, plays it in your own voice, and Mimi draws the day as a picture that collects on a calendar).
+
+Attached: a contact sheet of the revised cut at 2 frames per second (frame n is at n*0.5 s).
+
+The owner changed the second half so the journal's illustration is the reason the diary now lasts:
+0-1.0 monk Mimi (三日坊主) knocking a wooden fish; 1.0-2.4 slumped over a blank paper diary; 2.4-4.9 taps the journal and just talks ("Yesterday... I go to cafe."); 4.9-6.4 diary check card (go → went); 6.4-8.0 hears the corrected diary in her own voice;
+8.0-9.8 NEW: artist Mimi (beret, palette) paints, a framed picture of a coffee cup paints in top to bottom (その日が、Mimiの絵に。);
+9.8-12.4 NEW: a picture calendar, days 1-3 already have pictures, days 4-6 fill in (6日連続), Mimi jumps and celebrates (絵日記みたいに、見返すのが楽しい。);
+12.4-14.0 proud wink 三日坊主、卒業。 14.0-15.0 end card.
+Your earlier review was applied (Yesterday wording, bigger fix, numbered steps).
+
+Review only what matters now: does the illustration payoff read without sound, and does it explain why she no longer quits? List at most 4 concrete problems with time and smallest fix; say what should not change. Be brief.

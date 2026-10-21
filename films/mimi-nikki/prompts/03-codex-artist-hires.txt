@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet), including the small official "artist" Mimi used in the app's English journal (navy beret, light-blue apron with a pocket, a palette in one paw and a paintbrush in the other, winking), plus a library pose for scale.
+
+Redraw the artist Mimi at full resolution, keeping EXACTLY the design of the small artist image (beret, apron, palette, brush, wink, open happy mouth) and EXACTLY the same illustration style, line weight, colours, proportions and head size as the master art, the same three-quarter view turned slightly toward the viewer's RIGHT. Full body, centred, plain pure white background, same scale as the attached library pose, no text.
+
+Save it as source/art/artist.png (relative to the current directory). Do not modify other files. List the saved path when done.

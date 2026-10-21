@@ -1,0 +1,15 @@
+You are an art director for short-form vertical video (Instagram Reels / TikTok) reviewing a 15 s mascot short for Lanclo, a Japanese app that turns the learner's own voice into native English pronunciation; its English journal lets you talk about your day, corrects it into natural English, and plays it back in your own voice.
+
+Attached: a contact sheet of the finished cut at 2 frames per second (left to right, top to bottom; frame n is at n*0.5 s).
+
+Story, 「日記、3日で終わる」 (the diary ends after three days):
+0-1.0 Mimi as a little monk knocking a wooden fish (the Japanese idiom 三日坊主, someone who quits after three days). Captions 英語日記、3日目。 then 三日坊主。
+1.0-2.4 at the desk, drooping over a paper diary with a blank page: 英語で書くの、しんどい…
+2.4-3.1 taps the journal mic on Lanclo. 3.1-4.9 just talks: "Today... I go to cafe." (書かなくていい。話すだけ。 + tag).
+4.9-6.7 diary check card: radar, 66, one fix: go → went 昨日のことは過去形 (自然な英語に、直してくれる。).
+6.7-8.4 hears the corrected diary "I went to a cafe after work." in her own voice (直した日記を、自分の声で。). 8.4-8.9 realises.
+8.9-10.9 reads along with the model. 10.9-12.8 calendar card: days 4..7 turn blue, streak 7日連続 (4日目、5日目…続いてる！), jump and celebrate.
+12.8-14.0 proud wink: 三日坊主、卒業。 14.0-15.0 end card.
+Three earlier episodes used the same layout, kit and end card and were approved by the owner.
+
+Review it as a viewer scrolling on a phone. List at most 6 concrete problems ranked by impact on (1) the first-second hook, (2) whether the joke and the product value read without sound, (3) visual clarity. For each: the time, what is wrong, and the smallest fix. Say clearly if something is fine and should not change. Japanese captions: flag anything unnatural. Be brief.
