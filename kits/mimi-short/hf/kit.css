@@ -33,6 +33,12 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
 .caption em { font-style: normal; color: #e5484d; }
 .caption strong { color: #2a8dff; }
 
+/* Speech bubble from someone off-screen (tail toward the speaker: .from-right / .from-left) */
+.bubble { position: absolute; top: 460px; max-width: 760px; background: #ffffff; color: #273b4b; font-size: 50px; font-weight: 700; line-height: 1.3;
+          padding: 26px 38px; border-radius: 44px; border: 5px solid #273b4b; }
+.bubble.from-right { right: 40px; border-top-right-radius: 8px; }
+.bubble.from-left { left: 40px; border-top-left-radius: 8px; }
+
 /* What is playing, readable on a phone */
 .tag { position: absolute; right: 40px; top: 1370px; display: flex; justify-content: flex-end; }
 .tag span { display: block; background: #eef2f5; color: #273b4b; font-size: 52px; font-weight: 700; padding: 16px 34px; border-radius: 44px;
@@ -50,7 +56,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
 .r-head span { font-size: 38px; font-weight: 700; color: #273b4b; }
 .r-tip { display: flex; flex-direction: column; gap: 6px; background: #fff3f3; border-radius: 22px; padding: 16px 22px; }
 .r-tip b { font-size: 24px; color: #e5484d; }
-.r-tip span { font-size: 40px; font-weight: 700; color: #273b4b; line-height: 1.3; }
+.r-tip span { font-size: 44px; font-weight: 700; color: #273b4b; line-height: 1.3; }
 .r-again { align-self: flex-start; background: #344f69; color: #ffffff; font-size: 30px; font-weight: 700; padding: 12px 26px; border-radius: 30px; }
 
 /* End card (1 s) */

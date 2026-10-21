@@ -36,3 +36,9 @@ films/mimi-think-sink/source/hf/assets/mix.wav
 films/mimi-think-sink/source/hf/.hyperframes/
 films/mimi-think-sink/source/hf/.thumbnails/
 !films/mimi-think-sink/source/assets/voice/
+films/mimi-michi/source/rive/*/build/
+films/mimi-michi/source/hf/assets/shots/*.mp4
+films/mimi-michi/source/hf/assets/mix.wav
+films/mimi-michi/source/hf/.hyperframes/
+films/mimi-michi/source/hf/.thumbnails/
+!films/mimi-michi/source/assets/voice/
