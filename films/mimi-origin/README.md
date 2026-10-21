@@ -2,7 +2,7 @@
 
 **English** · [日本語](README.ja.md)
 
-The founder's story in 32 seconds. At the Victoria Marathon in Canada, Mimi (the founder, a Japanese person living in Canada) happens to run next to a university language teacher (Mimi's friend in a beret and a Breton top). Mimi: she is turning the way she actually studies into an app, her way. The teacher: "Love it! I'll advise you as a university teacher." After the race, three hours in a café (the clock spins, cups pile up), then online calls with notes and app sketches. 「できた！いぇーい！」— a high-five, confetti, the Lanclo mark and the real app home screen. Message: 「Lancloは、みんなの声で育つアプリ。」「使ってみて、Mimiに要望を教えてね！」(requests via Settings › Help & about › Support) — Mimi, sweating a little: 「お手柔らかに…」. End card.
+The founder's story in 32 seconds. At the Victoria Marathon in Canada, Mimi (the founder, a Japanese person living in Canada) happens to run next to a university language teacher (Mimi's friend in a red beret, red neckerchief and Breton top, as in mimi-freespeech). Mimi: she is turning the way she actually studies into an app, her way. The teacher: "Love it! I'll advise you as a university teacher." After the race, three hours in a café (the clock spins, cups pile up), then online calls with notes and app sketches. 「できた！いぇーい！」— a high-five, confetti, the Lanclo mark and the real app home screen. Message: 「Lancloは、みんなの声で育つアプリ。」「使ってみて、Mimiに要望を教えてね！」(requests via Settings › Help & about › Support) — Mimi, sweating a little: 「お手柔らかに…」. End card.
 
 0:32 / 1080×1920, 60 fps / Japanese speech bubbles and captions, no voices / official 2D poses + GSAP, a short real app (simulator) shot + HyperFrames
 

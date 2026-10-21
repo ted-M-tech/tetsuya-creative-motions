@@ -3,7 +3,7 @@
 | Material | Source | Terms | Notes |
 |---|---|---|---|
 | Lanclo app home screen | Simulator recording with QA fixture data (`--uitesting --visual-fixtures`) | © Lanclo, not licensed for reuse | Kept in Drive `025/Origin_assets/` |
-| Poses mimi-run, teacher-run, teacher-thumb, cafe-talk, mimi-laptop, teacher-call, highfive, mimi-sweat; cup prop; plates plate-race, plate-desk | Generated with Codex image generation from the official Mimi art, the friend design and the café plate ([prompt](prompts/01-codex-art.txt)) | © Lanclo, not licensed for reuse | |
+| Poses mimi-run, teacher-run, teacher-thumb, cafe-talk, mimi-laptop, teacher-call, highfive, mimi-sweat; cup prop; plates plate-race, plate-desk | Generated with Codex image generation from the official Mimi art, the friend design and the café plate ([prompt](prompts/01-codex-art.txt); the teacher redrawn to match `films/mimi-freespeech` friend-french: [prompt](prompts/02-codex-teacher-french.txt)) | © Lanclo, not licensed for reuse | |
 | Café plate | `films/mimi-roleplay/source/art/cafe.webp` | © Lanclo, not licensed for reuse | |
 | Race name | "Victoria Marathon" as plain text on a blank banner (owner's choice); no race logo | — | |
 | Lanclo mark, end-card Mimi | Lanclo brand | © Lanclo, not licensed for reuse | |
