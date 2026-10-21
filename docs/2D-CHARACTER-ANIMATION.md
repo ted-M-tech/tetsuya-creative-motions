@@ -30,6 +30,10 @@ Rive CLI (`brew install --cask rive-app/tap/rive-cli`, `rive update`; look up `r
 
 The first sibling draws on top; one screenshot per invocation; screenshots are opaque; opacity is property 18, bone rotation 15, position 90/91.
 
+## A series: the shared kit
+
+From the second episode on, start from a kit instead of copying the last film. For Mimi it is [kits/mimi-short](../kits/mimi-short/README.md): a synced copy of the character library (master stays in the product repo), the rig with `add_pose()` / `lipsync()` / `build_shots()`, the sound kit, and the shared CSS/JS look. An episode adds only new art, its own acts, a cue sheet and its edit ([films/mimi-think-sink](../films/mimi-think-sink/PROCESS.md)). Props move in the edit, not in Rive, so they can be retimed without re-rendering. TTS lines for a mispronunciation gag cannot be checked by transcription (the model corrects them); a person must listen. `xargs -I` limits the command to 255 bytes: pass long paths by environment.
+
 ## Screen rules
 
 Captions at the top; keep the bottom ~400 px clear for platform UI; phone UI is atmosphere, meaning goes in large labels; never cover the character's face.

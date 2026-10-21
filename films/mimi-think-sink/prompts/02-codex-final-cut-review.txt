@@ -1,0 +1,14 @@
+You are an art director for short-form vertical video (Instagram Reels / TikTok) reviewing a 15 s mascot short for Lanclo, a Japanese app that turns the learner's own voice into native English pronunciation.
+
+Attached: a contact sheet of the finished cut at 2 frames per second (left to right, top to bottom; frame n is at n*0.5 s).
+
+Story, 「think が sink に」:
+0-1.0 hook: Mimi proudly says "I sink so!" (voice), a kitchen sink drops beside her. Caption "I sink so!".
+1.0-2.2 stunned; says it again, a second sink lands on the first. Caption: think のつもりが、sink（流し台）に…
+2.2-2.9 taps record on Lanclo. 2.9-4.4 hears her own voice say "I think so." correctly (tag ▶ 自分の声のお手本).
+4.4-5.0 realises (言えてる…！). 5.0-6.8 radar card, score 64, one fix: th は、舌先を軽く歯の間に. 
+6.8-9.0 practises with the model (lip-sync). 9.0-10.2 sinks poof away, a bulb lights (シンク、消えた！).
+10.2-12.1 jump, celebrate (声はあなたのまま、発音だけネイティブに。). 12.1-14.0 says "I think so." confidently. 14.0-15.0 end card.
+The previous episode in this series used the same layout and was approved by the owner.
+
+Review it as a viewer scrolling on a phone. List at most 6 concrete problems ranked by impact on (1) the first-second hook, (2) whether the joke and the product value read without sound, (3) visual clarity. For each: the time, what is wrong, and the smallest fix. Say clearly if something is fine and should not change. Japanese captions: flag anything unnatural. Be brief.

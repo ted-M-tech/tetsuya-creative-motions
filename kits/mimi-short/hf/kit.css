@@ -1,0 +1,64 @@
+/* Mimi shorts kit: the shared look of every episode (1080x1920, desk plate with the phone on the right).
+   First used in 「自分の声、むり」; positions match kits/mimi-short/library/backgrounds/desk.webp. */
+@font-face { font-family: "Zen Maru Gothic"; src: url("fonts/ZenMaruGothic-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "Zen Maru Gothic"; src: url("fonts/ZenMaruGothic-Regular.ttf") format("truetype"); font-weight: 400; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #eef3f9; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Zen Maru Gothic", sans-serif; color: #273b4b; }
+
+/* Camera: one untimed wrapper around every shot, prop and the phone UI, so a zoom keeps them together. */
+#cam { position: absolute; inset: 0; transform-origin: 44% 46%; }
+#cam video, #cam .frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Phone screen in the desk plate: 853,981 161x322 */
+.phone { position: absolute; left: 853px; top: 981px; width: 161px; height: 322px; border-radius: 22px;
+         background: #fbfcfd; overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 18px 10px; gap: 10px; }
+.phone .brand { font-size: 15px; letter-spacing: 0.02em; }
+.phone .sentence { width: 100%; background: #eaf1f6; border-radius: 12px; padding: 9px 7px; font-size: 12px; line-height: 1.35; text-align: center; color: #344f69; }
+.phone .rec { width: 74px; height: 74px; border-radius: 50%; background: #e5484d; margin-top: 18px; }
+.phone .label { font-size: 12px; color: #596875; }
+.phone .btn { width: 100%; border-radius: 16px; padding: 10px 4px; font-size: 12px; text-align: center; }
+.phone .btn.own { background: #eef2f5; color: #596875; }
+.phone .btn.model { background: #344f69; color: #ffffff; }
+.phone .wave { display: flex; align-items: center; gap: 3px; height: 40px; }
+.phone .wave i { display: block; width: 4px; height: 10px; border-radius: 2px; background: #9fb0bd; }
+.phone .wave.blue i { background: #2a8dff; }
+.ripple { position: absolute; width: 60px; height: 60px; border-radius: 50%; border: 5px solid #5b7f9f; }
+
+/* Captions: one track, top safe zone */
+.caption { position: absolute; left: 0; right: 0; top: 230px; display: flex; justify-content: center; }
+.caption span { display: block; background: #ffffff; color: #273b4b; font-size: 66px; font-weight: 700; text-align: center;
+                padding: 22px 48px; border-radius: 60px; box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14); line-height: 1.35; }
+.caption.small span { font-size: 56px; }
+.caption em { font-style: normal; color: #e5484d; }
+.caption strong { color: #2a8dff; }
+
+/* What is playing, readable on a phone */
+.tag { position: absolute; right: 40px; top: 1370px; display: flex; justify-content: flex-end; }
+.tag span { display: block; background: #eef2f5; color: #273b4b; font-size: 52px; font-weight: 700; padding: 16px 34px; border-radius: 44px;
+            box-shadow: 0 8px 24px rgba(39, 59, 75, 0.12); }
+.tag.model span { background: #344f69; color: #ffffff; }
+
+.sparkles { position: absolute; inset: 0; pointer-events: none; }
+.sparkles svg { position: absolute; width: 70px; height: 70px; }
+
+/* Result card: radar on the left, one thing to fix and a replay chip on the right */
+.result { position: absolute; left: 40px; right: 40px; top: 1110px; background: #ffffff; border-radius: 40px; padding: 22px 28px;
+          box-shadow: 0 18px 50px rgba(39, 59, 75, 0.2); display: grid; grid-template-columns: 330px 1fr; column-gap: 22px; align-items: center; }
+.result .radar { display: block; width: 100%; height: auto; font-family: "Zen Maru Gothic", sans-serif; }
+.result .r-side { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.r-head span { font-size: 38px; font-weight: 700; color: #273b4b; }
+.r-tip { display: flex; flex-direction: column; gap: 6px; background: #fff3f3; border-radius: 22px; padding: 16px 22px; }
+.r-tip b { font-size: 24px; color: #e5484d; }
+.r-tip span { font-size: 40px; font-weight: 700; color: #273b4b; line-height: 1.3; }
+.r-again { align-self: flex-start; background: #344f69; color: #ffffff; font-size: 30px; font-weight: 700; padding: 12px 26px; border-radius: 30px; }
+
+/* End card (1 s) */
+.end { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; padding-top: 420px; }
+.end img.mimi { width: 520px; height: auto; }
+.end .lockup { display: flex; align-items: center; gap: 22px; margin-top: 30px; }
+.end .lockup img { width: 110px; height: 110px; }
+.end .lockup span { font-size: 108px; font-weight: 700; color: #273b4b; letter-spacing: 0.01em; }
+.end .line { font-size: 48px; color: #5b7f9f; margin-top: 26px; }
+.end .cta { margin-top: 46px; background: #344f69; color: #fff; font-size: 54px; padding: 26px 64px; border-radius: 70px; }
+.end img.store { height: 96px; width: auto; margin-top: 34px; }

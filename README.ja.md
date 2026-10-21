@@ -42,6 +42,12 @@ Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカ�
 
 録音した自分の英語が恥ずかしいMimiが、自分の声のお手本で驚き、練習して、点数と直すポイントで納得するまで。
 
+**think が sink に — Mimiショート2本目** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
+
+[制作過程・プロンプト・ソース](films/mimi-think-sink/README.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md)
+
+"I sink so!" と言うたびにシンクが落ちてくる。自分の声の正しい "I think so." と th の直し方1つで、シンクが消える。
+
 ## この動画制作フローを使う
 
 [専用スキルの導入と制作手順](docs/VIDEO-WORKFLOW.ja.md)を公開しています。Lancloの改善例を見ながら、自分の動画へ応用できます。構成・改善・記録を支えるスキルで、レンダラーや音声APIは別途必要です。
