@@ -1,8 +1,10 @@
 """AI voice in 1 minute: the two English takes of the model sentence, kit SFX, the theme bed -> hf/assets/mix.wav.
 
 usage: uv run --no-project --with numpy python films/mimi-voice/source/scripts/mix.py
-Voices in assets/voice/ (rebuild with scripts/voices.sh): "Let's grab a coffee and catch up this weekend." by am_michael (the native
-speaker she admires, heard through her headphones) and by af_bella (the friend's own English voice since mimi-action-add).
+"Let's grab a coffee and catch up this weekend." twice: by Kokoro am_michael in assets/voice/ (the native speaker she admires,
+heard through her headphones; scripts/voices.sh), and as her own AI voice by the owner's registered Lanclo voice in General
+American, assets/own-voice/model.wav (not in Git; rebuild with kits/mimi-short/scripts/ownvoice.py source/own-voice.json;
+speech 0.19-2.37 s, measured).
 Japanese lines are speech bubbles only (Kokoro's Japanese voice garbles them).
 """
 import sys
@@ -20,7 +22,7 @@ APP = 5.5              # the app
 TAPS = (7.28, 8.13, 8.89, 9.11, 10.06, 11.47)
 TOGGLES = (5.73, 6.10, 6.55, 6.95)
 READY = 12.19
-OWN = 13.5             # the same sentence in her own voice
+OWN = 13.315           # the same sentence in her own AI voice (speech 13.50-15.69)
 FLUENT = 14.7
 TEASE = 16.0
 END = 17.3
@@ -38,7 +40,7 @@ for at in TAPS:
     m.sfx(tap() * 0.6, at)
 m.sfx(ding(), READY)
 m.sfx(bell(88, 0.7, 0.08), READY + 0.1)
-m.voice('friend-af_bella.wav', OWN, g=0.9)
+m.voice('../own-voice/model.wav', OWN, g=0.9)
 m.sfx(pop_seq(4, 0.05, base=79), FLUENT)
 m.sfx(pofu() * 0.6, TEASE)
 m.bed(COPY, END)
