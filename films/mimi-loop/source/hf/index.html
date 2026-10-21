@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* The phone: one element; the intro puts the friend's home screen in it, the loop puts Lanclo (the real app) in it */
+      #device { position: absolute; left: 300px; top: 478px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      #zoom video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 21px; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 20px; background: #000; }
+      #status u { position: absolute; right: 9%; top: 36%; width: 34px; height: 17px; border: 2px solid #111; border-radius: 5px; }
+      #status u::after { content: ""; position: absolute; inset: 2px; background: #111; border-radius: 2px; }
+      .mask { position: absolute; background: #ffffff; opacity: 0; border-radius: 4px; font-family: -apple-system, "Helvetica Neue", sans-serif; font-size: 21px; font-weight: 700; color: #111; line-height: 1; display: flex; align-items: center; }
+      .ring1 { position: absolute; left: 9%; top: 89.5%; width: 80px; height: 80px; margin: -40px 0 0 -40px; border-radius: 50%; border: 6px solid #2a8dff; opacity: 0; }
+      /* The friend's home screen: five generic study apps (no brands) */
+      #home { position: absolute; inset: 0; background: linear-gradient(160deg, #cfe0f1 0%, #e9d9ef 55%, #f6e6d8 100%); }
+      #home .hs-time { position: absolute; left: 13%; top: 2.6%; font-size: 21px; font-weight: 700; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #1d2733; }
+      #home .hs-island { position: absolute; left: 36%; top: 1.5%; width: 28%; height: 3%; border-radius: 20px; background: #000; }
+      #home .hs-date { position: absolute; left: 0; right: 0; top: 9%; text-align: center; font-size: 34px; font-weight: 700; color: #ffffff; text-shadow: 0 2px 10px rgba(39, 59, 75, 0.25); }
+      #home .grid { position: absolute; left: 20px; right: 20px; top: 19%; display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 64px; justify-items: center; }
+      .app { position: relative; display: flex; flex-direction: column; align-items: center; width: 130px; }
+      .app .ic { position: relative; width: 118px; height: 118px; border-radius: 28px; display: flex; align-items: center; justify-content: center;
+                 box-shadow: 0 8px 18px rgba(39, 59, 75, 0.18); }
+      .app .ic svg { width: 72px; height: 72px; }
+      .app .nm { margin-top: 8px; font-size: 21px; font-weight: 700; color: #273b4b; white-space: nowrap; }
+      .app .bar { margin-top: 8px; width: 92px; height: 9px; border-radius: 5px; background: rgba(255, 255, 255, 0.7); overflow: hidden; }
+      .app .bar i { display: block; height: 100%; width: 100%; background: #2a8dff; transform-origin: 0 50%; transform: scaleX(0); }
+      .app .dust { position: absolute; left: 0px; top: -6px; width: 130px; height: 130px; opacity: 0; pointer-events: none; }
+      .app .stop { position: absolute; right: -8px; top: -10px; width: 40px; height: 40px; border-radius: 50%; background: #8a97a3; color: #fff;
+                   font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; opacity: 0; }
+      .hs-tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); opacity: 0; }
+      #h-friend { position: absolute; left: -10px; top: 1050px; width: 460px; height: auto; }
+      #h-say { left: 40px; top: 830px; font-size: 54px; }
+      /* Two-shots */
+      .two { position: absolute; inset: 0; background: #eef3f9; }
+      .two img { position: absolute; height: auto; }
+      #t1-friend { left: 20px; top: 920px; width: 520px; }
+      #t1-mimi { left: 560px; top: 760px; width: 480px; }
+      #t1-say { top: 470px; right: 40px; font-size: 62px; }
+      #t2-friend { left: 30px; top: 760px; width: 560px; }
+      #t2-mimi { left: 600px; top: 860px; width: 430px; }
+      #t2-say { top: 440px; left: 40px; font-size: 62px; }
+      /* Clean type card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 70px; }
+      .type .big { font-size: 96px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .scatter { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; padding: 0 60px; }
+      .type .scatter span { font-size: 38px; font-weight: 700; padding: 12px 24px; border-radius: 40px; background: #eef2f5; color: #8a97a3; }
+      /* The loop */
+      #loop { position: absolute; inset: 0; }
+      #ring { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+      .node { position: absolute; width: 104px; height: 104px; margin: -52px 0 0 -52px; border-radius: 50%; background: #ffffff; border: 7px solid #c9d6e0;
+              display: flex; align-items: center; justify-content: center; font-size: 50px; font-weight: 700; color: #6f7d89;
+              box-shadow: 0 8px 22px rgba(39, 59, 75, 0.14); }
+      .node .lab { position: absolute; top: 112px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 30px; font-weight: 700;
+                   color: #273b4b; background: #ffffff; padding: 6px 18px; border-radius: 26px; box-shadow: 0 6px 16px rgba(39, 59, 75, 0.12); }
+      .node .lab.l { left: auto; right: auto; transform: none; }
+      .node .on { position: absolute; inset: -7px; border-radius: 50%; background: #2a8dff; color: #ffffff; display: flex; align-items: center; justify-content: center; opacity: 0; }
+      #runner { position: absolute; left: 0; top: 0; width: 132px; height: 150px; }
+      #runner .bob { position: absolute; inset: 0; }
+      #runner img { position: absolute; left: 0; bottom: 0; width: 132px; height: auto; }
+      #lscreen { position: absolute; inset: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+      #lscreen img { width: 120px; height: 120px; }
+      #lscreen span { font-size: 40px; font-weight: 700; color: #273b4b; }
+      /* Step titles: top safe zone */
+      .step { position: absolute; left: 40px; right: 40px; top: 56px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+      .step b { display: block; background: #ffffff; color: #273b4b; font-size: 60px; font-weight: 700; padding: 14px 40px; border-radius: 50px;
+                box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14); white-space: nowrap; }
+      .step b em { font-style: normal; color: #2a8dff; margin-right: 12px; }
+      .step span { display: block; font-size: 38px; font-weight: 700; color: #344f69; white-space: nowrap; }
+      #score { position: absolute; left: 540px; top: 1240px; width: 420px; margin-left: -210px; background: #ffffff; border-radius: 34px; padding: 18px 26px 14px;
+               box-shadow: 0 18px 50px rgba(39, 59, 75, 0.25); text-align: center; }
+      #score .k { font-size: 30px; font-weight: 700; color: #596875; }
+      #score .v { font-size: 92px; font-weight: 700; color: #2a8dff; line-height: 1.1; }
+      #score .v small { font-size: 40px; color: #273b4b; margin-left: 6px; }
+      #score .n { font-size: 22px; color: #8a97a3; }
+      #lap { position: absolute; left: 540px; top: 1000px; transform: translate(-50%, -50%); }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.2" data-width="1080" data-height="1920">
+      <div id="cam">
+        <!-- The loop (6.3-27.0): ring, seven stops, Lanclo in the middle, Mimi running -->
+        <div id="loop" class="clip" data-start="6.3" data-duration="20.7" data-track-index="1">
+          <svg id="ring" viewBox="0 0 1080 1920">
+            <path d="M540,460 A455,540 0 1,1 540,1540 A455,540 0 1,1 540,460" fill="none" stroke="#d6e0e8" stroke-width="14" />
+            <path id="trail" d="M540,460 A455,540 0 1,1 540,1540 A455,540 0 1,1 540,460" pathLength="1" fill="none" stroke="#2a8dff" stroke-width="14" stroke-linecap="round" stroke-dasharray="1 1" stroke-dashoffset="1" />
+          </svg>
+          <div id="nodes"></div>
+        </div>
+
+        <div id="device">
+          <div id="screen">
+            <div id="home" class="clip" data-start="0" data-duration="4.0" data-track-index="2">
+              <div class="hs-time">9:41</div><div class="hs-island"></div>
+              <div class="hs-date">10月21日 水曜日</div>
+              <div class="grid" id="grid"></div>
+              <div id="hs-tap" class="hs-tap"></div>
+            </div>
+            <div id="zoom">
+              <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="6.3" data-duration="20.7" data-track-index="3"></video>
+              <div id="masks"></div>
+            </div>
+            <div id="status" class="clip" data-start="6.3" data-duration="20.7" data-track-index="4"><b>9:41</b><i></i><u></u></div>
+            <div id="ring1" class="ring1"></div>
+            <div id="lscreen" class="clip" data-start="6.3" data-duration="0.75" data-track-index="5">
+              <img src="assets/kit/brand/mark.png" alt="" /><span>Lanclo</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="runner" class="clip" data-start="6.5" data-duration="20.5" data-track-index="6">
+          <div class="bob"><img id="run-r" src="assets/art/run.webp" alt="" /><img id="run-l" src="assets/art/run-left.webp" alt="" style="opacity:0" /></div>
+        </div>
+        <div id="score" class="clip" data-start="24.1" data-duration="2.9" data-track-index="7">
+          <div class="k">発音スコア</div><div class="v"><span id="sv">64</span><small>点</small></div><div class="n">※数値はイメージ</div>
+        </div>
+
+        <!-- Intro: the friend and her scattered apps -->
+        <img id="h-friend" class="clip" src="assets/art/friend-sigh.webp" alt="" data-start="0" data-duration="4.0" data-track-index="8" />
+      </div>
+      <div id="h-say" class="bubble from-left clip" data-start="2.6" data-duration="1.4" data-track-index="9">勉強が<br />続かない…</div>
+
+      <!-- Mimi: "it all runs in one" -->
+      <div id="two1" class="two clip" data-start="4.0" data-duration="1.15" data-track-index="10">
+        <img id="t1-friend" src="assets/art/friend-sigh.webp" alt="" />
+        <img id="t1-mimi" src="assets/art/confident.webp" alt="" />
+        <div id="t1-say" class="bubble from-right">それ、全部<br />ひとつで回るよ</div>
+      </div>
+      <div id="copy" class="type clip" data-start="5.15" data-duration="1.25" data-track-index="11">
+        <div class="scatter"><span id="s1">調べる</span><span id="s2">メモ</span><span id="s3">会話</span><span id="s4">発音</span><span id="s5">単語</span></div>
+        <div id="big1" class="big">バラバラの勉強を、<br /><strong>ひとつのループ</strong>に。</div>
+      </div>
+
+      <!-- Step titles (one track) -->
+      <div id="st1" class="step clip" data-start="6.8" data-duration="2.4" data-track-index="12"><b><em>①</em>発音練習</b><span>お手本は、自分の声のネイティブ発音</span></div>
+      <div id="st2" class="step clip" data-start="9.2" data-duration="2.4" data-track-index="12"><b><em>②</em>苦手分析</b><span>音・単語の強勢・リズム・抑揚・流暢さ</span></div>
+      <div id="st3" class="step clip" data-start="11.6" data-duration="2.8" data-track-index="12"><b><em>③</em>会話・日記</b><span>シチュエーション会話と英語日記で、自分の言葉を</span></div>
+      <div id="st4" class="step clip" data-start="14.4" data-duration="2.6" data-track-index="12"><b><em>④</em>Mimiのアドバイス</b><span>あなたの癖と「ネイティブなら」</span></div>
+      <div id="st5" class="step clip" data-start="17.0" data-duration="2.4" data-track-index="12"><b><em>⑤</em>デイリーレッスン</b><span>Mimiが気づいた癖で、今日の5文</span></div>
+      <div id="st6" class="step clip" data-start="19.4" data-duration="2.4" data-track-index="12"><b><em>⑥</em>上達チェック</b><span>学習記録で、発音のバランスと推移</span></div>
+      <div id="st7" class="step clip" data-start="21.8" data-duration="2.2" data-track-index="12"><b><em>⑦</em>単語練習</b><span>スワイプ復習。忘れかけたころに、また</span></div>
+      <div id="st8" class="step clip" data-start="24.0" data-duration="3.0" data-track-index="12"><b>回すほど、<em style="margin:0">伸びていく。</em></b></div>
+
+      <div id="cap-1" class="caption clip" data-start="0.2" data-duration="3.8" data-track-index="13"><span id="c1">勉強アプリ、バラバラ。</span></div>
+
+      <!-- The friend is won over -->
+      <div id="two2" class="two clip" data-start="27.0" data-duration="2.0" data-track-index="14">
+        <img id="t2-friend" src="assets/art/friend-wow.webp" alt="" />
+        <img id="t2-mimi" src="assets/art/jump.webp" alt="" />
+        <div id="t2-say" class="bubble from-left">…ずっと<br />回せるやつじゃん</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="29.0" data-duration="1.2" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.2" data-duration="2.4" data-track-index="24"><span>Look-up AI, notes, AI chat, videos, flashcards… all scattered.</span></div>
+      <div class="sub clip" data-start="2.6" data-duration="1.4" data-track-index="24"><span>I just can’t keep studying…</span></div>
+      <div class="sub clip" data-start="4.0" data-duration="1.15" data-track-index="24"><span>All of that runs in one app.</span></div>
+      <div class="sub clip" data-start="5.15" data-duration="1.25" data-track-index="24"><span>Turn scattered study into one loop.</span></div>
+      <div class="sub clip" data-start="6.8" data-duration="2.4" data-track-index="24"><span>① Pronunciation practice: the model is your own voice, native.</span></div>
+      <div class="sub clip" data-start="9.2" data-duration="2.4" data-track-index="24"><span>② Weak points: sounds, word stress, rhythm, intonation, fluency.</span></div>
+      <div class="sub clip" data-start="11.6" data-duration="2.8" data-track-index="24"><span>③ Conversation &amp; journal: situations and an English diary, in your own words.</span></div>
+      <div class="sub clip" data-start="14.4" data-duration="2.6" data-track-index="24"><span>④ Mimi’s advice: your habits, and how a native speaker would say it.</span></div>
+      <div class="sub clip" data-start="17.0" data-duration="2.4" data-track-index="24"><span>⑤ Daily lesson: today’s 5 sentences, built on the habits Mimi noticed.</span></div>
+      <div class="sub clip" data-start="19.4" data-duration="2.4" data-track-index="24"><span>⑥ Progress check: your pronunciation balance and trend in your record.</span></div>
+      <div class="sub clip" data-start="21.8" data-duration="2.2" data-track-index="24"><span>⑦ Word practice: swipe review brings it back right before you’d forget.</span></div>
+      <div class="sub clip" data-start="24.0" data-duration="3.0" data-track-index="24"><span>The more you loop, the more you grow. (Score: illustration)</span></div>
+      <div class="sub clip" data-start="27.0" data-duration="2.0" data-track-index="24"><span>…So it’s a loop you can keep going forever!</span></div>
+      <div class="sub clip" data-start="29.0" data-duration="1.2" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="30.2" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      // ---- the friend's home screen: five generic study apps (no names, no logos) ----
+      const G = {
+        chat: '<path d="M10 14h44a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H30l-12 10v-10h-8a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6z" fill="#fff"/><path d="M42 22l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#8b6cf0"/><circle cx="22" cy="31" r="3" fill="#8b6cf0"/>',
+        memo: '<rect x="12" y="8" width="40" height="50" rx="6" fill="#fff"/><path d="M20 22h24M20 31h24M20 40h16" stroke="#f0b429" stroke-width="4" stroke-linecap="round"/>',
+        talk: '<path d="M6 12h30a5 5 0 0 1 5 5v14a5 5 0 0 1-5 5H18l-8 7v-7H6a5 5 0 0 1-5-5V17a5 5 0 0 1 5-5z" fill="#fff"/><path d="M58 26H34a5 5 0 0 0-5 5v12a5 5 0 0 0 5 5h12l8 7v-7h4a5 5 0 0 0 5-5V31a5 5 0 0 0-5-5z" fill="#d6f5e3"/>',
+        play: '<rect x="6" y="14" width="52" height="36" rx="9" fill="#fff"/><path d="M27 23l14 9-14 9z" fill="#ef5a5a"/>',
+        cards: '<rect x="16" y="8" width="36" height="46" rx="6" fill="#bfe6f0" transform="rotate(10 34 31)"/><rect x="12" y="12" width="36" height="46" rx="6" fill="#fff"/><path d="M20 30h20" stroke="#1aa3b8" stroke-width="5" stroke-linecap="round"/>'
+      };
+      const APPS = [["chat", "意味調べAI", "linear-gradient(140deg,#a58bff,#6d4fe0)", 0.42], ["memo", "コピペメモ", "linear-gradient(140deg,#ffd76a,#f0a92a)", 0.3],
+                    ["talk", "AI会話", "linear-gradient(140deg,#5fd59a,#22a06b)", 0.5], ["play", "発音動画", "linear-gradient(140deg,#ff8a7a,#e04848)", 0.35],
+                    ["cards", "単語カード", "linear-gradient(140deg,#5fd3e6,#1690a8)", 0.45]];
+      const DUST = '<svg viewBox="0 0 116 116"><path d="M4 4 L40 4 M4 4 L4 40 M4 4 L30 30 M14 4 Q14 14 4 14 M26 4 Q24 24 4 26" stroke="#9aa6b1" stroke-width="2" fill="none"/>' +
+        [[70, 20], [88, 46], [30, 80], [60, 92], [96, 84], [18, 56], [76, 66]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.2" fill="#a7a097"/>`).join("") + "</svg>";
+      document.getElementById("grid").innerHTML = APPS.map(([g, n, bg], i) =>
+        `<div class="app" id="app${i}"><div class="ic" style="background:${bg}"><svg viewBox="0 0 64 64">${G[g]}</svg></div><div class="nm">${n}</div>` +
+        `<div class="bar"><i></i></div><div class="dust">${DUST}</div><div class="stop">||</div></div>`).join("");
+
+      // ---- the loop geometry: ellipse centre (540,1000), radii 455 x 540, stop k at k/7 of a lap, clockwise from the top ----
+      const CX = 540, CY = 1000, RX = 455, RY = 540;
+      const at = (p) => { const a = 2 * Math.PI * p; return [CX + RX * Math.sin(a), CY - RY * Math.cos(a)]; };
+      const LABELS = ["発音練習", "苦手分析", "会話・日記", "アドバイス", "レッスン", "上達チェック", "単語練習"];
+      const NUMS = ["1", "2", "3", "4", "5", "6", "7"];
+      document.getElementById("nodes").innerHTML = LABELS.map((l, k) => {
+        const [x, y] = at(k / 7);
+        const lab = k === 2 ? `style="left:auto; right:-14px; transform:none"` : k === 5 ? `style="left:-34px; transform:none"` : "";
+        return `<div class="node" id="n${k}" style="left:${x.toFixed(1)}px; top:${y.toFixed(1)}px">${NUMS[k]}<div class="on">${NUMS[k]}</div><div class="lab" ${lab}>${l}</div></div>`;
+      }).join("");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // ---- 0-4.0 the friend's phone: each app starts, stops halfway, gathers dust ----
+      tl.set("#device", { x: 160, y: -70, scale: 0.98 }, 0);
+      k.pop("#c1", 0.2);
+      tl.fromTo("#h-friend", { y: 0 }, { y: 8, duration: 0.5, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
+      const TAPS = [0.35, 0.8, 1.25, 1.7, 2.15];
+      APPS.forEach((a, i) => {
+        const t0 = TAPS[i], el = `#app${i}`;
+        tl.fromTo(`${el} .ic`, { scale: 1 }, { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1 }, t0);
+        tl.fromTo(`${el} .bar i`, { scaleX: 0 }, { scaleX: a[3], duration: 0.3, ease: "power2.out" }, t0 + 0.08);
+        tl.fromTo(`${el} .ic`, { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.92)", duration: 0.25 }, t0 + 0.45);
+        tl.fromTo(`${el} .bar i`, { backgroundColor: "#2a8dff" }, { backgroundColor: "#a3b0bb", duration: 0.25 }, t0 + 0.45);
+        tl.fromTo(`${el} .ic`, { rotation: 0, y: 0 }, { rotation: i % 2 ? 7 : -7, y: 6, duration: 0.3, ease: "back.out(2)" }, t0 + 0.45);
+        tl.fromTo(`${el} .stop`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.5)" }, t0 + 0.42);
+        tl.fromTo(`${el} .dust`, { opacity: 0 }, { opacity: 1, duration: 0.35 }, t0 + 0.6);
+        tl.fromTo(`${el} .nm`, { color: "#273b4b" }, { color: "#8a97a3", duration: 0.25 }, t0 + 0.45);
+      });
+      // tap ripples land on each icon (grid cells: 3 columns)
+      const tapXY = [[19, 26], [50, 26], [81, 26], [19, 47], [50, 47]];
+      TAPS.forEach((t0, i) => {
+        tl.set("#hs-tap", { left: tapXY[i][0] + "%", top: tapXY[i][1] + "%" }, t0 - 0.01);
+        tl.fromTo("#hs-tap", { scale: 0.3, opacity: 1 }, { scale: 2.0, opacity: 0, duration: 0.25, ease: "power2.out", immediateRender: false }, t0);
+      });
+      tl.fromTo("#h-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 2.6);
+      tl.to("#device", { scale: 0.94, duration: 1.2, ease: "sine.inOut" }, 2.6);
+
+      // ---- 4.0-5.15 Mimi: it all runs in one ----
+      tl.set("#device", { opacity: 0 }, 4.0);
+      tl.fromTo("#t1-mimi", { x: 240, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 4.0);
+      tl.fromTo("#t1-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 4.12);
+      tl.fromTo("#t1-friend", { y: 0 }, { y: -20, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, 4.3);
+
+      // ---- 5.15-6.4 the copy: five scattered words gather into one line ----
+      tl.fromTo(["#s1", "#s2", "#s3", "#s4", "#s5"], { y: 30, opacity: 0, rotation: (i) => [-8, 6, -4, 9, -6][i] },
+        { y: 0, opacity: 1, duration: 0.18, stagger: 0.04 }, 5.15);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 5.35);
+      tl.to(["#s1", "#s2", "#s3", "#s4", "#s5"], { rotation: 0, backgroundColor: "#344f69", color: "#ffffff", duration: 0.25, stagger: 0.03, ease: "power2.out" }, 5.7);
+
+      // ---- 6.3-27.0 the loop ----
+      tl.set("#device", { x: 0, y: 0, scale: 0.8, opacity: 1 }, 6.3);
+      tl.fromTo("#trail", { strokeDashoffset: 1 }, { strokeDashoffset: 1, duration: 0.01 }, 6.3);
+      tl.fromTo("#ring", { opacity: 0, scale: 0.92, transformOrigin: "540px 1000px" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 6.3);
+      tl.fromTo("#device", { scale: 0.6 }, { scale: 0.8, duration: 0.35, ease: "back.out(1.6)", immediateRender: false }, 6.3);
+      tl.fromTo(".node", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, stagger: 0.05, ease: "back.out(2)" }, 6.4);
+
+      // Mimi's position on the loop: p laps (0 = stop ①). One proxy, one onUpdate: seek-safe.
+      const runR = document.getElementById("run-r"), runL = document.getElementById("run-l"), runner = document.getElementById("runner"), trail = document.getElementById("trail");
+      const M = { p: 0, trail: 0 };
+      let lastDir = 1;
+      const place = () => {
+        const [x, y] = at(M.p);
+        const dir = Math.cos(2 * Math.PI * M.p) >= -0.02 ? 1 : -1;
+        runner.style.transform = `translate(${(x - 66).toFixed(1)}px, ${(y - 150 - 48).toFixed(1)}px)`;
+        runR.style.opacity = dir > 0 ? 1 : 0; runL.style.opacity = dir > 0 ? 0 : 1;
+        trail.style.strokeDashoffset = (1 - Math.min(1, M.trail)).toFixed(4);
+      };
+      const STOPS = [6.8, 9.2, 11.6, 14.4, 17.0, 19.4, 21.8];
+      const RUN = 0.45;
+      tl.fromTo(M, { p: 0, trail: 0 }, { p: 0, trail: 0, duration: 0.01, onUpdate: place }, 6.5);
+      tl.fromTo("#runner .bob", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "bounce.out" }, 6.5);
+      const lightNode = (n, t) => {
+        tl.fromTo(`#n${n} .on`, { opacity: 0 }, { opacity: 1, duration: 0.12 }, t);
+        tl.fromTo(`#n${n}`, { scale: 1 }, { scale: 1.22, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, t);
+      };
+      lightNode(0, 6.8);
+      for (let n = 1; n < 7; n++) {
+        tl.fromTo(M, { p: (n - 1) / 7, trail: (n - 1) / 7 }, { p: n / 7, trail: n / 7, duration: RUN, ease: "power1.inOut", onUpdate: place, immediateRender: false }, STOPS[n] - RUN);
+        lightNode(n, STOPS[n]);
+      }
+      // hop while standing at a stop
+      STOPS.forEach((t) => tl.fromTo("#runner .bob", { y: 0 }, { y: -18, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, t + 0.1));
+      // back to ① (23.55-24.0), then two fast laps (24.0-25.5, 25.5-26.5)
+      tl.fromTo(M, { p: 6 / 7, trail: 6 / 7 }, { p: 1, trail: 1, duration: RUN, ease: "power1.inOut", onUpdate: place, immediateRender: false }, 24.0 - RUN);
+      const LAPS = [[24.0, 1.4], [25.4, 1.0], [26.4, 0.6]];
+      LAPS.forEach(([t, d], i) => {
+        tl.fromTo(M, { p: 1 + i, trail: 0 }, { p: 2 + i, trail: 1, duration: d, ease: "none", onUpdate: place, immediateRender: false }, t);
+        for (let n = 1; n <= 7; n++) {
+          const tn = t + (d * n) / 7;
+          tl.fromTo(`#n${n % 7}`, { scale: 1 }, { scale: 1.25, duration: 0.07, yoyo: true, repeat: 1, immediateRender: false }, tn);
+        }
+      });
+      // the score ticks up each lap (illustration)
+      const sc = { v: 64 }, sv = document.getElementById("sv");
+      tl.fromTo("#score", { y: 60, scale: 0.85, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.25, ease: "back.out(1.8)" }, 24.1);
+      tl.fromTo(sc, { v: 64 }, { v: 72, duration: 0.3, ease: "power2.out", onUpdate: () => { sv.textContent = Math.round(sc.v); } }, 25.4);
+      tl.fromTo(sc, { v: 72 }, { v: 81, duration: 0.3, ease: "power2.out", immediateRender: false, onUpdate: () => { sv.textContent = Math.round(sc.v); } }, 26.4);
+      tl.fromTo("#score .v", { scale: 1 }, { scale: 1.18, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 25.4);
+      tl.fromTo("#score .v", { scale: 1 }, { scale: 1.18, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 26.4);
+
+      // ---- white masks over the fixtures' QA/demo labels (on the film's clock), and zooms ----
+      // [from, to, top%, height%, left%, width%, colour]
+      const LAP1 = (k) => 24.0 + 0.2 * k, LAP2 = (k) => 25.4 + k / 7;
+      const MASKS = [
+        [6.3, 7.38, 72.0, 7.6, 3, 94], [7.38, 9.2, 67.8, 8.7, 3, 94], [9.2, 11.6, 72.0, 7.6, 3, 94],                 // daily lesson feedback "QA用データ"
+        [13.0, 14.4, 15.4, 3.0, 3, 20, "#efeff3"],                                                 // roleplay "デモデータ"
+        [15.6, 17.0, 73.4, 4.8, 7, 86, "#e8eef6"],                                      // report rewrite note "デモ："
+        [17.0, 19.4, 16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"],                                            // lesson title "QA："
+        [19.4, 21.8, 75.4, 3.0, 8, 18, "#fcfcfc"],                                                 // trend "デモデータ"
+        [26.4, 27.0, 75.4, 3.0, 8, 18, "#fcfcfc"],
+      ];
+      [[0, [67.8, 8.7, 3, 94]], [1, [72.0, 7.6, 3, 94]], [3, [73.4, 4.8, 7, 86, "#e8eef6"]], [4, [16.4, 3.8, 20.5, 68, "#efeff3", "Lの音をはっきりと"]], [5, [75.4, 3.0, 8, 18, "#fcfcfc"]]].forEach(([k, m]) => {
+        MASKS.push([LAP1(k), LAP1(k + 1), ...m]); MASKS.push([LAP2(k), LAP2(k + 1), ...m]);
+      });
+      document.getElementById("masks").innerHTML = MASKS.map((m, i) =>
+        `<div class="mask" id="mk${i}" style="top:${m[2]}%; height:${m[3]}%; left:${m[4]}%; width:${m[5]}%; background:${m[6] || "#ffffff"}">${m[7] || ""}</div>`).join("");
+      MASKS.forEach((m, i) => { tl.set(`#mk${i}`, { opacity: 1 }, m[0]); tl.set(`#mk${i}`, { opacity: 0 }, m[1]); });
+      // ① the model button: your own voice
+      [7.2, 8.2].forEach((t) => tl.fromTo("#ring1", { scale: 0.6, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, t));
+      // ② the radar, close up
+      tl.fromTo("#zoom", { scale: 1, transformOrigin: "50% 42%" }, { scale: 1.45, transformOrigin: "50% 42%", duration: 0.4, ease: "power2.inOut" }, 9.3);
+      tl.set("#zoom", { scale: 1 }, 11.6);
+
+      // step titles pop
+      ["#st1", "#st2", "#st3", "#st4", "#st5", "#st6", "#st7", "#st8"].forEach((s, i) => k.pop(s + " b", [6.8, 9.2, 11.6, 14.4, 17.0, 19.4, 21.8, 24.0][i]));
+
+      // ---- 27.0-29.0 the friend is won over ----
+      tl.fromTo("#t2-friend", { y: 0, scale: 1, transformOrigin: "50% 100%" }, { y: -40, scale: 1.04, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out" }, 27.05);
+      tl.fromTo("#t2-say", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 27.15);
+      tl.fromTo("#t2-mimi", { rotation: 0, transformOrigin: "50% 100%" }, { rotation: 4, duration: 0.3, yoyo: true, repeat: 3, ease: "sine.inOut" }, 27.3);
+
+      k.end(29.0);
+      k.tapCta(29.45);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
