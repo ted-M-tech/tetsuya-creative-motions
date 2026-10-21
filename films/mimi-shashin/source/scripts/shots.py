@@ -16,13 +16,13 @@ from rig2d import body, bone_rot, breathe, smooth, wave  # noqa: E402
 PLAIN = SRC / 'art/plain.webp'
 
 
-def talk(voice, cache, start, nod_at):
+def talk(voice, cache, start, nod_at, length=None):
     def act(anim, hp, cp, n):
         """Speaks the line (mouth from the voice), a small nod at nod_at."""
         body(anim, hp, cp, n, squash=lambda f: breathe(f) + (10 * max(0.0, math.sin(math.pi * (f - nod_at) / 14)) if nod_at <= f < nod_at + 14 else 0),
              rot=lambda f: wave(f, 40, 0.02))
         bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04))
-        R.lipsync(anim, start, SRC / 'assets/voice' / voice, SRC / 'scripts' / cache)
+        R.lipsync(anim, start, SRC / 'assets/own-voice' / voice, SRC / 'scripts' / cache, length=length)
     return act
 
 
@@ -35,14 +35,14 @@ def act_present(anim, hp, cp, n):
 
 A = R.ACTS
 SHOTS = {
-    'hook': dict(pose='speak', act=talk('rough-af_heart.wav', 'lipsync-rough.json', 12, 110), frames=126, bg=PLAIN),  # 0.0  "People is sitting... at a cafe."
+    'hook': dict(pose='speak', act=talk('rough.wav', 'lipsync-hook.json', 0, 110, 2.15), frames=126, bg=PLAIN),     # 0.0  "People is sitting"
     'present': dict(pose='point', act=act_present, frames=90, bg=PLAIN),                                               # 2.1  points at the app
-    'record': dict(pose='speak', act=talk('rough-af_heart.wav', 'lipsync-rough.json', 18, 200), frames=132, bg=PLAIN), # 3.6  says it into the app (3.9)
-    'think': dict(pose='think', act=A['think'], frames=108, bg=PLAIN),                                                 # 5.8  reads the feedback
-    'point2': dict(pose='point', act=act_present, frames=96, bg=PLAIN),                                                # 7.6  is -> are
-    'listen': dict(pose='listen', act=A['listen'], frames=180, bg=PLAIN),                                              # 9.2  her own voice, a better sentence
-    'jump': dict(pose='jump', act=A['jump'], frames=42, bg=PLAIN),                                                     # 12.2
-    'success': dict(pose='success', act=A['success'], frames=66, bg=PLAIN),                                            # 12.9
+    'record': dict(pose='speak', act=talk('rough.wav', 'lipsync-rough.json', 1, 300), frames=216, bg=PLAIN),         # 3.6  says it into the app (3.61)
+    'think': dict(pose='think', act=A['think'], frames=108, bg=PLAIN),                                                 # 7.2  reads the feedback
+    'point2': dict(pose='point', act=act_present, frames=96, bg=PLAIN),                                                # 9.0  is -> are
+    'listen': dict(pose='listen', act=A['listen'], frames=219, bg=PLAIN),                                              # 10.6 her own voice, a better sentence
+    'jump': dict(pose='jump', act=A['jump'], frames=42, bg=PLAIN),                                                     # 14.25
+    'success': dict(pose='success', act=A['success'], frames=66, bg=PLAIN),                                            # 14.95
 }
 
 if __name__ == '__main__':
