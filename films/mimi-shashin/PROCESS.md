@@ -56,7 +56,7 @@ Mimiは平らな背景で書き出し、編集で縮小して左へ。スマホ�
 
 > いいね。整理してマージ。
 
-完成動画と、アプリの元の録画・切り出しをLancloのGoogle Drive（002.SNS/003.MimiShorts）に保管。台本はNotionのContent Calendarに。
+完成動画と、アプリの元の録画・切り出しをLancloのGoogle Drive（002.SNS/008. English from a Photo、2026-10-21にNotionのIDごとのフォルダへ移動）に保管。台本はNotionのContent Calendarに。
 
 ## 学んだこと
 

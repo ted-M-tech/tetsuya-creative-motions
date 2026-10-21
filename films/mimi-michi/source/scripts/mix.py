@@ -9,7 +9,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, bell, ding, freeze, poof, shatter, tap, whoosh  # noqa: E402
+from sfx import Mix, bell, ding, freeze, pochi, poof, shatter, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); the HyperFrames edit uses the same times.
 ASK = 0.05                 # "Excuse me, how do I get to the station?" (x1.25, about 2.2 s)
@@ -48,4 +48,5 @@ m.voice('thanks-bm_george.wav', THANKS, g=0.8)
 m.sfx(ding(), THANKS + 0.5)
 m.bed(DESK, END, joy_from=PERK)
 m.end_chord(END)
+m.sfx(pochi(), END + 0.6)  # the end card button gets tapped (kit.tapCta)
 print(m.write(SRC / 'hf/assets/mix.wav'))

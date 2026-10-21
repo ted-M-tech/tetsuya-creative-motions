@@ -55,7 +55,7 @@ Mimiの言い間違いはL/Rの1語だけ（"Please leave the right on."）。�
 
 > 一旦それで保存しておいて。
 
-完成動画と、アプリの元の録画・切り出しをLancloのGoogle Drive（002.SNS/003.MimiShorts）に保管。台本はNotionのContent Calendarに。本の山はLancloの `design/mimi-2d/props/` に追加。
+完成動画と、アプリの元の録画・切り出しをLancloのGoogle Drive（002.SNS/009. Unread Books - Daily Lesson、2026-10-21にNotionのIDごとのフォルダへ移動）に保管。台本はNotionのContent Calendarに。本の山はLancloの `design/mimi-2d/props/` に追加。
 
 ## 学んだこと
 

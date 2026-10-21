@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / 'kits/mimi-short/scripts'))
-from sfx import THEME, THEME_GAIN, load as load_path  # noqa: E402
+from sfx import THEME, THEME_GAIN, load as load_path, pochi  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SR, DUR = 48000, 15.0
@@ -163,6 +163,7 @@ def main():
         place(sfx, tap() * 0.35, RESULT + 0.15 + i * 0.07)
     for i, m in enumerate([86, 90]):                                        # score lands
         place(sfx, bell(m, 0.9, 0.12), RESULT + 0.75 + i * 0.07)
+    place(sfx, pochi(), END + 0.6)                                         # the end card button gets tapped
     music = bed()
     env = lowpass(np.abs(voice), 0.002)
     duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12), 0, 1), 0.0008)

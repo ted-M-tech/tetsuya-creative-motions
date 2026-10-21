@@ -24,6 +24,6 @@ kits/mimi-short/stage.sh $F/hf
 cd $F/hf && npx --yes hyperframes@0.8.181 check && npx --yes hyperframes@0.8.181 render --output ../renders/mimi-daily.mp4 --fps 60
 ```
 
-Not in Git: the app recording (`renders/app/daily.mov` and `daily-60.mp4`, kept in Lanclo's Google Drive under 002.SNS/003.MimiShorts/Mimi_06_積読_素材 with the cut clips), `hf/assets/app/`, Mimi shots, mix, staged kit and the final MP4.
+Not in Git: the app recording (`renders/app/daily.mov` and `daily-60.mp4`, kept in Lanclo's Google Drive under 002.SNS/009. Unread Books - Daily Lesson/Mimi_06_Unread_Books_assets with the cut clips), `hf/assets/app/`, Mimi shots, mix, staged kit and the final MP4.
 
 The fixture cannot score a second take ("発音を採点できませんでした"), so all clips come from before the retry. A new recording can shift by a few hundred ms: check a contact sheet (`ffmpeg -i daily-60.mp4 -vf "fps=2,scale=110:-1,tile=11x4"`) and adjust the times in `app-capture/cut.sh`. The white masks in `hf/index.html` are placed for these clips; move them if the layout changes.

@@ -9,7 +9,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, bell, boing, ding, mokugyo, pencil, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import Mix, bell, boing, ding, mokugyo, pencil, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); the HyperFrames edit uses the same times.
 POK = (0.12, 0.42, 0.72)   # the monk taps the wooden fish
@@ -49,4 +49,5 @@ for i, n in enumerate([81, 85, 88]):
 m.sfx(ding(), PROUD + 0.05)
 m.bed(DESK, END, joy_from=PAINT)
 m.end_chord(END)
+m.sfx(pochi(), END + 0.6)  # the end card button gets tapped (kit.tapCta)
 print(m.write(SRC / 'hf/assets/mix.wav'))
