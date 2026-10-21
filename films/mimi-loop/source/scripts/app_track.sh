@@ -10,9 +10,10 @@
 #          92.0-93.4 roleplay: シチュエーション完了 | 102.5-104.9 lesson overview (Mimiが気づいた…) | 133.8-135.4 学習記録 trend,
 #          137.0-137.8 the same with 音 highlighted
 #   swipe  35.8-38.0 left swipe「Please leave the light on.」(もう一度)
-# Film clock (app.mp4 starts at 12.9 s, 13.6 s long): ① 12.9-14.7 | ② 14.7-16.4 | ③ 16.4-17.25 journal, 17.25-18.1 situation
-#   | ④ 18.1-18.85, 18.85-19.8 | ⑤ 19.8-21.5 | ⑥ 21.5-22.65, 22.65-23.2 | ⑦ 23.2-24.9 | fast lap: stills 1/7 s x7 (24.9-25.9), trend 25.9-26.5
-# bed.mp4 (the night scene's small phone, 29.2-32.1): four swipes from the swipe take at 2x, 2.9 s
+# Film clock (app.mp4 starts at 10.5 s, 13.1 s long): ① 10.5-12.45 | ② 12.45-14.15 | ③ 14.15-15.0 journal, 15.0-15.85 situation
+#   | ④ 15.85-16.6, 16.6-17.55 | ⑤ 17.55-19.25 (dark until the Action Button opens it) | ⑥ 19.25-20.4, 20.4-20.95 | ⑦ 20.95-22.65
+#   | fast lap: stills 0.95/7 s x7 (22.65-23.6)
+# bed.mp4 (the night scene's small phone, 25.9-29.0): four swipes from the swipe take at 2x, 3.1 s
 set -e
 cd "$(dirname "$0")/.."
 A=renders/app
@@ -22,16 +23,15 @@ mkdir -p hf/assets/app
 seg() { echo "[$1:v]trim=$2:$3,setpts=PTS-STARTPTS,fps=60[$4];"; }
 still() { echo "[$1:v]trim=$2:$(echo "$2 + 0.02" | bc),setpts=PTS-STARTPTS,fps=60,tpad=stop_mode=clone:stop_duration=$3,trim=0:$3[$4];"; }
 D=0; L=1; S=2
-F="$(seg $D 50.5 52.3 a)$(seg $D 44.0 45.7 b)$(seg $L 55.0 55.85 c)$(seg $L 92.0 92.85 d)$(seg $L 14.0 14.75 e)$(seg $L 38.6 39.55 f)"
-F="$F$(seg $L 102.5 104.2 g)$(seg $L 133.8 134.95 h)$(seg $L 137.0 137.55 i)$(seg $S 36.0 37.7 j)"
+F="$(seg $D 50.5 52.45 a)$(seg $D 44.0 45.7 b)$(seg $L 55.0 55.85 c)$(seg $L 92.0 92.85 d)$(seg $L 14.0 14.75 e)$(seg $L 38.6 39.55 f)"
+F="$F$(seg $L 102.0 103.7 g)$(seg $L 133.8 134.95 h)$(seg $L 137.0 137.55 i)$(seg $S 36.0 37.7 j)"
 n=0; list="[a][b][c][d][e][f][g][h][i][j]"
 for spec in "$D 52.0" "$D 45.0" "$L 55.5" "$L 39.0" "$L 103.5" "$L 134.5" "$S 36.0"; do
-  set -- $spec; F="$F$(still $1 $2 0.142857 m$n)"; list="$list[m$n]"; n=$((n + 1))
+  set -- $spec; F="$F$(still $1 $2 0.135714 m$n)"; list="$list[m$n]"; n=$((n + 1))
 done
-F="$F$(still $L 137.5 0.62 z)"; list="$list[z]"
 ffmpeg -v error -y -i $A/daily-60.mp4 -i $A/loop-60.mp4 -i $A/swipe-60.mp4 -filter_complex \
-  "$F${list}concat=n=$((n + 11)):v=1:a=0,trim=0:13.6,setpts=PTS-STARTPTS,format=yuv420p[v]" -map "[v]" -an -c:v libx264 -crf 16 hf/assets/app/app.mp4
+  "$F${list}concat=n=$((n + 10)):v=1:a=0,trim=0:13.1,setpts=PTS-STARTPTS,format=yuv420p[v]" -map "[v]" -an -c:v libx264 -crf 16 hf/assets/app/app.mp4
 sw() { echo "[0:v]trim=$1:$2,setpts=(PTS-STARTPTS)/2,fps=60[$3];"; }
-ffmpeg -v error -y -i $A/swipe-60.mp4 -filter_complex "$(sw 27.9 29.9 p)$(sw 36.0 37.9 q)$(sw 44.3 46.0 r)$(sw 52.5 54.6 s)[p][q][r][s]concat=n=4:v=1:a=0,trim=0:2.9,setpts=PTS-STARTPTS,format=yuv420p[v]" \
+ffmpeg -v error -y -i $A/swipe-60.mp4 -filter_complex "$(sw 27.9 29.9 p)$(sw 36.0 37.9 q)$(sw 44.3 46.0 r)$(sw 52.5 54.6 s)[p][q][r][s]concat=n=4:v=1:a=0,trim=0:3.1,setpts=PTS-STARTPTS,format=yuv420p[v]" \
   -map "[v]" -an -c:v libx264 -crf 16 hf/assets/app/bed.mp4
 ffprobe -v error -show_entries format=duration -of csv=p=0 hf/assets/app/app.mp4
