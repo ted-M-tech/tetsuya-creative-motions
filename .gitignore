@@ -94,3 +94,8 @@ films/mimi-voice/source/hf/.hyperframes/
 films/mimi-voice/source/hf/.thumbnails/
 films/mimi-voice/source/renders/
 !films/mimi-voice/source/assets/voice/
+films/mimi-multilang/source/hf/assets/
+films/mimi-multilang/source/hf/.hyperframes/
+films/mimi-multilang/source/hf/.thumbnails/
+films/mimi-multilang/source/renders/
+!films/mimi-multilang/source/assets/voice/

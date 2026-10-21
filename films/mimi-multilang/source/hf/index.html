@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 500px; }
+      .mimi { right: 30px; width: 480px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.first { top: 300px; }
+      .stage .bubble.reply { top: 600px; }
+      .stage .bubble.big { font-size: 66px; }
+      .stage .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
+      .stage .wave i, .caption .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
+      /* The hook: one friend, her greetings in many languages, one after another */
+      #h-friend { left: 270px; width: 540px; }
+      .hb { position: absolute; background: #ffffff; border: 5px solid #273b4b; border-radius: 44px; padding: 14px 36px 18px; color: #273b4b;
+            font-weight: 700; font-size: 74px; line-height: 1.15; white-space: nowrap; box-shadow: 0 10px 26px rgba(39, 59, 75, 0.14);
+            transform-origin: 50% 100%; }
+      .hb small { display: block; font-size: 30px; font-weight: 700; color: #5b7f9f; letter-spacing: 0.02em; }
+      .hb.s { font-size: 50px; padding: 8px 26px 12px; }
+      .hb.s small { font-size: 26px; }
+      #h-tag { position: absolute; left: 0; right: 0; top: 1440px; display: flex; justify-content: center; }
+      #h-tag span { display: flex; align-items: center; gap: 16px; background: #344f69; color: #fff; font-size: 52px; font-weight: 700;
+                    padding: 16px 36px; border-radius: 44px; }
+      /* Clean type card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 70px; overflow: hidden; }
+      .type .big { font-size: 118px; font-weight: 700; text-align: center; line-height: 1.32; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .big .one { font-size: 170px; color: #e5484d; }
+      .ticker { display: flex; gap: 22px; white-space: nowrap; }
+      .ticker span { font-size: 40px; font-weight: 700; color: #5b7f9f; background: #eef3f9; border-radius: 30px; padding: 8px 24px; }
+      /* The real app */
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      .caption .wave { display: inline-flex; align-items: center; gap: 6px; height: 46px; vertical-align: middle; margin-right: 14px;
+                       background: #344f69; border-radius: 30px; padding: 0 16px; }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 40px; font-size: 22px; color: #53606b; text-align: center; line-height: 1.4; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.7" data-width="1080" data-height="1920">
+      <!-- The hook (0-3.1): the friend greets in language after language, all in her own (AI) voice -->
+      <div id="hook" class="stage clip" data-start="0" data-duration="3.1" data-track-index="1">
+        <img id="h-friend" src="assets/art/friend-hello.webp" alt="" />
+        <div id="g1" class="hb" style="left:60px; top:170px"><small>English</small>Hello!</div>
+        <div id="g2" class="hb" style="right:50px; top:300px"><small>Français</small>Bonjour !</div>
+        <div id="g3" class="hb" style="left:90px; top:450px"><small>Español</small>¡Hola!</div>
+        <div id="g4" class="hb" style="right:80px; top:560px"><small>中文</small>你好！</div>
+        <div id="g5" class="hb" style="left:30px; top:700px"><small>한국어</small>안녕하세요!</div>
+        <div id="g6" class="hb" style="right:40px; top:800px"><small>Italiano</small>Ciao!</div>
+        <div id="g7" class="hb" style="left:40px; top:960px"><small>Português</small>Olá!</div>
+        <div id="g8" class="hb" style="right:20px; top:1210px"><small>हिन्दी</small>नमस्ते!</div>
+        <div id="g9" class="hb s" style="left:330px; top:30px"><small>Deutsch</small>Hallo!</div>
+        <div id="g10" class="hb s" style="left:400px; top:162px"><small>Русский</small>Привет!</div>
+        <div id="g11" class="hb s" style="left:340px; top:298px"><small>Türkçe</small>Merhaba!</div>
+        <div id="g12" class="hb s" style="right:60px; top:30px"><small>Tiếng Việt</small>Xin chào!</div>
+        <div id="g13" class="hb s" style="left:395px; top:438px; font-size:48px"><small>日本語</small>こんにちは！</div>
+        <div id="h-tag"><span><span class="wave" id="w1"></span>ぜんぶ、わたしのAIボイス</span></div>
+        <div class="note">※動画の音声は合成音声によるイメージです　Audio in this video: synthetic stand-in voices</div>
+      </div>
+
+      <!-- The copy card (3.1-4.4) -->
+      <div id="copy" class="type clip" data-start="3.1" data-duration="1.3" data-track-index="2">
+        <div id="big1" class="big"><span class="one">17</span>言語、<br />ぜんぶ<strong>自分の声</strong>。</div>
+        <div id="tick1" class="ticker"></div>
+        <div id="tick2" class="ticker"></div>
+      </div>
+
+      <!-- Mimi explains (4.4-5.7) -->
+      <div id="intro" class="stage clip" data-start="4.4" data-duration="1.3" data-track-index="1">
+        <img id="i-friend" class="friend" src="assets/art/friend-amazed.webp" alt="" />
+        <img id="i-mimi" class="mimi" src="assets/art/mimi-phone.webp" alt="" />
+        <div id="b-intro" class="bubble from-right first">声の登録は一度。<br />あとは言語を変えるだけ！</div>
+      </div>
+
+      <!-- The real app (5.7-14.9): AI voice, switch the language (Français, then 한국어), fixture data -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="5.7" data-duration="9.2" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:82.5%; top:11.5%" data-start="5.85" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp2" class="tap clip" style="left:52%; top:31.7%" data-start="6.865" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp3" class="tap clip" style="left:87.5%; top:29%" data-start="8.0" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp4" class="tap clip" style="left:82.5%; top:11.5%" data-start="12.28" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp5" class="tap clip" style="left:50%; top:26.8%" data-start="13.09" data-duration="0.3" data-track-index="5"></div>
+          </div>
+        </div>
+        <div class="note">※動画の音声は合成音声によるイメージです　Audio in this video: synthetic stand-in voices</div>
+      </div>
+      <div id="cap-1" class="caption small clip" data-start="5.7" data-duration="2.2" data-track-index="6"><span id="c1">🌐 言語を切り替えて…</span></div>
+      <div id="cap-2" class="caption small clip" data-start="7.9" data-duration="4.2" data-track-index="6"><span id="c2"><span class="wave" id="w2"></span><strong>フランス語</strong>も自分の声</span></div>
+      <div id="cap-3" class="caption small clip" data-start="12.1" data-duration="2.8" data-track-index="6"><span id="c3"><strong>韓国語</strong>も！</span></div>
+
+      <!-- The friend's reaction (14.9-17.3) -->
+      <div id="trip" class="stage clip" data-start="14.9" data-duration="2.4" data-track-index="1">
+        <img id="t-friend" class="friend" src="assets/art/friend-trip.webp" alt="" />
+        <img id="t-mimi" class="mimi" src="assets/art/mimi-phone.webp" alt="" />
+        <div id="b-trip" class="bubble from-left first big">来月の韓国旅行、<br />これで練習しよ！</div>
+        <div id="b-reply" class="bubble from-right reply">ぜんぶ自分の声でね！</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="17.3" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="3.1" data-track-index="8"><span>(All in my own AI voice)</span></div>
+      <div class="sub clip" data-start="3.1" data-duration="1.3" data-track-index="8"><span>17 languages, all in your own voice.</span></div>
+      <div class="sub clip" data-start="4.4" data-duration="1.3" data-track-index="8"><span>Register your voice once. Then just switch the language!</span></div>
+      <div class="sub clip" data-start="5.7" data-duration="2.2" data-track-index="8"><span>Switch the language…</span></div>
+      <div class="sub clip" data-start="7.9" data-duration="4.2" data-track-index="8"><span>French, in your own voice too</span></div>
+      <div class="sub clip" data-start="12.1" data-duration="2.8" data-track-index="8"><span>Korean too!</span></div>
+      <div class="sub clip" data-start="14.9" data-duration="1.1" data-track-index="8"><span>I’ll practise for my Korea trip next month!</span></div>
+      <div class="sub clip" data-start="16.0" data-duration="1.3" data-track-index="8"><span>All in your own voice!</span></div>
+      <div class="sub clip" data-start="17.3" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="18.7" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.bars(document.getElementById("w1"), 7);
+      K.bars(document.getElementById("w2"), 6);
+      // the app's 17 study languages (packages/core/src/studyLanguages.ts, native names)
+      const names = ["English", "日本語", "中文（普通话）", "한국어", "Français", "Español", "ไทย", "廣東話", "Deutsch",
+                     "Italiano", "Português (Brasil)", "Bahasa Indonesia", "Tiếng Việt", "हिन्दी", "বাংলা", "Русский", "Türkçe"];
+      const fill = (id, list) => { document.getElementById(id).innerHTML = list.concat(list).map((n) => `<span>${n}</span>`).join(""); };
+      fill("tick1", names.slice(0, 9)); fill("tick2", names.slice(9));
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // The hook (0-3.1): a new greeting every ~0.33 s, older ones step back
+      const hook = [0.05, 0.40, 0.75, 1.08, 1.40, 1.70, 2.02, 2.32, 2.70, 2.77, 2.84, 2.91, 2.98];
+      hook.forEach((at, i) => {
+        const el = "#g" + (i + 1);
+        tl.fromTo(el, { scale: 0.4, opacity: 0, rotation: i % 2 ? 6 : -6 }, { scale: 1, opacity: 1, rotation: i % 2 ? 2 : -2, duration: 0.16, ease: "back.out(2.4)" }, at);
+        if (i < 8) tl.to(el, { scale: 0.86, opacity: 0.55, duration: 0.12 }, (hook[i + 1] || 2.7) + 0.02);
+      });
+      tl.fromTo("#h-friend", { y: 0 }, { y: -26, duration: 0.16, yoyo: true, repeat: 15, ease: "sine.inOut" }, 0.05);
+      tl.fromTo("#h-tag", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.1);
+      k.wave("#w1", 0.1, 2.9, 0);
+
+      // The copy card (3.1-4.4)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.1);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 3.13);
+      tl.fromTo("#big1 .one", { scale: 1.6 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 3.15);
+      tl.fromTo("#tick1", { x: 0 }, { x: -700, duration: 1.3, ease: "none" }, 3.1);
+      tl.fromTo("#tick2", { x: -900 }, { x: -200, duration: 1.3, ease: "none" }, 3.1);
+
+      // Mimi explains (4.4-5.7)
+      tl.fromTo("#i-mimi", { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 4.4);
+      tl.fromTo("#i-friend", { y: 0 }, { y: -30, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 4.45);
+      k.pop("#b-intro", 4.5);
+
+      // The app (5.7-14.9)
+      tl.set("#app", { opacity: 1 }, 5.7); tl.set("#app", { opacity: 0 }, 14.9);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, 5.7);
+      ["#tp1", "#tp2", "#tp3", "#tp4", "#tp5"].forEach((s) => k.ripple(s, parseFloat(document.querySelector(s).dataset.start)));
+      k.pop("#c1", 5.7); k.pop("#c2", 7.9); k.pop("#c3", 12.1);
+      k.wave("#w2", 8.35, 3.8, 2);
+
+      // The reaction (14.9-17.3)
+      tl.fromTo("#t-friend", { y: 0 }, { y: -40, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, 14.95);
+      k.pop("#b-trip", 14.95);
+      tl.fromTo("#t-mimi", { rotation: 0 }, { rotation: -4, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 16.0);
+      k.pop("#b-reply", 16.0);
+
+      k.end(17.3);
+      k.tapCta(17.9);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
