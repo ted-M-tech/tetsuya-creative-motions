@@ -11,9 +11,7 @@ sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
 import rig2d as R  # noqa: E402
 from rig2d import body, bone_rot, breathe, smooth, wave  # noqa: E402
 
-# Drawn for this film (../prompts/01-codex-bozu-notebook.txt); goes to the library after approval.
-R.add_pose('bozu', SRC / 'art/cut/bozu.webp', 1000)
-R.add_pose('artist', SRC / 'art/cut/artist.webp', 1000)   # the app's journal artist, redrawn at full size
+# bozu and artist: drawn for this film (../prompts/01-codex-bozu-notebook.txt, 03-codex-artist-hires.txt), now in the library.
 POK = (7, 25, 43)   # frames of the three knocks (0.12, 0.42, 0.72 s)
 
 

@@ -17,7 +17,8 @@ Mimi short #4 「日記、3日で終わる」 for Instagram Reels / TikTok. Day 
 
 - assets/shots/*.mp4: Rive shots (../scripts/shots.py, ../scripts/render.sh), desk plate, 60 fps.
 - assets/mix.wav: Kokoro voices + kit SFX + kit bed, -14 LUFS (../scripts/mix.py; cue times shared with this edit).
-- assets/notebook.webp: the paper diary (../art/cut).
+- assets/kit/props/notebook.webp: the paper diary from the Mimi 2D library.
+- assets/journal/: the app's journal art, one picture per day (../art/journal, cropped from films/lanclo-one-line/source/assets/journal-art.png).
 - assets/kit/: staged by kits/mimi-short/stage.sh. Not in Git.
 
 ## Notes
