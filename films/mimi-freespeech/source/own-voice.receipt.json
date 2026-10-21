@@ -1,0 +1,13 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "describe": {
+      "text": "Um... there are people... at a café. And, uh... a lamp. It's... nice?",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, r and l mixed up, flat syllable-by-syllable timing, every syllable equally stressed. Unsure but keep going at a steady, fairly quick pace: only short pauses (about a quarter second) at the dots, no long silences; the whole line takes about four seconds. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "5d54bcbc990ec36ede4b848647eaa4aa80daac659d12ece129b69fec46cd9b83",
+      "at": "2026-10-21T21:38:29+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

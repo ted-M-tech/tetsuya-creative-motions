@@ -10,8 +10,10 @@ LANCLO_REPO=~/Develop/native-voice-clone PATCH=$F/app-capture/first-voice.patch 
 rmdir /tmp/lanclo-capture.lock
 sh $F/scripts/app_track.sh            # -> hf/assets/app/app.mp4 on the film's clock (timings measured on the 60 fps resample, see the script)
 # 2. poses (already cut in art/*.webp): codex-p with prompts/01-codex-poses.txt, then kits/mimi-short/scripts/cutout.sh art/<p>.png art/<p>.webp
-# 3. voices (committed) and sound
+# 3. voices and sound: the native speaker with Kokoro (committed), her AI voice with the owner's registered Lanclo voice
+#    (not in Git; or copy model.wav from Drive AIV_assets/own-voice/ into $F/assets/own-voice/)
 sh $F/scripts/voices.sh
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json
 uv run --no-project --with numpy python $F/scripts/mix.py
 # 4. edit and render
 kits/mimi-short/stage.sh $F/hf
