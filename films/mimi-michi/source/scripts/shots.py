@@ -11,9 +11,8 @@ sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
 import rig2d as R  # noqa: E402
 from rig2d import body, bone_rot, breathe, smooth, spring, wave  # noqa: E402
 
-# Drawn for this film (../prompts/01-codex-street-pose-props.txt); goes to the library after approval.
-R.add_pose('point', SRC / 'art/cut/point.webp', 1100)
-STREET = SRC / 'art/street.webp'
+# point, the street plate and the ice: drawn for this film (../prompts/01-codex-street-pose-props.txt), now in the library.
+STREET = 'street'
 
 
 def act_freeze(anim, hp, cp, n):

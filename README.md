@@ -61,6 +61,12 @@ Mimi cringes at her own recorded English, hears her-voice native model, practise
 
 Every "I sink so!" drops a kitchen sink; her own voice saying "I think so." and one fix for "th" make them vanish.
 
+**Asked the way, she freezes — Mimi short #3** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
+
+[Process, prompts & source](films/mimi-michi/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
+
+Asked for directions in English, Mimi turns into a block of ice; rehearsing the answer in her own voice cracks it.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

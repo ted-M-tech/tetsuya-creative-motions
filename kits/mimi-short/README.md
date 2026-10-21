@@ -35,4 +35,5 @@ cd $F/hf && npx hyperframes check && npx hyperframes render --output ../renders/
 
 - The Lanclo library (`native-voice-clone/design/mimi-2d`) is the master. A pose an episode adds lives in the episode until the owner approves the video, then goes to the library by PR and comes back here with `sync-library.sh`.
 - Kit changes made for one episode must keep earlier episodes building.
+- New plates must put the feet point (480, 1330) on the ground: frame the drawing to it (see `films/mimi-michi/source/README.md`).
 - Story shape that worked: 1 s hook with the problem, the relatable failure, Lanclo plays your own voice said right, radar card with one fix, practice, payoff, 1 s end card. Captions at the top; the bottom ~400 px stays clear for platform UI.

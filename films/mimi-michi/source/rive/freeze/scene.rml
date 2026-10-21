@@ -6006,5 +6006,5 @@
     </StateMachine>
   </Artboard>
   <ImageAsset id="0:60" name="stunned" file="../../../../../kits/mimi-short/library/poses/stunned.webp" />
-  <ImageAsset id="0:61" name="plate" file="../../art/street.webp" />
+  <ImageAsset id="0:61" name="plate" file="../../../../../kits/mimi-short/library/backgrounds/street.webp" />
 </Rive>

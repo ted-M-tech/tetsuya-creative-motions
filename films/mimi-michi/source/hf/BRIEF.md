@@ -17,7 +17,7 @@ Mimi short #3 「道を聞かれて固まる」 for Instagram Reels / TikTok. On
 
 - assets/shots/*.mp4: Rive shots (../scripts/shots.py, ../scripts/render.sh); street plate for the street shots, desk plate for the rest; 60 fps.
 - assets/mix.wav: Kokoro voices + kit SFX + kit bed, -14 LUFS (../scripts/mix.py; cue times shared with this edit).
-- assets/ice.webp: the ice block cut-out (../art/cut).
+- assets/kit/props/ice.webp: the ice block from the Mimi 2D library (staged with the kit).
 - assets/kit/: staged by kits/mimi-short/stage.sh (kit.css, kit.js, brand, fonts, props). Not in Git.
 
 ## Notes

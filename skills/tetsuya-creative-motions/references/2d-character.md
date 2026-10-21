@@ -1,6 +1,6 @@
 # 2D characters (Rive)
 
-Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked records: `films/mimi-jibun-no-koe/`, `films/mimi-think-sink/`.
+Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked records: `films/mimi-jibun-no-koe/`, `films/mimi-think-sink/`, `films/mimi-michi/`.
 
 - Mimi series: start from `kits/mimi-short/` (synced library, rig, sound, look); an episode adds only new art, its acts, a cue sheet and its edit. New poses go back to Lanclo `design/mimi-2d` by PR after approval, then `sync-library.sh`.
 
