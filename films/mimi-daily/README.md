@@ -6,6 +6,8 @@ Mimi's pile of English books keeps growing and never gets read (積読, *tsundok
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D Mimi (Rive) beside a simulator recording of the app
 
+Two cuts: Japanese only (`mimi-daily.mp4`) and with English subtitles (`mimi-daily-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/009. Unread Books - Daily Lesson/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files

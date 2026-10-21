@@ -6,6 +6,8 @@ Mimi proudly says "I sink so!" and a kitchen sink drops from the sky; she says i
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D: official art style drawn with Codex + Rive bones + HyperFrames
 
+Two cuts: Japanese only (`mimi-think-sink.mp4`) and with English subtitles (`mimi-think-sink-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/005. Think Becomes Sink/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files

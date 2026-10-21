@@ -13,6 +13,11 @@
       #bulb { position: absolute; left: 770px; top: 430px; width: 150px; height: auto; filter: drop-shadow(0 0 30px rgba(255, 216, 74, 0.9)); }
       .puff { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, #ffffff 0 45%, rgba(255, 255, 255, 0) 70%); }
       .phone .ok { font-size: 40px; color: #2a8dff; margin-top: 20px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
     </style>
   </head>
   <body>
@@ -95,6 +100,16 @@
       </div>
 
       <div id="end" class="end clip" data-start="14.0" data-duration="1.0" data-track-index="12"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="1.0" data-duration="1.2" data-track-index="24"><span>Meant “think”… got a kitchen sink!?</span></div>
+      <div class="sub clip" data-start="3.0" data-duration="1.4" data-track-index="24"><span>My own voice says “I think so.”</span></div>
+      <div class="sub clip" data-start="4.4" data-duration="0.6" data-track-index="24"><span>I’m saying it right…!</span></div>
+      <div class="sub clip" data-start="5.0" data-duration="1.8" data-track-index="24"><span>Fix just this one spot:<br />for “th,” tongue tip lightly between your teeth.</span></div>
+      <div class="sub clip" data-start="6.8" data-duration="2.2" data-track-index="24"><span>Say it along with the model.</span></div>
+      <div class="sub clip" data-start="9.0" data-duration="1.2" data-track-index="24"><span>The sinks are gone!</span></div>
+      <div class="sub clip" data-start="10.9" data-duration="1.2" data-track-index="24"><span>Still your voice, now with native pronunciation.</span></div>
+      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15" data-track-index="13" data-volume="1"></audio>
     </div>

@@ -4,6 +4,8 @@
 
 0:30 / 1080×1920・60fps / Mimi の関西弁ナレーション（1.2倍速）＋大阪弁の文字 / Python・pycairo・numpy（全フレームをコードで描画）
 
+2本：日本語のみ（`lanclo-intro-9x16.mp4`）と英語字幕つき（`lanclo-intro-9x16-en.mp4`、`intro.py --en`）。どちらも Lanclo の Google Drive `002.SNS/010. App Introduction/`。
+
 ## 構成
 
 | 時間 | 画面 | 文字 | 声（v1–v10、Mimi.m4a から切り出し） |

@@ -19,6 +19,7 @@ sh scripts/intro_vo.sh      # cuts assets/voice/vo-intro/Mimi.m4a into v1..v10 a
 swift scripts/greetings.swift   # only if the greetings change; assets/greet/ is committed
 uv run --no-project --with pycairo --with numpy --with pillow python scripts/intro_audio.py renders/intro-mix.wav
 uv run --no-project --with pycairo --with numpy --with pillow python scripts/intro.py renders/lanclo-intro-9x16.mp4 --audio renders/intro-mix.wav
+uv run --no-project --with pycairo --with numpy --with pillow python scripts/intro.py renders/lanclo-intro-9x16-en.mp4 --audio renders/intro-mix.wav --en   # English-subtitle cut (SUBS in intro.py)
 
 # Stills for checking a layout (half size): --scale 0.5 --still 3.0,12.5
 ```

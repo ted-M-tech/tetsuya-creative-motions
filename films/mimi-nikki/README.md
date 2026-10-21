@@ -6,6 +6,8 @@ Day three of her English diary and Mimi has literally become a little monk (三�
 
 0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D: official art style drawn with Codex + Rive bones + HyperFrames
 
+Two cuts: Japanese only (`mimi-nikki.mp4`) and with English subtitles (`mimi-nikki-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/007. Journal Ends in 3 Days/`.
+
 ![Final frames](process/00-final-frames.jpg)
 
 ## Files
