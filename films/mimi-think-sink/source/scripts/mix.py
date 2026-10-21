@@ -9,7 +9,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, bell, boing, clang, ding, pofu, poof, tap, whoosh  # noqa: E402
+from sfx import Mix, bell, boing, clang, ding, pochi, pofu, poof, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); the HyperFrames edit uses the same times.
 WRONG, SINK1 = 0.12, 0.45            # "I sink so!" -> the first sink lands
@@ -52,4 +52,5 @@ for i, n in enumerate([81, 85, 88]):
 m.voice('right-af_heart.wav', PROUD)
 m.bed(1.0, END, joy_from=PERK)
 m.end_chord(END)
+m.sfx(pochi(), END + 0.6)  # the end card button gets tapped (kit.tapCta)
 print(m.write(SRC / 'hf/assets/mix.wav'))

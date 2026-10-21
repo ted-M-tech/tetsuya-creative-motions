@@ -58,6 +58,14 @@
         tl.fromTo("#end-cta", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, at + 0.12);
         tl.fromTo("#end-store", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, at + 0.12);
       },
+      // The CTA gets tapped: a touch dot lands, the button presses in and darkens, a ring spreads (pair with sfx.pochi()).
+      tapCta: (at) => {
+        tl.fromTo("#end-touch", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.14, ease: "power2.in" }, at - 0.14);
+        tl.to("#end-touch", { scale: 0.8, duration: 0.08, yoyo: true, repeat: 1 }, at);
+        tl.to("#end-touch", { opacity: 0, duration: 0.2 }, at + 0.3);
+        tl.to("#end-cta", { scale: 0.93, backgroundColor: "#22384d", duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, at);
+        tl.fromTo("#end-ring", { scale: 0.4, opacity: 0.9 }, { scale: 2.6, opacity: 0, duration: 0.45, ease: "power2.out" }, at);
+      },
     };
   }
 
@@ -65,7 +73,7 @@
   function endCard(el, line, cta) {
     el.innerHTML = `<img id="end-mimi" class="mimi" src="assets/kit/brand/mimi-end.png" alt="" />
       <div id="end-lockup" class="lockup"><img src="assets/kit/brand/mark.png" alt="" /><span>Lanclo</span></div>
-      <div id="end-line" class="line">${line}</div><div id="end-cta" class="cta">${cta}</div>
+      <div id="end-line" class="line">${line}</div><div id="end-cta" class="cta">${cta}<i id="end-ring" class="ring"></i><i id="end-touch" class="touch"></i></div>
       <img id="end-store" class="store" src="assets/kit/brand/appstore.png" alt="App Store" />`;
   }
 

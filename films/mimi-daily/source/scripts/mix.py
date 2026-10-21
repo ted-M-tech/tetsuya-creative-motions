@@ -9,7 +9,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, bell, boing, ding, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import Mix, bell, boing, ding, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); the HyperFrames edit uses the same times.
 STACK = 0.1            # books stack up, one pop each
@@ -22,6 +22,7 @@ RESULT = 7.6           # the score
 TIP = 9.6              # light: the sound to fix
 JUMP = (11.85, 12.28)
 END = 14.0
+CTA_TAP = 14.6         # the end card's button gets tapped
 
 m = Mix(15.0, voice_dir=SRC / 'assets/voice')
 m.sfx(pop_seq(4, 0.22, base=72), STACK)
@@ -40,4 +41,5 @@ for i, n in enumerate([81, 85, 88]):
     m.sfx(bell(n, 0.9, 0.12), 12.55 + i * 0.07)
 m.bed(APP, END, joy_from=RESULT)
 m.end_chord(END)
+m.sfx(pochi(), CTA_TAP)
 print(m.write(SRC / 'hf/assets/mix.wav'))

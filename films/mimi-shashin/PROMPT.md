@@ -12,7 +12,7 @@ LancloのマスコットMimiが**実際のLancloアプリを使う**15秒の縦�
 2. 同じクラス名で操作手順のテスト（`DemoWalkthrough.swift`）を書く：起動 → タブ → 機能 → 素材を選ぶ → 録音 → 送信 → 結果をゆっくりスクロール。各画面で1.5〜2.5秒止める。
 3. `kits/mimi-short/app-capture/capture.sh` で録画（初回のビルドだけ約7分、以後は約1分）。
 4. 録画は可変フレームレート。`cut.sh` で60 fpsにそろえてから、コマ単位で切る。時刻は2コマ/秒のシートで確かめる。
-5. 元の録画と切り出しはLancloのGoogle Drive（002.SNS/003.MimiShorts/<回>_素材）へ。
+5. 元の録画と切り出しはLancloのGoogle Drive（002.SNS/<NotionのID3桁>. <英語の題>/<回>_assets）へ。
 
 ## 2. 話（[置き換える]）
 

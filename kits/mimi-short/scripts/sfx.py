@@ -80,6 +80,18 @@ def tap():
     return 0.5 * np.exp(-60 * tt) * np.sin(2 * np.pi * 1900 * tt) + 0.2 * _rng.standard_normal(len(tt)) * np.exp(-90 * tt)
 
 
+def pochi(vel=0.3):
+    """A soft button press: a short low click with a tiny release."""
+    tt = t(0.12)
+    f = 760 * (1 + 0.3 * np.exp(-80 * tt))
+    click = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-45 * tt)
+    rel = np.zeros(len(tt))
+    k = t(0.03)
+    i = int(0.07 * SR)
+    rel[i:i + len(k)] = 0.35 * np.sin(2 * np.pi * 1150 * k) * np.exp(-150 * k)
+    return vel * (click + rel + 0.15 * _rng.standard_normal(len(tt)) * np.exp(-400 * tt))
+
+
 def whoosh(d=0.35, vel=0.35):
     tt = t(d)
     return vel * lowpass(_rng.standard_normal(len(tt)), 0.05 + 0.3 * np.sin(np.pi * tt / d) ** 2) * np.sin(np.pi * tt / d) ** 1.5

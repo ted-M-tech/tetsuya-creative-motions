@@ -24,6 +24,6 @@ kits/mimi-short/stage.sh $F/hf
 cd $F/hf && npx --yes hyperframes@0.8.181 check && npx --yes hyperframes@0.8.181 render --output ../renders/mimi-shashin.mp4 --fps 60
 ```
 
-Not in Git: the app recording (`renders/app/describe.mov`, kept in Lanclo's Google Drive under 002.SNS/003.MimiShorts with the cut clips), `hf/assets/app/`, Mimi shots, mix, staged kit and the final MP4.
+Not in Git: the app recording (`renders/app/describe.mov`, kept in Lanclo's Google Drive under 002.SNS/008. English from a Photo/Mimi_05_English_from_a_Photo_2026-10-20_assets with the cut clips), `hf/assets/app/`, Mimi shots, mix, staged kit and the final MP4.
 
 A new recording can shift by a few hundred ms: check a contact sheet (`ffmpeg -i describe-60.mp4 -vf "fps=2,scale=110:-1,tile=14x4"`) and adjust the times in `app-capture/cut.sh`.

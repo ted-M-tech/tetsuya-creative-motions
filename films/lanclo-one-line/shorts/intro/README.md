@@ -40,4 +40,4 @@
 
 ## 書き出し
 
-[source/README.md](../../source/README.md) の「アプリ紹介ショート」を参照。拍は `source/scripts/intro_timeline.py`。完成 MP4 と声素材は Lanclo の Google Drive `002.SNS/010. アプリ紹介/`。
+[source/README.md](../../source/README.md) の「アプリ紹介ショート」を参照。拍は `source/scripts/intro_timeline.py`。完成 MP4 と声素材は Lanclo の Google Drive `002.SNS/010. App Introduction/`。

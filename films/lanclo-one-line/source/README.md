@@ -33,6 +33,6 @@ uv run --no-project --with pycairo --with numpy --with pillow python scripts/int
 | `scripts/intro_vo.sh` | Cuts the narration take into ten lines at 1.2x (cut points from silencedetect) |
 | `scripts/greetings.swift` | Renders the 17 greetings to `assets/greet/` with CoreText (PIL here cannot shape Devanagari, Bengali, Thai) |
 
-Not in Git, for the intro: the narration take `assets/voice/vo-intro/Mimi.m4a` (Lanclo's Google Drive, `002.SNS/010. アプリ紹介/Mimi.m4a`) and the theme BGM `kits/mimi-short/library/bgm/everyone-get-up.mp3` (Drive `002.SNS/_BGM/Everyone_Get_Up.mp3`; without it the code-made bed plays).
+Not in Git, for the intro: the narration take `assets/voice/vo-intro/Mimi.m4a` (Lanclo's Google Drive, `002.SNS/010. App Introduction/Mimi.m4a`) and the theme BGM `kits/mimi-short/library/bgm/everyone-get-up.mp3` (Drive `002.SNS/_BGM/Everyone_Get_Up.mp3`; without it the code-made bed plays).
 
 `assets/voice/own.mp3` and `model.mp3` (the LP comparison clips) are not in Git. Without them the PV renders with a stand-in waveform shape and no voice; the journal short does not use them. Rendered files go to `renders/` (ignored).

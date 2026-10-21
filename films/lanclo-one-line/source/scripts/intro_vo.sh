@@ -1,6 +1,6 @@
 #!/bin/sh
 # Cut the Mimi (Kansai) narration take into lines v1..v10 at 1.2x (pitch kept).  usage: scripts/intro_vo.sh
-# Source: Drive 002.SNS/010. アプリ紹介/Mimi.m4a -> assets/voice/vo-intro/Mimi.m4a
+# Source: Drive 002.SNS/010. App Introduction/Mimi.m4a -> assets/voice/vo-intro/Mimi.m4a
 set -e
 # Each cut ends ~0.12 s after the line's last sound (silencedetect -40 dB) so no tail is clipped.
 cd "$(dirname "$0")/../assets/voice/vo-intro"
