@@ -1,0 +1,9 @@
+# Prompt (consolidated after the fact)
+
+This is a consolidated prompt for rebuilding the finished film, not the owner's original words (those are quoted in [PROCESS.md](PROCESS.md)).
+
+Make a 17-second vertical Mimi short (1080×1920, 60 fps) in the Lanclo Mimi shorts kit (`kits/mimi-short`), following `films/mimi-action-review`: white copy card, the real app in a phone (`#device`), poses as images animated with GSAP, English subtitles `.sub` with a Japanese-only cut via `body.no-subs`, the kit end card and CTA tap.
+
+Story: one month before the IELTS test. A tear-off daily calendar (CSS: navy binder, red header 「IELTS本番まで」, 「あと30日」) and Mimi hugging a textbook, nervous: 「あと1か月しかない…！」. Copy card 「本番の流れで、毎日1回。」 with the pill 「スピーキング試験対策 · 模擬試験」. Day 30: the calendar small in the corner, Mimi practising with her phone beside a simulator recording of the Mock exam (QA fixture `--qa-ielts`): Mimi the interviewer's overview 「3つのパートを順に進めます。振り返りは最後にしましょう。」, Start interview, question 1/9 with the question audio, recording, then 2, 4, 7 (Part 2), 8, 9 of 9 in quick cuts, with a large 「模擬試験 n / 9」 chip; 「最後まで話せましたね。」 → Review → the estimated Band card (「AIによる非公式の目安」) and answers, then one answer's feedback (「何が違う？」 as software engineer → as a software engineer). Captions: 「Part 1〜3を、本番と同じ順番で。」「全9問、通しで答える。」「最後に、まとめて振り返り。」 and the note 「AIの練習用フィードバックです（公式スコアではありません）」. Mask the fixture label 「デモデータ」. Montage: the calendar big again, pages 30 → 1 torn off faster and faster (caption 「毎日1回、通しで。」), Mimi tear → practice → confident. Test morning (warm background, sun): the calendar page 「本番」, calm Mimi and her nervous friend: 「本番、緊張しない？」 / 「1か月、毎日やったし。」. End card.
+
+Accuracy: show only what the app does; quote on-screen labels; the Band and scores are synthetic fixture values shown with the app's own 「AIによる非公式の目安」 label plus the film's note.
