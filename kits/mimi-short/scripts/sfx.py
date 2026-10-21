@@ -106,6 +106,31 @@ def poof():
     return 0.4 * lowpass(_rng.standard_normal(len(tt)), 0.02 + 0.2 * (1 - tt / 0.4)) * np.exp(-6 * tt)
 
 
+def freeze(vel=0.5):
+    """Ice forming: a rising crackle of tiny clicks over a cold high ring."""
+    tt = t(0.6)
+    clicks = np.zeros(len(tt))
+    for at in np.sort(_rng.uniform(0, 0.45, 40)):
+        i = int(at * SR)
+        k = t(0.012)
+        clicks[i:i + len(k)] += _rng.uniform(0.3, 1) * np.sin(2 * np.pi * _rng.uniform(2500, 6000) * k) * np.exp(-400 * k)
+    ring = 0.25 * np.sin(2 * np.pi * 2637 * tt) * np.minimum(1, tt / 0.3) * np.exp(-5 * np.maximum(0, tt - 0.3))
+    return vel * (clicks * 0.6 + ring)
+
+
+def shatter(vel=0.55):
+    """Ice breaking: a bright noise burst and scattered glassy pings."""
+    tt = t(0.9)
+    burst = _rng.standard_normal(len(tt)) * np.exp(-25 * tt)
+    burst -= lowpass(burst, 0.15)
+    pings = np.zeros(len(tt))
+    k = t(0.4)
+    for f, d in zip(_rng.uniform(2000, 5000, 8), _rng.uniform(0.02, 0.4, 8)):
+        i = int(d * SR)
+        pings[i:i + len(k)] += 0.3 * np.sin(2 * np.pi * f * k) * np.exp(-12 * k)
+    return vel * (0.7 * burst + pings)
+
+
 def ding(vel=0.14):
     gap = int(0.07 * SR)
     a, b = bell(86, 0.9, vel), bell(90, 0.9, vel)
@@ -127,8 +152,10 @@ class Mix:
         x = x[:max(0, self.n - i)]
         bus[i:i + len(x)] += g * x
 
-    def voice(self, name, at, g=0.9, start=0.0, length=None, speed=1.0):
-        self._place(self.v, load(self.voice_dir / name, start, length, speed), at, g)
+    def voice(self, name, at, g=0.9, start=0.0, length=None, speed=1.0, muffle=False):
+        """muffle: heard through something (inside ice, behind a door)."""
+        x = load(self.voice_dir / name, start, length, speed)
+        self._place(self.v, lowpass(x, 0.06) * 1.6 if muffle else x, at, g)
 
     def sfx(self, x, at, g=1.0):
         self._place(self.s, x, at, g)

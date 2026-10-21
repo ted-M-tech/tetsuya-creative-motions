@@ -64,6 +64,7 @@ POSES = {
     'speak': dict(image='poses/speak-closed.webp', alt='poses/speak-open.webp', height=1000),
     'confident': dict(image='poses/confident.webp', height=1000),
     'stunned': dict(image='poses/stunned.webp', height=1180),
+    'point': dict(image='poses/point.webp', height=1100),
 }
 
 
@@ -90,6 +91,9 @@ def keys(anim, target, props):
 
 
 def build(shot, spec, out, bg='desk'):
+    """bg: 'desk', 'none', another plate in backgrounds/ by name (e.g. 'street'), or a path."""
+    if bg not in ('desk', 'none') and (ROOT / 'backgrounds' / f'{bg}.webp').exists():
+        bg = ROOT / 'backgrounds' / f'{bg}.webp'
     P = POSES[spec['pose']]
     im = Image.open(ROOT / P['image']).convert('RGBA')
     W, H = im.size

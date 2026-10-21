@@ -15,14 +15,17 @@
     {"id": "speak-closed", "file": "poses/speak-closed.webp", "status": "approved-in-video", "use": "speaking practice, mouth closed (lip-sync pair)", "prompt": "prompts/04-codex-lip-sync-pair.txt"},
     {"id": "speak-open", "file": "poses/speak-open.webp", "status": "approved-in-video", "use": "speaking practice, mouth open (lip-sync pair, same crop as closed)", "prompt": "prompts/04-codex-lip-sync-pair.txt"},
     {"id": "confident", "file": "poses/confident.webp", "status": "approved-in-video", "use": "proudly saying a phrase: wink, index paw up, hand on hip", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
-    {"id": "stunned", "file": "poses/stunned.webp", "status": "approved-in-video", "use": "stunned blank stare, both ears stiff, sweat drop, shock lines", "prompt": "prompts/05-codex-confident-stunned-props.txt"}
+    {"id": "stunned", "file": "poses/stunned.webp", "status": "approved-in-video", "use": "stunned blank stare, both ears stiff, sweat drop, shock lines", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
+    {"id": "point", "file": "poses/point.webp", "status": "approved-in-video", "use": "giving directions, arm pointing to the viewer's right", "prompt": "prompts/06-codex-street-point-ice.txt"}
   ],
   "backgrounds": [
-    {"id": "desk", "file": "backgrounds/desk.webp", "status": "approved-in-video", "use": "study desk, phone on a stand at the right (screen 853,981 161x322 at 1080x1920)", "prompt": "prompts/02-codex-desk-background.txt"}
+    {"id": "desk", "file": "backgrounds/desk.webp", "status": "approved-in-video", "use": "study desk, phone on a stand at the right (screen 853,981 161x322 at 1080x1920)", "prompt": "prompts/02-codex-desk-background.txt"},
+    {"id": "street", "file": "backgrounds/street.webp", "status": "approved-in-video", "use": "town street corner, signpost at the right, station far behind; framed so the feet point (480,1330) is on the pavement", "prompt": "prompts/06-codex-street-point-ice.txt"}
   ],
   "props": [
     {"id": "sink", "file": "props/sink.webp", "status": "approved-in-video", "use": "kitchen sink (the think/sink gag)", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
-    {"id": "bulb", "file": "props/bulb.webp", "status": "approved-in-video", "use": "idea light bulb with rays (glow added in the edit)", "prompt": "prompts/05-codex-confident-stunned-props.txt"}
+    {"id": "bulb", "file": "props/bulb.webp", "status": "approved-in-video", "use": "idea light bulb with rays (glow added in the edit)", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
+    {"id": "ice", "file": "props/ice.webp", "status": "approved-in-video", "use": "ice block to freeze a character (overlay at ~0.78 opacity)", "prompt": "prompts/06-codex-street-point-ice.txt"}
   ],
-  "used_in": ["「自分の声、むり」 (2026-10-20)", "「think が sink に」 (2026-10-20)"]
+  "used_in": ["「自分の声、むり」 (2026-10-20)", "「think が sink に」 (2026-10-20)", "「道を聞かれて固まる」 (2026-10-20)"]
 }

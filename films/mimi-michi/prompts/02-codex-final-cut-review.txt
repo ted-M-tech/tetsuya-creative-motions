@@ -1,0 +1,14 @@
+You are an art director for short-form vertical video (Instagram Reels / TikTok) reviewing a 15 s mascot short for Lanclo, a Japanese app that turns the learner's own voice into native English pronunciation.
+
+Attached: a contact sheet of the finished cut at 2 frames per second (left to right, top to bottom; frame n is at n*0.5 s).
+
+Story, 「道を聞かれて固まる」 (asked the way, she freezes):
+0-0.6 on a street a passer-by off-screen asks "Excuse me, how do I get to the station?" (speech bubble + voice). Caption 英語で道を聞かれた。
+0.6-2.9 an ice block forms around Mimi (カチコチ。), then 言いたいのに、出てこない… and a muffled "Uh..." from inside.
+2.9-3.6 at her desk she taps record on Lanclo. 3.6-5.4 hears her own voice say "Go straight, and turn left." (自分の声で、すらすら。 + tag).
+5.4-6.0 realises (言えてる…！). 6.0-7.8 radar card, score 58, one fix: turn left は、つなげて一息に.
+7.8-10.0 practises with the model (lip-sync). 10.0-11.2 back on the street the ice shatters (とけた！).
+11.2-13.0 she points the way and says it. 13.0-14.0 the passer-by: "Thank you!"; caption 声はあなたのまま、発音だけネイティブに。 14.0-15.0 end card.
+Two earlier episodes used the same layout, kit and end card and were approved by the owner.
+
+Review it as a viewer scrolling on a phone. List at most 6 concrete problems ranked by impact on (1) the first-second hook, (2) whether the joke and the product value read without sound, (3) visual clarity. For each: the time, what is wrong, and the smallest fix. Say clearly if something is fine and should not change. Japanese captions: flag anything unnatural. Be brief.
