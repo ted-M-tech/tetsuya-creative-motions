@@ -131,6 +131,24 @@ def shatter(vel=0.55):
     return vel * (0.7 * burst + pings)
 
 
+def mokugyo(vel=0.6):
+    """Wooden fish drum: a hollow knock (pok)."""
+    tt = t(0.25)
+    f = 620 * (1 + 0.08 * np.exp(-60 * tt))
+    knock = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-28 * tt) + 0.4 * np.sin(2 * np.pi * 1240 * tt) * np.exp(-45 * tt)
+    return vel * (knock + 0.3 * _rng.standard_normal(len(tt)) * np.exp(-300 * tt))
+
+
+def pop_seq(n, gap, base=79, vel=0.16):
+    """n small rising pops, gap seconds apart (cells filling, items appearing)."""
+    x = np.zeros(int((n * gap + 0.6) * SR))
+    for i in range(n):
+        k = mallet(base + [0, 2, 4, 7, 9, 12][i % 6], 0.5, vel)
+        j = int(i * gap * SR)
+        x[j:j + len(k)] += k
+    return x
+
+
 def ding(vel=0.14):
     gap = int(0.07 * SR)
     a, b = bell(86, 0.9, vel), bell(90, 0.9, vel)
