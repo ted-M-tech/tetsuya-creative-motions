@@ -4,7 +4,7 @@
 
 Mimi is flicking cards right and left on her phone. Her friend teases: "That's a dating app!" Mimi: "No! It's my English phrase review!" A white card says 「英語の復習も、スワイプで。」, then the real Lanclo review cards in the simulator: right = remembered (覚えていた), left = again (もう一度), up = easy (簡単), and the "again" card comes back. Mimi: "Then I'm off on a date with my match!" Friend: "So you ARE using one?!" End card with the CTA tap.
 
-0:17.4 / 1080×1920, 60 fps / Japanese speech bubbles and captions, no voices / 2D Mimi and her friend (cut-outs + one Rive shot, HyperFrames) beside a simulator recording with fixture notes
+0:17.4 / 1080×1920, 60 fps / Japanese speech bubbles and captions, no voices / two cuts: Japanese only (`mimi-swipe.mp4`) and with English subtitles at the bottom (`mimi-swipe-en.mp4`) / 2D Mimi and her friend (cut-outs + one Rive shot, HyperFrames) beside a simulator recording with fixture notes
 
 ![Final frames](process/00-final-frames.jpg)
 
