@@ -19,3 +19,11 @@
 
 - 共有の `kits/mimi-short/app-capture/apply-patch.py` を複数ハンク・複数ファイルに対応させた（従来のパッチもそのまま通る）。
 - シミュレーターの「このiPhone内」は `data/Containers/Shared/AppGroup/<group.com.apple.FileProvider.LocalStorage>/File Provider Storage/`。そこに置いたファイルはシステムのファイル選択画面からUIテストで選べる（「ブラウズ」→「このiPhone内」）。
+
+## 自分の声に差し替え（2026-10-21）
+
+オーナーの言葉：「今まで英語で発音シーンがあった動画、この声で変えて。010以外。」
+
+- 復習カードのお手本「Could I have the check?」を、Kokoro af_bella からオーナー本人の登録済みLancloの声（Gemini gemini-3.8-flash-tts、accent us、`kits/mimi-short/scripts/ownvoice.py`）に差し替えた。発話は 0.21–1.09秒（0.88秒、Kokoroは0.97秒）で、開始 11.95秒のまま。尺は変わらず 17.4秒。
+- 本当に自分の声のお手本になったので、テロップを「お手本を聞いて、練習・復習」→「**自分の声のお手本**で／練習・復習」、英語字幕を「Practise and review with a model in your own voice」に変えた。
+- Kokoro の WAV と scripts/voices.sh は使わなくなったので削除。

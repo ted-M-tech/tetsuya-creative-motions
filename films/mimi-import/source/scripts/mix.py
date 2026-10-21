@@ -2,7 +2,7 @@
 
 usage: uv run --no-project --with numpy python films/mimi-import/source/scripts/mix.py
 Japanese lines are speech bubbles only (Kokoro's Japanese voice garbles them). The one English line is the first imported phrase on the
-review card, in af_bella (the friend's own English voice since mimi-action-add; scripts/voices.sh).
+review card: the model in the owner's own registered Lanclo voice (accent us; own-voice.json, kits/mimi-short/scripts/ownvoice.py).
 """
 import sys
 from pathlib import Path
@@ -56,7 +56,7 @@ def build():
         m.sfx(tap() * 0.6, at)
     m.sfx(ding(), DONE)
     m.sfx(bell(88, 0.7, 0.08), DONE + 0.1)
-    m.voice('phrase-af_bella.wav', PHRASE, g=0.9)
+    m.voice('../own-voice/model.wav', PHRASE - 0.06, g=0.9, start=0.15)   # the owner's voice: speech 0.21-1.09 s in the clip -> 11.95-12.83
     m.sfx(pop_seq(3, 0.05, base=76), COPY + 0.05)
     m.sfx(pofu() * 0.6, CLOSE)
     m.bed(0.0, END)
