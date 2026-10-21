@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-lice": {
+      "text": "I eat lice every day.",
+      "style": "Speak English as a proud, friendly Japanese beginner talking about his favourite food. The word 'rice' comes out with a clear English L, the tongue tip on the gums, exactly like 'lice', so a listener clearly hears 'I eat lice every day.' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "2584fab4e8e00bbd0d83b8231ab7cd15baa70b43ee70181474f47a9d04ec81ac",
+      "at": "2026-10-21T21:48:48+00:00"
+    },
+    "native-rice": {
+      "text": "I eat rice every day.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "8548f196c6894a6af12382223826b969a8d58878a7bffd2aeac864b70446eee3",
+      "at": "2026-10-21T21:48:51+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
