@@ -28,7 +28,7 @@ final class IELTSSpeakingUITests: XCTestCase {
         for index in 0..<9 {
             let prompt = app.staticTexts["ielts.prompt"]
             _ = prompt.waitForExistence(timeout: 8)
-            hold(1.8)                                                     // the question, n / 9
+            hold(1.8)                                                     // the question
             if index == 6 {                                               // Part 2: one minute to prepare
                 tap(app.buttons["ielts.prepare"], app)
                 hold(2.0)
