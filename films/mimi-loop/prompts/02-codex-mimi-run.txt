@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png, success.png: white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet). Keep EXACTLY the same illustration style, line weight, colours, proportions, head size and headphone design (the white "L" stays on the cup at the viewer's LEFT). Plain pure white background, full body, centred, same scale as master.png, no text, no letters anywhere except the "L".
+
+Save as PNG in art/ (relative to the current directory):
+1) art/run.png — running happily to the viewer's RIGHT in a cheerful cartoon sprint: body leaning forward, three-quarter view toward the RIGHT, one foot lifted behind and one forward, mittens pumping, ears streaming back a little, eyes bright and determined, small happy open smile, two or three short speed lines behind her (on the viewer's LEFT).
+Do not modify other files. List the saved paths when done.
