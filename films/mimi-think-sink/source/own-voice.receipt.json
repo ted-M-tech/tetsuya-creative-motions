@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "wrong": {
+      "text": "I sink so!",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Say it quickly and proudly, a snappy, confident show-off exclamation with no pauses, about one second long. \"sink\" starts with a clear s sound. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "e0558b9c1f734f40e2efeced3df6e6d5e9dcb63cd057edfe2ee1c0b96c0c4111",
+      "at": "2026-10-21T21:37:36+00:00"
+    },
+    "right": {
+      "text": "I think so.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9ed9952921d3d870aae54664d5773af30947a34126f4c0ccffa622dc4607b1a3",
+      "at": "2026-10-21T21:35:05+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

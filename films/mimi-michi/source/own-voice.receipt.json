@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "uh": {
+      "text": "Uh... uh...",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, r and l mixed up, flat syllable-by-syllable timing, every syllable equally stressed, a little hesitant. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "8969f06e4004d1a270246e06a0daec1f49645181e364849b805308b65fc5b5da",
+      "at": "2026-10-21T21:35:10+00:00"
+    },
+    "answer": {
+      "text": "Go straight, and turn left.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. A brisk, friendly, helpful pace: link the words smoothly, with only a tiny breath at the comma. About one and a half seconds in total. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "02fb6f154a5597e0daa85e32bea762edc6eb5b3a3bd7696d357826211b975aff",
+      "at": "2026-10-21T21:39:06+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
