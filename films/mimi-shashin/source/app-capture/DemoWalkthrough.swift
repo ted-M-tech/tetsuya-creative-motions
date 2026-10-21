@@ -1,7 +1,7 @@
 import XCTest
 
 /// Screen-recording walkthrough for the Mimi short 「写真で英語」 (not a test of behaviour).
-/// capture.sh puts this file in place of DescribeUITests.swift in a throwaway checkout, runs it,
+/// kits/mimi-short/app-capture/capture.sh puts this file in place of DescribeUITests.swift in a cached app checkout, runs it,
 /// and records the simulator. Pauses give the edit time to cut; fixture data only.
 final class DescribeUITests: XCTestCase {
     @MainActor private func hold(_ s: Double) { Thread.sleep(forTimeInterval: s) }

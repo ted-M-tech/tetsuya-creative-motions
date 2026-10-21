@@ -13,6 +13,10 @@ Shared parts of every 15-second Mimi short (2D official style, Rive + HyperFrame
 | `brand/` | End-card Mimi, Lanclo mark, App Store badge |
 | `stage.sh` | Copies `hf/`, `brand/`, the fonts and `library/props/` into an episode's HyperFrames project as `assets/kit/` (not in Git) |
 
+## Real app screens
+
+`app-capture/capture.sh` records the Lanclo app in the simulator with QA fixture data while a walkthrough UI test taps through it; `app-capture/cut.sh` resamples the variable-frame-rate take to 60 fps and cuts clips by time. The app checkout and build are cached in `~/Library/Caches/lanclo-app-capture`, so only the first run builds from scratch. Raw takes go to Lanclo's Google Drive (002.SNS/003.MimiShorts/<episode>_素材). Reference episode: `films/mimi-shashin`.
+
 ## Make an episode
 
 ```sh

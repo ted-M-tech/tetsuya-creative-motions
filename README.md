@@ -73,6 +73,12 @@ Asked for directions in English, Mimi turns into a block of ice; rehearsing the 
 
 Three days in, Mimi has become a monk (三日坊主); the English journal turns each day into a picture worth looking back on.
 
+**Describe a photo — Mimi short #5, real app** · 0:15 vertical · 2D Mimi + simulator recording
+
+[Process, prompts & source](films/mimi-shashin/README.md) · [App capture](kits/mimi-short/app-capture/capture.sh)
+
+Mimi uses the real Lanclo app: a photo, her answer, the mistake marked, and a better sentence in her own voice.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.
