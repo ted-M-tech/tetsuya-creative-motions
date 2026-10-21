@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png, success.png: white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet). Keep EXACTLY the same illustration style, line weight, colours, proportions, head size and headphone design (the white "L" stays on the cup at the viewer's LEFT). Plain pure white background, full body, centred, same scale as master.png, no text, no letters anywhere except the "L".
+
+Save as PNG in art/ (relative to the current directory):
+1) art/presenter.png — a cheerful TV-show presenter announcing a countdown ranking: facing the viewer, holding a small navy hand microphone near her mouth in one mitten (on the viewer's RIGHT side), the other mitten raising a thin telescopic pointer stick that points up and toward the viewer's LEFT, bright eyes, open happy mouth as if announcing, one foot slightly lifted, two small sparkles.
+Do not modify other files. List the saved paths when done.
