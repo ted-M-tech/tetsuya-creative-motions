@@ -9,6 +9,7 @@ Shared parts of every 15-second Mimi short (2D official style, Rive + HyperFrame
 | `scripts/render_rive.sh` | Rive project → PNG frames → MP4 (60 fps) |
 | `scripts/cutout.sh` | Drawn image on white → trimmed transparent WebP (`FUZZ=30` for props with a soft glow) |
 | `scripts/sfx.py` | `Mix` (voice / SFX / music buses, ducking, -14 LUFS), the bed (Lanclo SNS theme「Everyone Get Up」from `library/bgm/`, not in Git: copy it from Lanclo's Google Drive `002.SNS/_BGM/`; else the code-made 100 BPM bed), end chord / theme fade-out, SFX softened and kept low, SFX: tap, whoosh, pofu, boing, clang, poof, freeze, shatter, mokugyo, pencil, pop_seq, ding, bell |
+| `render-cuts.sh` | Renders an episode twice: with English subtitles (`.sub` clips) and Japanese only (`<body class="no-subs">`) |
 | `hf/kit.css`, `hf/kit.js` | The look and motion helpers: camera wrapper, phone UI on the desk plate, captions, speech bubble, playback tags, radar result card, sparkles, end card (`k.end(at)`, then `k.tapCta(at + 0.6)` taps the「7日間無料ではじめる」button; pair it with `sfx.pochi()` in the mix) |
 | `brand/` | End-card Mimi, Lanclo mark, App Store badge |
 | `stage.sh` | Copies `hf/`, `brand/`, the fonts and `library/props/` into an episode's HyperFrames project as `assets/kit/` (not in Git) |

@@ -70,3 +70,11 @@ films/mimi-action-add/source/hf/assets/
 films/mimi-action-add/source/hf/.hyperframes/
 films/mimi-action-add/source/hf/.thumbnails/
 !films/mimi-action-add/source/assets/voice/
+films/mimi-action-review/source/hf/assets/
+films/mimi-action-review/source/hf/.hyperframes/
+films/mimi-action-review/source/hf/.thumbnails/
+!films/mimi-action-review/source/assets/voice/
+films/mimi-action-lesson/source/hf/assets/
+films/mimi-action-lesson/source/hf/.hyperframes/
+films/mimi-action-lesson/source/hf/.thumbnails/
+!films/mimi-action-lesson/source/assets/voice/

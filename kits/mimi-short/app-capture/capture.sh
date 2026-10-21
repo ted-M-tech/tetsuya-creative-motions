@@ -3,6 +3,7 @@
 # usage: kits/mimi-short/app-capture/capture.sh <walkthrough.swift> <UITests file it replaces> <TestClass/testMethod> <out.mov> [ref]
 #   e.g. capture.sh films/mimi-shashin/source/app-capture/DemoWalkthrough.swift DescribeUITests.swift DescribeUITests/testWalkthrough \
 #        films/mimi-shashin/source/renders/app/describe.mov
+# PATCH=<file> applies a capture-only fixture tweak (exact-text insertion, see apply-patch.py) and reverts it afterwards.
 # The walkthrough keeps the replaced file's class name, so the Xcode target needs no change. The app checkout and its build live
 # in a cache (~/Library/Caches/lanclo-app-capture) and are reused: only the first run builds from scratch (about 7 minutes);
 # later runs rebuild incrementally and the recording itself is the walkthrough's length (about a minute).
@@ -15,6 +16,8 @@ git -C "$repo" fetch -q origin main
 if [ ! -d "$work" ]; then mkdir -p "$cache"; git -C "$repo" worktree add -q --detach "$work" "$ref"; fi
 git -C "$work" checkout -q --force --detach "$ref"
 cp "$walk" "$work/native-ios/LancloUITests/$target"
+# Optional capture-only fixture tweak (never committed to the app): PATCH=film/app-capture/x.patch
+if [ -n "$PATCH" ]; then python3 "$(dirname "$0")/apply-patch.py" "$PATCH" "$work"; fi
 xcrun simctl boot "$sim" 2>/dev/null || true
 xcrun simctl status_bar "$sim" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
 cd "$work/native-ios"
@@ -25,4 +28,5 @@ sleep 2
 xcodebuild $args test-without-building -only-testing:"LancloUITests/$test" -quiet || true
 sleep 1; kill -INT $rec; wait $rec 2>/dev/null || true
 git -C "$work" checkout -q -- native-ios/LancloUITests/"$target"
+[ -n "$PATCH" ] && git -C "$work" checkout -q -- native-ios/Lanclo
 echo "$out (app $(git -C "$work" rev-parse --short HEAD))"

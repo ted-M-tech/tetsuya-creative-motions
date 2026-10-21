@@ -1,0 +1,14 @@
+--- a/native-ios/Lanclo/Core/AppStore.swift
++++ b/native-ios/Lanclo/Core/AppStore.swift
+@@
+                 if arguments.contains("--qa-note-review-three") {
+                     var third = VocabularyWord.make(term: "Thank you", language: "en", context: "Thank you for your help.", now: note.addedAt + 1)
+                     third.meaning = "ありがとう"; notes.append(third)
+                 }
++                if arguments.contains("--qa-note-bless") {
++                    // Capture-only (Mimi shorts): the meaning and example the app's AI gave on the owner's iPhone.
++                    var bless = VocabularyWord.make(term: "Bless your heart", language: "en",
++                        context: "Bless your heart, you really didn't need to bring me all these groceries.", now: 500)
++                    bless.meaning = "親切にどうも；お気の毒に；おめでたい人だね"; notes.insert(bless, at: 0)
++                }
+             }
