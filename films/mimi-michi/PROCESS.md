@@ -4,7 +4,7 @@ Mimiショート3本目の制作記録です。共通キットの作り方は [f
 
 - 制作日：2026-10-20
 - 役割：Claude Code（構成・演技・音・編集・判断）、Codex（`codex-p`：絵の生成とレビュー）
-- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS、ffmpeg、ImageMagick、Python
+- 道具：Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS（通行人のみ。Mimiは2026-10-21に依頼者本人の声へ差し替え）、ffmpeg、ImageMagick、Python
 
 ![完成フレーム](process/00-final-frames.jpg)
 
@@ -63,3 +63,15 @@ Codexに公式PNG、ライブラリのポーズ（reach、confident）、机の�
 - 新しい背景は、リグの足の位置に合わせて切り出す。描かせるときに「立つ位置の高さ」を指定しても、ずれる前提で調整する。
 - 見立てネタ（物で言葉を見せる）はシリーズの型として使える。
 - 画面外の話し手は吹き出しだけで足りる。新しいキャラクターを描かずに済む。
+
+## 依頼者本人の声に差し替え（2026-10-21）
+
+> 「今まで英語で発音シーンがあった動画、この声で変えて。010以外。」
+
+Gemini `gemini-3.8-flash-tts`（Lanclo専用プロジェクトに登録された依頼者本人の声 "Lanclo private practice"）を `kits/mimi-short/scripts/ownvoice.py` で呼び、`source/own-voice.json` の行を作った。声の素材は依頼者の生体データなのでGitに入れない（Gitには `own-voice.json` と `own-voice.receipt.json` だけ。WAVはDriveの エピソードフォルダの `<接頭辞>_assets/own-voice/`）。
+
+- `uh` "Uh... uh..."：`learner`。最初の "Uh"（0.72秒）だけを使い、氷の中のこもった声にした。2.18秒から（通行人の質問が終わった直後）。
+- `answer` "Go straight, and turn left."：`us`。最初の版は2.0秒（コンマで0.37秒の間）で長すぎたので、「てきぱきと、コンマは短い息だけ」と足して1回作り直し（1.81秒）。
+- 合図の変更：お手本 3.75→3.6秒（タップの0.27秒後、5.41秒に終わる）、練習 8.2→8.1秒（9.91秒に終わる。口パクとうなずきを作り直し）、道案内 11.35→11.3秒。道案内が13.11秒まで続くので、`direct` ショットを1.8→2.1秒に延ばし、"Thank you!"（13.05→13.35秒）、エンドカード（14.0→14.3秒）を0.3秒後ろへ。全体は15.3秒。字幕・タグ・波形・カメラも同じ時刻に合わせた。
+- 画面のMimiは女の子のキャラクターだが、声は依頼者（若い男性）の声になる。絵は変えていない。
+- 通行人（`bm_george`）はKokoroのまま。使わなくなったMimiのKokoroの声（`af_heart` 2本）は消した。
