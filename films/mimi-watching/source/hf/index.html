@@ -61,8 +61,16 @@
       .type .big { font-size: 118px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
       .type .big strong { color: #2a8dff; display: inline-block; }
       /* Lights off again: a spotlight on Mimi that closes */
-      #dark { position: absolute; inset: 0; --r: 900px; opacity: 0; pointer-events: none;
-              background: radial-gradient(circle at 76% 62%, rgba(5, 8, 15, 0.55) 0, rgba(5, 8, 15, 0.55) var(--r), #05080f calc(var(--r) + 140px)); }
+      .shot { position: absolute; left: 60px; right: 60px; border-radius: 34px; overflow: hidden; background: #fff; box-shadow: 0 18px 50px rgba(39, 59, 75, 0.2); }
+      .stage .shot img { position: static; display: block; width: 100%; height: auto; }
+      .shot .hl { left: 2%; right: 2%; }
+      .chip { position: absolute; left: 420px; top: 945px; background: #344f69; color: #fff; font-size: 44px; font-weight: 700; padding: 16px 30px; border-radius: 40px;
+              box-shadow: 0 10px 26px rgba(39, 59, 75, 0.3); opacity: 0; white-space: nowrap; }
+      #forget { top: 300px; font-size: 76px; line-height: 1.6; }
+      #forget .long { display: inline-block; position: relative; height: 1em; vertical-align: -0.12em; width: 0; }
+      #forget .long b { position: absolute; left: 6px; right: 6px; top: 50%; height: 9px; margin-top: -4px; border-radius: 5px; background: #dfe7f3;
+                        box-shadow: 0 0 18px rgba(160, 190, 255, 0.55); }
+      #dim { position: absolute; inset: 0; background: #eef3f9; opacity: 0; pointer-events: none; }
       #flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; }
       /* English subtitles: one track, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
       body.no-subs .sub { display: none; }
@@ -72,7 +80,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="18.4" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.0" data-width="1080" data-height="1920">
       <!-- Hook (0-2.0): dark room, only her phone glows; Mimi's eyes in the dark; a whisper -->
       <div id="hook" class="stage dark clip" data-start="0" data-duration="2.0" data-track-index="1">
         <img id="h-bed" src="assets/art/friend-bed.webp" alt="" />
@@ -129,31 +137,45 @@
         <div class="vignette"></div>
       </div>
 
-      <!-- Lights on (11.4-13.3) -->
-      <div id="lights" class="stage clip" data-start="11.4" data-duration="1.9" data-track-index="1">
+      <!-- Lights on (11.4-13.0): Mimi explains -->
+      <div id="lights" class="stage clip" data-start="11.4" data-duration="1.6" data-track-index="1">
         <img id="l-friend" class="friend" src="assets/art/friend-aww.webp" alt="" />
         <img id="l-mimi" class="mimi" src="assets/art/jump.webp" alt="" />
-        <div id="b-grow" class="bubble from-right">毎日ちゃんと見てるから、<br />伸びるんだよ！</div>
-        <div class="note">※Mimiのまとめは、あなたの日記と練習の録音から</div>
+        <div id="b-find" class="bubble from-right">自分では気づかない癖、<br />Mimiが見つけるよ！</div>
       </div>
 
-      <!-- Copy (13.3-14.8) -->
-      <div id="copy" class="type clip" data-start="13.3" data-duration="1.5" data-track-index="2">
-        <div id="big1" class="big">見られてるから、<br /><strong>続く。</strong></div>
+      <!-- Your habit (13.0-14.6) and the native version, saved to review (14.6-16.4): stills from the same app take -->
+      <div id="explain" class="stage clip" data-start="13.0" data-duration="3.4" data-track-index="1">
+        <div id="x-habit" class="shot" style="top: 560px"><img src="assets/app/habit.png" alt="" /><i class="hl" style="top: 26%; height: 34%; left: 2%; right: 2%"></i></div>
+        <div id="x-native" class="shot" style="top: 600px; opacity: 0"><img src="assets/app/native.png" alt="" />
+          <div id="tp2" class="tap" style="left: 89.7%; top: 29%"></div></div>
+        <div id="x-chip" class="chip">＋ マイノート（復習リスト）</div>
+        <img id="x-point" class="mimi" src="assets/art/point.webp" alt="" style="left: 40px; right: auto; width: 380px; bottom: 380px" />
+        <img id="x-conf" class="mimi" src="assets/art/confident.webp" alt="" style="left: 40px; right: auto; width: 380px; bottom: 380px; opacity: 0" />
+      </div>
+      <div id="cap-5" class="caption clip" data-start="13.0" data-duration="1.6" data-track-index="8"><span id="c5">いつも同じ表現・<br />同じ単語ばっかり…</span></div>
+      <div id="cap-6" class="caption clip" data-start="14.6" data-duration="1.8" data-track-index="8"><span id="c6"><strong>ネイティブなら</strong>、<br />こう言うよ！</span></div>
+
+      <!-- Copy (16.4-17.9) -->
+      <div id="copy" class="type clip" data-start="16.4" data-duration="1.5" data-track-index="2">
+        <div id="big1" class="big">気づかない癖まで、<br /><strong>Mimiが見つける。</strong></div>
       </div>
 
-      <!-- Ending (14.8-17.0): "...so the days I skip, too?" Mimi just smiles; the lights go out -->
-      <div id="ending" class="stage clip" data-start="14.8" data-duration="2.2" data-track-index="1">
-        <img id="e-friend" class="friend" src="assets/art/friend-oops.webp" alt="" />
-        <img id="e-mimi" class="mimi" src="assets/art/mimi-smile.webp" alt="" />
-        <div id="b-skip" class="bubble from-left big">……じゃあ、<br />サボった日も？</div>
-        <div id="dark"></div>
+      <!-- Ending (17.9-20.6): the lights dim again; "so... don't ever forget me..." -->
+      <div id="ending" class="stage dark clip" data-start="17.9" data-duration="2.7" data-track-index="1">
+        <div class="peek-wrap" id="e-peek" style="right: 0; top: 860px; width: 560px; height: 818px">
+          <div class="peek"><img src="assets/art/mimi-peek.webp" alt="" /></div>
+          <i class="eye" style="left: 51.1%; top: 59.7%"></i><i class="eye" style="left: 80.8%; top: 52.6%"></i>
+        </div>
+        <div class="whisper" id="forget"><span id="f1">だから…僕のこと、</span><br /><span id="f2">ず<b class="long"><b></b></b>っと</span><br /><span id="f3">忘れないでね…</span></div>
+        <div class="vignette"></div>
+        <div id="dim"></div>
       </div>
 
       <div id="flash"></div>
       <canvas id="noise" width="270" height="480"></canvas>
 
-      <div id="end" class="end clip" data-start="17.0" data-duration="1.4" data-track-index="7"></div>
+      <div id="end" class="end clip" data-start="20.6" data-duration="1.4" data-track-index="7"></div>
 
       <!-- English subtitles (one track) -->
       <div class="sub clip" data-start="0.0" data-duration="2.0" data-track-index="9"><span>Mimi is always… watching you grow…</span></div>
@@ -163,13 +185,15 @@
       <div class="sub clip" data-start="7.1" data-duration="1.4" data-track-index="9"><span>Other ways to say it: “After that,”</span></div>
       <div class="sub clip" data-start="8.5" data-duration="1.8" data-track-index="9"><span>A native speaker might say…</span></div>
       <div class="sub clip" data-start="10.3" data-duration="1.1" data-track-index="9"><span>…How does she know?</span></div>
-      <div class="sub clip" data-start="11.4" data-duration="1.9" data-track-index="9"><span>I watch every day — that’s why you grow!<br />(from your own diary and practice recordings)</span></div>
-      <div class="sub clip" data-start="13.3" data-duration="1.5" data-track-index="9"><span>Because someone’s watching, you keep going.</span></div>
-      <div class="sub clip" data-start="14.8" data-duration="1.3" data-track-index="9"><span>…So, the days I skip, too?</span></div>
-      <div class="sub clip" data-start="16.1" data-duration="0.9" data-track-index="9"><span>(Mimi just smiles…)</span></div>
-      <div class="sub clip" data-start="17.0" data-duration="1.4" data-track-index="9"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+      <div class="sub clip" data-start="11.4" data-duration="1.6" data-track-index="9"><span>I find the habits you can’t see yourself!</span></div>
+      <div class="sub clip" data-start="13.0" data-duration="1.6" data-track-index="9"><span>Always the same phrases, the same words… (“And then”, 4 times)</span></div>
+      <div class="sub clip" data-start="14.6" data-duration="0.75" data-track-index="9"><span>A native speaker would say it like this!</span></div>
+      <div class="sub clip" data-start="15.35" data-duration="1.05" data-track-index="9"><span>+ My Notes (your review list)</span></div>
+      <div class="sub clip" data-start="16.4" data-duration="1.5" data-track-index="9"><span>Mimi finds even the habits you don’t notice.</span></div>
+      <div class="sub clip" data-start="17.9" data-duration="2.7" data-track-index="9"><span>So… don’t ever, ever forget me…</span></div>
+      <div class="sub clip" data-start="20.6" data-duration="1.4" data-track-index="9"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
-      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="18.4" data-track-index="10" data-volume="1"></audio>
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="22.0" data-track-index="10" data-volume="1"></audio>
     </div>
     <script>
       const K = window.MimiKit;
@@ -191,14 +215,14 @@
         nx.putImageData(img, 0, 0);
       };
       const gt = { t: 0 };
-      tl.fromTo(gt, { t: 0 }, { t: 18.4, duration: 18.4, ease: "none", onUpdate: () => grain(gt.t) }, 0);
+      tl.fromTo(gt, { t: 0 }, { t: 22.0, duration: 22.0, ease: "none", onUpdate: () => grain(gt.t) }, 0);
       tl.fromTo("#noise", { opacity: 0.09 }, { opacity: 0.09, duration: 2.0 }, 0);
       tl.to("#noise", { opacity: 0.05, duration: 0.3 }, 2.0);
       tl.to("#noise", { opacity: 0, duration: 0.3 }, 3.9);
       tl.to("#noise", { opacity: 0.08, duration: 0.15 }, 10.3);
       tl.set("#noise", { opacity: 0 }, 11.4);
-      tl.to("#noise", { opacity: 0.06, duration: 0.3 }, 16.15);
-      tl.set("#noise", { opacity: 0 }, 17.0);
+      tl.to("#noise", { opacity: 0.08, duration: 0.4 }, 17.9);
+      tl.set("#noise", { opacity: 0 }, 20.6);
 
       // Hook (0-2.0): the room breathes, Mimi leans in, her eyes light up, the whisper writes itself
       tl.fromTo("#h-glow", { opacity: 0.75 }, { opacity: 1, duration: 0.25, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
@@ -238,27 +262,44 @@
       tl.fromTo("#s-peek", { x: 220 }, { x: 0, duration: 0.4, ease: "power2.out" }, 10.55);
       tl.fromTo("#s-peek .eye", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 10.9);
 
-      // Lights on (11.4-13.3)
+      // Lights on (11.4-13.0)
       tl.fromTo("#flash", { opacity: 0.9 }, { opacity: 0, duration: 0.25, ease: "power2.out", immediateRender: false }, 11.4);
       tl.fromTo("#l-mimi", { y: 0 }, { y: -60, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 11.45);
-      k.pop("#b-grow", 11.55);
-      tl.fromTo("#l-friend", { scale: 1 }, { scale: 1.04, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 12.0);
+      k.pop("#b-find", 11.55);
+      tl.fromTo("#l-friend", { scale: 1 }, { scale: 1.04, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 12.2);
 
-      // Copy (13.3-14.8)
-      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 13.3);
-      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 13.33);
-      tl.fromTo("#big1 strong", { scale: 1.5 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 13.6);
+      // Your habit (13.0-14.6)
+      k.pop("#c5", 13.0);
+      tl.fromTo("#x-habit", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 13.05);
+      tl.fromTo("#x-habit .hl", { scale: 1.06, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 13.45);
+      tl.fromTo("#x-point", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 13.1);
+      tl.to("#x-habit", { opacity: 0, y: -40, duration: 0.15 }, 14.55);
+      // The native version; Mimi taps its bookmark and the phrase flies to My Notes (14.6-16.4)
+      k.pop("#c6", 14.6);
+      tl.set("#x-point", { opacity: 0 }, 14.6); tl.set("#x-conf", { opacity: 1 }, 14.6);
+      tl.fromTo("#x-native", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)", immediateRender: false }, 14.65);
+      k.ripple("#tp2", 15.3);
+      tl.fromTo("#x-chip", { x: 0, y: 0, scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 15.35);
+      tl.to("#x-chip", { x: -40, y: 200, duration: 0.6, ease: "power2.inOut" }, 15.55);
 
-      // Ending (14.8-17.0)
-      k.pop("#b-skip", 14.9);
-      tl.fromTo("#e-friend", { rotation: 0 }, { rotation: -3, duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 14.95);
-      tl.fromTo("#e-mimi", { rotation: 0 }, { rotation: 5, duration: 0.5, ease: "sine.inOut", immediateRender: false }, 15.6);
-      tl.to("#b-skip", { opacity: 0, duration: 0.2 }, 15.9);
-      tl.fromTo("#dark", { opacity: 0, "--r": "900px" }, { opacity: 1, duration: 0.25, ease: "power1.in" }, 16.1);
-      tl.to("#dark", { "--r": "0px", duration: 0.75, ease: "power2.in" }, 16.2);
+      // Copy (16.4-17.9)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 16.4);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 16.43);
+      tl.fromTo("#big1 strong", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 16.7);
 
-      k.end(17.0);
-      k.tapCta(17.6);
+      // Ending (17.9-20.6): the room goes dark from the lit look, Mimi leans in, the whisper stretches its ずーーーっと
+      tl.fromTo("#dim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.in", immediateRender: false }, 17.9);
+      tl.fromTo("#e-peek", { x: 300 }, { x: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, 18.0);
+      tl.fromTo("#e-peek .eye", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 18.55);
+      tl.to("#e-peek .eye", { opacity: 0.2, duration: 0.05, yoyo: true, repeat: 1 }, 19.9);
+      tl.fromTo("#f1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4 }, 18.3);
+      tl.fromTo("#f2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25 }, 18.85);
+      tl.fromTo("#forget .long", { width: 0 }, { width: 520, duration: 0.85, ease: "none" }, 18.95);
+      tl.fromTo("#f3", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35 }, 19.85);
+      tl.fromTo("#forget", { x: 0 }, { x: 3, duration: 0.05, yoyo: true, repeat: 3, immediateRender: false }, 20.3);
+
+      k.end(20.6);
+      k.tapCta(21.2);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

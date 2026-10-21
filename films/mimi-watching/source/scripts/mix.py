@@ -23,14 +23,15 @@ OPEN = 3.7             # she taps it
 APP = 3.9              # Mimi's advice
 CAPS = (3.95, 5.9, 7.1, 8.5)
 SHOCK = 10.3           # "...how does she know?"
-LIGHTS = 11.4          # lights on, cheerful Mimi
-COPY = 13.3
-SKIP = 14.9            # "...so the days I skip, too?"
-SMILE = 15.6
-DARK = 16.1            # lights go dark again
-END = 17.0
-CTA_TAP = 17.6
-DUR = 18.4
+LIGHTS = 11.4          # lights on, cheerful Mimi explains
+HABIT = 13.0           # your habit ("And then" 4回)
+NATIVE = 14.6          # the native version
+SAVE = 15.3            # bookmark tap, the phrase flies to My Notes
+COPY = 16.4
+DARK = 17.9            # lights dim again, the whisper
+END = 20.6
+CTA_TAP = 21.2
+DUR = 22.0
 
 _rng = np.random.default_rng(24)
 
@@ -57,14 +58,19 @@ for at in CAPS:
 m.sfx(drone(1.3, 0.02), SHOCK - 0.1)
 m.sfx(pochi(0.35), LIGHTS - 0.05)       # the light switch
 m.sfx(pop_seq(3, 0.05, base=79), LIGHTS + 0.1)
+m.sfx(whoosh(0.3, 0.2), HABIT)
+m.sfx(pop_seq(2, 0.06, base=76), HABIT + 0.4)
+m.sfx(whoosh(0.3, 0.2), NATIVE)
+m.sfx(tap() * 0.5, SAVE)
+m.sfx(pop_seq(3, 0.05, base=81), SAVE + 0.05)
 m.sfx(whoosh(0.3, 0.25), COPY - 0.1)
 m.sfx(pop_seq(2, 0.06, base=76), COPY + 0.05)
-m.sfx(pofu() * 0.4, SKIP)
 m.sfx(pochi(0.3), DARK)                 # lights off
-m.sfx(drone(1.0, 0.02), DARK)
+m.sfx(drone(2.7, 0.015), DARK)
+m.sfx(whoosh(0.5, 0.012), DARK + 0.45)
 m.bed(LIGHTS, END)
 tt = np.arange(m.n) / SR
-m.m *= np.interp(tt, [0, DARK, DARK + 0.3, END - 0.1, END + 0.1], [1, 1, 0.15, 0.15, 1])   # the bed sinks while it's dark
+m.m *= np.interp(tt, [0, DARK, DARK + 0.3, END - 0.1, END + 0.1], [1, 1, 0.12, 0.12, 1])   # the bed sinks while it's dark
 m.end_chord(END)
 m.sfx(pochi(), CTA_TAP)
 # Static loudness: the kit's Mix.write ends with a one-pass (dynamic) loudnorm, which lifted the quiet dark opening by ~15 dB

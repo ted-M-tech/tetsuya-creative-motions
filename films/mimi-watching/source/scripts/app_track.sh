@@ -21,3 +21,7 @@ $(seg 14.0 15.2 1 a)$(seg 19.0 20.6 2 b)$(seg 21.3 22.5 1 c)$(seg 24.4 26.4 4 d)
 [a][b][c][d][e][f][g]concat=n=7:v=1:a=0,trim=0:6.4,setpts=PTS-STARTPTS,format=yuv420p[v]" \
   -map "[v]" -an -c:v libx264 -crf 16 hf/assets/app/app.mp4
 ffprobe -v error -show_entries format=duration -of csv=p=0 hf/assets/app/app.mp4
+# Two stills for Mimi's explanation after the lights come on (v3): the vocabulary ranking ("And then" 4回) and the ネイティブなら card
+# (cropped above its 「デモ：」 line; the bookmark is the card's own save button, 89.7% / 29% of the crop).
+ffmpeg -v error -y -ss 14.5 -i $A/loop-60.mp4 -frames:v 1 -vf "crop=1100:500:50:1140" hf/assets/app/habit.png
+ffmpeg -v error -y -ss 39.6 -i $A/loop-60.mp4 -frames:v 1 -vf "crop=1014:345:96:1590" hf/assets/app/native.png
