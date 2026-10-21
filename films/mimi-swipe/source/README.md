@@ -25,9 +25,11 @@ kits/mimi-short/render-cuts.sh $F/hf mimi-swipe   # renders/mimi-swipe-en.mp4 (E
 | `scripts/app_track.sh` | Four swipes from the 60 fps take at 1.25x, cut on the same card so the joins don't show |
 | `scripts/shots.py`, `render.sh` | The Rive shot of Mimi swiping beside the phone |
 | `scripts/mix.py` | Cue sheet and sound (soft SFX, theme bed, end chord, CTA pochi) |
-| `hf/index.html` | The edit: hook with flying cards, two-shots with speech bubbles, copy card, phone + direction chips + captions, the retort, end card; English subtitles (`.sub`, hidden by `<body class="no-subs">`) |
+| `hf/index.html` | The edit: hook with flying cards, two-shots with speech bubbles, copy card, phone + direction chips + captions, the forgetting-curve card (SVG drawn in the page script, revealed left to right; labels are the app's button times), the retort, end card; English subtitles (`.sub`, hidden by `<body class="no-subs">`) |
 | `art/` | Codex drawings (PNG) and cut-outs (WebP); `art/friend/` the friend's drawings and her design reference (`chosen-2.png`) |
 
 If the take is re-recorded, re-measure the swipe times on a contact sheet of `renders/app/swipe-60.mp4` and update `scripts/app_track.sh`, the chip times in `hf/index.html` and `DRAGS`/`FLY` in `scripts/mix.py`.
+
+The forgetting curve is a picture (tagged イメージ), not the app's FSRS numbers: only the app's own next-review labels (もう一度 1分後, 覚えていた 10分後, 簡単 ≈8日後 for a new card) are written on it.
 
 Not in Git: the simulator take, `hf/assets/` (app track, shot, art copies, mix, staged kit), renders and the final MP4.

@@ -14,14 +14,16 @@ FLICKS = (0.15, 0.45, 0.75)         # hook: cards flick off Mimi's phone
 TEASE = 0.95                       # the friend: マッチングアプリじゃん！
 DENY = 2.3                         # Mimi: ちがうって！
 COPY = 3.9                         # 英語の復習も、スワイプで。
-DRAGS = (5.32, 7.08, 8.76, 10.52)  # the real app: right, left, right, up (scripts/app_track.sh)
-FLY = (6.44, 8.04, 9.72, 11.48)    # each card is let go
-DATE = 12.9                        # じゃあ、デートしてくる！
-TSUKKOMI = 14.7                    # そっちもやってるんかい！
-END = 16.1
+DRAGS = (5.16, 6.92, 8.33, 9.55)   # the real app: right, left, right, up (scripts/app_track.sh)
+FLY = (6.28, 7.88, 8.93, 10.51)     # each card is let go
+DATE = 14.25                       # じゃあ、デートしてくる！
+CURVE = 11.95                      # 忘れかけたころに、また出てくる。 (forgetting-curve card)
+CURVE_DOTS = (12.47, 12.71, 13.11, 13.75) # review dots pop on the curve
+TSUKKOMI = 15.75                   # そっちもやってるんかい！
+END = 16.85
 CTA_TAP = END + 0.45
 
-m = Mix(17.4)
+m = Mix(17.95)
 for at in FLICKS:
     m.sfx(whoosh(0.22, 0.16), at)
 m.sfx(pofu() * 0.45, TEASE)
@@ -32,6 +34,9 @@ for at in DRAGS:
     m.sfx(tap() * 0.35, at)
 for at in FLY:
     m.sfx(whoosh(0.3, 0.22), at)
+m.sfx(pop_seq(2, 0.05, base=76), CURVE)
+for i, at in enumerate(CURVE_DOTS):
+    m.sfx(bell(79 + 2 * i, 0.4, 0.035), at)
 m.sfx(bell(84, 0.6, 0.05), DATE + 0.1)
 m.sfx(clang(0.2), TSUKKOMI)
 m.sfx(pofu() * 0.4, TSUKKOMI + 0.05)

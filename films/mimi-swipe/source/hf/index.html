@@ -45,25 +45,31 @@
       .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
       .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
                   font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+      .type.curve { gap: 34px; }
+      .type.curve .big { font-size: 86px; }
+      .subline { font-size: 38px; font-weight: 700; color: #596875; }
+      .graph { position: relative; }
+      .graph svg { display: block; font-family: "Zen Maru Gothic", sans-serif; font-weight: 700; }
+      .img-tag { position: absolute; right: 10px; top: -6px; background: #eef2f5; color: #596875; font-size: 28px; font-weight: 700; padding: 6px 18px; border-radius: 20px; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.95" data-width="1080" data-height="1920">
       <!-- The real app (5.0-12.92): Mimi swiping along beside the phone -->
       <div id="demo">
         <div id="mimi">
-          <video id="v-swipe" class="clip" src="assets/shots/swipe.mp4" muted playsinline data-start="4.9" data-duration="8.1" data-track-index="1"></video>
+          <video id="v-swipe" class="clip" src="assets/shots/swipe.mp4" muted playsinline data-start="4.9" data-duration="7.05" data-track-index="1"></video>
         </div>
         <div id="device">
           <div id="screen">
-            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="5" data-duration="7.92" data-track-index="2"></video>
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="5" data-duration="6.95" data-track-index="2"></video>
           </div>
         </div>
       </div>
-      <div id="d1" class="dir good clip" data-start="5.32" data-duration="1.45" data-track-index="3">覚えていた <b>→</b></div>
-      <div id="d2" class="dir again clip" data-start="7.08" data-duration="1.3" data-track-index="3"><b>←</b> もう一度</div>
-      <div id="d3" class="dir good clip" data-start="8.76" data-duration="1.3" data-track-index="3">覚えていた <b>→</b></div>
-      <div id="d4" class="dir easy clip" data-start="10.52" data-duration="1.5" data-track-index="3"><b>↑</b> 簡単</div>
+      <div id="d1" class="dir good clip" data-start="5.16" data-duration="1.45" data-track-index="3">覚えていた <b>→</b></div>
+      <div id="d2" class="dir again clip" data-start="6.92" data-duration="1.3" data-track-index="3"><b>←</b> もう一度</div>
+      <div id="d3" class="dir good clip" data-start="8.33" data-duration="0.85" data-track-index="3">覚えていた <b>→</b></div>
+      <div id="d4" class="dir easy clip" data-start="9.55" data-duration="1.5" data-track-index="3"><b>↑</b> 簡単</div>
 
       <!-- Opening (0-3.95): Mimi swiping away; the friend teases; Mimi denies -->
       <div id="open" class="stage clip" data-start="0" data-duration="3.95" data-track-index="4">
@@ -83,8 +89,28 @@
         <div class="row"><span id="p1" class="pill again">← もう一度</span><span id="p2" class="pill easy">↑ 簡単</span><span id="p3" class="pill good">覚えていた →</span></div>
       </div>
 
+      <!-- Why the cards come back (11.95-14.25): a forgetting curve, picture only; times are the app's own button labels -->
+      <div id="curve" class="type curve clip" data-start="11.95" data-duration="2.35" data-track-index="11">
+        <div id="big2" class="big">忘れかけたころに、<br /><strong>また出てくる</strong>。</div>
+        <div id="subline" class="subline">覚えてたら間隔がのびる・忘れたらすぐもう一度</div>
+        <div class="graph">
+          <svg id="fc" viewBox="0 0 900 520" width="960" height="555">
+            <defs><clipPath id="reveal"><rect id="rv" x="0" y="0" width="0" height="520" /></clipPath></defs>
+            <line x1="60" y1="40" x2="60" y2="440" stroke="#9fb0bd" stroke-width="4" />
+            <line x1="60" y1="440" x2="880" y2="440" stroke="#9fb0bd" stroke-width="4" />
+            <line x1="60" y1="330" x2="880" y2="330" stroke="#e5a0a8" stroke-width="3" stroke-dasharray="10 10" />
+            <text x="872" y="318" text-anchor="end" font-size="28" fill="#c25a68">忘れる</text>
+            <text x="74" y="30" font-size="28" fill="#596875">覚えている</text>
+            <text x="880" y="514" text-anchor="end" font-size="26" fill="#596875">時間 →</text>
+            <path id="fcline" d="" fill="none" stroke="#273b4b" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" clip-path="url(#reveal)" />
+            <g id="fcdots"></g>
+          </svg>
+          <div class="img-tag">イメージ</div>
+        </div>
+      </div>
+
       <!-- Ending (12.92-15.7): off to a date; the friend's retort -->
-      <div id="close" class="stage clip" data-start="12.92" data-duration="3.25" data-track-index="6">
+      <div id="close" class="stage clip" data-start="14.25" data-duration="2.65" data-track-index="6">
         <img id="f-oops" class="friend" src="assets/art/friend-oops.webp" alt="" />
         <img id="f-tsk" class="friend" src="assets/art/friend-tsukkomi.webp" alt="" />
         <img id="m-date" class="mimi" src="assets/art/date.webp" alt="" />
@@ -93,26 +119,28 @@
       </div>
 
       <!-- Captions (one track) -->
-      <div id="cap-1" class="caption clip" data-start="5.05" data-duration="1.95" data-track-index="7"><span id="c1">覚えてたら、<strong>右</strong>。</span></div>
-      <div id="cap-2" class="caption clip" data-start="7" data-duration="1.7" data-track-index="7"><span id="c2">忘れてたら、<em>左</em>。</span></div>
-      <div id="cap-3" class="caption clip" data-start="8.7" data-duration="1.75" data-track-index="7"><span id="c3">1枚ずつ、<strong>サクサク</strong>。</span></div>
-      <div id="cap-4" class="caption clip" data-start="10.45" data-duration="2.47" data-track-index="7"><span id="c4">簡単なら、<strong>上</strong>。</span></div>
+      <div id="cap-1" class="caption clip" data-start="5.05" data-duration="1.85" data-track-index="7"><span id="c1">覚えてたら、<strong>右</strong>。</span></div>
+      <div id="cap-2" class="caption clip" data-start="6.9" data-duration="1.38" data-track-index="7"><span id="c2">忘れてたら、<em>左</em>。</span></div>
+      <div id="cap-3" class="caption clip" data-start="8.28" data-duration="0.95" data-track-index="7"><span id="c3">1枚ずつ、<strong>サクサク</strong>。</span></div>
+      <div id="cap-4" class="caption clip" data-start="9.23" data-duration="2.72" data-track-index="7"><span id="c4">簡単なら、<strong>上</strong>。</span></div>
 
-      <div id="end" class="end clip" data-start="16.1" data-duration="1.3" data-track-index="8"></div>
+      <div id="end" class="end clip" data-start="16.85" data-duration="1.1" data-track-index="8"></div>
+
 
       <!-- English subtitles (one track) -->
       <div class="sub clip" data-start="0.95" data-duration="1.35" data-track-index="10"><span>Wait, that’s a dating app!</span></div>
       <div class="sub clip" data-start="2.3" data-duration="1.6" data-track-index="10"><span>No! It’s my English phrase review!</span></div>
       <div class="sub clip" data-start="3.9" data-duration="1.15" data-track-index="10"><span>Review English with a swipe, too.</span></div>
-      <div class="sub clip" data-start="5.05" data-duration="1.95" data-track-index="10"><span>Remembered it? Swipe right.</span></div>
-      <div class="sub clip" data-start="7.0" data-duration="1.7" data-track-index="10"><span>Forgot it? Swipe left.</span></div>
-      <div class="sub clip" data-start="8.7" data-duration="1.75" data-track-index="10"><span>One card at a time, nice and quick.</span></div>
-      <div class="sub clip" data-start="10.45" data-duration="2.47" data-track-index="10"><span>Too easy? Swipe up.</span></div>
-      <div class="sub clip" data-start="12.92" data-duration="1.78" data-track-index="10"><span>Then I’m off on a date with my match!</span></div>
-      <div class="sub clip" data-start="14.7" data-duration="1.4" data-track-index="10"><span>So you’re on those too!?</span></div>
-      <div class="sub clip" data-start="16.1" data-duration="1.3" data-track-index="10"><span>Native pronunciation in your own voice. 7 days free.</span></div>
+      <div class="sub clip" data-start="5.05" data-duration="1.85" data-track-index="10"><span>Remembered it? Swipe right.</span></div>
+      <div class="sub clip" data-start="6.9" data-duration="1.38" data-track-index="10"><span>Forgot it? Swipe left.</span></div>
+      <div class="sub clip" data-start="8.28" data-duration="0.95" data-track-index="10"><span>Card after card, quick.</span></div>
+      <div class="sub clip" data-start="9.23" data-duration="2.72" data-track-index="10"><span>Too easy? Swipe up.</span></div>
+      <div class="sub clip" data-start="11.95" data-duration="2.3" data-track-index="10"><span>It comes back right before you’d forget.</span></div>
+      <div class="sub clip" data-start="14.25" data-duration="1.5" data-track-index="10"><span>Then I’m off on a date with my match!</span></div>
+      <div class="sub clip" data-start="15.75" data-duration="1.1" data-track-index="10"><span>So you’re on those too!?</span></div>
+      <div class="sub clip" data-start="16.85" data-duration="1.1" data-track-index="10"><span>Native pronunciation in your own voice. 7 days free.</span></div>
 
-      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.4" data-track-index="9" data-volume="1"></audio>
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.95" data-track-index="9" data-volume="1"></audio>
     </div>
     <script>
       const K = window.MimiKit;
@@ -148,26 +176,48 @@
       // The real app (5.0-12.92)
       tl.set("#mimi", { x: -240, y: 150, scale: 0.55 }, 4.9);
       tl.fromTo("#device", { y: 60 }, { y: 0, duration: 0.3, ease: "power3.out" }, 4.95);
-      [["#d1", 5.32, 6.6], ["#d2", 7.08, 8.2], ["#d3", 8.76, 9.88], ["#d4", 10.52, 11.85]].forEach(([s, a, b]) => {
+      [["#d1", 5.16, 6.45], ["#d2", 6.92, 8.05], ["#d3", 8.33, 9.03], ["#d4", 9.55, 10.9]].forEach(([s, a, b]) => {
         tl.fromTo(s, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, a);
         tl.to(s, { opacity: 0, duration: 0.15 }, b);
       });
-      k.pop("#c1", 5.05); k.pop("#c2", 7); k.pop("#c3", 8.7); k.pop("#c4", 10.45);
+      k.pop("#c1", 5.05); k.pop("#c2", 6.9); k.pop("#c3", 8.28); k.pop("#c4", 9.23);
 
       // Ending (12.92-15.7): "then I'm off on a date with my match!" — "so you ARE using one?!"
-      tl.fromTo("#m-date", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 12.92);
-      tl.fromTo("#m-date", { y: 0 }, { y: -24, duration: 0.16, yoyo: true, repeat: 9, ease: "sine.out", immediateRender: false }, 13.05);
-      tl.fromTo("#f-oops", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 12.92);
-      tl.fromTo("#b-date", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 13.0);
-      tl.set("#f-oops", { opacity: 0 }, 14.7);
-      tl.fromTo("#f-tsk", { opacity: 0, x: -30 }, { opacity: 1, x: 30, duration: 0.1, ease: "power3.out" }, 14.7);
-      tl.to("#f-tsk", { x: 0, duration: 0.25, ease: "elastic.out(1, 0.4)" }, 14.8);
-      tl.fromTo("#b-tsk", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 14.7);
-      tl.to("#b-date", { opacity: 0, duration: 0.15 }, 15.2);
-      tl.to("#m-date", { x: 700, duration: 0.45, ease: "power2.in" }, 15.25);
+      tl.fromTo("#m-date", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 14.25);
+      tl.fromTo("#m-date", { y: 0 }, { y: -24, duration: 0.16, yoyo: true, repeat: 7, ease: "sine.out", immediateRender: false }, 14.38);
+      tl.fromTo("#f-oops", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 14.25);
+      tl.fromTo("#b-date", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 14.33);
+      tl.set("#f-oops", { opacity: 0 }, 15.75);
+      tl.fromTo("#f-tsk", { opacity: 0, x: -30 }, { opacity: 1, x: 30, duration: 0.1, ease: "power3.out" }, 15.75);
+      tl.to("#f-tsk", { x: 0, duration: 0.25, ease: "elastic.out(1, 0.4)" }, 15.85);
+      tl.fromTo("#b-tsk", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 15.75);
+      tl.to("#b-date", { opacity: 0, duration: 0.15 }, 16.15);
+      tl.to("#m-date", { x: 700, duration: 0.45, ease: "power2.in" }, 16.25);
 
-      k.end(16.1);
-      k.tapCta(16.55);
+      // Forgetting curve (11.95-14.25): decays toward 忘れる, a review dot pops just before it and lifts it; the gaps grow
+      (function () {
+        const top = 60, low = 318, pts = [60, 140, 260, 450, 760], tail = 880, labels = ["1分後", "10分後", "…", "≈8日後"];
+        let d = `M${pts[0]},${top}`;
+        const seg = (x0, x1, to) => { const a = 4 / (x1 - x0); for (let x = x0; x <= x1; x += 4) {
+          d += ` L${x},${(top + (to - top) * (1 - Math.exp(-a * (x - x0))) / (1 - Math.exp(-4))).toFixed(1)}`; } };
+        for (let i = 0; i < pts.length - 1; i++) { seg(pts[i], pts[i + 1], low); d += ` L${pts[i + 1]},${top}`; }
+        seg(pts[pts.length - 1], tail, 200);
+        document.getElementById("fcline").setAttribute("d", d);
+        document.getElementById("fcdots").innerHTML = pts.slice(1).map((x, i) =>
+          `<g class="fcd" id="fcd${i}"><circle cx="${x}" cy="${top}" r="15" fill="#2a8dff" stroke="#fff" stroke-width="5" />` +
+          `<text x="${x}" y="476" text-anchor="middle" font-size="30" fill="#1f7ae0">${labels[i]}</text></g>`).join("");
+        tl.fromTo("#curve", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 11.95);
+        tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 12.0);
+        tl.fromTo("#subline", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 12.15);
+        tl.fromTo("#rv", { attr: { width: 60 } }, { attr: { width: 900 }, duration: 1.7, ease: "none" }, 12.3);
+        pts.slice(1).forEach((x, i) => {
+          const at = 12.3 + 1.7 * (x - 60) / 840;
+          tl.fromTo(`#fcd${i}`, { opacity: 0, scale: 0.3, transformOrigin: `${x}px ${top}px` }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, at);
+        });
+      })();
+
+      k.end(16.85);
+      k.tapCta(17.3);
 
       window.__timelines["main"] = tl;
       tl.seek(0);
