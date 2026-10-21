@@ -22,10 +22,10 @@ ZOOM = 9.6
 FRIEND = 11.0          # the French friend
 COURT = 11.25
 REPLY = 13.4           # Mimi: …こっちは3分が長いんだけど
-MESSAGE = 15.2         # “使える”英語は… (Swain 1985, Output Hypothesis)
-END = 17.2
-CTA_TAP = 17.8
-TOTAL = 18.6
+MESSAGE = 15.2         # researcher Mimi: the output hypothesis
+END = 17.6
+CTA_TAP = 18.2
+TOTAL = 19.0
 
 m = Mix(TOTAL, voice_dir=SRC / 'assets/voice')
 m.sfx(freeze(0.4), HOOK)
@@ -46,6 +46,7 @@ m.sfx(boing(True), FRIEND)
 m.voice('court-ff_siwis.wav', COURT, g=0.9)
 m.sfx(pofu() * 0.6, REPLY + 0.05)
 m.sfx(whoosh(0.3, 0.3), MESSAGE - 0.05)
+m.sfx(pop_seq(3, 0.05, base=79), MESSAGE + 0.4)
 m.bed(APP, END)
 m.end_chord(END)
 m.sfx(pochi(), CTA_TAP)
