@@ -1,0 +1,9 @@
+--- a/native-ios/Lanclo/Core/AppStore.swift
++++ b/native-ios/Lanclo/Core/AppStore.swift
+@@
+         voiceProfile = VoiceProfile(enrolled: true, session: false, ownership: "private", delivery: 1)
+         voiceLibrary = fixture.library
++        if arguments.contains("--qa-film-first-voice") {
++            // Capture-only (Mimi shorts): a learner who has not set up a voice yet, so /voice/new shows the first setup.
++            voiceProfile = VoiceProfile(enrolled: false, session: false, ownership: "private", delivery: 1)
++        }

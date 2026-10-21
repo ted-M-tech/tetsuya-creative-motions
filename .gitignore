@@ -86,3 +86,8 @@ films/mimi-roleplay/source/hf/assets/
 films/mimi-roleplay/source/hf/.hyperframes/
 films/mimi-roleplay/source/hf/.thumbnails/
 !films/mimi-roleplay/source/assets/voice/
+films/mimi-voice/source/hf/assets/
+films/mimi-voice/source/hf/.hyperframes/
+films/mimi-voice/source/hf/.thumbnails/
+films/mimi-voice/source/renders/
+!films/mimi-voice/source/assets/voice/
