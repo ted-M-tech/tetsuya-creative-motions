@@ -78,3 +78,7 @@ films/mimi-action-lesson/source/hf/assets/
 films/mimi-action-lesson/source/hf/.hyperframes/
 films/mimi-action-lesson/source/hf/.thumbnails/
 !films/mimi-action-lesson/source/assets/voice/
+films/mimi-swipe/source/rive/*/build/
+films/mimi-swipe/source/hf/assets/
+films/mimi-swipe/source/hf/.hyperframes/
+films/mimi-swipe/source/hf/.thumbnails/

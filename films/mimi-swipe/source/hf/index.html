@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* The two-shots: the friend on the left, Mimi on the right, both standing on the same line */
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 500px; }
+      .mimi { right: 30px; width: 480px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.first { top: 300px; }
+      .stage .bubble.reply { top: 590px; }
+      .stage .bubble.big { font-size: 66px; }
+      /* cards flicking off Mimi's phone in the hook */
+      .flick { position: absolute; left: 700px; top: 1130px; width: 110px; height: 150px; margin: -75px 0 0 -55px; border-radius: 22px; background: #fff;
+               border: 5px solid #273b4b; display: flex; align-items: center; justify-content: center; font-size: 60px; font-weight: 700; opacity: 0; }
+      .flick.good { color: #2f9e5b; } .flick.again { color: #c96d16; }
+      /* the real app: the phone on the right, Mimi beside it */
+      #mimi { position: absolute; inset: 0; transform-origin: 480px 1330px; }
+      #mimi video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* which way = which rating, as the app labels them */
+      .dir { position: absolute; left: 40px; top: 560px; display: flex; align-items: center; gap: 14px; background: #fff; font-size: 56px; font-weight: 700;
+             padding: 18px 34px; border-radius: 50px; box-shadow: 0 12px 30px rgba(39, 59, 75, 0.16); }
+      .dir b { font-size: 64px; }
+      .dir.good { color: #2f9e5b; } .dir.again { color: #c96d16; } .dir.easy { color: #1f7ae0; }
+      /* Clean type card: one line of copy on white, the three directions as pills */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 80px; }
+      .type .big { font-size: 104px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .row { display: flex; gap: 14px; justify-content: center; }
+      .type .pill { font-size: 42px; font-weight: 700; padding: 16px 26px; border-radius: 44px; background: #eef2f5; white-space: nowrap; }
+      .pill.again { color: #c96d16; } .pill.easy { color: #1f7ae0; } .pill.good { color: #2f9e5b; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
+      <!-- The real app (5.0-12.92): Mimi swiping along beside the phone -->
+      <div id="demo">
+        <div id="mimi">
+          <video id="v-swipe" class="clip" src="assets/shots/swipe.mp4" muted playsinline data-start="4.9" data-duration="8.1" data-track-index="1"></video>
+        </div>
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="5" data-duration="7.92" data-track-index="2"></video>
+          </div>
+        </div>
+      </div>
+      <div id="d1" class="dir good clip" data-start="5.32" data-duration="1.45" data-track-index="3">覚えていた <b>→</b></div>
+      <div id="d2" class="dir again clip" data-start="7.08" data-duration="1.3" data-track-index="3"><b>←</b> もう一度</div>
+      <div id="d3" class="dir good clip" data-start="8.76" data-duration="1.3" data-track-index="3">覚えていた <b>→</b></div>
+      <div id="d4" class="dir easy clip" data-start="10.52" data-duration="1.5" data-track-index="3"><b>↑</b> 簡単</div>
+
+      <!-- Opening (0-3.95): Mimi swiping away; the friend teases; Mimi denies -->
+      <div id="open" class="stage clip" data-start="0" data-duration="3.95" data-track-index="4">
+        <img id="f-tease" class="friend" src="assets/art/friend-tease.webp" alt="" />
+        <img id="m-swipe" class="mimi" src="assets/art/swipe.webp" alt="" />
+        <img id="m-fluster" class="mimi" src="assets/art/fluster.webp" alt="" />
+        <div id="k1" class="flick good" data-layout-allow-overlap>✓</div>
+        <div id="k2" class="flick again" data-layout-allow-overlap>↺</div>
+        <div id="k3" class="flick good" data-layout-allow-overlap>✓</div>
+        <div id="b-tease" class="bubble from-left first big">え、それ<br />マッチングアプリじゃん！</div>
+        <div id="b-deny" class="bubble from-right reply">ちがうって！<br />これ、英語のフレーズ復習なの！</div>
+      </div>
+
+      <!-- The copy (3.9-5.05) -->
+      <div id="copy" class="type clip" data-start="3.9" data-duration="1.15" data-track-index="5">
+        <div id="big1" class="big">英語の復習も、<br /><strong>スワイプ</strong>で。</div>
+        <div class="row"><span id="p1" class="pill again">← もう一度</span><span id="p2" class="pill easy">↑ 簡単</span><span id="p3" class="pill good">覚えていた →</span></div>
+      </div>
+
+      <!-- Ending (12.92-15.7): off to a date; the friend's retort -->
+      <div id="close" class="stage clip" data-start="12.92" data-duration="3.25" data-track-index="6">
+        <img id="f-oops" class="friend" src="assets/art/friend-oops.webp" alt="" />
+        <img id="f-tsk" class="friend" src="assets/art/friend-tsukkomi.webp" alt="" />
+        <img id="m-date" class="mimi" src="assets/art/date.webp" alt="" />
+        <div id="b-date" class="bubble from-right first">じゃあ、マッチングアプリの<br />人とデートしてくる！</div>
+        <div id="b-tsk" class="bubble from-left reply big">そっちも<br />やってるんかい！</div>
+      </div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-1" class="caption clip" data-start="5.05" data-duration="1.95" data-track-index="7"><span id="c1">覚えてたら、<strong>右</strong>。</span></div>
+      <div id="cap-2" class="caption clip" data-start="7" data-duration="1.7" data-track-index="7"><span id="c2">忘れてたら、<em>左</em>。</span></div>
+      <div id="cap-3" class="caption clip" data-start="8.7" data-duration="1.75" data-track-index="7"><span id="c3">1枚ずつ、<strong>サクサク</strong>。</span></div>
+      <div id="cap-4" class="caption clip" data-start="10.45" data-duration="2.47" data-track-index="7"><span id="c4">簡単なら、<strong>上</strong>。</span></div>
+
+      <div id="end" class="end clip" data-start="16.1" data-duration="1.3" data-track-index="8"></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.4" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Hook (0-0.95): Mimi big in the centre, flicking cards off her phone right, left, right
+      tl.fromTo("#m-swipe", { x: -270, scale: 1.3 }, { x: -270, scale: 1.3, duration: 0.9 }, 0);
+      tl.fromTo("#m-swipe", { rotation: 0 }, { rotation: 3, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 0.0);
+      [["#k1", 1, 0.15], ["#k2", -1, 0.45], ["#k3", 1, 0.75]].forEach(([s, d, at]) => {
+        tl.fromTo(s, { x: 0, y: 0, scale: 0.5, rotation: 0, opacity: 1 }, { x: d > 0 ? 520 : -900, y: d > 0 ? -260 : 80, scale: 1.5, rotation: 30 * d, opacity: 1, duration: 0.32, ease: "power1.out", immediateRender: false }, at);
+        tl.set(s, { opacity: 0 }, at + 0.3);
+      });
+      // the friend walks in; Mimi steps aside, still swiping
+      tl.to("#m-swipe", { x: 0, scale: 1, duration: 0.3, ease: "power3.inOut" }, 0.9);
+      tl.fromTo("#f-tease", { x: -520, opacity: 1 }, { x: 0, opacity: 1, duration: 0.3, ease: "back.out(1.4)" }, 0.9);
+      tl.fromTo("#b-tease", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.98);
+      tl.fromTo("#f-tease", { rotation: 0 }, { rotation: -4, duration: 0.18, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 1.2);
+      // Mimi denies (2.3)
+      tl.set("#m-swipe", { opacity: 0 }, 2.3);
+      tl.fromTo("#m-fluster", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1, duration: 0.01 }, 2.3);
+      tl.fromTo("#m-fluster", { x: 0 }, { x: -14, duration: 0.05, yoyo: true, repeat: 9, immediateRender: false }, 2.32);
+      tl.fromTo("#b-deny", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 2.35);
+
+      // The copy (3.9-5.05)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.9);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 3.95);
+      tl.fromTo(["#p1", "#p2", "#p3"], { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, stagger: 0.07 }, 4.25);
+      tl.to("#copy", { opacity: 0, duration: 0.12 }, 4.93);
+
+      // The real app (5.0-12.92)
+      tl.set("#mimi", { x: -240, y: 150, scale: 0.55 }, 4.9);
+      tl.fromTo("#device", { y: 60 }, { y: 0, duration: 0.3, ease: "power3.out" }, 4.95);
+      [["#d1", 5.32, 6.6], ["#d2", 7.08, 8.2], ["#d3", 8.76, 9.88], ["#d4", 10.52, 11.85]].forEach(([s, a, b]) => {
+        tl.fromTo(s, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, a);
+        tl.to(s, { opacity: 0, duration: 0.15 }, b);
+      });
+      k.pop("#c1", 5.05); k.pop("#c2", 7); k.pop("#c3", 8.7); k.pop("#c4", 10.45);
+
+      // Ending (12.92-15.7): "then I'm off on a date with my match!" — "so you ARE using one?!"
+      tl.fromTo("#m-date", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 12.92);
+      tl.fromTo("#m-date", { y: 0 }, { y: -24, duration: 0.16, yoyo: true, repeat: 9, ease: "sine.out", immediateRender: false }, 13.05);
+      tl.fromTo("#f-oops", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 12.92);
+      tl.fromTo("#b-date", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 13.0);
+      tl.set("#f-oops", { opacity: 0 }, 14.7);
+      tl.fromTo("#f-tsk", { opacity: 0, x: -30 }, { opacity: 1, x: 30, duration: 0.1, ease: "power3.out" }, 14.7);
+      tl.to("#f-tsk", { x: 0, duration: 0.25, ease: "elastic.out(1, 0.4)" }, 14.8);
+      tl.fromTo("#b-tsk", { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 14.7);
+      tl.to("#b-date", { opacity: 0, duration: 0.15 }, 15.2);
+      tl.to("#m-date", { x: 700, duration: 0.45, ease: "power2.in" }, 15.25);
+
+      k.end(16.1);
+      k.tapCta(16.55);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
