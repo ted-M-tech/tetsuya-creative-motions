@@ -1,0 +1,7 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L", pink cheeks, mitten hands, small feet). Design Mimi's FRIEND: the same species, body shape, proportions, head size, outline weight and flat illustration style, so they clearly belong to the same world, but recognisably a different bunny — like two cats of different breeds. The friend must NOT wear Mimi's headphones or the "L" logo. Pose for all three: standing, three-quarter view turned slightly toward the viewer's LEFT (so the friend can face Mimi), one mitten raised to the mouth in a cheeky, slightly smug "aww~" giggle, eyes half-closed. Plain pure white background, full body, centred, no text.
+
+Save three options as PNG in art/friend/ (relative to the current directory):
+1) art/friend/a-cream.png — cream / light beige fur with warm brown ear tips and a small brown patch around one eye, peach inner ears, a little pink scrunchie on one ear.
+2) art/friend/b-lop.png — soft grey lop-eared bunny (both ears hanging down at the sides), coral-pink inner ears and cheeks, a white muzzle and tummy patch, a small yellow star hair clip.
+3) art/friend/c-calico.png — white bunny with calico-like patches (soft orange and dark grey spots on one ear and the back), pink inner ears, a mint-green neckerchief.
+Do not modify other files. List the saved paths when done.
