@@ -22,6 +22,12 @@
       .stage .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
       .stage .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
       .tag.brit span { background: #2a8dff; }
+      /* The spoken English line, on a card at the top (the same sentence both voices read) */
+      .line { position: absolute; left: 60px; right: 60px; top: 90px; background: #ffffff; border-radius: 28px; padding: 20px 30px;
+              box-shadow: 0 10px 30px rgba(39, 59, 75, 0.12); font-size: 44px; font-weight: 700; line-height: 1.35; color: #273b4b; text-align: center; }
+      .line .mk { border-radius: 10px; padding: 0 4px; }
+      .line small { display: block; font-size: 30px; font-weight: 700; color: #2a8dff; margin-top: 8px; }
+      #b-ooh { top: 420px !important; }
       /* The real app, big in the centre */
       #device { position: absolute; left: 300px; top: 530px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
                 box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
@@ -45,30 +51,31 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
-      <!-- Opening (0-2.9): Mimi hears her AI voice and tilts her head -->
-      <div id="open" class="stage clip" data-start="0" data-duration="2.9" data-track-index="1">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="19.6" data-width="1080" data-height="1920">
+      <!-- Opening (0-3.75): Mimi hears her AI voice and tilts her head -->
+      <div id="open" class="stage clip" data-start="0" data-duration="3.75" data-track-index="1">
         <img id="o-mimi" class="solo" src="assets/art/mimi-tilt.webp" alt="" />
         <div id="b-hmm" class="bubble from-right first big">……あれ？</div>
         <div id="b-notme" class="bubble from-right reply">なんか、ちょっと<br />私っぽくない…？</div>
+        <div id="l-us" class="line">Can’t I have a bottle of water<br />after the party?</div>
         <div id="t-mine" class="tag model"><span><span class="wave" id="w1"></span>私のAIボイス</span></div>
       </div>
 
-      <!-- The hook card (2.9-4.1) -->
-      <div id="copy" class="type clip" data-start="2.9" data-duration="1.2" data-track-index="2">
+      <!-- The hook card (3.75-4.95) -->
+      <div id="copy" class="type clip" data-start="3.75" data-duration="1.2" data-track-index="2">
         <div id="big1" class="big">AIボイスは<br /><span class="one">アクセント</span>も<br />リクエストできる！</div>
       </div>
 
-      <!-- The real app (4.1-11.45): 声の調整 in the simulator, fixture data -->
+      <!-- The real app (4.95-12.3): 声の調整 in the simulator, fixture data -->
       <div id="app" class="stage" style="opacity:0">
         <div id="device">
           <div id="screen">
-            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="4.1" data-duration="7.35" data-track-index="4"></video>
-            <div id="tp1" class="tap clip" style="left:26%; top:48.5%" data-start="4.62" data-duration="0.3" data-track-index="5"></div>
-            <div id="tp2" class="tap clip" style="left:72%; top:28.7%" data-start="5.095" data-duration="0.3" data-track-index="5"></div>
-            <div id="tp3" class="tap clip" style="left:21%; top:54.2%" data-start="5.725" data-duration="0.3" data-track-index="5"></div>
-            <div id="tp4" class="tap clip" style="left:21%; top:68.6%" data-start="6.345" data-duration="0.3" data-track-index="5"></div>
-            <div id="tp5" class="tap clip" style="left:50%; top:85.6%" data-start="6.6" data-duration="0.3" data-track-index="5"></div>
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="4.95" data-duration="7.35" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:26%; top:48.5%" data-start="5.47" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp2" class="tap clip" style="left:72%; top:28.7%" data-start="5.945" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp3" class="tap clip" style="left:21%; top:54.2%" data-start="6.575" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp4" class="tap clip" style="left:21%; top:68.6%" data-start="7.195" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp5" class="tap clip" style="left:50%; top:85.6%" data-start="7.45" data-duration="0.3" data-track-index="5"></div>
             <div id="pulse"></div>
             <div id="pick"></div>
           </div>
@@ -76,43 +83,45 @@
       </div>
 
       <!-- Step captions on the app (the app's own labels) -->
-      <div id="cap-1" class="caption small clip" data-start="4.1" data-duration="2.45" data-track-index="6"><span id="c1"><b class="step">1</b>話し方を選ぶ</span></div>
-      <div id="cap-2" class="caption small clip" data-start="6.55" data-duration="2.6" data-track-index="6"><span id="c2"><b class="step">2</b>発音・話し方のリクエスト<i class="hint">「イギリス英語っぽく」</i></span></div>
-      <div id="cap-3" class="caption small clip" data-start="9.15" data-duration="0.75" data-track-index="6"><span id="c3"><b class="step">3</b>試聴音声を作る</span></div>
-      <div id="cap-4" class="caption small clip" data-start="9.9" data-duration="1.55" data-track-index="6"><span id="c4">できた試聴音声を<strong>聴きくらべ</strong></span></div>
+      <div id="cap-1" class="caption small clip" data-start="4.95" data-duration="2.45" data-track-index="6"><span id="c1"><b class="step">1</b>話し方を選ぶ</span></div>
+      <div id="cap-2" class="caption small clip" data-start="7.4" data-duration="2.6" data-track-index="6"><span id="c2"><b class="step">2</b>発音・話し方のリクエスト<i class="hint">「イギリス英語っぽく」</i></span></div>
+      <div id="cap-3" class="caption small clip" data-start="10.0" data-duration="0.75" data-track-index="6"><span id="c3"><b class="step">3</b>試聴音声を作る</span></div>
+      <div id="cap-4" class="caption small clip" data-start="10.75" data-duration="1.55" data-track-index="6"><span id="c4">できた試聴音声を<strong>聴きくらべ</strong></span></div>
 
-      <!-- The preview (11.45-14.0): a British-sounding voice (stand-in) -->
-      <div id="hear" class="stage clip" data-start="11.45" data-duration="2.55" data-track-index="1">
+      <!-- The preview (12.3-16.2): the owner's own voice with the British request -->
+      <div id="hear" class="stage clip" data-start="12.3" data-duration="3.9" data-track-index="1">
         <img id="h-mimi" class="solo" src="assets/art/mimi-sparkle.webp" alt="" />
         <div id="b-ooh" class="bubble from-right first big">これこれ〜！</div>
+        <div id="l-uk" class="line"><span class="mk" id="m1">Can’t</span> I have a <span class="mk" id="m2">bottle</span> of <span class="mk" id="m3">water</span><br /><span class="mk" id="m4">after</span> the <span class="mk" id="m5">party</span>?<small id="l-hint">r を発音しない・t がくっきり・a は「アー」</small></div>
         <div id="t-brit" class="tag model brit"><span><span class="wave" id="w2"></span>試聴音声（イメージ）</span></div>
-        <div class="note">※英語の声は動画用の合成音声によるイメージです。<br />The English voices are illustrative synthetic stand-ins.</div>
+        <div class="note">※英語の声は制作者本人がLancloに登録した声のAIボイスです（試聴音声はイメージ）。<br />The English voice is the creator’s own voice registered in Lanclo (preview illustrated).</div>
       </div>
 
-      <!-- The punchline (14.0-16.0) -->
-      <div id="punch" class="stage clip" data-start="14.0" data-duration="2.0" data-track-index="1">
+      <!-- The punchline (16.2-18.2) -->
+      <div id="punch" class="stage clip" data-start="16.2" data-duration="2.0" data-track-index="1">
         <img id="p-friend" class="friend" src="assets/art/friend-tsukkomi.webp" alt="" style="opacity:0" />
         <img id="p-mimi" class="mimi" src="assets/art/mimi-tea.webp" alt="" />
         <div id="b-uk" class="bubble from-right first big">……イギリス帰りの私</div>
         <div id="b-never" class="bubble from-left reply big">行ったことないでしょ！</div>
       </div>
 
-      <div id="end" class="end clip" data-start="16.0" data-duration="1.4" data-track-index="7"></div>
+      <div id="end" class="end clip" data-start="18.2" data-duration="1.4" data-track-index="7"></div>
 
       <!-- English subtitles (one track) -->
-      <div class="sub clip" data-start="0.0" data-duration="1.25" data-track-index="8"><span>…Huh? (My AI voice)</span></div>
-      <div class="sub clip" data-start="1.25" data-duration="1.65" data-track-index="8"><span>It doesn’t quite sound like me…?</span></div>
-      <div class="sub clip" data-start="2.9" data-duration="1.2" data-track-index="8"><span>Your AI voice takes requests — even for accent!</span></div>
-      <div class="sub clip" data-start="4.1" data-duration="2.45" data-track-index="8"><span>1 Choose a speaking style</span></div>
-      <div class="sub clip" data-start="6.55" data-duration="2.6" data-track-index="8"><span>2 Pronunciation request: “Sound a bit British”</span></div>
-      <div class="sub clip" data-start="9.15" data-duration="0.75" data-track-index="8"><span>3 Create preview</span></div>
-      <div class="sub clip" data-start="9.9" data-duration="1.55" data-track-index="8"><span>Compare the previews</span></div>
-      <div class="sub clip" data-start="11.45" data-duration="2.55" data-track-index="8"><span>That’s the one! (Preview, illustrated)</span></div>
-      <div class="sub clip" data-start="14.0" data-duration="1.0" data-track-index="8"><span>…Me, just back from England.</span></div>
-      <div class="sub clip" data-start="15.0" data-duration="1.0" data-track-index="8"><span>You’ve never even been!</span></div>
-      <div class="sub clip" data-start="16.0" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+      <div class="sub clip" data-start="0.0" data-duration="2.75" data-track-index="8"><span>…Huh? (My AI voice)</span></div>
+      <div class="sub clip" data-start="2.75" data-duration="1.0" data-track-index="8"><span>It doesn’t quite sound like me…?</span></div>
+      <div class="sub clip" data-start="3.75" data-duration="1.2" data-track-index="8"><span>Your AI voice takes requests — even for accent!</span></div>
+      <div class="sub clip" data-start="4.95" data-duration="2.45" data-track-index="8"><span>1 Choose a speaking style</span></div>
+      <div class="sub clip" data-start="7.4" data-duration="2.6" data-track-index="8"><span>2 Pronunciation request: “Sound a bit British”</span></div>
+      <div class="sub clip" data-start="10.0" data-duration="0.75" data-track-index="8"><span>3 Create preview</span></div>
+      <div class="sub clip" data-start="10.75" data-duration="1.55" data-track-index="8"><span>Compare the previews</span></div>
+      <div class="sub clip" data-start="12.3" data-duration="3.3" data-track-index="8"><span>British: no r, a crisp t, a long “ah”</span></div>
+      <div class="sub clip" data-start="15.6" data-duration="0.6" data-track-index="8"><span>That’s the one!</span></div>
+      <div class="sub clip" data-start="16.2" data-duration="1.0" data-track-index="8"><span>…Me, just back from England.</span></div>
+      <div class="sub clip" data-start="17.2" data-duration="1.0" data-track-index="8"><span>You’ve never even been!</span></div>
+      <div class="sub clip" data-start="18.2" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
-      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.4" data-track-index="9" data-volume="1"></audio>
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="19.6" data-track-index="9" data-volume="1"></audio>
     </div>
     <script>
       const K = window.MimiKit;
@@ -123,44 +132,50 @@
       const tl = gsap.timeline({ paused: true });
       const k = K.kit(tl);
 
-      // Opening (0-2.9): her AI voice plays; the head tilts further
-      k.tagIn("#t-mine", 0.15); k.wave("#w1", 0.35, 1.45, 0);
-      tl.fromTo("#o-mimi", { rotation: 0 }, { rotation: 6, duration: 0.5, ease: "back.out(2)" }, 0.9);
-      k.pop("#b-hmm", 0.9);
-      tl.to("#b-hmm", { opacity: 0, duration: 0.12 }, 1.2);
-      k.pop("#b-notme", 1.25);
+      // Opening (0-3.75): her AI voice plays; the head tilts further
+      tl.fromTo("#l-us", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.1);
+      k.tagIn("#t-mine", 0.15); k.wave("#w1", 0.34, 2.45, 0);
+      tl.fromTo("#o-mimi", { rotation: 0 }, { rotation: 6, duration: 0.5, ease: "back.out(2)" }, 1.6);
+      k.pop("#b-hmm", 1.6);
+      tl.to("#b-hmm", { opacity: 0, duration: 0.12 }, 2.6);
+      k.pop("#b-notme", 2.75);
 
-      // The hook card (2.9-4.1)
-      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.9);
-      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 2.93);
-      tl.fromTo("#big1 .one", { scale: 1.5 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 2.95);
+      // The hook card (3.75-4.95)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.75);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 3.78);
+      tl.fromTo("#big1 .one", { scale: 1.5 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 3.8);
 
-      // The app (4.1-11.45)
-      tl.set("#app", { opacity: 1 }, 4.1); tl.set("#app", { opacity: 0 }, 11.45);
-      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.1, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.1);
+      // The app (4.95-12.3)
+      tl.set("#app", { opacity: 1 }, 4.95); tl.set("#app", { opacity: 0 }, 12.3);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.1, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.95);
       ["#tp1", "#tp2", "#tp3", "#tp4", "#tp5"].forEach((s) => k.ripple(s, parseFloat(document.querySelector(s).dataset.start)));
-      tl.fromTo("#pulse", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1.04, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }, 9.15);
-      tl.set("#pulse", { opacity: 0 }, 9.88);
-      tl.fromTo("#pick", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 10.0);
-      k.pop("#c1", 4.1); k.pop("#c2", 6.55); k.pop("#c3", 9.15); k.pop("#c4", 9.9);
+      tl.fromTo("#pulse", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1.04, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }, 10.0);
+      tl.set("#pulse", { opacity: 0 }, 10.73);
+      tl.fromTo("#pick", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 10.85);
+      k.pop("#c1", 4.95); k.pop("#c2", 7.4); k.pop("#c3", 10.0); k.pop("#c4", 10.75);
 
-      // The preview (11.45-14.0)
-      tl.fromTo("#h-mimi", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 11.45);
-      tl.fromTo("#h-mimi", { rotation: -3 }, { rotation: 3, duration: 0.45, yoyo: true, repeat: 4, ease: "sine.inOut", immediateRender: false }, 11.7);
-      k.tagIn("#t-brit", 11.55); k.wave("#w2", 11.7, 1.7, 3);
-      k.pop("#b-ooh", 13.2);
+      // The preview (12.3-16.2)
+      tl.fromTo("#h-mimi", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 12.3);
+      tl.fromTo("#h-mimi", { rotation: -3 }, { rotation: 3, duration: 0.45, yoyo: true, repeat: 6, ease: "sine.inOut", immediateRender: false }, 12.55);
+      k.tagIn("#t-brit", 12.4); k.wave("#w2", 12.64, 2.96, 3);
+      k.pop("#b-ooh", 15.6);
+      // the British markers light up as each word is spoken (whisper word starts of own-voice/after-uk.wav + 12.45 s)
+      tl.fromTo("#l-uk", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 12.35);
+      tl.fromTo("#l-hint", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 12.6);
+      [["#m1", 12.66], ["#m2", 13.33], ["#m3", 13.98], ["#m4", 14.40], ["#m5", 15.12]].forEach(([s, at]) =>
+        tl.fromTo(s, { backgroundColor: "rgba(42,141,255,0)", color: "#273b4b" }, { backgroundColor: "rgba(42,141,255,0.16)", color: "#1767c8", duration: 0.12 }, at));
 
-      // The punchline (14.0-16.0)
-      tl.fromTo("#p-mimi", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 14.0);
-      tl.fromTo("#p-mimi", { rotation: 0 }, { rotation: -3, duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 14.3);
-      k.pop("#b-uk", 14.15);
-      tl.to("#b-uk", { opacity: 0, duration: 0.12 }, 14.95);
-      tl.fromTo("#p-friend", { x: -220, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "power3.out", immediateRender: false }, 15.0);
-      k.pop("#b-never", 15.05);
-      tl.fromTo("#p-mimi", { x: 0 }, { x: 12, duration: 0.06, yoyo: true, repeat: 5, immediateRender: false }, 15.2);
+      // The punchline (16.2-18.2)
+      tl.fromTo("#p-mimi", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 16.2);
+      tl.fromTo("#p-mimi", { rotation: 0 }, { rotation: -3, duration: 0.4, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, 16.5);
+      k.pop("#b-uk", 16.35);
+      tl.to("#b-uk", { opacity: 0, duration: 0.12 }, 17.15);
+      tl.fromTo("#p-friend", { x: -220, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "power3.out", immediateRender: false }, 17.2);
+      k.pop("#b-never", 17.25);
+      tl.fromTo("#p-mimi", { x: 0 }, { x: 12, duration: 0.06, yoyo: true, repeat: 5, immediateRender: false }, 17.4);
 
-      k.end(16.0);
-      k.tapCta(16.6);
+      k.end(18.2);
+      k.tapCta(18.8);
 
       window.__timelines["main"] = tl;
       tl.seek(0);
