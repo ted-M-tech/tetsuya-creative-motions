@@ -1,0 +1,15 @@
+{
+  "lines": [
+    {
+      "id": "wrong",
+      "text": "I sink so!",
+      "accent": "learner",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Say it quickly and proudly, a snappy, confident show-off exclamation with no pauses, about one second long. \"sink\" starts with a clear s sound. Keep it natural, not a caricature."
+    },
+    {
+      "id": "right",
+      "text": "I think so.",
+      "accent": "us"
+    }
+  ]
+}
