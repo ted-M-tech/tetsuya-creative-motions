@@ -34,6 +34,10 @@ The first sibling draws on top; one screenshot per invocation; screenshots are o
 
 From the second episode on, start from a kit instead of copying the last film. For Mimi it is [kits/mimi-short](../kits/mimi-short/README.md): a synced copy of the character library (master stays in the product repo), the rig with `add_pose()` / `lipsync()` / `build_shots()`, the sound kit, and the shared CSS/JS look. An episode adds only new art, its own acts, a cue sheet and its edit ([films/mimi-think-sink](../films/mimi-think-sink/PROCESS.md)). Props move in the edit, not in Rive, so they can be retimed without re-rendering. TTS lines for a mispronunciation gag cannot be checked by transcription (the model corrects them); a person must listen. `xargs -I` limits the command to 255 bytes: pass long paths by environment.
 
+## Showing the real app
+
+Record the product in its simulator with QA fixture data (no personal data, the same screens every time) while a UI test walks through the feature; `simctl io recordVideo` captures it. Simulator takes are variable frame rate: resample to constant 60 fps before cutting. Put the character on a flat plate in the page colour and scale it beside a phone frame; keep the phone untimed and time only the clips inside it. Screen text is unreadable on a phone, so zoom and add a large card for the one point that matters. Example: [films/mimi-shashin](../films/mimi-shashin/PROCESS.md).
+
 ## Screen rules
 
 Captions at the top; keep the bottom ~400 px clear for platform UI; phone UI is atmosphere, meaning goes in large labels; never cover the character's face.

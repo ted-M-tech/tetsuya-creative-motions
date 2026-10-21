@@ -48,3 +48,10 @@ films/mimi-nikki/source/hf/assets/mix.wav
 films/mimi-nikki/source/hf/.hyperframes/
 films/mimi-nikki/source/hf/.thumbnails/
 !films/mimi-nikki/source/assets/voice/
+films/mimi-shashin/source/rive/*/build/
+films/mimi-shashin/source/hf/assets/shots/*.mp4
+films/mimi-shashin/source/hf/assets/mix.wav
+films/mimi-shashin/source/hf/.hyperframes/
+films/mimi-shashin/source/hf/.thumbnails/
+films/mimi-shashin/source/hf/assets/app/
+!films/mimi-shashin/source/assets/voice/
