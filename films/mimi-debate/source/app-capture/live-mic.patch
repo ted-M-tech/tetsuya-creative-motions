@@ -1,0 +1,7 @@
+--- a/native-ios/Lanclo/Views/DebatePracticeScreen.swift
++++ b/native-ios/Lanclo/Views/DebatePracticeScreen.swift
+@@
+-        if DebateQA.enabled && !store.isBackendConfigured {
++        // Capture-only (Mimi shorts): record with the simulator microphone so the recorder shows its meter; the QA fixture still answers.
++        if DebateQA.enabled && !store.isBackendConfigured && !ProcessInfo.processInfo.arguments.contains("--qa-film-live-mic") {
+             do { session.acceptTake(try DebateQA.take()) } catch { session.error = copy("error") }

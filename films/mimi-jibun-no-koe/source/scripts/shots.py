@@ -39,7 +39,7 @@ TIMELINE = [
     (4.6, 5.1, ['S5a'], '自分の声、むり…', 'pofu'),
     (5.1, 5.7, ['S6a'], '', 'paw taps 自分の声のお手本'),
     (5.7, 6.4, ['S7a'], '自分の声のお手本', 'model voice starts; peek'),
-    (6.4, 7.5, ['S7b'], '私の声なのに…！', 'ears shoot up'),
+    (6.4, 7.5, ['S7b'], '僕の声なのに…！', 'ears shoot up'),
     (7.5, 8.2, ['S8a'], '', 'spin hop; sparkle sting'),
     (8.2, 12.6, ['S9a', 'S9b'], '声はあなたのまま、\n発音だけネイティブに。', 'fist pump, then hero pose with the phone'),
     (12.6, 15.0, [], 'END', 'Lanclo end card'),
