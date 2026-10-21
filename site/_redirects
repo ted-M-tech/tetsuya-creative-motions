@@ -14,3 +14,8 @@
 /en/films/lanclo-daily/ https://maepace.com/works/lanclo-film?lang=en 302
 /en/slides/lanclo-making https://maepace.com/works/lanclo-lp?lang=en#making 302
 /en/slides/lanclo-making/ https://maepace.com/works/lanclo-lp?lang=en#making 302
+
+# Retired product demo: consolidate search and visitors on the official site.
+/demos/lanclo-lp https://lanclo.app/lp/ 301
+/demos/lanclo-lp/ https://lanclo.app/lp/ 301
+/demos/lanclo-lp/index.html https://lanclo.app/lp/ 301
