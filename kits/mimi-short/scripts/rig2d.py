@@ -62,6 +62,8 @@ POSES = {
     'master': dict(image=OFFICIAL / 'master.png', height=970),
     'think': dict(image=OFFICIAL / 'thinking.png', height=970),
     'speak': dict(image='poses/speak-closed.webp', alt='poses/speak-open.webp', height=1000),
+    'confident': dict(image='poses/confident.webp', height=1000),
+    'stunned': dict(image='poses/stunned.webp', height=1180),
 }
 
 

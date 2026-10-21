@@ -1,6 +1,8 @@
 # 2D characters (Rive)
 
-Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked record: `films/mimi-jibun-no-koe/`.
+Default for recurring mascot shorts. Full guide: `docs/2D-CHARACTER-ANIMATION.md`; worked records: `films/mimi-jibun-no-koe/`, `films/mimi-think-sink/`.
+
+- Mimi series: start from `kits/mimi-short/` (synced library, rig, sound, look); an episode adds only new art, its acts, a cue sheet and its edit. New poses go back to Lanclo `design/mimi-2d` by PR after approval, then `sync-library.sh`.
 
 - Keep the approved art style: draw new poses with an image model (`codex-p`), always attaching the official PNGs and earlier poses; specify line, colours, proportions, accessory side, the same three-quarter direction, scale, white background, no text. Use official art where it fits.
 - Cut out by flood-filling white from the corners; cut lip-sync pairs with one shared crop. Match pose scale by head size; plant feet on one spot; review a sheet of all poses before animating.

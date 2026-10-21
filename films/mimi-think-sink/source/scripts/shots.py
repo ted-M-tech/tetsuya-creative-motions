@@ -11,9 +11,7 @@ sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
 import rig2d as R  # noqa: E402
 from rig2d import body, bone_rot, breathe, smooth, spring, wave  # noqa: E402
 
-# Episode poses drawn for this film (art/prompt-ep01.txt); promote to the library after approval.
-R.add_pose('confident', SRC / 'art/cut/confident.webp', 1000)
-R.add_pose('stunned', SRC / 'art/cut/stunned.webp', 1180)
+# confident, stunned: drawn for this film (../prompts/01-codex-poses-and-props.txt), now in the library.
 
 
 def act_boast(anim, hp, cp, n):

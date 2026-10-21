@@ -17,8 +17,8 @@ Mimi short #2 「think が sink に」 for Instagram Reels / TikTok. Mimi proudl
 
 - assets/shots/*.mp4: Rive shots (../scripts/shots.py, ../scripts/render.sh), desk plate baked in, 60 fps.
 - assets/mix.wav: Kokoro voice lines + kit SFX + kit bed, -14 LUFS (../scripts/mix.py; cue times shared with this edit).
-- assets/props/: sink and bulb cut-outs (../art/cut).
-- assets/kit/: staged by kits/mimi-short/stage.sh (kit.css, kit.js, brand, fonts). Not in Git.
+- assets/kit/props/: sink and bulb from the Mimi 2D library (staged with the kit).
+- assets/kit/: staged by kits/mimi-short/stage.sh (kit.css, kit.js, brand, fonts, props). Not in Git.
 
 ## Notes
 

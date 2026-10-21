@@ -55,6 +55,12 @@ The 2D mascot rebuilt in Blender from Python alone, finished through nine Claude
 
 Mimi cringes at her own recorded English, hears her-voice native model, practises along and is convinced by a score and one fix.
 
+**"think" turns into "sink" — Mimi short #2** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
+
+[Process, prompts & source](films/mimi-think-sink/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
+
+Every "I sink so!" drops a kitchen sink; her own voice saying "I think so." and one fix for "th" make them vanish.
+
 ## Use my filmmaking workflow
 
 [Install the reusable skill and follow the walkthrough](docs/VIDEO-WORKFLOW.md). Learn from Lanclo, then apply the workflow to your own project. The skill guides creative decisions and production records; rendering tools and voice access are separate.

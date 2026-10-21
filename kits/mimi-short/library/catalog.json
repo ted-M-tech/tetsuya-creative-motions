@@ -13,10 +13,16 @@
     {"id": "peek", "file": "poses/peek.webp", "status": "approved-in-video", "use": "one eye peeking out from under an ear", "prompt": "prompts/03-codex-more-poses.txt"},
     {"id": "jump", "file": "poses/jump.webp", "status": "approved-in-video", "use": "joyful jump, ^ ^ eyes", "prompt": "prompts/03-codex-more-poses.txt"},
     {"id": "speak-closed", "file": "poses/speak-closed.webp", "status": "approved-in-video", "use": "speaking practice, mouth closed (lip-sync pair)", "prompt": "prompts/04-codex-lip-sync-pair.txt"},
-    {"id": "speak-open", "file": "poses/speak-open.webp", "status": "approved-in-video", "use": "speaking practice, mouth open (lip-sync pair, same crop as closed)", "prompt": "prompts/04-codex-lip-sync-pair.txt"}
+    {"id": "speak-open", "file": "poses/speak-open.webp", "status": "approved-in-video", "use": "speaking practice, mouth open (lip-sync pair, same crop as closed)", "prompt": "prompts/04-codex-lip-sync-pair.txt"},
+    {"id": "confident", "file": "poses/confident.webp", "status": "approved-in-video", "use": "proudly saying a phrase: wink, index paw up, hand on hip", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
+    {"id": "stunned", "file": "poses/stunned.webp", "status": "approved-in-video", "use": "stunned blank stare, both ears stiff, sweat drop, shock lines", "prompt": "prompts/05-codex-confident-stunned-props.txt"}
   ],
   "backgrounds": [
     {"id": "desk", "file": "backgrounds/desk.webp", "status": "approved-in-video", "use": "study desk, phone on a stand at the right (screen 853,981 161x322 at 1080x1920)", "prompt": "prompts/02-codex-desk-background.txt"}
   ],
-  "first_used_in": "「自分の声、むり」 (2026-10-20)"
+  "props": [
+    {"id": "sink", "file": "props/sink.webp", "status": "approved-in-video", "use": "kitchen sink (the think/sink gag)", "prompt": "prompts/05-codex-confident-stunned-props.txt"},
+    {"id": "bulb", "file": "props/bulb.webp", "status": "approved-in-video", "use": "idea light bulb with rays (glow added in the edit)", "prompt": "prompts/05-codex-confident-stunned-props.txt"}
+  ],
+  "used_in": ["「自分の声、むり」 (2026-10-20)", "「think が sink に」 (2026-10-20)"]
 }

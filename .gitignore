@@ -35,3 +35,4 @@ films/mimi-think-sink/source/hf/assets/shots/*.mp4
 films/mimi-think-sink/source/hf/assets/mix.wav
 films/mimi-think-sink/source/hf/.hyperframes/
 films/mimi-think-sink/source/hf/.thumbnails/
+!films/mimi-think-sink/source/assets/voice/
