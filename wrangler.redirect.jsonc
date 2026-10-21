@@ -1,0 +1,11 @@
+{
+ "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+ "name": "lanclo-demo-redirect",
+ "main": "workers/lanclo-demo-redirect.ts",
+ "account_id": "76b7441b99478c7d2bb1accbee256299",
+ "compatibility_date": "2026-10-21",
+ "workers_dev": false,
+ "preview_urls": false,
+ "services": [{"binding":"DEMO_ASSETS","service":"tetsuya-creative-motions"}],
+ "routes": [{"pattern":"videos.maepace.com/demos/lanclo-lp*","zone_name":"maepace.com"}]
+}

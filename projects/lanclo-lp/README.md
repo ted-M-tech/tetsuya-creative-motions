@@ -38,3 +38,11 @@ The root MIT license covers original code and documentation. Third-party media a
 ## Fixed edition
 
 For this updated study, check out the `lanclo-lp-create-v3` tag before running the commands above. Verify exported files against [source-manifest.json](source-manifest.json). Later changes on main may differ. The film media is optional and distributed separately; it is not needed to run the LP.
+
+## Search ownership
+
+The public demo entry URLs `/demos/lanclo-lp`, `/demos/lanclo-lp/` and `/demos/lanclo-lp/index.html` permanently redirect (301) to `https://lanclo.app/lp/` through `site/_redirects`. Cloudflare preserves query parameters, including `lang`, because the destination has no query. Keep the source and assets for archival study; the official product page owns search traffic.
+
+Production uses the dedicated `lanclo-demo-redirect` Worker from `wrangler.redirect.jsonc`, scoped to `videos.maepace.com/demos/lanclo-lp*`. It redirects only the three entry paths; all other requests, including assets and Range requests, pass unchanged to the existing `tetsuya-creative-motions` service binding. This allows retiring the demo without rebuilding or publishing unrelated video assets. The static rules above are retained for future asset publications. Deploy the redirect independently; do not run the full site's deploy command for this change.
+
+Published 2026-10-21 with owner approval: redirect Worker version `207cf184-ace3-453c-8cb7-3942f1f3b7a7`. Original static Worker remains `e8802879-50f5-4ef4-af1c-56b41e7481b3`; no video assets were uploaded. Nine live path/query cases return 301 to the official landing and an existing demo SVG remains 200. Unit coverage includes pass-through asset Range requests. Google index replacement awaits recrawling.
