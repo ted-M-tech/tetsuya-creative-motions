@@ -1,0 +1,44 @@
+# 制作の経緯
+
+オーナーの言葉（2026-10-21、新しいネタ案から）：
+
+> 2,3,6,7,8,9,11,12 作成で
+
+この回の案（コーディネーター経由の指示）：フック「カフェで固まった人、手を挙げて」→ 空港・ホテル・病院の短い場面、ただしアプリに実在する場面だけ。17本目（[mimi-roleplay](../mimi-roleplay/PROCESS.md)）の続編。学習者のセリフはオーナーの声、スタッフはKokoroの英語でよい。共通ルール：最初の1.5秒で止める（フックの文字は1フレーム目から）、15〜25秒、実機能はコードで確認、英語の発音シーンはオーナーの声（`ownvoice.py`）、日本語は吹き出し・字幕のみ。
+
+## アプリで確かめたこと（native-voice-clone `origin/main` 5998d20d）
+
+- 会話練習のカテゴリ：`native-ios/Lanclo/Resources/roleplay-catalog.json` の `categories` はレストラン・カフェ・空港・交通・ホテル・買い物・人との交流・仕事の8つ。**病院はない**ので、3つ目は「交通」の `roleplay-en-transport`（駅までの行き方を聞く、相手はバスの運転手）にした。
+- 使った場面と、作者が書いたセリフ（同じファイルの `utterances`）：
+  - `roleplay-en-airport-checkin`「飛行機の搭乗手続きをする」：相手 "May I see your passport?" / 返答 "Here you are."
+  - `roleplay-en-accommodation`「チェックインして確認する」（ホテル）：相手 "Welcome. Do you have a reservation?"（動画では "Do you have a reservation?" の部分だけ）。返答の原文は "Yes, I have a booking under Lee." なので、動画では名前を出さない "Yes, I have a reservation." にした。
+  - `roleplay-en-transport`：相手 "Hello. Where are you going?" / 返答 "Does this bus go to the station?"
+- 場面を選ぶと `RoleplayCatalogScreen.swift` の `RoleplayOverview` が `SituationPracticeScreen`（AIの会話相手・ヒント・録音）を開く（英語の16場面すべて `situations-catalog.json` に `SituationTask` がある）。
+- 実画面は `--qa-situations` のQAフィクスチャ。フィクスチャ（`Core/SituationQA.swift`）はどの場面でもカフェのセリフを返すので、撮影時だけ `app-capture/airport-lines.patch` で空港の場面に作者のセリフ（"May I see your passport?"、ヒント "Here you are." ほか）を返させた。締めの "Thank you. Have a nice flight!" とヒントの2つ目 "Yes, here's my passport." はフィクスチャ用に足した文。アプリへのコミットはしていない。
+- 左上の「デモデータ」はマスク。
+
+## 決めたこと
+
+- フック：1フレーム目から白いカードの問いかけ＋氷漬けのMimi。0.45秒で氷の中のMimiが手を挙げ「はい…」。
+- 3場面は各1.6〜2.2秒。質問の最後の語で凍る（`freeze` 効果音と「カチッ!」）。背景とスタッフ衣装（空港・ホテル・バス）、手を挙げるMimiは codex-p で新規（`prompts/01-codex-scenes-staff.txt`）。カウンター前面は背景から切り出してスタッフの手前に重ねた（17本目と同じ方式）。
+- 解決後の3場面では返答をオーナーの声（`us`）。スタッフ（女性の友だち）はKokoro（空港 `bf_emma`、ホテル `af_bella`、バス `am_michael`）。Mimiの声は成人男性のオーナーの声になる（キャラクターとの不一致は承知の上、指示どおり）。
+- BGMは17本目と同じくコピーカードから（冒頭は効果音と声だけ）。
+
+## 学び
+
+- GSAP の時刻0の `set` で初期表示を決めると、描画側のシーク順によって0秒付近が空白になった。初期の表示・非表示はCSSで決め、GSAPは切り替えだけにする。
+- 共有シミュレーターの撮影スクリプトで `PATCH=... 関数` と書くと sh では変数が残り、次の撮影にもパッチが適用されようとして失敗した。撮影ごとに `env -u PATCH` で消す。
+
+## 修正（オーナーの確認後）
+
+> 32の動画手が変になっている
+
+最初の `hand-up`（手を挙げるMimi）は、挙げた腕が頭・ヘッドホンの輪郭から細長く伸びていて、Mimiの短い腕に見えなかった。codex-p で肩から生えた短い丸い腕に描き直し（`prompts/02-codex-hand-up-fix.txt` → `art/hand-up-v2`）、冒頭とアプリ場面の両方で差し替えた。ほかのポーズ（stunned・confident・grin）も動いている瞬間のフレームで腕を確認した。
+
+## 修正（キャストの統一、2026-10-21）
+
+オーナーの言葉：
+
+> メインキャラは二人。ミミと友達。そこメインで回して。たまにAndroidのうさぎ。他店員とかでたまにでるのはいいけど統一感持たせたい
+
+この回の登場人物：Mimi（主役・学習者）と、空港・ホテル・バスのスタッフを制服姿で演じていた友だち。友だちはメインキャラなので店員役には使わず、店員役は共通キャスト（`kits/mimi-short/cast/`、ブランチ `feat/sns-cast` をマージ）のアヒルのピッパに差し替えた。codex-p でキャストの絵から3枚を新規に描いた（`prompts/03-codex-staff-pippa.txt` → `art/staff/`、いつもの赤白ボーダーと赤いサンバイザーのまま、空港＝水色のスカーフ、ホテル＝黒の蝶ネクタイ、バス＝白手袋だけ足した）。前の友だちと同じ高さになるよう `.staff` の幅を 540→457px にした。声はピッパの `af_nicole` に統一（ホテルは1.12倍、バスは1.15倍で、質問の最後の語がこれまでどおりカチッの瞬間に来る）。Mimi と時間は変更なし。

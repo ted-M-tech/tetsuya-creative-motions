@@ -1,0 +1,19 @@
+--- a/native-ios/Lanclo/Core/AppStore.swift
++++ b/native-ios/Lanclo/Core/AppStore.swift
+@@
+         let identity = VoiceAuditionKey(owner: ownerID, language: language, candidate: candidate)
++        #if DEBUG
++        if ProcessInfo.processInfo.arguments.contains("--qa-film-voice-stub") {
++            // Capture-only (Mimi shorts): the fixture has no voice provider, so the language switch gets a 4 s silent WAV
++            // after a short wait instead of the generated preview. The film lays its own sound over the take.
++            try await Task.sleep(for: .milliseconds(900))
++            var wav = Data(); let rate = 16000, bytes = rate * 4 * 2
++            func u32(_ v: Int) { withUnsafeBytes(of: UInt32(v).littleEndian) { wav.append(contentsOf: $0) } }
++            func u16(_ v: Int) { withUnsafeBytes(of: UInt16(v).littleEndian) { wav.append(contentsOf: $0) } }
++            wav.append(contentsOf: Array("RIFF".utf8)); u32(36 + bytes); wav.append(contentsOf: Array("WAVEfmt ".utf8))
++            u32(16); u16(1); u16(1); u32(rate); u32(rate * 2); u16(2); u16(16)
++            wav.append(contentsOf: Array("data".utf8)); u32(bytes); wav.append(Data(count: bytes))
++            return wav
++        }
++        #endif
+         guard LanguagePreferences.studyLanguages.contains(language), !awaitingAuthorization, let api else {

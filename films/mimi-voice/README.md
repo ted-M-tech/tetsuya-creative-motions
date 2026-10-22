@@ -6,7 +6,7 @@ Mimi's friend loves a native speaker's English and wishes she sounded like that.
 
 0:18.7 / 1080×1920, 60 fps / Japanese speech bubbles and captions, English model sentence / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-voice.mp4`) and with English subtitles (`mimi-voice-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/015. AI Voice in 1 Minute/` (`AI_Voice_draft_2026-10-21.mp4`, `AI_Voice_draft_EN-subs_2026-10-21.mp4`, raw take in `AIV_assets/`).
+Two cuts: Japanese only (`mimi-voice.mp4`) and with English subtitles (`mimi-voice-en.mp4`); final files in Lanclo's Google Drive `002.SNS/015. AI Voice in 1 Minute/` (`AI_Voice_2026-10-21.mp4`, `AI_Voice_EN-subs_2026-10-21.mp4`, raw take in `AIV_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

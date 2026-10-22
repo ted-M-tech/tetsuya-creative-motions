@@ -1,9 +1,11 @@
-import {cp, mkdir, rm, stat, readdir} from 'node:fs/promises';
+import {cp, mkdir, rm, stat, readdir, readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
 const root = resolve(import.meta.dirname, '..');
 const includeMedia = process.argv.includes('--include-media');
 if (includeMedia) for (const id of ['lanclo','lanclo-osaka','lanclo-daily-r26']) await stat(`${root}/site/media/${id}.mp4`);
+// Every catalog film (series episodes included) must ship its MP4.
+if (includeMedia) for (const item of JSON.parse(await readFile(`${root}/films/catalog.json`,'utf8')).flatMap(item=>[item,...(item.extras||[]),...(item.history||[])])) if (item.media) await stat(`${root}/site/media/${item.media}`);
 if (includeMedia) for (const file of await readdir(`${root}/site/media`)) {
  const info=await stat(`${root}/site/media/${file}`);
  if(info.isFile() && info.size>25*1024*1024) throw new Error(`Static asset exceeds 25 MiB: ${file}`);

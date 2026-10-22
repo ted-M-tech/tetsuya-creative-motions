@@ -1,0 +1,6 @@
+Use your image generation tool. The attached image is the official 2D art of Mimi (master.png: a white bunny with blue inner ears, round black eyes, navy outlines, flat fills, headphones with a navy band, blue cups and a white "L" on the cup at the viewer's LEFT). Keep EXACTLY this character design, flat style, outline weight and proportions. Plain pure white background, centred, no text. The mood is cheerful and funny (a playful "Mimi keeps an eye on your English every day" gag), never creepy.
+
+Save each as PNG in art/ (relative to the current directory):
+1) art/mimi-binoculars.png — Mimi holding a pair of navy-and-blue binoculars up to her eyes with both mittens, leaning forward eagerly, ears perked up straight, a big open happy mouth, a small pink blush, two tiny sparkles near the binoculars. Full body, standing, facing the viewer's RIGHT slightly. Headphones on, white "L" on the cup at the viewer's LEFT.
+2) art/mimi-notes.png — Mimi standing, holding a small light-blue clipboard in one mitten and a pencil in the other, writing a note with a focused, proud little smile (eyes open, looking at the clipboard), one ear slightly bent. Full body, facing the viewer's RIGHT slightly. Headphones on, white "L" on the cup at the viewer's LEFT. No text on the clipboard (just grey lines).
+Do not modify other files. List the saved paths when done.

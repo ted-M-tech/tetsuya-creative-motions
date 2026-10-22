@@ -36,41 +36,18 @@ Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカ�
 
 2DのMimiをBlenderのPythonだけで3Dに。Claude CodeとCodexで9往復レビューし合って仕上げた。
 
-**自分の声、むり — Mimi 2Dショート** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
+### Mimiショート（2D・縦型・15〜25秒）
 
-[制作過程・プロンプト・ソース](films/mimi-jibun-no-koe/README.ja.md) · [2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md)
+LancloのマスコットMimiと友だちを公式の2Dの絵柄で（Codexの絵＋HyperFrames）。多くはシミュレーターで録った実際のアプリと並べている。どの作品も制作過程・プロンプト・作り直せるソースつき。作り方と自分のシリーズの作り方：[2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md) · [キャスト](kits/mimi-short/cast/README.md)。
 
-録音した自分の英語が恥ずかしいMimiが、自分の声のお手本で驚き、練習して、点数と直すポイントで納得するまで。
-
-**think が sink に — Mimiショート2本目** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
-
-[制作過程・プロンプト・ソース](films/mimi-think-sink/README.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md)
-
-"I sink so!" と言うたびにシンクが落ちてくる。自分の声の正しい "I think so." と th の直し方1つで、シンクが消える。
-
-**道を聞かれて固まる — Mimiショート3本目** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
-
-[制作過程・プロンプト・ソース](films/mimi-michi/README.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md)
-
-英語で道を聞かれて氷漬けになったMimiが、自分の声で答えを練習して、氷を割る。
-
-**日記、3日で終わる — Mimiショート4本目** · 0:15 縦型 · 2D（Codex＋Rive＋HyperFrames）
-
-[制作過程・プロンプト・ソース](films/mimi-nikki/README.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md)
-
-3日でお坊さんになったMimiが、英語日記で毎日の絵が増えていくのが楽しくて、三日坊主を卒業する。
-
-**写真で英語 — Mimiショート5本目・実画面** · 0:15 縦型 · 2DのMimi＋アプリの録画
-
-[制作過程・プロンプト・ソース](films/mimi-shashin/README.ja.md) · [アプリの録画](kits/mimi-short/app-capture/capture.sh)
-
-Mimiが実際のLancloを使う。写真を見て話すと、間違いに印が付き、もっと自然な一文が自分の声で聴ける。
-
-**積読 — Mimiショート6本目・デイリーレッスン** · 0:15 縦型 · 2DのMimi＋アプリの録画
-
-[制作過程・プロンプト・ソース](films/mimi-daily/README.ja.md)
-
-英語の本が積まれるだけのMimiに、デイリーレッスンが今日の一文を決め、自分の声のお手本で聴かせ、採点して直す音を教える。
+- **最初のショート（Riveの骨）** — [自分の声、むり](films/mimi-jibun-no-koe/README.ja.md) · [think が sink に](films/mimi-think-sink/README.ja.md) · [道を聞かれて固まる](films/mimi-michi/README.ja.md) · [日記、3日で終わる](films/mimi-nikki/README.ja.md)
+- **実際のアプリ** — [写真で英語](films/mimi-shashin/README.ja.md) · [積読](films/mimi-daily/README.ja.md) · [英語で言い負かされた](films/mimi-debate/README.ja.md) · [3分、話しつづけて](films/mimi-freespeech/README.ja.md) · [180秒しゃべり続けたら](films/mimi-180/README.ja.md) · [IELTSまで1か月](films/mimi-ielts/README.ja.md) · [AIと会話、何話そう…](films/mimi-topics/README.ja.md) · [ネイティブの声でシャドーイング、もうやめた](films/mimi-no-shadowing/README.ja.md)
+- **アクションボタン** — [① フレーズ追加](films/mimi-action-add/README.ja.md) · [② 復習](films/mimi-action-review/README.ja.md) · [③ 今日のレッスン](films/mimi-action-lesson/README.ja.md)
+- **ロールプレイ** — [カフェで固まる](films/mimi-roleplay/README.ja.md) · [旅先で固まる](films/mimi-frozen-abroad/README.ja.md)
+- **AIボイス** — [1分で、自分の声をネイティブに](films/mimi-voice/README.ja.md) · [声の調整](films/mimi-tuning/README.ja.md) · [アメリカ英語とイギリス英語](films/mimi-us-uk/README.ja.md) · [17言語、ぜんぶ自分の声](films/mimi-multilang/README.ja.md)
+- **マイノート** — [Mimiがファイルを食べる](films/mimi-import/README.ja.md) · [単語帳のデータ、全部Mimiに](films/mimi-flashcards/README.ja.md) · [スワイプ復習](films/mimi-swipe/README.ja.md)
+- **習慣とMimiのまとめ** — [ひとつのループ](films/mimi-loop/README.ja.md) · [Mimiはずっと見てる](films/mimi-watching/README.ja.md) · [Mimiに1ヶ月見張られた結果](films/mimi-month/README.ja.md) · [3日坊主の私が、1ヶ月続いた理由](films/mimi-quitter/README.ja.md)
+- **発音ディザスター**（オチが先） — [1 Sit](films/mimi-disaster-sit/README.ja.md) · [2 Beach](films/mimi-disaster-beach/README.ja.md) · [3 Rice](films/mimi-disaster-rice/README.ja.md) · [4 Election](films/mimi-disaster-election/README.ja.md) · [5 Coke](films/mimi-disaster-coke/README.ja.md) · [6 Peace](films/mimi-disaster-peace/README.ja.md)
 
 ## この動画制作フローを使う
 

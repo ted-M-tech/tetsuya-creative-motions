@@ -34,7 +34,8 @@ def act_say(anim, hp, cp, n):
     body(anim, hp, cp, n, squash=lambda f: breathe(f) + (10 * max(0.0, math.sin(math.pi * (f - 90) / 14)) if 90 <= f < 104 else 0),
          rot=lambda f: wave(f, 40, 0.02))
     bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04))
-    R.lipsync(anim, 24, SRC / 'assets/voice/right-af_heart.wav', SRC / 'scripts/lipsync-right.json')
+    # the clip's speech starts 0.27 s in (placed at SAY - 0.04 with 0.23 s trimmed, so clip time 0 falls on shot frame 8)
+    R.lipsync(anim, 8, SRC / 'assets/own-voice/right.wav', SRC / 'scripts/lipsync-right.json')
 
 
 A = R.ACTS

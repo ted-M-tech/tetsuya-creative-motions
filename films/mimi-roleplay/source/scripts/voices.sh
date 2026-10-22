@@ -6,5 +6,4 @@ cd "$(dirname "$0")/.."
 export HYPERFRAMES_PYTHON=${HYPERFRAMES_PYTHON:-$HOME/.local/share/hyperframes-tts/bin/python}
 tts() { npx --yes hyperframes@0.8.181 tts "$1" -v "$2" -o "assets/voice/$3"; }
 tts "For here, or to go?" bf_emma here-bf_emma.wav
-tts "For here, please. I'd like a latte!" af_heart order-af_heart.wav
 tts "Would you like it hot, or iced?" bf_emma hot-bf_emma.wav

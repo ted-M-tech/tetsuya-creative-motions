@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-cock",
+   "text": "One cock, please.",
+   "style": "Speak English as a polite Japanese beginner ordering at a fast-food counter. Say every word exactly as written: 'cock' rhymes with 'rock' and 'clock', a short open 'ah' vowel (/kɑk/), crisp k at the end, so a listener clearly hears 'One cock, please.' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-coke",
+   "text": "One Coke, please.",
+   "accent": "us"
+  }
+ ]
+}

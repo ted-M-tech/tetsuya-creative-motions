@@ -1,0 +1,9 @@
+Use your image generation tool. Redraw five existing images so the TEACHER matches the finished French friend design of the sibling film (attached friend-french.png and friend-french-chat.png): a white bunny with sleepy flat line eyes, the orange patch around one eye, the dark-grey ear tip, the same navy-and-blue headphones with the white "L" on the cup at the viewer's LEFT, a RED beret, a RED neckerchief tied at the neck, and a navy-and-white Breton striped top. No baguette in these images. Keep everything else in each attached original image exactly as it is (composition, pose, Mimi, props, scale, framing, plain white background, flat official style); only the teacher's beret becomes red and she gets the red neckerchief, matching friend-french.png.
+
+Attached originals (overwrite each with the redrawn version, same filename, PNG, in art/ relative to the current directory):
+1) art/teacher-run.png (the teacher jogging, bib "1025")
+2) art/teacher-thumb.png (the teacher jogging with a thumbs-up, bib "1025")
+3) art/cafe-talk.png (the teacher and Mimi at the café table; the table top stays empty in the middle)
+4) art/teacher-call.png (head-and-shoulders in a video call, small bookshelf hint)
+5) art/highfive.png (the teacher and Mimi jumping into a high-five)
+Do not modify other files. List the saved paths when done.

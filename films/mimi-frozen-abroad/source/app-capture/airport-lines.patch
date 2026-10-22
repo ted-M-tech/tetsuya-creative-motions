@@ -1,0 +1,14 @@
+--- a/native-ios/Lanclo/Core/SituationQA.swift
++++ b/native-ios/Lanclo/Core/SituationQA.swift
+@@
+         if ProcessInfo.processInfo.arguments.contains("--qa-situations-error") { throw LancloAPI.Failure(code: "generation", status: 502) }
++        if task.id == "roleplay-en-airport-checkin" {
++            // Capture-only (Mimi shorts): the airport scene's own authored lines (roleplay-catalog.json) instead of the café fixture.
++            let done = request.audio != nil, ja = request.meaningLocale == "ja"
++            let partner = done ? "Thank you. Have a nice flight!" : "May I see your passport?"
++            return .init(taskID: request.taskID, revision: request.revision, language: request.language, ui: request.ui, meaningLocale: request.meaningLocale,
++                         sessionID: request.sessionID, requestID: request.requestID,
++                         state: .init(facts: done ? Dictionary(uniqueKeysWithValues: task.checkpoints.map { ($0, "demo answer") }) : [:], partner: partner,
++                                      hints: done ? [] : [.init(text: "Here you are.", meaning: ja ? "はい、どうぞ。" : "Handing it over politely."), .init(text: "Yes, here's my passport.", meaning: ja ? "はい、パスポートです。" : "Saying what you hand over.")], complete: done, turn: done ? 1 : 0, partnerMeaning: ja ? (done ? "ありがとうございます。よいフライトを。" : "パスポートを拝見できますか？") : partner),
++                         transcript: done ? "Here you are." : "", contextToken: "isolated-fixture")
++        }

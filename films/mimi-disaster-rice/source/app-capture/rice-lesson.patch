@@ -1,0 +1,23 @@
+# Capture-only fixture tweak for the Mimi short "Pronunciation Disasters - Rice / Lice" (never committed to the app):
+# the first daily-lesson sentence becomes "I eat rice every day." and its QA feedback points at the /r/ in "rice".
+--- a/native-ios/Lanclo/Resources/learning-catalog.json
++++ b/native-ios/Lanclo/Resources/learning-catalog.json
+@@
+-          "id": "dp-liquids-1",
+-          "text": "Please leave the light on.",
+-          "translations": {
+-            "ja": "明かりをつけたままにしてください。",
+-            "en": "Please leave the light on."
++          "id": "dp-liquids-1",
++          "text": "I eat rice every day.",
++          "translations": {
++            "ja": "毎日ごはんを食べます。",
++            "en": "I eat rice every day."
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-            let target = ["light", "library", "flight"][index]
++            let target = ["rice", "library", "flight"][index]
+             let span = (attempt.text as NSString).range(of: target)
+-            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "QA用データ：強勢のある母音をはっきり発音し、残りの単語をなめらかにつなげましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/l/", feedback: locale == "ja" ? "QA用データ：舌先を上の歯ぐきにつけ、音をなめらかにつなげましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)
++            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "「rice」の r が l に近く聞こえます。舌先をどこにもつけずに発音しましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/r/", feedback: locale == "ja" ? "舌先を少し奥に引き、上あごに触れないまま「ゥライス」と始めましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)

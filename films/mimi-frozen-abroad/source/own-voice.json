@@ -1,0 +1,5 @@
+{"lines": [
+  {"id": "here", "text": "Here you are.", "accent": "us"},
+  {"id": "reservation", "text": "Yes, I have a reservation.", "accent": "us"},
+  {"id": "station", "text": "Does this bus go to the station?", "accent": "us"}
+]}

@@ -4,7 +4,7 @@
 
 街角で英語で道を聞かれたMimiが、氷漬けになって固まる。机に戻ってLancloで自分の声の答えを聴き、レーダーで直し方を1つ知り（turn left はつなげて一息で）、練習。街角に戻ると氷が割れ、道を指して答えて「Thank you!」。Mimiショート3本目、共通キットで制作。
 
-0:15 / 1080×1920、60 fps / 日本語字幕・英語の声 / 2D：公式の絵柄をCodexで描画＋Riveの骨＋HyperFrames
+0:15.3 / 1080×1920、60 fps / 日本語字幕・英語の声 / 2D：公式の絵柄をCodexで描画＋Riveの骨＋HyperFrames
 
 ![完成フレーム](process/00-final-frames.jpg)
 
@@ -21,3 +21,5 @@
 ## 再現
 
 [source/README.md](source/README.md) の手順どおり。声も含め必要なものはすべてGitにあり、書き出し途中のファイルと完成MP4だけが入っていない。
+
+2026-10-21から、Mimiの英語の声は依頼者本人のLanclo登録音声（Gemini `gemini-3.8-flash-tts`）。"Uh... uh..." は学習者の発音、"Go straight, and turn left." はアメリカ英語のお手本。道を聞く通行人はKokoro（`bm_george`）のまま。声の素材はGitに入れず、Driveの `Mimi_03_Frozen_Asked_Directions_assets/own-voice/` に保管。
