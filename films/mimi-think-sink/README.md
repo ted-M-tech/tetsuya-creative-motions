@@ -23,4 +23,6 @@ Two cuts: Japanese only (`mimi-think-sink.mp4`) and with English subtitles (`mim
 
 ## Reproduce
 
-Follow [source/README.md](source/README.md). Everything needed is in Git, including the two voice lines; only renders and the final MP4 are not.
+Follow [source/README.md](source/README.md). Everything needed is in Git except the two voice lines (the owner's own voice, kept out of the public repo: Drive `Mimi_02_Think_Becomes_Sink_assets/own-voice/`, or regenerate with `kits/mimi-short/scripts/ownvoice.py`), renders and the final MP4.
+
+Since 2026-10-21 Mimi's English lines are the owner's registered Lanclo voice (Gemini `gemini-3.8-flash-tts`): "I sink so!" with a learner accent, "I think so." as the General American model.

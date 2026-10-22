@@ -1,0 +1,72 @@
+--- a/native-ios/Lanclo/Core/MimiReportQA.swift
++++ b/native-ios/Lanclo/Core/MimiReportQA.swift
+@@
+-    private static var anchor: Date { MimiReportSchedule(minutes: MimiReportSchedule.defaultMinutes).latestCutoff(now: Date()) }
+-    private static let transcripts = [
++    private static var anchor: Date { MimiReportSchedule(minutes: MimiReportSchedule.defaultMinutes).latestCutoff(now: now) }
++    // Capture-only (Mimi short 036「Mimiに1ヶ月見張られた結果」): --qa-mimi-day N shows the report N-1 days from today,
++    // with that day's example records. Day 7 is the stock fixture; never committed to the app.
++    static var day: Int? {
++        let args = ProcessInfo.processInfo.arguments
++        guard let flag = args.firstIndex(of: "--qa-mimi-day"), args.indices.contains(flag + 1) else { return nil }
++        return Int(args[flag + 1])
++    }
++    /// Day 1 is now (the first report's own cutoff); day N is 21:00 on today + N-1, so the summary shown is that day's 20:00.
++    static var now: Date {
++        guard let day, day > 1 else { return Date() }
++        let calendar = Calendar.current
++        return calendar.date(byAdding: .day, value: day - 1, to: calendar.startOfDay(for: Date()))!.addingTimeInterval(21 * 3_600)
++    }
++    static var dayRanking: [DailyPlan.Weakness]? {
++        func sound(_ label: String, _ word: String, _ this: Int, _ last: Int) -> DailyPlan.Weakness {
++            DailyPlan.Weakness(key: "en:sounds:" + label, category: "sounds", label: label, words: [word], thisWeek: this, lastWeek: last)
++        }
++        switch day {
++        case 7?: return [sound("/θ/", "think", 5, 0), sound("/l/", "light", 3, 0),
++                         DailyPlan.Weakness(key: "en:stress", category: "stress", label: "stress", words: [], thisWeek: 2, lastWeek: 0)]
++        case 14?: return [sound("/l/", "light", 3, 3), sound("/θ/", "think", 2, 5)]
++        case 21?: return [sound("/l/", "light", 2, 3)]
++        case 30?: return []
++        default: return nil
++        }
++    }
++    private static var transcripts: [String] {
++        switch day {
++        case 1?: return ["I had lunch with Ken. And then we went to the station. It was very crowded."]
++        case 14?: return ["I had lunch with Ken. After that, we went to the station. I think it was crowded.",
++                          "It started raining, so I stayed home. I think it was the right choice.",
++                          "I went to a small café and read my book. I think the coffee was great.",
++                          "We watched a movie. Later that day, we talked about it for an hour."]
++        case 21?: return ["The view from the hill was very beautiful. I felt like walking more.",
++                          "My boss was very busy today, so I helped him with his slides.",
++                          "The ramen was very hot. I’d say it was the best in town.",
++                          "After work, I called my mom and we talked for an hour."]
++        case 30?: return ["I cooked dinner for my family tonight. Everyone loved the curry.",
++                          "After work, I went for a run by the river. The sunset was amazing.",
++                          "It was raining, so I watched a movie at home.",
++                          "I tried a new café near the station. The coffee was great."]
++        default: return week
++        }
++    }
++    private static let week = [
+         "I had lunch with Ken. And then we went to the station. It was very crowded.",
+@@
+-            let improvements = index == 0
++            let improvements = (day ?? 7) > 7 ? [DescribeResponse.Improvement]() : index == 0
+--- a/native-ios/Lanclo/Views/MimiReportView.swift
++++ b/native-ios/Lanclo/Views/MimiReportView.swift
+@@
+-    @State private var now = Date()
++    @State private var now = MimiReportQA.now
+@@
+-        .onChange(of: scenePhase) { _, phase in if phase == .active { now = Date() } }
++        .onChange(of: scenePhase) { _, phase in if phase == .active { now = MimiReportQA.now } }
+@@
+         schedule = store.mimiReportSchedule
+-        now = Date()
++        now = MimiReportQA.now
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-            DailyPlan(id: "qa-plan", revision: first.revision, createdAt: (ProcessInfo.processInfo.arguments.contains("--qa-yesterday-lesson") ? Calendar.current.startOfDay(for: now).addingTimeInterval(-1) : now).timeIntervalSince1970 * 1000, version: 1, index: completed ? lessonItems.count : 0, completedAt: completed ? now.timeIntervalSince1970 * 1000 : nil, items: lessonItems.enumerated().map { index, phrase in .init(itemId: phrase.id, role: "practice", evidenceIds: [], slot: Self.qaSlot(index, text: phrase.text)) }, title: ["en": "QA: Clear L sounds", "ja": "QA：Lの音をはっきりと"], plannerMode: "qa-fixture", course: "general", model: "qa-fixture", ranking: [.init(key: "en:sounds:/l/", category: "sounds", label: "/l/", words: ["light"], thisWeek: 4, lastWeek: 6), .init(key: "en:stress", category: "stress", label: "stress", words: [], thisWeek: 2, lastWeek: 1)], theme: "everyday")
++            DailyPlan(id: "qa-plan", revision: first.revision, createdAt: (ProcessInfo.processInfo.arguments.contains("--qa-yesterday-lesson") ? Calendar.current.startOfDay(for: now).addingTimeInterval(-1) : now).timeIntervalSince1970 * 1000, version: 1, index: completed ? lessonItems.count : 0, completedAt: completed ? now.timeIntervalSince1970 * 1000 : nil, items: lessonItems.enumerated().map { index, phrase in .init(itemId: phrase.id, role: "practice", evidenceIds: [], slot: Self.qaSlot(index, text: phrase.text)) }, title: ["en": "QA: Clear L sounds", "ja": "QA：Lの音をはっきりと"], plannerMode: "qa-fixture", course: "general", model: "qa-fixture", ranking: MimiReportQA.dayRanking ?? [.init(key: "en:sounds:/l/", category: "sounds", label: "/l/", words: ["light"], thisWeek: 4, lastWeek: 6), .init(key: "en:stress", category: "stress", label: "stress", words: [], thisWeek: 2, lastWeek: 1)], theme: "everyday")

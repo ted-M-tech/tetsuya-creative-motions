@@ -1,0 +1,15 @@
+{
+  "lines": [
+    {
+      "id": "rough",
+      "text": "Yesterday... I go to cafe.",
+      "accent": "learner",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Talking about her day at an ordinary speaking pace, not slow: one short hesitant pause after \"Yesterday\", then \"I go to cafe\" said plainly. About two seconds in total. Keep it natural, not a caricature."
+    },
+    {
+      "id": "model",
+      "text": "Yesterday, I went to a cafe.",
+      "accent": "us"
+    }
+  ]
+}

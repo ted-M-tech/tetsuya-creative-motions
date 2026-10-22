@@ -1,6 +1,6 @@
 # 「写真で英語」 — source
 
-15-second vertical Mimi short with the real Lanclo app, built on the shared [Mimi shorts kit](../../../kits/mimi-short/README.md).
+17-second vertical Mimi short with the real Lanclo app, built on the shared [Mimi shorts kit](../../../kits/mimi-short/README.md).
 
 | Path | Role |
 |---|---|
@@ -8,7 +8,7 @@
 | `app-capture/cut.sh` | Records the walkthrough with `kits/mimi-short/app-capture/capture.sh` (only if the take is missing) and cuts the six clips |
 | `art/plain.webp` | Flat plate in the page colour, so the Mimi shots can be scaled and moved without an edge |
 | `art/cafe-photo.png` | The app's cafe photo, taken from the recording, for the hook |
-| `assets/voice/` | Kokoro (`af_heart`): "People is sitting... at a cafe." and the app's better sentence; `scripts/voices.sh` |
+| `own-voice.json`, `own-voice.receipt.json` | The owner's registered Lanclo voice (`kits/mimi-short/scripts/ownvoice.py`): `rough` "People is sitting... at a cafe." (`learner`) and `model`, the app's better sentence (`us`). The WAVs go to `assets/own-voice/` and are not in Git (Drive `Mimi_05_English_from_a_Photo_2026-10-20_assets/own-voice/`); `scripts/lipsync-*.json` keep the mouth patterns so the shots rebuild without them |
 | `scripts/shots.py`, `render.sh`, `mix.py` | Mimi shots (speak, point, think, listen, jump, success), render, sound |
 | `hf/` | Edit: Mimi wrapper, phone frame with the app clips and zooms, tap ripples, correction card, captions, tags, end card |
 
@@ -16,6 +16,7 @@
 
 ```sh
 F=films/mimi-shashin/source
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json   # or copy the WAVs from Drive into $F/assets/own-voice/
 $F/app-capture/cut.sh                                  # first run records the app (needs the native-voice-clone checkout and Xcode)
 uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/shots.py
 $F/scripts/render.sh
