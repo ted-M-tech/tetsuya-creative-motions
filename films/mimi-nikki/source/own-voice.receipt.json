@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "rough": {
+      "text": "Yesterday... I go to cafe.",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Talking about her day at an ordinary speaking pace, not slow: one short hesitant pause after \"Yesterday\", then \"I go to cafe\" said plainly. About two seconds in total. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "3cee71df63035595301afc2dda18d313f8167fd5dd9de0bff3ad914a4186f128",
+      "at": "2026-10-21T21:37:41+00:00"
+    },
+    "model": {
+      "text": "Yesterday, I went to a cafe.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "5c5c2b1fac7d0fe6990403dce5b313baa09a839d02acee1523f0bc32663062f7",
+      "at": "2026-10-21T21:35:57+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
