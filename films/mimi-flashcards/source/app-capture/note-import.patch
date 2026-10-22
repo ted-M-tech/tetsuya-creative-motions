@@ -1,0 +1,10 @@
+--- a/native-ios/Lanclo/Views/NoteImportScreen.swift
++++ b/native-ios/Lanclo/Views/NoteImportScreen.swift
+@@
+-    private var ready: Bool { account.uid != nil && account.isReady && !account.isClosing && account.history?.ready == true }
++    /// Capture-only (Mimi shorts): the fixture guest stands in for a signed-in learner, so the real import runs on fixture data.
++    private var filmSignedIn: Bool { ProcessInfo.processInfo.arguments.contains("--qa-film-import") }
++    private var ready: Bool { filmSignedIn ? account.isReady && !account.isClosing : account.uid != nil && account.isReady && !account.isClosing && account.history?.ready == true }
+@@
+-                    if account.uid == nil {
++                    if account.uid == nil && !filmSignedIn {
