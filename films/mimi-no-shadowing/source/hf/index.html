@@ -47,7 +47,7 @@
       .verdict { position: absolute; right: 70px; top: 770px; z-index: 5; font-size: 64px; font-weight: 700; transform: rotate(6deg);
                  -webkit-text-stroke: 6px #ffffff; paint-order: stroke fill; }
       #v-bad { color: #e5484d; }
-      #v-good { color: #2a8dff; }
+      #v-good { color: #2a8dff; transform: none; }   /* upright: the 6° tilt left the corners of its box over the opaque stage (check: text_occluded) */
       /* The phone (real app, simulator) with Mimi beside it */
       #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
                 box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
