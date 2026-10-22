@@ -21,5 +21,7 @@ Format: the series template ([mimi-disaster-sit](../mimi-disaster-sit/README.md#
 
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; the WAVs are biometric and not in Git (Drive `049. Pronunciation Disasters 8 - Walk or Work/Disasters8_Walk_assets/own-voice/`). Bruno is Kokoro English `am_michael` (`source/assets/voice/`).
 - Slip check (Praat formants, not Whisper): the vowel of the learner's “worked” has F3 ≈ 1700–1850 Hz with F2 ≈ 1300 (r-coloured /ɝ/); the native “walked” keeps F3 ≈ 2800 Hz (no r). See [PROCESS.md](PROCESS.md).
+![Draft frames](process/00-final-frames.jpg)
+
 - Draft files in Lanclo's Google Drive `002.SNS/049. Pronunciation Disasters 8 - Walk or Work/` (`Disasters8_Walk_draft_2026-10-22.mp4`, `Disasters8_Walk_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters8_Walk_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
