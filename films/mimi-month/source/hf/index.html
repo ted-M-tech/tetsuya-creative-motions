@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; overflow: hidden; }
+      .pose { position: absolute; height: auto; transform-origin: 50% 100%; }
+      /* Hook */
+      #hook { position: absolute; left: 40px; right: 40px; top: 170px; text-align: center; }
+      #hook span { display: inline-block; background: #ffffff; color: #273b4b; font-size: 96px; font-weight: 700; line-height: 1.28;
+                   padding: 22px 44px; border-radius: 40px; box-shadow: 0 14px 40px rgba(39, 59, 75, 0.14); }
+      #hook strong { color: #2a8dff; }
+      #h-bino { left: 200px; top: 640px; width: 680px; }
+      #h-shock { left: 700px; top: 1080px; width: 340px; }
+      #h-count { position: absolute; left: 60px; top: 1330px; background: #273b4b; color: #ffffff; font-size: 72px; font-weight: 700; padding: 12px 36px; border-radius: 50px; }
+      /* The phone with the real report */
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 21px; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 20px; background: #000; }
+      .mask { position: absolute; background: #f2f2f7; }
+      #flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; }
+      /* The day card on the left */
+      #daycard { position: absolute; left: 50px; top: 470px; width: 440px; height: 330px; border-radius: 40px; background: #ffffff; overflow: hidden;
+                 box-shadow: 0 16px 40px rgba(39, 59, 75, 0.14); text-align: center; }
+      #daycard .top { height: 76px; background: #e5484d; color: #ffffff; font-size: 44px; font-weight: 700; line-height: 76px; letter-spacing: 0.08em; }
+      #daycard .num { font-size: 190px; font-weight: 700; color: #273b4b; line-height: 1.2; }
+      .side { left: 30px; top: 880px; width: 480px; }
+      #sample { position: absolute; left: 500px; top: 1528px; width: 560px; font-size: 24px; white-space: nowrap; color: #5d6b78; text-align: center; }
+      #say { top: 1400px; left: 40px; font-size: 46px; max-width: 470px; }
+      #say2 { top: 1400px; left: 40px; font-size: 52px; }
+      /* Close */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 90px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .row { display: flex; gap: 12px; justify-content: center; }
+      .type .pill { font-size: 34px; font-weight: 700; padding: 14px 22px; border-radius: 40px; background: #eef2f5; color: #344f69; white-space: nowrap; }
+      .type .pill.on { background: #344f69; color: #fff; }
+      .type .note { position: absolute; right: 40px; bottom: 60px; font-size: 24px; color: #8a97a3; text-align: right; line-height: 1.45; }
+      .type .duo { display: flex; align-items: flex-end; gap: 10px; }
+      .type .duo img { height: 400px; width: auto; }
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.6" data-width="1080" data-height="1920">
+
+      <!-- 0-1.5 Hook: Mimi with binoculars, right in your face -->
+      <div id="hookscene" class="clip" data-start="0" data-duration="1.5" data-track-index="1">
+        <img id="h-bino" class="pose" src="assets/art/mimi-binoculars.webp" alt="" />
+        <img id="h-shock" class="pose" src="assets/art/friend-shock.webp" alt="" />
+        <div id="h-count">DAY <span id="hc">1</span></div>
+      </div>
+
+      <!-- 1.5-15.2 The time-lapse -->
+      <div id="stage">
+        <div id="device">
+          <div id="screen">
+            <video id="v1" class="clip" src="assets/app/d1.mp4" muted playsinline data-start="1.5" data-duration="2.7" data-track-index="3"></video>
+            <video id="v7" class="clip" src="assets/app/d7.mp4" muted playsinline data-start="4.2" data-duration="2.7" data-track-index="3"></video>
+            <video id="v14" class="clip" src="assets/app/d14.mp4" muted playsinline data-start="6.9" data-duration="2.7" data-track-index="3"></video>
+            <video id="v21" class="clip" src="assets/app/d21.mp4" muted playsinline data-start="9.6" data-duration="2.5" data-track-index="3"></video>
+            <video id="v30" class="clip" src="assets/app/d30.mp4" muted playsinline data-start="12.1" data-duration="3.1" data-track-index="3"></video>
+            <div id="status"><b>9:41</b><i></i></div>
+            <div id="flash"></div>
+          </div>
+        </div>
+        <div id="daycard"><div class="top">DAY</div><div class="num" id="dnum">1</div></div>
+        <img id="s1" class="pose side clip" src="assets/art/mimi-notes.webp" alt="" data-start="1.5" data-duration="2.7" data-track-index="5" />
+        <img id="s7" class="pose side clip" src="assets/art/mimi-binoculars.webp" alt="" data-start="4.2" data-duration="2.7" data-track-index="5" />
+        <img id="s14" class="pose side clip" src="assets/art/point.webp" alt="" data-start="6.9" data-duration="2.7" data-track-index="5" />
+        <img id="s21" class="pose side clip" src="assets/art/friend-tsukkomi.webp" alt="" data-start="9.6" data-duration="2.5" data-track-index="5" />
+        <img id="s30a" class="pose side clip" src="assets/art/droop.webp" alt="" data-start="12.1" data-duration="1.6" data-track-index="5" />
+        <img id="s30b" class="pose side clip" src="assets/art/friend-wow.webp" alt="" data-start="13.7" data-duration="1.5" data-track-index="5" />
+        <div id="say" class="bubble from-left clip" data-start="12.5" data-duration="1.2" data-track-index="6">…見張ること、<br />なくなった。</div>
+        <div id="say2" class="bubble from-left clip" data-start="13.75" data-duration="1.45" data-track-index="6">やった〜！</div>
+        <div id="sample">※画面は例として用意したサンプルデータ</div>
+      </div>
+
+      <!-- Close -->
+      <div id="copy" class="type clip" data-start="15.2" data-duration="2.4" data-track-index="7">
+        <div id="big" class="big">アドバイスも、<br /><strong>あなたと一緒に育つ</strong>。</div>
+        <div class="row"><span class="pill">Day 7 “And then”</span><span class="pill">Day 14 “I think”</span><span class="pill on">Day 30 癖なし</span></div>
+        <div class="duo"><img id="cl1" src="assets/art/mimi-notes.webp" alt="" /><img id="cl2" src="assets/art/friend-wow.webp" alt="" /></div>
+        <div class="note">※Mimiのまとめは毎日、練習リマインダーの時刻（初期設定 20:00）に<br />画面は例として用意したサンプルデータ / Example data</div>
+      </div>
+
+      <div id="hook" class="clip" data-start="0" data-duration="1.5" data-track-index="20"><span>Mimiに<strong>1ヶ月</strong><br />見張られた結果</span></div>
+
+      <!-- Captions -->
+      <div class="caption small clip" data-start="1.5" data-duration="2.7" data-track-index="21"><span id="c1">最初のレポート。<br />まずは今日のポイント。</span></div>
+      <div class="caption small clip" data-start="4.2" data-duration="2.7" data-track-index="21"><span id="c7">“And then” 4回。<br /><em>クセ、バレてる。</em></span></div>
+      <div class="caption small clip" data-start="6.9" data-duration="2.7" data-track-index="21"><span id="c14">“And then” が消えた！<br />次は <strong>“I think”</strong>。</span></div>
+      <div class="caption small clip" data-start="9.6" data-duration="2.5" data-track-index="21"><span id="c21">今度は <strong>“very”</strong>。<br />…ぜんぶ見てる。</span></div>
+      <div class="caption small clip" data-start="12.1" data-duration="3.1" data-track-index="21"><span id="c30">「目立つ癖は<br /><strong>なかったよ</strong>」</span></div>
+
+      <div id="end" class="end clip" data-start="17.6" data-duration="1.0" data-track-index="22"></div>
+
+      <div class="sub clip" data-start="0.0" data-duration="1.5" data-track-index="24"><span>What happened after Mimi watched me for a month</span></div>
+      <div class="sub clip" data-start="1.5" data-duration="2.7" data-track-index="24"><span>Day 1: my first report. Today’s practice points.</span></div>
+      <div class="sub clip" data-start="4.2" data-duration="2.7" data-track-index="24"><span>Day 7: “And then” 4 times. Busted.</span></div>
+      <div class="sub clip" data-start="6.9" data-duration="2.7" data-track-index="24"><span>Day 14: “And then” is gone! Next up: “I think”.</span></div>
+      <div class="sub clip" data-start="9.6" data-duration="2.5" data-track-index="24"><span>Day 21: now it’s “very”. She sees everything…</span></div>
+      <div class="sub clip" data-start="12.1" data-duration="1.6" data-track-index="24"><span>Day 30: “Nothing repeated stood out.” — “…Nothing left to watch.”</span></div>
+      <div class="sub clip" data-start="13.7" data-duration="1.5" data-track-index="24"><span>“Yay!”</span></div>
+      <div class="sub clip" data-start="15.2" data-duration="2.4" data-track-index="24"><span>Mimi’s advice grows with you. (Example data)</span></div>
+      <div class="sub clip" data-start="17.6" data-duration="1.0" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="18.6" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Hook (0-1.5): binoculars zoom at the viewer, the day counter races to 30
+      tl.fromTo("#h-bino", { scale: 0.55, y: 120 }, { scale: 1.1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 0);
+      tl.to("#h-bino", { rotation: -4, duration: 0.12, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.5);
+      tl.fromTo("#h-shock", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 0.35);
+      tl.fromTo("#h-shock", { x: 0 }, { x: 8, duration: 0.04, yoyo: true, repeat: 9, immediateRender: false }, 0.6);
+      const hc = { v: 1 };
+      tl.fromTo(hc, { v: 1 }, { v: 30, duration: 1.0, ease: "power1.in", onUpdate: () => { document.getElementById("hc").textContent = Math.round(hc.v); } }, 0.3);
+      tl.fromTo("#h-count", { scale: 1 }, { scale: 1.25, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, 1.3);
+
+      tl.set("#stage", { autoAlpha: 0 }, 0); tl.set("#stage", { autoAlpha: 1 }, 1.5); tl.set("#stage", { autoAlpha: 0 }, 15.35);
+      // The time-lapse: the day card flips, a flash between screens
+      const DAYS = [[1, 1.5], [7, 4.2], [14, 6.9], [21, 9.6], [30, 12.1]];
+      tl.fromTo("#device", { x: 300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 1.5);
+      tl.fromTo("#daycard", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 1.5);
+      DAYS.forEach(([d, at], i) => {
+        tl.set("#dnum", { textContent: d }, at);
+        if (i > 0) {
+          tl.fromTo("#daycard", { rotationX: 90 }, { rotationX: 0, duration: 0.2, ease: "power2.out", immediateRender: false }, at);
+          tl.fromTo("#flash", { opacity: 0.8 }, { opacity: 0, duration: 0.2, immediateRender: false }, at);
+        }
+      });
+      tl.fromTo("#s1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2 }, 1.55);
+      tl.to("#s1", { rotation: 3, duration: 0.2, yoyo: true, repeat: 9, ease: "sine.inOut" }, 1.8);
+      tl.fromTo("#s7", { x: -60 }, { x: 0, duration: 0.2, ease: "back.out(2)" }, 4.2);
+      tl.to("#s7", { y: -14, duration: 0.15, yoyo: true, repeat: 13, ease: "sine.inOut" }, 4.4);
+      tl.fromTo("#s14", { scale: 0.8 }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, 6.9);
+      tl.fromTo("#s21", { x: -40 }, { x: 0, duration: 0.15, ease: "back.out(2)" }, 9.6);
+      tl.fromTo("#s30a", { y: 0 }, { y: 16, duration: 0.4, ease: "power2.out" }, 12.1);
+      tl.fromTo("#s30b", { y: 0 }, { y: -60, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out" }, 13.7);
+      k.pop("#c1", 1.5); k.pop("#c7", 4.2); k.pop("#c14", 6.9); k.pop("#c21", 9.6); k.pop("#c30", 12.1);
+      k.pop("#say", 12.5); k.pop("#say2", 13.75);
+
+      // Close
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 15.2);
+      tl.fromTo("#big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 15.25);
+      tl.fromTo(".type .pill", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, stagger: 0.1 }, 15.5);
+      tl.fromTo(["#cl1", "#cl2"], { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, stagger: 0.08, ease: "back.out(1.6)" }, 15.7);
+      k.end(17.6);
+      k.tapCta(18.05);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

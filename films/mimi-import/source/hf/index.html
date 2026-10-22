@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 480px; }
+      .mimi { right: 30px; width: 470px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.first { top: 300px; }
+      .stage .bubble.big { font-size: 78px; }
+      #o-friend { left: 270px; width: 540px; }
+      /* The scattered lists: a spreadsheet, a text memo, a list an AI made */
+      .card { position: absolute; background: #ffffff; border-radius: 26px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); padding: 18px 22px;
+              font-size: 26px; line-height: 1.35; color: #273b4b; }
+      .card .lab { white-space: nowrap; position: absolute; top: -26px; left: 18px; font-size: 30px; font-weight: 700; color: #fff; padding: 4px 20px; border-radius: 30px; }
+      #sheet { left: 40px; top: 560px; width: 400px; padding: 0; overflow: visible; }
+      #sheet .lab { background: #1f8a4c; }
+      #sheet table { border-collapse: collapse; width: 100%; font-size: 23px; margin-top: 10px; }
+      #sheet td { border: 2px solid #d5e3d9; padding: 6px 10px; white-space: nowrap; }
+      #sheet tr:first-child td { background: #e7f4ec; font-weight: 700; color: #1f8a4c; }
+      #memo { right: 40px; top: 620px; width: 390px; background: #fff8d6; }
+      #memo .lab { background: #8a5a06; }
+      #memo p { margin: 10px 0 0; border-bottom: 2px dashed #e8d9a0; padding-bottom: 4px; }
+      #ai { left: 40px; top: 1000px; width: 400px; background: #eef1ff; }
+      #ai .lab { background: #5b5fd6; }
+      #ai p { margin: 10px 0 0; }
+      /* The one file Mimi eats */
+      .file { position: absolute; width: 250px; height: 310px; background: #ffffff; border-radius: 18px; box-shadow: 0 18px 40px rgba(39, 59, 75, 0.22);
+              display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 26px; box-sizing: border-box; }
+      .file::before { content: ""; position: absolute; right: 0; top: 0; width: 70px; height: 70px; background: linear-gradient(225deg, #eef3f9 50%, #d7e1ea 50%); border-top-right-radius: 18px; }
+      .file .lines { position: absolute; left: 30px; right: 30px; top: 40px; }
+      .file .lines i { display: block; height: 12px; border-radius: 6px; background: #dfe7ee; margin-bottom: 14px; }
+      .file .lines i:nth-child(odd) { width: 70%; }
+      .file b { background: #1f8a4c; color: #fff; font-size: 54px; padding: 2px 26px; border-radius: 16px; letter-spacing: 0.04em; }
+      .file span { font-size: 24px; font-weight: 700; margin-top: 10px; color: #273b4b; white-space: nowrap; }
+      #f-file { left: 415px; top: 600px; }
+      /* The munch close-up */
+      #eat .chomp { left: 150px; width: 820px; bottom: 380px; }
+      #e-file { left: 0; top: 0; }
+      .crumb { position: absolute; left: 0; top: 0; background: #ffffff; border: 4px solid #273b4b; border-radius: 16px; padding: 8px 18px; font-size: 30px;
+               font-weight: 700; white-space: nowrap; color: #273b4b; }
+      .crumb small { font-size: 24px; font-weight: 400; color: #5b7f9f; margin-left: 10px; }
+      /* The real app, big in the centre */
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 40px; font-size: 22px; color: #53606b; text-align: center; line-height: 1.4; }
+      .caption .step { display: inline-block; background: #344f69; color: #fff; border-radius: 40px; padding: 2px 22px; margin-right: 14px; font-size: 48px; }
+      #app .crumb { z-index: 3; }
+      /* Clean type card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 112px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      /* English subtitles */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; z-index: 20; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.4" data-width="1080" data-height="1920">
+      <!-- Opening (0-4.2): phrases scattered over a spreadsheet, a memo and an AI list; Mimi turns them into one CSV -->
+      <div id="open" class="stage clip" data-start="0" data-duration="4.2" data-track-index="1">
+        <img id="o-friend" class="friend" src="assets/art/friend-swamped.webp" alt="" />
+        <img id="o-mimi" class="mimi" src="assets/art/mimi-phone.webp" alt="" />
+        <div id="sheet" class="card"><span class="lab">Excel</span>
+          <table><tr><td>A</td><td>B</td></tr><tr><td>Is this seat taken?</td><td>この席…</td></tr><tr><td>Can I pay by card?</td><td>カードで…</td></tr><tr><td>That sounds great!</td><td>いいですね</td></tr></table></div>
+        <div id="memo" class="card"><span class="lab">メモ</span><p>・I'll have the same. 同じものを</p><p>・Can I get this to go?</p><p>・Could I have the check?</p></div>
+        <div id="ai" class="card"><span class="lab">AIに作ってもらったリスト</span><p>1. What do you recommend?</p><p>2. I'm just looking.</p><p>3. Where can I catch a taxi?</p></div>
+        <div id="f-file" class="file"><div class="lines"><i></i><i></i><i></i><i></i><i></i></div><b>CSV</b><span>旅行フレーズ.csv</span></div>
+        <div id="b-mess" class="bubble from-left first">覚えたいフレーズ、<br />あちこちにバラバラ…</div>
+        <div id="b-csv" class="bubble from-right first">Excel？メモ？AIのリスト？<br />CSVにしたら…</div>
+      </div>
+
+      <!-- The munch (5.3-7.5) -->
+      <div id="eat" class="stage clip" data-start="5.3" data-duration="2.2" data-track-index="1">
+        <img id="e-chomp" class="chomp" src="assets/art/mimi-chomp.webp" alt="" />
+        <img id="e-chew" class="chomp" src="assets/art/mimi-chew.webp" alt="" style="opacity:0" />
+        <div id="e-file" class="file"><div class="lines"><i></i><i></i><i></i><i></i><i></i></div><b>CSV</b><span>旅行フレーズ.csv</span></div>
+        <div id="b-eat" class="bubble from-right first big">Mimiが食べるわ！</div>
+        <div id="crumbs"></div>
+      </div>
+
+      <!-- The real app (4.0-5.3 and 7.5-13.3): My Notes CSV import in the simulator, fixture data -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app1" class="clip" src="assets/app/app1.mp4" muted playsinline data-start="4.0" data-duration="1.3" data-track-index="4"></video>
+            <video id="a-app2" class="clip" src="assets/app/app2.mp4" muted playsinline data-start="7.5" data-duration="5.8" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:25%; top:28.6%" data-start="5.05" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp2" class="tap clip" style="left:81%; top:11.4%" data-start="8.6" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp3" class="tap clip" style="left:71%; top:43%" data-start="10.6" data-duration="0.3" data-track-index="5"></div>
+          </div>
+        </div>
+        <div id="crumbs2"></div>
+        <div class="note">※CSVの読み込みはログインして使えます（画面はテスト用データ）<br />CSV import needs a signed-in account (screens use test data).</div>
+      </div>
+
+      <!-- Captions on the app (the app's own labels) -->
+      <div id="cap-0" class="caption small clip" data-start="4.0" data-duration="1.3" data-track-index="6"><span id="c0">マイノートで<br /><strong>CSVファイルを選ぶ</strong>と…</span></div>
+      <div id="cap-1" class="caption small clip" data-start="7.5" data-duration="1.3" data-track-index="6"><span id="c1">新しく追加できるノート <strong>12件</strong></span></div>
+      <div id="cap-2" class="caption small clip" data-start="8.8" data-duration="1.0" data-track-index="6"><span id="c2">12件を追加しました。</span></div>
+      <div id="cap-3" class="caption small clip" data-start="9.8" data-duration="2.0" data-track-index="6"><span id="c3">マイノートに<strong>「旅行」12件</strong></span></div>
+      <div id="cap-4" class="caption small clip" data-start="11.8" data-duration="1.5" data-track-index="6"><span id="c4"><strong>自分の声のお手本</strong>で<br />練習・復習</span></div>
+
+      <!-- The copy card (13.3-14.5) -->
+      <div id="copy" class="type clip" data-start="13.3" data-duration="1.2" data-track-index="2">
+        <div id="big1" class="big">好きな内容を、<br /><strong>ここで練習。</strong></div>
+      </div>
+
+      <!-- The close (14.5-16.0) -->
+      <div id="close" class="stage clip" data-start="14.5" data-duration="1.5" data-track-index="1">
+        <img id="z-friend" class="friend" src="assets/art/friend-yay.webp" alt="" />
+        <img id="z-mimi" class="mimi" src="assets/art/mimi-yum.webp" alt="" />
+        <div id="b-yay" class="bubble from-left first">自分の好きなフレーズで<br />練習できる！</div>
+        <div id="b-yum" class="bubble from-right" style="top:560px">ごちそうさま〜♪</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="16.0" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="2.6" data-track-index="8"><span>The phrases I want to learn are scattered all over…</span></div>
+      <div class="sub clip" data-start="2.6" data-duration="1.4" data-track-index="8"><span>Excel? A memo? An AI’s list? Turn them into a CSV…</span></div>
+      <div class="sub clip" data-start="4.0" data-duration="1.3" data-track-index="8"><span>In My Notes, choose a CSV file…</span></div>
+      <div class="sub clip" data-start="5.3" data-duration="2.2" data-track-index="8"><span>…and Mimi eats it up!</span></div>
+      <div class="sub clip" data-start="7.5" data-duration="1.3" data-track-index="8"><span>12 new notes to add</span></div>
+      <div class="sub clip" data-start="8.8" data-duration="1.0" data-track-index="8"><span>Added 12 notes.</span></div>
+      <div class="sub clip" data-start="9.8" data-duration="2.0" data-track-index="8"><span>12 “Travel” notes in My Notes</span></div>
+      <div class="sub clip" data-start="11.8" data-duration="1.5" data-track-index="8"><span>Practise and review with a model in your own voice</span></div>
+      <div class="sub clip" data-start="13.3" data-duration="1.2" data-track-index="8"><span>Practise whatever you like, right here.</span></div>
+      <div class="sub clip" data-start="14.5" data-duration="0.75" data-track-index="8"><span>I can practise my own favourite phrases!</span></div>
+      <div class="sub clip" data-start="15.25" data-duration="0.75" data-track-index="8"><span>That was delicious~</span></div>
+      <div class="sub clip" data-start="16.0" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.4" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "好きな内容を、自分の声のお手本で。", "7日間無料ではじめる");
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const ROWS = ["Is this seat taken?", "What do you recommend?", "I'll have the same.", "Can I get this to go?", "Could you take a picture of us?",
+                    "I'm just looking.", "Can I pay by card?", "Could I have the check?", "Where can I catch a taxi?", "That sounds great!"];
+      const mk = (box, n) => { const el = document.getElementById(box); el.innerHTML = ROWS.slice(0, n).map((r) => `<div class="crumb">${r}</div>`).join(""); return [...el.children]; };
+
+      // Opening (0-2.6): she is swamped; the three lists pop up around her
+      gsap.set(["#o-mimi", "#f-file"], { opacity: 0 });
+      ["#sheet", "#memo", "#ai"].forEach((c, i) => {
+        tl.fromTo(c, { scale: 0.5, opacity: 0, rotation: 0 }, { scale: 1, opacity: 1, rotation: [-6, 5, -3][i], duration: 0.25, ease: "back.out(2)" }, 0.3 + 0.25 * i);
+        tl.to(c, { y: -14, duration: 0.6, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.6 + 0.2 * i);
+      });
+      tl.fromTo("#o-friend", { rotation: -2 }, { rotation: 2, duration: 0.18, yoyo: true, repeat: 13, ease: "sine.inOut" }, 0);
+      k.pop("#b-mess", 0.35);
+      tl.to("#b-mess", { opacity: 0, duration: 0.12 }, 2.55);
+      // Mimi steps in (2.6-4.0): the friend slides left, the lists fly together into one CSV file
+      tl.to("#o-friend", { x: -240, scale: 0.9, duration: 0.25, ease: "power2.out" }, 2.6);
+      tl.fromTo("#o-mimi", { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 2.6);
+      k.pop("#b-csv", 2.75);
+      tl.to("#sheet", { x: 400, y: 220, scale: 0.2, rotation: 40, opacity: 0, duration: 0.35, ease: "power2.in" }, 3.35);
+      tl.to("#memo", { x: -260, y: 160, scale: 0.2, rotation: -40, opacity: 0, duration: 0.35, ease: "power2.in" }, 3.4);
+      tl.to("#ai", { x: 260, y: -220, scale: 0.2, rotation: 30, opacity: 0, duration: 0.35, ease: "power2.in" }, 3.45);
+      tl.fromTo("#f-file", { scale: 0.3, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.3, ease: "back.out(2.5)" }, 3.75);
+
+      // The app (4.0-5.3): My Notes' import sheet, CSVファイルを選ぶ
+      tl.set("#app", { opacity: 1 }, 4.0); tl.set("#app", { opacity: 0 }, 5.3);
+      tl.set("#app", { opacity: 1 }, 7.5); tl.set("#app", { opacity: 0 }, 13.3);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.0);
+      ["#tp1", "#tp2", "#tp3"].forEach((s) => k.ripple(s, parseFloat(document.querySelector(s).dataset.start)));
+      k.pop("#c0", 4.0);
+
+      // The munch (5.3-7.5): the file flies into her mouth, she chews, the rows fly out as crumbs
+      const MOUTH = [430, 1130];
+      tl.fromTo("#e-file", { x: 700, y: 260, rotation: 25, scale: 1 }, { x: MOUTH[0] - 125, y: MOUTH[1] - 155, rotation: -10, scale: 0.75, duration: 0.3, ease: "power2.in" }, 5.3);
+      tl.to("#e-file", { scale: 0.05, opacity: 0, duration: 0.1 }, 5.6);
+      tl.fromTo("#e-chomp", { scale: 1, rotation: 0 }, { scale: 1.06, rotation: -3, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, 5.3);
+      tl.set("#e-chomp", { opacity: 0 }, 5.65); tl.set("#e-chew", { opacity: 1 }, 5.65);
+      tl.fromTo("#e-chew", { scaleY: 1, scaleX: 1 }, { scaleY: 0.93, scaleX: 1.05, duration: 0.15, yoyo: true, repeat: 11, ease: "sine.inOut", immediateRender: false }, 5.65);
+      k.pop("#b-eat", 5.35);
+      tl.fromTo("#b-eat", { rotation: 0 }, { rotation: 3, duration: 0.08, yoyo: true, repeat: 7, immediateRender: false }, 5.6);
+      const SPOTS = [[40, 520], [600, 600], [30, 760], [620, 840], [40, 1000], [600, 1080], [30, 1240], [620, 1320], [40, 1480], [560, 470]];
+      mk("crumbs", 10).forEach((c, i) => {
+        const at = 5.72 + 0.13 * i, [x, y] = SPOTS[i];
+        tl.fromTo(c, { x: MOUTH[0] - 80, y: MOUTH[1] - 30, scale: 0.2, opacity: 0, rotation: 0 },
+          { x, y, scale: 1, opacity: 1, rotation: (i % 2 ? 1 : -1) * (4 + (i % 4)), duration: 0.4, ease: "power2.out" }, at);
+        tl.to(c, { y: "+=120", opacity: 0, duration: 0.18, ease: "power1.in" }, Math.max(at + 0.4, Math.min(at + 0.7, 7.1)));
+      });
+
+      // The app again (7.5-13.3): the rows rain into the phone, then the real preview, add, My Notes, the review card
+      mk("crumbs2", 6).forEach((c, i) => {
+        tl.fromTo(c, { x: 120 + (i % 3) * 260, y: -80 - 60 * (i % 2), scale: 0.9, opacity: 1, rotation: (i % 2 ? 8 : -8) },
+          { x: 380, y: 880, scale: 0.2, opacity: 0, rotation: 0, duration: 0.45, ease: "power2.in" }, 7.5 + 0.06 * i);
+      });
+      tl.fromTo("#device", { scale: 1.15 }, { scale: 1.19, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, 7.9);
+      k.pop("#c1", 7.5); k.pop("#c2", 8.8); k.pop("#c3", 9.8); k.pop("#c4", 11.8);
+
+      // The copy card (13.3-14.5)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 13.3);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 13.33);
+      tl.fromTo("#big1 strong", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 13.45);
+
+      // The close (14.5-16.0)
+      tl.fromTo("#z-friend", { y: 0 }, { y: -36, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, 14.55);
+      tl.fromTo("#z-mimi", { rotation: 0 }, { rotation: -4, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 15.2);
+      k.pop("#b-yay", 14.55);
+      k.pop("#b-yum", 15.25);
+
+      k.end(16.0);
+      k.tapCta(16.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
