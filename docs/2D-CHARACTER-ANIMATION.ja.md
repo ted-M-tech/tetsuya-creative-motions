@@ -99,3 +99,7 @@ Riveで作るときは3〜7の間に：リグ（格子＋ドロネーの網、�
 ## 記録の残し方
 
 作品ごとに `films/<id>/` に：`README.md` / `README.ja.md`（何の作品か、形式、完成ファイルの場所）、`PROMPT.md`（統合プロンプト）、`PROCESS.md`（依頼者の指示の原文、判断、修正、学んだこと）、`prompts/`（codex-p のプロンプトとログの原文）、`process/`（軽いJPGのコマ）、`source/`（作り直すコマンドを書いた `README.md`、スクリプト、絵、`own-voice.json` と受領記録、編集）、`CREDITS.md`。Gitに入れないもの：本人の声のWAV、シミュレーターの録画、`hf/assets/`、書き出し、BGM。置き場所は source の README に書く（Lancloでは、Notion Content CalendarのIDで名付けたその回のDriveのフォルダ）。[作品を追加する](ADDING-A-FILM.md)。
+
+## エージェントで回す
+
+LancloのSNSショートは、企画から固定ルール、制作、Drive・Notionへの納品、確定、YouTubeと作品集への公開、まとめて作るときの進め方までを、1つのエージェント用スキルにまとめている：[lanclo-sns-short](../skills/lanclo-sns-short/SKILL.md)。

@@ -51,7 +51,7 @@ The 2D mascot rebuilt in Blender from Python alone, finished through nine Claude
 
 ### Mimi shorts (2D, vertical, 15–25 s)
 
-Lanclo's mascot Mimi and her friend in the official 2D style (Codex art + HyperFrames), most beside the real app recorded in the simulator. Every film keeps its process, prompts and runnable source. How to make one, or your own series: [2D character animation guide](docs/2D-CHARACTER-ANIMATION.md) · [Mimi shorts kit](kits/mimi-short/README.md) · [the cast](kits/mimi-short/cast/README.md).
+Lanclo's mascot Mimi and her friend in the official 2D style (Codex art + HyperFrames), most beside the real app recorded in the simulator. Every film keeps its process, prompts and runnable source. How to make one, or your own series: [2D character animation guide](docs/2D-CHARACTER-ANIMATION.md) · [Mimi shorts kit](kits/mimi-short/README.md) · [the cast](kits/mimi-short/cast/README.md) · [agent skill: lanclo-sns-short](skills/lanclo-sns-short/SKILL.md).
 
 - **First shorts (Rive bones)** — [My own voice? No way](films/mimi-jibun-no-koe/README.md) · ["think" turns into "sink"](films/mimi-think-sink/README.md) · [Asked the way, she freezes](films/mimi-michi/README.md) · [The diary ends on day three](films/mimi-nikki/README.md)
 - **Real app** — [Describe a photo](films/mimi-shashin/README.md) · [Tsundoku](films/mimi-daily/README.md) · [Lost an argument in English](films/mimi-debate/README.md) · [Keep talking for 3 minutes](films/mimi-freespeech/README.md) · [Talked for 180 seconds](films/mimi-180/README.md) · [One month to IELTS](films/mimi-ielts/README.md) · [AI chat never knows what to talk about](films/mimi-topics/README.md) · [I stopped shadowing native speakers](films/mimi-no-shadowing/README.md)

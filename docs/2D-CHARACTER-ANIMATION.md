@@ -88,3 +88,7 @@ Minimum steps, end to end:
 ## Keep every work reproducible
 
 Each work keeps, in `films/<id>/`: `README.md` / `README.ja.md` (what it is, format, where the finals are), `PROMPT.md` (consolidated prompt), `PROCESS.md` (owner directions verbatim, decisions, fixes, lessons), `prompts/` (verbatim codex-p prompts and logs), `process/` (light JPG frames), `source/` (`README.md` with the rebuild commands, scripts, art, `own-voice.json` and its receipt, the edit) and `CREDITS.md`. Not in Git: own-voice WAVs, simulator takes, `hf/assets/`, renders and the BGM; the source README says where they are (for Lanclo, the episode's Drive folder named after its Notion Content Calendar ID). See [Adding a film](ADDING-A-FILM.md).
+
+## Automating it
+
+For Lanclo SNS shorts the whole flow (intake, fixed rules, build, Drive / Notion delivery, finalize, YouTube and gallery publishing, batch mode) is one agent skill: [lanclo-sns-short](../skills/lanclo-sns-short/SKILL.md).

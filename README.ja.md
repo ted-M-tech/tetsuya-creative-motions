@@ -38,7 +38,7 @@ Duolingoのスペック広告 "The Path" の構成を借り、1本の線とカ�
 
 ### Mimiショート（2D・縦型・15〜25秒）
 
-LancloのマスコットMimiと友だちを公式の2Dの絵柄で（Codexの絵＋HyperFrames）。多くはシミュレーターで録った実際のアプリと並べている。どの作品も制作過程・プロンプト・作り直せるソースつき。作り方と自分のシリーズの作り方：[2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md) · [キャスト](kits/mimi-short/cast/README.md)。
+LancloのマスコットMimiと友だちを公式の2Dの絵柄で（Codexの絵＋HyperFrames）。多くはシミュレーターで録った実際のアプリと並べている。どの作品も制作過程・プロンプト・作り直せるソースつき。作り方と自分のシリーズの作り方：[2Dキャラクターアニメ制作ガイド](docs/2D-CHARACTER-ANIMATION.ja.md) · [Mimiショート共通キット](kits/mimi-short/README.md) · [キャスト](kits/mimi-short/cast/README.md) · [エージェント用スキル lanclo-sns-short](skills/lanclo-sns-short/SKILL.md)。
 
 - **最初のショート（Riveの骨）** — [自分の声、むり](films/mimi-jibun-no-koe/README.ja.md) · [think が sink に](films/mimi-think-sink/README.ja.md) · [道を聞かれて固まる](films/mimi-michi/README.ja.md) · [日記、3日で終わる](films/mimi-nikki/README.ja.md)
 - **実際のアプリ** — [写真で英語](films/mimi-shashin/README.ja.md) · [積読](films/mimi-daily/README.ja.md) · [英語で言い負かされた](films/mimi-debate/README.ja.md) · [3分、話しつづけて](films/mimi-freespeech/README.ja.md) · [180秒しゃべり続けたら](films/mimi-180/README.ja.md) · [IELTSまで1か月](films/mimi-ielts/README.ja.md) · [AIと会話、何話そう…](films/mimi-topics/README.ja.md) · [ネイティブの声でシャドーイング、もうやめた](films/mimi-no-shadowing/README.ja.md)
