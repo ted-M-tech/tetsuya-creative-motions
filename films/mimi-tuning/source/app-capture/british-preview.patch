@@ -1,0 +1,11 @@
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-candidates: (0..<3).map { .init(id: "qa-candidate-\($0)", sourceId: "qa-source", tone: Double($0), pace: Double($0), expression: Double($0), createdAt: now.timeIntervalSince1970 * 1000, language: "en") }, activeId: "qa-candidate-1"
++candidates: (0..<3).map { (i: Int) -> VoiceCandidate in
++            // Capture-only (films/mimi-tuning): the fixture's other preview carries the request typed in the tuning sheet.
++            let film: Bool = i == 0 && ProcessInfo.processInfo.arguments.contains("--qa-film-tuning")
++            let direction: String? = film ? "イギリス英語っぽく" : nil
++            let directionLanguage: String? = film ? "en" : nil
++            return VoiceCandidate(id: "qa-candidate-\(i)", sourceId: "qa-source", tone: Double(i), pace: Double(i), expression: Double(i), createdAt: now.timeIntervalSince1970 * 1000, language: "en", direction: direction, directionLanguage: directionLanguage)
++        }, activeId: "qa-candidate-1"

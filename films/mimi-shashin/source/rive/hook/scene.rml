@@ -8944,35 +8944,39 @@
       <KeyedObject objectId="0:51">
         <KeyedProperty propertyKey="18">
           <KeyFrameDouble frame="0" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="0" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="4" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="8" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="12" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="16" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="20" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="20" value="1" interpolationType="hold" />
           <KeyFrameDouble frame="24" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="28" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="32" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="36" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="40" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="44" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="48" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="28" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="32" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="36" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="40" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="44" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="48" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="52" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="56" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="60" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="64" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="68" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="60" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="64" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="68" value="1" interpolationType="hold" />
           <KeyFrameDouble frame="72" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="76" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="80" value="1" interpolationType="hold" />
-          <KeyFrameDouble frame="84" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="80" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="84" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="88" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="92" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="96" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="92" value="1" interpolationType="hold" />
+          <KeyFrameDouble frame="96" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="100" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="104" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="104" value="1" interpolationType="hold" />
           <KeyFrameDouble frame="108" value="1" interpolationType="hold" />
           <KeyFrameDouble frame="112" value="0" interpolationType="hold" />
-          <KeyFrameDouble frame="116" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="116" value="1" interpolationType="hold" />
           <KeyFrameDouble frame="120" value="0" interpolationType="hold" />
           <KeyFrameDouble frame="124" value="0" interpolationType="hold" />
+          <KeyFrameDouble frame="128" value="0" interpolationType="hold" />
         </KeyedProperty>
       </KeyedObject>
     </LinearAnimation>

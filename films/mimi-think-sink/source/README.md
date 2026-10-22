@@ -5,7 +5,7 @@
 | Path | Role |
 |---|---|
 | `art/*.png` | Codex output as drawn (confident, stunned, sink, bulb). The cut-outs live in the Mimi 2D library (`kits/mimi-short/library/poses`, `props`) |
-| `assets/voice/` | The two Kokoro voice lines ("I sink so!", "I think so.", voice `af_heart`); rebuild with `scripts/voices.sh` |
+| `own-voice.json`, `own-voice.receipt.json` | Mimi's two lines in the owner's own registered Lanclo voice ("I sink so!" learner accent, "I think so." General American). `kits/mimi-short/scripts/ownvoice.py` writes them to `assets/own-voice/` (not in Git; copies in Drive `Mimi_02_Think_Becomes_Sink_assets/own-voice/`) |
 | `scripts/shots.py` | The 11 Rive shots: pose, act, length. Episode acts: boast, stun, say (lip-sync from the voice line, cached in `scripts/lipsync-right.json`) |
 | `scripts/render.sh` | Rive shots → `renders/rive/*.mp4` → `hf/assets/shots/` |
 | `scripts/mix.py` | Cue sheet and sound → `hf/assets/mix.wav` |
@@ -17,6 +17,7 @@ From the repository root (Node 24, uv, ffmpeg, ImageMagick, Rive CLI 1.6):
 
 ```sh
 F=films/mimi-think-sink/source
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json   # or copy the WAVs from Drive Mimi_02_Think_Becomes_Sink_assets/own-voice/ into $F/assets/own-voice/
 uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/shots.py
 $F/scripts/render.sh                                   # about 6 minutes
 uv run --no-project --with numpy python $F/scripts/mix.py

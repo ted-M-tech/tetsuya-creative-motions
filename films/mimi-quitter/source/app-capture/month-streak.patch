@@ -1,0 +1,8 @@
+--- a/native-ios/Lanclo/Core/AppStore.swift
++++ b/native-ios/Lanclo/Core/AppStore.swift
+@@
+         if arguments.contains("--qa-widgets") {
+-            learningDates = (0..<7).compactMap { Calendar.current.date(byAdding: .day, value: -$0, to: Date()) }
++            // Capture-only (Mimi short 029): a month of study days, so the home streak reads 30.
++            learningDates = (0..<30).compactMap { Calendar.current.date(byAdding: .day, value: -$0, to: Date()) }
+         }

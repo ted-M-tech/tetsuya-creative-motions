@@ -1,7 +1,9 @@
 """Café roleplay (frozen at the counter) sound: the English lines, kit SFX, the theme bed -> hf/assets/mix.wav.
 
 usage: uv run --no-project --with numpy python films/mimi-roleplay/source/scripts/mix.py
-Voices: the barista and Mimi speak English (Kokoro, scripts/voices.sh); everything Japanese is on screen only.
+Voices: the barista speaks English with Kokoro bf_emma (assets/voice/, scripts/voices.sh); Mimi's order is the owner's registered
+Lanclo voice in General American (assets/own-voice/order.wav, not in Git; rebuild with kits/mimi-short/scripts/ownvoice.py
+source/own-voice.json; speech 0.24-2.32 s, measured). Everything Japanese is on screen only.
 """
 import sys
 from pathlib import Path
@@ -17,7 +19,7 @@ COPY = 3.3             # copy card
 APP = 4.3              # the app on the phone
 TAPS = (4.65, 5.25, 6.8, 7.8, 9.0)   # café, the scene, meaning, hint, record
 REPLY = 9.45           # the partner's reply, シチュエーション完了
-ORDER = 10.75          # back at the counter: "For here, please. I'd like a latte!"
+ORDER = 10.513         # back at the counter: "For here, please. I'd like a latte!" (speech 10.75-12.83)
 ASK2 = 13.0            # "Would you like it hot, or iced?"
 FREEZE2 = 14.5         # frozen again
 SHATTER = 15.2         # she breaks out grinning
@@ -36,9 +38,9 @@ m.sfx(whoosh(0.3, 0.3), APP)
 for at in TAPS:
     m.sfx(tap() * 0.6, at)
 m.sfx(ding(), REPLY)
-m.sfx(whoosh(0.3, 0.3), ORDER - 0.15)
-m.voice('order-af_heart.wav', ORDER)
-m.sfx(pop_seq(4, 0.06, base=79), ORDER + 2.0)       # served, sparkle
+m.sfx(whoosh(0.3, 0.3), 10.6)
+m.voice('../own-voice/order.wav', ORDER)
+m.sfx(pop_seq(4, 0.06, base=79), 12.75)       # served, sparkle
 m.voice('hot-bf_emma.wav', ASK2)
 m.sfx(freeze(0.7), FREEZE2)
 m.sfx(bell(96, 0.5, 0.1), FREEZE2 + 0.08)

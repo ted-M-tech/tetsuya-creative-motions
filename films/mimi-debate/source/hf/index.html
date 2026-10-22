@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* The two-shots: the friend on the left, Mimi on the right, both standing on the same line */
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; bottom: 520px; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; width: 500px; }
+      .mimi { right: 30px; width: 480px; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.first { top: 300px; }
+      .stage .bubble.reply { top: 500px; }
+      .stage .bubble.big { font-size: 66px; }
+      .stage .bubble.en { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 58px; }
+      .stage .bubble small { display: block; font-family: "Zen Maru Gothic", sans-serif; font-size: 32px; color: #5b7f9f; margin-top: 6px; }
+      .sweat { position: absolute; width: 46px; height: 64px; background: #7cc4ff; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; opacity: 0; }
+      .chip { position: absolute; left: 0; right: 0; top: 150px; display: flex; justify-content: center; }
+      .chip span { display: block; background: #e5484d; color: #fff; font-size: 56px; font-weight: 700; padding: 10px 44px; border-radius: 50px; }
+      /* The real app, big in the centre */
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .mask { position: absolute; background: #f2f2f7; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      .caption .step { display: inline-block; background: #344f69; color: #fff; border-radius: 40px; padding: 2px 22px; margin-right: 14px; font-size: 48px; }
+      .caption .hint { display: block; font-style: normal; font-size: 38px; color: #5b7f9f; margin-top: 6px; }
+      /* Clean type card: the hook */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 104px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.5" data-width="1080" data-height="1920">
+      <!-- Cornered (0-2.5): the friend asks in English, Mimi can't answer -->
+      <div id="ask" class="stage clip" data-start="0" data-duration="2.5" data-track-index="1">
+        <img id="a-friend" class="friend" src="assets/art/friend-tease.webp" alt="" />
+        <img id="a-mimi" class="mimi" src="assets/art/stunned.webp" alt="" />
+        <img id="a-droop" class="mimi" src="assets/art/droop.webp" alt="" style="opacity:0" />
+        <div id="b-ask" class="bubble from-left first en">Dog person or cat person?<small>（犬派？猫派？）</small></div>
+        <div id="b-um" class="bubble from-right reply big">え、えっと……</div>
+        <div id="b-dot" class="bubble from-right reply big" style="opacity:0">……</div>
+        <i id="sw1" class="sweat" style="left:640px; top:860px"></i>
+      </div>
+
+      <!-- The hook card (2.5-3.4) -->
+      <div id="copy" class="type clip" data-start="2.5" data-duration="0.9" data-track-index="2">
+        <div id="big1" class="big">言い返せないなら、<br /><strong>ディベート</strong>で<br />練習！</div>
+      </div>
+
+      <!-- The real app (3.4-11.0): Lanclo's Debate in the simulator, QA fixture data -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="3.4" data-duration="7.6" data-track-index="4"></video>
+            <div id="mk" class="mask clip" style="left:2%; top:15.2%; width:30%; height:3.4%" data-start="5.15" data-duration="1.5" data-track-index="5"></div>
+            <div id="tp1" class="tap clip" style="left:40%; top:31%" data-start="4.10" data-duration="0.3" data-track-index="6"></div>
+            <div id="tp2" class="tap clip" style="left:40%; top:67.5%" data-start="5.05" data-duration="0.3" data-track-index="6"></div>
+            <div id="tp3" class="tap clip" style="left:50%; top:86.3%" data-start="5.23" data-duration="0.3" data-track-index="6"></div>
+            <div id="tp4" class="tap clip" style="left:88%; top:86.8%" data-start="6.58" data-duration="0.3" data-track-index="6"></div>
+            <div id="tp5" class="tap clip" style="left:50%; top:86.3%" data-start="9.85" data-duration="0.3" data-track-index="6"></div>
+            <div id="tp6" class="tap clip" style="left:88%; top:86.8%" data-start="10.88" data-duration="0.12" data-track-index="6"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step captions on the app (the app's own words where they exist) -->
+      <div id="cap-1" class="caption small clip" data-start="3.4" data-duration="1.75" data-track-index="7"><span id="c1"><b class="step">1</b>テーマと立場を選ぶ</span></div>
+      <div id="cap-2" class="caption small clip" data-start="5.15" data-duration="1.48" data-track-index="7"><span id="c2"><b class="step">2</b>自分の意見を録音<i class="hint">1回3分まで</i></span></div>
+      <div id="cap-3" class="caption small clip" data-start="6.63" data-duration="1.2" data-track-index="7"><span id="c3"><b class="step">3</b>言い方のフィードバック</span></div>
+      <div id="cap-4" class="caption small clip" data-start="7.83" data-duration="2.0" data-track-index="7"><span id="c4"><b class="step">4</b>AIが<strong>反論</strong>して、質問<i class="hint">相手の意見</i></span></div>
+      <div id="cap-5" class="caption small clip" data-start="9.83" data-duration="1.17" data-track-index="7"><span id="c5"><b class="step">5</b>返答を録音</span></div>
+
+      <!-- The rematch (11.0-17.5) -->
+      <div id="re" class="stage clip" data-start="11.0" data-duration="6.5" data-track-index="1">
+        <img id="r-friend" class="friend" src="assets/art/friend-tease.webp" alt="" />
+        <img id="r-oops" class="friend" src="assets/art/friend-oops.webp" alt="" style="opacity:0" />
+        <img id="r-mimi" class="mimi" src="assets/art/confident.webp" alt="" />
+        <div id="chip" class="chip"><span>リベンジ</span></div>
+        <div id="b-ask2" class="bubble from-left first en">Dog person or cat person?<small>（犬派？猫派？）</small></div>
+        <div id="b-ans" class="bubble from-right first en">Dog person! They get me<br />outside every day.<small>（犬派！毎日外に連れ出してくれるから）</small></div>
+        <div id="b-you" class="bubble from-right reply en" style="top:600px">How about you?<small>（そっちは？）</small></div>
+        <div id="b-um2" class="bubble from-left first big">え、えっと……</div>
+        <i id="sw2" class="sweat" style="left:420px; top:880px"></i>
+      </div>
+
+      <!-- The punchline (17.5-19.1) -->
+      <div id="punch" class="stage clip" data-start="17.5" data-duration="1.6" data-track-index="1">
+        <img id="p-friend" class="friend" src="assets/art/friend-tsukkomi.webp" alt="" />
+        <img id="p-mimi" class="mimi" src="assets/art/sheepish.webp" alt="" />
+        <div id="b-punch" class="bubble from-left first big">…てか、あんた<br />うさぎだけどね</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="19.1" data-duration="1.4" data-track-index="8"></div>
+
+      <!-- English subtitles (one track); the English lines are in the bubbles -->
+      <div class="sub clip" data-start="1.45" data-duration="1.05" data-track-index="9"><span>Uh, umm…</span></div>
+      <div class="sub clip" data-start="2.5" data-duration="0.9" data-track-index="9"><span>Can’t answer back? Practise with Debate!</span></div>
+      <div class="sub clip" data-start="3.4" data-duration="1.75" data-track-index="9"><span>1 Pick a topic and a position</span></div>
+      <div class="sub clip" data-start="5.15" data-duration="1.48" data-track-index="9"><span>2 Record your opinion (up to 3 minutes)</span></div>
+      <div class="sub clip" data-start="6.63" data-duration="1.2" data-track-index="9"><span>3 Feedback on your phrasing</span></div>
+      <div class="sub clip" data-start="7.83" data-duration="2.0" data-track-index="9"><span>4 The AI pushes back and asks a question</span></div>
+      <div class="sub clip" data-start="9.83" data-duration="1.17" data-track-index="9"><span>5 Record your reply</span></div>
+      <div class="sub clip" data-start="11.0" data-duration="1.75" data-track-index="9"><span>Rematch</span></div>
+      <div class="sub clip" data-start="16.9" data-duration="0.6" data-track-index="9"><span>Uh, umm…</span></div>
+      <div class="sub clip" data-start="17.5" data-duration="1.6" data-track-index="9"><span>…Also, you’re a rabbit.</span></div>
+      <div class="sub clip" data-start="19.1" data-duration="1.4" data-track-index="9"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="20.5" data-track-index="10" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Cornered (0-2.5): she leans in with the question; Mimi freezes, then deflates
+      tl.fromTo("#a-friend", { x: -60 }, { x: 40, duration: 0.3, ease: "back.out(2)" }, 0.1);
+      k.pop("#b-ask", 0.15);
+      tl.fromTo("#a-mimi", { x: 0 }, { x: 8, duration: 0.05, yoyo: true, repeat: 5, immediateRender: false }, 1.0);
+      tl.fromTo("#sw1", { y: -20, opacity: 0 }, { y: 30, opacity: 1, duration: 0.5, ease: "power1.in" }, 1.1);
+      k.pop("#b-um", 1.45);
+      tl.set("#a-mimi", { opacity: 0 }, 2.0); tl.set("#a-droop", { opacity: 1 }, 2.0);
+      tl.fromTo("#a-droop", { scaleY: 1.12, scaleX: 0.94 }, { scaleY: 0.9, scaleX: 1.06, duration: 0.35, ease: "power2.out" }, 2.0);
+      tl.to("#b-um", { opacity: 0, duration: 0.1 }, 2.0);
+      tl.to("#sw1", { opacity: 0, duration: 0.1 }, 2.0);
+      k.pop("#b-dot", 2.05);
+      tl.to("#b-dot", { scale: 0.7, duration: 0.4, ease: "power2.in" }, 2.1);
+
+      // The hook card (2.5-3.4)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.5);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 2.53);
+      tl.fromTo("#big1 strong", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 2.58);
+
+      // The app (3.4-11.0)
+      tl.set("#app", { opacity: 1 }, 3.4); tl.set("#app", { opacity: 0 }, 11.0);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, 3.4);
+      ["#tp1", "#tp2", "#tp3", "#tp4", "#tp5", "#tp6"].forEach((s) => k.ripple(s, parseFloat(document.querySelector(s).dataset.start)));
+      k.pop("#c1", 3.4); k.pop("#c2", 5.15); k.pop("#c3", 6.63); k.pop("#c4", 7.83); k.pop("#c5", 9.83);
+
+      // The rematch (11.0-17.5)
+      tl.fromTo("#chip", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(3)" }, 11.0);
+      tl.to("#chip", { opacity: 0, duration: 0.2 }, 12.6);
+      tl.fromTo("#r-friend", { x: -60 }, { x: 40, duration: 0.3, ease: "back.out(2)" }, 11.05);
+      k.pop("#b-ask2", 11.1);
+      tl.to("#b-ask2", { opacity: 0, duration: 0.12 }, 12.8);
+      tl.fromTo("#r-mimi", { y: 0 }, { y: -50, duration: 0.16, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 12.85);
+      k.pop("#b-ans", 12.85);
+      tl.to("#r-friend", { x: 0, duration: 0.6, ease: "power2.out" }, 13.6);
+      k.pop("#b-you", 16.15);
+      tl.fromTo("#r-mimi", { rotation: 0 }, { rotation: -5, duration: 0.2, yoyo: true, repeat: 1, immediateRender: false }, 16.2);
+      tl.to("#b-ans", { opacity: 0, duration: 0.12 }, 16.85);
+      tl.set("#r-friend", { opacity: 0 }, 16.9); tl.set("#r-oops", { opacity: 1 }, 16.9);
+      tl.fromTo("#r-oops", { x: 0 }, { x: -10, duration: 0.05, yoyo: true, repeat: 5, immediateRender: false }, 16.95);
+      tl.fromTo("#sw2", { y: -20, opacity: 0 }, { y: 30, opacity: 1, duration: 0.45, ease: "power1.in" }, 16.95);
+      tl.set("#b-um2", { opacity: 0 }, 0);
+      k.pop("#b-um2", 16.9);
+
+      // The punchline (17.5-19.1)
+      tl.fromTo("#p-friend", { x: -40 }, { x: 0, duration: 0.18, ease: "back.out(2)" }, 17.5);
+      k.pop("#b-punch", 17.55);
+      tl.fromTo("#p-mimi", { rotation: 0 }, { rotation: 4, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 17.85);
+
+      k.end(19.1);
+      k.tapCta(19.7);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

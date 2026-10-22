@@ -1,0 +1,14 @@
+{
+  "lines": [
+    {
+      "id": "rough",
+      "text": "People is sitting... at a cafe.",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Keep it natural, not a caricature. Keep a brisk pace: one short pause at the dots only, the whole line in about two seconds."
+    },
+    {
+      "id": "model",
+      "text": "The hanging lamp lights the counter where people are gathered.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Say \"counter\" clearly (COWN-ter)."
+    }
+  ]
+}
