@@ -34,3 +34,7 @@ Three learner generations were used (the limit). The film uses only “I worked!
 
 - The learner voice is the owner's on the Friend; take 3 is more fluent than earlier learners (the style needed a clear American “er” to make the slip audible).
 - The plate (backyard) is a little more painterly than earlier plates.
+
+## Revisions
+
+- v2 (2026-10-22, commander review): "in the freeze beat the Friend is rendered cream/yellow instead of white — off-model". Cause: the freeze tint inherited from episode 6 (a yellow `#ffd84a` multiply layer over the whole scene). Replaced with episode 5's desaturating tint (`#9aa6b2`, saturation blend), so the white cast stays white; whole film re-scanned at 2 fps. Previous drafts kept in Drive `old/` as `*_v1-cream-friend.mp4`.
