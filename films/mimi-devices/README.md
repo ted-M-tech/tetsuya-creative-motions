@@ -6,7 +6,7 @@ Mimi's friend tries to study on her phone, a video app's notification pulls her 
 
 0:20.0 / 1080×1920, 60 fps / Japanese speech bubbles and captions / official 2D poses + GSAP, real Web app (local dev server, fixture data) and a real iOS frame + HyperFrames
 
-Two cuts: Japanese only (`mimi-devices.mp4`) and with English subtitles (`mimi-devices-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/026. Phone, Tablet or Computer/` (`Devices_draft_2026-10-21.mp4`, `Devices_draft_EN-subs_2026-10-21.mp4`, screen captures in `Devices_assets/`).
+Two cuts: Japanese only (`mimi-devices.mp4`) and with English subtitles (`mimi-devices-en.mp4`); final files in Lanclo's Google Drive `002.SNS/026. Phone, Tablet or Computer/` (`Devices_2026-10-21.mp4`, `Devices_EN-subs_2026-10-21.mp4`, screen captures in `Devices_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 
