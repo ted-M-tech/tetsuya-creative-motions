@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background: #eef3f9; }
+      .scene .plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .scene img.ch { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .scene .bubble { font-size: 52px; max-width: none; white-space: nowrap; }
+      .stage .bubble, .scene .bubble.first { top: 300px; }
+      .scene .tag { top: auto; }
+      /* The race: the plate scrolls left (two copies side by side), runners bob in place */
+      #track { position: absolute; inset: 0; transform-origin: 50% 45%; }
+      #track img { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      #banner { position: absolute; left: 84px; width: 912px; top: 236px; height: 150px; display: flex; align-items: center; justify-content: center;
+                font-size: 76px; font-weight: 700; color: #273b4b; letter-spacing: 0.06em; }
+      #cap-race, #cap-next { top: 450px; }
+      #race .bubble.first { top: 440px; }
+      .leaf { position: absolute; width: 34px; height: 34px; border-radius: 0 60% 0 60%; }
+      #r-mimi { left: 540px; bottom: 430px; width: 500px; }
+      #r-teacher { left: 60px; bottom: 430px; width: 463px; }
+      #r-thumb { left: 40px; bottom: 430px; width: 525px; opacity: 0; }
+      #t-teacher { left: 70px; right: auto; top: 1460px; }
+      /* Café */
+      #c-talk { left: 50%; bottom: 380px; width: 900px; margin-left: -450px; }
+      #cups { position: absolute; left: 0; top: 0; }
+      #cups img { position: absolute; width: 96px; height: auto; }
+      #wclock { position: absolute; left: 170px; top: 360px; width: 290px; height: 290px; }
+      #hours { position: absolute; left: 500px; top: 450px; }
+      #hours span { background: #344f69; color: #fff; font-size: 56px; font-weight: 700; padding: 12px 40px; border-radius: 40px; font-variant-numeric: tabular-nums; }
+      /* Online calls */
+      #call { position: absolute; left: 90px; top: 380px; width: 900px; height: 600px; border-radius: 36px; background: #1d2733; padding: 16px;
+              box-shadow: 0 30px 70px rgba(39, 59, 75, 0.3); }
+      #call .tile { position: absolute; left: 16px; top: 16px; right: 16px; bottom: 16px; border-radius: 24px; overflow: hidden; background: #f6efe4; }
+      #call .tile img { position: absolute; left: 50%; bottom: -30px; width: 560px; margin-left: -280px; }
+      #call .rec { position: absolute; left: 38px; top: 34px; background: rgba(39, 59, 75, 0.75); color: #fff; font-size: 28px; font-weight: 700; padding: 6px 18px; border-radius: 20px; }
+      #call .me { position: absolute; right: 36px; bottom: 36px; width: 200px; height: 140px; border-radius: 18px; background: #dfe8f1; border: 4px solid #fff; overflow: hidden; }
+      #call .me img { position: absolute; left: 50%; top: -6px; width: 190px; margin-left: -95px; }
+      .sketch { position: absolute; width: 170px; height: 300px; border-radius: 26px; background: #fff; border: 5px solid #273b4b; padding: 18px 14px; display: flex; flex-direction: column; gap: 12px;
+                box-shadow: 0 10px 24px rgba(39, 59, 75, 0.18); }
+      .sketch i { display: block; height: 18px; border-radius: 9px; background: #c9d6e2; }
+      .sketch i.b { height: 42px; background: #2a8dff; opacity: 0.8; margin-top: auto; }
+      .sketch i.r { width: 64px; height: 64px; border-radius: 50%; background: #e5484d; align-self: center; }
+      .sticky { position: absolute; width: 170px; height: 150px; background: #ffe58a; box-shadow: 0 8px 18px rgba(39, 59, 75, 0.18); padding: 16px; font-size: 30px; font-weight: 700;
+                color: #273b4b; line-height: 1.25; }
+      #o-mimi { left: 50%; bottom: 330px; width: 560px; margin-left: -280px; }
+      /* Launch */
+      #y-five { left: 50%; bottom: 460px; width: 980px; margin-left: -490px; }
+      .confetti { position: absolute; inset: 0; pointer-events: none; }
+      .confetti i { position: absolute; width: 22px; height: 34px; border-radius: 4px; }
+      #device { position: absolute; left: 300px; top: 560px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #lock { position: absolute; left: 0; right: 0; top: 300px; display: flex; justify-content: center; align-items: center; gap: 22px; }
+      #lock img { width: 120px; height: 120px; }
+      #lock span { font-size: 112px; font-weight: 700; color: #273b4b; }
+      #launch { position: absolute; left: 0; right: 0; top: 450px; text-align: center; font-size: 52px; font-weight: 700; color: #2a8dff; }
+      /* Message cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 100px; font-weight: 700; text-align: center; line-height: 1.42; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .how { position: absolute; left: 60px; right: 60px; top: 1400px; text-align: center; font-size: 40px; color: #5b7f9f; line-height: 1.5; }
+      #s-mimi { left: 50%; bottom: 470px; width: 560px; margin-left: -280px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="32" data-width="1080" data-height="1920">
+      <!-- 1. The race (0-10.6): the Victoria Marathon, Canada; the teacher happens to run beside Mimi -->
+      <div id="race" class="scene clip" data-start="0" data-duration="10.6" data-track-index="1">
+        <div id="track">
+          <img src="assets/art/plate-race.webp" alt="" />
+          <div id="banner">VICTORIA MARATHON</div>
+        </div>
+        <div id="leaves"></div>
+        <img id="r-teacher" class="ch" src="assets/art/teacher-run.webp" alt="" />
+        <img id="r-thumb" class="ch" src="assets/art/teacher-thumb.webp" alt="" />
+        <img id="r-mimi" class="ch" src="assets/art/mimi-run.webp" alt="" />
+        <div id="t-teacher" class="tag model"><span>大学の語学講師</span></div>
+        <div id="b-1" class="bubble from-right first">カナダに住んでる自分が<br />実際にやってる勉強を<br />アプリにしてるんだよね</div>
+        <div id="b-2" class="bubble from-right first">いろんな勉強法を<br />試してきたけど、<br />自分このみでやりたくて</div>
+        <div id="b-3" class="bubble from-left first">いいね！<br />僕が大学講師目線で、<br />言語学習に使えるように<br />アドバイスするよ！</div>
+      </div>
+      <div id="cap-race" class="caption small clip" data-start="0" data-duration="2.2" data-track-index="6"><span id="cr">カナダの<strong>ビクトリアマラソン</strong></span></div>
+      <div id="cap-next" class="caption small clip" data-start="2.2" data-duration="1.4" data-track-index="6"><span id="cn">たまたま隣を走っていたのは…</span></div>
+
+      <!-- 2. The café (10.6-15.0): three hours of talk -->
+      <div id="cafe" class="scene clip" data-start="10.6" data-duration="4.4" data-track-index="1">
+        <img class="plate" src="assets/art/cafe.webp" alt="" />
+        <svg id="wclock" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="#ffffff" stroke="#273b4b" stroke-width="5" />
+          <g fill="#273b4b"><circle cx="50" cy="12" r="2.6" /><circle cx="88" cy="50" r="2.6" /><circle cx="50" cy="88" r="2.6" /><circle cx="12" cy="50" r="2.6" /></g>
+          <line id="h-hour" x1="50" y1="50" x2="50" y2="28" stroke="#273b4b" stroke-width="5" stroke-linecap="round" />
+          <line id="h-min" x1="50" y1="50" x2="50" y2="17" stroke="#2a8dff" stroke-width="3.5" stroke-linecap="round" />
+          <circle cx="50" cy="50" r="4" fill="#273b4b" />
+        </svg>
+        <div id="hours"><span id="hrs">＋0時間</span></div>
+        <img id="c-talk" class="ch" src="assets/art/cafe-talk.webp" alt="" />
+        <div id="cups"></div>
+      </div>
+      <div id="cap-cafe" class="caption small clip" data-start="10.6" data-duration="4.4" data-track-index="6"><span id="cc">レースのあと、カフェで</span></div>
+
+      <!-- 3. Online calls (15.0-19.4): notes and app sketches -->
+      <div id="online" class="scene clip" data-start="15.0" data-duration="4.4" data-track-index="1">
+        <img class="plate" src="assets/art/plate-desk.webp" alt="" />
+        <div id="call">
+          <div class="tile"><img src="assets/art/teacher-call.webp" alt="" /></div>
+          <div class="rec">● オンライン通話</div>
+          <div class="me"><img src="assets/art/mimi-laptop.webp" alt="" /></div>
+        </div>
+        <div id="sk1" class="sketch" style="left:40px; top:1180px; transform: rotate(-6deg)"><i></i><i style="width:70%"></i><i class="r"></i><i class="b"></i></div>
+        <div id="sk2" class="sketch" style="left:870px; top:1170px; transform: rotate(7deg)"><i style="height:60px"></i><i></i><i style="width:60%"></i><i class="b"></i></div>
+        <div id="st1" class="sticky" style="left:30px; top:960px; transform: rotate(-5deg)">毎日<br />続けたい</div>
+        <div id="st2" class="sticky" style="left:880px; top:950px; transform: rotate(6deg)">自分の<br />声で</div>
+        <img id="o-mimi" class="ch" src="assets/art/mimi-laptop.webp" alt="" />
+      </div>
+      <div id="cap-online" class="caption small clip" data-start="15.0" data-duration="4.4" data-track-index="6"><span id="co">それから、オンラインで何度も</span></div>
+
+      <!-- 4. Done! (19.4-21.9) and the app (21.9-23.9) -->
+      <div id="yay" class="scene clip" data-start="19.4" data-duration="2.5" data-track-index="1">
+        <div id="conf" class="confetti"></div>
+        <img id="y-five" class="ch" src="assets/art/highfive.webp" alt="" />
+        <div id="b-yay" class="bubble from-right first" style="right:auto; left:50%; transform-origin:50% 50%; font-size:84px">できた！いぇーい！</div>
+      </div>
+      <div id="app" class="scene clip" data-start="21.9" data-duration="2.0" data-track-index="1" style="background:#fbfcfd">
+        <div id="lock"><img src="assets/kit/brand/mark.png" alt="" /><span>Lanclo</span></div>
+        <div id="launch">リリース！</div>
+        <div id="device"><div id="screen">
+          <video id="a-home" class="clip" src="assets/app/home.mp4" muted playsinline data-start="21.9" data-duration="2.0" data-track-index="4"></video>
+        </div></div>
+      </div>
+
+      <!-- 5. Message cards (23.9-28.3) -->
+      <div id="card1" class="type clip" data-start="23.9" data-duration="2.0" data-track-index="2">
+        <div id="big1" class="big">Lancloは、<br /><strong>みんなの声</strong>で<br />育つアプリ。</div>
+      </div>
+      <div id="card2" class="type clip" data-start="25.9" data-duration="2.4" data-track-index="2">
+        <div id="big2" class="big">使ってみて、<br />Mimiに<strong>要望</strong>を<br />教えてね！</div>
+        <div id="how" class="how">要望はアプリの<br />設定 › ヘルプとアプリ情報 › サポート から</div>
+      </div>
+
+      <!-- 6. Mimi, a little nervous (28.3-30.5) -->
+      <div id="sweat" class="scene clip" data-start="28.3" data-duration="2.2" data-track-index="1">
+        <img id="s-mimi" class="ch" src="assets/art/mimi-sweat.webp" alt="" />
+        <div id="b-sweat" class="bubble from-right first" style="font-size:72px">お手柔らかに…</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="30.5" data-duration="1.5" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="2.2" data-track-index="8"><span>The Victoria Marathon, Canada</span></div>
+      <div class="sub clip" data-start="2.2" data-duration="1.4" data-track-index="8"><span>Running right beside her, by chance… (a university language teacher)</span></div>
+      <div class="sub clip" data-start="3.6" data-duration="2.2" data-track-index="8"><span>I’m turning the way I actually study, living in Canada, into an app.</span></div>
+      <div class="sub clip" data-start="5.8" data-duration="2.2" data-track-index="8"><span>I’ve tried all kinds of methods, but I want it my way.</span></div>
+      <div class="sub clip" data-start="8.0" data-duration="2.6" data-track-index="8"><span>Love it! I’ll advise you as a university teacher, so it really works for language learning!</span></div>
+      <div class="sub clip" data-start="10.6" data-duration="4.4" data-track-index="8"><span>After the race, at a café (+3 hours)</span></div>
+      <div class="sub clip" data-start="15.0" data-duration="4.4" data-track-index="8"><span>Then online, again and again (online call · “Every day” · “In my own voice”)</span></div>
+      <div class="sub clip" data-start="19.4" data-duration="2.5" data-track-index="8"><span>We did it! Yay!</span></div>
+      <div class="sub clip" data-start="21.9" data-duration="2.0" data-track-index="8"><span>Lanclo is out!</span></div>
+      <div class="sub clip" data-start="23.9" data-duration="2.0" data-track-index="8"><span>Lanclo is an app that grows with everyone’s voice.</span></div>
+      <div class="sub clip" data-start="25.9" data-duration="2.4" data-track-index="8"><span>Try it and tell Mimi what you’d like! (In the app: Settings › Help &amp; about › Support)</span></div>
+      <div class="sub clip" data-start="28.3" data-duration="2.2" data-track-index="8"><span>Please go easy on me…</span></div>
+      <div class="sub clip" data-start="30.5" data-duration="1.5" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="32" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      // falling maple leaves and confetti (fixed seed: deterministic)
+      let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+      const leafColors = ["#f08a3c", "#e5573f", "#f4b740", "#d9622b"];
+      const leaves = document.getElementById("leaves");
+      for (let i = 0; i < 16; i++) leaves.insertAdjacentHTML("beforeend", `<i class="leaf" style="background:${leafColors[i % 4]}"></i>`);
+      const conf = document.getElementById("conf"), confColors = ["#2a8dff", "#ffd84a", "#e5484d", "#5fc48a", "#344f69", "#f08a3c"];
+      for (let i = 0; i < 44; i++) conf.insertAdjacentHTML("beforeend", `<i style="background:${confColors[i % 6]}"></i>`);
+      const cups = document.getElementById("cups");
+      const CUP_AT = [[430, 1205], [526, 1205], [622, 1205], [478, 1131], [574, 1131], [526, 1057]];  // on the table, a little pyramid
+      CUP_AT.forEach(([x, y]) => cups.insertAdjacentHTML("beforeend", `<img src="assets/art/cup.webp" alt="" style="left:${x}px; top:${y}px" />`));
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // 1. The race (0-10.6): the street scrolls by, leaves fall, both runners bob in step
+      tl.fromTo("#track", { scale: 1 }, { scale: 1.12, duration: 10.6, ease: "none" }, 0);
+      document.querySelectorAll(".leaf").forEach((l, i) => {
+        const x0 = rnd() * 1300, y0 = -60 - rnd() * 900, d = 3 + rnd() * 3;
+        tl.fromTo(l, { x: x0, y: y0, rotation: rnd() * 360 }, { x: x0 - 600 - rnd() * 400, y: y0 + 2200, rotation: "+=540", duration: d * 2.2, ease: "none" }, 0);
+      });
+      const bob = (sel, at, dur, off = 0) => tl.fromTo(sel, { y: 0 }, { y: -26, duration: 0.17, yoyo: true, repeat: Math.round(dur / 0.17), ease: "sine.inOut", immediateRender: false }, at + off);
+      bob("#r-mimi", 0, 10.5);
+      tl.fromTo("#r-mimi", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+      k.pop("#cr", 0.1);
+      tl.fromTo("#r-teacher", { x: -560 }, { x: 0, duration: 0.6, ease: "power2.out" }, 2.2);
+      bob("#r-teacher", 2.2, 5.8, 0.085);
+      k.pop("#cn", 2.25);
+      k.tagIn("#t-teacher", 2.7); tl.to("#t-teacher", { opacity: 0, duration: 0.2 }, 3.5);
+      k.pop("#b-1", 3.65); tl.to("#b-1", { opacity: 0, duration: 0.12 }, 5.7);
+      k.pop("#b-2", 5.85); tl.to("#b-2", { opacity: 0, duration: 0.12 }, 7.9);
+      tl.set("#r-teacher", { opacity: 0 }, 8.0); tl.set("#r-thumb", { opacity: 1 }, 8.0);
+      bob("#r-thumb", 8.0, 2.5, 0.085);
+      tl.fromTo("#r-thumb", { scale: 0.92 }, { scale: 1, duration: 0.25, ease: "back.out(3)", immediateRender: false }, 8.0);
+      k.pop("#b-3", 8.05);
+
+      // 2. The café (10.6-15.0): the clock spins three hours, cups pile up
+      tl.fromTo("#cafe", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 10.6);
+      k.pop("#cc", 10.65);
+      tl.fromTo("#wclock", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, 10.8);
+      tl.fromTo("#h-min", { rotation: 0, svgOrigin: "50 50" }, { rotation: 1080, svgOrigin: "50 50", duration: 3.4, ease: "power1.inOut" }, 11.2);
+      tl.fromTo("#h-hour", { rotation: 60, svgOrigin: "50 50" }, { rotation: 150, svgOrigin: "50 50", duration: 3.4, ease: "power1.inOut" }, 11.2);
+      const hr = { v: 0 };
+      tl.fromTo(hr, { v: 0 }, { v: 3, duration: 3.4, ease: "power1.inOut", onUpdate: () => { document.getElementById("hrs").textContent = "＋" + Math.floor(hr.v + 0.001) + "時間"; } }, 11.2);
+      tl.fromTo("#hours", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 11.2);
+      tl.fromTo("#hours span", { scale: 1 }, { scale: 1.18, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 14.6);
+      tl.fromTo("#c-talk", { y: 0 }, { y: -10, duration: 0.3, yoyo: true, repeat: 13, ease: "sine.inOut", immediateRender: false }, 10.7);
+      const CUPS = [11.5, 12.0, 12.5, 13.0, 13.5, 14.0];
+      document.querySelectorAll("#cups img").forEach((c, i) => {
+        tl.fromTo(c, { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "bounce.out" }, CUPS[i] - 0.18);
+      });
+
+      // 3. Online calls (15.0-19.4)
+      tl.fromTo("#online", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 15.0);
+      k.pop("#co", 15.05);
+      tl.fromTo("#call", { y: 80, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, 15.05);
+      tl.fromTo("#call .tile img", { rotation: -2 }, { rotation: 2, duration: 0.35, yoyo: true, repeat: 11, ease: "sine.inOut", transformOrigin: "50% 100%" }, 15.2);
+      tl.fromTo("#o-mimi", { y: 0 }, { y: -6, duration: 0.12, yoyo: true, repeat: 27, ease: "sine.inOut", immediateRender: false }, 15.4);
+      [["#st1", 15.9], ["#sk1", 16.6], ["#st2", 17.3], ["#sk2", 18.0]].forEach(([s, at]) =>
+        tl.fromTo(s, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.4)" }, at));
+
+      // 4. Done! (19.4-21.9): high-five, confetti
+      tl.fromTo("#y-five", { scale: 0.85, y: 40 }, { scale: 1, y: 0, duration: 0.3, ease: "back.out(2.5)" }, 19.4);
+      tl.fromTo("#y-five", { y: 0 }, { y: -30, duration: 0.2, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, 19.75);
+      tl.fromTo("#b-yay", { xPercent: -50, scale: 0.6, opacity: 0 }, { xPercent: -50, scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.4)" }, 19.5);
+      document.querySelectorAll("#conf i").forEach((c) => {
+        const x0 = 540 + (rnd() - 0.5) * 200, ang = rnd() * Math.PI * 2, sp = 300 + rnd() * 600;
+        tl.fromTo(c, { x: x0, y: 1050, rotation: 0, opacity: 1 },
+          { x: x0 + Math.cos(ang) * sp, y: 1050 - Math.abs(Math.sin(ang)) * sp - 300 + 900 * rnd(), rotation: 360 + rnd() * 720, duration: 2.2, ease: "power2.out" }, 19.55 + rnd() * 0.2);
+      });
+
+      // The app (21.9-23.9)
+      tl.fromTo("#lock", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 21.95);
+      tl.fromTo("#launch", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.4)" }, 22.2);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, 21.9);
+
+      // 5. Message cards
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 23.93);
+      tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 25.93);
+      tl.fromTo("#how", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 26.3);
+
+      // 6. Mimi, sweating a little
+      tl.fromTo("#s-mimi", { x: 0 }, { x: -8, duration: 0.07, yoyo: true, repeat: 7, immediateRender: false }, 28.5);
+      tl.fromTo("#s-mimi", { scale: 0.92 }, { scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, 28.3);
+      k.pop("#b-sweat", 28.4);
+
+      k.end(30.5);
+      k.tapCta(31.1);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
