@@ -83,7 +83,7 @@
       /* Punchline first: Mimi's line on frame 1, then a rewind to the start of the scene */
       #punch { position: absolute; inset: 0; background: #fbfcfd; overflow: hidden; }
       #punch .pplate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.6) brightness(0.92); }
-      #punch .pcast { position: absolute; height: auto; filter: saturate(0.5) brightness(0.9); }
+      #punch .pcast { position: absolute; height: auto; }
       #punch .pt { position: absolute; left: 30px; right: 30px; top: 110px; background: #ffffff; border-radius: 48px; padding: 30px 20px 36px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.3; color: #273b4b; }
       #punch .pt b { color: #e5484d; font-size: 88px; white-space: nowrap; }
       #punch .pt b.jp { font-family: inherit; }
@@ -114,6 +114,8 @@
       <!-- The scene: the slip, the freeze, the rocket, Mimi; again at the fix -->
       <div id="scene">
         <img id="plate" src="assets/art/park.webp" alt="" />
+        <!-- the freeze tint sits on the plate only, so the cast keeps its model colours (white Friend) -->
+        <div id="tint" class="clip" data-start="4.25" data-duration="3.2" data-track-index="5"></div>
         <img id="other" class="cast clip" src="assets/art/coco-smile.webp" alt="" data-start="1.5" data-duration="2.75" data-track-index="3" />
         <img id="other-r" class="cast clip" src="assets/art/coco-helmet.webp" alt="" data-start="4.25" data-duration="4.9" data-track-index="3" />
         <img id="other2" class="cast clip" src="assets/art/coco-smile.webp" alt="" data-start="16.5" data-duration="2.4" data-track-index="3" />
@@ -131,7 +133,6 @@
         <img id="p-mimi" src="assets/art/mimi-rocket.webp" alt="" />
         <div id="rew"><span>◀◀ REWIND</span></div>
       </div>
-      <div id="tint" class="clip" data-start="4.25" data-duration="3.2" data-track-index="5"></div>
 
       <div id="hook" class="clip" data-start="1.5" data-duration="5.85" data-track-index="6">デートで<q>“ランチしよ？”</q><br />→<span class="hot">ロケット発射</span></div>
       <div id="say" class="say clip" data-start="1.75" data-duration="2.75" data-track-index="7">Shall we have <span class="bad">launch</span>?</div>

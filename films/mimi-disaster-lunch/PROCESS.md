@@ -24,6 +24,7 @@
 4. App: `app-capture/Walkthrough.swift` + `lunch-lesson.patch` (capture-only: the first daily sentence becomes “Shall we have lunch?” and the fixture finding points at “lunch” /ʌ/). The lesson screen, お手本 button, record button, score card and flagged-word row are the real app (identifiers `lesson.model`, `lesson.record`, `feedback.scores` in native-ios on origin/main); the sentence, feedback wording and score are fixture data. Cut with `scripts/app_track.sh`.
 5. Sound: `scripts/mix.py` (kit Mix): punchline boing, tape rewind, record scratch at the freeze (the bed stops dead and comes back with Mimi), a pop for the helmet, a soft low rocket rumble and a whoosh at liftoff, the takes on the card, the native take again when said right. Voice loudest, BGM ~21 dB under, SFX soft.
 6. Checked with `hyperframes check` and snapshots of the key moments; layout fixes after the first look (punchline frame decluttered, the card's rocket gag moved off the panels, Mimi's bubble re-broken).
+7. Commander review (2026-10-22): in the freeze beat the Friend looked cream/yellow, off-model. Cause: the inherited yellow multiply `#tint` (from the template) covered the whole scene, cast included; the punchline frame also desaturated/dimmed the cast (`#punch .pcast` filter). Fix: the tint now sits inside `#scene` right above the plate (background only) and the punchline cast has no filter, so the Friend stays white like the cast sheet in every frame. Previous drafts kept in Drive `old/` as `_v1-cream-friend`.
 
 ## Uncertain / for review
 
