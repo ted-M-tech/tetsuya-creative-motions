@@ -1,0 +1,11 @@
+{"lines": [
+  {"id": "hi-en", "text": "Hello!", "accent": "us"},
+  {"id": "hi-fr", "text": "Bonjour !", "accent": "native", "language": "French"},
+  {"id": "hi-es", "text": "¡Hola!", "accent": "native", "language": "Spanish"},
+  {"id": "hi-zh", "text": "你好！", "accent": "native", "language": "Mandarin Chinese"},
+  {"id": "hi-ko", "text": "안녕하세요!", "accent": "native", "language": "Korean"},
+  {"id": "hi-it", "text": "Ciao!", "accent": "native", "language": "Italian"},
+  {"id": "hi-pt", "text": "Olá!", "accent": "native", "language": "Brazilian Portuguese"},
+  {"id": "hi-hi", "text": "नमस्ते!", "accent": "native", "language": "Hindi"},
+  {"id": "app-fr", "text": "Partons un peu plus tôt pour prendre le petit déjeuner dans notre café préféré.", "accent": "native", "language": "French"}
+]}

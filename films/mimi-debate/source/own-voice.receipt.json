@@ -1,0 +1,13 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "answer": {
+      "text": "Dog person! They get me outside every day. How about you?",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "3aba4ebb94e1182c6fe59a7a3578fdb54783f6554cade4310265891eb02ab31a",
+      "at": "2026-10-21T21:35:10+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
