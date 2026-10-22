@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "habit": {
+      "text": "It looks really, really nice. And the coffee looks really, really good. Really.",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, r and l mixed up, flat syllable-by-syllable timing, every syllable equally stressed, a little hesitant. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "77f7ce0fa7c3253d1e42d75e2a060926b8964ed6e3dc36618d8cb17538bbb1b4",
+      "at": "2026-10-21T21:44:05+00:00"
+    },
+    "fix": {
+      "text": "It looks absolutely lovely.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "bc0c2a0ac340bf239c0f1133fb56e3cb7524ded50f0d4ee138982c50ab338b0b",
+      "at": "2026-10-21T21:44:08+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

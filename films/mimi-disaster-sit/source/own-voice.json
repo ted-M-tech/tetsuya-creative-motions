@@ -1,0 +1,19 @@
+{
+ "lines": [
+  {
+   "id": "learner-shit",
+   "text": "Please shit down.",
+   "style": "Speak English as a friendly Japanese beginner offering a guest a seat, warm and polite, a little slow. The word 'sit' comes out clearly as 'shit' (the Japanese 'shi' sound with rounded, pushed-out lips), so a listener clearly hears 'Please shit down.' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-sit",
+   "text": "Please sit down.",
+   "accent": "us"
+  },
+  {
+   "id": "learner-shit-2",
+   "text": "Please shit down.",
+   "style": "Speak English as a friendly Japanese beginner warmly offering a guest a seat, polite and a little slow. Pronounce the middle word exactly like the English word 'shit': start it with a long, clear 'sh' sound as in 'she' and 'shoe' (lips rounded and pushed forward), never an 's' sound. So the listener unmistakably hears 'Please SHIT down.' Japanese-style flat, syllable-by-syllable timing. Natural, not a caricature."
+  }
+ ]
+}

@@ -4,7 +4,7 @@
 
 Mimi tries to describe a cafe photo and manages only "People is sitting...". Then she uses Lanclo's photo description feature: the real app (recorded in the simulator with QA fixture data) takes her answer, scores it, marks the mistake, corrects is → are and offers a more natural sentence in her own voice. The fifth Mimi short and the first on real screens.
 
-0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D Mimi (Rive) beside a simulator recording of the app
+0:17 / 1080×1920, 60 fps / Japanese captions, English in the owner's own registered Lanclo voice / 2D Mimi (Rive) beside a simulator recording of the app
 
 Two cuts: Japanese only (`mimi-shashin.mp4`) and with English subtitles (`mimi-shashin-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/008. English from a Photo/`.
 
