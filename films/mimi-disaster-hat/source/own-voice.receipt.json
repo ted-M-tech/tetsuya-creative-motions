@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-hut": {
+      "text": "I love your hut!",
+      "style": "Speak English as a friendly Japanese learner giving a warm compliment, bright and sincere. Say every word exactly as written: 'hut' rhymes with 'but' and 'cut', a short relaxed 'uh' vowel like Japanese 'a' in 'hatto', so a listener clearly hears 'I love your hut!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "ade43c6a0ad3bc67ae73ce23cba16686f77565888a7ee5164793db42d3c32f25",
+      "at": "2026-10-22T22:48:38+00:00"
+    },
+    "native-hat": {
+      "text": "I love your hat!",
+      "style": "Speak fluent, warm General American English like a native speaker giving a sincere compliment. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural intonation. 'hat' has a clear, bright American short-a vowel as in 'cat', 'bad', 'happy' (the mouth wide, between 'a' and 'e'), never the 'uh' of 'hut' or 'cut'. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "dd23b7d30d9ebfad022995d706490bc412fdafe2f477144ba1d3ef40b6ba3c9e",
+      "at": "2026-10-22T22:50:14+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
