@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .pose { position: absolute; height: auto; transform-origin: 50% 100%; }
+      /* The talk (0-9.1): Mimi talks, "really" piles up around her */
+      #talk { position: absolute; inset: 0; }
+      #t-open, #t-closed { left: 250px; bottom: 470px; width: 580px; }
+      #t-proud { left: 250px; bottom: 470px; width: 580px; }
+      #timer { position: absolute; right: 40px; top: 470px; width: 330px; background: #273b4b; color: #fff; border-radius: 36px; padding: 14px 0 12px;
+               text-align: center; font-variant-numeric: tabular-nums; }
+      #timer b { display: block; font-size: 76px; line-height: 1.05; }
+      #timer i { display: block; font-style: normal; font-size: 26px; opacity: 0.8; margin-top: 2px; }
+      #timer .bar { margin: 10px auto 0; width: 270px; height: 12px; border-radius: 6px; background: rgba(255, 255, 255, 0.2); overflow: hidden; }
+      #timer .bar u { display: block; height: 100%; width: 100%; background: #2a8dff; transform-origin: 0 50%; transform: scaleX(0); }
+      #ff { position: absolute; left: 60px; top: 690px; background: #e5484d; color: #fff; font-size: 44px; font-weight: 700; padding: 10px 26px; border-radius: 30px; }
+      .rw { position: absolute; background: #ffffff; color: #e5484d; font-weight: 700; padding: 10px 26px; border-radius: 40px; box-shadow: 0 10px 26px rgba(39, 59, 75, 0.18);
+            font-family: "Helvetica Neue", -apple-system, sans-serif; white-space: nowrap; }
+      #done-say { left: 60px; top: 520px; font-size: 56px; }
+      /* The real app, Mimi beside it */
+      #device { position: absolute; left: 470px; top: 430px; width: 560px; height: 1218px; border-radius: 84px; background: #1d2733; padding: 16px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 68px; overflow: hidden; background: #f2f2f7; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      #zoom video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #a-mimi { left: -30px; bottom: 470px; width: 520px; }
+      #a-stun { left: -30px; bottom: 470px; width: 500px; }
+      #a-open, #a-closed { left: -30px; bottom: 470px; width: 520px; }
+      #count { position: absolute; left: 40px; top: 560px; background: #e5484d; color: #fff; font-size: 64px; font-weight: 700; padding: 16px 34px; border-radius: 50px;
+               box-shadow: 0 14px 34px rgba(229, 72, 77, 0.35); font-family: "Helvetica Neue", -apple-system, sans-serif; }
+      #count small { font-size: 52px; }
+      /* The gag: two-shot */
+      #gag { position: absolute; inset: 0; background: #eef3f9; }
+      #g-friend { right: 10px; bottom: 470px; width: 520px; }
+      #g-mimi { left: 10px; bottom: 470px; width: 520px; }
+      #g-say1 { right: 40px; top: 470px; font-size: 60px; }
+      #g-say2 { left: 40px; top: 700px; font-size: 60px; }
+      #fix-tag { top: 1300px; left: 40px; right: auto; justify-content: flex-start; }
+      #ctr { position: absolute; right: 40px; top: 690px; width: 330px; background: #ffffff; color: #e5484d; border: 6px solid #e5484d; border-radius: 30px; text-align: center; padding: 6px 0;
+             font-weight: 700; font-size: 34px; }
+      #ctr b { display: block; font-size: 72px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+      /* English subtitles */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.0" data-width="1080" data-height="1920">
+      <!-- The talk (0-9.1) -->
+      <div id="talk">
+        <img id="t-closed" class="pose" src="assets/art/speak-closed.webp" alt="" />
+        <img id="t-open" class="pose" src="assets/art/speak-open.webp" alt="" />
+        <img id="t-proud" class="pose" src="assets/art/confident.webp" alt="" />
+        <div id="timer"><b id="tm">0:00</b><i>最大 3:00</i><div class="bar"><u id="tbar"></u></div></div>
+        <div id="ff">▶▶ 早送り</div>
+        <div id="ctr">really カウンター<b id="ctrn">0</b></div>
+        <div id="rw1" class="rw" style="left:60px; top:820px; font-size:64px; transform:rotate(-8deg)">really</div>
+        <div id="rw2" class="rw" style="left:720px; top:900px; font-size:58px; transform:rotate(6deg)">really</div>
+        <div id="rw3" class="rw" style="left:40px; top:1060px; font-size:46px; transform:rotate(5deg)">really</div>
+        <div id="rw4" class="rw" style="left:760px; top:1060px; font-size:46px; transform:rotate(-5deg)">really</div>
+        <div id="rw5" class="rw" style="left:80px; top:1250px; font-size:46px; transform:rotate(-4deg)">really</div>
+        <div id="rw6" class="rw" style="left:740px; top:1250px; font-size:46px; transform:rotate(7deg)">really</div>
+        <div id="rw7" class="rw" style="left:380px; top:640px; font-size:60px; transform:rotate(-3deg)">really</div>
+        <div id="rw8" class="rw" style="left:30px; top:1420px; font-size:62px; transform:rotate(6deg)">really</div>
+        <div id="rw9" class="rw" style="left:600px; top:1420px; font-size:84px; transform:rotate(-6deg)">Really.</div>
+        <div id="done-say" class="bubble from-left">3分、<br />話しきった！</div>
+      </div>
+
+      <!-- The app (9.1-14.1, 16.1-18.8) -->
+      <div id="appscene">
+        <img id="a-mimi" class="pose" src="assets/art/confident.webp" alt="" />
+        <img id="a-stun" class="pose" src="assets/art/stunned.webp" alt="" />
+        <img id="a-closed" class="pose" src="assets/art/speak-closed.webp" alt="" />
+        <img id="a-open" class="pose" src="assets/art/speak-open.webp" alt="" />
+        <div id="device">
+          <div id="screen">
+            <div id="zoom">
+              <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="9.1" data-duration="9.7" data-track-index="3"></video>
+            </div>
+          </div>
+        </div>
+        <div id="count" class="clip" data-start="12.0" data-duration="2.1" data-track-index="6">really <small>×9回</small></div>
+        <div id="fix-tag" class="tag model clip" data-start="16.5" data-duration="2.3" data-track-index="7"><span>改善した言い方</span></div>
+      </div>
+
+      <!-- The gag (14.1-16.1) -->
+      <div id="gag" class="clip" data-start="14.1" data-duration="2.0" data-track-index="9">
+        <img id="g-friend" class="pose" src="assets/art/friend-tsukkomi.webp" alt="" />
+        <img id="g-mimi" class="pose" src="assets/art/fluster.webp" alt="" />
+        <div id="g-say1" class="bubble from-right">really、<br />言いすぎ！</div>
+        <div id="g-say2" class="bubble from-left">……really？</div>
+      </div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-hook" class="caption clip" data-start="0" data-duration="2.7" data-track-index="14"><span>180秒しゃべり続けたら、<br />口癖が<em>バレた</em></span></div>
+      <div id="cap-1" class="caption small clip" data-start="9.15" data-duration="2.8" data-track-index="14"><span id="c1">話したことを、<br />AIがぜんぶ文字にして…</span></div>
+      <div id="cap-2" class="caption clip" data-start="12.0" data-duration="2.1" data-track-index="14"><span id="c2">口癖まで、<em>見つかる</em>。</span></div>
+      <div id="cap-3" class="caption small clip" data-start="16.1" data-duration="2.7" data-track-index="14"><span id="c3">自分では気づけない口癖に、<br /><strong>気づける</strong>。</span></div>
+
+      <div id="end" class="end clip" data-start="18.8" data-duration="1.2" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div id="sub-1" class="sub clip" data-start="0.0" data-duration="2.7" data-track-index="24"><span>I talked for 180 seconds, and my verbal habit got exposed.</span></div>
+      <div id="sub-2" class="sub clip" data-start="2.7" data-duration="0.75" data-track-index="24"><span>Fast-forward</span></div>
+      <div id="sub-3" class="sub clip" data-start="8.1" data-duration="1.0" data-track-index="24"><span>Three minutes — I did it!</span></div>
+      <div id="sub-4" class="sub clip" data-start="9.15" data-duration="2.85" data-track-index="24"><span>The AI writes out everything you said…</span></div>
+      <div id="sub-5" class="sub clip" data-start="12.0" data-duration="2.1" data-track-index="24"><span>…and even finds your verbal habits. “really” ×9</span></div>
+      <div id="sub-6" class="sub clip" data-start="14.1" data-duration="1.0" data-track-index="24"><span>Way too many “really”s!</span></div>
+      <div id="sub-7" class="sub clip" data-start="15.1" data-duration="1.0" data-track-index="24"><span>…Really?</span></div>
+      <div id="sub-8" class="sub clip" data-start="16.1" data-duration="2.7" data-track-index="24"><span>Notice the habits you can’t hear yourself. (Improved wording)</span></div>
+      <div id="sub-9" class="sub clip" data-start="18.8" data-duration="1.2" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="20.0" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const flap = (sel, from, to, step = 0.13) => { for (let t = from, i = 0; t < to; t += step, i++) tl.set(sel, { opacity: i % 2 ? 0 : 1 }, t); tl.set(sel, { opacity: 0 }, to); };
+
+      // The talk: Mimi talks from frame 1, the clock runs, every "really" pops out and stays
+      tl.set(["#t-proud", "#ff", "#done-say", "#appscene"], { opacity: 0 }, 0);
+      tl.set(["#rw1", "#rw2", "#rw3", "#rw4", "#rw5", "#rw6", "#rw7", "#rw8", "#rw9"], { opacity: 0 }, 0);
+      tl.set("#t-closed", { opacity: 1 }, 0);
+      // mouth on the speech of habit.wav (A: 0.10-2.64 on the film, B: 3.50-6.71 and 7.47-7.85)
+      flap("#t-open", 0.10, 2.64); flap("#t-open", 3.5, 6.71); flap("#t-open", 7.47, 7.85);
+      tl.fromTo("#t-closed", { y: 0 }, { y: -8, duration: 0.25, yoyo: true, repeat: 31, ease: "sine.inOut" }, 0);
+      tl.fromTo("#t-open", { y: 0 }, { y: -8, duration: 0.25, yoyo: true, repeat: 31, ease: "sine.inOut" }, 0);
+      const clock = { s: 0 };
+      const show = () => { const s = Math.min(180, Math.round(clock.s)); document.getElementById("tm").textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); document.getElementById("tbar").style.transform = "scaleX(" + (clock.s / 180) + ")"; };
+      tl.fromTo(clock, { s: 0 }, { s: 3, duration: 2.7, ease: "none", onUpdate: show }, 0);
+      tl.to(clock, { s: 170, duration: 0.7, ease: "power2.in", onUpdate: show }, 2.7);
+      tl.to(clock, { s: 180, duration: 4.6, ease: "none", onUpdate: show }, 3.4);
+      tl.fromTo("#ff", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.12, ease: "back.out(2)", immediateRender: false }, 2.7);
+      tl.to("#ff", { opacity: 0, duration: 0.1 }, 3.35);
+      tl.fromTo("#talk", { x: 0 }, { x: 0, duration: 0.01 }, 0);
+      [0.87, 1.61, 2.8, 2.95, 3.1, 3.25, 5.4, 5.98, 7.47].forEach((t, i) =>
+        tl.fromTo("#rw" + (i + 1), { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(3)", immediateRender: false }, t)
+          .fromTo("#ctr", { scale: 1 }, { scale: 1.12, duration: 0.08, yoyo: true, repeat: 1, immediateRender: false }, t));
+      // the counter: the number of "really" so far (seek-safe: computed from the playhead)
+      const POPS = [0.87, 1.61, 2.8, 2.95, 3.1, 3.25, 5.4, 5.98, 7.47];
+      tl.fromTo({ v: 0 }, { v: 0 }, { v: 1, duration: 9.0, ease: "none", onUpdate: () => { const now = tl.time(); document.getElementById("ctrn").textContent = String(POPS.filter((p) => p <= now).length); } }, 0);
+      // from frame 1: the counter waits, wobbling
+      tl.fromTo("#ctr", { rotation: -3 }, { rotation: 3, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0);
+      // time's up
+      tl.fromTo("#timer", { scale: 1 }, { scale: 1.15, backgroundColor: "#e5484d", duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 8.0);
+      tl.set(["#t-closed", "#t-open"], { opacity: 0 }, 8.1);
+      tl.fromTo("#t-proud", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 8.1);
+      k.pop("#done-say", 8.15);
+      tl.to(["#rw1", "#rw2", "#rw3", "#rw4", "#rw5", "#rw6", "#rw7", "#rw8", "#rw9"], { y: -40, opacity: 0, duration: 0.25, stagger: 0.02 }, 8.65);
+      tl.to("#talk", { opacity: 0, duration: 0.15 }, 9.0);
+
+      // The app: the feedback (9.1-14.1)
+      tl.set("#appscene", { opacity: 1 }, 9.1);
+      tl.set(["#a-stun", "#a-closed", "#a-open"], { opacity: 0 }, 9.1);
+      tl.fromTo("#device", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 9.1);
+      tl.fromTo("#a-mimi", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out", immediateRender: false }, 9.15);
+      tl.set("#a-mimi", { opacity: 0 }, 12.0);
+      tl.fromTo("#a-stun", { y: 0, opacity: 1 }, { y: -50, opacity: 1, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 12.0);
+      tl.fromTo("#count", { scale: 0.3, rotation: -20, opacity: 0 }, { scale: 1, rotation: -4, opacity: 1, duration: 0.25, ease: "back.out(3)", immediateRender: false }, 12.05);
+      // read the screen: zoom on the transcript, then on the correction card
+      tl.fromTo("#zoom", { scale: 1, transformOrigin: "50% 20%" }, { scale: 1.12, transformOrigin: "50% 20%", duration: 0.35, ease: "power2.inOut", immediateRender: false }, 10.6);
+      tl.set("#zoom", { scale: 1.1, transformOrigin: "50% 30%" }, 12.0);
+      tl.set("#appscene", { opacity: 0 }, 14.1);
+
+      // The gag (14.1-16.1)
+      tl.set(["#g-say2"], { opacity: 0 }, 14.1);
+      tl.fromTo("#g-friend", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 14.1);
+      tl.fromTo("#g-mimi", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 14.1);
+      k.pop("#g-say1", 14.2);
+      tl.fromTo("#g-friend", { rotation: 0 }, { rotation: 6, duration: 0.08, yoyo: true, repeat: 3, immediateRender: false }, 14.25);
+      tl.fromTo("#g-say2", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 15.1);
+      tl.fromTo("#g-mimi", { rotation: 0 }, { rotation: -4, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 15.1);
+
+      // The fix (16.1-18.8): the improved wording, said in the owner's voice (fix.wav speech 16.56-18.63)
+      tl.set("#appscene", { opacity: 1 }, 16.1);
+      tl.set(["#a-mimi", "#a-stun", "#a-open"], { opacity: 0 }, 16.1);
+      tl.set("#a-closed", { opacity: 1 }, 16.1);
+      tl.set("#zoom", { scale: 1.12, transformOrigin: "50% 12%" }, 16.1);
+      flap("#a-open", 16.56, 18.63);
+      k.tagIn("#fix-tag", 16.5);
+
+      k.pop("#c1", 9.15); k.pop("#c2", 12.0); k.pop("#c3", 16.1);
+      k.end(18.8);
+      k.tapCta(19.25);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
