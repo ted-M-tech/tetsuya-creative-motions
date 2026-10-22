@@ -10,5 +10,5 @@ Lanclo SNS ショート #041（シリーズ「Pronunciation Disasters / 発音�
 
 - 声：学習者テイクとお手本はオーナーの登録済みLanclo音声（ownvoice.py、Gemini gemini-3.8-flash-tts）。WAVは生体データなのでGitに入れず、Drive `041. Pronunciation Disasters 5 - Coke or Cck/Disasters5_Coke_assets/own-voice/` に保管。相手役はKokoro英語。
 - 画面上の下品な単語は必ず★で伏せ字。音声では聞こえる（そこがオチ）。
-- Mimiの一人称は「僕」。
+- Mimiの一人称は「僕」。言い間違えるのは毎回「友だち」、他の役は共通サブキャスト（kits/mimi-short/cast：クマのブルーノ／アヒルのピッパ／ネコのココ）。
 - 作り直し方：[source/README.md](source/README.md)

@@ -4,7 +4,7 @@
 
 Lanclo SNS short #041 (series “Pronunciation Disasters”, episode 5). 17.7 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
 
-Scene: a fast-food counter: a hamster orders “One Coke, please” with a short open “ah”; the duck clerk goes stone-faced. Mimi drops in, bursting out of a plain red drink cup (no brand).
+Scene: a fast-food counter: Mimi’s Friend orders “One Coke, please” with a short open “ah”; Pippa (the recurring duck clerk) goes stone-faced. Mimi drops in, bursting out of a plain red drink cup (no brand).
 
 Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/), branch `feat/mimi-disaster-sit`): punchline first (Mimi's line on frame 1, then a rewind) → the situation hook → the slip → freeze with a quiet record scratch → Mimi pops up → comparison card with the two takes in the owner's own voice and illustrated panels (唇（正面） / 舌の位置（横から）) → a tiny real Lanclo moment → fixed → end card + CTA tap.
 
