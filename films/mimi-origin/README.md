@@ -6,7 +6,7 @@ The founder's story in 32 seconds. At the Victoria Marathon in Canada, Mimi (the
 
 0:32 / 1080×1920, 60 fps / Japanese speech bubbles and captions, no voices / official 2D poses + GSAP, a short real app (simulator) shot + HyperFrames
 
-Two cuts: Japanese only (`mimi-origin.mp4`) and with English subtitles (`mimi-origin-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/025. How Lanclo Began/` (`Origin_draft_2026-10-21.mp4`, `Origin_draft_EN-subs_2026-10-21.mp4`, raw take in `Origin_assets/`).
+Two cuts: Japanese only (`mimi-origin.mp4`) and with English subtitles (`mimi-origin-en.mp4`); final files in Lanclo's Google Drive `002.SNS/025. How Lanclo Began/` (`Origin_2026-10-21.mp4`, `Origin_EN-subs_2026-10-21.mp4`, raw take in `Origin_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 
