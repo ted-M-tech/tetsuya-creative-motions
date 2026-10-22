@@ -1,0 +1,23 @@
+# Capture-only fixture tweak for the Mimi short "Pronunciation Disasters - Fork / F*ck" (never committed to the app):
+# the first daily-lesson sentence becomes "Excuse me, can I get a fork?" and its QA feedback points at the /ɔːr/ in "fork".
+--- a/native-ios/Lanclo/Resources/learning-catalog.json
++++ b/native-ios/Lanclo/Resources/learning-catalog.json
+@@
+-          "id": "dp-liquids-1",
+-          "text": "Please leave the light on.",
+-          "translations": {
+-            "ja": "明かりをつけたままにしてください。",
+-            "en": "Please leave the light on."
++          "id": "dp-liquids-1",
++          "text": "Excuse me, can I get a fork?",
++          "translations": {
++            "ja": "すみません、フォークをもらえますか？",
++            "en": "Excuse me, can I get a fork?"
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-            let target = ["light", "library", "flight"][index]
++            let target = ["fork", "library", "flight"][index]
+             let span = (attempt.text as NSString).range(of: target)
+-            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "QA用データ：強勢のある母音をはっきり発音し、残りの単語をなめらかにつなげましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/l/", feedback: locale == "ja" ? "QA用データ：舌先を上の歯ぐきにつけ、音をなめらかにつなげましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)
++            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "「fork」の母音が短い「ア」に近く聞こえます。唇を丸めて「オー」とのばし、最後に r をつけましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/ɔːr/", feedback: locale == "ja" ? "唇を丸めて「オー」と長くのばし、最後に舌先を奥へ引いて r をつけましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)
