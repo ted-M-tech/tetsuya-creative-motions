@@ -4,7 +4,7 @@
 
 Lanclo SNS short #038 (series “Pronunciation Disasters”, episode 2). 19.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
 
-Scene: a beach date: Mimi’s friend (swim shorts) shouts “I love this beach!” to the sea; his girlfriend (a cat in a straw hat) hears “b*tch” and explodes. Mimi pops out of the sand with a facepalm.
+Scene: a beach date: Mimi’s Friend (swim shorts) shouts “I love this beach!” to the sea; his date Coco (the recurring cat) hears “b*tch” and explodes. Mimi pops out of the sand with a facepalm.
 
 Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/), branch `feat/mimi-disaster-sit`): punchline first (Mimi's line on frame 1, then a rewind) → the situation hook → the slip → freeze with a quiet record scratch → Mimi pops up → comparison card with the two takes in the owner's own voice and illustrated panels (唇（正面） / 舌の位置（横から）) → a tiny real Lanclo moment → fixed → end card + CTA tap.
 

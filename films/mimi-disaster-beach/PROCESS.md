@@ -28,4 +28,5 @@ First take for both lines; Whisper hears “I love this bitch!” and “I love 
 ## Uncertain / for review
 
 - The flagged-word feedback text in the app shot is written for the capture (the fixture's own text says QA用データ); the UI is real.
-- The learner voice is a young adult man for every learner character (by the own-voice rule).
+- Cast (owner, 2026-10-21: 「メインキャラは二人。ミミと友達。…統一感持たせたい」): the learner is always Mimi’s Friend; every other role is the recurring side cast from kits/mimi-short/cast (Bruno / Pippa / Coco). This episode already had the Friend as the learner; its date (the cat) became the recurring side cast member Coco.
+- The learner voice is the owner’s (a young adult man) on the Friend.
