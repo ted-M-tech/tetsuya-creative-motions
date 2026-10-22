@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 40px; font-size: 22px; color: #53606b; text-align: center; line-height: 1.4; }
+      .caption .step { display: inline-block; background: #344f69; color: #fff; border-radius: 40px; padding: 2px 22px; margin-right: 14px; font-size: 48px; }
+      .caption .hint { display: block; font-style: normal; font-size: 38px; color: #5b7f9f; margin-top: 6px; }
+      /* Hook: the flashcards fly into Mimi's mouth */
+      #h-cap { top: 110px; }
+      #h-cap span { font-size: 74px; line-height: 1.3; }
+      #h-chomp { left: 130px; width: 820px; bottom: 380px; }
+      .fc { position: absolute; left: 0; top: 0; width: 300px; height: 190px; background: #ffffff; border-radius: 22px; border: 4px solid #273b4b;
+            box-shadow: 0 10px 24px rgba(39, 59, 75, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-size: 40px; font-weight: 700; color: #273b4b; }
+      .fc small { font-size: 26px; font-weight: 400; color: #5b7f9f; margin-top: 6px; }
+      /* Step 1: a generic flashcard app (no name, no logo) with its export menu */
+      .mock { position: absolute; left: 300px; top: 520px; width: 480px; height: 1000px; border-radius: 74px; background: #1d2733; padding: 14px; box-sizing: content-box;
+              box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      .mock .scr { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f6f4ef; }
+      .mock .bar { height: 120px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 30px 16px; font-size: 32px; font-weight: 700; color: #273b4b; }
+      .mock .dots { font-size: 40px; color: #5b7f9f; letter-spacing: 2px; }
+      .mock .deck { margin: 14px 24px; background: #fff; border-radius: 20px; padding: 18px 22px; font-size: 26px; color: #273b4b; display: flex; justify-content: space-between;
+                    box-shadow: 0 4px 10px rgba(39, 59, 75, 0.08); }
+      .mock .deck b { color: #9a6a1f; }
+      .mock .menu { position: absolute; right: 24px; top: 120px; width: 300px; background: #fff; border-radius: 22px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25);
+                    overflow: hidden; opacity: 0; transform-origin: 90% 0; }
+      .mock .menu div { padding: 20px 26px; font-size: 28px; color: #273b4b; border-bottom: 2px solid #eef2f5; }
+      .mock .menu .x { background: #e7f1ff; color: #1767c8; font-weight: 700; }
+      .mock .fmt { position: absolute; left: 40px; right: 40px; top: 470px; background: #fff; border-radius: 26px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25);
+                   padding: 20px; opacity: 0; }
+      .mock .fmt p { margin: 0 0 14px; font-size: 26px; color: #5b7f9f; text-align: center; }
+      .mock .fmt div { padding: 18px; border-radius: 18px; font-size: 30px; font-weight: 700; text-align: center; color: #273b4b; background: #f2f4f6; margin-top: 10px; }
+      .mock .fmt .x { background: #2a8dff; color: #fff; }
+      .tapx { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); opacity: 0; }
+      /* Step 2: the spreadsheet (generic grid, no logo) */
+      .sheet { position: absolute; left: 50px; right: 50px; top: 560px; background: #fff; border-radius: 26px; box-shadow: 0 20px 50px rgba(39, 59, 75, 0.2); padding: 24px; }
+      .sheet .fx { display: flex; align-items: center; gap: 16px; font-size: 30px; color: #5b7f9f; padding: 0 6px 16px; }
+      .sheet .fx b { font-style: italic; font-family: Georgia, serif; }
+      .sheet table { border-collapse: collapse; width: 100%; font-size: 34px; color: #273b4b; table-layout: fixed; }
+      .sheet td, .sheet th { border: 2px solid #dbe3ea; padding: 10px 14px; white-space: nowrap; overflow: hidden; height: 64px; }
+      .sheet th { background: #f2f5f8; color: #66737f; font-weight: 400; font-size: 26px; height: 40px; }
+      .sheet th.n, .sheet td.n { width: 52px; background: #f2f5f8; color: #66737f; font-size: 24px; text-align: center; padding: 0; }
+      .sheet col.a { width: 38%; } .sheet col.b { width: 38%; }
+      .sheet tr.h td:not(.n) { background: #fff7e0; font-weight: 700; position: relative; }
+      .cell { position: relative; display: block; height: 44px; }
+      .cell span { position: absolute; left: 0; top: 0; }
+      .sheet .new { color: #1767c8; }
+      .sheet .tagc { color: #1f8a4c; }
+      #s-hint { position: absolute; left: 50px; right: 50px; top: 1340px; display: flex; justify-content: center; }
+      #s-hint span { background: #1f8a4c; color: #fff; font-size: 38px; font-weight: 700; padding: 14px 30px; border-radius: 40px; opacity: 0; }
+      /* Step 3: save as CSV (UTF-8) -> the file */
+      .save { position: absolute; left: 140px; right: 140px; top: 1010px; background: #fff; border-radius: 26px; box-shadow: 0 20px 50px rgba(39, 59, 75, 0.25); padding: 26px 30px; opacity: 0; }
+      .save p { margin: 0 0 14px; font-size: 30px; color: #5b7f9f; }
+      .save div { font-size: 36px; color: #273b4b; padding: 14px 18px; border-radius: 16px; background: #f2f5f8; margin-top: 10px; }
+      .save .x { background: #2a8dff; color: #fff; font-weight: 700; }
+      .file { position: absolute; width: 250px; height: 310px; background: #ffffff; border-radius: 18px; box-shadow: 0 18px 40px rgba(39, 59, 75, 0.22);
+              display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 26px; box-sizing: border-box; }
+      .file::before { content: ""; position: absolute; right: 0; top: 0; width: 70px; height: 70px; background: linear-gradient(225deg, #eef3f9 50%, #d7e1ea 50%); border-top-right-radius: 18px; }
+      .file .lines { position: absolute; left: 30px; right: 30px; top: 40px; }
+      .file .lines i { display: block; height: 12px; border-radius: 6px; background: #dfe7ee; margin-bottom: 14px; }
+      .file .lines i:nth-child(odd) { width: 70%; }
+      .file b { background: #1f8a4c; color: #fff; font-size: 54px; padding: 2px 26px; border-radius: 16px; letter-spacing: 0.04em; }
+      .file span { font-size: 28px; font-weight: 700; margin-top: 10px; color: #273b4b; white-space: nowrap; }
+      #f-file { left: 415px; top: 1080px; opacity: 0; }
+      /* The munch */
+      #eat .chomp { left: 150px; width: 820px; bottom: 380px; }
+      #e-file { left: 0; top: 0; }
+      .crumb { position: absolute; left: 0; top: 0; background: #ffffff; border: 4px solid #273b4b; border-radius: 16px; padding: 8px 18px; font-size: 32px;
+               font-weight: 700; white-space: nowrap; color: #273b4b; }
+      .crumb small { font-size: 26px; font-weight: 400; color: #46657f; margin-left: 10px; }
+      /* The real app */
+      #device { position: absolute; left: 300px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #app .crumb { z-index: 3; }
+      .tag { top: 1580px; }
+      .tag span { display: flex; align-items: center; gap: 16px; }
+      .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
+      .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
+      /* The close */
+      .friend { left: 30px; width: 480px; bottom: 520px; }
+      .mimi { right: 30px; width: 470px; bottom: 520px; }
+      /* English subtitles */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; z-index: 20; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.1" data-width="1080" data-height="1920">
+      <!-- Hook (0-1.7): the flashcards are already flying into Mimi's mouth on frame 1 -->
+      <div id="hook" class="stage clip" data-start="0" data-duration="1.7" data-track-index="1">
+        <img id="h-chomp" src="assets/art/mimi-chomp.webp" alt="" />
+        <img id="h-chew" src="assets/art/mimi-chew.webp" alt="" style="left:130px; width:820px; bottom:380px; opacity:0" />
+        <div id="cards"></div>
+        <div id="h-cap" class="caption"><span>単語帳アプリのデータ、<br /><em>全部Mimiに食べさせた</em></span></div>
+      </div>
+
+      <!-- How to make the CSV (1.7-8.6) -->
+      <div id="make" class="stage clip" data-start="1.7" data-duration="6.9" data-track-index="1">
+        <div id="m-phone" class="mock"><div class="scr">
+          <div class="bar"><span>単語帳</span><span class="dots">•••</span></div>
+          <div class="deck"><span>英単語 1</span><b>10枚</b></div>
+          <div class="deck"><span>英単語 2</span><b>24枚</b></div>
+          <div class="deck"><span>フレーズ</span><b>18枚</b></div>
+          <div id="m-menu" class="menu"><div>並べ替え</div><div>共有</div><div class="x">書き出し</div></div>
+          <div id="m-fmt" class="fmt"><p>形式を選ぶ</p><div class="x">CSV</div><div>テキスト</div></div>
+          <div id="m-t1" class="tapx" style="left:410px; top:84px"></div>
+          <div id="m-t2" class="tapx" style="left:370px; top:274px"></div>
+          <div id="m-t3" class="tapx" style="left:240px; top:580px"></div>
+        </div></div>
+        <div id="m-sheet" class="sheet" style="opacity:0">
+          <div class="fx"><b>fx</b><span>1行目＝見出し</span></div>
+          <table>
+            <colgroup><col style="width:52px" /><col class="a" /><col class="b" /><col /></colgroup>
+            <tr><th class="n"></th><th>A</th><th>B</th><th>C</th></tr>
+            <tr class="h"><td class="n">1</td>
+              <td><span class="cell"><span id="a1o">表</span><span id="a1n" class="new" style="opacity:0">term</span></span></td>
+              <td><span class="cell"><span id="b1o">裏</span><span id="b1n" class="new" style="opacity:0">meaning</span></span></td>
+              <td><span class="cell"><span id="c1n" class="tagc" style="opacity:0">tags</span></span></td></tr>
+            <tr><td class="n">2</td><td>commute</td><td>通勤する</td><td><span class="tagc tg">単語帳</span></td></tr>
+            <tr><td class="n">3</td><td>reluctant</td><td>気が進まない</td><td><span class="tagc tg">単語帳</span></td></tr>
+            <tr><td class="n">4</td><td>deadline</td><td>締め切り</td><td><span class="tagc tg">単語帳</span></td></tr>
+            <tr><td class="n">5</td><td>figure out</td><td>理解する・解決…</td><td><span class="tagc tg">単語帳</span></td></tr>
+            <tr><td class="n">6</td><td>by the way</td><td>ところで</td><td><span class="tagc tg">単語帳</span></td></tr>
+          </table>
+        </div>
+        <div id="s-hint"><span id="s-hint-t">C列 tags ＝ フォルダ名（なくてもOK）</span></div>
+        <div id="m-save" class="save"><p>ファイル形式</p><div class="x">CSV（UTF-8）</div><div>ブック</div></div>
+        <div id="f-file" class="file"><div class="lines"><i></i><i></i><i></i><i></i><i></i></div><b>CSV</b><span>単語帳.csv</span></div>
+        <div class="note">※書き出し方・保存の仕方はアプリによって違います（画面はイメージ）<br />Export and save menus differ by app (illustration).</div>
+      </div>
+      <div id="cap-s1" class="caption small clip" data-start="1.7" data-duration="2.2" data-track-index="6"><span id="cs1"><b class="step">1</b>単語帳アプリから<strong>CSVで書き出し</strong></span></div>
+      <div id="cap-s2" class="caption small clip" data-start="3.9" data-duration="3.5" data-track-index="6"><span id="cs2"><b class="step">2</b>表計算で開いて<br />1行目を <strong>term / meaning</strong> に</span></div>
+      <div id="cap-s3" class="caption small clip" data-start="7.4" data-duration="1.2" data-track-index="6"><span id="cs3"><b class="step">3</b><strong>CSV（UTF-8）</strong>で保存</span></div>
+
+      <!-- The munch (9.9-12.1) -->
+      <div id="eat" class="stage clip" data-start="9.9" data-duration="2.2" data-track-index="1">
+        <img id="e-chomp" class="chomp" src="assets/art/mimi-chomp.webp" alt="" />
+        <img id="e-chew" class="chomp" src="assets/art/mimi-chew.webp" alt="" style="opacity:0" />
+        <div id="e-file" class="file"><div class="lines"><i></i><i></i><i></i><i></i><i></i></div><b>CSV</b><span>単語帳.csv</span></div>
+        <div id="b-eat" class="bubble from-right big" style="top:300px; font-size:78px">いただきまーす！</div>
+        <div id="crumbs"></div>
+      </div>
+
+      <!-- The real app: My Notes CSV import in the simulator, fixture data -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app1" class="clip" src="assets/app/app1.mp4" muted playsinline data-start="8.6" data-duration="1.3" data-track-index="4"></video>
+            <video id="a-app2" class="clip" src="assets/app/app2.mp4" muted playsinline data-start="12.1" data-duration="6.1" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:25%; top:40%" data-start="9.65" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp2" class="tap clip" style="left:84%; top:11.5%" data-start="13.2" data-duration="0.3" data-track-index="5"></div>
+            <div id="tp3" class="tap clip" style="left:72%; top:41%" data-start="15.2" data-duration="0.3" data-track-index="5"></div>
+          </div>
+        </div>
+        <div id="crumbs2"></div>
+                <div class="note">※CSVの読み込みはログインして使えます（画面はテスト用データ）<br />CSV import needs a signed-in account (screens use test data).</div>
+      </div>
+      <div id="cap-a0" class="caption small app clip" data-start="8.6" data-duration="1.3" data-track-index="6"><span id="ca0">マイノートで<br /><strong>CSVファイルを選ぶ</strong>と…</span></div>
+      <div id="cap-a1" class="caption small app clip" data-start="12.1" data-duration="1.3" data-track-index="6"><span id="ca1">新しく追加できるノート <strong>10件</strong></span></div>
+      <div id="cap-a2" class="caption small app clip" data-start="13.4" data-duration="1.0" data-track-index="6"><span id="ca2">10件を追加しました。</span></div>
+      <div id="cap-a3" class="caption small app clip" data-start="14.4" data-duration="2.0" data-track-index="6"><span id="ca3">マイノートに<strong>「単語帳」10件</strong></span></div>
+      <div id="cap-a4" class="caption small app clip" data-start="16.4" data-duration="1.8" data-track-index="6"><span id="ca4"><strong>自分の声のお手本</strong>で<br />練習・復習</span></div>
+
+      <!-- The close -->
+      <div id="close" class="stage clip" data-start="18.2" data-duration="1.5" data-track-index="1">
+        <img id="z-friend" class="friend" src="assets/art/friend-yay.webp" alt="" />
+        <img id="z-mimi" class="mimi" src="assets/art/mimi-yum.webp" alt="" />
+        <div id="b-yay" class="bubble from-left" style="top:300px">いつもの単語帳が<br />自分の声のお手本に！</div>
+        <div id="b-yum" class="bubble from-right" style="top:560px">ごちそうさま〜♪</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="19.7" data-duration="1.4" data-track-index="7"></div>
+
+      <div id="sub-1" class="sub clip" data-start="0" data-duration="1.7" data-track-index="8"><span>I fed all my flashcard app data to Mimi</span></div>
+      <div id="sub-2" class="sub clip" data-start="1.7" data-duration="2.2" data-track-index="8"><span>1 Export CSV from your flashcard app</span></div>
+      <div id="sub-3" class="sub clip" data-start="3.9" data-duration="3.5" data-track-index="8"><span>2 Open it in a spreadsheet and name row 1 “term / meaning”</span></div>
+      <div id="sub-4" class="sub clip" data-start="7.4" data-duration="1.2" data-track-index="8"><span>3 Save as CSV (UTF-8)</span></div>
+      <div id="sub-5" class="sub clip" data-start="8.6" data-duration="1.3" data-track-index="8"><span>In My Notes, choose the CSV file…</span></div>
+      <div id="sub-6" class="sub clip" data-start="9.9" data-duration="2.2" data-track-index="8"><span>Itadakimasu! (Let’s eat!)</span></div>
+      <div id="sub-7" class="sub clip" data-start="12.1" data-duration="1.3" data-track-index="8"><span>10 new notes to add</span></div>
+      <div id="sub-8" class="sub clip" data-start="13.4" data-duration="1.0" data-track-index="8"><span>Added 10 notes.</span></div>
+      <div id="sub-9" class="sub clip" data-start="14.4" data-duration="2.0" data-track-index="8"><span>10 “flashcards” notes in My Notes</span></div>
+      <div id="sub-10" class="sub clip" data-start="16.4" data-duration="1.8" data-track-index="8"><span>Practise and review with a model in your own voice</span></div>
+      <div id="sub-11" class="sub clip" data-start="18.2" data-duration="0.8" data-track-index="8"><span>My usual flashcards, with a model in my own voice!</span></div>
+      <div id="sub-12" class="sub clip" data-start="19.0" data-duration="0.7" data-track-index="8"><span>That was delicious~</span></div>
+      <div id="sub-end" class="sub clip" data-start="19.7" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="21.1" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const T = {S1: 1.7, S2: 3.9, S3: 7.4, APP1: 8.6, EAT: 9.9, APP2: 12.1, CLOSE: 18.2, END: 19.7, MODEL: 16.73, MODELD: 0.87};
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "好きな内容を、自分の声のお手本で。", "7日間無料ではじめる");
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const WORDS = [["commute", "通勤する"], ["reluctant", "気が進まない"], ["deadline", "締め切り"], ["figure out", "理解する"], ["by the way", "ところで"],
+                     ["appreciate", "ありがたく思う"], ["Sounds good.", "いいですね。"], ["look forward to", "楽しみにする"], ["I'm running late.", "遅れています。"], ["on second thought", "やっぱり"]];
+
+      // Hook (0-1.7): flashcards stream into her open mouth; she chomps
+      const MOUTH = [340, 1090], EMOUTH = [330, 1000];
+      const cards = document.getElementById("cards");
+      cards.innerHTML = WORDS.slice(0, 7).map(([w, m]) => `<div class="fc">${w}<small>${m}</small></div>`).join("");
+      [...cards.children].forEach((c, i) => {
+        // card 0 is mid-flight on frame 1; the rest stream in from the right edge
+        const at = 0.18 * i, x0 = i === 0 ? 520 : 1100, y0 = i === 0 ? 1000 : [0, 880, 1120, 760, 1000, 1180, 820][i];
+        gsap.set(c, { opacity: 0 });
+        tl.fromTo(c, { x: x0, y: y0, rotation: (i % 2 ? 14 : -10), scale: 1, opacity: 1 },
+          { x: MOUTH[0] - 150, y: MOUTH[1] - 95, rotation: -20, scale: 0.15, opacity: 0.2, duration: i === 0 ? 0.2 : 0.36, ease: "power1.in" }, at);
+        tl.set(c, { opacity: 0 }, at + (i === 0 ? 0.2 : 0.36));
+      });
+      tl.fromTo("#h-chomp", { scale: 1, rotation: 0 }, { scale: 1.05, rotation: -3, duration: 0.12, yoyo: true, repeat: 5, immediateRender: false }, 0);
+      tl.set("#h-chomp", { opacity: 0 }, 1.25); tl.set("#h-chew", { opacity: 1 }, 1.25);
+      tl.fromTo("#h-chew", { scaleY: 1, scaleX: 1 }, { scaleY: 0.93, scaleX: 1.05, duration: 0.12, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 1.25);
+      tl.fromTo("#h-cap span", { scale: 0.95 }, { scale: 1, duration: 0.25, ease: "back.out(3)" }, 0);
+
+      // Step 1: the flashcard app's export menu
+      tl.fromTo("#m-phone", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, T.S1);
+      k.pop("#cs1", T.S1);
+      tl.fromTo("#m-t1", { scale: 0.3, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.25 }, T.S1 + 0.45);
+      tl.fromTo("#m-menu", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, T.S1 + 0.5);
+      tl.fromTo("#m-t2", { scale: 0.3, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.25 }, T.S1 + 1.0);
+      tl.to("#m-menu", { opacity: 0, duration: 0.1 }, T.S1 + 1.1);
+      tl.fromTo("#m-fmt", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, T.S1 + 1.15);
+      tl.fromTo("#m-t3", { scale: 0.3, opacity: 1 }, { scale: 2.2, opacity: 0, duration: 0.25 }, T.S1 + 1.65);
+      tl.to("#m-phone", { y: 100, opacity: 0, duration: 0.2 }, T.S2 - 0.1);
+
+      // Step 2: the spreadsheet: 表/裏 -> term/meaning, tags column
+      tl.fromTo("#m-sheet", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, T.S2);
+      k.pop("#cs2", T.S2);
+      const swap = (o, n, at) => {
+        tl.to(o, { opacity: 0, duration: 0.08 }, at);
+        tl.fromTo(n, { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, at + 0.05);
+      };
+      swap("#a1o", "#a1n", T.S2 + 0.75);
+      swap("#b1o", "#b1n", T.S2 + 1.35);
+      tl.fromTo("#c1n", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, T.S2 + 2.0);
+      tl.fromTo(".tg", { opacity: 0 }, { opacity: 1, duration: 0.1, stagger: 0.06 }, T.S2 + 2.1);
+      tl.fromTo("#s-hint-t", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, T.S2 + 2.15);
+      tl.to("#s-hint-t", { opacity: 0, duration: 0.12 }, T.S3);
+
+      // Step 3: save as CSV (UTF-8) -> 単語帳.csv
+      k.pop("#cs3", T.S3);
+      tl.fromTo("#m-save", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, T.S3);
+      tl.to("#m-save", { opacity: 0, duration: 0.12 }, T.S3 + 0.7);
+      tl.to("#m-sheet", { scale: 0.3, opacity: 0, y: 300, duration: 0.3, ease: "power2.in" }, T.S3 + 0.65);
+      tl.fromTo("#f-file", { scale: 0.3, opacity: 0, rotation: -20, y: -200 }, { scale: 1.2, opacity: 1, rotation: 0, y: -300, duration: 0.3, ease: "back.out(2.5)" }, T.S3 + 0.8);
+
+      // The app (import sheet): CSVファイルを選ぶ
+      tl.set("#app", { opacity: 1 }, T.APP1); tl.set("#app", { opacity: 0 }, T.EAT);
+      tl.set("#app", { opacity: 1 }, T.APP2); tl.set("#app", { opacity: 0 }, T.CLOSE);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.15, opacity: 1, duration: 0.3, ease: "power3.out" }, T.APP1);
+      document.querySelectorAll("#screen .tap").forEach((el) => k.ripple("#" + el.id, parseFloat(el.dataset.start)));
+
+      // The munch: the file flies into her mouth, the rows fly out as crumbs
+      tl.fromTo("#e-file", { x: 700, y: 260, rotation: 25, scale: 1 }, { x: EMOUTH[0] - 125, y: EMOUTH[1] - 155, rotation: -10, scale: 0.75, duration: 0.3, ease: "power2.in" }, T.EAT);
+      tl.to("#e-file", { scale: 0.05, opacity: 0, duration: 0.1 }, T.EAT + 0.3);
+      tl.fromTo("#e-chomp", { scale: 1, rotation: 0 }, { scale: 1.06, rotation: -3, duration: 0.15, yoyo: true, repeat: 1, immediateRender: false }, T.EAT);
+      tl.set("#e-chomp", { opacity: 0 }, T.EAT + 0.35); tl.set("#e-chew", { opacity: 1 }, T.EAT + 0.35);
+      tl.fromTo("#e-chew", { scaleY: 1, scaleX: 1 }, { scaleY: 0.93, scaleX: 1.05, duration: 0.15, yoyo: true, repeat: 11, ease: "sine.inOut", immediateRender: false }, T.EAT + 0.35);
+      k.pop("#b-eat", T.EAT + 0.05);
+      const SPOTS = [[40, 520], [600, 600], [30, 760], [620, 840], [40, 1000], [600, 1080], [30, 1240], [620, 1320], [40, 1480], [560, 470]];
+      const crumbs = document.getElementById("crumbs");
+      crumbs.innerHTML = WORDS.map(([w, m]) => `<div class="crumb">${w}<small>${m}</small></div>`).join("");
+      [...crumbs.children].forEach((c, i) => {
+        const at = T.EAT + 0.42 + 0.13 * i, [x, y] = SPOTS[i];
+        tl.fromTo(c, { x: EMOUTH[0] - 80, y: EMOUTH[1] - 30, scale: 0.2, opacity: 0, rotation: 0 },
+          { x, y, scale: 1, opacity: 1, rotation: (i % 2 ? 1 : -1) * (4 + (i % 4)), duration: 0.4, ease: "power2.out" }, at);
+        tl.to(c, { y: "+=120", opacity: 0, duration: 0.18, ease: "power1.in" }, Math.max(at + 0.4, Math.min(at + 0.7, T.APP2 - 0.4)));
+      });
+
+      // The app again: the rows rain into the phone, the preview, add, My Notes, the review card with the model
+      const c2 = document.getElementById("crumbs2");
+      c2.innerHTML = WORDS.slice(0, 6).map(([w]) => `<div class="crumb">${w}</div>`).join("");
+      [...c2.children].forEach((c, i) => {
+        tl.fromTo(c, { x: 120 + (i % 3) * 260, y: -80 - 60 * (i % 2), scale: 0.9, opacity: 1, rotation: (i % 2 ? 8 : -8) },
+          { x: 380, y: 880, scale: 0.2, opacity: 0, rotation: 0, duration: 0.45, ease: "power2.in" }, T.APP2 + 0.06 * i);
+      });
+      tl.fromTo("#device", { scale: 1.15 }, { scale: 1.19, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, T.APP2 + 0.4);
+      document.querySelectorAll(".caption.app span").forEach((el) => k.pop("#" + el.id, parseFloat(el.parentElement.dataset.start)));
+
+      // The close
+      tl.fromTo("#z-friend", { y: 0 }, { y: -36, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, T.CLOSE + 0.05);
+      tl.fromTo("#z-mimi", { rotation: 0 }, { rotation: -4, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, T.CLOSE + 0.75);
+      k.pop("#b-yay", T.CLOSE + 0.05);
+      k.pop("#b-yum", T.CLOSE + 0.8);
+
+      k.end(T.END);
+      k.tapCta(T.END + 0.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
