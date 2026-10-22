@@ -2,7 +2,7 @@
 soft code-made SFX -> hf/assets/mix.wav.
 
 usage: uv run --no-project --with numpy python films/mimi-why-lanclo/source/scripts/mix.py
-Voices only in the first 19 s, so like mimi-quitter the mix is written with one static gain to -14 LUFS and a peak limiter
+Voices only in the first 21 s, so like mimi-quitter the mix is written with one static gain to -14 LUFS and a peak limiter
 (the kit's dynamic loudnorm would lift the quiet second half). Bus balance and ducking as in Mix.write.
 """
 import subprocess
@@ -14,18 +14,20 @@ import numpy as np
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import SR, Mix, ding, lowpass, pencil, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import SR, Mix, ding, lowpass, pencil, pochi, pofu, pop_seq, tap, whoosh  # noqa: F401  # noqa: E402
 
 # Cue sheet (seconds); hf/index.html uses the same times.
 TRY, SHUT = 4.4, 5.7
-FLASH, CHIPS, CAFE, LATTE, LOOPS = 7.0, (7.5, 7.95, 8.4), 9.4, 9.8, (11.3, 11.75, 12.2, 12.6)
-OTHERS, COCO, SQUINT, VS = 13.0, 15.9, 18.8, (20.5, 20.75)
-REAL, PANELS = 22.4, (22.9, 23.6, 24.3)
-LECT, QUOTE, CYCLE = 27.4, 29.45, (32.35, 32.7, 33.05)
-RES, AETE, PILLS = 34.6, 38.4, (39.0, 39.35)
-MONT = (40.4, 42.0, 43.6, 45.2, 46.8)
-CLOSE, END, CTA_TAP, DUR = 48.4, 51.0, 51.6, 52.6
-CALM = (22.4, 38.4)   # the reflective middle: the bed drops further
+FLASH, CHIPS, INTRO = 7.0, (7.5, 7.95, 8.4), 9.4
+QS = (('q1.wav', 9.5), ('q2.wav', 11.0), ('q3.wav', 12.15), ('q4.wav', 13.45))
+ANSWERS, FAST, BLANK = (10.5, 11.8, 12.8), 12.92, 14.25
+OTHERS, COCO, SQUINT, VS = 15.0, 17.9, 20.8, (22.5, 22.75)
+REAL, PANELS = 24.4, (24.9, 25.6, 26.3)
+LECT, QUOTE, CYCLE = 29.4, 31.45, (34.35, 34.7, 35.05)
+RES, AETE, PILLS = 36.6, 40.4, (41.0, 41.35)
+MONT = (42.4, 44.0, 45.6, 47.2, 48.8)
+CLOSE, END, CTA_TAP, DUR = 50.4, 53.0, 53.6, 54.6
+CALM = (24.4, 40.4)   # the reflective middle: the bed drops further
 
 m = Mix(DUR, voice_dir=SRC / 'assets/voice')
 # The discussion: everyone over each other (Mimi has no line)
@@ -39,13 +41,16 @@ m.sfx(whoosh(0.4, 0.25), FLASH - 0.1)
 m.sfx(pencil(2.0, 0.12), FLASH + 0.3)
 for at in CHIPS:
     m.sfx(pop_seq(1, 0.05, base=76), at)
-m.sfx(whoosh(0.3, 0.2), CAFE - 0.1)
-m.sfx(pop_seq(2, 0.05, base=79), LATTE)
-for at in LOOPS:
-    m.sfx(tap() * 0.5, at)
+m.sfx(whoosh(0.3, 0.2), INTRO - 0.1)
+for name, at in QS:
+    m.voice(name, at, 0.85)
+for at in ANSWERS:
+    m.sfx(pop_seq(2, 0.05, base=79), at)
+m.sfx(pop_seq(8, 0.04, base=76), FAST)
+m.sfx(pofu() * 0.5, BLANK)
 # People abroad
 m.sfx(whoosh(0.35, 0.25), OTHERS - 0.1)
-m.voice('b3.wav', OTHERS + 0.1, 0.9)
+m.voice('b3.wav', OTHERS + 0.25, 0.9)
 m.voice('c3.wav', COCO + 0.05, 0.85)
 m.sfx(pofu() * 0.4, SQUINT + 0.1)
 for at in VS:

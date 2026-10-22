@@ -39,3 +39,15 @@ Notion Content Calendar ID 54（Drive「054. Why Lanclo - Speak Think Improve」
 - 「自信を持って話す」は文法ミスを含む英語（"Yesterday I go … and I say …"、赤い波線）で見せ、「読むのは苦手」はピッパが紙に目を細める絵、「逆」は 読む／話す の◎△の比較カードで。
 - BGMはテーマ曲をキットの音量で、22.4–38.4秒（現実〜講師〜研究）はさらに下げて落ち着かせた（同じ曲、新しい音楽なし）。声が前半19秒だけなので、mimi-quitter と同じく静的ゲイン＋リミッター（出来上がり約−16 LUFS、イヤホンでは控えめ側）。
 - 長さ：約50秒の依頼に対して52.6秒（エンドカード込み）。
+
+## 下書き1への指摘と変更（v2）
+
+オーナー（カフェの「A latte, please!」の場面について、コーディネーター経由）：
+
+> ここ少し弱い。I'm from Japan. I like traveling とかよくあるパターンの会話
+
+コーディネーターの指示：脇役（ブルーノ・ピッパ・ココ）が入れ替わりで "Where are you from?" "What do you like?" と聞き、Mimiは毎回同じ答え（"I'm from Japan." "I like traveling." "Nice to meet you!"）、吹き出しが積み重なりカウンターが×1→×10→×100。一歩深い質問でMimiが固まる。字幕「知ってる会話なら、言える。」→「でも、それをくり返すだけだった。」、長さは+2秒まで。
+
+- 9.4–15.0秒を作り直し（以降は2秒後ろへ、全体54.6秒）。背景はライブラリの lobby、固まるMimiはライブラリの stunned。脇役の質問はKokoro（q1 Bruno、q2 Pippa、q3 Coco、q4 Bruno "Oh, why do you like traveling?"）、Mimiの答えは吹き出しのみ。q4の声が次の場面に少しかかるので、ブルーノの b3 を0.15秒遅らせた。
+- 回想はセピアの勉強の場面だけで、自己紹介の場面は通常の色。
+- v1 は Drive の `old/` に `*_v1-latte-scene.mp4`。音量は約−15 LUFS。
