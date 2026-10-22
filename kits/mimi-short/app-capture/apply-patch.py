@@ -1,6 +1,6 @@
-"""Apply a tiny capture-only patch: for each hunk, find its context lines (' ' and '-') exactly once and replace them with
-the ' ' and '+' lines. Several files ('+++ b/<path>' sections) and several hunks ('@@') per file are allowed.
+"""Apply a tiny capture-only patch: for each hunk, find its context lines (' ' and '-') exactly once and insert the '+' lines.
 usage: python3 apply-patch.py film/app-capture/x.patch <app checkout>   (unified-diff look, but matched by text, not line numbers)
+A patch may hold several files (each starting with '--- a/' / '+++ b/') and several '@@' hunks per file.
 """
 import sys
 from pathlib import Path
@@ -10,7 +10,7 @@ target, hunks = None, []
 for l in lines:
     if l.startswith('+++ b/'):
         target = l[6:]
-    elif l.startswith('--- '):
+    elif l.startswith('--- a/'):
         continue
     elif l.startswith('@@'):
         hunks.append((target, []))

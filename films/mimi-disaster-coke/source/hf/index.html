@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      /* Pronunciation Disasters: the pilot's shared layout (films/mimi-disaster-sit). This episode swaps the pair, the scene,
+         the cast, Mimi's entrance and the freeze gag; the beats stay: hook -> slip -> freeze -> Mimi -> card -> app -> fix -> end. */
+      #root { background: #f6efe6; }
+      #scene { position: absolute; inset: 0; transform-origin: 50% 60%; }
+      #plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
+      #learner, #learner2 { left: -10px; top: 930px; width: 580px; }
+      #other, #other2 { left: 540px; top: 990px; width: 540px; }
+      #tint { position: absolute; inset: 0; mix-blend-mode: multiply; opacity: 0; }
+      #tint { background: #9aa6b2; mix-blend-mode: saturation; }
+      #flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; }
+      /* The hook: huge, on screen from frame 1 */
+      #hook { position: absolute; left: 36px; right: 36px; top: 120px; background: #ffffff; border-radius: 48px; padding: 34px 30px 38px;
+              box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 84px; font-weight: 700; line-height: 1.28; color: #273b4b; }
+      #hook q { quotes: none; color: #2a8dff; }
+      #hook .hot { display: inline-block; color: #e5484d; font-size: 108px; line-height: 1.25; }
+      /* the learner's line */
+      .say { position: absolute; left: 50px; top: 720px; max-width: 980px; background: #ffffff; border: 6px solid #273b4b; border-radius: 48px; border-bottom-left-radius: 10px;
+             padding: 20px 38px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 88px; font-weight: 700; color: #273b4b; line-height: 1.2; }
+      #say .bad { position: relative; display: inline-block; color: #e5484d; }
+      #say .bad b { display: inline-block; color: #f2b10b; }
+      #ok-say span { color: #2a8dff; }
+      #other-say { position: absolute; right: 40px; top: 890px; background: #273b4b; color: #fff; border-radius: 40px; border-bottom-right-radius: 10px;
+                    padding: 18px 34px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 58px; font-weight: 700; }
+      #fx-word { position: absolute; left: 0; right: 0; top: 590px; text-align: center; font-size: 130px; font-weight: 700; color: #ffffff;
+                  text-shadow: 0 6px 0 #273b4b, 0 10px 30px rgba(39, 59, 75, 0.35); letter-spacing: 0.05em; }
+      #scratch { position: absolute; left: 600px; top: 640px; font-size: 60px; font-weight: 700; color: #273b4b; transform: rotate(10deg); }
+      #mimi { position: absolute; left: 240px; top: 940px; width: 600px; height: auto; transform-origin: 50% 100%; }
+      #yell { position: absolute; left: 40px; right: 40px; max-width: none; top: 520px; text-align: center; font-size: 64px; line-height: 1.35; }
+      #yell .b2 { color: #e5484d; }
+      /* The card: the two words, the owner's voice: the slip (right) then the model (left) */
+      .type { position: absolute; inset: 0; background: #fbfcfd; }
+      #c-title { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font-size: 72px; font-weight: 700; color: #273b4b; line-height: 1.3; }
+      #c-title em { font-style: normal; color: #e5484d; }
+      .col { position: absolute; top: 400px; width: 470px; height: 880px; border-radius: 48px; background: #f1f5f9; border: 6px solid transparent;
+             display: flex; flex-direction: column; align-items: center; padding-top: 40px; gap: 18px; }
+      #col-ok { left: 40px; }
+      #col-ng { right: 40px; }
+      .col .w { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; line-height: 1.1; height: 170px; display: flex; align-items: center; }
+      #col-ok .w { color: #2a8dff; }
+      #col-ng .w { color: #e5484d; }
+      .col svg { width: 300px; height: 180px; }
+      .col .tip { font-size: 46px; font-weight: 700; text-align: center; line-height: 1.35; color: #273b4b; }
+      .col .tip em { font-style: normal; color: #2a8dff; }
+      #col-ng .tip em { color: #e5484d; }
+      .col .mark { font-size: 110px; font-weight: 700; line-height: 1; }
+      #col-ok .mark { color: #2a8dff; }
+      #col-ng .mark { color: #e5484d; }
+      .col .bars { display: flex; align-items: center; gap: 8px; height: 60px; }
+      .col .bars i { display: block; width: 10px; height: 8px; border-radius: 5px; background: #9fb0bd; }
+      #col-ok .bars i { background: #2a8dff; }
+      #col-ng .bars i { background: #e5484d; }
+      .col .who { font-size: 32px; color: #5b7f9f; font-weight: 700; }
+      #c-mimi { position: absolute; left: 390px; top: 1300px; width: 300px; height: auto; transform-origin: 50% 100%; }
+      /* The real app */
+      #app { position: absolute; inset: 0; background: #eef3f9; }
+      #device { position: absolute; left: 290px; top: 520px; width: 500px; height: 1088px; border-radius: 76px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 62px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 21px; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 20px; background: #000; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); opacity: 0; }
+      #a-mimi { position: absolute; left: -10px; top: 1180px; width: 330px; height: auto; transform-origin: 50% 100%; }
+      #app .caption { top: 180px; }
+      #own { position: absolute; right: 30px; top: 1290px; }
+      #hearts { position: absolute; inset: 0; }
+      /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+      /* Punchline first: Mimi's line on frame 1, then a rewind to the start of the scene */
+      #punch { position: absolute; inset: 0; background: #fbfcfd; overflow: hidden; }
+      #punch .pplate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.6) brightness(0.92); }
+      #punch .pcast { position: absolute; height: auto; filter: saturate(0.5) brightness(0.9); }
+      #punch .pt { position: absolute; left: 30px; right: 30px; top: 110px; background: #ffffff; border-radius: 48px; padding: 30px 20px 36px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.3; color: #273b4b; }
+      #punch .pt b { font-family: "Helvetica Neue", Arial, sans-serif; color: #e5484d; font-size: 112px; white-space: nowrap; }
+      #punch .pt b.jp { font-family: inherit; }
+      #p-mimi { position: absolute; left: 120px; top: 840px; width: 700px; height: auto; transform-origin: 50% 100%; }
+      #p-heard { position: absolute; right: 10px; top: 560px; width: 380px; height: 380px;
+                  display: flex; align-items: center; justify-content: center; }
+      #p-heard img { width: 350px; height: auto; }
+      #rew { position: absolute; inset: 0; opacity: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,0.0) 0 18px, rgba(255,255,255,0.55) 18px 22px); }
+      #rew span { position: absolute; left: 50px; top: 60px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 90px; font-weight: 700; color: #ffffff;
+                   text-shadow: 0 4px 0 #273b4b; }
+      /* what the listener heard */
+      #think { position: absolute; right: 30px; top: 520px; width: 330px; height: 330px; border-radius: 50%; background: #ffffff; border: 7px solid #273b4b;
+                display: flex; align-items: center; justify-content: center; }
+      #think img { width: 250px; height: auto; }
+      #think i { position: absolute; border-radius: 50%; background: #ffffff; border: 6px solid #273b4b; }
+      #fx-word { left: 40px !important; right: auto !important; text-align: left !important; top: 560px !important; font-size: 110px !important; -webkit-text-stroke: 10px #273b4b; paint-order: stroke fill; }
+      /* the card with the semi-realistic mouth illustrations */
+      /* the card, as in the pilot: the word, then two illustrated panels with navy headers (唇（正面） / 舌の位置（横から）) */
+      .col { top: 300px !important; height: 1010px !important; padding-top: 14px !important; gap: 12px !important; }
+      .col .w { height: 130px !important; }
+      .col .panel { width: 384px; border-radius: 18px; overflow: hidden; border: 3px solid #233a5a; background: #fbf7f1; }
+      .col .panel .ph { background: #233a5a; color: #ffffff; text-align: center; font-size: 28px; font-weight: 700; padding: 6px 0 4px; }
+      .col .panel img { display: block; width: 100%; height: auto; }
+      .col .mark { position: absolute; right: 16px; bottom: 6px; font-size: 80px !important; }
+      .col .gag { position: absolute; right: 22px; top: 186px; width: 110px; height: auto; transform: rotate(10deg); }
+      #c-mimi { left: 20px !important; top: 1330px !important; width: 250px !important; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.68" data-width="1080" data-height="1920">
+      <!-- The scene: the slip, the freeze, Mimi; again at the fix -->
+      <div id="scene">
+        <img id="plate" src="assets/art/counter.webp" alt="" />
+        <img id="other" class="cast clip" src="assets/art/clerk-smile.webp" alt="" data-start="1.5" data-duration="2.71" data-track-index="3" />
+        <img id="other-r" class="cast clip" src="assets/art/clerk-deadpan.webp" alt="" style="left: 540px; top: 990px; width: 540px;" data-start="4.21" data-duration="3.46" data-track-index="3" />
+        <img id="other2" class="cast clip" src="assets/art/clerk-smile.webp" alt="" data-start="14.65" data-duration="1.73" data-track-index="3" />
+        <img id="learner" class="cast clip" src="assets/art/friend-order.webp" alt="" data-start="1.5" data-duration="2.71" data-track-index="2" />
+        <img id="learner-r" class="cast clip" src="assets/art/friend-shrink.webp" alt="" style="left: -10px; top: 930px; width: 580px;" data-start="4.21" data-duration="3.46" data-track-index="2" />
+        <img id="learner2" class="cast clip" src="assets/art/friend-order.webp" alt="" data-start="14.65" data-duration="1.73" data-track-index="2" />
+      </div>
+      <div id="punch" class="clip" data-start="0" data-duration="1.5" data-track-index="21">
+        <img class="pplate" src="assets/art/counter.webp" alt="" />
+        <img class="pcast" src="assets/art/friend-shrink.webp" alt="" style="left: -10px; top: 930px; width: 580px;" />
+        <img class="pcast" src="assets/art/clerk-deadpan.webp" alt="" style="left: 540px; top: 990px; width: 540px;" />
+        <div class="pt" id="p-text">それ、<b>C★ck</b>に<br />聞こえてる</div>
+        <img id="p-mimi" src="assets/art/mimi-cup.webp" alt="" />
+        <div id="p-heard"><img src="assets/art/heard-rooster.webp" alt="" /></div>
+        <div id="rew"><span>◀◀ REWIND</span></div>
+      </div>
+      <div id="think" class="clip" data-start="4.66" data-duration="1.36" data-track-index="22"><i style="right:250px;top:330px;width:46px;height:46px"></i><i style="right:290px;top:390px;width:26px;height:26px"></i><img src="assets/art/heard-rooster.webp" alt="" /></div>
+      <div id="tint" class="clip" data-start="4.21" data-duration="1.81" data-track-index="5"></div>
+
+      <div id="hook" class="clip" data-start="1.5" data-duration="4.42" data-track-index="6">ファストフード店で<br /><q>“コーク”</q>を頼んだら<br /><span class="hot">店員が真顔</span></div>
+      <div id="say" class="say clip" data-start="1.85" data-duration="2.66" data-track-index="7">One <span class="bad">c<b id="star">★</b>ck</span>, please.</div>
+      <div id="scratch" class="clip" data-start="4.21" data-duration="0.6" data-track-index="8">キュッ！</div>
+      <div id="other-say" class="clip" data-start="4.51" data-duration="1.51" data-track-index="9">Excuse me… sir?</div>
+      <div id="fx-word" class="clip" data-start="4.46" data-duration="1.56" data-track-index="10">シーン…</div>
+
+      <img id="mimi" class="clip" src="assets/art/mimi-cup.webp" alt="" data-start="6.02" data-duration="1.65" data-track-index="11" />
+      <div id="yell" class="bubble clip" data-start="6.12" data-duration="1.55" data-track-index="12">それ「<b class="b2">c★ck</b>（アレ）<br />ひとつ」だよ〜！！</div>
+      <div id="flash" class="clip" data-start="6.02" data-duration="0.4" data-track-index="13"></div>
+
+      <!-- The card: one sound apart, both takes in the owner's voice -->
+      <div id="card" class="type clip" data-start="7.67" data-duration="3.08" data-track-index="14">
+        <div id="c-title">「オウ」がないと<em>大事故</em></div>
+        <div id="col-ok" class="col">
+          <div class="w" style="font-size:140px">Coke</div>
+          <div class="panel"><div class="ph">唇（正面）</div><img src="assets/art/mouth-ou-front.webp" alt="" /></div>
+          <div class="panel"><div class="ph">舌の位置（横から）</div><img src="assets/art/mouth-ou-side.webp" alt="" /></div>
+          <div class="tip">唇を丸めて<br /><em>「オウ」</em></div>
+          <div class="who">ネイティブ発音</div>
+          <div class="mark">○</div>
+        </div>
+        <div id="col-ng" class="col">
+          <div class="w" style="font-size:140px">c★ck</div>
+          <img class="gag" src="assets/art/heard-rooster.webp" alt="" />
+          <div class="panel"><div class="ph">唇（正面）</div><img src="assets/art/mouth-aa-front.webp" alt="" /></div>
+          <div class="panel"><div class="ph">舌の位置（横から）</div><img src="assets/art/mouth-aa-side.webp" alt="" /></div>
+          <div class="tip">口を開けた<br /><em>短い「ア」</em></div>
+          <div class="who">さっきの発音</div>
+          <div class="mark">×</div>
+        </div>
+        <img id="c-mimi" src="assets/art/pose-speak-open.webp" alt="" />
+      </div>
+
+      <!-- The real app (simulator recording, fixture data with a capture-only tweak: see app-capture/) -->
+      <div id="app">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="10.75" data-duration="3.9" data-track-index="16"></video>
+            <div id="status"><b>9:41</b><i></i></div>
+            <div id="tap1" class="tap" style="left:16%; top:87%"></div>
+            <div id="tap2" class="tap" style="left:38%; top:87%"></div>
+          </div>
+        </div>
+        <img id="a-mimi" src="assets/art/pose-perk.webp" alt="" />
+        <div class="caption small"><span id="a-cap">お手本は<strong>自分の声</strong>。<br />「Coke」の「オウ」を直す</span></div>
+        <div id="own" class="tag model clip" data-start="11.45" data-duration="1.4" data-track-index="17"><span>お手本＝自分の声</span></div>
+      </div>
+
+      <!-- Fixed -->
+      <div id="cap-ok" class="caption small clip" data-start="14.65" data-duration="1.73" data-track-index="18"><span id="c-ok">今度は、ちゃんとコーラが来た。</span></div>
+      <div id="ok-say" class="say clip" data-start="14.65" data-duration="1.73" data-track-index="7">One <span>Coke</span>, please. ✓</div>
+      <div id="hearts" class="sparkles clip" data-start="15.25" data-duration="1.13" data-track-index="8"></div>
+
+      <div id="end" class="end clip" data-start="16.38" data-duration="1.3" data-track-index="19"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="1.5" data-track-index="24"><span>That sounds like “C*ck”.</span></div>
+      <div class="sub clip" data-start="1.5" data-duration="2.71" data-track-index="24"><span>I ordered a “Coke” at a fast-food place… the clerk went stone-faced.</span></div>
+      <div class="sub clip" data-start="4.21" data-duration="1.81" data-track-index="24"><span>(stone-faced silence)</span></div>
+      <div class="sub clip" data-start="6.02" data-duration="1.65" data-track-index="24"><span>That was “one c*ck, please”!!</span></div>
+      <div class="sub clip" data-start="7.67" data-duration="3.08" data-track-index="24"><span>Skip the “oh-oo”, and it’s a disaster. “Coke”: round your lips, “oh-oo”. A short, open “ah” makes it “c*ck”.</span></div>
+      <div class="sub clip" data-start="10.75" data-duration="3.9" data-track-index="24"><span>The model is your own voice. Fix just the “oh” in “Coke”.</span></div>
+      <div class="sub clip" data-start="14.65" data-duration="1.73" data-track-index="24"><span>This time, the drink arrived.</span></div>
+      <div class="sub clip" data-start="16.38" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.68" data-track-index="20" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("hearts"), [[760, 1020, "#ff8fb1"], [960, 980, "#ffd84a"], [860, 900, "#ff8fb1"], [1000, 1120, "#ffd84a"], [140, 980, "#ffd84a"]]);
+      // Cue sheet (seconds), same as scripts/mix.py
+      const T0 = 1.85, WORD = 2.25, F = 4.21, OL = 4.51, M = 6.02, C = 7.67, CL = 8.27, CN = 9.58, A = 10.75, MODEL = 11.35, X = 14.65, E = 16.38;
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      const R = 1.5;
+      // Punchline first (0-R): Mimi's line and what it sounded like are on frame 1; then a rewind to the start of the scene
+      tl.fromTo("#p-mimi", { rotation: 0 }, { rotation: -3, duration: 0.08, yoyo: true, repeat: 7, immediateRender: false }, 0.05);
+      tl.fromTo("#p-text b", { scale: 1 }, { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 0.2);
+      tl.fromTo("#p-heard", { scale: 0.6, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.5)" }, 0);
+      tl.fromTo("#rew", { opacity: 0 }, { opacity: 1, duration: 0.05 }, R - 0.4);
+      tl.fromTo("#rew", { backgroundPositionY: "0px" }, { backgroundPositionY: "-400px", duration: 0.4, ease: "none" }, R - 0.4);
+      tl.to(["#p-mimi", "#p-heard", "#p-text"], { x: 120, duration: 0.05, yoyo: true, repeat: 7, ease: "none" }, R - 0.4);
+      tl.to("#punch", { filter: "brightness(1.6) saturate(0.4)", duration: 0.35 }, R - 0.4);
+      // Hook (R-F): the hook card, the cast mid-scene, the camera creeps in
+      tl.fromTo("#hook", { scale: 1.05 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, R);
+      tl.fromTo("#scene", { scale: 1.0 }, { scale: 1.08, duration: F - R, ease: "none" }, R);
+      tl.fromTo("#learner", { y: 0 }, { y: -14, duration: 0.3, yoyo: true, repeat: Math.floor((F - R) / 0.3) - 1, ease: "sine.inOut" }, R);
+      tl.fromTo("#other", { rotation: 0 }, { rotation: -3, duration: 0.4, yoyo: true, repeat: Math.floor((F - R) / 0.4) - 1, ease: "sine.inOut" }, R);
+      tl.fromTo("#say", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, T0);
+      // the wrong word lands: it turns red and the censor star spins
+      tl.fromTo("#say .bad", { scale: 1 }, { scale: 1.3, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, WORD);
+      tl.fromTo("#star", { scale: 1, rotation: 0 }, { scale: 1.4, rotation: 180, duration: 0.2, yoyo: true, repeat: 1, ease: "back.out(3)" }, WORD);
+      // The freeze: record scratch, the frame snaps in on the listener and holds
+      tl.set("#scene", { scale: 1.08 }, F - 0.01);
+      tl.to("#scene", { scale: 1.18, x: -110, duration: 0.12, ease: "power3.out" }, F);
+      tl.fromTo("#tint", { opacity: 0 }, { opacity: 0.4, duration: 0.25 }, F);
+      tl.fromTo("#scratch", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.1, ease: "back.out(3)" }, F);
+      tl.fromTo("#other-r", { x: 0 }, { x: 7, duration: 0.04, yoyo: true, repeat: 7, immediateRender: false }, F);
+      tl.to("#say", { opacity: 0, duration: 0.15 }, F + 0.15);
+      tl.fromTo("#other-say", { scale: 0.6, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, OL);
+      tl.fromTo("#think", { scale: 0.3, opacity: 0, transformOrigin: "30% 100%" }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.2)" }, F + 0.45);
+      tl.fromTo("#fx-word", { y: 20, scale: 0.8, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, F + 0.25);
+      tl.fromTo("#fx-word", { x: 0 }, { x: 6, duration: 0.05, yoyo: true, repeat: 11, immediateRender: false }, F + 0.6);
+      // Mimi pops up
+      tl.to("#hook", { y: -40, opacity: 0, duration: 0.15 }, M - 0.15);
+      tl.to(["#other-say", "#fx-word", "#think"], { opacity: 0, duration: 0.1 }, M - 0.1);
+      tl.to("#scene", { scale: 1.04, x: 0, y: 0, duration: 0.25, ease: "power2.out" }, M - 0.05);
+      tl.fromTo("#mimi", { y: -1500 }, { y: 0, duration: 0.4, ease: "bounce.out" }, M);tl.fromTo("#mimi", { scaleY: 1 }, { scaleY: 0.86, duration: 0.08, yoyo: true, repeat: 1, immediateRender: false }, M + 0.4);
+      tl.fromTo("#yell", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, M + 0.1);
+
+      // The card: the slip (right) with the learner take, then the model (left) with the native take
+      tl.fromTo("#card", { opacity: 0 }, { opacity: 1, duration: 0.12 }, C);
+      tl.fromTo("#c-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, C + 0.05);
+      tl.fromTo(["#col-ng", "#col-ok"], { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, stagger: 0.08, ease: "power3.out" }, C + 0.1);
+      tl.fromTo("#c-mimi", { y: 300 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, C + 0.2);
+      tl.set(".col .mark", { opacity: 0 }, C);
+      tl.to("#col-ng", { borderColor: "#e5484d", scale: 1.03, duration: 0.15 }, CL - 0.1);
+      
+      tl.to("#col-ng .mark", { opacity: 1, duration: 0.01 }, CN - 0.35);
+      tl.fromTo("#col-ng .mark", { scale: 2 }, { scale: 1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, CN - 0.35);
+      tl.to("#col-ng", { borderColor: "rgba(0,0,0,0)", scale: 1, duration: 0.15 }, CN - 0.2);
+      tl.to("#col-ok", { borderColor: "#2a8dff", scale: 1.03, duration: 0.15 }, CN - 0.1);
+      
+      tl.to("#col-ok .mark", { opacity: 1, duration: 0.01 }, A - 0.35);
+      tl.fromTo("#col-ok .mark", { scale: 2 }, { scale: 1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, A - 0.35);
+      tl.fromTo("#c-mimi", { rotation: 0 }, { rotation: -5, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, C + 0.5);
+
+      // The app: お手本 plays the sentence in your own voice
+      tl.set("#app", { opacity: 0 }, 0);
+      tl.fromTo("#app", { opacity: 0 }, { opacity: 1, duration: 0.15, immediateRender: false }, A);
+      tl.set("#app", { opacity: 0 }, X);
+      tl.fromTo("#device", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, A);
+      tl.fromTo("#a-mimi", { y: 300 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, A + 0.1);
+      k.pop("#a-cap", A + 0.05);
+      k.ripple("#tap1", MODEL);
+      k.ripple("#tap2", 12.85);
+      k.tagIn("#own", MODEL + 0.1);
+      tl.fromTo("#a-mimi", { y: 0 }, { y: -16, duration: 0.2, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, A + 1.0);
+
+      // Fixed: the line said right, the listener is happy again
+      tl.set("#scene", { scale: 1, x: 0, y: 0 }, X);
+      tl.fromTo("#ok-say", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, X);
+      tl.fromTo("#other2", { y: 0 }, { y: -40, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, X + 0.4);
+      tl.fromTo("#learner2", { y: 0 }, { y: -30, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, X + 0.5);
+      k.twinkle("#hearts", X + 0.6);
+      k.pop("#c-ok", X + 0.05);
+
+      k.end(E);
+      k.tapCta(E + 0.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

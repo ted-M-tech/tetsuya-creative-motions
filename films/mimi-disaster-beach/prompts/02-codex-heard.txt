@@ -1,0 +1,8 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png) and her friend (friend-aww.webp): flat kawaii illustration, navy outlines, soft flat colours, pink cheeks. Draw NEW small kawaii "what the listener heard" icons in EXACTLY that flat style. Tasteful and cute, nothing gross, nothing rude, no anatomy. Plain pure white background, the subject centred and filling about 80% of a square 1024x1024 image. No text, no letters, no logos.
+
+Save as PNG in heard/ (relative to the current directory):
+1) heard/dog.png — a cute little female puppy (a fluffy cream poodle-ish dog) with a big pink ribbon on her head, sitting, smiling with sparkly eyes, a tiny heart next to her.
+2) heard/lice.png — three tiny cute cartoon bugs (lice) with round grey-brown bodies, six tiny legs, dot eyes and little smiles, marching in a row, a few small motion lines; cute, not gross.
+3) heard/rooster.png — a cute proud rooster with a red comb and wattle, white feathers, orange beak and legs, puffing his chest, eyes closed proudly.
+4) heard/toilet.png — a cute white western toilet with a happy face on the tank, the lid open, a few small light-blue water droplets sparkling around it, clean and kawaii.
+Do not modify other files. List the saved paths when done.
