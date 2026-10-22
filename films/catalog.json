@@ -267,9 +267,9 @@
     "id": "mimi-feature-stories",
     "title": "Mimiの機能ストーリー",
     "titleEn": "Mimi feature stories",
-    "edition": "Series / 6 episodes",
-    "description": "ディベート、ファイル読み込み、17言語、声の調整。機能を小さな物語で見せる6本。",
-    "descriptionEn": "Debate, file import, 17 languages, voice tuning: six features told as small stories.",
+    "edition": "Series / 8 episodes",
+    "description": "ディベート、ファイル読み込み、17言語、声の調整、Web版、そしてLancloのはじまり。小さな物語で見せる8本。",
+    "descriptionEn": "Debate, file import, 17 languages, voice tuning, the Web version and how Lanclo began: eight small stories.",
     "project": "lanclo",
     "format": "series",
     "extras": [
@@ -350,6 +350,32 @@
         "path": "mimi-watching",
         "poster": "mimi-watching.jpg",
         "media": "mimi-watching-en.mp4"
+      },
+      {
+        "id": "mimi-origin",
+        "title": "Lancloのはじまり",
+        "titleEn": "How Lanclo began",
+        "edition": "#025",
+        "duration": "0:32",
+        "seconds": 32.0,
+        "role": "episode",
+        "format": "short",
+        "path": "mimi-origin",
+        "poster": "mimi-origin.jpg",
+        "media": "mimi-origin-en.mp4"
+      },
+      {
+        "id": "mimi-devices",
+        "title": "スマホでも、タブレットでも、パソコンでも",
+        "titleEn": "Phone, tablet or computer",
+        "edition": "#026",
+        "duration": "0:20",
+        "seconds": 20.0,
+        "role": "episode",
+        "format": "short",
+        "path": "mimi-devices",
+        "poster": "mimi-devices.jpg",
+        "media": "mimi-devices-en.mp4"
       }
     ],
     "poster": "mimi-feature-stories.jpg",
