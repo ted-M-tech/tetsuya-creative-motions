@@ -1,0 +1,12 @@
+Use your image generation tool. Attached: style-ref.png (a web image shown ONLY as a style reference — do NOT copy, trace or reproduce it; draw completely original images) and master.png (the official 2D art of Mimi, for the poop character's line style).
+
+Part A — four ORIGINAL pronunciation-education illustrations in a soft, semi-realistic medical-education style like the reference: warm beige skin, soft shading, pink/red mouth interior, clean thin outlines, plain pale cream background, no text, no letters, no numbers anywhere. Each 1024x768 landscape, the subject centred with margin. Save as PNG in art/ (relative to the current directory):
+1) art/mouth-sit-front.png — front view of a lower face (nose tip, lips, chin) saying "s" in "sit": lips spread wide sideways in a slight smile shape, a narrow opening with the upper and lower front teeth visible and nearly touching. Two teal arrows pointing OUTWARD at the mouth corners (left arrow pointing left, right arrow pointing right).
+2) art/mouth-sit-side.png — side cross-section of the head facing LEFT (nose, lips, teeth, hard palate, tongue in pink/red, a dashed white line along the tongue surface): lips spread (not protruding), the tongue TIP raised close behind the upper front teeth, leaving a very narrow groove for air; the tongue body low and flat. One small teal arrow pointing at the tongue tip.
+3) art/mouth-sh-front.png — front view of the same lower face saying "sh": lips rounded and pushed forward (a pout), a small rounded opening with the teeth barely visible. Two coral-red curved arrows at the sides curving INWARD toward the lips.
+4) art/mouth-sh-side.png — the same side cross-section facing LEFT saying "sh": lips rounded and pushed clearly forward, the tongue tip lower and the tongue BLADE raised further back toward the hard palate, a bigger space between the tongue and the back of the front teeth, dashed white line on the tongue surface. One small coral-red arrow pointing forward at the pushed-out lips.
+Keep all four consistent (same face, same colours, same scale) so they work as matching panels.
+
+Part B — one cute character prop in Mimi's style (flat colours, navy outlines like master.png, kawaii), plain pure white background, no text:
+5) art/poop.png — an ORIGINAL cute cartoon poop (a soft swirl of three brown tiers with a little tip on top), a happy face with dot eyes and a small open smile, pink cheeks, a tiny sparkle beside it. Not the emoji design; drawn in the Mimi art style.
+Do not modify other files. List the saved paths when done.

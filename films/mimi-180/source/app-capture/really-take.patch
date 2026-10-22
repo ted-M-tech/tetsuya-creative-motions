@@ -1,0 +1,25 @@
+--- a/native-ios/Lanclo/Core/DescribeQA.swift
++++ b/native-ios/Lanclo/Core/DescribeQA.swift
+@@
+         let v3 = FreeSpeechScoringQA.v3Enabled
+         if v3 { guard request.language == "en", request.photoId == "cafe" else { throw CancellationError() } }
++        if v3 && ProcessInfo.processInfo.arguments.contains("--qa-describe-really") {
++            // Capture-only (Mimi short 033): a habit-heavy take ("really" nine times) and Japanese feedback in the app's real shape.
++            let transcript = "People is sitting at a café counter. It looks really, really nice. The lamp is really cute, and the coffee looks really, really good. I think the people are really relaxed. Really. The chairs are really… really nice too."
++            let object: [String: Any] = ["rubric": "describe-speech-v3",
++                "content": ["score": 54, "feedback": "見えたものは伝わっています。どこが良いのか、具体的な理由をひとつ足しましょう。"],
++                "grammar": ["score": 63, "feedback": "主語と動詞の形をそろえましょう。",
++                    "observations": [["quote": "People is sitting", "correction": "People are sitting", "feedback": "people は複数なので are を使います。"]]],
++                "vocabulary": ["score": 46, "feedback": "“really” を9回くり返しています。強めたいところだけ、so や absolutely など別の言い方も使ってみましょう。"],
++                "pronunciation": ["score": 66, "feedback": "全体は聞き取れます。単語の終わりをはっきり言いましょう。", "evidence": "direct_audio", "unavailableReason": NSNull(),
++                    "observations": [["quote": "counter", "feedback": "語尾に余分な母音を足さずに言いましょう。", "kind": "improvement"]]],
++                "fluency": ["score": 61, "feedback": "止まらずに話し続けられています。", "evidence": "direct_audio", "unavailableReason": NSNull(),
++                    "observations": [["quote": "People", "feedback": "出だしはなめらかです。", "kind": "strength"]]]]
++            let scoring = try JSONDecoder().decode(FreeSpeechScoring.self, from: JSONSerialization.data(withJSONObject: object))
++            return DescribeResponse(requestId: request.requestId, takeId: request.takeId, photoId: request.photoId, photoRevision: request.photoRevision, language: request.language, ui: request.ui,
++                assessment: .init(status: "feedback", reason: nil, transcript: transcript, strength: "最後まで止まらずに、見えたものを次々と話せています。",
++                    improvements: [.init(quote: "It looks really, really nice.", feedback: "“really” が続くと、強調が弱く聞こえます。いちばん伝えたいところを、別の言い方で強めましょう。", example: "It looks absolutely lovely.")],
++                    retryPrompt: nil, scoring: scoring, modelAnswer: "This photo shows people sitting at a café counter under a warm hanging lamp. The coffee looks great, and the chairs are so inviting. Overall, the place feels absolutely relaxing."),
++                provenance: .init(rubric: "describe-v3", model: "isolated-ui-fixture", assessedAt: "2026-10-10T12:00:00Z"))
++        }
+         let retry = ProcessInfo.processInfo.arguments.contains("--qa-describe-retry")

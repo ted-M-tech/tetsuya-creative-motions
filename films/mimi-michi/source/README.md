@@ -5,7 +5,8 @@
 | Path | Role |
 |---|---|
 | `art/*.png` | Codex output as drawn (street, point, ice). The cut-outs and the framed street plate live in the Mimi 2D library (`kits/mimi-short/library`) |
-| `assets/voice/` | Kokoro voice lines: the passer-by (`bm_george`) asks and thanks; Mimi's "Uh..." and the answer (`af_heart`). Rebuild with `scripts/voices.sh` |
+| `assets/voice/` | Kokoro voice lines of the passer-by (`bm_george`): asks and thanks. Rebuild with `scripts/voices.sh` |
+| `own-voice.json`, `own-voice.receipt.json` | Mimi's "Uh... uh..." (learner accent) and the answer (General American) in the owner's own registered Lanclo voice. `kits/mimi-short/scripts/ownvoice.py` writes them to `assets/own-voice/` (not in Git; copies in Drive `Mimi_03_Frozen_Asked_Directions_assets/own-voice/`) |
 | `scripts/shots.py` | The 9 Rive shots (street plate for the street, desk for the rest). Episode acts: freeze, say (lip-sync cached in `scripts/lipsync-answer.json`), direct |
 | `scripts/render.sh` | Rive shots → `renders/rive/*.mp4` → `hf/assets/shots/` |
 | `scripts/mix.py` | Cue sheet and sound → `hf/assets/mix.wav` |
@@ -19,6 +20,7 @@ From the repository root (Node 24, uv, ffmpeg, ImageMagick, Rive CLI 1.6):
 F=films/mimi-michi/source
 uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/shots.py
 $F/scripts/render.sh                                   # about 6 minutes
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json   # or copy the WAVs from Drive Mimi_03_Frozen_Asked_Directions_assets/own-voice/ into $F/assets/own-voice/
 uv run --no-project --with numpy python $F/scripts/mix.py
 kits/mimi-short/stage.sh $F/hf
 (cd $F/hf && npx --yes hyperframes@0.8.181 check)
