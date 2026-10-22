@@ -1,4 +1,4 @@
-"""Frozen Abroad sound: the staff lines (Kokoro), Mimi's replies (the owner's registered voice), kit SFX, the theme bed -> hf/assets/mix.wav.
+"""Frozen Abroad sound: the staff lines (Pippa the duck, Kokoro af_nicole), Mimi's replies (the owner's registered voice), kit SFX, the theme bed -> hf/assets/mix.wav.
 
 usage: uv run --no-project --with numpy python films/mimi-frozen-abroad/source/scripts/mix.py
 Staff voices: scripts/voices.sh (assets/voice/). Mimi's replies: own-voice.json via kits/mimi-short/scripts/ownvoice.py
@@ -32,9 +32,9 @@ m.sfx(freeze(0.5), 0.0)
 m.sfx(boing(True), HAND)
 for at in SCENES:
     m.sfx(whoosh(0.3, 0.3), at - 0.05)
-m.voice('passport-bf_emma.wav', 1.65)
-m.voice('reservation-af_bella.wav', 3.8, start=0.83)          # "Do you have a reservation?" (from 0.85 s in the clip)
-m.voice('going-am_michael.wav', 5.6)
+m.voice('passport-af_nicole.wav', 1.65)
+m.voice('reservation-af_nicole.wav', 3.8, start=0.9)           # "Do you have a reservation?" (from 0.92 s in the clip)
+m.voice('going-af_nicole.wav', 5.6)
 for at in FREEZES:
     m.sfx(freeze(0.6), at)
     m.sfx(bell(96, 0.5, 0.1), at + 0.08)
