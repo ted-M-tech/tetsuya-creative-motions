@@ -102,7 +102,6 @@ films/mimi-watching/source/hf/.hyperframes/
 films/mimi-watching/source/hf/.thumbnails/
 films/mimi-watching/source/renders/
 
-
 films/mimi-debate/source/hf/assets/
 films/mimi-debate/source/hf/.hyperframes/
 films/mimi-debate/source/hf/.thumbnails/
@@ -128,7 +127,6 @@ films/mimi-tuning/source/hf/.hyperframes/
 films/mimi-tuning/source/hf/.thumbnails/
 films/mimi-tuning/source/renders/
 !films/mimi-tuning/source/assets/voice/
-
 films/mimi-quitter/source/hf/assets/
 films/mimi-quitter/source/hf/.hyperframes/
 films/mimi-quitter/source/hf/.thumbnails/
@@ -161,3 +159,7 @@ films/mimi-no-shadowing/source/hf/.hyperframes/
 films/mimi-no-shadowing/source/hf/.thumbnails/
 films/mimi-no-shadowing/source/renders/
 !films/mimi-no-shadowing/source/assets/voice/
+films/mimi-month/source/hf/assets/
+films/mimi-month/source/hf/.hyperframes/
+films/mimi-month/source/hf/.thumbnails/
+films/mimi-month/source/renders/
