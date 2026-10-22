@@ -8,7 +8,8 @@ kit="$(cd "$(dirname "$0")/.." && pwd)"
 git -C "$repo" fetch -q origin main
 tmp="$(mktemp -d)"
 git -C "$repo" archive "$ref" design/mimi-2d voice-web/public/mascot/mimi | tar -x -C "$tmp"
-rm -rf "$kit/library"; mkdir -p "$kit/library/official"
+mkdir -p "$kit/library"; find "$kit/library" -mindepth 1 -maxdepth 1 ! -name bgm -exec rm -rf {} +  # keep the fetched theme
+mkdir -p "$kit/library/official"
 cp -R "$tmp/design/mimi-2d/poses" "$tmp/design/mimi-2d/backgrounds" "$tmp/design/mimi-2d/props" "$tmp/design/mimi-2d/catalog.json" "$kit/library/"
 cp "$tmp/design/mimi-2d/scripts/lipsync-model.json" "$kit/library/"
 cp "$tmp"/voice-web/public/mascot/mimi/*.png "$tmp"/voice-web/public/mascot/mimi/*.webp "$kit/library/official/"

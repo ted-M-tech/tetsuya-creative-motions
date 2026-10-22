@@ -83,7 +83,7 @@ Riveで作るときは3〜7の間に：リグ（格子＋ドロネーの網、�
 | キャラクターのライブラリ | `library/`（ポーズ、小道具、背景、公式の絵）。`sync-library.sh` はLancloのものを取ってくるので、自分のものは手で入れるか自分用の同期を書く |
 | キャスト | `cast/`：メインのキャラクターと参照画像、共通キャストとKokoroの声、キャラクターの特徴を書いた codex-p のひな形 |
 | ブランド | `brand/`（締めのキャラクター、ロゴ、ストアのバッジ）と、`hf/kit.js`（`endCard`、`tapCta`）・`hf/kit.css` の締めの文字 |
-| BGM | `library/bgm/everyone-get-up.mp3`（`scripts/sfx.py` の `THEME`。Gitに入れない。テーマ曲は別の権利）。無ければ `sfx.py` がコードで作る伴奏を流す |
+| BGM | `library/bgm/everyone-get-up.mp3`（`scripts/sfx.py` の `THEME`。Gitに入れない。テーマ曲は別の権利）。`scripts/fetch-bgm.sh` が Lanclo の非公開リポジトリからコピーする。それ以外の人は自分の曲をそこに置く。無ければ `sfx.py` はエラーで止まる。`MIMI_BGM=builtin` を付けたときだけコードで作る伴奏を流す |
 | 声 | 全員Kokoro、または `ownvoice.py` の代わりに自分の登録した声（アカウントと声の名前はLancloのもの） |
 
 最小の手順：
