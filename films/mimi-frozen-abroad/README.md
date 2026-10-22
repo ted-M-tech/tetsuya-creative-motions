@@ -10,4 +10,4 @@ The brief's hospital scene was replaced by the bus: the app has no hospital scen
 
 ![Final frames](process/00-final-frames.jpg)
 
-Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Drafts and the raw take in Lanclo's Google Drive `002.SNS/032. Frozen Abroad - Roleplay Series/`.
+Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Final files in Lanclo's Google Drive `002.SNS/032. Frozen Abroad - Roleplay Series/` (`FrozenAbroad_2026-10-21.mp4`, `FrozenAbroad_EN-subs_2026-10-21.mp4`, raw take in `FrozenAbroad_assets/`).

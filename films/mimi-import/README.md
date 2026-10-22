@@ -6,7 +6,7 @@ Mimi's friend has the phrases she wants to learn scattered over a spreadsheet, a
 
 0:17.4 / 1080×1920, 60 fps / Japanese speech bubbles and captions, one English phrase (the model, in the owner's own registered Lanclo voice) / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-import.mp4`) and with English subtitles (`mimi-import-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/020. Mimi Eats Your Files/` (`Import_draft_2026-10-21.mp4`, `Import_draft_EN-subs_2026-10-21.mp4`, raw take in `Import_assets/`).
+Two cuts: Japanese only (`mimi-import.mp4`) and with English subtitles (`mimi-import-en.mp4`); final files in Lanclo's Google Drive `002.SNS/020. Mimi Eats Your Files/` (`Import_2026-10-21.mp4`, `Import_EN-subs_2026-10-21.mp4`, raw take in `Import_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

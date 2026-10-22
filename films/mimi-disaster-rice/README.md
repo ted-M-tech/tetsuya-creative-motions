@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #039 (series “Pronunciation Disasters”, episode 3). 19.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
+Lanclo SNS short #039 (series “Pronunciation Disasters”, episode 3). 19.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a homestay dinner: Mimi’s Friend proudly says “I eat rice every day” and it comes out as “lice”; Bruno (the recurring bear) as the host dad recoils, scratching his head. Mimi bursts out of a rice bowl with crossed chopsticks.
 
@@ -23,5 +23,5 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/),
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 ![Final frames](process/00-final-frames.jpg)
 
-- Drafts in Lanclo's Google Drive `002.SNS/039. Pronunciation Disasters 3 - Rice or Lice/` (`Disasters3_Rice_draft_2026-10-21.mp4`, `Disasters3_Rice_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters3_Rice_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/039. Pronunciation Disasters 3 - Rice or Lice/` (`Disasters3_Rice_2026-10-21.mp4`, `Disasters3_Rice_EN-subs_2026-10-21.mp4`, raw material in `Disasters3_Rice_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

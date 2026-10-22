@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #040 (series “Pronunciation Disasters”, episode 4). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
+Lanclo SNS short #040 (series “Pronunciation Disasters”, episode 4). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a meeting: Mimi’s Friend means “I can’t wait for the election” and says “erection”; Bruno as the foreign boss does a coffee spit-take. Mimi slides in, blushing, peeking through her mittens: 「ぼ、僕は何も聞いてない！！」.
 
@@ -23,5 +23,5 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/),
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 ![Final frames](process/00-final-frames.jpg)
 
-- Drafts in Lanclo's Google Drive `002.SNS/040. Pronunciation Disasters 4 - Election or Erection/` (`Disasters4_Election_draft_2026-10-21.mp4`, `Disasters4_Election_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters4_Election_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/040. Pronunciation Disasters 4 - Election or Erection/` (`Disasters4_Election_2026-10-21.mp4`, `Disasters4_Election_EN-subs_2026-10-21.mp4`, raw material in `Disasters4_Election_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

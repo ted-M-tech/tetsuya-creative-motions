@@ -6,7 +6,7 @@
 
 0:20.5 / 1080×1920・60fps / 日本語の吹き出し・字幕、英語の台詞（Mimiの答えはオーナー本人の登録済みLancloの声、友だちの質問はKokoro）/ 公式2Dポーズ＋GSAP、実アプリ（シミュレーター・QA用データ）＋HyperFrames
 
-2本：日本語のみ（`mimi-debate.mp4`）と英語字幕つき（`mimi-debate-en.mp4`）。下書きはLancloのGoogleドライブ `002.SNS/019. Lost an Argument in English/`（`Debate_draft_2026-10-21.mp4`、`Debate_draft_EN-subs_2026-10-21.mp4`、録画の原本は `Debate_assets/`）。
+2本：日本語のみ（`mimi-debate.mp4`）と英語字幕つき（`mimi-debate-en.mp4`）。完成版はLancloのGoogleドライブ `002.SNS/019. Lost an Argument in English/`（`Debate_2026-10-21.mp4`、`Debate_EN-subs_2026-10-21.mp4`、録画の原本は `Debate_assets/`）。
 
 「勝ち」はコントの場面だけ。アプリは勝ち負けを決めず、意見の正しさも判定しません。
 

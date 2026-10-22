@@ -10,6 +10,6 @@
 
 ![完成フレーム](process/00-final-frames.jpg)
 
-再現：[source/README.md](source/README.md)。制作過程：[PROCESS.md](PROCESS.md)。プロンプト：[PROMPT.md](PROMPT.md)。クレジット：[CREDITS.md](CREDITS.md)。ドラフトは Lanclo の Google Drive `002.SNS/037. Pronunciation Disasters 1 - Sit or Sht/`。
+再現：[source/README.md](source/README.md)。制作過程：[PROCESS.md](PROCESS.md)。プロンプト：[PROMPT.md](PROMPT.md)。クレジット：[CREDITS.md](CREDITS.md)。完成版は Lanclo の Google Drive `002.SNS/037. Pronunciation Disasters 1 - Sit or Sht/`（`Disasters1_Sit_2026-10-21.mp4`、`Disasters1_Sit_EN-subs_2026-10-21.mp4`、素材は `Disasters1_Sit_assets/`）。
 
 シリーズのテンプレート（2〜6話）は [README.md](README.md#series-template-episodes-26) の表を参照。ミミの日本語の一人称は「僕」。

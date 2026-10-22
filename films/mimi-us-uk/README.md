@@ -6,7 +6,7 @@ A listening quiz, spun off from [mimi-tuning](../mimi-tuning/README.md) (#23). F
 
 0:18.9 / 1080×1920, 60 fps / Japanese captions and speech bubbles, one English sentence in two accents / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-us-uk.mp4`) and with English subtitles (`mimi-us-uk-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/030. US vs UK English in My Own Voice/` (`US_UK_draft_2026-10-21.mp4`, `US_UK_draft_EN-subs_2026-10-21.mp4`, raw take and voices in `US_UK_assets/`).
+Two cuts: Japanese only (`mimi-us-uk.mp4`) and with English subtitles (`mimi-us-uk-en.mp4`); final files in Lanclo's Google Drive `002.SNS/030. US vs UK English in My Own Voice/` (`US_UK_2026-10-21.mp4`, `US_UK_EN-subs_2026-10-21.mp4`, raw take and voices in `US_UK_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

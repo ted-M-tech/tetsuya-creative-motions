@@ -10,7 +10,7 @@ The word is audible (it is the joke) and censored on screen with a star: "sh★t
 
 ![Final frames](process/00-final-frames.jpg)
 
-Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Drafts in Lanclo's Google Drive `002.SNS/037. Pronunciation Disasters 1 - Sit or Sht/` (`Disasters1_Sit_draft_2026-10-21.mp4`, `Disasters1_Sit_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters1_Sit_assets/`).
+Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Final files in Lanclo's Google Drive `002.SNS/037. Pronunciation Disasters 1 - Sit or Sht/` (`Disasters1_Sit_2026-10-21.mp4`, `Disasters1_Sit_EN-subs_2026-10-21.mp4`, raw material in `Disasters1_Sit_assets/`).
 
 ## Series template (episodes 2–6)
 

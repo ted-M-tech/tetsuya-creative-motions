@@ -6,7 +6,7 @@
 
 0:21.0 / 1080×1920・60fps / 日本語の吹き出しと字幕、Mimiの英語はオーナー本人の登録済みLancloの声、友だちのフランス語はKokoro TTS / 公式2Dポーズ＋GSAP、実アプリ（シミュレーター）＋HyperFrames
 
-2本：日本語のみ（`mimi-freespeech.mp4`）と英語字幕つき（`mimi-freespeech-en.mp4`）。下書きはLancloのGoogleドライブ `002.SNS/021. Keep Talking for 3 Minutes/`（録画と切り出しは `FreeSpeech_assets/`）。
+2本：日本語のみ（`mimi-freespeech.mp4`）と英語字幕つき（`mimi-freespeech-en.mp4`）。完成版はLancloのGoogleドライブ `002.SNS/021. Keep Talking for 3 Minutes/`（`Free_Speech_2026-10-21.mp4`、`Free_Speech_EN-subs_2026-10-21.mp4`、録画と切り出しは `FreeSpeech_assets/`）。
 
 ![完成フレーム](process/00-final-frames.jpg)
 

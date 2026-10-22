@@ -6,7 +6,7 @@ Mimi's friend corners her in English:「Dog person or cat person?」Mimi can't a
 
 0:20.5 / 1080×1920, 60 fps / Japanese speech bubbles and captions, English lines (Mimi's answer in the owner's own registered Lanclo voice, the friend's question Kokoro) / official 2D poses + GSAP, real app (simulator, QA fixture) + HyperFrames
 
-Two cuts: Japanese only (`mimi-debate.mp4`) and with English subtitles (`mimi-debate-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/019. Lost an Argument in English/` (`Debate_draft_2026-10-21.mp4`, `Debate_draft_EN-subs_2026-10-21.mp4`, raw take in `Debate_assets/`).
+Two cuts: Japanese only (`mimi-debate.mp4`) and with English subtitles (`mimi-debate-en.mp4`); final files in Lanclo's Google Drive `002.SNS/019. Lost an Argument in English/` (`Debate_2026-10-21.mp4`, `Debate_EN-subs_2026-10-21.mp4`, raw take in `Debate_assets/`).
 
 The "win" is only the comedy scene; the app names no winner and does not judge opinions.
 

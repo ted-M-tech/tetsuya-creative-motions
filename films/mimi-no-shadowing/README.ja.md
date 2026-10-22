@@ -6,4 +6,4 @@
 
 0:17.2 / 1080×1920・60fps / 日本語のみ版と英語字幕版。Mimiとお手本の英語はオーナーの登録済みLancloボイス（前＝`learner`、お手本と後＝`us`）、ブルーノはKokoro。
 
-経緯は [PROCESS.md](PROCESS.md)、作り直しは [source/README.md](source/README.md)、統合プロンプトは [PROMPT.md](PROMPT.md)、素材は [CREDITS.md](CREDITS.md)。下書きMP4と録画は Lanclo の Google Drive `002.SNS/035. I Stopped Shadowing Native Speakers/`。
+経緯は [PROCESS.md](PROCESS.md)、作り直しは [source/README.md](source/README.md)、統合プロンプトは [PROMPT.md](PROMPT.md)、素材は [CREDITS.md](CREDITS.md)。完成版は Lanclo の Google Drive `002.SNS/035. I Stopped Shadowing Native Speakers/`（`NoShadowing_2026-10-21.mp4`、`NoShadowing_EN-subs_2026-10-21.mp4`、録画は `NoShadowing_assets/`）。

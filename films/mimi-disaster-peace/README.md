@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #042 (series “Pronunciation Disasters”, episode 6). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
+Lanclo SNS short #042 (series “Pronunciation Disasters”, episode 6). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a sightseeing spot: Mimi’s Friend says “Okay, everyone, peace!” for a photo and it comes out as “piss”; Bruno the tourist bursts out laughing. Mimi photobombs the shot with a camera flash.
 
@@ -23,5 +23,5 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/),
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 ![Final frames](process/00-final-frames.jpg)
 
-- Drafts in Lanclo's Google Drive `002.SNS/042. Pronunciation Disasters 6 - Peace or Pss/` (`Disasters6_Peace_draft_2026-10-21.mp4`, `Disasters6_Peace_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters6_Peace_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/042. Pronunciation Disasters 6 - Peace or Pss/` (`Disasters6_Peace_2026-10-21.mp4`, `Disasters6_Peace_EN-subs_2026-10-21.mp4`, raw material in `Disasters6_Peace_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

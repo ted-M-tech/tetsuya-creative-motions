@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNS ショート #040（シリーズ「Pronunciation Disasters / 発音で大事故」第4話）。20.0秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。ドラフト（未承認）。
+Lanclo SNS ショート #040（シリーズ「Pronunciation Disasters / 発音で大事故」第4話）。20.0秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。
 
 場面：「会議で I can’t wait for the election → erection」
 

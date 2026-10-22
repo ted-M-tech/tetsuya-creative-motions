@@ -6,7 +6,7 @@
 
 0:19.0 / 1080×1920・60fps / 日本語の字幕と吹き出し、声なし / 公式2Dポーズ＋GSAP、実アプリ（シミュレーター、QAフィクスチャ）＋HyperFrames
 
-2本：日本語のみ（`mimi-quitter.mp4`）と英語字幕つき（`mimi-quitter-en.mp4`）。下書きはLanclo Google Drive `002.SNS/029. How a Quitter Kept Going for a Month/`（`Quitter_draft_2026-10-21.mp4`、`Quitter_draft_EN-subs_2026-10-21.mp4`、素材は `Quitter_assets/`）。
+2本：日本語のみ（`mimi-quitter.mp4`）と英語字幕つき（`mimi-quitter-en.mp4`）。完成版はLanclo Google Drive `002.SNS/029. How a Quitter Kept Going for a Month/`（`Quitter_2026-10-21.mp4`、`Quitter_EN-subs_2026-10-21.mp4`、素材は `Quitter_assets/`）。
 
 ![完成フレーム](process/00-final-frames.jpg)
 
