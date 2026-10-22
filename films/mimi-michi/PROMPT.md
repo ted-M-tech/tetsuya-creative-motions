@@ -44,3 +44,9 @@ LancloのマスコットMimiが主役の、15秒の縦型ショート（1080×19
 ## 確認
 
 `npx hyperframes check`、スナップショット、Codexの完成版レビュー（採否を記録）、依頼者の承認、ライブラリへのPR、`docs/ADDING-A-FILM.md` に沿った記録。
+
+## 2026-10-21: own-voice swap
+
+> 「今まで英語で発音シーンがあった動画、この声で変えて。010以外。」
+
+Mimi's English lines now use the owner's registered Lanclo voice (`source/own-voice.json`, see PROCESS.md).

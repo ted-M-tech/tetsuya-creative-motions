@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .pose { position: absolute; height: auto; transform-origin: 50% 100%; }
+      /* Hook: a generic AI chat app (no brand), the box is empty */
+      #hook { position: absolute; inset: 0; background: #eef3f9; }
+      #cam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+      #chat { position: absolute; left: 400px; top: 500px; width: 620px; height: 1010px; border-radius: 80px; background: #1d2733; padding: 14px;
+              box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #chat .scr { position: relative; width: 100%; height: 100%; border-radius: 66px; overflow: hidden; background: #ffffff; font-family: -apple-system, "Helvetica Neue", sans-serif; }
+      #chat .head { position: absolute; left: 0; right: 0; top: 0; height: 150px; border-bottom: 2px solid #eceff3; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 22px; gap: 14px; }
+      #chat .head b { font-size: 34px; color: #222; }
+      #chat .av { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, #b9c3cf, #8e9aa8); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; }
+      #chat .hello { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-size: 40px; color: #7d8894; font-weight: 600; }
+      #chat .input { position: absolute; left: 26px; right: 26px; bottom: 36px; height: 96px; border-radius: 48px; border: 3px solid #d7dde4; display: flex; align-items: center; padding: 0 30px; font-size: 36px; color: #b0b8c1; }
+      #chat .input .cur { display: inline-block; width: 4px; height: 46px; background: #2a8dff; margin-right: 10px; }
+      #chat .input .typed { color: #222; }
+      #chat .input .send { position: absolute; right: 14px; top: 12px; width: 66px; height: 66px; border-radius: 50%; background: #d7dde4; color: #fff; font-size: 34px; display: flex; align-items: center; justify-content: center; }
+      #chat .msg { position: absolute; font-size: 36px; line-height: 1.35; padding: 20px 28px; border-radius: 34px; }
+      #m-me { right: 30px; top: 200px; background: #2a8dff; color: #fff; border-bottom-right-radius: 8px; }
+      #m-dots { left: 30px; top: 320px; background: #f0f2f5; color: #8a97a3; border-bottom-left-radius: 8px; letter-spacing: 6px; }
+      #m-ai { left: 30px; top: 320px; max-width: 470px; background: #f0f2f5; color: #222; border-bottom-left-radius: 8px; }
+      #h-mimi { left: -20px; bottom: 470px; width: 520px; }
+      #h-stun { left: 0px; bottom: 470px; width: 480px; }
+      #dots { left: 40px; top: 620px; font-size: 64px; letter-spacing: 8px; }
+      #h-say { left: 30px; top: 560px; font-size: 48px; }
+      .sweat { position: absolute; left: 380px; top: 860px; width: 34px; height: 50px; background: #7cc3ff; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+      /* Copy card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .type .big { font-size: 100px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      /* The real app on the right, Mimi on the left */
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* "QA用データ" feedback text in the fixture lesson: covered with the card colour */
+      #qa-mask { position: absolute; left: 5%; width: 88%; top: 72.0%; height: 5.4%; background: #ffffff; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #a-point { left: -10px; bottom: 470px; width: 560px; }
+      #a-open, #a-closed { left: -10px; bottom: 470px; width: 560px; }
+      #a-proud { left: -10px; bottom: 470px; width: 560px; }
+      .chip { position: absolute; left: 60px; top: 520px; background: #344f69; color: #fff; font-size: 46px; font-weight: 700; padding: 16px 32px; border-radius: 44px;
+              box-shadow: 0 12px 30px rgba(39, 59, 75, 0.25); }
+      #tag-model { top: 1400px; }
+      #proud-say { left: 40px; top: 560px; font-size: 52px; }
+      /* English subtitles */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.8" data-width="1080" data-height="1920">
+      <!-- Hook (0-4.6): an empty AI chat box -->
+      <div id="hook" class="clip" data-start="0" data-duration="4.65" data-track-index="1">
+        <div id="cam">
+          <div id="chat">
+            <div class="scr">
+              <div class="head"><span class="av">✦</span><b>AIチャット</b></div>
+              <div id="hello" class="hello">なんでも話しかけてね</div>
+              <div id="m-me" class="msg">Hi!</div>
+              <div id="m-dots" class="msg">•••</div>
+              <div id="m-ai" class="msg">こんにちは！<br />今日は何について<br />話したい？</div>
+              <div class="input"><span id="cur" class="cur"></span><span id="typed" class="typed"></span><span id="ph">メッセージを入力</span><span id="send" class="send">↑</span></div>
+            </div>
+          </div>
+          <img id="h-mimi" class="pose" src="assets/art/sheepish.webp" alt="" />
+          <img id="h-stun" class="pose" src="assets/art/stunned.webp" alt="" />
+          <i id="sweat" class="sweat"></i>
+        </div>
+        <div id="dots" class="bubble from-left">…</div>
+        <div id="h-say" class="bubble from-left">……それを<br />決めてほしいんだけど</div>
+      </div>
+
+      <!-- The app (5.8-16.6) -->
+      <div id="appscene">
+        <img id="a-point" class="pose" src="assets/art/point.webp" alt="" />
+        <img id="a-closed" class="pose" src="assets/art/speak-closed.webp" alt="" />
+        <img id="a-open" class="pose" src="assets/art/speak-open.webp" alt="" />
+        <img id="a-proud" class="pose" src="assets/art/confident.webp" alt="" />
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="5.8" data-duration="12.0" data-track-index="3"></video>
+            <div id="qa-mask" class="clip" data-start="13.1" data-duration="3.5" data-track-index="4"></div>
+            <div id="t-model" class="tap clip" style="left:16%; top:88.6%" data-start="14.05" data-duration="0.3" data-track-index="5"></div>
+          </div>
+        </div>
+        <div id="chip1" class="chip clip" data-start="7.9" data-duration="1.4" data-track-index="6">会話の場面</div>
+        <div id="chip2" class="chip clip" data-start="10.1" data-duration="1.2" data-track-index="6">写真</div>
+        <div id="chip3" class="chip clip" data-start="11.3" data-duration="1.8" data-track-index="6">ディベートのお題</div>
+        <div id="tag-model" class="tag model clip" data-start="14.15" data-duration="1.7" data-track-index="7"><span>お手本 = 自分の声</span></div>
+        <div id="proud-say" class="bubble from-left clip" data-start="15.85" data-duration="0.75" data-track-index="8">僕、もう迷わない！</div>
+      </div>
+
+      <!-- The copy -->
+      <div id="copy" class="type clip" data-start="4.6" data-duration="1.25" data-track-index="11">
+        <div id="big1" class="big">Lancloなら、<br /><strong>話すこと</strong>は<br />もう用意してある。</div>
+      </div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-hook" class="caption clip" data-start="0" data-duration="2.4" data-track-index="14"><span>AIと会話、毎回<br />『何話そう…』で終わってない？</span></div>
+      <div id="cap-1" class="caption small clip" data-start="5.85" data-duration="1.35" data-track-index="14"><span id="c1">開いたら、<br />今日のレッスンが届いてる。</span></div>
+      <div id="cap-2" class="caption small clip" data-start="7.2" data-duration="5.9" data-track-index="14"><span id="c2">場面も、写真も、お題も、<br /><strong>ぜんぶ用意済み</strong>。</span></div>
+      <div id="cap-3" class="caption clip" data-start="13.1" data-duration="3.5" data-track-index="14"><span id="c3">あとは、<strong>話すだけ</strong>。</span></div>
+
+      <div id="end" class="end clip" data-start="16.6" data-duration="1.2" data-track-index="15"></div>
+
+      <!-- English subtitles (one track) -->
+      <div id="sub-1" class="sub clip" data-start="0.0" data-duration="2.4" data-track-index="24"><span>Chatting with AI… does it always end with “What do I even talk about?”</span></div>
+      <div id="sub-2" class="sub clip" data-start="2.4" data-duration="1.35" data-track-index="24"><span>“Hi! What would you like to talk about today?”</span></div>
+      <div id="sub-3" class="sub clip" data-start="3.75" data-duration="0.85" data-track-index="24"><span>…That’s what I wanted YOU to decide.</span></div>
+      <div id="sub-4" class="sub clip" data-start="4.6" data-duration="1.25" data-track-index="24"><span>With Lanclo, what to talk about is already prepared.</span></div>
+      <div id="sub-5" class="sub clip" data-start="5.85" data-duration="1.35" data-track-index="24"><span>Open it, and today’s lesson is waiting.</span></div>
+      <div id="sub-6" class="sub clip" data-start="7.2" data-duration="5.9" data-track-index="24"><span>Scenes, photos, debate topics — all ready for you.</span></div>
+      <div id="sub-7" class="sub clip" data-start="13.1" data-duration="2.75" data-track-index="24"><span>All that’s left is to speak. (The model is your own voice.)</span></div>
+      <div id="sub-8" class="sub clip" data-start="15.85" data-duration="0.75" data-track-index="24"><span>I’m not stuck anymore!</span></div>
+      <div id="sub-9" class="sub clip" data-start="16.6" data-duration="1.2" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.8" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // Hook: from frame 1 the camera sits on the blinking cursor of the empty box, then pulls back to Mimi frozen in front of it
+      tl.fromTo("#cam", { scale: 2.6, x: -380, y: -1050 }, { scale: 1, x: 0, y: 0, duration: 0.55, ease: "power3.inOut" }, 0.05);
+      tl.set(["#m-me", "#m-dots", "#m-ai", "#h-stun", "#dots", "#h-say"], { opacity: 0 }, 0);
+      for (let i = 0; i < 6; i++) tl.fromTo("#cur", { opacity: 1 }, { opacity: 0, duration: 0.01, immediateRender: false }, 0.2 + i * 0.45).to("#cur", { opacity: 1, duration: 0.01 }, 0.42 + i * 0.45);
+      tl.fromTo("#sweat", { y: 0, opacity: 0 }, { y: 70, opacity: 1, duration: 0.6, ease: "power1.in" }, 0.8);
+      tl.to("#sweat", { opacity: 0, duration: 0.15 }, 1.4);
+      tl.fromTo("#dots", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)", immediateRender: false }, 0.7);
+      const dots = { n: 1 };
+      tl.fromTo(dots, { n: 1 }, { n: 6, duration: 1.5, ease: "none", onUpdate: () => { document.getElementById("dots").textContent = "…".repeat(Math.round(dots.n)); } }, 0.75);
+      tl.to("#dots", { opacity: 0, duration: 0.1 }, 2.35);
+      tl.fromTo("#h-mimi", { rotation: 0 }, { rotation: -2, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.6);
+      // she types "Hi!" and sends it; the AI throws the question back
+      const typed = ["H", "Hi", "Hi!"];
+      [2.45, 2.6, 2.75].forEach((t, i) => tl.call(() => { document.getElementById("typed").textContent = typed[i]; document.getElementById("ph").textContent = ""; }, null, t));
+      tl.set("#typed", { opacity: 1 }, 2.45);
+      tl.to("#send", { backgroundColor: "#2a8dff", duration: 0.05 }, 2.45);
+      tl.call(() => { document.getElementById("typed").textContent = ""; document.getElementById("ph").textContent = "メッセージを入力"; }, null, 2.92);
+      tl.set("#typed", { opacity: 1 }, 2.92);
+      tl.to("#send", { backgroundColor: "#d7dde4", duration: 0.05 }, 2.92);
+      tl.to("#hello", { opacity: 0, duration: 0.1 }, 2.9);
+      tl.fromTo("#m-me", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "power2.out", immediateRender: false }, 2.92);
+      tl.fromTo("#m-dots", { opacity: 0 }, { opacity: 1, duration: 0.1, immediateRender: false }, 3.05);
+      tl.to("#m-dots", { opacity: 0, duration: 0.05 }, 3.33);
+      tl.fromTo("#m-ai", { scale: 0.8, opacity: 0, transformOrigin: "0% 0%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)", immediateRender: false }, 3.35);
+      tl.to("#h-mimi", { opacity: 0, duration: 0.01 }, 3.75);
+      tl.fromTo("#h-stun", { opacity: 0, y: 0 }, { opacity: 1, y: -40, duration: 0.12, ease: "power2.out", immediateRender: false }, 3.75);
+      tl.to("#h-stun", { y: 0, duration: 0.15, ease: "bounce.out" }, 3.87);
+      tl.fromTo("#h-say", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 3.78);
+
+      // The copy
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 4.6);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 4.65);
+
+      // The app: Mimi points at the phone
+      tl.set("#appscene", { opacity: 0 }, 0);
+      tl.set("#appscene", { opacity: 1 }, 5.8);
+      tl.set(["#a-closed", "#a-open", "#a-proud"], { opacity: 0 }, 5.8);
+      tl.fromTo("#device", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 5.8);
+      tl.fromTo("#a-point", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power2.out" }, 5.85);
+      tl.to("#a-point", { y: -14, duration: 0.3, yoyo: true, repeat: 11, ease: "sine.inOut" }, 6.2);
+      ["#chip1", "#chip2", "#chip3"].forEach((c, i) => tl.fromTo(c, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, [7.9, 10.1, 11.3][i]));
+      // today's lesson: お手本 is her own voice; she says it with her mouth moving
+      k.ripple("#t-model", 14.05);
+      tl.to("#a-point", { opacity: 0, duration: 0.01 }, 14.4);
+      tl.set("#a-closed", { opacity: 1 }, 14.4);
+      const flaps = [14.44, 14.62, 14.78, 14.96, 15.12, 15.3, 15.46, 15.6];
+      flaps.forEach((t, i) => tl.set("#a-open", { opacity: i % 2 ? 0 : 1 }, t));
+      tl.set("#a-open", { opacity: 0 }, 15.72);
+      k.tagIn("#tag-model", 14.15);
+      tl.set(["#a-closed", "#a-open"], { opacity: 0 }, 15.85);
+      tl.fromTo("#a-proud", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, 15.85);
+      k.pop("#proud-say", 15.88);
+
+      k.pop("#c1", 5.85); k.pop("#c2", 7.2); k.pop("#c3", 13.1);
+      k.end(16.6);
+      k.tapCta(17.05);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

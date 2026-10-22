@@ -4,7 +4,7 @@ Mimiが実際のLancloアプリを使う最初の回の記録です。統合プ�
 
 - 制作日：2026-10-20
 - 役割：Claude Code（構成・録画・演技・音・編集・判断）、Codex（`codex-p`：レビュー）
-- 道具：Xcode・iOSシミュレーター（XCUITest、`simctl io recordVideo`）、Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS、ffmpeg
+- 道具：Xcode・iOSシミュレーター（XCUITest、`simctl io recordVideo`）、Rive CLI 1.6.0、HyperFrames 0.8.181、Kokoro TTS（のちにオーナー本人の声へ差し替え）、ffmpeg
 
 ![完成フレーム](process/00-final-frames.jpg)
 
@@ -63,3 +63,12 @@ Mimiは平らな背景で書き出し、編集で縮小して左へ。スマホ�
 - 実画面は、アプリのQA用デモデータで撮ると個人データを出さずに済み、何度でも同じ画面が撮れる。
 - 操作はUIテストで自動化する。録画は1分、切り出しは秒数の表だけで済む。
 - 実画面の文字はスマホでは読めない。伝えたい1点は寄りと大きなカードで出す。
+
+## 声をオーナー本人の声に（2026-10-21）
+
+> 今まで英語で発音シーンがあった動画、この声で変えて。010以外。
+
+- Kokoroの代役をやめ、学習者とお手本の英語を、Lancloに登録したオーナー本人の声（Gemini `gemini-3.8-flash-tts`、`kits/mimi-short/scripts/ownvoice.py`）に差し替えた。Kokoroはほかの登場人物だけに残す。
+- Mimiの言い間違い "People is sitting... at a cafe." は `learner`（Lancloを使う前の同じ声＝日本人学習者の発音）、お手本 "The hanging lamp lights the counter where people are gathered." は `us`（General American）。お手本は1回目で "counter" が "calendar" に聞こえたため、"counter" をはっきり言う指示を足して作り直し。言い間違いは1回目が4.7秒と長すぎたため、テンポを上げる指示で作り直し（3.2秒）。
+- 実際の長さに合わせて時間を組み直した（15秒→17.05秒）：冒頭は "People is sitting" まで（文中の間で切る）。アプリへの発話は全文（3.90–7.07秒）が入るよう録音の場面を1.4秒延長（アプリの録画は録音中のまま続くので切り出しを29.9–34.3秒に）。お手本（10.85–13.95秒）に合わせて聞く場面をさらに0.65秒延長。口パクは新しい声から作り直し。
+- 声のWAVは本人の生体データなので、公開リポジトリには入れない。Gitには `source/own-voice.json`（文とアクセント）と `own-voice.receipt.json`（文・指示・ハッシュ。声IDなし）だけ。WAVはDriveの `Mimi_05_English_from_a_Photo_2026-10-20_assets/own-voice/`。
