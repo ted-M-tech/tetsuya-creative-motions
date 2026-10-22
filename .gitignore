@@ -205,3 +205,8 @@ films/mimi-disaster-peace/source/hf/.thumbnails/
 films/mimi-disaster-peace/source/renders/
 films/mimi-disaster-peace/source/art/ref/
 !films/mimi-disaster-peace/source/assets/voice/
+films/mimi-disaster-lunch/source/hf/assets/
+films/mimi-disaster-lunch/source/hf/.hyperframes/
+films/mimi-disaster-lunch/source/hf/.thumbnails/
+films/mimi-disaster-lunch/source/renders/
+!films/mimi-disaster-lunch/source/assets/voice/
