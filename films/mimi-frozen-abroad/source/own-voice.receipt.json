@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "here": {
+      "text": "Here you are.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "0f8713cf990900377255f5c7f395b278a0e2239d260a02373dfa325b649101b4",
+      "at": "2026-10-21T21:44:31+00:00"
+    },
+    "reservation": {
+      "text": "Yes, I have a reservation.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9237745136127509fc9e40786f33abd0c84cbf03ec153b81541b7622c6c500e1",
+      "at": "2026-10-21T21:44:33+00:00"
+    },
+    "station": {
+      "text": "Does this bus go to the station?",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "79c131035c1cf75f1a1c17172698449895c0b3072773f14092eeac99b6866adc",
+      "at": "2026-10-21T21:44:35+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "before-us": {
+      "text": "Can't I have a bottle of water after the party?",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "3db481917521ae4bbc2dc8b6c20b092505c7adec1ceee585f8da0225f01d7049",
+      "at": "2026-10-21T21:36:50+00:00"
+    },
+    "after-uk": {
+      "text": "Can't I have a bottle of water after the party?",
+      "style": "Speak fluent, clearly British English (Southern Standard British / RP), so a listener instantly hears it is British, not American. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Non-rhotic: drop the r after vowels (\"car\", \"water\"). Crisp, unflapped t (\"better\", \"water\" with a clear t). Long broad a in \"can't\", \"bath\", \"ask\". Rounded short o in \"hot\", \"lot\". British intonation with a gentle rise and fall. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "be7d968235c2754fefdc9ddcaf3a908e6ba7d66e5d8ce0ecf2a59bfb0e2a6d6c",
+      "at": "2026-10-21T21:36:53+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

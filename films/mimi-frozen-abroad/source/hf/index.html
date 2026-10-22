@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* Initial visibility in CSS (only the hook's café is on at frame 0); GSAP switches the rest */
+      .scene, .mimi, .ice, #app, #copy2 { opacity: 0; }
+      #s-cafe, #m-cafe, #ice0 { opacity: 1; }
+      #ice0 { opacity: 0.78; }
+      /* Scenes: plate, Pippa (staff) behind the counter, the counter front over her, Mimi in front */
+      .scene { position: absolute; inset: 0; transform-origin: 30% 60%; opacity: 0; }
+      .scene .plate { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .scene .front { position: absolute; left: 0; width: 1080px; height: auto; }
+      .staff { position: absolute; left: 542px; top: 600px; width: 457px; height: auto; transform-origin: 50% 100%; }
+      .mimi { position: absolute; left: -20px; bottom: 230px; height: auto; transform-origin: 50% 100%; }
+      .mimi.stunned { width: 780px; }
+      .mimi.confident { width: 820px; }
+      #m-hand { width: 760px; left: 0px; }
+      .ice { position: absolute; left: -60px; top: 470px; width: 860px; height: auto; opacity: 0.78; }
+      .kachi { position: absolute; left: 30px; top: 600px; font-size: 128px; font-weight: 700; color: #2a8dff; transform: rotate(-10deg);
+               -webkit-text-stroke: 6px #ffffff; paint-order: stroke fill; text-shadow: 0 8px 0 #273b4b; }
+      .bubble small { display: block; font-size: 34px; color: #7a8a97; margin-top: 8px; }
+      .bubble.en { font-family: "Helvetica Neue", "Zen Maru Gothic", sans-serif; top: 430px; }
+      .bubble.from-left.en { max-width: 700px; }
+      /* The hook: white title card over the frozen café from frame 1 */
+      #hook { position: absolute; left: 40px; right: 40px; top: 150px; background: #ffffff; border-radius: 44px; padding: 30px 30px 34px;
+              box-shadow: 0 14px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 84px; font-weight: 700; line-height: 1.3; color: #273b4b; }
+      #hook strong { color: #2a8dff; }
+      #hai { position: absolute; left: 560px; top: 760px; font-size: 64px; font-weight: 700; color: #273b4b; transform: rotate(8deg);
+             -webkit-text-stroke: 5px #ffffff; paint-order: stroke fill; }
+      .where { position: absolute; left: 0; right: 0; top: 200px; display: flex; justify-content: center; }
+      .where span { display: block; background: #273b4b; color: #ffffff; font-size: 72px; font-weight: 700; padding: 18px 50px; border-radius: 60px; }
+      /* The phone (real app, simulator) with Mimi beside it */
+      #app { position: absolute; inset: 0; background: #eef3f9; }
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .mask { position: absolute; background: #eff1f5; border-radius: 8px; filter: blur(3px); }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #a-mimi { position: absolute; left: 10px; top: 800px; width: 540px; height: auto; transform-origin: 50% 100%; }
+      /* White copy cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 92px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .pill { font-size: 44px; font-weight: 700; padding: 18px 36px; border-radius: 48px; background: #344f69; color: #ffffff; }
+      .type.close { justify-content: flex-start; padding-top: 220px; gap: 50px; }
+      .type.close .big { font-size: 84px; }
+      #mini { width: 420px; height: 913px; border-radius: 66px; background: #1d2733; padding: 12px; box-shadow: 0 24px 60px rgba(39, 59, 75, 0.25); }
+      #mini .mscreen { position: relative; width: 100%; height: 100%; border-radius: 50px; overflow: hidden; background: #f2f2f7; }
+      #mini video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #dive { position: absolute; left: -40px; top: 1180px; width: 420px; height: auto; transform-origin: 50% 100%; }
+      /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.3" data-width="1080" data-height="1920">
+      <!-- Scenes are untimed wrappers shown by opacity; the images inside are always on -->
+      <div id="s-cafe" class="scene">
+        <img class="plate" src="assets/art/cafe.webp" alt="" />
+        <img class="front" style="top:1140px" src="assets/art/counter.webp" alt="" />
+        <img id="m-cafe" class="mimi stunned" src="assets/art/stunned.webp" alt="" />
+        <img id="m-hand" class="mimi" src="assets/art/hand-up-v2.webp" alt="" />
+        <img id="ice0" class="ice" src="assets/kit/props/ice.webp" alt="" />
+      </div>
+      <div id="s-air" class="scene">
+        <img class="plate" src="assets/art/airport.webp" alt="" />
+        <img id="st-air" class="staff" src="assets/art/airport-ask.webp" alt="" />
+        <img class="front" style="top:1110px" src="assets/art/airport-counter.webp" alt="" />
+        <img id="m-air" class="mimi stunned" src="assets/art/stunned.webp" alt="" />
+        <img id="m-air2" class="mimi confident" src="assets/art/confident.webp" alt="" />
+        <img id="ice1" class="ice" src="assets/kit/props/ice.webp" alt="" />
+      </div>
+      <div id="s-hotel" class="scene">
+        <img class="plate" src="assets/art/hotel.webp" alt="" />
+        <img id="st-hotel" class="staff" src="assets/art/hotel-ask.webp" alt="" />
+        <img class="front" style="top:1060px" src="assets/art/hotel-counter.webp" alt="" />
+        <img id="m-hotel" class="mimi stunned" src="assets/art/stunned.webp" alt="" />
+        <img id="m-hotel2" class="mimi confident" src="assets/art/confident.webp" alt="" />
+        <img id="ice2" class="ice" src="assets/kit/props/ice.webp" alt="" />
+      </div>
+      <div id="s-bus" class="scene">
+        <img class="plate" src="assets/art/bus.webp" alt="" />
+        <img id="st-bus" class="staff" src="assets/art/driver-ask.webp" alt="" />
+        <img class="front" style="top:1150px" src="assets/art/bus-counter.webp" alt="" />
+        <img id="m-bus" class="mimi stunned" src="assets/art/stunned.webp" alt="" />
+        <img id="m-bus2" class="mimi confident" src="assets/art/confident.webp" alt="" />
+        <img id="ice3" class="ice" src="assets/kit/props/ice.webp" alt="" />
+      </div>
+
+      <!-- Hook (0-1.6) -->
+      <div id="hook" class="clip" data-start="0" data-duration="1.6" data-track-index="4">カフェで固まった人、<br /><strong>手を挙げて。</strong></div>
+      <div id="hai" class="clip" data-start="0.5" data-duration="1.1" data-track-index="5">はい…</div>
+
+      <div id="w-air" class="where clip" data-start="1.6" data-duration="2.15" data-track-index="4"><span>空港でも</span></div>
+      <div id="w-hotel" class="where clip" data-start="3.75" data-duration="1.85" data-track-index="4"><span>ホテルでも</span></div>
+      <div id="w-bus" class="where clip" data-start="5.6" data-duration="1.9" data-track-index="4"><span>バスでも</span></div>
+
+      <div id="k1" class="kachi clip" data-start="3.25" data-duration="0.5" data-track-index="6">カチッ!</div>
+      <div id="k2" class="kachi clip" data-start="5.05" data-duration="0.55" data-track-index="6">カチッ!</div>
+      <div id="k3" class="kachi clip" data-start="7.0" data-duration="0.5" data-track-index="6">カチッ!</div>
+
+      <div id="b-air" class="bubble from-right en clip" data-start="1.65" data-duration="1.6" data-track-index="7">May I see your passport?<small>パスポートを拝見できますか？</small></div>
+      <div id="b-hotel" class="bubble from-right en clip" data-start="3.8" data-duration="1.25" data-track-index="7">Do you have a reservation?<small>ご予約は？</small></div>
+      <div id="b-bus" class="bubble from-right en clip" data-start="5.65" data-duration="1.35" data-track-index="7">Hello. Where are you going?<small>どちらまで？</small></div>
+      <div id="r-air" class="bubble from-left en clip" data-start="14.3" data-duration="1.15" data-track-index="7">Here you are.<small>はい、どうぞ。</small></div>
+      <div id="r-hotel" class="bubble from-left en clip" data-start="15.45" data-duration="1.5" data-track-index="7">Yes, I have a reservation.<small>はい、予約しています。</small></div>
+      <div id="r-bus" class="bubble from-left en clip" data-start="16.95" data-duration="1.75" data-track-index="7">Does this bus go to the station?<small>このバスは駅に行きますか？</small></div>
+
+      <!-- Copy card (7.5-8.5) -->
+      <div id="copy" class="type clip" data-start="7.5" data-duration="1.0" data-track-index="8">
+        <div id="big1" class="big">固まる場面ごと、<br /><strong>先に練習。</strong></div>
+        <div id="pill1" class="pill">Lanclo 会話練習</div>
+      </div>
+
+      <!-- The real app (8.5-14.3; simulator, QA fixture) -->
+      <div id="app">
+        <img id="a-mimi" src="assets/art/hand-up-v2.webp" alt="" />
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="8.5" data-duration="5.8" data-track-index="9"></video>
+            <div class="mask clip" style="left:3.5%; top:15.1%; width:19%; height:3%" data-start="10.7" data-duration="3.6" data-track-index="10"></div>
+            <div id="tap1" class="tap clip" style="left:25%; top:33%" data-start="9.4" data-duration="0.3" data-track-index="11"></div>
+            <div id="tap2" class="tap clip" style="left:40%; top:65%" data-start="10.1" data-duration="0.3" data-track-index="11"></div>
+            <div id="tap3" class="tap clip" style="left:75%; top:9.6%" data-start="11.1" data-duration="0.3" data-track-index="11"></div>
+            <div id="tap4" class="tap clip" style="left:32%; top:43%" data-start="11.9" data-duration="0.3" data-track-index="11"></div>
+            <div id="tap5" class="tap clip" style="left:50%; top:90%" data-start="13.0" data-duration="0.3" data-track-index="11"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The close (18.7-20.0) -->
+      <div id="copy2" class="type close">
+        <div id="big2" class="big">旅先のどこでも、<br /><strong>何度でも。</strong></div>
+        <div id="mini"><div class="mscreen"><video id="a-cat" class="clip" src="assets/app/catalog.mp4" muted playsinline data-start="18.7" data-duration="1.3" data-track-index="12"></video></div></div>
+        <img id="dive" src="assets/art/grin.webp" alt="" />
+      </div>
+
+      <!-- Captions (one track) -->
+      <div id="cap-1" class="caption small clip" data-start="8.5" data-duration="1.8" data-track-index="13"><span id="c1">空港・交通・ホテル…<br />場面を選んで</span></div>
+      <div id="cap-2" class="caption small clip" data-start="10.3" data-duration="1.4" data-track-index="13"><span id="c2">AIの相手が話しかけてくる</span></div>
+      <div id="cap-3" class="caption small clip" data-start="11.7" data-duration="1.6" data-track-index="13"><span id="c3">言い方に迷ったら<strong>ヒント</strong></span></div>
+      <div id="cap-4" class="caption small clip" data-start="13.3" data-duration="1.0" data-track-index="13"><span id="c4">返せた！</span></div>
+      <div id="cap-p" class="caption clip" data-start="14.3" data-duration="4.4" data-track-index="13"><span id="cp">もう、固まらない。</span></div>
+
+      <div id="end" class="end clip" data-start="20.0" data-duration="1.3" data-track-index="14"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="1.6" data-track-index="24"><span>Froze up at a café? Raise your hand. — Me…</span></div>
+      <div class="sub clip" data-start="1.65" data-duration="2.1" data-track-index="24"><span>At the airport too: “May I see your passport?”</span></div>
+      <div class="sub clip" data-start="3.8" data-duration="1.8" data-track-index="24"><span>At the hotel too: “Do you have a reservation?”</span></div>
+      <div class="sub clip" data-start="5.65" data-duration="1.85" data-track-index="24"><span>On the bus too: “Hello. Where are you going?”</span></div>
+      <div class="sub clip" data-start="7.5" data-duration="1.0" data-track-index="24"><span>Practise every scene where you freeze, before it happens.</span></div>
+      <div class="sub clip" data-start="8.5" data-duration="1.8" data-track-index="24"><span>Airport, transport, hotel… pick a scene</span></div>
+      <div class="sub clip" data-start="10.3" data-duration="1.4" data-track-index="24"><span>An AI partner talks to you</span></div>
+      <div class="sub clip" data-start="11.7" data-duration="1.6" data-track-index="24"><span>Not sure what to say? Check a hint</span></div>
+      <div class="sub clip" data-start="13.3" data-duration="1.0" data-track-index="24"><span>Got my reply out!</span></div>
+      <div class="sub clip" data-start="14.3" data-duration="4.4" data-track-index="24"><span>No more freezing.</span></div>
+      <div class="sub clip" data-start="18.7" data-duration="1.3" data-track-index="24"><span>Anywhere you travel, as many times as you like.</span></div>
+      <div class="sub clip" data-start="20.0" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="21.3" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const bubbleIn = (sel, at, origin) => tl.fromTo(sel, { scale: 0.8, opacity: 0, transformOrigin: origin }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, at);
+      const show = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); tl.set(sel, { opacity: 0 }, to); };
+
+      // Hook (0-1.6): frozen solid at the café from frame 1; a mitten shoots up out of the ice
+      show("#s-cafe", 0, 1.6);
+      tl.fromTo("#s-cafe", { scale: 1.12 }, { scale: 1.0, duration: 1.6, ease: "power1.out" }, 0);
+      tl.fromTo("#hook", { scale: 1.15 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 0);
+      tl.set("#m-cafe", { opacity: 0 }, 0.45); tl.set("#m-hand", { opacity: 1 }, 0.45);
+      tl.fromTo("#m-hand", { y: 40, scaleY: 0.9 }, { y: 0, scaleY: 1, duration: 0.2, ease: "back.out(3)" }, 0.45);
+      tl.fromTo("#ice0", { x: 0 }, { x: 6, duration: 0.04, yoyo: true, repeat: 5 }, 0.45);
+      tl.fromTo("#hai", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(3)" }, 0.5);
+
+      // Three quick freezes: the staff asks, Mimi freezes on the last word
+      const freezeScene = (s, w, staff, m, ice, kachi, bub, from, ask, fr, to) => {
+        show(s, from, to);
+        tl.set([m, ice], { opacity: 0 }, from); tl.set(m, { opacity: 1 }, from);
+        tl.fromTo(s, { scale: 1.08, x: 60 }, { scale: 1, x: 0, duration: 0.25, ease: "power3.out" }, from);
+        k.pop(w + " span", from);
+        tl.fromTo(staff, { rotation: 0 }, { rotation: -3, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, ask);
+        bubbleIn(bub, ask, "100% 0%");
+        tl.set(ice, { opacity: 0.78 }, fr);
+        tl.fromTo(ice, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.2, ease: "power2.out" }, fr);
+        tl.fromTo(s, { scale: 1 }, { scale: 1.1, duration: 0.2, ease: "back.out(3)", immediateRender: false }, fr + 0.02);
+        tl.fromTo(kachi, { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(3)" }, fr + 0.03);
+        tl.fromTo(m, { x: 0 }, { x: 4, duration: 0.04, yoyo: true, repeat: 5, immediateRender: false }, fr);
+      };
+      freezeScene("#s-air", "#w-air", "#st-air", "#m-air", "#ice1", "#k1", "#b-air", 1.6, 1.65, 3.25, 3.75);
+      freezeScene("#s-hotel", "#w-hotel", "#st-hotel", "#m-hotel", "#ice2", "#k2", "#b-hotel", 3.75, 3.8, 5.05, 5.6);
+      freezeScene("#s-bus", "#w-bus", "#st-bus", "#m-bus", "#ice3", "#k3", "#b-bus", 5.6, 5.65, 7.0, 7.5);
+
+      // Copy card (7.5-8.5)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 7.5);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 7.53);
+      tl.fromTo("#pill1", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18 }, 7.75);
+
+      // The app (8.5-14.3)
+      show("#app", 8.5, 14.3);
+      tl.fromTo("#device", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 8.5);
+      tl.fromTo("#a-mimi", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 8.5);
+      tl.to("#a-mimi", { y: -14, duration: 0.3, yoyo: true, repeat: 17, ease: "sine.inOut" }, 8.8);
+      k.ripple("#tap1", 9.4); k.ripple("#tap2", 10.1); k.ripple("#tap3", 11.1); k.ripple("#tap4", 11.9); k.ripple("#tap5", 13.0);
+      k.pop("#c1", 8.5); k.pop("#c2", 10.3); k.pop("#c3", 11.7);
+      tl.fromTo("#c4", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 13.3);
+
+      // Payoff (14.3-18.7): the same three places, no freezing
+      const payoff = (s, staff, m, bub, from, to) => {
+        show(s, from, to);
+        tl.set([s + " .mimi", s + " .ice"], { opacity: 0 }, from); tl.set(m, { opacity: 1 }, from);
+        tl.fromTo(s, { scale: 1.06, x: -60 }, { scale: 1, x: 0, duration: 0.25, ease: "power3.out" }, from);
+        tl.fromTo(m, { y: 0 }, { y: -18, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }, from + 0.05);
+        bubbleIn(bub, from, "0% 0%");
+        tl.fromTo(staff, { y: 0 }, { y: -16, duration: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }, to - 0.45);
+      };
+      payoff("#s-air", "#st-air", "#m-air2", "#r-air", 14.3, 15.45);
+      payoff("#s-hotel", "#st-hotel", "#m-hotel2", "#r-hotel", 15.45, 16.95);
+      payoff("#s-bus", "#st-bus", "#m-bus2", "#r-bus", 16.95, 18.7);
+      k.pop("#cp", 14.3);
+
+      // The close (18.7-20.0)
+      tl.to("#copy2", { opacity: 1, duration: 0.1 }, 18.7); tl.set("#copy2", { opacity: 0 }, 20.0);
+      tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 18.73);
+      tl.fromTo("#mini", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 18.75);
+      tl.fromTo("#dive", { x: -200, y: 120, rotation: -20 }, { x: 40, y: -60, rotation: 10, duration: 0.45, ease: "back.out(1.6)" }, 18.75);
+
+      k.end(20.0);
+      k.tapCta(20.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -6,7 +6,8 @@
 | Recordings in the take | The simulator microphone (room sound); nothing was sent to any provider | — | |
 | Poses friend-dreamy, friend-amazed, mimi-phone, mimi-tease | Generated with Codex image generation from the official Mimi art and the friend design ([prompt](prompts/01-codex-poses.txt)) | © Lanclo, not licensed for reuse | |
 | friend-aww, friend-oops | `films/mimi-action-add`, `films/mimi-swipe` | © Lanclo, not licensed for reuse | |
-| English voices | Kokoro TTS (am_michael, af_bella), local through HyperFrames | Apache 2.0 model | `source/assets/voice/` |
+| English voice (native speaker) | Kokoro TTS (am_michael), local through HyperFrames | Apache 2.0 model | `source/assets/voice/` |
+| Owner's voice lines | The owner's own voice registered in Lanclo, generated with Gemini `gemini-3.8-flash-tts` (`kits/mimi-short/scripts/ownvoice.py`) | The owner's own voice, used with his consent; not in Git (Drive `AIV_assets/own-voice/`) | `source/own-voice.json` |
 | Lanclo mark, end-card Mimi | Lanclo brand | © Lanclo, not licensed for reuse | |
 | Zen Maru Gothic | Google Fonts | SIL OFL 1.1 | |
 | Download on the App Store badge | Apple | Apple marketing guidelines | |

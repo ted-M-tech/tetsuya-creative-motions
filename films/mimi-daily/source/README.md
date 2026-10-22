@@ -8,7 +8,7 @@
 | `app-capture/cut.sh` | Records the walkthrough with `kits/mimi-short/app-capture/capture.sh` (only if the take is missing) and cuts four clips (home, lesson, rec, tip) |
 | `art/books.png`, `art/cut/books.webp` | The book tower prop (Codex), cut out; copied to `hf/assets/books.webp` |
 | `art/plain.webp` | Flat plate in the page colour, so the Mimi shots can be scaled and moved without an edge |
-| `assets/voice/` | Kokoro (`af_heart`): "Please leave the light on." (model) and "Please leave the right on." (Mimi); `scripts/voices.sh` |
+| `own-voice.json`, `own-voice.receipt.json` | The owner's registered Lanclo voice (`kits/mimi-short/scripts/ownvoice.py`): `model` "Please leave the light on." (`us`) and `rough` "Please leave the right on." (`learner`). The WAVs go to `assets/own-voice/` and are not in Git (Drive `Mimi_06_Unread_Books_assets/own-voice/`); `scripts/lipsync-rough.json` keeps the mouth pattern |
 | `scripts/shots.py`, `render.sh`, `mix.py` | Mimi shots (droop, point, listen, speak, think, jump, success), render, sound |
 | `hf/` | Edit: books grow and topple, Mimi wrapper, phone frame with the app clips and zooms, white masks over the fixture's QA text, tap ripples, tip card, captions, tags, end card |
 
@@ -16,6 +16,7 @@
 
 ```sh
 F=films/mimi-daily/source
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json   # or copy the WAVs from Drive into $F/assets/own-voice/
 $F/app-capture/cut.sh                                  # first run records the app (needs the native-voice-clone checkout and Xcode)
 uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/shots.py
 $F/scripts/render.sh
