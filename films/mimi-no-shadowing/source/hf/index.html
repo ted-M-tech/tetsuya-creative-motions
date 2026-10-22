@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      /* Initial visibility in CSS (only the hook is on at frame 0); GSAP switches the rest */
+      .stage, #app { opacity: 0; }
+      #s-hook { opacity: 1; }
+      .stage { position: absolute; inset: 0; transform-origin: 50% 70%; }
+      #s-hook { background: radial-gradient(circle at 50% 60%, #ffffff 0, #e7f0fa 70%); }
+      #s-before { background: linear-gradient(#efecf5, #e2deec); }
+      #s-after { background: linear-gradient(#f2f8ff, #dcecff); }
+      .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: rgba(39, 59, 75, 0.06); }
+      /* Hook */
+      #hook { position: absolute; left: 40px; right: 40px; top: 150px; background: #ffffff; border-radius: 44px; padding: 30px 26px 34px;
+              box-shadow: 0 14px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 80px; font-weight: 700; line-height: 1.3; color: #273b4b; }
+      #hook strong { color: #e5484d; }
+      #toss { position: absolute; left: 60px; bottom: 230px; width: 760px; height: auto; transform-origin: 50% 100%; }
+      #tape { position: absolute; left: 640px; top: 860px; width: 330px; height: 225px; }
+      #tape img.shell { position: absolute; inset: 0; width: 100%; height: 100%; }
+      #tape img.face { position: absolute; left: 122px; top: 48px; width: 86px; height: auto; transform: rotate(-8deg); }
+      #poi { position: absolute; left: 40px; top: 580px; font-size: 96px; font-weight: 700; color: #e5484d; transform: rotate(10deg);
+             -webkit-text-stroke: 6px #ffffff; paint-order: stroke fill; }
+      /* Characters */
+      .ch { position: absolute; height: auto; transform-origin: 50% 100%; bottom: 230px; }
+      #stranger, #stranger2 { right: -30px; width: 540px; }
+      #struggle { left: -20px; width: 600px; }
+      .speak { left: 120px; width: 600px; opacity: 0; }
+      #jump { left: 110px; width: 640px; opacity: 0; }
+      .label { position: absolute; left: 0; right: 0; top: 230px; display: flex; justify-content: center; }
+      .label span { display: block; background: #273b4b; color: #ffffff; font-size: 56px; font-weight: 700; padding: 14px 44px; border-radius: 60px; }
+      /* Two voices, two lanes */
+      .lanes { position: absolute; left: 50px; right: 50px; top: 470px; background: #ffffff; border-radius: 36px; padding: 22px 30px;
+               box-shadow: 0 12px 34px rgba(39, 59, 75, 0.12); }
+      .lane { display: flex; align-items: center; gap: 22px; height: 110px; }
+      .lane b { width: 300px; font-size: 36px; line-height: 1.2; color: #273b4b; }
+      .lane .bars { position: relative; flex: 1; height: 90px; }
+      .lane .bars i { position: absolute; bottom: 45px; width: 14px; height: 8px; margin-bottom: -4px; border-radius: 7px; background: #c9d3dc; transform-origin: 50% 50%; }
+      .lane.native .bars i.on { background: #9a86c9; }
+      .lane.me .bars i.on { background: #2a8dff; }
+      .lane.model .bars i.on { background: #344f69; }
+      .verdict { position: absolute; right: 70px; top: 770px; z-index: 5; font-size: 64px; font-weight: 700; transform: rotate(6deg);
+                 -webkit-text-stroke: 6px #ffffff; paint-order: stroke fill; }
+      #v-bad { color: #e5484d; }
+      #v-good { color: #2a8dff; }
+      /* The phone (real app, simulator) with Mimi beside it */
+      #device { position: absolute; left: 540px; top: 470px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #a-mimi { position: absolute; left: 10px; top: 820px; width: 540px; height: auto; transform-origin: 50% 100%; }
+      /* White copy cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 60px; }
+      .type .big { font-size: 96px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .pill { font-size: 42px; font-weight: 700; padding: 18px 36px; border-radius: 48px; background: #344f69; color: #ffffff; }
+      #close-mimi { width: 520px; height: auto; }
+      /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.2" data-width="1080" data-height="1920">
+      <!-- Hook (0-1.6): the stranger's tape gets thrown away -->
+      <div id="s-hook" class="stage">
+        <div class="floor"></div>
+        <img id="toss" src="assets/art/toss-v2.webp" alt="" />
+        <div id="tape"><img class="shell" src="assets/art/cassette.webp" alt="" /><img class="face" src="assets/art/stranger-head.webp" alt="" /></div>
+      </div>
+      <div id="hook" class="clip" data-start="0" data-duration="1.6" data-track-index="4">ネイティブの声で<br />シャドーイング、<br /><strong>もうやめた。</strong></div>
+      <div id="poi" class="clip" data-start="0.12" data-duration="1.0" data-track-index="5">ポイッ!</div>
+
+      <!-- Before (1.6-5.6): shadowing a stranger -->
+      <div id="s-before" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <img id="stranger" class="ch" src="assets/art/stranger.webp" alt="" />
+        <img id="stranger2" class="ch" src="assets/art/stranger-shrug.webp" alt="" style="opacity:0" />
+        <img id="struggle" class="ch" src="assets/art/struggle.webp" alt="" />
+        <div class="lanes" id="lanes1">
+          <div class="lane native"><b>ネイティブ<br />（知らない人）</b><div class="bars" id="bn"></div></div>
+          <div class="lane me"><b>自分</b><div class="bars" id="bm1"></div></div>
+        </div>
+      </div>
+      <div id="v-bad" class="verdict clip" data-start="3.4" data-duration="2.2" data-track-index="6">ズレズレ…</div>
+
+      <!-- Copy card (5.6-6.6) -->
+      <div id="copy" class="type clip" data-start="5.6" data-duration="1.0" data-track-index="8">
+        <div id="big1" class="big">お手本は、<br /><strong>自分の声</strong>で。</div>
+        <div id="pill1" class="pill">Lanclo 自分のAIボイスのお手本</div>
+      </div>
+
+      <!-- The real app (6.6-10.6) -->
+      <div id="app">
+        <img id="a-mimi" src="assets/art/confident.webp" alt="" />
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="6.6" data-duration="4.0" data-track-index="9"></video>
+            <div class="mask clip" style="left:5%; right:5%; top:72.5%; height:8%; position:absolute; background:#ffffff; border-radius:6px" data-start="6.6" data-duration="4.0" data-track-index="10"></div>
+            <div id="tap1" class="tap clip" style="left:15%; top:87%" data-start="7.6" data-duration="0.3" data-track-index="11"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- After (10.6-14.6): shadowing your own voice -->
+      <div id="s-after" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <img id="sp-closed" class="ch speak" src="assets/art/speak-closed.webp" alt="" />
+        <img id="sp-open" class="ch speak" src="assets/art/speak-open.webp" alt="" />
+        <img id="jump" class="ch" src="assets/art/jump.webp" alt="" />
+        <div class="lanes" id="lanes2">
+          <div class="lane model"><b>お手本<br />（自分の声）</b><div class="bars" id="bmo"></div></div>
+          <div class="lane me"><b>自分</b><div class="bars" id="bm2"></div></div>
+        </div>
+      </div>
+      <div id="v-good" class="verdict clip" data-start="12.3" data-duration="2.3" data-track-index="6">ぴったり！</div>
+
+      <!-- Close (14.6-15.9) -->
+      <div id="copy2" class="type clip" data-start="14.6" data-duration="1.3" data-track-index="8">
+        <div id="big2" class="big">知らない誰かより、<br /><strong>未来の自分。</strong></div>
+        <img id="close-mimi" src="assets/art/confident.webp" alt="" />
+      </div>
+
+      <!-- Captions (one track) -->
+      <div class="caption small clip" data-start="1.6" data-duration="1.8" data-track-index="13"><span id="c1">知らない人の声を、必死に追いかける</span></div>
+      <div class="caption small clip" data-start="3.4" data-duration="2.2" data-track-index="13"><span id="c2">声もリズムも別人。<br />どこを真似すれば…？</span></div>
+      <div class="caption small clip" data-start="6.6" data-duration="1.0" data-track-index="13"><span id="c3">同じ文を</span></div>
+      <div class="caption small clip" data-start="7.6" data-duration="3.0" data-track-index="13"><span id="c4"><strong>自分の声</strong>の<br />ネイティブ発音で聞く</span></div>
+      <div class="caption small clip" data-start="10.6" data-duration="1.7" data-track-index="13"><span id="c5">お手本も、<strong>僕の声</strong></span></div>
+      <div class="caption small clip" data-start="12.3" data-duration="2.3" data-track-index="13"><span id="c6">同じ声だから、<br />違うのは<strong>発音だけ</strong></span></div>
+
+      <div id="end" class="end clip" data-start="15.9" data-duration="1.3" data-track-index="14"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="1.6" data-track-index="24"><span>I stopped shadowing native speakers.</span></div>
+      <div class="sub clip" data-start="1.6" data-duration="1.8" data-track-index="24"><span>Chasing a stranger’s voice, desperately</span></div>
+      <div class="sub clip" data-start="3.4" data-duration="2.2" data-track-index="24"><span>A different voice, a different rhythm. What do I even copy…? — All out of sync…</span></div>
+      <div class="sub clip" data-start="5.6" data-duration="1.0" data-track-index="24"><span>Make the model your own voice.</span></div>
+      <div class="sub clip" data-start="6.6" data-duration="1.0" data-track-index="24"><span>The same sentence…</span></div>
+      <div class="sub clip" data-start="7.6" data-duration="3.0" data-track-index="24"><span>…heard in your own voice, with native pronunciation</span></div>
+      <div class="sub clip" data-start="10.6" data-duration="1.7" data-track-index="24"><span>The model is my voice, too</span></div>
+      <div class="sub clip" data-start="12.3" data-duration="2.3" data-track-index="24"><span>Same voice, so the only difference is pronunciation. — Spot on!</span></div>
+      <div class="sub clip" data-start="14.6" data-duration="1.3" data-track-index="24"><span>Not some stranger — your future self.</span></div>
+      <div class="sub clip" data-start="15.9" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.2" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      // Lane bars: 26 per lane
+      const N = 26;
+      ["#bn", "#bm1", "#bmo", "#bm2"].forEach((id) => {
+        const el = document.querySelector(id);
+        el.innerHTML = Array.from({ length: N }, (_, i) => `<i style="left:${(i * 100) / N}%"></i>`).join("");
+      });
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const show = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); tl.set(sel, { opacity: 0 }, to); };
+      // A voice drawn on a lane: bars from x0 to x1 (fractions) light up and pulse while it speaks
+      const speak = (id, at, dur, x0, x1, seed) => {
+        document.querySelectorAll(id + " i").forEach((b, i) => {
+          const f = i / N; if (f < x0 || f > x1) return;
+          const t = at + (dur * (f - x0)) / (x1 - x0);
+          const h = 26 + 58 * Math.abs(Math.sin(i * 1.7 + seed));
+          tl.set(b, { className: "on" }, t);
+          tl.fromTo(b, { height: 8 }, { height: h, duration: 0.12, ease: "power2.out", immediateRender: false }, t);
+        });
+      };
+      const resetBars = (id, at) => tl.set(id + " i", { className: "", height: 8 }, at);
+
+      // Hook (0-1.6): the stranger's tape is already flying away at frame 1
+      tl.set("#s-hook", { opacity: 0 }, 1.6);
+      tl.fromTo("#tape", { x: 0, y: 0, rotation: -10, scale: 1 }, { x: 620, y: -760, rotation: 420, scale: 0.6, duration: 0.9, ease: "power2.in" }, 0);
+      tl.fromTo("#toss", { rotation: -6, y: 0 }, { rotation: 0, y: -14, duration: 0.25, ease: "back.out(3)" }, 0);
+      tl.fromTo("#hook", { scale: 1.15 }, { scale: 1, duration: 0.22, ease: "back.out(2)" }, 0);
+      tl.fromTo("#poi", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(3)" }, 0.12);
+      tl.to("#toss", { y: -24, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.5);
+
+      // Before (1.6-5.6)
+      show("#s-before", 1.6, 5.6);
+      tl.fromTo("#s-before", { x: 120 }, { x: 0, duration: 0.25, ease: "power3.out" }, 1.6);
+      k.pop("#c1", 1.6); k.pop("#c2", 3.4);
+      tl.fromTo("#lanes1", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 1.65);
+      speak("#bn", 1.75, 1.22, 0.0, 0.5, 0.3);          // the stranger: fast and short
+      speak("#bm1", 2.21, 2.43, 0.18, 1.0, 1.1);       // Mimi: late, slow, longer
+      tl.fromTo("#stranger", { rotation: 0 }, { rotation: -3, duration: 0.12, yoyo: true, repeat: 9, ease: "sine.inOut" }, 1.75);
+      tl.fromTo("#struggle", { x: 0 }, { x: 6, duration: 0.05, yoyo: true, repeat: 40, ease: "none" }, 2.2);
+      tl.set("#stranger", { opacity: 0 }, 4.7); tl.set("#stranger2", { opacity: 1 }, 4.7);
+      tl.fromTo("#v-bad", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(3)" }, 3.4);
+
+      // Copy card (5.6-6.6)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 5.6);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 5.63);
+      tl.fromTo("#pill1", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18 }, 5.85);
+
+      // The app (6.6-10.6)
+      show("#app", 6.6, 10.6);
+      tl.fromTo("#device", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 6.6);
+      tl.fromTo("#a-mimi", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 6.6);
+      tl.to("#a-mimi", { y: -14, duration: 0.3, yoyo: true, repeat: 11, ease: "sine.inOut" }, 6.9);
+      k.ripple("#tap1", 7.6); k.pop("#c3", 6.6); k.pop("#c4", 7.6);
+
+      // After (10.6-14.6): the model and Mimi in the same voice, overlapping
+      show("#s-after", 10.6, 14.6);
+      tl.fromTo("#s-after", { x: 120 }, { x: 0, duration: 0.25, ease: "power3.out" }, 10.6);
+      tl.fromTo("#lanes2", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 10.65);
+      speak("#bmo", 10.99, 1.34, 0.0, 0.62, 0.3);       // model: speech 0.24-1.58 s in the clip, placed at 10.75
+      speak("#bm2", 11.19, 1.49, 0.03, 0.66, 0.35);     // Mimi along: 0.2 s behind, same shape
+      tl.set("#sp-closed", { opacity: 1 }, 10.6);
+      // mouth: open/closed while speaking (11.19-12.68)
+      for (let t = 11.19, o = true; t < 12.68; t += 0.16, o = !o) tl.set("#sp-open", { opacity: o ? 1 : 0 }, t);
+      tl.set("#sp-open", { opacity: 0 }, 12.68);
+      k.pop("#c5", 10.6); k.pop("#c6", 12.3);
+      tl.set(["#sp-closed", "#sp-open"], { opacity: 0 }, 12.75); tl.set("#jump", { opacity: 1 }, 12.75);
+      tl.fromTo("#jump", { y: 0 }, { y: -60, duration: 0.22, yoyo: true, repeat: 3, ease: "power2.out" }, 12.75);
+      tl.fromTo("#v-good", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(3)" }, 12.3);
+
+      // Close (14.6-15.9)
+      tl.fromTo("#copy2", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 14.6);
+      tl.fromTo("#big2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "power3.out" }, 14.63);
+      tl.fromTo("#close-mimi", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 14.7);
+
+      k.end(15.9);
+      k.tapCta(16.5);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
