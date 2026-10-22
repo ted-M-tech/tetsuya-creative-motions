@@ -29,6 +29,8 @@ Restaurant: the Friend calls Pippa (waiter): “Excuse me, can I get a fork?” 
 6. App: `app-capture/Walkthrough.swift` + `fork-lesson.patch` (capture-only: the first daily sentence becomes “Excuse me, can I get a fork?”, the fixture's flagged word points at “fork” with /ɔːr/ feedback). Verified on native-voice-clone origin/main: `lesson.model`, `lesson.record` (PracticeScreen.swift), `feedback.scores` (AccountProgress.swift), `openDailyLesson` / `waitForHome` (LancloUITests/HomeTestSupport.swift), the `dp-liquids-1` sentence and the VisualQAData fixture the patch replaces. Sentence, feedback wording and score are fixture data; the UI is real.
 7. Sound: `scripts/mix.py` (kit Mix): boing + tape rewind on the punchline, record scratch, a soft clang when the tray lands, bed stops at the freeze and returns with Mimi, the theme ~21 dB under the voice.
 
+8. Commander review (2026-10-22): the card header 「「オー」が短いと放送事故」 contradicted the measurement (both vowels ≈ 150 ms; the difference is rounding + r), so it became 「唇を丸めないと放送事故」 with a matching EN subtitle. v1 drafts kept in Drive `old/` (`_v1-short-aw-header`).
+
 ## Uncertain / for review
 
 - Is the slip funny enough by ear? Formants say open unrounded /ʌ/ with no r; the owner should listen (take 3, 2.52–3.08 s).

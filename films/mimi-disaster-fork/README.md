@@ -14,7 +14,7 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/))
 | 1.50–4.50 | Hook 「レストランで “フォーク”を頼んだら 店内が凍りついた」; the Friend's line (owner's voice, learner take) from 1.75, the wrong word's vowel at 4.00 |
 | 4.50–6.30 | Freeze: record scratch, Pippa drops the tray (soft clang 4.92), Bruno frozen at the next table, Pippa (Kokoro) “Sorry… a WHAT?!” at 4.80, 「シーン…」 |
 | 6.30–7.95 | Mimi drops in with the giant fork and yells |
-| 7.95–11.05 | Card 「「オー」が短いと放送事故」: f★ck (短く平たい「ア」, learner take at 8.55) vs fork (唇を丸めて「オー」＋r, native take at 9.85); lips (front) and tongue (side) panels |
+| 7.95–11.05 | Card 「唇を丸めないと放送事故」: f★ck (短く平たい「ア」, learner take at 8.55) vs fork (唇を丸めて「オー」＋r, native take at 9.85); lips (front) and tongue (side) panels |
 | 11.05–14.95 | Real Lanclo daily lesson (simulator, fixture data, capture-only patch): お手本 tapped at 11.65, the sound to fix in “fork” |
 | 14.95–17.25 | Fixed: the line said right (native take), a fork arrives |
 | 17.25–18.55 | End card, CTA tap at 17.85 |
