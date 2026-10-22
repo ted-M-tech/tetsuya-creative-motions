@@ -13,8 +13,10 @@ for p in grin; do kits/mimi-short/scripts/cutout.sh $F/art/$p.png $F/art/$p.webp
 for p in barista-ask barista-smile; do kits/mimi-short/scripts/cutout.sh $F/art/friend/$p.png $F/art/$p.webp; done
 magick $F/art/cafe.png -resize 1080x1920! -quality 90 $F/art/cafe.webp
 magick $F/art/cafe.png -crop 1080x362+0+1140 +repage -define webp:lossless=true $F/art/counter.webp   # counter front, laid over the barista
-# 2. voices (committed) and sound
+# 2. voices and sound: the barista with Kokoro (committed), Mimi's order with the owner's registered Lanclo voice
+#    (not in Git; or copy order.wav from Drive Roleplay_assets/own-voice/ into $F/assets/own-voice/)
 sh $F/scripts/voices.sh
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json
 uv run --no-project --with numpy python $F/scripts/mix.py
 # 3. edit
 kits/mimi-short/stage.sh $F/hf
@@ -28,7 +30,8 @@ kits/mimi-short/render-cuts.sh $F/hf mimi-roleplay   # renders/mimi-roleplay-en.
 |---|---|
 | `app-capture/RoleplayWalkthrough.swift` | UI test (replaces `SituationUITests.swift` in the capture checkout): Practice tab → 会話練習 catalogue (scroll) → カフェ → 飲み物を注文する → meaning on → hint → record (fixture take) → completed → back to the catalogue (scroll) |
 | `scripts/app_track.sh` | Measured times on the 60 fps take and the cuts on the film's clock |
-| `scripts/voices.sh`, `assets/voice/` | Kokoro English lines (barista `bf_emma`, Mimi `af_heart`) |
+| `scripts/voices.sh`, `assets/voice/` | Kokoro English lines (barista `bf_emma`) |
+| `own-voice.json`, `own-voice.receipt.json` | Mimi's order in the owner's registered Lanclo voice (`kits/mimi-short/scripts/ownvoice.py`, `us`); WAV not in Git |
 | `scripts/mix.py` | Cue sheet and sound; the times match `hf/index.html` |
 | `hf/index.html` | The edit: café two-shots with bubbles, ice + カチッ, copy cards, phone + taps + mask + captions, shatter, close, end card; English subtitles (`.sub`, hidden by `<body class="no-subs">`) |
 | `art/` | Codex drawings (PNG) and cut-outs/plates (WebP); `art/friend/` the barista drawings |

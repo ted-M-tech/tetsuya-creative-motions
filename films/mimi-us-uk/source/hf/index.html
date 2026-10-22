@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage img { position: absolute; height: auto; transform-origin: 50% 100%; }
+      /* Two Mimis, A (left) and B (right): the same character, the same voice */
+      .who { position: absolute; bottom: 560px; width: 390px; height: 570px; transform-origin: 50% 100%; }
+      .who img { left: 0; bottom: 0; width: 390px; }
+      #mA { left: 50px; } #mB { right: 50px; }
+      .badge { position: absolute; top: 700px; width: 140px; height: 140px; border-radius: 50%; background: #344f69; color: #fff;
+               font-size: 96px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+               box-shadow: 0 10px 24px rgba(39, 59, 75, 0.25); }
+      #bA, #bAw { left: 40px; } #bB { left: 630px; }
+      .badge.win { background: #e5484d; }
+      .vs { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; font-size: 120px; font-weight: 700; color: #e5484d;
+            font-style: italic; letter-spacing: -0.02em; }
+      .count { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font-size: 200px; font-weight: 700; color: #2a8dff; opacity: 0; }
+      .hk { position: absolute; left: 50px; right: 50px; top: 110px; background: #ffffff; border-radius: 36px; padding: 22px 20px;
+            box-shadow: 0 10px 30px rgba(39, 59, 75, 0.12); text-align: center; color: #273b4b; font-weight: 700; }
+      .hk .l1 { display: block; font-size: 70px; line-height: 1.3; }
+      .hk .l1 .us { color: #5b7f9f; } .hk .l1 .uk { color: #2a8dff; }
+      .hk .l2 { display: block; font-size: 82px; line-height: 1.3; }
+      .hk em { font-style: normal; color: #e5484d; }
+      .quiz { position: absolute; left: 50px; right: 50px; top: 110px; background: #344f69; border-radius: 36px; padding: 26px 20px;
+              text-align: center; color: #ffffff; font-size: 84px; font-weight: 700; opacity: 0; }
+      .quiz b { color: #8fd0ff; }
+      .sent { position: absolute; left: 60px; right: 60px; top: 330px; background: #ffffff; border-radius: 28px; padding: 18px 26px;
+              box-shadow: 0 10px 30px rgba(39, 59, 75, 0.12); font-size: 52px; font-weight: 700; line-height: 1.3; color: #273b4b;
+              text-align: center; opacity: 0; }
+      .sent .mk { border-radius: 10px; padding: 0 4px; }
+      .hints { position: absolute; left: 40px; right: 40px; top: 470px; display: flex; justify-content: center; gap: 14px; }
+      .hints span { background: #2a8dff; color: #fff; font-size: 36px; font-weight: 700; padding: 10px 20px; border-radius: 30px; opacity: 0; }
+      .lab { position: absolute; top: 1385px; width: 390px; display: flex; justify-content: center; }
+      .lab span { display: flex; align-items: center; gap: 14px; background: #344f69; color: #fff; font-size: 48px; font-weight: 700;
+                  padding: 14px 30px; border-radius: 44px; }
+      #lA, #lA2 { left: 50px; } #lB, #lB2 { right: 50px; }
+      .lab.uk span { background: #2a8dff; } .lab.us span { background: #9fb0bd; }
+      .wave { display: flex; align-items: center; gap: 6px; height: 50px; }
+      .wave i { display: block; width: 7px; height: 14px; border-radius: 4px; background: #ffffff; }
+      .ring { position: absolute; left: 20px; top: 680px; width: 180px; height: 180px; border-radius: 50%; border: 8px solid #e5484d; opacity: 0; }
+      .stage .bubble { font-size: 58px; white-space: nowrap; max-width: none; }
+      #g-friend { left: 80px; bottom: 520px; width: 620px; }
+      #b-guess { top: 640px; right: 50px; font-size: 76px; }
+      #o-friend { left: 400px; bottom: 500px; width: 280px; opacity: 0; transform-origin: 50% 100%; }
+      #b-oops { top: 1000px; left: 430px; font-size: 52px; opacity: 0; }
+      .note { position: absolute; left: 30px; right: 30px; bottom: 40px; font-size: 24px; color: #53606b; text-align: center; line-height: 1.4; }
+      /* The real app, big in the centre */
+      #device { position: absolute; left: 300px; top: 560px; width: 480px; height: 1044px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #pulse { position: absolute; left: 4%; right: 4%; top: 87.4%; height: 6.6%; border-radius: 40px; border: 6px solid #e5484d; opacity: 0; }
+      .caption .step { display: inline-block; background: #344f69; color: #fff; border-radius: 40px; padding: 2px 22px; margin-right: 14px; font-size: 48px; }
+      .caption .hint { display: block; font-style: normal; font-size: 46px; color: #2a8dff; margin-top: 6px; }
+      #cap-0 { top: 110px; }
+      #cap-0 span { font-size: 60px; }
+      #cap-1, #cap-2 { top: 300px; }
+      /* The punchline */
+      #p-friend { left: 30px; bottom: 520px; width: 480px; }
+      #p-mimi { right: 30px; bottom: 520px; width: 500px; }
+      #b-both { top: 440px; right: 40px; font-size: 70px; }
+      #b-fooled { top: 620px; left: 40px; font-size: 62px; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.9" data-width="1080" data-height="1920">
+      <!-- The quiz (0-11.8): hook on frame 1, A (British) and B (American) in the same voice, the guess, the answer, A again -->
+      <div id="quizStage" class="stage clip" data-start="0" data-duration="11.8" data-track-index="1">
+        <div id="mA" class="who"><img class="o" src="assets/art/speak-open.webp" alt="" style="opacity:0" /><img class="c" src="assets/art/speak-closed.webp" alt="" /></div>
+        <div id="mB" class="who"><img class="o" src="assets/art/speak-open.webp" alt="" style="opacity:0" /><img class="c" src="assets/art/speak-closed.webp" alt="" /></div>
+        <div id="ring" class="ring"></div>
+        <div id="bA" class="badge">A</div>
+        <div id="bB" class="badge">B</div>
+        <div id="bAw" class="badge win" style="opacity:0">A</div>
+        <div id="vs" class="vs">VS</div>
+        <div id="n3" class="count">3</div><div id="n2" class="count">2</div><div id="n1" class="count">1</div>
+        <div id="lA" class="lab"><span><span class="wave" id="wA"></span>A</span></div>
+        <div id="lB" class="lab"><span><span class="wave" id="wB"></span>B</span></div>
+        <div id="lA2" class="lab uk" style="opacity:0"><span>イギリス英語</span></div>
+        <div id="lB2" class="lab us" style="opacity:0"><span>アメリカ英語</span></div>
+        <div id="hook" class="hk"><span class="l1"><span class="us">アメリカ英語</span>と<span class="uk">イギリス英語</span></span><span class="l2"><em>同じ僕の声</em>で言ってみた</span></div>
+        <div id="quiz" class="quiz"><b>イギリス英語</b>はどっち？</div>
+        <div id="ans" class="quiz">正解は <b>A</b>！</div>
+        <div id="sent" class="sent">I <span class="mk" id="k1">can’t</span> <span class="mk" id="k2">park</span> the <span class="mk" id="k3">car</span> by the <span class="mk" id="k4">water</span>.</div>
+        <div class="hints"><span id="h1">can’t =「カーント」</span><span id="h2">r を言わない</span><span id="h3">t がくっきり</span></div>
+        <img id="o-friend" src="assets/art/friend-oops.webp" alt="" />
+        <div id="b-oops" class="bubble from-left">えっ</div>
+        <div class="note">※英語の声は制作者本人がLancloに登録した声のAIボイスです（イメージ）。<br />The English voice is the creator’s own voice registered in Lanclo (illustrated).</div>
+      </div>
+
+      <!-- The guess (6.9-8.2): the friend is sure it's B -->
+      <div id="guess" class="stage clip" data-start="6.9" data-duration="1.3" data-track-index="2">
+        <img id="g-friend" src="assets/art/friend-tease.webp" alt="" />
+        <div id="b-guess" class="bubble from-right">ぜったい Bでしょ！</div>
+        <div id="g3" class="count" style="top:1450px; font-size:120px">3</div><div id="g2" class="count" style="top:1450px; font-size:120px">2</div><div id="g1" class="count" style="top:1450px; font-size:120px">1</div>
+      </div>
+
+      <!-- The real app (11.8-15.8): 声の調整 in the simulator, fixture data (the take made for films/mimi-tuning) -->
+      <div id="app" class="stage" style="opacity:0">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="11.8" data-duration="4.0" data-track-index="4"></video>
+            <div id="tp1" class="tap clip" style="left:72%; top:28.7%" data-start="12.15" data-duration="0.3" data-track-index="5"></div>
+            <div id="pulse"></div>
+          </div>
+        </div>
+        <div id="cap-0" class="caption small"><span id="c0">声は同じ。<em>アクセント</em>はリクエスト</span></div>
+      </div>
+      <div id="cap-1" class="caption small clip" data-start="11.8" data-duration="0.95" data-track-index="6"><span id="c1"><b class="step">1</b>声の調整</span></div>
+      <div id="cap-2" class="caption small clip" data-start="12.75" data-duration="3.05" data-track-index="6"><span id="c2"><b class="step">2</b>発音・話し方のリクエスト<i class="hint">「イギリス英語っぽく」</i></span></div>
+
+      <!-- The punchline (15.8-17.5) -->
+      <div id="punch" class="stage clip" data-start="15.8" data-duration="1.7" data-track-index="1">
+        <img id="p-friend" src="assets/art/friend-amazed.webp" alt="" />
+        <img id="p-mimi" src="assets/art/mimi-tease.webp" alt="" />
+        <div id="b-both" class="bubble from-right">AもBも、僕の声だよ</div>
+        <div id="b-fooled" class="bubble from-left">耳がだまされた…！</div>
+      </div>
+
+      <div id="end" class="end clip" data-start="17.5" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div id="sub-1" class="sub clip" data-start="0.0" data-duration="1.5" data-track-index="8"><span>American vs British English — in the same voice: mine</span></div>
+      <div id="sub-2" class="sub clip" data-start="1.5" data-duration="5.4" data-track-index="8"><span>Which one is British?</span></div>
+      <div id="sub-3" class="sub clip" data-start="6.9" data-duration="1.3" data-track-index="8"><span>It’s B, for sure!</span></div>
+      <div id="sub-4" class="sub clip" data-start="8.2" data-duration="0.8" data-track-index="8"><span>A is British. B is American. — Huh?</span></div>
+      <div id="sub-5" class="sub clip" data-start="9.0" data-duration="2.8" data-track-index="8"><span>British: a long “ah” in can’t, no r, a crisp t</span></div>
+      <div id="sub-6" class="sub clip" data-start="11.8" data-duration="0.95" data-track-index="8"><span>Same voice, accent on request — 1 Tune your voice</span></div>
+      <div id="sub-7" class="sub clip" data-start="12.75" data-duration="3.05" data-track-index="8"><span>2 Pronunciation request: “Sound a bit British”</span></div>
+      <div id="sub-8" class="sub clip" data-start="15.8" data-duration="0.75" data-track-index="8"><span>A and B are both my voice!</span></div>
+      <div id="sub-9" class="sub clip" data-start="16.55" data-duration="0.95" data-track-index="8"><span>My ears got fooled…!</span></div>
+      <div id="sub-10" class="sub clip" data-start="17.5" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="18.9" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.bars(document.getElementById("wA"), 6);
+      K.bars(document.getElementById("wB"), 6);
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      // mouth flaps while a take plays (speech spans measured on the clips, see scripts/mix.py)
+      const talk = (who, a, b) => {
+        for (let t = a, i = 0; t < b; t += 0.12, i++) {
+          tl.set(`${who} .o`, { opacity: i % 2 ? 0 : 1 }, t);
+          tl.set(`${who} .c`, { opacity: i % 2 ? 1 : 0 }, t);
+        }
+        tl.set(`${who} .o`, { opacity: 0 }, b); tl.set(`${who} .c`, { opacity: 1 }, b);
+      };
+      const focus = (on, off, at) => {
+        tl.to(on, { scale: 1.06, opacity: 1, duration: 0.15, ease: "power2.out" }, at);
+        tl.to(off, { scale: 0.94, opacity: 0.45, duration: 0.15, ease: "power2.out" }, at);
+      };
+
+      // Hook (0-1.5): everything is already there on frame 1, then settles with a bounce
+      tl.fromTo(["#mA", "#mB"], { scale: 0.92 }, { scale: 1, duration: 0.3, ease: "back.out(3)", stagger: 0.06 }, 0);
+      tl.fromTo(["#bA", "#bB"], { scale: 1.25 }, { scale: 1, duration: 0.3, ease: "back.out(3)", stagger: 0.06 }, 0.04);
+      tl.fromTo("#vs", { scale: 1.6, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(3)" }, 0);
+      tl.fromTo("#hook .l2", { scale: 0.95 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.12);
+
+      // Quiz (1.5): the question card and the sentence
+      tl.to("#hook", { y: -40, opacity: 0, duration: 0.15 }, 1.45);
+      tl.fromTo("#quiz", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 1.5);
+      tl.fromTo("#sent", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 1.6);
+      // A (British take) 2.06-4.46
+      focus("#mA", "#mB", 1.95); k.wave("#wA", 2.06, 2.4, 0); talk("#mA", 2.06, 4.46);
+      tl.to("#vs", { opacity: 0.25, duration: 0.2 }, 1.95);
+      // B (American take) 4.81-6.70
+      focus("#mB", "#mA", 4.7); k.wave("#wB", 4.81, 1.89, 2); talk("#mB", 4.81, 6.70);
+      tl.to(["#mA", "#mB"], { scale: 1, opacity: 1, duration: 0.15 }, 6.8);
+
+      // The guess (6.9-8.2) with a 3-2-1
+      tl.fromTo("#g-friend", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 6.9);
+      k.pop("#b-guess", 7.05);
+      tl.fromTo("#g-friend", { rotation: 0 }, { rotation: 3, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 7.2);
+      [["#g3", 6.95], ["#g2", 7.35], ["#g1", 7.75]].forEach(([s, at]) => {
+        tl.fromTo(s, { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.12, ease: "power2.out" }, at);
+        tl.to(s, { opacity: 0, duration: 0.1 }, at + 0.32);
+      });
+
+      // Reveal (8.2): A wins
+      tl.set("#quiz", { opacity: 0 }, 8.2);
+      tl.fromTo("#ans", { scale: 1.15, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, 8.2);
+      tl.set("#vs", { opacity: 0 }, 8.2);
+      tl.set("#bA", { opacity: 0 }, 8.2);
+      tl.fromTo("#bAw", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, 8.2);
+      tl.fromTo("#ring", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, 8.22);
+      tl.set(["#lA", "#lB"], { opacity: 0 }, 8.2);
+      tl.fromTo(["#lA2", "#lB2"], { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(3)" }, 8.2);
+      tl.to("#mA", { y: -40, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, 8.25);
+      tl.fromTo("#o-friend", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 8.55);
+      k.pop("#b-oops", 8.6);
+      tl.to(["#o-friend", "#b-oops"], { opacity: 0, duration: 0.15 }, 9.0);
+
+      // A again (9.06-11.46) with the British markers lighting up on each word (whisper starts + 8.85 s)
+      focus("#mA", "#mB", 9.0); talk("#mA", 9.06, 11.46);
+      [["#k1", "#h1", 9.25], ["#k2", "#h2", 9.63], ["#k3", null, 10.13], ["#k4", "#h3", 10.89]].forEach(([w, h, at]) => {
+        tl.fromTo(w, { backgroundColor: "rgba(42,141,255,0)", color: "#273b4b" }, { backgroundColor: "rgba(42,141,255,0.18)", color: "#1767c8", duration: 0.12 }, at);
+        if (h) tl.fromTo(h, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "back.out(2)" }, at);
+      });
+
+      // The app (11.8-15.8)
+      tl.set("#app", { opacity: 1 }, 11.8); tl.set("#app", { opacity: 0 }, 15.8);
+      tl.fromTo("#device", { y: 120, scale: 0.9, opacity: 0 }, { y: 0, scale: 1.1, opacity: 1, duration: 0.3, ease: "power3.out" }, 11.8);
+      k.ripple("#tp1", 12.15);
+      tl.fromTo("#pulse", { opacity: 0, scale: 1 }, { opacity: 1, scale: 1.04, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }, 14.6);
+      tl.set("#pulse", { opacity: 0 }, 15.4);
+      k.pop("#c0", 11.8); k.pop("#c1", 11.85); k.pop("#c2", 12.75);
+
+      // The punchline (15.8-17.5)
+      tl.fromTo("#p-mimi", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.22, ease: "back.out(1.6)" }, 15.8);
+      tl.fromTo("#p-friend", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.22, ease: "back.out(1.6)" }, 15.85);
+      k.pop("#b-both", 15.9);
+      k.pop("#b-fooled", 16.55);
+      tl.fromTo("#p-friend", { rotation: 0 }, { rotation: -3, duration: 0.15, yoyo: true, repeat: 3, immediateRender: false }, 16.6);
+
+      k.end(17.5);
+      k.tapCta(18.1);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

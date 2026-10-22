@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png, success.png: white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet). Keep EXACTLY this character design and the flat official style, outline weight, colours, proportions, head size and headphone design (the white "L" stays on the cup at the viewer's LEFT). Plain pure white background, full body, centred, same scale as the attached poses, no text, no letters anywhere except the "L".
+
+Save as PNG in art/ (relative to the current directory):
+1) art/mimi-despair.png — MIMI in comic despair ("We never did anything like this at school!"): both mittens clutching the sides of her head, ears flung out and drooping, eyes as wide trembling white circles with tiny pupils, mouth wide open in a wail, big tears streaming from both eyes, a few navy vertical gloom lines over the top of her head, three short shock lines beside her head, knees buckled as if about to collapse. Facing the viewer.
+Do not modify other files. List the saved path when done.

@@ -4,7 +4,7 @@
 
 A passer-by asks Mimi the way in English and she freezes into a block of ice. At her desk Lanclo plays her own voice giving the answer, a radar card gives one fix (link "turn left" in one breath), she practises; back on the street the ice shatters, she points the way and gets a "Thank you!". The third Mimi short, built on the shared kit.
 
-0:15 / 1080×1920, 60 fps / Japanese captions, English voices / 2D: official art style drawn with Codex + Rive bones + HyperFrames
+0:15.3 / 1080×1920, 60 fps / Japanese captions, English voices / 2D: official art style drawn with Codex + Rive bones + HyperFrames
 
 Two cuts: Japanese only (`mimi-michi.mp4`) and with English subtitles (`mimi-michi-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/006. Frozen When Asked for Directions/`.
 
@@ -22,4 +22,6 @@ Two cuts: Japanese only (`mimi-michi.mp4`) and with English subtitles (`mimi-mic
 
 ## Reproduce
 
-Follow [source/README.md](source/README.md). Everything needed is in Git, including the voice lines; only renders and the final MP4 are not.
+Follow [source/README.md](source/README.md). Everything needed is in Git except Mimi's two voice lines (the owner's own voice, kept out of the public repo: Drive `Mimi_03_Frozen_Asked_Directions_assets/own-voice/`, or regenerate with `kits/mimi-short/scripts/ownvoice.py`), renders and the final MP4.
+
+Since 2026-10-21 Mimi's English lines are the owner's registered Lanclo voice (Gemini `gemini-3.8-flash-tts`): "Uh... uh..." with a learner accent, "Go straight, and turn left." as the General American model. The passer-by keeps the Kokoro voice `bm_george`.
