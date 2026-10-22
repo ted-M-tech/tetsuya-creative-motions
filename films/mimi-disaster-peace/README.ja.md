@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNS ショート #042（シリーズ「Pronunciation Disasters / 発音で大事故」第6話）。20.0秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。ドラフト（未承認）。
+Lanclo SNS ショート #042（シリーズ「Pronunciation Disasters / 発音で大事故」第6話）。20.0秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。
 
 場面：「観光地の写真で Okay, everyone, peace! → p*ss」
 

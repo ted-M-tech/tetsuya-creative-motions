@@ -8,7 +8,7 @@
 
 0:20.0 / 1080×1920 / 60fps / 英語はすべてオーナー本人の登録音声（`learner` と `us`）/ 既存の公式2Dポーズ + GSAP、実アプリ + HyperFrames
 
-2本：日本語のみ（`mimi-180.mp4`）と英語字幕つき（`mimi-180-en.mp4`）。下書きはLancloのGoogleドライブ `002.SNS/033. Talked for 180 Seconds/`。
+2本：日本語のみ（`mimi-180.mp4`）と英語字幕つき（`mimi-180-en.mp4`）。完成版はLancloのGoogleドライブ `002.SNS/033. Talked for 180 Seconds/`（`Talked180_2026-10-21.mp4`、`Talked180_EN-subs_2026-10-21.mp4`、素材は `Talked180_assets/`）。
 
 ![完成フレーム](process/00-final-frames.jpg)
 

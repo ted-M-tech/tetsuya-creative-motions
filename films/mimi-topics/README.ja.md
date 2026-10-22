@@ -6,7 +6,7 @@
 
 0:17.8 / 1080×1920 / 60fps / 日本語のキャプションと吹き出し、英語1行はオーナー本人の登録音声（`ownvoice.py`、`us`）/ 既存の公式2Dポーズ + GSAP、実アプリ + HyperFrames
 
-2本：日本語のみ（`mimi-topics.mp4`）と英語字幕つき（`mimi-topics-en.mp4`）。下書きはLancloのGoogleドライブ `002.SNS/031. AI Chat Never Knows What to Talk About/`。
+2本：日本語のみ（`mimi-topics.mp4`）と英語字幕つき（`mimi-topics-en.mp4`）。完成版はLancloのGoogleドライブ `002.SNS/031. AI Chat Never Knows What to Talk About/`（`Topics_2026-10-21.mp4`、`Topics_EN-subs_2026-10-21.mp4`、素材は `Topics_assets/`）。
 
 ![完成フレーム](process/00-final-frames.jpg)
 

@@ -8,7 +8,7 @@ Sequel to [mimi-voice](../mimi-voice/README.md). Mimi hears her AI voice and til
 
 **Voice**: the owner's own registered Lanclo voice (Gemini gemini-3.8-flash-tts), the same line twice — before with the General American preset (`us`), after with the British preset (`uk`, the「イギリス英語っぽく」request); see `source/own-voice.json`. The clips are biometric data: not in Git (Drive `Tuning_assets/own-voice/`). Mimi is a female character speaking with the owner's (male) voice.
 
-Two cuts: Japanese only (`mimi-tuning.mp4`) and with English subtitles (`mimi-tuning-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/023. Voice Tuning/` (`Voice_Tuning_draft_2026-10-21.mp4`, `Voice_Tuning_draft_EN-subs_2026-10-21.mp4`, raw take in `Tuning_assets/`).
+Two cuts: Japanese only (`mimi-tuning.mp4`) and with English subtitles (`mimi-tuning-en.mp4`); final files in Lanclo's Google Drive `002.SNS/023. Voice Tuning/` (`Voice_Tuning_2026-10-21.mp4`, `Voice_Tuning_EN-subs_2026-10-21.mp4`, raw take in `Tuning_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

@@ -6,7 +6,7 @@ A playful horror opening: a dark room, only the friend's phone glows, Mimi's eye
 
 0:22.0 / 1080×1920, 60 fps / Japanese bubbles and captions, no voices / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-watching.mp4`) and with English subtitles (`mimi-watching-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/024. Mimi Is Always Watching/` (`Watching_draft_2026-10-21.mp4`, `Watching_draft_EN-subs_2026-10-21.mp4`, raw take in `Watching_assets/`).
+Two cuts: Japanese only (`mimi-watching.mp4`) and with English subtitles (`mimi-watching-en.mp4`); final files in Lanclo's Google Drive `002.SNS/024. Mimi Is Always Watching/` (`Watching_2026-10-21.mp4`, `Watching_EN-subs_2026-10-21.mp4`, raw take in `Watching_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

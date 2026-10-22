@@ -8,4 +8,4 @@ From frame 1 the hook card says 「ネイティブの声でシャドーイング
 
 ![Final frames](process/00-final-frames.jpg)
 
-Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Drafts and the raw take in Lanclo's Google Drive `002.SNS/035. I Stopped Shadowing Native Speakers/`.
+Rebuild: [source/README.md](source/README.md). Process: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Final files in Lanclo's Google Drive `002.SNS/035. I Stopped Shadowing Native Speakers/` (`NoShadowing_2026-10-21.mp4`, `NoShadowing_EN-subs_2026-10-21.mp4`, raw take in `NoShadowing_assets/`).

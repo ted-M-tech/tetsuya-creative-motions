@@ -6,7 +6,7 @@ Follow-up to [mimi-import](../mimi-import/README.md) (#20). Frame 1: flashcards 
 
 0:21.1 / 1080×1920, 60 fps / Japanese captions and speech bubbles, one English phrase / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-flashcards.mp4`) and with English subtitles (`mimi-flashcards-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/034. I Fed My Flashcards to Mimi/` (`Flashcards_draft_2026-10-21.mp4`, `Flashcards_draft_EN-subs_2026-10-21.mp4`, raw take, CSV and voice in `Flashcards_assets/`).
+Two cuts: Japanese only (`mimi-flashcards.mp4`) and with English subtitles (`mimi-flashcards-en.mp4`); final files in Lanclo's Google Drive `002.SNS/034. I Fed My Flashcards to Mimi/` (`Flashcards_2026-10-21.mp4`, `Flashcards_EN-subs_2026-10-21.mp4`, raw take, CSV and voice in `Flashcards_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

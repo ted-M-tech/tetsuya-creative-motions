@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #041 (series “Pronunciation Disasters”, episode 5). 17.7 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
+Lanclo SNS short #041 (series “Pronunciation Disasters”, episode 5). 17.7 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a fast-food counter: Mimi’s Friend orders “One Coke, please” with a short open “ah”; Pippa (the recurring duck clerk) goes stone-faced. Mimi drops in, bursting out of a plain red drink cup (no brand).
 
@@ -23,5 +23,5 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/),
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 ![Final frames](process/00-final-frames.jpg)
 
-- Drafts in Lanclo's Google Drive `002.SNS/041. Pronunciation Disasters 5 - Coke or Cck/` (`Disasters5_Coke_draft_2026-10-21.mp4`, `Disasters5_Coke_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters5_Coke_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/041. Pronunciation Disasters 5 - Coke or Cck/` (`Disasters5_Coke_2026-10-21.mp4`, `Disasters5_Coke_EN-subs_2026-10-21.mp4`, raw material in `Disasters5_Coke_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

@@ -6,7 +6,7 @@ Hook from the first frame:「Mimiに1ヶ月見張られた結果」(What happene
 
 0:18.6 / 1080×1920, 60 fps / Japanese captions and bubbles, no voices / official 2D poses + GSAP, real app (simulator, QA fixtures + a capture-only day patch) + HyperFrames
 
-Two cuts: Japanese only (`mimi-month.mp4`) and with English subtitles (`mimi-month-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/036. Watched by Mimi for a Month/` (`Month_draft_2026-10-21.mp4`, `Month_draft_EN-subs_2026-10-21.mp4`, raw take in `Month_assets/`).
+Two cuts: Japanese only (`mimi-month.mp4`) and with English subtitles (`mimi-month-en.mp4`); final files in Lanclo's Google Drive `002.SNS/036. Watched by Mimi for a Month/` (`Month_2026-10-21.mp4`, `Month_EN-subs_2026-10-21.mp4`, raw take in `Month_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

@@ -6,7 +6,7 @@ Hook from the first frame:「3日坊主の私が、1ヶ月続いた理由」(I a
 
 0:19.0 / 1080×1920, 60 fps / Japanese captions and bubbles, no voices / official 2D poses + GSAP, real app (simulator, QA fixtures) + HyperFrames
 
-Two cuts: Japanese only (`mimi-quitter.mp4`) and with English subtitles (`mimi-quitter-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/029. How a Quitter Kept Going for a Month/` (`Quitter_draft_2026-10-21.mp4`, `Quitter_draft_EN-subs_2026-10-21.mp4`, raw take in `Quitter_assets/`).
+Two cuts: Japanese only (`mimi-quitter.mp4`) and with English subtitles (`mimi-quitter-en.mp4`); final files in Lanclo's Google Drive `002.SNS/029. How a Quitter Kept Going for a Month/` (`Quitter_2026-10-21.mp4`, `Quitter_EN-subs_2026-10-21.mp4`, raw take in `Quitter_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

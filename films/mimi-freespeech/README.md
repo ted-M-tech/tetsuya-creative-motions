@@ -6,7 +6,7 @@ Mimi in despair:「こんなの学校でやったことなかったもん！」(
 
 0:21.0 / 1080×1920, 60 fps / Japanese speech bubbles and captions, Mimi's English in the owner's own registered Lanclo voice, the friend's French by Kokoro TTS / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-freespeech.mp4`) and with English subtitles (`mimi-freespeech-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/021. Keep Talking for 3 Minutes/` (`Free_Speech_draft_2026-10-21.mp4`, `Free_Speech_draft_EN-subs_2026-10-21.mp4`, raw take and clips in `FreeSpeech_assets/`).
+Two cuts: Japanese only (`mimi-freespeech.mp4`) and with English subtitles (`mimi-freespeech-en.mp4`); final files in Lanclo's Google Drive `002.SNS/021. Keep Talking for 3 Minutes/` (`Free_Speech_2026-10-21.mp4`, `Free_Speech_EN-subs_2026-10-21.mp4`, raw take and clips in `FreeSpeech_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

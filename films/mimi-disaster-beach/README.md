@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #038 (series “Pronunciation Disasters”, episode 2). 19.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
+Lanclo SNS short #038 (series “Pronunciation Disasters”, episode 2). 19.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a beach date: Mimi’s Friend (swim shorts) shouts “I love this beach!” to the sea; his date Coco (the recurring cat) hears “b*tch” and explodes. Mimi pops out of the sand with a facepalm.
 
@@ -23,5 +23,5 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/),
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 ![Final frames](process/00-final-frames.jpg)
 
-- Drafts in Lanclo's Google Drive `002.SNS/038. Pronunciation Disasters 2 - Beach or Btch/` (`Disasters2_Beach_draft_2026-10-21.mp4`, `Disasters2_Beach_draft_EN-subs_2026-10-21.mp4`, raw material in `Disasters2_Beach_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/038. Pronunciation Disasters 2 - Beach or Btch/` (`Disasters2_Beach_2026-10-21.mp4`, `Disasters2_Beach_EN-subs_2026-10-21.mp4`, raw material in `Disasters2_Beach_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

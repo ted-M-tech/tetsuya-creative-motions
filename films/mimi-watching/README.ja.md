@@ -6,7 +6,7 @@
 
 0:22.0 / 1080×1920・60fps / 日本語の吹き出しと字幕（声なし）/ 公式2Dポーズ＋GSAP、実アプリ（シミュレーター）＋HyperFrames
 
-2本：日本語のみ（`mimi-watching.mp4`）と英語字幕つき（`mimi-watching-en.mp4`）。下書きはLanclo Google Drive `002.SNS/024. Mimi Is Always Watching/`（`Watching_draft_2026-10-21.mp4`、`Watching_draft_EN-subs_2026-10-21.mp4`、録画は `Watching_assets/`）。
+2本：日本語のみ（`mimi-watching.mp4`）と英語字幕つき（`mimi-watching-en.mp4`）。完成版はLanclo Google Drive `002.SNS/024. Mimi Is Always Watching/`（`Watching_2026-10-21.mp4`、`Watching_EN-subs_2026-10-21.mp4`、録画は `Watching_assets/`）。
 
 ![完成フレーム](process/00-final-frames.jpg)
 

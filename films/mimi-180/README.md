@@ -8,7 +8,7 @@ A different angle from [021 Keep Talking for 3 Minutes](../mimi-freespeech/READM
 
 0:20.0 / 1080×1920, 60 fps / Japanese captions and bubbles; both English lines are the owner's own registered Lanclo voice (Gemini gemini-3.8-flash-tts via `kits/mimi-short/scripts/ownvoice.py`: `learner` for the habit-heavy take, `us` for the improved wording) / existing official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-180.mp4`) and with English subtitles (`mimi-180-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/033. Talked for 180 Seconds/` (`Talked180_draft_2026-10-21.mp4`, `Talked180_draft_EN-subs_2026-10-21.mp4`, raw take and voice clips in `Talked180_assets/`).
+Two cuts: Japanese only (`mimi-180.mp4`) and with English subtitles (`mimi-180-en.mp4`); final files in Lanclo's Google Drive `002.SNS/033. Talked for 180 Seconds/` (`Talked180_2026-10-21.mp4`, `Talked180_EN-subs_2026-10-21.mp4`, raw take and voice clips in `Talked180_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 

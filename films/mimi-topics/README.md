@@ -6,7 +6,7 @@ Hook from the first frame:「AIと会話、毎回『何話そう…』で終わ�
 
 0:17.8 / 1080×1920, 60 fps / Japanese captions and bubbles, one English line in the owner's own registered Lanclo voice (Gemini gemini-3.8-flash-tts via `kits/mimi-short/scripts/ownvoice.py`, accent `us`) / existing official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Two cuts: Japanese only (`mimi-topics.mp4`) and with English subtitles (`mimi-topics-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/031. AI Chat Never Knows What to Talk About/` (`Topics_draft_2026-10-21.mp4`, `Topics_draft_EN-subs_2026-10-21.mp4`, raw take and the voice clip in `Topics_assets/`).
+Two cuts: Japanese only (`mimi-topics.mp4`) and with English subtitles (`mimi-topics-en.mp4`); final files in Lanclo's Google Drive `002.SNS/031. AI Chat Never Knows What to Talk About/` (`Topics_2026-10-21.mp4`, `Topics_EN-subs_2026-10-21.mp4`, raw take and the voice clip in `Topics_assets/`).
 
 ![Final frames](process/00-final-frames.jpg)
 
