@@ -1,0 +1,6 @@
+English lines (Kokoro TTS through `npx hyperframes@0.8.181 tts`, see source/scripts/voices.sh). No image generation was used: every pose is an existing one.
+
+friend (af_bella, speed 1.0), used at the opening and again in the rematch:
+  Dog person or cat person?
+Mimi (af_heart, speed 1.1, the confident rematch: opinion + reason + a question back):
+  Dog person! They get me outside every day. How about you?

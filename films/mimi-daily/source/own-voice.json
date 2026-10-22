@@ -1,0 +1,14 @@
+{
+  "lines": [
+    {
+      "id": "model",
+      "text": "Please leave the light on.",
+      "accent": "us"
+    },
+    {
+      "id": "rough",
+      "text": "Please leave the right on.",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, flat syllable-by-syllable timing, every syllable equally stressed. Keep it natural, not a caricature. Say \"right\" with a clear English r sound, exactly as written (it is the learner's mistake for \"light\"). Brisk, no pauses, the whole line in about one and a half seconds."
+    }
+  ]
+}

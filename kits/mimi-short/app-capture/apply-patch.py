@@ -5,24 +5,22 @@ A patch may hold several files (each starting with '--- a/' / '+++ b/') and seve
 import sys
 from pathlib import Path
 
-patch, root = Path(sys.argv[1]).read_text().splitlines(), Path(sys.argv[2])
-files, target, hunk = {}, None, None
-for line in patch:
-    if line.startswith('+++ b/'):
-        target = line[6:]; files.setdefault(target, []); hunk = None
-    elif line.startswith('--- a/') or target is None:
+lines, root = Path(sys.argv[1]).read_text().splitlines(), Path(sys.argv[2])
+target, hunks = None, []
+for l in lines:
+    if l.startswith('+++ b/'):
+        target = l[6:]
+    elif l.startswith('--- a/'):
         continue
-    elif line.startswith('@@'):
-        hunk = []; files[target].append(hunk)
-    elif hunk is not None:
-        hunk.append(line)
-for target, hunks in files.items():
+    elif l.startswith('@@'):
+        hunks.append((target, []))
+    elif hunks:
+        hunks[-1][1].append(l)
+for target, body in hunks:
     f = root / target
     s = f.read_text()
-    for body in hunks:
-        old = '\n'.join(l[1:] for l in body if l[:1] in (' ', '-'))
-        new = '\n'.join(l[1:] for l in body if l[:1] in (' ', '+'))
-        assert s.count(old) == 1, f'context not found exactly once in {target}:\n{old}'
-        s = s.replace(old, new)
-    f.write_text(s)
-    print(f'patched {target} ({len(hunks)} hunk{"s" if len(hunks) > 1 else ""})')
+    old = '\n'.join(l[1:] for l in body if l[:1] in (' ', '-'))
+    new = '\n'.join(l[1:] for l in body if l[:1] in (' ', '+'))
+    assert s.count(old) == 1, f'context not found exactly once in {target}'
+    f.write_text(s.replace(old, new))
+    print(f'patched {target}')

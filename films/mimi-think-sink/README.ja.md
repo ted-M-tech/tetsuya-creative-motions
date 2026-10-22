@@ -21,4 +21,6 @@ Mimiが得意げに "I sink so!" と言うと、空からシンク（流し台�
 
 ## 再現
 
-[source/README.md](source/README.md) の手順どおり。声2本も含め必要なものはすべてGitにあり、書き出し途中のファイルと完成MP4だけが入っていない。
+[source/README.md](source/README.md) の手順どおり。声2本（依頼者本人の声。公開リポジトリには入れず、Driveの `Mimi_02_Think_Becomes_Sink_assets/own-voice/` に保管、または `kits/mimi-short/scripts/ownvoice.py` で作り直す）、書き出し途中のファイル、完成MP4以外はすべてGitにある。
+
+2026-10-21から、Mimiの英語の声は依頼者本人のLanclo登録音声（Gemini `gemini-3.8-flash-tts`）。"I sink so!" は学習者の発音、"I think so." はアメリカ英語のお手本。
