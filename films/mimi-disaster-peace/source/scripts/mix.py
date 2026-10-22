@@ -13,7 +13,7 @@ SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
 from sfx import SR, Mix, boing, ding, freeze, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
-R, T0, F, OL, M, C, CL, CN, A, MODEL, X, E, END = 1.5, 1.85, 4.88, 5.18, 6.88, 8.53, 9.13, 10.39, 11.7, 12.3, 15.9, 18.31, 19.61
+R, T0, F, OL, M, C, CL, CN, A, MODEL, X, E, END = 1.5, 1.85, 4.88, 5.18, 7.31, 8.96, 9.56, 10.82, 12.13, 12.73, 16.33, 18.74, 20.04
 
 
 def rewind(d=0.42):
@@ -50,7 +50,7 @@ m.voice('learner-piss.wav', T0, g=1.0)
 m.sfx(tap() * 0.5, 4.1)                         # the censor star
 m.sfx(scratch(), F, g=2.2)
 m.sfx(freeze(0.45), F + 0.25)
-m.voice('../voice/tourist-am_adam.wav', OL, 0.8)
+m.voice('../voice/tourist-am_michael.wav', OL, 0.8)
 m.sfx(boing(True), M)
 m.sfx(whoosh(0.3, 0.3), C)
 m.voice('learner-piss.wav', CL, start=2.19, length=0.81)
@@ -60,7 +60,7 @@ m.sfx(ding(), A - 0.35)
 m.sfx(whoosh(0.3, 0.3), A)
 m.sfx(tap() * 0.6, MODEL)
 m.voice('native-peace.wav', MODEL + 0.1)
-m.sfx(tap() * 0.6, 13.9)            # record
+m.sfx(tap() * 0.6, 14.33)            # record
 m.sfx(whoosh(0.3, 0.3), X - 0.15)
 m.voice('native-peace.wav', X + 0.05, g=1.0)  # said right
 m.sfx(pop_seq(3, 0.05, base=76), X + 0.2)

@@ -3,7 +3,7 @@
 Make Lanclo SNS short #042 “Pronunciation Disasters 6 - Peace / P*ss”, episode 6 of “Pronunciation Disasters” (Japanese learners' classic mix-ups that sound rude), in the pilot's format (films/mimi-disaster-sit).
 
 - Hook on screen from frame 1 (Japanese): 写真で“ピース！” →外国人が爆笑
-- Scene: a sightseeing spot: a fox tourist says “Okay, everyone, peace!” for a photo and it comes out as “piss”; the koala and flamingo burst out laughing. Mimi photobombs the shot with a camera flash.
+- Scene: a sightseeing spot: Mimi’s Friend says “Okay, everyone, peace!” for a photo and it comes out as “piss”; Bruno the tourist bursts out laughing. Mimi photobombs the shot with a camera flash.
 - The learner line and the model line are the owner's own registered Lanclo voice (ownvoice.py): `learner` with a custom style that clearly produces the wrong word, `us` for the right one (see source/own-voice.json). Other characters: Kokoro English.
 - The rude word is audible but censored on screen with ★.
 - Comparison card: “「イー」を伸ばさないと…”; right column the slip (短くゆるい「イ」 だと p★ss), left column the model (口を横に引いて 長く「イー」), front-view mouth icons that look like lips.

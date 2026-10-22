@@ -28,4 +28,5 @@ learner-piss: three takes. Kept take 2 (vowel F1 ≈ 420 Hz, F2 ≈ 1900 Hz, a l
 ## Uncertain / for review
 
 - The flagged-word feedback text in the app shot is written for the capture (the fixture's own text says QA用データ); the UI is real.
-- The learner voice is a young adult man for every learner character (by the own-voice rule).
+- Cast (owner, 2026-10-21: 「メインキャラは二人。ミミと友達。…統一感持たせたい」): the learner is always Mimi’s Friend; every other role is the recurring side cast from kits/mimi-short/cast (Bruno / Pippa / Coco). The first draft used one-off characters (shiba, sheep, tanuki, owl, hamster, fox, koala, flamingo); they were replaced (prompt: prompts/03-codex-cast-poses.txt).
+- The learner voice is the owner’s (a young adult man) on the Friend.
