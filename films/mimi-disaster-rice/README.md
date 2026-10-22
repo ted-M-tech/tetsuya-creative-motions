@@ -4,7 +4,7 @@
 
 Lanclo SNS short #039 (series “Pronunciation Disasters”, episode 3). 19.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Draft, not yet approved.
 
-Scene: a homestay dinner: a shiba-inu learner proudly says “I eat rice every day” and it comes out as “lice”; the sheep host dad recoils, scratching his head. Mimi bursts out of a rice bowl with crossed chopsticks.
+Scene: a homestay dinner: Mimi’s Friend proudly says “I eat rice every day” and it comes out as “lice”; Bruno (the recurring bear) as the host dad recoils, scratching his head. Mimi bursts out of a rice bowl with crossed chopsticks.
 
 Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/), branch `feat/mimi-disaster-sit`): punchline first (Mimi's line on frame 1, then a rewind) → the situation hook → the slip → freeze with a quiet record scratch → Mimi pops up → comparison card with the two takes in the owner's own voice and illustrated panels (唇（正面） / 舌の位置（横から）) → a tiny real Lanclo moment → fixed → end card + CTA tap.
 
