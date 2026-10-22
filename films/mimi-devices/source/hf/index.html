@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; background: #eef3f9; }
+      .stage > img { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .stage .bubble { font-size: 54px; max-width: none; white-space: nowrap; }
+      .stage .bubble.big { font-size: 64px; }
+      .bubble.small { font-size: 46px !important; padding: 20px 32px; }
+
+      /* Phones: the real app (frames of the iOS fixture take) */
+      .phone-d { position: absolute; border-radius: 64px; background: #1d2733; padding: 14px; box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      .phone-d .scr { position: relative; width: 100%; height: 100%; border-radius: 52px; overflow: hidden; background: #f2f2f7; }
+      .phone-d .scr img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+      /* Laptop and tablet: the real Web app (lanclo.app) in a browser frame */
+      .laptop { position: absolute; }
+      .laptop .lid { position: relative; background: #1d2733; border-radius: 26px 26px 6px 6px; padding: 14px 14px 18px; box-shadow: 0 30px 70px rgba(39, 59, 75, 0.25); }
+      .laptop .base { height: 26px; margin: 0 -50px; background: linear-gradient(#d9e0e7, #b7c2cc); border-radius: 0 0 26px 26px; }
+      .laptop .base::after { content: ""; display: block; width: 160px; height: 10px; margin: 0 auto; background: #9fadb9; border-radius: 0 0 10px 10px; }
+      .browser { position: relative; background: #ffffff; border-radius: 10px; overflow: hidden; }
+      .browser .bar { height: 40px; background: #e8edf2; display: flex; align-items: center; gap: 8px; padding: 0 14px; }
+      .browser .bar i { width: 12px; height: 12px; border-radius: 50%; background: #c3ccd5; display: block; }
+      .browser .bar span { margin-left: 14px; flex: 1; height: 28px; border-radius: 14px; background: #ffffff; font-size: 19px; line-height: 28px; padding-left: 16px; color: #273b4b; font-weight: 700; }
+      .browser .view { position: relative; overflow: hidden; }
+      .browser .view img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+      .tablet { position: absolute; background: #1d2733; border-radius: 34px; padding: 22px; box-shadow: 0 30px 70px rgba(39, 59, 75, 0.25); }
+
+      /* Opening: a generic video app lures her away (no real brand) */
+      .notif { position: absolute; left: 12px; right: 12px; top: 60px; background: rgba(255, 255, 255, 0.97); border-radius: 26px; padding: 14px 16px;
+               display: flex; gap: 14px; align-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+      .play-ic { width: 58px; height: 58px; border-radius: 15px; background: #ff3b3b; position: relative; flex: none; }
+      .play-ic::after { content: ""; position: absolute; left: 22px; top: 16px; border-left: 20px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+      .notif b { display: block; font-size: 20px; color: #273b4b; }
+      .notif span { display: block; font-size: 20px; color: #273b4b; line-height: 1.3; }
+      .video { position: absolute; inset: 0; background: #111418; }
+      .video .frame { position: absolute; left: 0; right: 0; top: 120px; height: 220px; background: linear-gradient(135deg, #ffb347, #ff6f61); overflow: hidden; }
+      .video .frame .cat { position: absolute; left: 50%; top: 40px; width: 150px; height: 130px; margin-left: -75px; background: #3b2f2f; border-radius: 50% 50% 46% 46%; }
+      .video .frame .cat::before, .video .frame .cat::after { content: ""; position: absolute; top: -26px; border-bottom: 46px solid #3b2f2f; border-left: 24px solid transparent; border-right: 24px solid transparent; }
+      .video .frame .cat::before { left: 6px; } .video .frame .cat::after { right: 6px; }
+      .video .bar2 { position: absolute; left: 0; right: 0; top: 340px; height: 6px; background: #444; }
+      .video .bar2 i { display: block; width: 35%; height: 100%; background: #ff3b3b; }
+      .video .row { position: absolute; left: 20px; right: 20px; height: 70px; border-radius: 12px; background: #262b31; }
+      .video .row::before { content: ""; position: absolute; left: 10px; top: 10px; width: 90px; height: 50px; border-radius: 8px; background: #3d454e; }
+
+      /* Mimi out of the laptop */
+      #burst { position: absolute; left: 540px; top: 860px; width: 0; height: 0; }
+      #burst i { position: absolute; left: -6px; top: -160px; width: 12px; height: 90px; border-radius: 6px; background: #ffd84a; transform-origin: 6px 160px; opacity: 0; }
+      .flash { position: absolute; inset: 0; background: #ffffff; opacity: 0; }
+
+      /* Split: home on the computer, the train on the phone */
+      .half { position: absolute; left: 0; right: 0; overflow: hidden; }
+      #home { top: 420px; height: 590px; background: #f7efe3; }
+      #train { top: 1010px; height: 590px; background: #e3edf7; }
+      #train .win { position: absolute; top: 70px; height: 230px; width: 300px; border-radius: 30px; background: #bfe0f5; border: 10px solid #c9d4de; }
+      #train .pole { position: absolute; top: 0; width: 14px; height: 590px; background: #c9d4de; }
+      .place { position: absolute; top: 24px; background: #273b4b; color: #fff; font-size: 40px; font-weight: 700; padding: 8px 26px; border-radius: 30px; }
+      .hl { position: absolute; border: 5px solid #ff8a00; border-radius: 12px; box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.25); opacity: 0; }
+      #sync { position: absolute; inset: 0; pointer-events: none; }
+      #cloud { position: absolute; left: 470px; top: 1050px; width: 140px; height: 140px; border-radius: 50%; background: #2a8dff; color: #fff; font-size: 34px; font-weight: 700;
+               display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(42, 141, 255, 0.45); opacity: 0; }
+
+      .chip { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+      .chip span { display: block; background: #344f69; color: #fff; font-size: 52px; font-weight: 700; padding: 14px 40px; border-radius: 44px; letter-spacing: 0.02em; }
+
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+      .type .ln { font-size: 104px; font-weight: 700; color: #273b4b; line-height: 1.35; }
+      .type .ln strong { color: #2a8dff; }
+      .type .ln.last strong { color: #e5484d; }
+
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.0" data-width="1080" data-height="1920">
+      <!-- 1. Studying on the phone, a video notification pulls her away (0-2.6) -->
+      <div id="s1" class="stage clip" data-start="0" data-duration="2.6" data-track-index="1">
+        <img id="f-type" src="assets/art/friend-type.webp" alt="" style="left:10px; bottom:470px; width:520px" />
+        <img id="f-giggle" src="assets/art/friend-giggle.webp" alt="" style="left:10px; bottom:470px; width:520px; opacity:0" />
+        <div id="p1" class="phone-d" style="left:600px; top:470px; width:420px; height:908px">
+          <div class="scr">
+            <img src="assets/app/phone-study.jpg" alt="" />
+            <div id="vid" class="video" style="opacity:0">
+              <div class="frame"><div class="cat"></div></div><div class="bar2"><i></i></div>
+              <div class="row" style="top:380px"></div><div class="row" style="top:470px"></div><div class="row" style="top:560px"></div>
+            </div>
+            <div id="notif" class="notif"><div class="play-ic"></div><div><b>動画アプリ</b><span>おすすめ：ネコの爆笑まとめ</span></div></div>
+            <div id="tp1" class="tap" style="left:50%; top:10.5%"></div>
+          </div>
+        </div>
+        <div id="b-study" class="bubble from-left" style="top:300px">よし、英語の練習！</div>
+        <div id="b-haha" class="bubble from-left big" style="top:300px">あはは！</div>
+      </div>
+
+      <!-- 2. The confession (2.6-4.4) -->
+      <div id="s2" class="stage clip" data-start="2.6" data-duration="1.8" data-track-index="1">
+        <img id="f-sigh" src="assets/art/friend-sigh.webp" alt="" style="left:170px; bottom:470px; width:640px" />
+        <div id="b-video" class="bubble from-left" style="top:300px">スマホだと、すぐ動画見ちゃう…</div>
+        <div id="b-want" class="bubble from-left" style="top:470px">パソコンかタブレットでやりたいな</div>
+      </div>
+
+      <!-- 3. Mimi bursts out of the laptop (4.4-6.6) -->
+      <div id="s3" class="stage clip" data-start="4.4" data-duration="2.2" data-track-index="1">
+        <div id="lap1" class="laptop" style="left:100px; top:720px; width:880px">
+          <div class="lid"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>lanclo.app</span></div>
+            <div class="view" style="height:532px"><img src="assets/app/web-home.jpg" alt="" /><div id="flash" class="flash"></div></div></div></div>
+          <div class="base"></div>
+        </div>
+        <div id="burst"></div>
+        <img id="f-wow" src="assets/art/friend-wow.webp" alt="" style="left:20px; bottom:330px; width:330px; opacity:0" />
+        <img id="m-jump" src="assets/art/jump.webp" alt="" style="left:330px; top:300px; width:430px; transform-origin:50% 80%" />
+        <div id="b-web" class="bubble from-right big" style="top:250px; right:30px">LancloはWeb版もあるで！</div>
+      </div>
+
+      <!-- 4. Computer and tablet (6.6-9.2) -->
+      <div id="s4" class="stage clip" data-start="6.6" data-duration="2.6" data-track-index="1">
+        <div id="lap2" class="laptop" style="left:70px; top:470px; width:760px">
+          <div class="lid"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>lanclo.app</span></div>
+            <div class="view" style="height:458px"><img id="scroll2" src="assets/app/web-home-full.jpg" alt="" /></div></div></div>
+          <div class="base"></div>
+        </div>
+        <div id="tab" class="tablet" style="left:470px; top:880px; width:580px; height:448px">
+          <div class="browser" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>lanclo.app</span></div>
+            <div class="view" style="height:364px"><img src="assets/app/web-practice.jpg" alt="" /></div></div>
+        </div>
+        <img id="l-ask1" src="assets/art/lop-ask.webp" alt="" style="left:-40px; bottom:300px; width:440px" />
+        <div id="b-and1" class="bubble from-left small" style="left:340px; top:1440px">…Androidの私は？</div>
+      </div>
+
+      <!-- 5. Synced: home on the computer, the train on the phone (9.2-13.4) -->
+      <div id="s5" class="stage clip" data-start="9.2" data-duration="4.2" data-track-index="1">
+        <div id="home" class="half">
+          <img src="assets/art/friend-desk.webp" alt="" style="position:absolute; left:20px; top:110px; width:350px; height:auto" />
+          <div id="lap3" class="laptop" style="left:400px; top:100px; width:630px">
+            <div class="lid"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>lanclo.app</span></div>
+              <div class="view" style="height:375px"><img id="scroll3" src="assets/app/web-home-full.jpg" alt="" /><div id="hl-web" class="hl" style="left:106px; top:243px; width:236px; height:33px"></div></div></div></div>
+            <div class="base"></div>
+          </div>
+          <div class="place" style="left:40px">家ではパソコン</div>
+        </div>
+        <div id="train" class="half">
+          <div class="win" style="left:-60px" data-layout-allow-overflow></div><div class="win" style="left:860px" data-layout-allow-overflow></div><div class="pole" style="left:560px"></div>
+          <div id="p2" class="phone-d" style="left:150px; top:20px; width:260px; height:560px">
+            <div class="scr"><img src="assets/app/phone-report.jpg" alt="" /><div id="hl-ios" class="hl" style="left:11px; top:242px; width:212px; height:40px"></div></div>
+          </div>
+          <img src="assets/art/friend-train.webp" alt="" style="position:absolute; left:610px; top:30px; width:400px; height:auto" />
+          <div class="place" style="right:40px">電車ではスマホ</div>
+        </div>
+        <svg id="sync" viewBox="0 0 1080 1920"><path id="arc" d="M 720 990 C 640 1080, 540 1200, 420 1290" fill="none" stroke="#2a8dff" stroke-width="10" stroke-linecap="round" stroke-dasharray="22 18" /></svg>
+        <div id="cloud">同期</div>
+        <img id="l-sulk" src="assets/art/lop-sulk.webp" alt="" style="left:330px; top:1260px; width:340px" />
+        <div id="b-and2" class="bubble from-left small" style="left:250px; top:1120px">…で、Androidの私は？</div>
+      </div>
+      <div id="cap-sync" class="caption small clip" data-start="9.3" data-duration="4.1" data-track-index="6"><span id="c-sync">同じアカウントでログインすれば<br /><strong>練習履歴も単語帳も同期！</strong></span></div>
+      <div id="cap-dev" class="caption clip" data-start="6.65" data-duration="2.55" data-track-index="6"><span id="c-dev">パソコンでも、タブレットでも</span></div>
+
+      <!-- 6. Copy (13.4-15.4) -->
+      <div id="copy" class="type clip" data-start="13.4" data-duration="2.0" data-track-index="2">
+        <div id="ln1" class="ln"><strong>スマホ</strong>でも、</div>
+        <div id="ln2" class="ln"><strong>タブレット</strong>でも、</div>
+        <div id="ln3" class="ln last"><strong>パソコン</strong>でも。</div>
+      </div>
+
+      <!-- 7. Mimi's promise (15.4-18.6) -->
+      <div id="s7" class="stage clip" data-start="15.4" data-duration="3.2" data-track-index="1">
+        <img id="l-ask3" src="assets/art/lop-ask.webp" alt="" style="left:-20px; bottom:520px; width:560px" />
+        <img id="l-cheer" src="assets/art/lop-cheer.webp" alt="" style="left:-10px; bottom:520px; width:540px; opacity:0" />
+        <img id="m-conf" src="assets/art/confident.webp" alt="" style="right:20px; bottom:520px; width:480px" />
+        <div id="b-and3" class="bubble from-left" style="top:300px">Androidの私は…？</div>
+        <div id="b-soon" class="bubble from-right big" style="top:460px">近いうちに対応するで！</div>
+        <div id="b-web2" class="bubble from-right" style="top:460px">それまではWeb版で使ってね！</div>
+        <div id="ch-url" class="chip" style="top:1440px"><span>lanclo.app</span></div>
+      </div>
+
+      <div id="end" class="end clip" data-start="18.6" data-duration="1.4" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.1" data-duration="1.5" data-track-index="8"><span>OK, English practice!</span></div>
+      <div class="sub clip" data-start="1.6" data-duration="1.0" data-track-index="8"><span>(Video app: funny cat compilation) Ha ha!</span></div>
+      <div class="sub clip" data-start="2.6" data-duration="0.85" data-track-index="8"><span>On my phone I always end up watching videos…</span></div>
+      <div class="sub clip" data-start="3.45" data-duration="0.95" data-track-index="8"><span>I’d rather study on a computer or a tablet.</span></div>
+      <div class="sub clip" data-start="4.4" data-duration="2.2" data-track-index="8"><span>Lanclo has a web version too!</span></div>
+      <div class="sub clip" data-start="6.6" data-duration="1.5" data-track-index="8"><span>On a computer, or on a tablet</span></div>
+      <div class="sub clip" data-start="8.1" data-duration="1.1" data-track-index="8"><span>…What about me, on Android?</span></div>
+      <div class="sub clip" data-start="9.2" data-duration="3.2" data-track-index="8"><span>Same account: practice history and notes sync.</span></div>
+      <div class="sub clip" data-start="12.4" data-duration="1.0" data-track-index="8"><span>…So, what about me, on Android?</span></div>
+      <div class="sub clip" data-start="13.4" data-duration="2.0" data-track-index="8"><span>On your phone, your tablet, or your computer.</span></div>
+      <div class="sub clip" data-start="15.4" data-duration="0.7" data-track-index="8"><span>And me, on Android…?</span></div>
+      <div class="sub clip" data-start="16.1" data-duration="0.95" data-track-index="8"><span>It’s coming soon!</span></div>
+      <div class="sub clip" data-start="17.05" data-duration="1.55" data-track-index="8"><span>Until then, use the web version!</span></div>
+      <div class="sub clip" data-start="18.6" data-duration="1.4" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="20.0" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      document.getElementById("burst").innerHTML = Array.from({ length: 10 }, (_, i) => `<i style="transform:rotate(${i * 36}deg)"></i>`).join("");
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const swap = (out, inn, at) => { tl.set(out, { opacity: 0 }, at); tl.set(inn, { opacity: 1 }, at); };
+      const hop = (sel, at, h = 30, n = 1) => tl.fromTo(sel, { y: 0 }, { y: -h, duration: 0.14, yoyo: true, repeat: n * 2 - 1, ease: "power2.out", immediateRender: false }, at);
+
+      // 1. Studying; the notification; she taps it and laughs (0-2.6)
+      tl.fromTo("#p1", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 0);
+      k.pop("#b-study", 0.1);
+      tl.fromTo("#notif", { y: -160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 0.85);
+      tl.fromTo("#f-type", { rotation: 0 }, { rotation: 4, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 0.95);
+      k.ripple("#tp1", 1.45);
+      tl.set("#vid", { opacity: 1 }, 1.55); tl.set("#notif", { opacity: 0 }, 1.55);
+      tl.set("#b-study", { opacity: 0 }, 1.55);
+      swap("#f-type", "#f-giggle", 1.6);
+      k.pop("#b-haha", 1.65);
+      tl.fromTo("#f-giggle", { rotation: -3 }, { rotation: 3, duration: 0.12, yoyo: true, repeat: 6, ease: "sine.inOut", immediateRender: false }, 1.65);
+      tl.fromTo("#vid .bar2 i", { width: "20%" }, { width: "60%", duration: 1.0, ease: "none" }, 1.55);
+
+      // 2. The confession (2.6-4.4)
+      tl.fromTo("#f-sigh", { y: 20 }, { y: 0, duration: 0.3, ease: "power2.out" }, 2.6);
+      k.pop("#b-video", 2.65);
+      k.pop("#b-want", 3.45);
+
+      // 3. Mimi bursts out of the laptop (4.4-6.6)
+      tl.fromTo("#lap1", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 4.4);
+      tl.fromTo("#lap1", { scale: 1 }, { scale: 1.03, duration: 0.07, yoyo: true, repeat: 3, immediateRender: false }, 4.75);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.9, duration: 0.1, yoyo: true, repeat: 1 }, 4.85);
+      tl.fromTo("#m-jump", { x: 0, y: 420, scale: 0.15, opacity: 0, rotation: -20 }, { y: 0, scale: 1, opacity: 1, rotation: 0, duration: 0.42, ease: "back.out(1.7)" }, 4.95);
+      document.querySelectorAll("#burst i").forEach((b, i) => tl.fromTo(b, { opacity: 1, scaleY: 0.2 }, { opacity: 0, scaleY: 1.4, duration: 0.45, ease: "power2.out" }, 5.0 + (i % 2) * 0.03));
+      k.pop("#b-web", 5.35);
+      tl.fromTo("#m-jump", { y: 0 }, { y: -24, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 5.5);
+      tl.fromTo("#f-wow", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.22, ease: "back.out(1.6)" }, 5.45);
+
+      // 4. Computer and tablet (6.6-9.2)
+      tl.fromTo("#lap2", { x: -200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 6.6);
+      tl.fromTo("#tab", { x: 260, opacity: 0, rotation: 6 }, { x: 0, opacity: 1, rotation: 0, duration: 0.3, ease: "power3.out" }, 6.75);
+      k.pop("#c-dev", 6.65);
+      tl.fromTo("#scroll2", { y: 0 }, { y: -150, duration: 1.2, ease: "power2.inOut" }, 7.0);
+      tl.fromTo("#l-ask1", { x: -420, rotation: -14 }, { x: 0, rotation: 0, duration: 0.25, ease: "back.out(1.6)" }, 8.05);
+      k.pop("#b-and1", 8.15);
+
+      // 5. Synced (9.2-13.4)
+      tl.fromTo("#home", { x: -1080 }, { x: 0, duration: 0.3, ease: "power3.out" }, 9.2);
+      tl.fromTo("#train", { x: 1080 }, { x: 0, duration: 0.3, ease: "power3.out" }, 9.35);
+      k.pop("#c-sync", 9.3);
+      tl.set("#scroll3", { y: 0 }, 9.2);
+      tl.to("#scroll3", { y: -149, duration: 0.8, ease: "power2.inOut" }, 9.7);
+      tl.fromTo("#hl-web", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 10.55);
+      const arc = document.getElementById("arc"), len = 1100;
+      tl.fromTo(arc, { strokeDashoffset: len, opacity: 1, attr: { "stroke-dasharray": `${len} ${len}` } }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 10.8);
+      tl.fromTo("#cloud", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.5)" }, 10.9);
+      tl.fromTo("#cloud", { rotation: 0 }, { rotation: 360, duration: 0.6, ease: "power2.inOut", immediateRender: false }, 11.0);
+      tl.fromTo("#hl-ios", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 11.3);
+      tl.fromTo("#p2", { scale: 1 }, { scale: 1.05, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 11.3);
+      tl.to(["#arc", "#cloud"], { opacity: 0, duration: 0.2 }, 12.2);
+      tl.fromTo("#l-sulk", { y: 500, rotation: 14, opacity: 0 }, { y: 0, opacity: 1, rotation: 0, duration: 0.25, ease: "back.out(1.6)" }, 12.35);
+      k.pop("#b-and2", 12.45);
+
+      // 6. Copy (13.4-15.4)
+      tl.fromTo("#copy", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 13.4);
+      ["#ln1", "#ln2", "#ln3"].forEach((s, i) => tl.fromTo(s, { y: 40, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 13.45 + i * 0.35));
+
+      // 7. Mimi's promise (15.4-18.6)
+      tl.fromTo("#m-conf", { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "back.out(1.6)" }, 15.4);
+      k.pop("#b-and3", 15.45);
+      tl.set("#b-and3", { opacity: 0 }, 16.05);
+      k.pop("#b-soon", 16.1);
+      hop("#m-conf", 16.15, 26, 1);
+      tl.set("#b-soon", { opacity: 0 }, 17.05);
+      k.pop("#b-web2", 17.05);
+      k.pop("#ch-url", 17.15);
+      swap("#l-ask3", "#l-cheer", 17.3);
+      hop("#l-cheer", 17.3, 50, 2);
+
+      k.end(18.6);
+      k.tapCta(19.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

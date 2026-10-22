@@ -1,0 +1,9 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png), Mimi's first friend (chosen-2.png) and the three current poses of Mimi's second friend (ask.png, sulk.png, cheer.png): a light-grey lop-eared bunny with long drooping ears with pink insides, a white belly and muzzle, a small yellow star clip on one ear, pink blush, and a plain mint-green smartphone (no logo).
+
+Redraw her three poses so that she now WEARS THE SAME HEADPHONES as Mimi and the first friend: navy band, blue cups, a white "L" on the cup at the viewer's LEFT. The band goes over the top of her head; the cups sit over / in front of the roots of her floppy ears, so the long ears still hang down naturally below and behind the cups (the ears are not cut off and do not pass through the band). Keep EVERYTHING else of each pose exactly as in the attached pose (same body, gesture, expression, phone, star clip, sparkles, scribble cloud, scale) and Mimi's flat style and outline weight. The three must be consistent with each other. Plain pure white background, full body, centred, no text.
+
+Overwrite these files (relative to the current directory), one per attached pose:
+1) art/lop/ask.png — from ask.png (asking, finger up, phone shown, worried round eyes, sweat drop).
+2) art/lop/sulk.png — from sulk.png (pouting, arms crossed over the phone, drooping ears, scribble cloud).
+3) art/lop/cheer.png — from cheer.png (overjoyed jump, phone raised, happy closed eyes, sparkles).
+Do not modify other files. List the saved paths when done.

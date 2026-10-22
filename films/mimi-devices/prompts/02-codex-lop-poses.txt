@@ -1,0 +1,8 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png) and a second friend of Mimi (b-lop.png): a light-grey lop-eared bunny with long drooping ears with pink insides, a white belly and muzzle, a small yellow star clip on one ear, half-closed smug eyes, pink blush. She does NOT wear headphones. Keep EXACTLY this lop bunny's design and Mimi's flat style, outline weight and proportions (same body size as Mimi). Plain pure white background, full body, centred, no text, no logos.
+
+She is an Android phone user who keeps asking "...and what about me?". Her phone is a plain smartphone with a mint-green back (seen from the back, no logo, no robot, no camera branding).
+Save each as PNG in art/lop/ (relative to the current directory):
+1) art/lop/ask.png — leaning in from the side to ask: body tilted toward the viewer's LEFT, one mitten raised with a finger up as if asking a question, the other mitten holding her mint-green phone up to show it, eyes round and a little worried, mouth a small "o", one small sweat drop, one ear lifted.
+2) art/lop/sulk.png — sulking because she is left out: arms crossed hugging her mint-green phone to her chest, cheeks puffed out, pouting mouth, eyes half-closed and looking sideways toward the viewer's LEFT, both ears drooping low, a small grey scribble cloud above her head.
+3) art/lop/cheer.png — delighted by good news: jumping a little with both mittens up, holding her mint-green phone in one raised mitten, eyes closed in happy arcs, big open smile, pink blush, ears flying up, three small sparkles around her. She faces the viewer's LEFT a little.
+Do not modify other files. List the saved paths when done.
