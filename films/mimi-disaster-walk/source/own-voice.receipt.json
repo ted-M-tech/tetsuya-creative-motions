@@ -1,0 +1,20 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-worked": {
+      "text": "I worked! For two hours!",
+      "style": "Speak General American English with a rhotic r, proud and cheerful, a little slow and syllable-by-syllable like a Japanese learner. The word 'worked' is the ordinary American word 'worked' (rhymes with 'jerked' and 'perked', the 'er' vowel of 'her' and 'bird', tongue curled back), so a listener clearly hears 'I worked! For two hours!'. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d2c6ae7aacd26086bebf1307db170b67c0f6b557d9235fbcedb70708ac8ec388",
+      "at": "2026-10-22T22:50:54+00:00",
+      "note": "Kept take 3 of 3. Vowel of 'worked' F3 about 1700-1850 Hz with F2 about 1300 (r-coloured /ɝ/); take 1 only dipped to about 2000-2400, take 2 had no dip (open 'ah', F1 about 900). Native 'walked' F3 stays about 2800 (no r)."
+    },
+    "native-walked": {
+      "text": "I walked! For two hours!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "1c455a6d611802039bab6937a5c840428145259d5fc5c409a19cea0bed87a9a1",
+      "at": "2026-10-22T22:49:49+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
