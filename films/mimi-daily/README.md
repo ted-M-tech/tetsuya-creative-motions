@@ -4,7 +4,7 @@
 
 Mimi's pile of English books keeps growing and never gets read (積読, *tsundoku*). Then she opens Lanclo's daily lesson in the real app (recorded in the simulator with QA fixture data): today's sentence, "Please leave the light on.", played as a native model in her own voice; she records it, says "right", gets a five-axis score and the one sound to fix (right → light). The sixth Mimi short and the second on real screens.
 
-0:15 / 1080×1920, 60 fps / Japanese captions, English voice / 2D Mimi (Rive) beside a simulator recording of the app
+0:15.2 / 1080×1920, 60 fps / Japanese captions, English in the owner's own registered Lanclo voice / 2D Mimi (Rive) beside a simulator recording of the app
 
 Two cuts: Japanese only (`mimi-daily.mp4`) and with English subtitles (`mimi-daily-en.mp4`, rendered by `kits/mimi-short/render-cuts.sh`); both in Lanclo's Google Drive `002.SNS/009. Unread Books - Daily Lesson/`.
 
