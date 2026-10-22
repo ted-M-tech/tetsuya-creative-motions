@@ -1,0 +1,5 @@
+Use your image generation tool. The attached images are the official 2D art of Mimi (master.png, success.png: white bunny, navy outlines, flat colours, blue inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, mitten hands, small feet). Keep EXACTLY this character design and the flat official style, outline weight, colours, proportions, head size and headphone design (the white "L" stays on the cup at the viewer's LEFT). Plain pure white background, full body, centred, same scale as the attached poses, no text, no letters anywhere except the "L".
+
+Save as PNG in art/ (relative to the current directory):
+1) art/mimi-researcher.png — MIMI as a friendly researcher explaining a theory: a white lab coat (open, slightly too big, sleeves a little long), round thin navy glasses, one mitten holding a thin wooden pointer stick raised toward the viewer's LEFT as if pointing at a board there, the other mitten lifting the glasses slightly, a confident clever smile, one small sparkle on the glasses lens. She faces the viewer's LEFT. Full body, standing.
+Do not modify other files. List the saved path when done.

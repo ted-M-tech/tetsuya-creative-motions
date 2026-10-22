@@ -22,7 +22,7 @@ def talk(voice, cache, start, nod_at):
         body(anim, hp, cp, n, squash=lambda f: breathe(f) + (10 * max(0.0, math.sin(math.pi * (f - nod_at) / 14)) if nod_at <= f < nod_at + 14 else 0),
              rot=lambda f: wave(f, 40, 0.02))
         bone_rot(anim, '0:41', n, lambda f: wave(f, 20, 0.04))
-        R.lipsync(anim, start, SRC / 'assets/voice' / voice, SRC / 'scripts' / cache)
+        R.lipsync(anim, start, SRC / 'assets/own-voice' / voice, SRC / 'scripts' / cache)
     return act
 
 
@@ -37,12 +37,12 @@ A = R.ACTS
 SHOTS = {
     'hook': dict(pose='droop', act=A['droop'], frames=120, bg=PLAIN),                                                   # 0.0  books pile up and topple
     'present': dict(pose='point', act=act_present, frames=84, bg=PLAIN),                                                # 2.0  points at today's tasks
-    'listen': dict(pose='listen', act=A['listen'], frames=132, bg=PLAIN),                                               # 3.4  her own voice, native
-    'record': dict(pose='speak', act=talk('rough-af_heart.wav', 'lipsync-rough.json', 9, 100), frames=120, bg=PLAIN),   # 5.6  "Please leave the right on."
-    'think': dict(pose='think', act=A['think'], frames=120, bg=PLAIN),                                                  # 7.6  the score
-    'point2': dict(pose='point', act=act_present, frames=132, bg=PLAIN),                                                # 9.6  light, not right
-    'jump': dict(pose='jump', act=A['jump'], frames=42, bg=PLAIN),                                                      # 11.8
-    'success': dict(pose='success', act=A['success'], frames=90, bg=PLAIN),                                             # 12.5
+    'listen': dict(pose='listen', act=A['listen'], frames=117, bg=PLAIN),                                               # 3.4  her own voice, native
+    'record': dict(pose='speak', act=talk('rough.wav', 'lipsync-rough.json', 0, 100), frames=147, bg=PLAIN),           # 5.35 "Please leave the right on."
+    'think': dict(pose='think', act=A['think'], frames=120, bg=PLAIN),                                                  # 7.8  the score
+    'point2': dict(pose='point', act=act_present, frames=132, bg=PLAIN),                                                # 9.8  light, not right
+    'jump': dict(pose='jump', act=A['jump'], frames=42, bg=PLAIN),                                                      # 12.0
+    'success': dict(pose='success', act=A['success'], frames=90, bg=PLAIN),                                             # 12.7
 }
 
 if __name__ == '__main__':

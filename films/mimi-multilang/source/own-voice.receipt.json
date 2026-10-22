@@ -1,0 +1,61 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "hi-en": {
+      "text": "Hello!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "6523106182e627c464bced25c21bcc77939ff715e41ae89f6bdf7cc3532629bd",
+      "at": "2026-10-21T21:35:04+00:00"
+    },
+    "hi-fr": {
+      "text": "Bonjour !",
+      "style": "Speak fluent, natural French like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "7140c3402ca5877d776b5e6beb6f2c48db9ba2a2697659b97c4436cd20c44081",
+      "at": "2026-10-21T21:35:07+00:00"
+    },
+    "hi-es": {
+      "text": "¡Hola!",
+      "style": "Speak fluent, natural Spanish like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "948e0865efd0e1c55af3cffc79c24d517f4ce4a47f5db24877a82678639c6a06",
+      "at": "2026-10-21T21:35:09+00:00"
+    },
+    "hi-zh": {
+      "text": "你好！",
+      "style": "Speak fluent, natural Mandarin Chinese like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "b454ae043a8c6ba4656b25731764307cc5af4ec4970c17e06db096a9bc5a3c93",
+      "at": "2026-10-21T21:35:11+00:00"
+    },
+    "hi-ko": {
+      "text": "안녕하세요!",
+      "style": "Speak fluent, natural Korean like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "7cbeec087125075001884e0aad29456a0bf01414960e73588a2c1de7d0405796",
+      "at": "2026-10-21T21:35:14+00:00"
+    },
+    "hi-it": {
+      "text": "Ciao!",
+      "style": "Speak fluent, natural Italian like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "fdd01fcf7b0f8aaaf67a6918b8a52e9785a5b3e64f8494905157189370947c25",
+      "at": "2026-10-21T21:35:16+00:00"
+    },
+    "hi-pt": {
+      "text": "Olá!",
+      "style": "Speak fluent, natural Brazilian Portuguese like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "aacf0680d2ae08dca329b747f18a8e48300e3e50c870f3deaf288b019e90e562",
+      "at": "2026-10-21T21:36:07+00:00"
+    },
+    "hi-hi": {
+      "text": "नमस्ते!",
+      "style": "Speak fluent, natural Hindi like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9d6ed3ebe66eed3ea8b5e417b566f7e8bfbb8baeefb02694c7437147681f66b4",
+      "at": "2026-10-21T21:36:09+00:00"
+    },
+    "app-fr": {
+      "text": "Partons un peu plus tôt pour prendre le petit déjeuner dans notre café préféré.",
+      "style": "Speak fluent, natural French like a native speaker. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "4088fa753d3b877f671367c21bdc1b379f4cfd5d9a236c1575a0db5c002e6589",
+      "at": "2026-10-21T21:36:12+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
