@@ -9,10 +9,10 @@ F=films/mimi-no-shadowing/source
 #       DescribeUITests.swift DescribeUITests/testModelWalkthrough $F/renders/app/daily.mov  — and re-measure scripts/app_track.sh)
 sh $F/scripts/app_track.sh                 # hf/assets/app/app.mp4 (film 6.6-10.6)
 # 1. art (Codex drawings art/*.png) -> cut-outs
-for p in stranger stranger-shrug struggle toss-v2 cassette; do kits/mimi-short/scripts/cutout.sh $F/art/$p.png $F/art/$p.webp; done
-magick $F/art/stranger.webp -crop 600x520+170+0 +repage -resize 300x $F/art/stranger-head.webp   # the face on the cassette
+for p in bruno-talk bruno-shrug struggle toss-v2 cassette; do kits/mimi-short/scripts/cutout.sh $F/art/$p.png $F/art/$p.webp; done
+magick $F/art/bruno-talk.webp -crop 760x660+90+0 +repage -resize 300x $F/art/bruno-head.webp   # the face on the cassette
 # 2. voices and sound
-sh $F/scripts/voices.sh                                         # the stranger (Kokoro, committed)
+sh $F/scripts/voices.sh                                         # Bruno, the stranger (Kokoro am_michael, committed)
 python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json   # Mimi + model (owner's voice, not in Git; or copy Drive NoShadowing_assets/own-voice/ to $F/assets/own-voice/)
 uv run --no-project --with numpy python $F/scripts/mix.py
 # 3. edit

@@ -1,0 +1,7 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi; sheet.webp and aww.webp = Mimi's Friend; hello.webp and frozen.webp = Bruno the bear, the recurring foreigner / native speaker (friendly brown bear, round ears, cream muzzle, small black nose, dot eyes, pink cheeks, navy blazer with a small red bow tie, no headphones, about one head taller than Mimi); stranger.png = the earlier one-off character whose role Bruno now plays (use it ONLY for the pose, facing and scale, not for the character).
+Match Bruno EXACTLY (shapes, colours, blazer, bow tie, proportions, outline weight). Plain pure white background, full body, centred, about 1.15x Mimi's height at the same scale as master.webp. No text, no letters, no logos.
+Save each as PNG in art/ (relative to the current directory):
+1) art/bruno-talk.png — Bruno as a native English speaker who is very confident and talks very fast: mouth wide open mid-word, one paw raised in a quick casual gesture, small speed lines near the mouth. Facing the viewer's LEFT. His face must be clearly visible (it is also cropped as a small face on a cassette label).
+2) art/bruno-shrug.png — the same Bruno shrugging with both paws up, mouth a small flat line (doesn't care), facing the viewer's LEFT.
+Do not modify other files. List the saved paths when done.
