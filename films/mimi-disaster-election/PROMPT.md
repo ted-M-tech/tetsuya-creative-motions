@@ -3,7 +3,7 @@
 Make Lanclo SNS short #040 “Pronunciation Disasters 4 - Election / Erection”, episode 4 of “Pronunciation Disasters” (Japanese learners' classic mix-ups that sound rude), in the pilot's format (films/mimi-disaster-sit).
 
 - Hook on screen from frame 1 (Japanese): 会議で “選挙が楽しみ” と言ったつもりが…
-- Scene: a meeting: a tanuki office worker means “I can’t wait for the election” and says “erection”; the owl boss does a coffee spit-take. Mimi slides in, blushing, peeking through her mittens: 「ぼ、僕は何も聞いてない！！」.
+- Scene: a meeting: Mimi’s Friend means “I can’t wait for the election” and says “erection”; Bruno as the foreign boss does a coffee spit-take. Mimi slides in, blushing, peeking through her mittens: 「ぼ、僕は何も聞いてない！！」.
 - The learner line and the model line are the owner's own registered Lanclo voice (ownvoice.py): `learner` with a custom style that clearly produces the wrong word, `us` for the right one (see source/own-voice.json). Other characters: Kokoro English.
 - The rude word is audible but censored on screen with ★.
 - Comparison card: “L と R で、会議が凍る”; right column the slip (舌が浮くと er★ction), left column the model (舌先を歯ぐきに ピタッ), front-view mouth icons that look like lips.

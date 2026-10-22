@@ -5,4 +5,4 @@ set -e
 cd "$(dirname "$0")/.."
 export HYPERFRAMES_PYTHON=${HYPERFRAMES_PYTHON:-$HOME/.local/share/hyperframes-tts/bin/python}
 tts() { npx --yes hyperframes@0.8.181 tts "$1" -v "$2" -o "assets/voice/$3"; }
-tts "I beg your pardon?!" bm_george boss-bm_george.wav
+tts "I beg your pardon?!" am_michael boss-am_michael.wav

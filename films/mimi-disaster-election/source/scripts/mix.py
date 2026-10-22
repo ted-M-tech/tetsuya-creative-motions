@@ -50,7 +50,7 @@ m.voice('learner-erection.wav', T0, g=1.0)
 m.sfx(tap() * 0.5, 3.6)                         # the censor star
 m.sfx(scratch(), F, g=2.2)
 m.sfx(freeze(0.45), F + 0.25)
-m.voice('../voice/boss-bm_george.wav', OL, 0.8)
+m.voice('../voice/boss-am_michael.wav', OL, 0.8)
 m.sfx(boing(True), M)
 m.sfx(whoosh(0.3, 0.3), C)
 m.voice('learner-erection.wav', CL, start=1.69, length=1.13)
