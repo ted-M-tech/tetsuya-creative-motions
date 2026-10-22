@@ -49,59 +49,18 @@ Borrows the structure of Duolingo's spec ad "The Path": one line and a camera fl
 
 The 2D mascot rebuilt in Blender from Python alone, finished through nine Claude Code × Codex review rounds.
 
-**My own voice? No way — a 2D Mimi short** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
+### Mimi shorts (2D, vertical, 15–25 s)
 
-[Process, prompts & source](films/mimi-jibun-no-koe/README.md) · [2D character animation](docs/2D-CHARACTER-ANIMATION.md)
+Lanclo's mascot Mimi and her friend in the official 2D style (Codex art + HyperFrames), most beside the real app recorded in the simulator. Every film keeps its process, prompts and runnable source. How to make one, or your own series: [2D character animation guide](docs/2D-CHARACTER-ANIMATION.md) · [Mimi shorts kit](kits/mimi-short/README.md) · [the cast](kits/mimi-short/cast/README.md).
 
-Mimi cringes at her own recorded English, hears her-voice native model, practises along and is convinced by a score and one fix.
-
-**"think" turns into "sink" — Mimi short #2** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
-
-[Process, prompts & source](films/mimi-think-sink/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
-
-Every "I sink so!" drops a kitchen sink; her own voice saying "I think so." and one fix for "th" make them vanish.
-
-**Asked the way, she freezes — Mimi short #3** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
-
-[Process, prompts & source](films/mimi-michi/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
-
-Asked for directions in English, Mimi turns into a block of ice; rehearsing the answer in her own voice cracks it.
-
-**The diary ends on day three — Mimi short #4** · 0:15 vertical · 2D (Codex + Rive + HyperFrames)
-
-[Process, prompts & source](films/mimi-nikki/README.md) · [Mimi shorts kit](kits/mimi-short/README.md)
-
-Three days in, Mimi has become a monk (三日坊主); the English journal turns each day into a picture worth looking back on.
-
-**Describe a photo — Mimi short #5, real app** · 0:15 vertical · 2D Mimi + simulator recording
-
-[Process, prompts & source](films/mimi-shashin/README.md) · [App capture](kits/mimi-short/app-capture/capture.sh)
-
-Mimi uses the real Lanclo app: a photo, her answer, the mistake marked, and a better sentence in her own voice.
-
-**Tsundoku — Mimi short #6, daily lesson** · 0:15 vertical · 2D Mimi + simulator recording
-
-[Process, prompts & source](films/mimi-daily/README.md)
-
-Mimi's English books pile up unread; the daily lesson picks today's sentence, plays it natively in her own voice, scores her take and shows the one sound to fix.
-
-**Action Button ① Add a phrase — "Bless your heart"** · 0:17 vertical · 2D Mimi + her friend + iPhone recordings
-
-[Process, prompts & source](films/mimi-action-add/README.md)
-
-One press on the Action Button and a tiny Mimi opens Add phrase; the AI meaning reveals her friend's "Bless your heart" was a jab. First of a three-part Action Button series.
-
-**Action Button ② Start review — in the toilet** · 0:17 vertical · 2D Mimi + simulator recording
-
-[Process & source](films/mimi-action-review/README.md)
-
-One press and review is already running; card after card until someone bangs on the door.
-
-**Action Button ③ Today's lesson — morning in bed** · 0:17 vertical · 2D Mimi + simulator recording
-
-[Process & source](films/mimi-action-lesson/README.md)
-
-"Five more minutes" — but today's lesson is already open; mum's wake-up call comes too late.
+- **First shorts (Rive bones)** — [My own voice? No way](films/mimi-jibun-no-koe/README.md) · ["think" turns into "sink"](films/mimi-think-sink/README.md) · [Asked the way, she freezes](films/mimi-michi/README.md) · [The diary ends on day three](films/mimi-nikki/README.md)
+- **Real app** — [Describe a photo](films/mimi-shashin/README.md) · [Tsundoku](films/mimi-daily/README.md) · [Lost an argument in English](films/mimi-debate/README.md) · [Keep talking for 3 minutes](films/mimi-freespeech/README.md) · [Talked for 180 seconds](films/mimi-180/README.md) · [One month to IELTS](films/mimi-ielts/README.md) · [AI chat never knows what to talk about](films/mimi-topics/README.md) · [I stopped shadowing native speakers](films/mimi-no-shadowing/README.md)
+- **Action Button** — [① Add a phrase](films/mimi-action-add/README.md) · [② Start review](films/mimi-action-review/README.md) · [③ Today's lesson](films/mimi-action-lesson/README.md)
+- **Roleplay** — [Frozen at the café](films/mimi-roleplay/README.md) · [Frozen abroad](films/mimi-frozen-abroad/README.md)
+- **AI voice** — [AI voice in 1 minute](films/mimi-voice/README.md) · [Voice tuning](films/mimi-tuning/README.md) · [US vs UK in my own voice](films/mimi-us-uk/README.md) · [Your voice in every language](films/mimi-multilang/README.md)
+- **My Notes** — [Mimi eats your files](films/mimi-import/README.md) · [I fed my flashcards to Mimi](films/mimi-flashcards/README.md) · [Swipe review](films/mimi-swipe/README.md)
+- **Habit and Mimi's report** — [One loop in Lanclo](films/mimi-loop/README.md) · [Mimi is always watching](films/mimi-watching/README.md) · [Watched by Mimi for a month](films/mimi-month/README.md) · [How a quitter kept going](films/mimi-quitter/README.md)
+- **Pronunciation Disasters** (punchline first) — [1 Sit](films/mimi-disaster-sit/README.md) · [2 Beach](films/mimi-disaster-beach/README.md) · [3 Rice](films/mimi-disaster-rice/README.md) · [4 Election](films/mimi-disaster-election/README.md) · [5 Coke](films/mimi-disaster-coke/README.md) · [6 Peace](films/mimi-disaster-peace/README.md)
 
 ## Use my filmmaking workflow
 
