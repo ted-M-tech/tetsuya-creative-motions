@@ -1,0 +1,23 @@
+# Capture-only fixture tweak for the Mimi short "Pronunciation Disasters - Coke / C*ck" (never committed to the app):
+# the first daily-lesson sentence becomes "One Coke, please." and its QA feedback points at the /oʊ/ in "Coke".
+--- a/native-ios/Lanclo/Resources/learning-catalog.json
++++ b/native-ios/Lanclo/Resources/learning-catalog.json
+@@
+-          "id": "dp-liquids-1",
+-          "text": "Please leave the light on.",
+-          "translations": {
+-            "ja": "明かりをつけたままにしてください。",
+-            "en": "Please leave the light on."
++          "id": "dp-liquids-1",
++          "text": "One Coke, please.",
++          "translations": {
++            "ja": "コーラをひとつください。",
++            "en": "One Coke, please."
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-            let target = ["light", "library", "flight"][index]
++            let target = ["Coke", "library", "flight"][index]
+             let span = (attempt.text as NSString).range(of: target)
+-            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "QA用データ：強勢のある母音をはっきり発音し、残りの単語をなめらかにつなげましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/l/", feedback: locale == "ja" ? "QA用データ：舌先を上の歯ぐきにつけ、音をなめらかにつなげましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)
++            return PracticeEvaluation(attemptID: attempt.id, evaluatedAt: attempt.recordedAt.addingTimeInterval(10), result: AssessmentResult(status: "scored", score: 78 + index * 4, feedback: locale == "ja" ? "「Coke」の母音が短い「ア」に近く聞こえます。口をすぼめて「オウ」と言いましょう。" : "QA fixture: keep the stressed vowel clear and connect the remaining words smoothly.", issues: [.init(target: target, start: span.location, end: span.location + span.length, focusText: target, sound: "/oʊ/", feedback: locale == "ja" ? "「オ」から唇を丸めて「ウ」へすべらせ、「コウク」と言いましょう。" : "QA fixture: place the tongue tip behind the upper teeth and connect the sounds smoothly.", category: "sounds", kind: "substitution")], dimensions: ["sounds": 76, "stress": 82, "rhythm": 79, "intonation": 86, "fluency": 81], model: "qa-fixture", rubric: "qa-rubric", assessmentConfigId: "qa-config"), requestedAt: attempt.recordedAt, feedbackLocale: locale)
