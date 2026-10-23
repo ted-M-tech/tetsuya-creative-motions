@@ -1,0 +1,8 @@
+Per-film brief from the batch commander (2026-10-23), verbatim:
+
+- Film id: mimi-hear-can. Notion ID 061, page https://app.notion.com/p/402b82f03a848143b2b7f193378897f6 (read it). Drive folder "061. Can You Hear It 1 - Can or Cant", Prefix Hear1_Can.
+- EPISODE 1 OF A NEW SERIES "Can You Hear It?" (a listening quiz; viewers answer A/B in comments). Episode 2 (Excuse Me, three intonations A/B/C) will copy your source/ afterwards: keep a clean reusable structure with generic beat ids (hook, play, reveal, rule, end) and write a "Series template" section in your README.
+- Copy a starting point from films/mimi-disaster-hat/source and adapt.
+- Story (~17 s): frame 1 big A / B cards + hook 「can？can't？聞き分けて」. Countdown 3-2-1 while own-voice us plays "I can swim." / "I can't swim." in random order (label which is A and B only at the reveal). Reveal: the Friend guessed wrong, Mimi grins. Mimi's rule card 「can＝弱く短い / can't＝はっきり強い（tはほぼ聞こえない）」 with both lines again. A short 「A？B？コメントで」 prompt before the end card. End card + tap. Cast: Mimi + Friend only.
+- Learning point (US): in a sentence "can" is weak (k'n) and the verb carries the stress; "can't" keeps a full vowel /æ/ and stress, its t often barely heard. Listen for the vowel, not the t.
+- Own voice: us model takes for both lines (no learner style needed). Verify acoustically that "can" is reduced/short and "can't" has a longer full vowel; regenerate (≤3) if not.
