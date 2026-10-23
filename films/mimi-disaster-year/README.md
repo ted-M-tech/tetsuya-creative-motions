@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #057 (series “Pronunciation Disasters”, episode 15). Draft. 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Planned for late December.
+Lanclo SNS short #057 (series “Pronunciation Disasters”, episode 15). Final, owner approved on 2026-10-23. 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Planned for late December.
 
 Scene: New Year's morning at a snowy shrine. Mimi's Friend waves, “Happy New Year!”, but the katakana 「イヤー」 drops the y glide: “Happy New Ear!”. The air freezes; Mimi bows and solemnly holds out a pair of pink earmuffs (「新しい耳です。」). Then Mimi pops up: 「それ「新しい耳」に聞こえてる〜！！」. Cast: Mimi and the Friend only.
 
@@ -20,7 +20,7 @@ Scene: New Year's morning at a snowy shrine. Mimi's Friend waves, “Happy New Y
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `057. Pronunciation Disasters 15 - Year or Ear/Disasters15_Year_assets/own-voice/`).
 - Cast: Mimi and her Friend (the learner). Mimi's Japanese first person is 「僕」 (she has no first-person line here).
 
-![Draft frames](process/00-draft-frames.jpg)
+![Frames](process/00-draft-frames.jpg)
 
-- Draft files in Lanclo's Google Drive `002.SNS/057. Pronunciation Disasters 15 - Year or Ear/` (`Disasters15_Year_draft_2026-10-23.mp4`, `Disasters15_Year_draft_EN-subs_2026-10-23.mp4`, raw material in `Disasters15_Year_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/057. Pronunciation Disasters 15 - Year or Ear/` (`Disasters15_Year_2026-10-23.mp4`, `Disasters15_Year_EN-subs_2026-10-23.mp4`, raw material in `Disasters15_Year_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

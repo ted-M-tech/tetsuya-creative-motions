@@ -41,3 +41,8 @@
 
 - The learner voice is the owner's (a young adult man) on the Friend.
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters15_Year_2026-10-23.mp4`, `Disasters15_Year_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
