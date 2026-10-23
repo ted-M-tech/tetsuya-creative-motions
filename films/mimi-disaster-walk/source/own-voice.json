@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-worked",
+   "text": "I worked! For two hours!",
+   "style": "Speak General American English with a rhotic r, proud and cheerful, a little slow and syllable-by-syllable like a Japanese learner. The word 'worked' is the ordinary American word 'worked' (rhymes with 'jerked' and 'perked', the 'er' vowel of 'her' and 'bird', tongue curled back), so a listener clearly hears 'I worked! For two hours!'."
+  },
+  {
+   "id": "native-walked",
+   "text": "I walked! For two hours!",
+   "accent": "us"
+  }
+ ]
+}

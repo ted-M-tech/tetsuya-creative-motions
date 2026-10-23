@@ -25,7 +25,7 @@ Paths below: the creative-motions checkout is `~/Develop/tetsuya-creative-motion
 
 - [ ] One worktree and branch per film: `git -C ~/Develop/tetsuya-creative-motions worktree add ~/orca/workspaces/tetsuya-creative-motions/<film-id> -b feat/<film-id> origin/main`. Film ids are `mimi-<slug>` (series: `mimi-disaster-<word>`).
 - [ ] Start `films/<film-id>/` from the closest episode: copy its `source/`, keep the beat ids, swap story, art, lines and times. Skeleton per [Adding a film](../../docs/ADDING-A-FILM.md): `README.md` + `README.ja.md`, `PROMPT.md`, `PROCESS.md` (owner's words quoted verbatim), `CREDITS.md`, `prompts/`, `process/`, `source/README.md`. Save prompts and reviews to files as you go.
-- [ ] Copy the theme BGM into the worktree: `002.SNS/_BGM/` → `kits/mimi-short/library/bgm/everyone-get-up.mp3` (licensed, never in Git; without it `sfx.py` silently falls back to a code-made bed).
+- [ ] Fetch the theme BGM into the worktree: `kits/mimi-short/scripts/fetch-bgm.sh` copies it from the private product repo (`origin/main:design/sns-bgm/everyone-get-up.mp3`) to `kits/mimi-short/library/bgm/` (licensed, never in a public repo; `sfx.py` and `stage.sh` also run it when the file is missing, and `sfx.py` stops with an error if it is still missing). Drive `002.SNS/_BGM/` keeps a backup copy. `MIMI_BGM=builtin` (code-made bed) only for a deliberate rebuild of an early episode.
 
 ## 3. Fixed rules (do not reopen)
 
@@ -124,4 +124,4 @@ The rude word is audible (it is the joke) and starred on screen; keep it cheeky,
 
 ## Not reproducible from Git alone
 
-The theme BGM (Drive `_BGM/`), own-voice WAVs and simulator takes (Drive `_assets/`), renders, the owner's Gemini voice key, the YouTube upload token, Notion / Drive access and the production deploys. A fresh session needs those on this machine; the record says where each lives.
+The theme BGM (private product repo `design/sns-bgm/`, fetched by `fetch-bgm.sh`; backup in Drive `_BGM/`), own-voice WAVs and simulator takes (Drive `_assets/`), renders, the owner's Gemini voice key, the YouTube upload token, Notion / Drive access and the production deploys. A fresh session needs those on this machine; the record says where each lives.

@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-launch",
+   "text": "Shall we have launch?",
+   "style": "Speak English as a shy, hopeful Japanese young man asking a girl on a date in the park. Say every word exactly as written: 'launch' rhymes with 'paunch' and 'haunch': lips rounded and pushed forward into a long, open 'aw' (like 'law', 'lawn'), clearly LONG, so a listener clearly hears 'Shall we have launch?' (as in launching a rocket), not 'lunch'. Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-lunch",
+   "text": "Shall we have lunch?",
+   "accent": "us"
+  }
+ ]
+}
