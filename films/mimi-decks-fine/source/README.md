@@ -14,7 +14,7 @@ kits/mimi-short/scripts/cutout.sh $F/art/mimi-yawn.png $F/art/mimi-yawn.webp
 kits/mimi-short/scripts/cutout.sh $F/art/highfive.png $F/art/highfive.webp
 # 3. voices (owner's own voice, paid; or copy fine.wav / casual.wav from Drive Decks_ImFine_assets/own-voice/ to $F/assets/own-voice/)
 python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json
-uv run --no-project --with numpy python $F/scripts/mix.py      # hf/assets/mix.wav: one static gain, bed at -26 dBFS RMS (about -17 LUFS), TP <= -1.5 dBTP
+uv run --no-project --with numpy python $F/scripts/mix.py      # hf/assets/mix.wav: compressed + level-matched voices, one static gain (limiter GR <= 2 dB), about -17 LUFS
 # 4. edit and render
 kits/mimi-short/stage.sh $F/hf
 mkdir -p $F/hf/assets/art && P=kits/mimi-short/library/poses && cp $F/art/mimi-yawn.webp $F/art/highfive.webp \
