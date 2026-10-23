@@ -38,3 +38,7 @@ Three learner generations were used (the limit). The film uses only “I worked!
 ## Revisions
 
 - v2 (2026-10-22, commander review): "in the freeze beat the Friend is rendered cream/yellow instead of white — off-model". Cause: the freeze tint inherited from episode 6 (a yellow `#ffd84a` multiply layer over the whole scene). Replaced with episode 5's desaturating tint (`#9aa6b2`, saturation blend), so the white cast stays white; whole film re-scanned at 2 fps. Previous drafts kept in Drive `old/` as `*_v1-cream-friend.mp4`.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters8_Walk_2026-10-22.mp4`, `Disasters8_Walk_EN-subs_2026-10-22.mp4`).

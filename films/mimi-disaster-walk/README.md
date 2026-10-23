@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #049 (series “Pronunciation Disasters”, episode 8). Draft. 19.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #049 (series “Pronunciation Disasters”, episode 8). 19.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a Sunday garden BBQ. Bruno the host asks “How did you get here?”; Mimi's Friend proudly answers “I walked!”, but it comes out as “I worked!” (an r-coloured vowel). Bruno: “You worked?! On a Sunday?!” and sheds a tear of pity for the workaholic. Mimi jumps in with a necktie and a briefcase. Gag object: a tired briefcase and an alarm clock at 11 pm.
 
@@ -21,7 +21,7 @@ Format: the series template ([mimi-disaster-sit](../mimi-disaster-sit/README.md#
 
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; the WAVs are biometric and not in Git (Drive `049. Pronunciation Disasters 8 - Walk or Work/Disasters8_Walk_assets/own-voice/`). Bruno is Kokoro English `am_michael` (`source/assets/voice/`).
 - Slip check (Praat formants, not Whisper): the vowel of the learner's “worked” has F3 ≈ 1700–1850 Hz with F2 ≈ 1300 (r-coloured /ɝ/); the native “walked” keeps F3 ≈ 2800 Hz (no r). See [PROCESS.md](PROCESS.md).
-![Draft frames](process/00-final-frames.jpg)
+![Final frames](process/00-final-frames.jpg)
 
-- Draft files in Lanclo's Google Drive `002.SNS/049. Pronunciation Disasters 8 - Walk or Work/` (`Disasters8_Walk_draft_2026-10-22.mp4`, `Disasters8_Walk_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters8_Walk_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/049. Pronunciation Disasters 8 - Walk or Work/` (`Disasters8_Walk_2026-10-22.mp4`, `Disasters8_Walk_EN-subs_2026-10-22.mp4`, raw material in `Disasters8_Walk_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
