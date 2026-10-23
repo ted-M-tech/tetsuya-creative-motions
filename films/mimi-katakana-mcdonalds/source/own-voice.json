@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-katakana",
+   "text": "Makudonarudo.",
+   "style": "Say this one word as a Japanese person reading the katakana word マクドナルド aloud at a fast-food counter, cheerful and confident. Pronounce it exactly as written in Japanese: six short, even syllables ma-ku-do-na-ru-do, every syllable with its own clear vowel (ma, ku, do, na, ru, do), flat Japanese pitch with no English stress, a light Japanese tapped r in ru. Steady, about one and a half seconds. Natural, not a caricature."
+  },
+  {
+   "id": "us-mcdonalds",
+   "text": "McDonald's.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Three syllables only: a quick reduced 'mc' (like 'muk'), a strong, loud, higher-pitched stressed 'DON' (as in 'Donald'), and a short reduced 'alds' ending in a z sound. Do not add any vowel after the consonants. Native rhythm, not slowed down."
+  }
+ ]
+}

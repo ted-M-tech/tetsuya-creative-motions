@@ -37,7 +37,19 @@ Notion Content Calendar ID 63（Drive「063. How Do You Say It 1 - Yoroshiku One
 - 字幕「保存は自分で」は「自動では保存されない」から。「直してもOK」は結果が編集できる入力欄であることから。
 - 音：声が主、BGM はキットのテーマ、SFX は小さく、明るいベルなし。
 
+## コマンダーの確認（2026-10-23、v2）
+
+- 内容は承認。答えは短い方 "I look forward to working with you." のまま。
+- 音量：−15.7 → −14.1 LUFS、トゥルーピーク −1.9 dBTP（mimi-katakana-mcdonalds と同じ後段ゲイン＋リミッター。リミッターは −2.5 dBFS にしてトゥルーピークを −1.5 dBTP 未満に。バランスは同じ）。
+- プラットフォームのセーフエリア（オーナー「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」）：右のアクション列（x>900、y 820–1520）から吹き出し・友だち・電話・結果ラベル・カード・小さいMimi・エンドカードの文字を左へ。英語字幕は x 60–880、下端 y 1500 以内（エンドカードだけ上に）。フックの1行目は y 200 以降（シリーズ名のラベルも 200 以降）。区域を重ねたシートで確認。App Store バッジはキットのエンドカードのまま下の区域に一部かかる。
+- 旧版は Drive の old/ に `_v1` で移した。
+
 ## 学んだこと
 
 - ffmpeg で倍速の区間を切るとき、`-t` を `-i` の後ろに置くと出力の長さになり、倍速分だけ後ろがずれる。入力の長さは `-ss … -t … -i` で指定する。
 - 作成の AI は temperature 0.2 でも毎回言い回しが変わる。複数回取って全部記録し、どれを使ったかを書く。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Say1_Yoroshiku_2026-10-23.mp4`, `Say1_Yoroshiku_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).

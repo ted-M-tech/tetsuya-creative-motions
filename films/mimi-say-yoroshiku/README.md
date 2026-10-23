@@ -6,9 +6,9 @@ Episode 1 and template of the feature-led series "How Do You Say It?": a Japanes
 
 0:18.6 / 1080×1920, 60 fps / two cuts: Japanese captions only, and with English subtitles (`kits/mimi-short/render-cuts.sh`) / the owner's own voice for the English lines / 2D Mimi and her Friend (pose swap + HyperFrames) beside a simulator recording of the iOS app
 
-Status: draft (2026-10-23), in Drive `002.SNS/063. How Do You Say It 1 - Yoroshiku Onegaishimasu/` as `Say1_Yoroshiku_draft_2026-10-23.mp4` and `Say1_Yoroshiku_draft_EN-subs_2026-10-23.mp4`.
+Status: final, owner approved on 2026-10-23. Final files in Drive `002.SNS/063. How Do You Say It 1 - Yoroshiku Onegaishimasu/` as `Say1_Yoroshiku_2026-10-23.mp4` and `Say1_Yoroshiku_EN-subs_2026-10-23.mp4`.
 
-![Draft frames](process/00-draft-frames.jpg)
+![Frames](process/00-draft-frames.jpg)
 
 ## Files
 
