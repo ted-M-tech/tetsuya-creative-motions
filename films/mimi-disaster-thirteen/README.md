@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #055 (series “Pronunciation Disasters”, episode 13; the series' first **word-stress** episode). 17.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). **Draft** (2026-10-23), waiting for the owner's review.
+Lanclo SNS short #055 (series “Pronunciation Disasters”, episode 13; the series' first **word-stress** episode). 17.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Final, owner approved on 2026-10-23.
 
 Scene: a theme-park ticket booth. Mimi plays the clerk (role outfit: red vest, bow tie, clerk cap). The Friend orders “Thirteen tickets, please.” with flat, katakana-style stress (サーティーン); Mimi the clerk hears *thirty* and hands over a tower of tickets that buries the Friend. Mimi drops the role: 「それ「30」に聞こえてる〜！！」. Cast: Mimi and the Friend only.
 
@@ -18,5 +18,5 @@ Scene: a theme-park ticket booth. Mimi plays the clerk (role outfit: red vest, b
 | 16.60–17.90 | End card, CTA tap at 17.2 |
 
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `055. Pronunciation Disasters 13 - Thirteen or Thirty/Disasters13_Thirteen_assets/own-voice/`). Mimi has no voice (bubbles only).
-- Drafts in Lanclo's Google Drive `002.SNS/055. Pronunciation Disasters 13 - Thirteen or Thirty/` (`Disasters13_Thirteen_draft_2026-10-23.mp4`, `Disasters13_Thirteen_draft_EN-subs_2026-10-23.mp4`, raw material in `Disasters13_Thirteen_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/055. Pronunciation Disasters 13 - Thirteen or Thirty/` (`Disasters13_Thirteen_2026-10-23.mp4`, `Disasters13_Thirteen_EN-subs_2026-10-23.mp4`, raw material in `Disasters13_Thirteen_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
