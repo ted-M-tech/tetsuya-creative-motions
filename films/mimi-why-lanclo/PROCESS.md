@@ -87,3 +87,7 @@ Notion Content Calendar ID 54（Drive「054. Why Lanclo - Speak Think Improve」
 - 地図に⑥フレーズ復習（55.0–57.2秒）。native-ios origin/main の `Views/VocabularyScreen.swift` の `NoteReviewSwipe`（右＝覚えていた、左＝もう一度、上＝簡単）。録画は 014 Swipe Review の Drive の録画を2.2秒（右スワイプ）。単語のピースを「単語・フレーズ」にして、薄い青と点線の枠で埋める（実線の青ではない）。文法・リーディングは灰色のまま「ここは机でできる」。
 - まとめ（57.2–59.4秒）を「インプットも、スワイプでサクッと。でも力を入れているのは、声に出して考えるほう。」に。声側のピースを1.12倍に拡大して光らせ、右側の象限を青く。
 - 以降は2.2秒後ろへ、全体72.8秒。約−14.4 LUFS。v3 は Drive の `old/` に `*_v3-skill-map.mp4`。
+
+## Owner approval
+
+- 2026-10-22 (v4): 「いいね。これで公開して」. The Drive cuts were renamed without `_draft_`: `Why_Lanclo_2026-10-22.mp4`, `Why_Lanclo_EN-subs_2026-10-22.mp4`.

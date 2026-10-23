@@ -6,6 +6,6 @@
 
 1:12.8 / 1080×1920, 60 fps / 日本語は字幕と吹き出し、脇役の英語はKokoro、日本語の音声なし / 公式2Dポーズ + GSAP、実アプリ（過去作のシミュレーター録画、QAフィクスチャ）+ HyperFrames
 
-下書きv4（オーナーの指摘で自己紹介・地図とスワイプ復習・Mimiの締め・共同開発の表示・ココの英語を反映、未承認）。2本：日本語のみ（`mimi-why-lanclo.mp4`）と英語字幕つき（`mimi-why-lanclo-en.mp4`）。下書きはLanclo Google Drive `002.SNS/054. Why Lanclo - Speak Think Improve/`（`Why_Lanclo_draft_2026-10-22.mp4`、`Why_Lanclo_draft_EN-subs_2026-10-22.mp4`、アプリのクリップは `Why_Lanclo_assets/`、前の下書きは `old/` に `*_v1-latte-scene.mp4`・`*_v2-self-intro.mp4`・`*_v3-skill-map.mp4`）。Notion Content Calendar ID 54。
+完成版（v4、2026-10-22 オーナー承認）。2本：日本語のみ（`mimi-why-lanclo.mp4`）と英語字幕つき（`mimi-why-lanclo-en.mp4`）。完成版はLanclo Google Drive `002.SNS/054. Why Lanclo - Speak Think Improve/`（`Why_Lanclo_2026-10-22.mp4`、`Why_Lanclo_EN-subs_2026-10-22.mp4`、アプリのクリップは `Why_Lanclo_assets/`、前の下書きは `old/` に `*_v1-latte-scene.mp4`・`*_v2-self-intro.mp4`・`*_v3-skill-map.mp4`）。Notion Content Calendar ID 54。
 
 ![フレーム](process/00-final-frames.jpg)

@@ -6,7 +6,7 @@ The founder's reason for Lanclo, in 73 seconds. Hook from the first frame:「海
 
 1:12.8 / 1080×1920, 60 fps / Japanese captions and bubbles, the side cast's English by Kokoro, no Japanese voice / official 2D poses + GSAP, real app (earlier films' simulator takes, QA fixtures) + HyperFrames
 
-Draft v4 (owner feedback: self-introduction beat, skill map with the swipe review, Mimi's closing, co-developer label, Coco's line), not yet approved. Two cuts: Japanese only (`mimi-why-lanclo.mp4`) and with English subtitles (`mimi-why-lanclo-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/054. Why Lanclo - Speak Think Improve/` (`Why_Lanclo_draft_2026-10-22.mp4`, `Why_Lanclo_draft_EN-subs_2026-10-22.mp4`, app clips in `Why_Lanclo_assets/`; earlier drafts in `old/` as `*_v1-latte-scene.mp4`, `*_v2-self-intro.mp4`, `*_v3-skill-map.mp4`). Notion Content Calendar ID 54.
+Final (v4, owner approved 2026-10-22). Two cuts: Japanese only (`mimi-why-lanclo.mp4`) and with English subtitles (`mimi-why-lanclo-en.mp4`); final files in Lanclo's Google Drive `002.SNS/054. Why Lanclo - Speak Think Improve/` (`Why_Lanclo_2026-10-22.mp4`, `Why_Lanclo_EN-subs_2026-10-22.mp4`, app clips in `Why_Lanclo_assets/`; earlier drafts in `old/` as `*_v1-latte-scene.mp4`, `*_v2-self-intro.mp4`, `*_v3-skill-map.mp4`). Notion Content Calendar ID 54.
 
 ![Frames](process/00-final-frames.jpg)
 
