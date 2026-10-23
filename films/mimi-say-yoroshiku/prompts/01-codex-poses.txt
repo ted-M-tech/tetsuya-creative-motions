@@ -1,0 +1,22 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi; sheet.webp and aww.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears,
+dark-grey tip on the ear at the viewer's RIGHT, soft orange patch around the eye at the viewer's RIGHT, navy-and-blue
+headphones with a white "L" on the cup at the viewer's LEFT); friend-speech.webp = the Friend in the white shirt and navy tie outfit.
+Match the characters EXACTLY (shapes, markings, colours, headphones, proportions, outline weight). Plain pure white
+background, full body, centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L".
+Each image shows ONE character only. Scene: an office, the Friend's first day at a new job.
+
+Save as PNG in art/ (relative to the current directory):
+1) art/friend-bow.png — the Friend in the same white shirt and navy tie as friend-speech.webp, caught FROZEN mid-bow: upper body bent
+   forward about 45 degrees in a stiff, nervous Japanese bow, both mittens pressed flat to the sides of the legs, sleepy line eyes
+   squeezed, a big sweat drop, ears stiff. Seen from a three-quarter side view, bowing toward the viewer's RIGHT. Headphones on,
+   white "L" on the cup at the viewer's LEFT.
+2) art/friend-bow-smile.png — the same Friend and outfit, a light, relaxed bow toward the viewer's RIGHT with a confident happy
+   ^ ^ smile, one mitten raised in a small friendly wave. Headphones on, white "L" on the cup at the viewer's LEFT.
+3) art/mimi-colleague-hello.png — Mimi as a friendly office colleague: a soft light-blue cardigan over a white shirt and a lanyard
+   with a plain blank white ID card (no text). Smiling warmly, one mitten held out for a handshake toward the viewer's LEFT,
+   body turned slightly toward the viewer's LEFT. Headphones on, white "L" on the cup at the viewer's LEFT.
+4) art/mimi-colleague-puzzled.png — the same Mimi and outfit, puzzled: head tilted, one mitten scratching the cheek, dot eyes,
+   small wavy mouth, one ear bent, body turned slightly toward the viewer's LEFT. No question mark. Headphones on, white "L" on the
+   cup at the viewer's LEFT.
+Do not modify other files. List the saved paths when done.

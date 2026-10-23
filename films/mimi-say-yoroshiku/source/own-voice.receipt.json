@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "friend-please-yoroshiku": {
+      "text": "Please... yoroshiku?",
+      "style": "Speak as a nervous Japanese beginner on the first day at a new job, bowing to a new colleague and not knowing the English. Say 'Please...' slowly and hesitantly in katakana-like English, trail off, a short pause, then say the Japanese word 'yoroshiku' with Japanese pronunciation (yo-ro-shi-ku) and a small unsure rising intonation, as if asking. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "890089ab64f0090d50803fdb569795fca639c3c6ac83d02e3250e0165bfbda93",
+      "at": "2026-10-23T20:38:05+00:00"
+    },
+    "nice-to-meet-you": {
+      "text": "Nice to meet you.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "0c49bc142b8516bc257d0fda705f210d4e764489c110a281a1ff3bbc7c77bdac",
+      "at": "2026-10-23T20:38:07+00:00"
+    },
+    "look-forward-working": {
+      "text": "I look forward to working with you.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9c6a0bfd79a4750e362f11cc9a60cac7708f36fbcf55452f6e7adb3f0b2c9ace",
+      "at": "2026-10-23T20:38:10+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
