@@ -287,3 +287,8 @@ films/mimi-hear-excuse/**/*.wav
 films/mimi-hear-excuse/**/*.mp3
 films/mimi-hear-excuse/**/*.mp4
 films/mimi-hear-excuse/**/*.mov
+
+# 063 How Do You Say It? 1 (mimi-say-yoroshiku)
+films/mimi-say-yoroshiku/source/hf/assets/
+films/mimi-say-yoroshiku/source/hf/.hyperframes/
+films/mimi-say-yoroshiku/source/hf/.thumbnails/
