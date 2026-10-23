@@ -62,7 +62,7 @@ m.end_chord(E)
 m.sfx(pochi(), C['TAP'])
 out = m.write(SRC / 'hf/assets/mix.wav')
 # loudnorm's single pass stops short of -14 on a short, voice-sparse film (true peak bound): measure, add the missing gain
-# in front of a -1.5 dBTP limiter, and measure again. The balance between voice, SFX and bed is unchanged.
+# in front of a -2.4 dB limiter (the cuts' AAC lands at about -1.6 dBTP), and measure again. The balance between voice, SFX and bed is unchanged.
 import json as _j, re, shutil, subprocess  # noqa: E402
 
 
@@ -79,6 +79,6 @@ for _ in range(3):
         break
     tmp = out.with_suffix('.tmp.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af',
-                    f'volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.84:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
+                    f'volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.76:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
     shutil.move(tmp, out)
 print(out, 'I=%.1f LUFS TP=%.1f dBTP' % lufs(out))

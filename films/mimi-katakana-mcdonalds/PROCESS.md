@@ -29,6 +29,16 @@
 - Loudness to −14 LUFS via the mix (series consistency), voice on top, true peak ≤ −1 dBTP: done as above.
 - Explain card: Mimi moved out of the bottom ~400 px (now 1170–1460 px, beside the tip; the tip and お手本 tag are left-aligned). v1 drafts moved to Drive `old/` (`*_v1.mp4`).
 
+## Platform safe zones (2026-10-23, v3)
+
+- Owner: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」
+- EN subtitles moved to x 60–880 with the box bottom at y 1490 (above the bottom 420 px); the end-card subtitle sits at the top (y 220) so it does not cover the CTA button.
+- Right rail (x > 900, y 820–1520) kept clear: characters shifted left (clerk Mimi's face now left of x 900), the reply bubbles end at x 890, the explain-card Mimi is at x 560–810 beside the two-line tip, the お手本 tag sits in the 英語○ card header (y 646, above the rail), sparkles moved in.
+- Top text starts at y ≥ 200 (hook card top 165, card title 200, CTA card 165).
+- Loudness rule tightened to true peak ≤ −1.5 dBTP: the post-limiter is now −2.4 dB; cuts measure −14.0 LUFS, peak −1.9 dBTP.
+- Overlay check: [process/02-safe-zones.jpg](process/02-safe-zones.jpg) (EN cut, zones drawn). The kit end card's App Store badge stays in the bottom zone (kit layout, as in every episode).
+- v2 drafts moved to Drive `old/` (`*_v2.mp4`).
+
 ## Uncertain / for review
 
 - The learner word is fast (six beats in about 0.7 s); the meter fills quickly, so the card replays it over six equal dots.
