@@ -1,0 +1,18 @@
+{
+ "_": "Katakana Traps 2 (Mansion) cue sheet (seconds on the film clock); scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip (SLIP, RICH, PANIC), explain (EXPLAIN, EM1, EM2), model (MODEL, Q1, Q2: the quick-fire trap card), cta (CTA, DEFL), end (E, TAP, END). TRIM = seconds of leading silence cut from each take (measured with silencedetect -40 dB).",
+ "SLIP": 1.25,
+ "RICH": 3.0,
+ "PANIC": 3.7,
+ "EXPLAIN": 4.5,
+ "EM1": 5.5,
+ "EM2": 7.0,
+ "MODEL": 8.5,
+ "Q1": 8.8,
+ "Q2": 9.8,
+ "CTA": 11.0,
+ "DEFL": 12.1,
+ "E": 13.6,
+ "TAP": 14.2,
+ "END": 15.1,
+ "TRIM": {"learner-mansion": 0.25, "us-apartment": 0.15, "us-outlet": 0.2, "us-complaint": 0.2}
+}

@@ -241,6 +241,67 @@ films/mimi-disaster-six/source/hf/.thumbnails/
 films/mimi-disaster-six/source/renders/
 films/mimi-disaster-six/source/art/ref/
 !films/mimi-disaster-six/source/assets/voice/
+films/mimi-disaster-thirteen/source/hf/assets/
+films/mimi-disaster-thirteen/source/renders/
+
+# mimi-disaster-very: staged/rendered media and the owner's voice mix (never in this public repo)
+films/mimi-disaster-very/source/hf/assets/
+films/mimi-disaster-very/source/renders/
+films/mimi-disaster-very/**/*.wav
+films/mimi-disaster-very/**/*.mp3
+films/mimi-disaster-very/**/*.mov
+films/mimi-disaster-very/**/*.mp4
+films/mimi-disaster-year/source/hf/assets/
+films/mimi-disaster-year/source/renders/
+films/mimi-katakana-mcdonalds/source/hf/assets/
+films/mimi-katakana-mcdonalds/source/renders/
+films/mimi-katakana-mansion/source/hf/assets/
+films/mimi-katakana-mansion/source/renders/
+films/mimi-katakana-mansion/**/*.wav
+films/mimi-katakana-mansion/**/*.mp4
+films/mimi-katakana-mansion/**/*.mov
+films/mimi-katakana-mansion/**/*.mp3
+films/mimi-katakana-hotel/source/hf/assets/
+films/mimi-katakana-hotel/source/hf/.hyperframes/
+films/mimi-katakana-hotel/source/hf/.thumbnails/
+films/mimi-katakana-hotel/source/renders/
+films/mimi-katakana-hotel/**/*.wav
+films/mimi-katakana-hotel/**/*.mp4
+films/mimi-katakana-hotel/**/*.mov
+films/mimi-katakana-hotel/**/*.mp3
+films/mimi-hear-can/source/hf/assets/
+films/mimi-hear-can/source/hf/.hyperframes/
+films/mimi-hear-can/source/hf/.thumbnails/
+films/mimi-hear-can/source/renders/
+films/mimi-hear-can/**/*.wav
+films/mimi-hear-can/**/*.mp3
+films/mimi-hear-can/**/*.m4a
+films/mimi-hear-can/**/*.mov
+films/mimi-hear-can/**/*.mp4
+films/mimi-hear-excuse/source/hf/assets/
+films/mimi-hear-excuse/source/hf/.hyperframes/
+films/mimi-hear-excuse/source/hf/.thumbnails/
+films/mimi-hear-excuse/source/renders/
+films/mimi-hear-excuse/source/assets/own-voice/
+films/mimi-hear-excuse/**/*.wav
+films/mimi-hear-excuse/**/*.mp3
+films/mimi-hear-excuse/**/*.mp4
+films/mimi-hear-excuse/**/*.mov
+
+# 063 How Do You Say It? 1 (mimi-say-yoroshiku)
+films/mimi-say-yoroshiku/source/hf/assets/
+films/mimi-say-yoroshiku/source/hf/.hyperframes/
+films/mimi-say-yoroshiku/source/hf/.thumbnails/
+# 064 How Do You Say It? 2 (mimi-say-otsukare)
+films/mimi-say-otsukare/source/hf/assets/
+films/mimi-say-otsukare/source/hf/.hyperframes/
+films/mimi-say-otsukare/source/hf/.thumbnails/
+films/mimi-say-otsukare/source/renders/
+films/mimi-say-otsukare/source/assets/
+films/mimi-say-otsukare/**/*.wav
+films/mimi-say-otsukare/**/*.mp3
+films/mimi-say-otsukare/**/*.mov
+films/mimi-say-otsukare/**/*.mp4
 
 # 065 mimi-decks-fine: edit assets (own-voice mix), simulator takes and renders stay out of Git
 films/mimi-decks-fine/source/hf/assets/

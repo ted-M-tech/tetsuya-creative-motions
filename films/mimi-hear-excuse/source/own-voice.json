@@ -1,0 +1,19 @@
+{
+ "lines": [
+  {
+   "id": "us-a-fall",
+   "text": "Excuse me.",
+   "style": "Speak fluent General American English. Say it as a polite, slightly apologetic statement while stepping past someone, with a FALLING tune exactly like saying 'Thank you.' with a period: the first part is higher and the pitch goes DOWN on 'me'. Put the stress on 'CUSE' at a clearly raised, bright pitch, then let your voice fall a lot, smoothly and audibly, so 'me' is about half as high, low and soft at the end. Downward, final, finished. Absolutely no upward rise on 'me', no questioning tone."
+  },
+  {
+   "id": "us-b-rise",
+   "text": "Excuse me?",
+   "style": "Speak fluent, relaxed General American English. You did not catch what someone said and politely ask them to repeat it, meaning 'Pardon?'. Neutral, curious and friendly, not annoyed. Normal stress on 'CUSE', then a clear, gentle question rise at the end: the pitch goes up smoothly on 'me'. Moderate loudness, no extra emphasis on 'me'."
+  },
+  {
+   "id": "us-c-offended",
+   "text": "Excuse ME?!",
+   "style": "Speak fluent General American English. You are offended and indignant: someone just said something rude to you and you cannot believe it. Say 'excuse' quickly and low, then put heavy, loud stress on 'ME' and draw it out, with a big, sharp pitch rise on 'ME' that jumps far higher than the rise of a normal question, sliding up to a very high end. Incredulous, sassy, a bit outraged, like 'How dare you?'. Not shouting, but clearly offended."
+  }
+ ]
+}

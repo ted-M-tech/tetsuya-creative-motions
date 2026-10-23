@@ -1,0 +1,8 @@
+Use your image generation tool. The attached images are the official Lanclo 2D art (Mimi and her Friend) and props already drawn in the same style (sink, bulb). Draw PROPS ONLY, no characters, in EXACTLY the same illustration style: navy outlines of the same weight, flat soft colours, a few small highlights, cute and simple. Each prop isolated, centred, on a plain pure white background. No text, no letters, no numbers, no logos anywhere.
+
+Save each as PNG in art/ (relative to the current directory):
+1) art/castle.png - a grand luxury mansion like a small fairy-tale castle / palace: a wide pale-cream building with blue pointed roofs and two little towers, many windows, a grand front door, and in front of it a round stone fountain spraying water, a neat lawn and two round trees. Dreamy and rich-looking. Wider than tall.
+2) art/apartment.png - an ordinary modern apartment building (a Japanese "mansion" block of flats): a plain light-grey/beige mid-rise block of about five floors, rows of identical small balconies and windows, an entrance at the bottom, one small tree. Friendly but clearly ordinary, not luxurious. Taller than wide.
+3) art/outlet.png - a wall power socket (US style: a white rectangular faceplate with two sockets, each with two vertical slots and a round ground hole) with a power plug and a short cable about to go in, three-quarter view.
+4) art/complaint.png - a red angry speech bubble with a white anger mark (the manga cross-vein symbol) in it and two small steam puffs; no letters.
+Do not modify other files. List the saved paths when done.

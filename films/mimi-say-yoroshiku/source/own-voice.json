@@ -1,0 +1,11 @@
+{
+ "lines": [
+  {
+   "id": "friend-please-yoroshiku",
+   "text": "Please... yoroshiku?",
+   "style": "Speak as a nervous Japanese beginner on the first day at a new job, bowing to a new colleague and not knowing the English. Say 'Please...' slowly and hesitantly in katakana-like English, trail off, a short pause, then say the Japanese word 'yoroshiku' with Japanese pronunciation (yo-ro-shi-ku) and a small unsure rising intonation, as if asking. Natural, not a caricature."
+  },
+  {"id": "nice-to-meet-you", "text": "Nice to meet you.", "accent": "us"},
+  {"id": "look-forward-working", "text": "I look forward to working with you.", "accent": "us"}
+ ]
+}
