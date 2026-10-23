@@ -12,7 +12,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, boing, ding, freeze, pochi, pop_seq, tap, whoosh  # noqa: E402
+from sfx import SR, Mix, boing, ding, freeze, pochi, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); hf/index.html uses the same times.
 HOOK = 0.0           # frame 1: the hook line, the Friend frozen mid-bow
@@ -56,4 +56,25 @@ m.sfx(boing(True), PAYOFF + 0.1)
 m.bed(0.0, END)
 m.end_chord(END)
 m.sfx(pochi(), CTA_TAP)
-m.write(SRC / 'hf/assets/mix.wav')
+out = m.write(SRC / 'hf/assets/mix.wav')
+# loudnorm's single pass stops short of -14 on a short, voice-sparse film (true peak bound): measure, add the missing gain
+# in front of a limiter at -2.5 dBFS (true peak stays under -1.5 dBTP), and measure again (as in mimi-katakana-mcdonalds). The balance is unchanged.
+import json as _j, re, shutil, subprocess  # noqa: E402
+
+
+def lufs(f):
+    err = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(f), '-af', 'loudnorm=print_format=json', '-f', 'null', '-'],
+                         capture_output=True, text=True).stderr
+    d = _j.loads(re.search(r'\{[^{}]*\}', err[err.rfind('Parsed_loudnorm'):]).group(0))
+    return float(d['input_i']), float(d['input_tp'])
+
+
+for _ in range(3):
+    i, tp = lufs(out)
+    if abs(i + 14) < 0.3:
+        break
+    tmp = out.with_suffix('.tmp.wav')
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af',
+                    f'volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.75:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
+    shutil.move(tmp, out)
+print(out, 'I=%.1f LUFS TP=%.1f dBTP' % lufs(out))
