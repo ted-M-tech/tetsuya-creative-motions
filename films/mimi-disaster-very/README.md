@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #056 (series “Pronunciation Disasters”, episode 14). 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). **Status: draft for review.**
+Lanclo SNS short #056 (series “Pronunciation Disasters”, episode 14). 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Final, owner approved on 2026-10-23.
 
 Scene: a fruit stall on a sunny street. Mimi plays the stall keeper (green striped apron, role outfit) and hands her Friend a strawberry. The Friend thanks her, “Thank you very much!”, but the katakana “ベリー” comes out as “Thank you *berry* much!”. Mimi the keeper takes it as an order and pours more and more strawberries until the Friend is buried (「シーン…」, “More berries!”). Mimi, out of role, pops up pointing: 「それ「いちご」に聞こえてる〜！！」. A silly visual gag; nothing rude.
 
@@ -19,5 +19,5 @@ Scene: a fruit stall on a sunny street. Mimi plays the stall keeper (green strip
 
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `056. Pronunciation Disasters 14 - Very or Berry/Disasters14_Very_assets/own-voice/`). No side cast voice.
 - Cast: Mimi (also in the stall-keeper role outfit) and her Friend (the learner) only. Mimi's Japanese first person is 「僕」 (she has no first-person line here).
-- Draft files in Lanclo's Google Drive `002.SNS/056. Pronunciation Disasters 14 - Very or Berry/` (`Disasters14_Very_draft_2026-10-23.mp4`, `Disasters14_Very_draft_EN-subs_2026-10-23.mp4`, raw material in `Disasters14_Very_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/056. Pronunciation Disasters 14 - Very or Berry/` (`Disasters14_Very_2026-10-23.mp4`, `Disasters14_Very_EN-subs_2026-10-23.mp4`, raw material in `Disasters14_Very_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
