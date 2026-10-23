@@ -23,4 +23,6 @@ Frame 1: 「ホテル、強いのはどこ？」 and three word chips (ホテル
 - Loudness: -14.3 LUFS integrated, -1.6 dBTP (both cuts).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Series template: [episode 1](../mimi-katakana-mcdonalds/README.md#series-template-episodes-2).
 
-![Draft frames](process/00-draft-frames.jpg)
+Platform safe zones (TikTok / Reels / Shorts UI) checked: frames below carry the zone overlay.
+
+![Draft frames with the platform safe zones](process/00-draft-frames.jpg)

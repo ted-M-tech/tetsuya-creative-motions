@@ -33,6 +33,8 @@
 5. Sound (`scripts/mix.py`, kit Mix): a soft sine tick per syllable (the strong one higher), pops for the chips, a soft four-tick clock on the challenge, theme bed at kit level. Mix.write alone gave about −15.5 LUFS; a gain into a soft limiter (−1.9 dBFS) brings it to −14.3 LUFS integrated, −1.6 dBTP (measured on both rendered cuts). Voice about 15–18 dB over the bed.
 6. Checked with `hyperframes check` (contrast fixed, one footnote overflow fixed) and contact sheets ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)): the cast moved up and in so feet and the small Mimi stay above the bottom 400 px; the reveal footnote kept to one small line clear of the characters; EN subtitles wrapped by hand.
 
+7. Commander review (2026-10-23): content approved, keep the `model` beat and the small JApanese FOOD note. The owner on safe zones: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」 Fixed for TikTok / Reels / Shorts UI: EN subtitles moved fully above y 1500 and inside x 60–880 (34 px, max two lines); nothing with text, no bubble and no small Mimi in the right rail (x > 900, y 820–1520): the lobby cast, the 「?」, the captions, the card rows / tip / tag, the reveal answer and footnote and the CTA question marks shifted left; the first text line of every top card starts at y ≥ 200; the end card column raised so the App Store badge clears the bottom. Verified on a zone-overlay sheet every ~1.5 s of the EN cut ([process/00-draft-frames.jpg](process/00-draft-frames.jpg): purple top 200 px, orange right rail, red bottom 420 px, green subtitle box). Loudness unchanged (-14.3 LUFS, -1.6 dBTP). The first draft moved to Drive `old/` with a `_v1` suffix.
+
 ## Uncertain / for review
 
 - 16.2 s (the brief said about 17–18 s); kept short for tempo.
