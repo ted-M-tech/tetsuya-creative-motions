@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #060, episode 3 of “Katakana Traps” (the stress episode). **Draft** (2026-10-23). 16.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #060, episode 3 of “Katakana Traps” (the stress episode). Final, owner approved on 2026-10-23. 16.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Frame 1: 「ホテル、強いのはどこ？」 and three word chips (ホテル / ギター / シャンプー) pop in, each with one dot per syllable. In a hotel lobby the Friend says the three words the Japanese way, head-high (owner's own voice, learner style); the first dot of each chip lights big and red, Mimi tilts her head. A card: per word, katakana (big dot first) → English (big dot second), ho-TEL, gui-TAR, sham-POO, the model in the owner's own voice while Mimi taps the strong beat; 「2つめを 強く・長く・高く」. Back in the lobby the Friend says all three right. Viewer challenge 「Japanese は？」 for one second, then ja-pa-NESE (the word said alone, twice) with a small footnote that before a noun it moves forward (JApanese FOOD). CTA 「次に通じないカタカナは？」, then the end card.
 
@@ -19,10 +19,10 @@ Frame 1: 「ホテル、強いのはどこ？」 and three word chips (ホテル
 
 - Cast: Mimi and her Friend only, all library poses (no new art). No side cast, no Kokoro, no app shot.
 - Voices: five lines in the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `060. Katakana Traps 3 - Hotel Guitar Shampoo/KT3_Hotel_assets/own-voice/`). Stress placement verified acoustically, see [PROCESS.md](PROCESS.md).
-- Draft files in Lanclo's Google Drive `002.SNS/060. Katakana Traps 3 - Hotel Guitar Shampoo/` (`KT3_Hotel_draft_2026-10-23.mp4`, `KT3_Hotel_draft_EN-subs_2026-10-23.mp4`).
+- Final files in Lanclo's Google Drive `002.SNS/060. Katakana Traps 3 - Hotel Guitar Shampoo/` (`KT3_Hotel_2026-10-23.mp4`, `KT3_Hotel_EN-subs_2026-10-23.mp4`).
 - Loudness: -14.3 LUFS integrated, -1.6 dBTP (both cuts).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Series template: [episode 1](../mimi-katakana-mcdonalds/README.md#series-template-episodes-2).
 
 Platform safe zones (TikTok / Reels / Shorts UI) checked: frames below carry the zone overlay.
 
-![Draft frames with the platform safe zones](process/00-draft-frames.jpg)
+![Frames with the platform safe zones](process/00-draft-frames.jpg)

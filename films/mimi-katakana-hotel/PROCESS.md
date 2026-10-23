@@ -43,3 +43,8 @@
 - The `model` beat (the Friend saying all three right) was added for a payoff; it reuses the model takes (the owner's voice on the Friend, as in earlier episodes).
 - The footnote on JApanese FOOD is small (33 px) by design; drop it if it feels like clutter.
 - The Drive folder `060. Katakana Traps 3 - Hotel Guitar Shampoo` did not exist; it was created.
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `KT3_Hotel_2026-10-23.mp4`, `KT3_Hotel_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
