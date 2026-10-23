@@ -1,0 +1,37 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-katakana": {
+      "text": "Hoteru. Gitaa. Shanpuu.",
+      "style": "Say these three words as a Japanese person reading the katakana words ホテル, ギター, シャンプー aloud to a friend, cheerful and confident, with only a short pause (about a quarter of a second) between the words. Pronounce each exactly as in Japanese with standard Tokyo pitch accent (head-high): the FIRST syllable of every word is high and strong, then the pitch drops and the rest of the word is low and soft. HO-te-ru: ho high, te-ru low, three syllables with a clear vowel in each. GI-taa: gi high, the long taa low. SHAN-puu: shan high, the long puu low and soft, falling at the end, never rising. Flat statement, no question intonation. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "22d549d1ff61976394a12639254f4d2a962980d3eade228b6bfa87121388f0bc",
+      "at": "2026-10-23T20:50:29+00:00"
+    },
+    "us-hotel": {
+      "text": "Hotel.",
+      "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables, ho-TEL: a short, light, lower unstressed 'ho', then the stressed 'TEL' clearly louder, longer and higher in pitch than 'ho', starting high and falling at the end like a confident statement. Native rhythm, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "fcb52192d1919328475fad00cef79f4e7a2b1d47789185ef13517c022c63bcb0",
+      "at": "2026-10-23T20:50:32+00:00"
+    },
+    "us-guitar": {
+      "text": "Guitar.",
+      "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables: a short, light, reduced 'gui' (like 'gih'), then a strong, loud, longer, higher-pitched stressed 'TAR' with a rhotic r (gui-TAR). Native rhythm, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "201bd64a4d74b6e3feb544f33240b977abdd118488a7d50e2a0b20742e94e497",
+      "at": "2026-10-23T20:48:57+00:00"
+    },
+    "us-shampoo": {
+      "text": "Shampoo.",
+      "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables: a short, light, unstressed 'sham', then a strong, loud, longer, higher-pitched stressed 'POO' (sham-POO). Native rhythm, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "6822392dc69b992da5a18c4e1c6311f896540e95a72670b6411e5674f4a8b39f",
+      "at": "2026-10-23T20:48:59+00:00"
+    },
+    "us-japanese": {
+      "text": "Japanese.",
+      "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner, saying the word on its own. Three syllables: a light 'ja', a reduced 'pa', then a strong, loud, longer, higher-pitched stressed 'NESE' ending in a z sound (ja-pa-NESE). Native rhythm, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "309fc18f33263ea072eff550cfa375b9ec529bac0ca10360c561765e8b4565ca",
+      "at": "2026-10-23T20:49:02+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

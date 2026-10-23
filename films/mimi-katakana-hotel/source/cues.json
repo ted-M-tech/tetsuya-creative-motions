@@ -1,0 +1,93 @@
+{
+ "_": "Katakana Traps 3 (stress) cue sheet, seconds on the film clock; scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip, explain, model, challenge, reveal, cta, end. *_CLIP = [start, end] inside a take; *_BEATS = measured syllable nuclei, seconds from the clip start.",
+ "SLIP": 1.2,
+ "L_AT": [
+  1.2,
+  1.8,
+  2.53
+ ],
+ "TILT": 2.0,
+ "SHRINK": 3.45,
+ "EXPLAIN": 4.05,
+ "E_AT": [
+  4.35,
+  5.13,
+  5.845
+ ],
+ "TIP": 6.65,
+ "MODEL": 7.55,
+ "F_AT": [
+  7.7,
+  8.33,
+  8.895
+ ],
+ "CHALLENGE": 9.75,
+ "REVEAL": 10.75,
+ "J_AT": [
+  10.85,
+  11.75
+ ],
+ "CTA": 12.75,
+ "E": 14.75,
+ "TAP": 15.35,
+ "END": 16.2,
+ "LEARNER_CLIPS": [
+  [
+   0.25,
+   0.84
+  ],
+  [
+   1.53,
+   2.3
+  ],
+  [
+   2.96,
+   3.82
+  ]
+ ],
+ "LEARNER_BEATS": [
+  [
+   0.14,
+   0.29,
+   0.42
+  ],
+  [
+   0.27,
+   0.47
+  ],
+  [
+   0.22,
+   0.56
+  ]
+ ],
+ "MODEL_TAKES": [
+  "us-hotel.wav",
+  "us-guitar.wav",
+  "us-shampoo.wav"
+ ],
+ "MODEL_START": [
+  0.22,
+  0.24,
+  0.245
+ ],
+ "MODEL_BEATS": [
+  [
+   0.11,
+   0.32
+  ],
+  [
+   0.09,
+   0.24
+  ],
+  [
+   0.175,
+   0.435
+  ]
+ ],
+ "JAPANESE_START": 0.28,
+ "JAPANESE_BEATS": [
+  0.09,
+  0.24,
+  0.34
+ ]
+}

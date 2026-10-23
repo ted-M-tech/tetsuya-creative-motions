@@ -1,0 +1,24 @@
+{
+ "lines": [
+  {
+   "id": "learner-mansion",
+   "text": "I live in a mansion.",
+   "style": "Speak as a friendly Japanese learner of English chatting casually and a little proudly with a friend, telling where they live. Clear, intelligible English with only a light Japanese accent; pronounce every word correctly (the mistake is the meaning of the word, not the sound). Natural pace, about one and a half seconds, a cheerful falling intonation at the end."
+  },
+  {
+   "id": "us-apartment",
+   "text": "I live in an apartment.",
+   "accent": "us"
+  },
+  {
+   "id": "us-outlet",
+   "text": "Outlet.",
+   "accent": "us"
+  },
+  {
+   "id": "us-complaint",
+   "text": "Complaint.",
+   "accent": "us"
+  }
+ ]
+}
