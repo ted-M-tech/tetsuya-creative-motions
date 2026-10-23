@@ -1,0 +1,29 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi (white bunny, BLUE inner ears, dot eyes, pink cheeks, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT);
+sheet.webp and aww.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears, dark-grey tip on the ear at the viewer's RIGHT,
+soft orange patch around the eye at the viewer's RIGHT, the same L headphones); friend-french.webp = the Friend dressed as a university
+language lecturer (RED beret, RED neckerchief, navy-and-white Breton striped top); smile.webp = Pippa the duck (white duck, orange beak and feet,
+red-and-white striped shirt, red visor cap with no logo, no headphones); happy.webp = Coco the cat (cream cat girl, triangle ears with pink
+insides, small whiskers, pink cheeks, big straw sun hat with a red ribbon, no headphones).
+Match each character EXACTLY (shapes, markings, colours, headphones, proportions, navy outline weight). Plain pure white background, full body,
+centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L" on the headphones. Flat soft colours, chibi.
+Make SEVEN separate images, each saved as PNG in art/ relative to the current directory:
+
+1) art/mimi-silent.png — Mimi standing small and stiff at a discussion, shoulders hunched, mouth tightly shut (a small flat line), eyes looking
+   sideways to the viewer's LEFT at the others, both mitten hands clasped in front of her chest, one small blue sweat drop. Lonely, not crying.
+2) art/mimi-try.png — the same Mimi, same size, leaning slightly forward to the viewer's LEFT, one hand half raised as if about to speak,
+   mouth slightly open (small "a" shape), eyebrows nervous, a small sweat drop.
+3) art/pippa-chat.png — Pippa the duck talking cheerfully and fast at a discussion, beak open, one wing raised in a lively gesture, body turned
+   a little to the viewer's RIGHT. Same outfit as smile.webp.
+4) art/pippa-squint.png — Pippa holding a sheet of paper with grey scribble lines (no readable letters) close to her face, squinting hard at it,
+   puzzled frown, one small question-mark-free sweat drop. Same outfit.
+5) art/coco-chat.png — Coco the cat talking confidently and laughing, mouth open, one paw pointing up as she makes a point, body turned a little
+   to the viewer's RIGHT. She wears the same straw sun hat with the red ribbon and a simple casual cream-and-red sundress (no swimsuit).
+6) art/mimi-study.png — Mimi sitting on a small stool at a small wooden desk (desk included in the picture), a thick open vocabulary book and a
+   worksheet with grey lines (no letters) in front of her, holding a pencil, silent, sleepy blank face (half-closed dot eyes), mouth closed.
+   Seen from the front.
+7) art/teacher-explain.png — the Friend as the university lecturer exactly like friend-french.webp (red beret, red neckerchief, Breton top,
+   the L headphones, sleepy line eyes, orange eye patch, dark ear tip), standing, warm smile, one finger raised as if explaining a key point,
+   the other hand open toward the viewer. No baguette, no pointer.
+
+Do not modify other files. List the saved paths when done.

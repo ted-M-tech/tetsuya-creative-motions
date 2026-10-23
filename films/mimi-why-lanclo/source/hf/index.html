@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .scene { position: absolute; inset: 0; overflow: hidden; background: #eef3f9; }
+      .scene .plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .scene img.ch { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .scene .bubble { font-size: 50px; max-width: none; white-space: nowrap; }
+      /* The discussion abroad: a table in front hides the feet */
+      .table { position: absolute; left: -40px; right: -40px; top: 1250px; height: 190px; background: #c99a6b; border-top: 22px solid #dcb287;
+               border-radius: 28px 28px 0 0; box-shadow: 0 -6px 0 #b9875a inset; }
+      .chat { position: absolute; background: #ffffff; border: 4px solid #273b4b; border-radius: 34px; padding: 12px 28px; font-size: 46px; font-weight: 700;
+              white-space: nowrap; color: #273b4b; box-shadow: 0 8px 18px rgba(39, 59, 75, 0.15); }
+      #d-bruno { left: -20px; top: 812px; width: 400px; }
+      #d-pippa { left: 268px; top: 862px; width: 290px; }
+      #d-coco { left: 520px; top: 900px; width: 330px; }
+      #d-mimi, #d-try { left: 830px; top: 960px; width: 260px; }
+      #d-try { opacity: 0; }
+      #d-dim { position: absolute; inset: 0; background: radial-gradient(circle at 958px 1130px, rgba(0,0,0,0) 150px, rgba(39,59,75,0.28) 420px); opacity: 0; }
+      #b-dots { left: 820px; top: 860px; font-size: 54px; padding: 10px 30px; }
+      /* Flashback: study in Japan, then the one café line */
+      .sepia { filter: sepia(0.35) saturate(0.85); }
+      #fb-tag { position: absolute; left: 40px; top: 470px; background: #344f69; color: #fff; font-size: 42px; font-weight: 700; padding: 10px 30px; border-radius: 30px; }
+      #f-study { left: 50%; top: 820px; width: 600px; margin-left: -300px; }
+      .chip { position: absolute; background: #ffffff; color: #273b4b; font-size: 46px; font-weight: 700; padding: 14px 34px; border-radius: 40px;
+              border: 4px solid #273b4b; box-shadow: 0 8px 20px rgba(39, 59, 75, 0.15); }
+      #intro .q { left: 40px; top: 560px; opacity: 0; }
+      #intro .ans { right: 30px; opacity: 0; border-color: #2a8dff; }
+      #copies .chat { font-size: 34px; padding: 8px 20px; border-color: #2a8dff; }
+      #loopn { position: absolute; right: 50px; top: 470px; font-size: 80px; font-weight: 700; color: #2a8dff; opacity: 0; }
+      /* People abroad: confident, grammar or not */
+      #o-bruno { left: 30px; top: 760px; width: 480px; }
+      #o-coco { left: 600px; top: 900px; width: 420px; opacity: 0; }
+      #b-bruno { left: 40px; top: 470px; font-size: 44px; }
+      #b-coco { right: 30px; top: 640px; font-size: 40px; opacity: 0; }
+      .err { text-decoration: underline wavy #e5484d; text-decoration-thickness: 4px; text-underline-offset: 10px; }
+      #s-pippa { left: 50%; top: 720px; width: 520px; margin-left: -260px; }
+      /* Reading vs speaking */
+      .vs { position: absolute; left: 60px; right: 60px; top: 520px; display: flex; gap: 30px; }
+      .vs .col { flex: 1; background: #ffffff; border-radius: 40px; padding: 40px 30px; box-shadow: 0 16px 40px rgba(39, 59, 75, 0.14); text-align: center; }
+      .vs h3 { margin: 0 0 30px; font-size: 50px; color: #273b4b; }
+      .vs .row { display: flex; justify-content: space-between; align-items: center; font-size: 54px; font-weight: 700; padding: 18px 20px; color: #273b4b; }
+      .vs .row b { font-size: 72px; }
+      .vs .good { color: #2a8dff; } .vs .weak { color: #e59a3c; }
+      .vs img { height: 300px; width: auto; display: block; margin: 20px auto 0; }
+      /* The real world: three panels */
+      .panel { position: absolute; left: 60px; width: 960px; height: 330px; border-radius: 36px; overflow: hidden; background: #fff; box-shadow: 0 14px 34px rgba(39, 59, 75, 0.16); }
+      .panel .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .panel img.c { position: absolute; bottom: -40px; height: auto; }
+      .panel .lab { position: absolute; left: 26px; top: 24px; background: #344f69; color: #fff; font-size: 48px; font-weight: 700; padding: 10px 30px; border-radius: 30px; }
+      /* The lecturer */
+      #l-teacher { left: 60px; top: 760px; width: 560px; }
+      #l-mimi { left: 690px; top: 1010px; width: 330px; }
+      #t-teacher { left: 40px; right: auto; top: 1380px; }
+      #t-teacher span { text-align: left; line-height: 1.3; }
+      #sup { position: absolute; left: 0; right: 0; top: 1080px; display: flex; justify-content: center; opacity: 0; }
+      #sup span { background: #344f69; color: #fff; font-size: 44px; font-weight: 700; padding: 14px 36px; border-radius: 40px; }
+      #b-quote { left: 60px; top: 480px; font-size: 52px; line-height: 1.4; white-space: normal; width: 860px; text-align: center; }
+      #cycle { position: absolute; left: 0; top: 470px; width: 1080px; height: 560px; opacity: 0; }
+      .node { position: absolute; width: 270px; height: 270px; margin: -135px 0 0 -135px; border-radius: 50%; background: #2a8dff; color: #fff; display: flex;
+              align-items: center; justify-content: center; font-size: 62px; font-weight: 700; box-shadow: 0 14px 30px rgba(42, 141, 255, 0.3); }
+      .node.n2 { background: #344f69; } .node.n3 { background: #2f9e62; }
+      /* Message cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 50px; }
+      .type .big { font-size: 92px; font-weight: 700; text-align: center; line-height: 1.42; color: #273b4b; }
+      .type .big strong { color: #2a8dff; }
+      .type .mid { font-size: 64px; font-weight: 700; text-align: center; line-height: 1.5; color: #273b4b; }
+      .type .note { font-size: 40px; color: #5b7f9f; text-align: center; line-height: 1.5; }
+      .type .src { position: absolute; left: 70px; right: 70px; top: 1360px; font-size: 28px; color: #6d879d; text-align: center; line-height: 1.5; }
+      .pills { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+      .pill { font-size: 50px; font-weight: 700; padding: 18px 40px; border-radius: 50px; color: #fff; background: #2a8dff; }
+      .pill.think { background: #344f69; }
+      /* The English-learning map */
+      #map { position: absolute; left: 60px; top: 420px; width: 960px; height: 600px; opacity: 0; transform-origin: 50% 0; }
+      .qd { position: absolute; width: 476px; height: 296px; border-radius: 26px; }
+      .ax { position: absolute; background: #9fb4c6; border-radius: 4px; }
+      .ax-v { left: 478px; top: -10px; width: 6px; height: 620px; } .ax-h { left: -10px; top: 299px; width: 980px; height: 6px; }
+      .axl { position: absolute; transform: translate(-50%, -50%); background: #344f69; color: #fff; font-size: 30px; font-weight: 700; padding: 6px 20px; border-radius: 22px; white-space: nowrap; opacity: 0; }
+      .pc { position: absolute; width: 210px; height: 74px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700;
+            background: #eef2f5; color: #66798a; border: 4px dashed #b9c6d2; border-radius: 18px; opacity: 0; }
+      .pc.desk { border-style: dashed; }
+      #desk-lab { position: absolute; left: 70px; top: 524px; font-size: 32px; font-weight: 700; color: #5b7f9f; background: #fff; border: 3px solid #b9c6d2; padding: 6px 22px; border-radius: 20px; opacity: 0; }
+      #device { position: absolute; left: 420px; top: 1050px; width: 230px; height: 470px; border-radius: 40px; background: #1d2733; padding: 8px; opacity: 0;
+                box-shadow: 0 20px 50px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 32px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+      .mask { position: absolute; background: #f2f2f7; opacity: 0; }
+      .mask.white { background: #ffffff; }
+      .mlab { position: absolute; left: 0; right: 0; top: 230px; display: flex; justify-content: center; opacity: 0; }
+      .mlab span { display: block; background: #ffffff; font-size: 56px; font-weight: 700; padding: 20px 46px; border-radius: 60px; box-shadow: 0 10px 30px rgba(39, 59, 75, 0.14); }
+      .mlab strong { color: #2a8dff; }
+      /* Mimi's word */
+      .scene img.wm { left: 50%; top: 960px; width: 470px; margin-left: -235px; }
+      .scene .bubble.wb { left: 60px; right: 60px; top: 300px; white-space: normal; text-align: center; font-size: 58px; line-height: 1.45; opacity: 0; }
+      .wb strong { color: #2a8dff; }
+      .chip.weak { border-color: #e59a3c; font-size: 40px; opacity: 0; }
+      #c-mimi { position: absolute; left: 50%; top: 1060px; width: 420px; margin-left: -210px; height: auto; }
+      /* English subtitles: one line under everything, bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="72.8" data-width="1080" data-height="1920">
+      <!-- 1. The discussion abroad (0-7.0): everyone talks over each other, Mimi alone and silent -->
+      <div id="disc" class="scene clip" data-start="0" data-duration="7.0" data-track-index="1">
+        <img class="plate" src="assets/art/meeting.webp" alt="" />
+        <img id="d-bruno" class="ch" src="assets/art/bruno-talk.webp" alt="" />
+        <img id="d-pippa" class="ch" src="assets/art/pippa-chat.webp" alt="" />
+        <img id="d-coco" class="ch" src="assets/art/coco-chat.webp" alt="" />
+        <img id="d-mimi" class="ch" src="assets/art/mimi-silent.webp" alt="" />
+        <img id="d-try" class="ch" src="assets/art/mimi-try.webp" alt="" />
+        <div class="table"></div>
+        <div id="d-dim"></div>
+        <div id="chats"></div>
+        <div id="b-dots" class="chat" style="opacity:0">…</div>
+      </div>
+      <div class="caption small clip" data-start="0" data-duration="2.6" data-track-index="6"><span id="c1">海外の議論の場で、<br />僕だけ<strong>ぽつん。</strong></span></div>
+      <div class="caption small clip" data-start="2.6" data-duration="4.4" data-track-index="6"><span id="c2">みんな、めちゃくちゃ<br />喋ってるのに。</span></div>
+
+      <!-- 2. Flashback (7.0-15): study in Japan; the café line he knows, again and again -->
+      <div id="study" class="scene clip sepia" data-start="7.0" data-duration="2.4" data-track-index="1">
+        <img class="plate" src="assets/art/desk.webp" alt="" />
+        <div id="fb-tag">日本で</div>
+        <img id="f-study" class="ch" src="assets/art/mimi-study.webp" alt="" />
+        <div id="ch1" class="chip" style="left:70px; top:640px; transform:rotate(-4deg)">単語帳</div>
+        <div id="ch2" class="chip" style="left:640px; top:610px; transform:rotate(4deg)">文法ドリル</div>
+        <div id="ch3" class="chip" style="left:380px; top:740px">黙読</div>
+      </div>
+      <div class="caption small clip" data-start="7.0" data-duration="2.4" data-track-index="6"><span id="c3">僕の英語の勉強は、<br />単語・文法・黙読。</span></div>
+      <div id="intro" class="scene clip" data-start="9.4" data-duration="5.6" data-track-index="1">
+        <img class="plate" src="assets/art/lobby.webp" alt="" />
+        <img id="i-bruno" class="ch asker" src="assets/art/bruno-talk.webp" alt="" style="left:30px; top:840px; width:420px" />
+        <img id="i-pippa" class="ch asker" src="assets/art/pippa-chat.webp" alt="" style="left:60px; top:890px; width:340px; opacity:0" />
+        <img id="i-coco" class="ch asker" src="assets/art/coco-chat.webp" alt="" style="left:40px; top:940px; width:400px; opacity:0" />
+        <img id="i-mimi" class="ch" src="assets/art/confident.webp" alt="" style="left:640px; top:920px; width:380px" />
+        <img id="i-blank" class="ch" src="assets/art/stunned.webp" alt="" style="left:650px; top:920px; width:370px; opacity:0" />
+        <div id="copies"></div>
+        <div id="q1" class="chat q">Where are you from?</div>
+        <div id="q2" class="chat q">What do you like?</div>
+        <div id="q3" class="chat q">Nice to meet you!</div>
+        <div id="q4" class="chat q">Oh, <strong style="color:#e5484d">why</strong> do you like traveling?</div>
+        <div id="a1" class="chat ans" style="top:820px">I’m from Japan.</div>
+        <div id="a2" class="chat ans" style="top:720px">I like traveling.</div>
+        <div id="a3" class="chat ans" style="top:620px">Nice to meet you!</div>
+        <div id="i-dots" class="chat" style="left:760px; top:800px; font-size:60px; opacity:0">…</div>
+        <div id="loopn"><span id="lpn">×1</span></div>
+      </div>
+      <div class="caption small clip" data-start="9.4" data-duration="3.4" data-track-index="6"><span id="c4">知ってる会話なら、言える。</span></div>
+      <div class="caption small clip" data-start="12.8" data-duration="2.2" data-track-index="6"><span id="c5">でも、それを<br /><em>くり返すだけ</em>だった。</span></div>
+
+      <!-- 3. People abroad (15-24.4): confident with mistakes; reading is the hard part; the opposite of me -->
+      <div id="others" class="scene clip" data-start="15" data-duration="5.8" data-track-index="1">
+        <img class="plate" src="assets/art/meeting.webp" alt="" />
+        <img id="o-bruno" class="ch" src="assets/art/bruno-talk.webp" alt="" />
+        <img id="o-coco" class="ch" src="assets/art/coco-chat.webp" alt="" />
+        <div id="b-bruno" class="chat">Yesterday I <span class="err">go</span> to the meeting,<br />and I <span class="err">say</span> my idea!</div>
+        <div id="b-coco" class="chat">I think this plan <span class="err">no good</span>,<br />because <span class="err">too much money</span>!</div>
+      </div>
+      <div class="caption small clip" data-start="15" data-duration="2.9" data-track-index="6"><span id="c6">海外で出会った人たちは、<br /><strong>自信を持って</strong>話していた。</span></div>
+      <div class="caption small clip" data-start="17.9" data-duration="2.9" data-track-index="6"><span id="c6b">文法はめちゃくちゃ。<br />でも、<strong>堂々と意見を言う。</strong></span></div>
+      <div id="squint" class="scene clip" data-start="20.8" data-duration="1.6" data-track-index="1">
+        <img class="plate" src="assets/art/meeting.webp" alt="" />
+        <img id="s-pippa" class="ch" src="assets/art/pippa-squint.webp" alt="" />
+      </div>
+      <div class="caption small clip" data-start="20.8" data-duration="1.6" data-track-index="6"><span id="c7">読むのは、苦手でも。</span></div>
+      <div id="versus" class="scene clip" data-start="22.4" data-duration="2.0" data-track-index="1" style="background:#fbfcfd">
+        <div class="vs">
+          <div id="vs1" class="col"><h3>日本の僕</h3>
+            <div class="row">読む<b class="good">◎</b></div><div class="row">話す<b class="weak">△</b></div>
+            <img src="assets/art/mimi-silent.webp" alt="" /></div>
+          <div id="vs2" class="col"><h3>出会った人たち</h3>
+            <div class="row">読む<b class="weak">△</b></div><div class="row">話す<b class="good">◎</b></div>
+            <img src="assets/art/bruno-talk.webp" alt="" /></div>
+        </div>
+      </div>
+      <div class="caption small clip" data-start="22.4" data-duration="2.0" data-track-index="6"><span id="c8">日本人の僕とは、<em>逆。</em></span></div>
+
+      <!-- 4. The real world (24.4-29.4) -->
+      <div id="real" class="scene clip" data-start="24.4" data-duration="5.0" data-track-index="1" style="background:#fbfcfd">
+        <div id="p1" class="panel" style="top:520px"><img class="bg" src="assets/art/meeting.webp" alt="" style="object-position:50% 30%" />
+          <img class="c" src="assets/art/bruno-boss-nod.webp" alt="" style="left:600px; width:250px" /><div class="lab">会議</div></div>
+        <div id="p2" class="panel" style="top:880px"><img class="bg" src="assets/art/meeting.webp" alt="" style="object-position:50% 60%" />
+          <img class="c" src="assets/art/pippa-chat.webp" alt="" style="left:430px; width:200px" /><img class="c" src="assets/art/coco-chat.webp" alt="" style="left:640px; width:240px" /><div class="lab">議論</div></div>
+        <div id="p3" class="panel" style="top:1240px; height:250px"><img class="bg" src="assets/art/cafe.webp" alt="" style="object-position:50% 40%" />
+          <img class="c" src="assets/art/bruno-tourist-laugh.webp" alt="" style="left:560px; width:170px; bottom:-40px" /><img class="c" src="assets/art/confident.webp" alt="" style="left:750px; width:170px; bottom:-40px" /><div class="lab">雑談</div></div>
+      </div>
+      <div class="caption small clip" data-start="24.4" data-duration="5.0" data-track-index="6"><span id="c9">現実に必要なのは、<br /><strong>自分で考えて、話して、議論する力。</strong></span></div>
+
+      <!-- 5. The lecturer (29.4-36.6) -->
+      <div id="lect" class="scene clip" data-start="29.4" data-duration="7.2" data-track-index="1">
+        <img class="plate" src="assets/art/meeting.webp" alt="" />
+        <img id="l-teacher" class="ch" src="assets/art/teacher-explain.webp" alt="" />
+        <img id="l-mimi" class="ch" src="assets/art/notes.webp" alt="" />
+        <div id="t-teacher" class="tag model"><span><small style="display:block; font-size:38px; color:#ffd84a">Lanclo共同開発・監修</small>5ヶ国語を話す 大学の先生</span></div>
+        <div id="b-quote" class="bubble from-left">自分で考えて、話して、直す。<br />それを<strong style="color:#2a8dff">くり返す</strong>こと。</div>
+        <div id="cycle">
+          <svg width="1080" height="560" style="position:absolute; inset:0"><g fill="none" stroke="#9fb4c6" stroke-width="10" stroke-linecap="round">
+            <path d="M440 120 Q540 70 640 120" /><path d="M780 270 Q760 400 650 450" /><path d="M430 450 Q320 400 300 270" /></g>
+            <g fill="#9fb4c6"><path d="M640 120 l-30 -4 l14 -24z" /><path d="M650 450 l14 -26 l14 24z" /><path d="M300 270 l-12 28 l28 -6z" /></g></svg>
+          <div class="node" style="left:330px; top:170px">考える</div>
+          <div class="node n2" style="left:750px; top:170px">話す</div>
+          <div class="node n3" style="left:540px; top:440px">直す</div>
+        </div>
+      </div>
+      <div class="caption small clip" data-start="29.4" data-duration="2.0" data-track-index="6"><span id="c10">5ヶ国語を話す<br />大学の先生は言う。</span></div>
+      <div class="caption small clip" data-start="34.2" data-duration="2.4" data-track-index="6"><span id="c11">それを、くり返す。</span></div>
+
+      <!-- 6. Research, small and calm (36.6-40.4) -->
+      <div id="res" class="type clip" data-start="36.6" data-duration="3.8" data-track-index="2">
+        <div id="r-big" class="mid">話そうとすると、<br /><strong style="color:#2a8dff">言えないところ</strong>に気づける。</div>
+        <div id="r-note" class="note">第二言語習得研究の<br />「アウトプット仮説」</div>
+        <div id="r-src" class="src">Swain, M. (1985). Communicative competence: Some roles of comprehensible input and comprehensible output in its development.</div>
+      </div>
+
+      <!-- 7. So Lanclo, on purpose (40.4-42.4), then the real app (42.4-50.4) -->
+      <div id="aete" class="type clip" data-start="40.4" data-duration="2.0" data-track-index="2">
+        <div id="a-big" class="big">だからLancloは、<br /><strong>あえて。</strong></div>
+        <div class="pills"><div id="a-p1" class="pill">声が必要な機能</div><div id="a-p2" class="pill think">考えないとできない機能</div></div>
+      </div>
+      <!-- 8. The English-learning map (42.4-59.4): each Lanclo feature fills its pieces; the desk pieces stay empty -->
+      <div id="mapsc" class="scene clip" data-start="42.4" data-duration="17" data-track-index="1" style="background:#fbfcfd">
+        <div id="map">
+          <div class="qd" style="left:0; top:0; background:#f3f7fb"></div><div class="qd" style="left:484px; top:0; background:#eef6ff"></div>
+          <div class="qd" style="left:0; top:304px; background:#f6f6f4"></div><div class="qd" style="left:484px; top:304px; background:#f3f7fb"></div>
+          <div class="ax ax-v"></div><div class="ax ax-h"></div>
+          <div class="pc" id="pc-listen" style="left:120px; top:112px; width:250px">聞いて理解する</div>
+          <div class="pc" id="pc-photo" style="left:508px; top:28px">写真を描写</div>
+          <div class="pc" id="pc-self" style="left:736px; top:28px">自分のこと</div>
+          <div class="pc" id="pc-fix" style="left:508px; top:114px">添削で直す</div>
+          <div class="pc" id="pc-quick" style="left:736px; top:114px">会話の瞬発力</div>
+          <div class="pc" id="pc-opinion" style="left:622px; top:200px">意見と理由</div>
+          <div class="pc" id="pc-pron" style="left:520px; top:360px">発音</div>
+          <div class="pc" id="pc-aloud" style="left:740px; top:360px">音読</div>
+          <div class="pc" id="pc-word" style="left:16px; top:340px; width:250px">単語・フレーズ</div>
+          <div class="pc desk" style="left:280px; top:340px; width:180px">文法</div>
+          <div class="pc desk" style="left:100px; top:430px; width:260px">リーディング</div>
+          <div id="desk-lab" style="left:200px">ここは机でできる</div>
+          <div class="axl" style="left:480px; top:0">自分で考える</div>
+          <div class="axl" style="left:480px; top:604px">決まった答え</div>
+          <div class="axl" style="left:96px; top:302px">インプット</div>
+          <div class="axl" style="left:850px; top:302px">アウトプット（声）</div>
+        </div>
+      </div>
+      <div class="caption small clip" data-start="42.4" data-duration="1.6" data-track-index="6"><span id="mc0">英語学習のピースを並べると…</span></div>
+      <div id="sup"><span>先生の監修で、機能を設計</span></div>
+      <div id="ml1" class="mlab"><span><strong>① デイリーレッスン</strong>：発音・音読</span></div>
+      <div id="ml2" class="mlab"><span><strong>② 写真</strong>を見て、最大3分 話す</span></div>
+      <div id="ml3" class="mlab"><span><strong>③ 英語日記</strong>：話して、直す</span></div>
+      <div id="ml4" class="mlab"><span><strong>④ 会話練習</strong>：聞いて、すぐ返す</span></div>
+      <div id="ml5" class="mlab"><span><strong>⑤ ディベート</strong>：意見と理由</span></div>
+      <div id="ml6" class="mlab"><span><strong>⑥ フレーズ復習</strong>：スワイプで</span></div>
+      <div class="caption small clip" data-start="57.2" data-duration="2.2" data-track-index="6"><span id="mc6" style="font-size:48px">インプットも、スワイプでサクッと。<br />でも力を入れているのは、<br /><strong>声に出して考える</strong>ほう。</span></div>
+      <div id="device"><div id="screen">
+        <video id="v1" class="clip" src="assets/app/daily.mp4" muted playsinline data-start="44" data-duration="2.2" data-track-index="4"></video>
+        <video id="v2" class="clip" src="assets/app/photo.mp4" muted playsinline data-start="46.2" data-duration="2.2" data-track-index="4"></video>
+        <video id="v3" class="clip" src="assets/app/journal.mp4" muted playsinline data-start="48.4" data-duration="2.2" data-track-index="4"></video>
+        <video id="v4" class="clip" src="assets/app/roleplay.mp4" muted playsinline data-start="50.6" data-duration="2.2" data-track-index="4"></video>
+        <video id="v5" class="clip" src="assets/app/debate.mp4" muted playsinline data-start="52.8" data-duration="2.2" data-track-index="4"></video>
+        <video id="v6" class="clip" src="assets/app/swipe.mp4" muted playsinline data-start="55" data-duration="2.2" data-track-index="4"></video>
+        <!-- fixture labels: デモデータ (top left) and the QA feedback text in the daily lesson -->
+        <div id="mk-demo" class="mask" style="left:2%; top:15.2%; width:24%; height:3%"></div>
+        <div id="mk-qa" class="mask white" style="left:4%; top:65.7%; width:92%; height:9.5%"></div>
+      </div></div>
+
+      <!-- 9. Mimi's word (59.4-69), the tagline (69-71.2) -->
+      <div id="word" class="scene clip" data-start="59.4" data-duration="9.6" data-track-index="1">
+        <img class="plate" src="assets/art/desk.webp" alt="" />
+        <img id="w1" class="ch wm" src="assets/art/hand-up.webp" alt="" />
+        <img id="w2" class="ch wm" src="assets/art/point.webp" alt="" style="opacity:0" />
+        <img id="w3" class="ch wm" src="assets/art/encourage.png" alt="" style="opacity:0" />
+        <img id="w4" class="ch wm" src="assets/art/jump.webp" alt="" style="opacity:0" />
+        <div id="wk1" class="chip weak" style="left:50px; top:700px">理由が出てこない</div>
+        <div id="wk2" class="chip weak" style="left:520px; top:700px; font-size:38px">過去形がとっさに出ない</div>
+        <div id="wk3" class="chip weak" style="left:260px; top:810px">同じ言い方ばかり</div>
+        <div id="wb1" class="bubble wb">机に向かう練習のほうが、<br />ラクだよね。わかる。</div>
+        <div id="wb2" class="bubble wb">でも、自分で考えて話すと、<br />今まで見えなかった<strong>苦手</strong>が<br />見えてくる。</div>
+        <div id="wb3" class="bubble wb">大変だけど、僕が<strong>自然に支える</strong><br />しくみを用意したから。</div>
+        <div id="wb4" class="bubble wb" style="font-size:80px">一緒にがんばろう！</div>
+      </div>
+      <div id="close" class="type clip" data-start="69" data-duration="2.2" data-track-index="2" style="justify-content:flex-start; padding-top:420px">
+        <div id="cl-big" class="big">日本の英語を、<br /><strong>声から</strong>変える。</div>
+        <img id="c-mimi" src="assets/art/confident.webp" alt="" />
+      </div>
+      <div id="end" class="end clip" data-start="71.2" data-duration="1.6" data-track-index="7"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0.0" data-duration="2.6" data-track-index="8"><span>At a discussion abroad, I was the only one left out.</span></div>
+      <div class="sub clip" data-start="2.6" data-duration="4.4" data-track-index="8"><span>Everyone else was talking like crazy.</span></div>
+      <div class="sub clip" data-start="7.0" data-duration="2.4" data-track-index="8"><span>In Japan, I studied English with vocabulary, grammar and silent reading.</span></div>
+      <div class="sub clip" data-start="9.4" data-duration="3.4" data-track-index="8"><span>I could handle the conversations I knew.</span></div>
+      <div class="sub clip" data-start="12.8" data-duration="2.2" data-track-index="8"><span>But all I did was repeat them.</span></div>
+      <div class="sub clip" data-start="15" data-duration="2.9" data-track-index="8"><span>The people I met abroad spoke with confidence.</span></div>
+      <div class="sub clip" data-start="17.9" data-duration="2.9" data-track-index="8"><span>Their grammar was all over the place, but they gave their opinions boldly.</span></div>
+      <div class="sub clip" data-start="20.8" data-duration="1.6" data-track-index="8"><span>Even if reading was hard for them.</span></div>
+      <div class="sub clip" data-start="22.4" data-duration="2.0" data-track-index="8"><span>The opposite of me, a Japanese learner. (Me: reading ◎ speaking △ / Them: reading △ speaking ◎)</span></div>
+      <div class="sub clip" data-start="24.4" data-duration="5.0" data-track-index="8"><span>What the real world needs is the power to think for yourself, speak and discuss. (Meetings · Debates · Small talk)</span></div>
+      <div class="sub clip" data-start="29.4" data-duration="2.0" data-track-index="8"><span>Lanclo co-developer &amp; advisor, a university lecturer who speaks five languages, says:</span></div>
+      <div class="sub clip" data-start="31.4" data-duration="2.8" data-track-index="8"><span>“Think for yourself, speak, and fix it. And keep repeating that.”</span></div>
+      <div class="sub clip" data-start="34.2" data-duration="2.4" data-track-index="8"><span>Think → Speak → Fix, again and again.</span></div>
+      <div class="sub clip" data-start="36.6" data-duration="3.8" data-track-index="8"><span>When you try to speak, you notice what you can’t say yet. (The Output Hypothesis in second language acquisition research)</span></div>
+      <div class="sub clip" data-start="40.4" data-duration="2" data-track-index="8"><span>That’s why Lanclo, on purpose, has features that need your voice, and features you can’t do without thinking.</span></div>
+      <div class="sub clip" data-start="42.4" data-duration="1.6" data-track-index="8"><span>Lay out the pieces of English learning… (Features designed under the lecturer’s supervision)</span></div>
+      <div class="sub clip" data-start="44" data-duration="2.2" data-track-index="8"><span>1. Daily lesson: pronunciation and reading aloud</span></div>
+      <div class="sub clip" data-start="46.2" data-duration="2.2" data-track-index="8"><span>2. Look at a photo and speak for up to 3 minutes</span></div>
+      <div class="sub clip" data-start="48.4" data-duration="2.2" data-track-index="8"><span>3. English journal: talk about your day, then fix it</span></div>
+      <div class="sub clip" data-start="50.6" data-duration="2.2" data-track-index="8"><span>4. Conversation practice: listen and answer on the spot</span></div>
+      <div class="sub clip" data-start="52.8" data-duration="2.2" data-track-index="8"><span>5. Debate: your opinion and a reason</span></div>
+      <div class="sub clip" data-start="55" data-duration="2.2" data-track-index="8"><span>6. Phrase review: a quick swipe</span></div>
+      <div class="sub clip" data-start="57.2" data-duration="2.2" data-track-index="8"><span>Input too, with a quick swipe. But our focus is thinking and speaking out loud. (Grammar, reading: you can do those at a desk.)</span></div>
+      <div class="sub clip" data-start="59.4" data-duration="2.4" data-track-index="8"><span>Practising at a desk is easier. I get it.</span></div>
+      <div class="sub clip" data-start="61.8" data-duration="3" data-track-index="8"><span>But when you think and speak for yourself, you start to see weak spots you couldn’t see before. (No reason comes out · The past tense won’t come quickly · Always the same phrases)</span></div>
+      <div class="sub clip" data-start="64.8" data-duration="2.6" data-track-index="8"><span>It’s hard, but I’ve built a system that supports you naturally.</span></div>
+      <div class="sub clip" data-start="67.4" data-duration="1.6" data-track-index="8"><span>Let’s do this together!</span></div>
+      <div class="sub clip" data-start="69" data-duration="2.2" data-track-index="8"><span>Changing English in Japan, starting with your voice.</span></div>
+      <div class="sub clip" data-start="71.2" data-duration="1.6" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="72.8" data-track-index="9" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+
+      // The English chatter (what the side cast says, in fragments), above their heads
+      const CHATS = [
+        [0.05, 30, 620, "Remote work is better!"], [0.9, 300, 700, "No way!"], [1.8, 460, 760, "What about the cost?"],
+        [2.8, 10, 560, "And the commute…"], [3.3, 400, 520, "Exactly!"], [3.6, 250, 650, "Okay, but listen!"],
+        [4.3, 600, 640, "Right?"], [5.0, 330, 780, "That’s what I keep saying!"], [5.6, 60, 700, "Totally!"], [6.1, 330, 580, "Ha ha!"],
+      ];
+      const chats = document.getElementById("chats");
+      CHATS.forEach(([, x, y, s], i) => chats.insertAdjacentHTML("beforeend", `<div id="ct${i}" class="chat" style="left:${x}px; top:${y}px; opacity:0">${s}</div>`));
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const talk = (sel, at, dur) => tl.fromTo(sel, { rotation: -2 }, { rotation: 2, duration: 0.16, yoyo: true, repeat: Math.round(dur / 0.16), ease: "sine.inOut", immediateRender: false }, at);
+
+      // 1. The discussion (0-7.0)
+      k.pop("#c1", 0.0);
+      talk("#d-bruno", 0, 6.9); talk("#d-pippa", 0.4, 6.5); talk("#d-coco", 0.8, 6.1);
+      CHATS.forEach(([at], i) => {
+        tl.fromTo(`#ct${i}`, { scale: 0.6, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.18, ease: "back.out(2)" }, at);
+        tl.to(`#ct${i}`, { y: -120, opacity: 0, duration: 0.5, ease: "power1.in" }, at + 1.1);
+      });
+      tl.fromTo("#d-mimi", { scale: 1 }, { scale: 0.9, duration: 2.2, ease: "power1.inOut" }, 0.3);
+      tl.to("#d-dim", { opacity: 1, duration: 0.6 }, 1.2);
+      k.pop("#c2", 2.6);
+      // Mimi tries (4.4), and closes her mouth again (5.6)
+      tl.set("#d-mimi", { opacity: 0 }, 4.4); tl.set("#d-try", { opacity: 1, scale: 0.9 }, 4.4);
+      tl.fromTo("#d-try", { x: 0 }, { x: -10, duration: 0.2, ease: "power2.out", immediateRender: false }, 4.4);
+      tl.set("#d-try", { opacity: 0 }, 5.6); tl.set("#d-mimi", { opacity: 1 }, 5.6);
+      tl.fromTo("#b-dots", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 5.7);
+      tl.fromTo("#d-mimi", { scale: 0.9 }, { scale: 0.82, duration: 1.2, ease: "power1.out", immediateRender: false }, 5.7);
+
+      // 2. Flashback (7.0-15)
+      tl.fromTo("#study", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 7.0);
+      k.pop("#c3", 7.05); k.tagIn("#fb-tag", 7.1);
+      [["#ch1", 7.5], ["#ch2", 7.95], ["#ch3", 8.4]].forEach(([s, at]) => k.pop(s, at));
+      tl.fromTo("#f-study", { y: 0 }, { y: -6, duration: 0.5, yoyo: true, repeat: 4, ease: "sine.inOut", immediateRender: false }, 7.2);
+      // The canned self-introduction (9.4-15.0): different people, the same three answers, then one question deeper
+      tl.fromTo("#intro", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 9.4);
+      k.pop("#c4", 9.45);
+      const ASK = { b: "#i-bruno", p: "#i-pippa", c: "#i-coco" };
+      const asker = (who, at) => Object.entries(ASK).forEach(([key, sel]) => tl.set(sel, { opacity: key === who ? 1 : 0 }, at));
+      const qIn = (sel, at, out) => { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, at); if (out) tl.set(sel, { opacity: 0 }, out); };
+      qIn("#q1", 9.5, 10.9); talk("#i-bruno", 9.5, 1.2);
+      k.pop("#a1", 10.5);
+      asker("p", 10.9); qIn("#q2", 11.0, 12.1); talk("#i-pippa", 11.0, 1.0);
+      k.pop("#a2", 11.8);
+      asker("c", 12.1); qIn("#q3", 12.15, 12.92); talk("#i-coco", 12.15, 0.7);
+      k.pop("#a3", 12.8); k.pop("#c5", 12.85);
+      [10.5, 11.8, 12.8].forEach((at) => tl.fromTo("#i-mimi", { scale: 0.95 }, { scale: 1, duration: 0.2, ease: "back.out(2.5)", immediateRender: false }, at));
+      // fast: everyone asks, the same answers pile up
+      const FAST = ["b", "p", "c", "b", "p", "c"];
+      FAST.forEach((who, i) => asker(who, 12.92 + i * 0.07));
+      asker("b", 13.4);
+      let seed = 3; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+      const LINES = ["I’m from Japan.", "I like traveling.", "Nice to meet you!"], copies = document.getElementById("copies");
+      for (let i = 0; i < 12; i++) {
+        copies.insertAdjacentHTML("beforeend", `<div id="cp${i}" class="chat" style="left:${380 + Math.round(rnd() * 380)}px; top:${500 + Math.round(rnd() * 400)}px; opacity:0">${LINES[i % 3]}</div>`);
+        tl.fromTo(`#cp${i}`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.12, ease: "back.out(2)" }, 12.92 + i * 0.035);
+      }
+      tl.to("#loopn", { opacity: 1, duration: 0.15 }, 10.5);
+      const STEPS = [[10.5, "×1"], [11.8, "×2"], [12.8, "×3"], [13.0, "×5"], [13.1, "×10"], [13.2, "×30"], [13.3, "×100"]];
+      const lp = { v: 0 };  // seek-safe counter: the label follows the playhead
+      tl.fromTo(lp, { v: 0 }, { v: 3.3, duration: 3.3, ease: "none", onUpdate: () => {
+        const now = 10.4 + lp.v, hit = STEPS.filter(([t]) => t <= now + 0.001);
+        document.getElementById("lpn").textContent = hit.length ? hit[hit.length - 1][1] : "×1";
+      } }, 10.4);
+      STEPS.forEach(([at]) => tl.fromTo("#loopn", { scale: 1.25 }, { scale: 1, duration: 0.12, immediateRender: false }, at));
+      // one step deeper: blank
+      tl.to("#copies", { opacity: 0, duration: 0.15 }, 13.35);
+      tl.to(["#a1", "#a2", "#a3"], { opacity: 0.2, duration: 0.2 }, 13.4);
+      qIn("#q4", 13.45); talk("#i-bruno", 13.45, 1.6);
+      tl.set("#i-mimi", { opacity: 0 }, 14.25); tl.set("#i-blank", { opacity: 1 }, 14.25);
+      tl.fromTo("#i-blank", { x: 0 }, { x: -8, duration: 0.06, yoyo: true, repeat: 5, immediateRender: false }, 14.25);
+      tl.fromTo("#i-dots", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 14.35);
+      tl.to("#loopn", { opacity: 0, duration: 0.15 }, 13.4);
+
+      // 3. People abroad (15-24.4)
+      tl.fromTo("#others", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 15);
+      k.pop("#c6", 15.05); k.pop("#c6b", 17.95);
+      tl.fromTo("#b-bruno", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 15.15);
+      talk("#o-bruno", 15.1, 3.4);
+      tl.fromTo("#o-coco", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, 17.6);
+      tl.fromTo("#b-coco", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 17.9);
+      talk("#o-coco", 17.9, 2.7);
+      tl.fromTo("#s-pippa", { scale: 0.92 }, { scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, 20.8);
+      tl.fromTo("#s-pippa", { x: 0 }, { x: -6, duration: 0.08, yoyo: true, repeat: 7, immediateRender: false }, 21.2);
+      k.pop("#c7", 20.85);
+      k.pop("#c8", 22.45);
+      tl.fromTo("#vs1", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 22.5);
+      tl.fromTo("#vs2", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 22.75);
+
+      // 4. The real world (24.4-29.4)
+      k.pop("#c9", 24.45);
+      [["#p1", 24.9], ["#p2", 25.6], ["#p3", 26.3]].forEach(([s, at]) =>
+        tl.fromTo(s, { y: 60, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.8)" }, at));
+
+      // 5. The lecturer (29.4-36.6)
+      tl.fromTo("#lect", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 29.4);
+      k.pop("#c10", 29.45);
+      tl.fromTo("#l-teacher", { y: 40, scale: 0.94 }, { y: 0, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 29.45);
+      k.tagIn("#t-teacher", 29.8);
+      tl.fromTo("#l-mimi", { y: 0 }, { y: -8, duration: 0.25, yoyo: true, repeat: 13, ease: "sine.inOut", immediateRender: false }, 30);
+      k.pop("#b-quote", 31.45);
+      talk("#l-teacher", 31.45, 2.6);
+      tl.to("#b-quote", { opacity: 0, duration: 0.15 }, 34.1);
+      tl.to("#l-teacher", { scale: 0.75, x: -60, y: 220, duration: 0.35, ease: "power2.inOut" }, 34.1);
+      tl.to("#t-teacher", { opacity: 0, duration: 0.15 }, 34.1);
+      k.pop("#c11", 34.25);
+      tl.to("#cycle", { opacity: 1, duration: 0.2 }, 34.25);
+      const NODES = document.querySelectorAll("#cycle .node");
+      NODES.forEach((n, i) => {
+        tl.fromTo(n, { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2.4)" }, 34.35 + i * 0.35);
+        tl.fromTo(n, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1, immediateRender: false }, 35.5 + i * 0.3);
+      });
+
+      // 6. Research (36.6-40.4)
+      tl.fromTo("#r-big", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, 36.7);
+      tl.fromTo("#r-note", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 37.3);
+      tl.fromTo("#r-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 37.5);
+
+      // 7. On purpose (40.4-42.4)
+      tl.fromTo("#a-big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 40.45);
+      k.pop("#a-p1", 41.0); k.pop("#a-p2", 41.35);
+
+      // 8. The map (42.4-59.4)
+      tl.fromTo("#map", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 42.45);
+      k.pop("#mc0", 42.45);
+      k.pop("#sup", 42.8); tl.to("#sup", { opacity: 0, duration: 0.15 }, 43.9);
+      document.querySelectorAll("#map .pc").forEach((pc, i) => tl.fromTo(pc, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 42.7 + i * 0.07));
+      document.querySelectorAll("#map .axl").forEach((l, i) => tl.fromTo(l, { opacity: 0 }, { opacity: 1, duration: 0.2 }, 42.6 + i * 0.08));
+      tl.set("#device", { opacity: 1 }, 44.0); tl.set("#device", { opacity: 0 }, 57.2);
+      tl.fromTo("#device", { y: 100, scale: 0.9 }, { y: 0, scale: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, 44.0);
+      const FEAT = [[44.0, ["#pc-pron", "#pc-aloud"]], [46.2, ["#pc-photo"]], [48.4, ["#pc-self", "#pc-fix"]], [50.6, ["#pc-quick", "#pc-listen"]], [52.8, ["#pc-opinion"]], [55.0, []]];
+      FEAT.forEach(([at, pcs], i) => {
+        tl.set(`#v${i + 1}`, { opacity: 1 }, at); tl.set(`#v${i + 1}`, { opacity: 0 }, at + 2.2);
+        tl.set(`#ml${i + 1}`, { opacity: 1 }, at); tl.set(`#ml${i + 1}`, { opacity: 0 }, at + 2.2);
+        tl.fromTo(`#ml${i + 1} span`, { scale: 0.86 }, { scale: 1, duration: 0.18, ease: "back.out(2)", immediateRender: false }, at);
+        pcs.forEach((pc, j) => {
+          const t = at + 0.9 + j * 0.3;
+          tl.fromTo(pc, { backgroundColor: "#eef2f5", color: "#66798a", borderColor: "#b9c6d2" }, { backgroundColor: "#2a8dff", color: "#ffffff", borderColor: "#1f6fd1", duration: 0.12, immediateRender: false }, t);
+          tl.fromTo(pc, { scale: 1.35, y: -40 }, { scale: 1, y: 0, duration: 0.25, ease: "back.out(2.6)", immediateRender: false }, t);
+        });
+      });
+      tl.set("#mk-qa", { opacity: 1 }, 44.0); tl.set("#mk-qa", { opacity: 0 }, 46.2);
+      tl.set("#mk-demo", { opacity: 1 }, 46.2); tl.set("#mk-demo", { opacity: 0 }, 55.0);
+      // ⑥ the swipe review: input covered lightly (pale, dotted), not the focus
+      tl.fromTo("#pc-word", { backgroundColor: "#eef2f5", color: "#66798a", borderColor: "#b9c6d2" }, { backgroundColor: "#dcecff", color: "#1f6fd1", borderColor: "#7fb6f5", duration: 0.12, immediateRender: false }, 55.9);
+      tl.fromTo("#pc-word", { scale: 1.25, y: -30 }, { scale: 1, y: 0, duration: 0.25, ease: "back.out(2.4)", immediateRender: false }, 55.9);
+      // summary: the voice-and-thinking side is filled; the desk side stays empty, on purpose
+      tl.to("#map", { y: 180, duration: 0.4, ease: "power2.inOut" }, 57.2);
+      k.pop("#mc6", 57.25);
+      tl.fromTo("#desk-lab", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 57.8);
+      const SOLID = "#pc-listen, #pc-photo, #pc-self, #pc-fix, #pc-quick, #pc-opinion, #pc-pron, #pc-aloud";
+      tl.to(SOLID, { scale: 1.12, boxShadow: "0 0 0 10px rgba(42,141,255,0.28)", duration: 0.3, ease: "back.out(2)" }, 57.7);
+      tl.to("#map .qd:nth-of-type(2), #map .qd:nth-of-type(4)", { backgroundColor: "#dcecff", duration: 0.3 }, 57.7);
+
+      // 9. Mimi's word (59.4-69)
+      tl.fromTo("#word", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 59.4);
+      const WORD = [[59.4, 61.8], [61.8, 64.8], [64.8, 67.4], [67.4, 69]];
+      WORD.forEach(([at, out], i) => {
+        if (i) tl.set(`#w${i}`, { opacity: 0 }, at);
+        tl.set(`#w${i + 1}`, { opacity: 1 }, at);
+        tl.fromTo(`#w${i + 1}`, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: "back.out(2.4)", immediateRender: false }, at);
+        k.pop(`#wb${i + 1}`, at + 0.1); if (i < 3) tl.to(`#wb${i + 1}`, { opacity: 0, duration: 0.12 }, out - 0.05);
+      });
+      [["#wk1", 62.8], ["#wk2", 63.2], ["#wk3", 63.6]].forEach(([s, at]) => { k.pop(s, at); tl.to(s, { opacity: 0, duration: 0.15 }, 64.75); });
+      tl.fromTo("#w4", { y: 0 }, { y: -50, duration: 0.2, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, 67.6);
+
+      // tagline (69-71.2)
+      tl.fromTo("#cl-big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 69.05);
+      tl.fromTo("#c-mimi", { y: 60, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 69.4);
+
+      k.end(71.2);
+      k.tapCta(71.8);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
