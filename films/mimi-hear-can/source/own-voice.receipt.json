@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "us-can": {
+      "text": "I can swim.",
+      "style": "Speak fluent, relaxed General American English, a calm everyday statement. In this sentence 'can' is an unstressed function word: reduce it to a quick, weak 'k'n' with a schwa (like 'I k'n SWIM'), very short and low, and put the sentence stress and the pitch accent clearly on 'swim'. Natural stress-timed rhythm, falling intonation at the end. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "981931bef57fe3fd9733904d3ee229a724b0141ff0f507d06c7eb3731f081cfd",
+      "at": "2026-10-23T20:34:18+00:00"
+    },
+    "us-cant": {
+      "text": "I can't swim.",
+      "style": "Speak fluent, relaxed General American English, a calm everyday statement. In this sentence 'can't' is stressed: give it a full, long, bright American short-a vowel as in 'cat' and 'bad' (KAAN-t), louder and higher in pitch than 'swim', and let the final t be a soft glottal stop that is barely heard before 'swim'. Natural stress-timed rhythm, falling intonation at the end. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "4c3d055c72ba657067619ece158bc3cd000022a4aab98d693e519efa25198af1",
+      "at": "2026-10-23T20:34:20+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

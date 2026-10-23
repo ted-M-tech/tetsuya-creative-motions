@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "friend-you-are-tired": {
+      "text": "You are tired!",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: slightly katakana-like vowels, flat syllable-by-syllable timing, every syllable equally stressed. Say it brightly and kindly, waving goodbye to a colleague at the end of the workday, meaning it as a friendly greeting (like the Japanese 'otsukaresama'). Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "720ec779bf8bd15d3d05d48de6431e09fdc2f8de3bd5dd178403f2b222be9321",
+      "at": "2026-10-23T21:13:21+00:00"
+    },
+    "see-you-tomorrow": {
+      "text": "See you tomorrow!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "5d9c086433f0dcf49d0d90091bda2122bef2a2fa56627991dfa761a97911a363",
+      "at": "2026-10-23T21:13:23+00:00"
+    },
+    "thanks-for-today": {
+      "text": "Thanks for today!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "cf3060e12c3eacb8fcd41877ae00f9de83126559dc5a140604e0c8983a35503a",
+      "at": "2026-10-23T21:13:25+00:00"
+    },
+    "good-work-today": {
+      "text": "Good work today!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "225353d433bf158551a958472c47730cca4ede36ba97ad01de984647316044ab",
+      "at": "2026-10-23T21:13:27+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

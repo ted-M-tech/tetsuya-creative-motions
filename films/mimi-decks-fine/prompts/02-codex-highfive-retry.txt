@@ -1,0 +1,7 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi (white bunny, blue inner ears, dot eyes, pink cheeks, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT); sheet.webp and aww.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears,
+dark-grey tip on the ear at the viewer's RIGHT, soft orange patch around the eye at the viewer's RIGHT, navy-and-blue
+headphones with a white "L" on the cup at the viewer's LEFT). highfive.webp is an earlier approved high-five drawing of the two: copy its composition and clarity.
+Match the characters EXACTLY (shapes, markings, colours, headphones, proportions, outline weight). Plain pure white
+background, full body, centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L". No hats, no beret, no scarf, no clothes.
+Save as PNG: art/highfive2.png — Mimi and her Friend high-fiving, both hopping a little off the ground, a clear gap of white space between their bodies and heads: the Friend on the viewer's LEFT, Mimi on the viewer's RIGHT. Each raises ONE arm high and their two mitten paws clearly slap together above and between their heads, with a few small yellow spark lines around the paws. Both smiling big, eyes happily closed, mouths open. Both keep the white "L" on the cup at the viewer's LEFT.

@@ -1,0 +1,10 @@
+--- a/native-ios/Lanclo/Core/AppStore.swift
++++ b/native-ios/Lanclo/Core/AppStore.swift
+@@
+             if input == "bank" { return .init(candidates: [.init(term: "bank", meaning: "銀行"), .init(term: "bank", meaning: "川岸")]) }
++            // Capture-only (Mimi short 064): the REAL answer Lanclo's server composer returned for this input on 2026-10-23
++            // (films/mimi-say-otsukare/process/compose-probe-otsukare.jsonl, run 2), with a short wait so the loading state shows.
++            if input == "仕事終わりにお疲れ様" {
++                try await Task.sleep(for: .seconds(2)); try check()
++                return .init(candidates: [.init(term: "Have a good evening!", meaning: "お疲れ様でした（退社・別れ際の挨拶）"), .init(term: "Good work today!", meaning: "今日はお疲れ様でした（一日の労いの言葉）")])
++            }

@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-ear": {
+      "text": "Happy New Ear!",
+      "style": "Speak English as a cheerful Japanese learner greeting a friend on New Year's morning, bright and warm. Say every word exactly as written: 'Ear' is the body part and starts directly on the vowel, like Japanese 'iyaa', with NO 'y' sound before it, so a listener clearly hears 'Happy New Ear!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "500e972fb2d42066d9b2cefcaf715547d61d1216bf4aacc0881ae6003afcd0a6",
+      "at": "2026-10-23T20:34:36+00:00"
+    },
+    "native-year": {
+      "text": "Happy New Year!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "c42862ffedbd1b0cb1bc4c1f94a777ef6fec05f2b8827606eece50c5acd827c8",
+      "at": "2026-10-23T20:34:39+00:00"
+    },
+    "native-year-word": {
+      "text": "Year.",
+      "style": "Speak fluent General American English like a native speaker saying one word clearly and calmly, as in a pronunciation lesson. 'Year' starts with a clear, quick 'y' glide as in 'yes' (tongue high near the roof of the mouth), then the vowel and an American r. Natural, not exaggerated. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "bc3fd715c8db087a1dcbe5612218b3cfb3f92e89704471e287553e53b811f8e0",
+      "at": "2026-10-23T21:46:26+00:00"
+    },
+    "learner-ear-word": {
+      "text": "Ear.",
+      "style": "Speak English as a Japanese learner saying one word on its own, as in a pronunciation lesson. Say 'Ear' (the body part) like Japanese 'iyaa': start directly on the vowel 'ee' with NO 'y' sound before it, then an open 'ah', no American r. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "95e37fe2eebceeec3d49956b6942246e0e678d9615eaf12235933f126fe526b6",
+      "at": "2026-10-23T21:47:11+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

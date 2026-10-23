@@ -1,0 +1,29 @@
+{
+ "lines": [
+  {
+   "id": "learner-katakana",
+   "text": "Hoteru. Gitaa. Shanpuu.",
+   "style": "Say these three words as a Japanese person reading the katakana words ホテル, ギター, シャンプー aloud to a friend, cheerful and confident, with only a short pause (about a quarter of a second) between the words. Pronounce each exactly as in Japanese with standard Tokyo pitch accent (head-high): the FIRST syllable of every word is high and strong, then the pitch drops and the rest of the word is low and soft. HO-te-ru: ho high, te-ru low, three syllables with a clear vowel in each. GI-taa: gi high, the long taa low. SHAN-puu: shan high, the long puu low and soft, falling at the end, never rising. Flat statement, no question intonation. Natural, not a caricature."
+  },
+  {
+   "id": "us-hotel",
+   "text": "Hotel.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables, ho-TEL: a short, light, lower unstressed 'ho', then the stressed 'TEL' clearly louder, longer and higher in pitch than 'ho', starting high and falling at the end like a confident statement. Native rhythm, not slowed down."
+  },
+  {
+   "id": "us-guitar",
+   "text": "Guitar.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables: a short, light, reduced 'gui' (like 'gih'), then a strong, loud, longer, higher-pitched stressed 'TAR' with a rhotic r (gui-TAR). Native rhythm, not slowed down."
+  },
+  {
+   "id": "us-shampoo",
+   "text": "Shampoo.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Two syllables: a short, light, unstressed 'sham', then a strong, loud, longer, higher-pitched stressed 'POO' (sham-POO). Native rhythm, not slowed down."
+  },
+  {
+   "id": "us-japanese",
+   "text": "Japanese.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner, saying the word on its own. Three syllables: a light 'ja', a reduced 'pa', then a strong, loud, longer, higher-pitched stressed 'NESE' ending in a z sound (ja-pa-NESE). Native rhythm, not slowed down."
+  }
+ ]
+}

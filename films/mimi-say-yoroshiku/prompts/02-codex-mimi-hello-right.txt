@@ -1,0 +1,10 @@
+Use your image generation tool. The attached images: master.webp = Mimi in the official Lanclo 2D style (white bunny, blue inner ears,
+dot eyes, pink cheeks, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT); mimi-colleague-hello.png = Mimi in
+this episode's office outfit (soft light-blue cardigan over a white shirt, lanyard with a plain blank white ID card).
+Match Mimi EXACTLY (shapes, colours, headphones, proportions, outline weight) and the same outfit. Plain pure white background,
+full body, centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L".
+
+Save as PNG: art/mimi-colleague-hello-r.png — Mimi as a friendly office colleague, smiling warmly (one eye winking is fine), body turned
+three-quarter toward the viewer's RIGHT (like master.webp), one mitten held out for a handshake toward the viewer's RIGHT, the other
+mitten relaxed. Headphones on, white "L" on the cup at the viewer's LEFT.
+Do not modify other files. List the saved path when done.

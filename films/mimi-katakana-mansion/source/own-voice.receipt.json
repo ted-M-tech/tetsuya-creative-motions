@@ -1,0 +1,31 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-mansion": {
+      "text": "I live in a mansion.",
+      "style": "Speak as a friendly Japanese learner of English chatting casually and a little proudly with a friend, telling where they live. Clear, intelligible English with only a light Japanese accent; pronounce every word correctly (the mistake is the meaning of the word, not the sound). Natural pace, about one and a half seconds, a cheerful falling intonation at the end. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f8299d2da3177721633d778577c16ae4612d0ebb107e190fc181690d85b16548",
+      "at": "2026-10-23T20:49:32+00:00"
+    },
+    "us-apartment": {
+      "text": "I live in an apartment.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f1bce2c90d7f2b7eca436628bcfa00619a9279d4405504440dcb536123446ed0",
+      "at": "2026-10-23T20:49:34+00:00"
+    },
+    "us-outlet": {
+      "text": "Outlet.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "bd75005b3076e960bc271d86b1fb1e9e572826bce55eee5f74defe6c79bb63a8",
+      "at": "2026-10-23T20:49:36+00:00"
+    },
+    "us-complaint": {
+      "text": "Complaint.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "6d42ce69dbe2581ecfa50932e2b07d57686f72edc0bd555cf71c9aac42178538",
+      "at": "2026-10-23T20:49:37+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
