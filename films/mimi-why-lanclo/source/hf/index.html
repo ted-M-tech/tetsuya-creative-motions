@@ -109,7 +109,7 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="70.6" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="72.8" data-width="1080" data-height="1920">
       <!-- 1. The discussion abroad (0-7.0): everyone talks over each other, Mimi alone and silent -->
       <div id="disc" class="scene clip" data-start="0" data-duration="7.0" data-track-index="1">
         <img class="plate" src="assets/art/meeting.webp" alt="" />
@@ -163,9 +163,10 @@
         <img id="o-bruno" class="ch" src="assets/art/bruno-talk.webp" alt="" />
         <img id="o-coco" class="ch" src="assets/art/coco-chat.webp" alt="" />
         <div id="b-bruno" class="chat">Yesterday I <span class="err">go</span> to the meeting,<br />and I <span class="err">say</span> my idea!</div>
-        <div id="b-coco" class="chat">My grammar <span class="err">is not perfect</span>,<br />but I talk anyway!</div>
+        <div id="b-coco" class="chat">I think this plan <span class="err">no good</span>,<br />because <span class="err">too much money</span>!</div>
       </div>
-      <div class="caption small clip" data-start="15" data-duration="5.8" data-track-index="6"><span id="c6">海外で出会った人たちは、<br /><strong>自信を持って</strong>話していた。</span></div>
+      <div class="caption small clip" data-start="15" data-duration="2.9" data-track-index="6"><span id="c6">海外で出会った人たちは、<br /><strong>自信を持って</strong>話していた。</span></div>
+      <div class="caption small clip" data-start="17.9" data-duration="2.9" data-track-index="6"><span id="c6b">文法はめちゃくちゃ。<br />でも、<strong>堂々と意見を言う。</strong></span></div>
       <div id="squint" class="scene clip" data-start="20.8" data-duration="1.6" data-track-index="1">
         <img class="plate" src="assets/art/meeting.webp" alt="" />
         <img id="s-pippa" class="ch" src="assets/art/pippa-squint.webp" alt="" />
@@ -225,8 +226,8 @@
         <div id="a-big" class="big">だからLancloは、<br /><strong>あえて。</strong></div>
         <div class="pills"><div id="a-p1" class="pill">声が必要な機能</div><div id="a-p2" class="pill think">考えないとできない機能</div></div>
       </div>
-      <!-- 8. The English-learning map (42.4-57.2): each Lanclo feature fills its pieces; the desk pieces stay empty -->
-      <div id="mapsc" class="scene clip" data-start="42.4" data-duration="14.8" data-track-index="1" style="background:#fbfcfd">
+      <!-- 8. The English-learning map (42.4-59.4): each Lanclo feature fills its pieces; the desk pieces stay empty -->
+      <div id="mapsc" class="scene clip" data-start="42.4" data-duration="17" data-track-index="1" style="background:#fbfcfd">
         <div id="map">
           <div class="qd" style="left:0; top:0; background:#f3f7fb"></div><div class="qd" style="left:484px; top:0; background:#eef6ff"></div>
           <div class="qd" style="left:0; top:304px; background:#f6f6f4"></div><div class="qd" style="left:484px; top:304px; background:#f3f7fb"></div>
@@ -239,10 +240,10 @@
           <div class="pc" id="pc-opinion" style="left:622px; top:200px">意見と理由</div>
           <div class="pc" id="pc-pron" style="left:520px; top:360px">発音</div>
           <div class="pc" id="pc-aloud" style="left:740px; top:360px">音読</div>
-          <div class="pc desk" style="left:30px; top:340px">単語</div>
-          <div class="pc desk" style="left:250px; top:340px">文法</div>
+          <div class="pc" id="pc-word" style="left:16px; top:340px; width:250px">単語・フレーズ</div>
+          <div class="pc desk" style="left:280px; top:340px; width:180px">文法</div>
           <div class="pc desk" style="left:100px; top:430px; width:260px">リーディング</div>
-          <div id="desk-lab">ここは机でできる</div>
+          <div id="desk-lab" style="left:200px">ここは机でできる</div>
           <div class="axl" style="left:480px; top:0">自分で考える</div>
           <div class="axl" style="left:480px; top:604px">決まった答え</div>
           <div class="axl" style="left:96px; top:302px">インプット</div>
@@ -256,20 +257,22 @@
       <div id="ml3" class="mlab"><span><strong>③ 英語日記</strong>：話して、直す</span></div>
       <div id="ml4" class="mlab"><span><strong>④ 会話練習</strong>：聞いて、すぐ返す</span></div>
       <div id="ml5" class="mlab"><span><strong>⑤ ディベート</strong>：意見と理由</span></div>
-      <div class="caption small clip" data-start="55" data-duration="2.2" data-track-index="6"><span id="mc6">Lancloが埋めるのは、<br /><strong>声に出して考える</strong>ピース。</span></div>
+      <div id="ml6" class="mlab"><span><strong>⑥ フレーズ復習</strong>：スワイプで</span></div>
+      <div class="caption small clip" data-start="57.2" data-duration="2.2" data-track-index="6"><span id="mc6" style="font-size:48px">インプットも、スワイプでサクッと。<br />でも力を入れているのは、<br /><strong>声に出して考える</strong>ほう。</span></div>
       <div id="device"><div id="screen">
         <video id="v1" class="clip" src="assets/app/daily.mp4" muted playsinline data-start="44" data-duration="2.2" data-track-index="4"></video>
         <video id="v2" class="clip" src="assets/app/photo.mp4" muted playsinline data-start="46.2" data-duration="2.2" data-track-index="4"></video>
         <video id="v3" class="clip" src="assets/app/journal.mp4" muted playsinline data-start="48.4" data-duration="2.2" data-track-index="4"></video>
         <video id="v4" class="clip" src="assets/app/roleplay.mp4" muted playsinline data-start="50.6" data-duration="2.2" data-track-index="4"></video>
         <video id="v5" class="clip" src="assets/app/debate.mp4" muted playsinline data-start="52.8" data-duration="2.2" data-track-index="4"></video>
+        <video id="v6" class="clip" src="assets/app/swipe.mp4" muted playsinline data-start="55" data-duration="2.2" data-track-index="4"></video>
         <!-- fixture labels: デモデータ (top left) and the QA feedback text in the daily lesson -->
         <div id="mk-demo" class="mask" style="left:2%; top:15.2%; width:24%; height:3%"></div>
-        <div id="mk-qa" class="mask white" style="left:4%; top:63.5%; width:92%; height:9.5%"></div>
+        <div id="mk-qa" class="mask white" style="left:4%; top:65.7%; width:92%; height:9.5%"></div>
       </div></div>
 
-      <!-- 9. Mimi's word (57.2-66.8), the tagline (66.8-69.0) -->
-      <div id="word" class="scene clip" data-start="57.2" data-duration="9.6" data-track-index="1">
+      <!-- 9. Mimi's word (59.4-69), the tagline (69-71.2) -->
+      <div id="word" class="scene clip" data-start="59.4" data-duration="9.6" data-track-index="1">
         <img class="plate" src="assets/art/desk.webp" alt="" />
         <img id="w1" class="ch wm" src="assets/art/hand-up.webp" alt="" />
         <img id="w2" class="ch wm" src="assets/art/point.webp" alt="" style="opacity:0" />
@@ -283,11 +286,11 @@
         <div id="wb3" class="bubble wb">大変だけど、僕が<strong>自然に支える</strong><br />しくみを用意したから。</div>
         <div id="wb4" class="bubble wb" style="font-size:80px">一緒にがんばろう！</div>
       </div>
-      <div id="close" class="type clip" data-start="66.8" data-duration="2.2" data-track-index="2" style="justify-content:flex-start; padding-top:420px">
+      <div id="close" class="type clip" data-start="69" data-duration="2.2" data-track-index="2" style="justify-content:flex-start; padding-top:420px">
         <div id="cl-big" class="big">日本の英語を、<br /><strong>声から</strong>変える。</div>
         <img id="c-mimi" src="assets/art/confident.webp" alt="" />
       </div>
-      <div id="end" class="end clip" data-start="69" data-duration="1.6" data-track-index="7"></div>
+      <div id="end" class="end clip" data-start="71.2" data-duration="1.6" data-track-index="7"></div>
 
       <!-- English subtitles (one track) -->
       <div class="sub clip" data-start="0.0" data-duration="2.6" data-track-index="8"><span>At a discussion abroad, I was the only one left out.</span></div>
@@ -295,7 +298,8 @@
       <div class="sub clip" data-start="7.0" data-duration="2.4" data-track-index="8"><span>In Japan, I studied English with vocabulary, grammar and silent reading.</span></div>
       <div class="sub clip" data-start="9.4" data-duration="3.4" data-track-index="8"><span>I could handle the conversations I knew.</span></div>
       <div class="sub clip" data-start="12.8" data-duration="2.2" data-track-index="8"><span>But all I did was repeat them.</span></div>
-      <div class="sub clip" data-start="15" data-duration="5.8" data-track-index="8"><span>The people I met abroad spoke with confidence.</span></div>
+      <div class="sub clip" data-start="15" data-duration="2.9" data-track-index="8"><span>The people I met abroad spoke with confidence.</span></div>
+      <div class="sub clip" data-start="17.9" data-duration="2.9" data-track-index="8"><span>Their grammar was all over the place, but they gave their opinions boldly.</span></div>
       <div class="sub clip" data-start="20.8" data-duration="1.6" data-track-index="8"><span>Even if reading was hard for them.</span></div>
       <div class="sub clip" data-start="22.4" data-duration="2.0" data-track-index="8"><span>The opposite of me, a Japanese learner. (Me: reading ◎ speaking △ / Them: reading △ speaking ◎)</span></div>
       <div class="sub clip" data-start="24.4" data-duration="5.0" data-track-index="8"><span>What the real world needs is the power to think for yourself, speak and discuss. (Meetings · Debates · Small talk)</span></div>
@@ -310,15 +314,16 @@
       <div class="sub clip" data-start="48.4" data-duration="2.2" data-track-index="8"><span>3. English journal: talk about your day, then fix it</span></div>
       <div class="sub clip" data-start="50.6" data-duration="2.2" data-track-index="8"><span>4. Conversation practice: listen and answer on the spot</span></div>
       <div class="sub clip" data-start="52.8" data-duration="2.2" data-track-index="8"><span>5. Debate: your opinion and a reason</span></div>
-      <div class="sub clip" data-start="55" data-duration="2.2" data-track-index="8"><span>Lanclo fills the pieces where you speak and think. (Vocabulary, grammar, reading: you can do those at a desk.)</span></div>
-      <div class="sub clip" data-start="57.2" data-duration="2.4" data-track-index="8"><span>Practising at a desk is easier. I get it.</span></div>
-      <div class="sub clip" data-start="59.6" data-duration="3" data-track-index="8"><span>But when you think and speak for yourself, you start to see weak spots you couldn’t see before. (No reason comes out · The past tense won’t come quickly · Always the same phrases)</span></div>
-      <div class="sub clip" data-start="62.6" data-duration="2.6" data-track-index="8"><span>It’s hard, but I’ve built a system that supports you naturally.</span></div>
-      <div class="sub clip" data-start="65.2" data-duration="1.6" data-track-index="8"><span>Let’s do this together!</span></div>
-      <div class="sub clip" data-start="66.8" data-duration="2.2" data-track-index="8"><span>Changing English in Japan, starting with your voice.</span></div>
-      <div class="sub clip" data-start="69" data-duration="1.6" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+      <div class="sub clip" data-start="55" data-duration="2.2" data-track-index="8"><span>6. Phrase review: a quick swipe</span></div>
+      <div class="sub clip" data-start="57.2" data-duration="2.2" data-track-index="8"><span>Input too, with a quick swipe. But our focus is thinking and speaking out loud. (Grammar, reading: you can do those at a desk.)</span></div>
+      <div class="sub clip" data-start="59.4" data-duration="2.4" data-track-index="8"><span>Practising at a desk is easier. I get it.</span></div>
+      <div class="sub clip" data-start="61.8" data-duration="3" data-track-index="8"><span>But when you think and speak for yourself, you start to see weak spots you couldn’t see before. (No reason comes out · The past tense won’t come quickly · Always the same phrases)</span></div>
+      <div class="sub clip" data-start="64.8" data-duration="2.6" data-track-index="8"><span>It’s hard, but I’ve built a system that supports you naturally.</span></div>
+      <div class="sub clip" data-start="67.4" data-duration="1.6" data-track-index="8"><span>Let’s do this together!</span></div>
+      <div class="sub clip" data-start="69" data-duration="2.2" data-track-index="8"><span>Changing English in Japan, starting with your voice.</span></div>
+      <div class="sub clip" data-start="71.2" data-duration="1.6" data-track-index="8"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
-      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="70.6" data-track-index="9" data-volume="1"></audio>
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="72.8" data-track-index="9" data-volume="1"></audio>
     </div>
     <script>
       const K = window.MimiKit;
@@ -401,7 +406,7 @@
 
       // 3. People abroad (15-24.4)
       tl.fromTo("#others", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 15);
-      k.pop("#c6", 15.05);
+      k.pop("#c6", 15.05); k.pop("#c6b", 17.95);
       tl.fromTo("#b-bruno", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 15.15);
       talk("#o-bruno", 15.1, 3.4);
       tl.fromTo("#o-coco", { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, 17.6);
@@ -447,15 +452,15 @@
       tl.fromTo("#a-big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 40.45);
       k.pop("#a-p1", 41.0); k.pop("#a-p2", 41.35);
 
-      // 8. The map (42.4-57.2)
+      // 8. The map (42.4-59.4)
       tl.fromTo("#map", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 42.45);
       k.pop("#mc0", 42.45);
       k.pop("#sup", 42.8); tl.to("#sup", { opacity: 0, duration: 0.15 }, 43.9);
       document.querySelectorAll("#map .pc").forEach((pc, i) => tl.fromTo(pc, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 42.7 + i * 0.07));
       document.querySelectorAll("#map .axl").forEach((l, i) => tl.fromTo(l, { opacity: 0 }, { opacity: 1, duration: 0.2 }, 42.6 + i * 0.08));
-      tl.set("#device", { opacity: 1 }, 44.0); tl.set("#device", { opacity: 0 }, 55.0);
+      tl.set("#device", { opacity: 1 }, 44.0); tl.set("#device", { opacity: 0 }, 57.2);
       tl.fromTo("#device", { y: 100, scale: 0.9 }, { y: 0, scale: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, 44.0);
-      const FEAT = [[44.0, ["#pc-pron", "#pc-aloud"]], [46.2, ["#pc-photo"]], [48.4, ["#pc-self", "#pc-fix"]], [50.6, ["#pc-quick", "#pc-listen"]], [52.8, ["#pc-opinion"]]];
+      const FEAT = [[44.0, ["#pc-pron", "#pc-aloud"]], [46.2, ["#pc-photo"]], [48.4, ["#pc-self", "#pc-fix"]], [50.6, ["#pc-quick", "#pc-listen"]], [52.8, ["#pc-opinion"]], [55.0, []]];
       FEAT.forEach(([at, pcs], i) => {
         tl.set(`#v${i + 1}`, { opacity: 1 }, at); tl.set(`#v${i + 1}`, { opacity: 0 }, at + 2.2);
         tl.set(`#ml${i + 1}`, { opacity: 1 }, at); tl.set(`#ml${i + 1}`, { opacity: 0 }, at + 2.2);
@@ -467,31 +472,36 @@
         });
       });
       tl.set("#mk-qa", { opacity: 1 }, 44.0); tl.set("#mk-qa", { opacity: 0 }, 46.2);
-      tl.set("#mk-demo", { opacity: 1 }, 46.2);
+      tl.set("#mk-demo", { opacity: 1 }, 46.2); tl.set("#mk-demo", { opacity: 0 }, 55.0);
+      // ⑥ the swipe review: input covered lightly (pale, dotted), not the focus
+      tl.fromTo("#pc-word", { backgroundColor: "#eef2f5", color: "#66798a", borderColor: "#b9c6d2" }, { backgroundColor: "#dcecff", color: "#1f6fd1", borderColor: "#7fb6f5", duration: 0.12, immediateRender: false }, 55.9);
+      tl.fromTo("#pc-word", { scale: 1.25, y: -30 }, { scale: 1, y: 0, duration: 0.25, ease: "back.out(2.4)", immediateRender: false }, 55.9);
       // summary: the voice-and-thinking side is filled; the desk side stays empty, on purpose
-      tl.to("#map", { y: 180, duration: 0.4, ease: "power2.inOut" }, 55.0);
-      k.pop("#mc6", 55.05);
-      tl.fromTo("#desk-lab", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 55.6);
-      tl.fromTo("#map .pc:not(.desk)", { boxShadow: "0 0 0 0 rgba(42,141,255,0)" }, { boxShadow: "0 0 0 10px rgba(42,141,255,0.25)", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, 55.5);
+      tl.to("#map", { y: 180, duration: 0.4, ease: "power2.inOut" }, 57.2);
+      k.pop("#mc6", 57.25);
+      tl.fromTo("#desk-lab", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 57.8);
+      const SOLID = "#pc-listen, #pc-photo, #pc-self, #pc-fix, #pc-quick, #pc-opinion, #pc-pron, #pc-aloud";
+      tl.to(SOLID, { scale: 1.12, boxShadow: "0 0 0 10px rgba(42,141,255,0.28)", duration: 0.3, ease: "back.out(2)" }, 57.7);
+      tl.to("#map .qd:nth-of-type(2), #map .qd:nth-of-type(4)", { backgroundColor: "#dcecff", duration: 0.3 }, 57.7);
 
-      // 9. Mimi's word (57.2-66.8)
-      tl.fromTo("#word", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 57.2);
-      const WORD = [[57.2, 59.6], [59.6, 62.6], [62.6, 65.2], [65.2, 66.8]];
+      // 9. Mimi's word (59.4-69)
+      tl.fromTo("#word", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 59.4);
+      const WORD = [[59.4, 61.8], [61.8, 64.8], [64.8, 67.4], [67.4, 69]];
       WORD.forEach(([at, out], i) => {
         if (i) tl.set(`#w${i}`, { opacity: 0 }, at);
         tl.set(`#w${i + 1}`, { opacity: 1 }, at);
         tl.fromTo(`#w${i + 1}`, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: "back.out(2.4)", immediateRender: false }, at);
         k.pop(`#wb${i + 1}`, at + 0.1); if (i < 3) tl.to(`#wb${i + 1}`, { opacity: 0, duration: 0.12 }, out - 0.05);
       });
-      [["#wk1", 60.6], ["#wk2", 61.0], ["#wk3", 61.4]].forEach(([s, at]) => { k.pop(s, at); tl.to(s, { opacity: 0, duration: 0.15 }, 62.55); });
-      tl.fromTo("#w4", { y: 0 }, { y: -50, duration: 0.2, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, 65.4);
+      [["#wk1", 62.8], ["#wk2", 63.2], ["#wk3", 63.6]].forEach(([s, at]) => { k.pop(s, at); tl.to(s, { opacity: 0, duration: 0.15 }, 64.75); });
+      tl.fromTo("#w4", { y: 0 }, { y: -50, duration: 0.2, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, 67.6);
 
-      // tagline (66.8-69.0)
-      tl.fromTo("#cl-big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 66.85);
-      tl.fromTo("#c-mimi", { y: 60, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 67.2);
+      // tagline (69-71.2)
+      tl.fromTo("#cl-big", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 69.05);
+      tl.fromTo("#c-mimi", { y: 60, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 69.4);
 
-      k.end(69.0);
-      k.tapCta(69.6);
+      k.end(71.2);
+      k.tapCta(71.8);
 
       window.__timelines["main"] = tl;
       tl.seek(0);

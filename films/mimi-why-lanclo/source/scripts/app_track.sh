@@ -6,12 +6,13 @@
 #   renders/app/debate.mov    019. Lost an Argument in English/Debate_assets/sim-debate_fixture.mov (recording 47.25-54.9)
 #   renders/app/roleplay.mov  017. Roleplay - Frozen at the Cafe/Roleplay_assets/sim-roleplay-cafe_fixture.mov (hint opens 45.7)
 #   renders/app/loop.mov      018. One Loop in Lanclo/Loop_assets/sim-loop_..._fixture.mov (journal feedback, scroll to Mimiによる添削 ~51.5)
+#   renders/app/swipe.mov     014. Swipe Review/Swipe_assets/sim-swipe-review_fixture.mov (right swipe, drag starts 28.0)
 #   renders/app/daily-60.mp4  009. Unread Books - Daily Lesson/Mimi_06_Unread_Books_assets/daily-60.mp4 (recording 52.5-)
 # Measured on frame sheets of the 60 fps resamples (select every 30th frame).
 set -e
 cd "$(dirname "$0")/.."
 A=renders/app
-for f in describe debate roleplay loop; do
+for f in describe debate roleplay loop swipe; do
   [ -f $A/$f-60.mp4 ] || ffmpeg -v error -y -i $A/$f.mov -an -vf fps=60 -c:v libx264 -pix_fmt yuv420p -crf 14 -preset fast $A/$f-60.mp4
 done
 mkdir -p hf/assets/app
@@ -21,4 +22,5 @@ cut debate-60.mp4 debate 47.3
 cut roleplay-60.mp4 roleplay 45.3
 cut loop-60.mp4 journal 51.6
 cut daily-60.mp4 daily 52.3
-for f in photo debate roleplay journal daily; do echo $f $(ffprobe -v error -show_entries format=duration -of csv=p=0 hf/assets/app/$f.mp4); done
+cut swipe-60.mp4 swipe 27.7
+for f in photo debate roleplay journal daily swipe; do echo $f $(ffprobe -v error -show_entries format=duration -of csv=p=0 hf/assets/app/$f.mp4); done

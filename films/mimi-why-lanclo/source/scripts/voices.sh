@@ -15,7 +15,7 @@ tts "Okay, okay, but listen to this!" af_nicole p2.wav 1.15
 tts "Right? That's what I keep saying!" af_bella c2.wav 1.15
 # Confident, with grammar mistakes
 tts "Yesterday I go to the meeting, and I say my idea!" am_michael b3.wav 1.05
-tts "My grammar is not perfect, but I talk anyway!" af_bella c3.wav 1.05
+tts "I think this plan no good, because too much money!" af_bella c3.wav 1.05
 # The canned self-introduction (Mimi's answers are bubbles only)
 tts "Where are you from?" am_michael q1.wav 1.05
 tts "What do you like?" af_nicole q2.wav 1.05

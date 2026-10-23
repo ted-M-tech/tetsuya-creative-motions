@@ -25,9 +25,9 @@ OTHERS, COCO, SQUINT, VS = 15.0, 17.9, 20.8, (22.5, 22.75)
 REAL, PANELS = 24.4, (24.9, 25.6, 26.3)
 LECT, QUOTE, CYCLE = 29.4, 31.45, (34.35, 34.7, 35.05)
 RES, AETE, PILLS = 36.6, 40.4, (41.0, 41.35)
-MAP, FEAT, SUMMARY = 42.4, ((44.0, 2), (46.2, 1), (48.4, 2), (50.6, 2), (52.8, 1)), 55.0
-WORD, WEAK = (57.2, 59.6, 62.6, 65.2), (60.6, 61.0, 61.4)
-CLOSE, END, CTA_TAP, DUR = 66.8, 69.0, 69.6, 70.6
+MAP, FEAT, SUMMARY = 42.4, ((44.0, 2), (46.2, 1), (48.4, 2), (50.6, 2), (52.8, 1), (55.0, 1)), 57.2
+WORD, WEAK = (59.4, 61.8, 64.8, 67.4), (62.8, 63.2, 63.6)
+CLOSE, END, CTA_TAP, DUR = 69.0, 71.2, 71.8, 72.8
 CALM = (24.4, 40.4)   # the reflective middle: the bed drops further
 
 m = Mix(DUR, voice_dir=SRC / 'assets/voice')

@@ -23,7 +23,7 @@ kits/mimi-short/render-cuts.sh $F/hf mimi-why-lanclo   # renders/mimi-why-lanclo
 | `art/` | The seven new poses (PNG from Codex, cut-out WebP) |
 | `assets/voice/` | Kokoro: the discussion chatter (b1, p1, c1, b2, p2, c2), the self-introduction questions (q1 Bruno, q2 Pippa, q3 Coco, q4 Bruno's deeper question) and the confident lines (b3 Bruno, c3 Coco) |
 | `scripts/voices.sh` | Kokoro lines and voices |
-| `scripts/app_track.sh` | The five 2.2 s app clips, with the source takes and times |
+| `scripts/app_track.sh` | The six 2.2 s app clips (incl. the swipe review), with the source takes and times |
 | `scripts/mix.py` | Cue sheet (same times as `hf/index.html`), bed lowered in the middle, static gain + limiter (WAV at -13.1 so the rendered MP4 reads about -14 LUFS) |
 | `hf/index.html` | The edit; the fixture masks are `#mk-demo` and `#mk-qa` (screen percentages) |
 
