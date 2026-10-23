@@ -12,7 +12,7 @@ Scene: a theme-park ticket booth. Mimi plays the clerk (role outfit: red vest, b
 | 1.50–4.20 | Hook card (“サーティーン”枚！ →30枚出てきた) + the order; the learner line (owner's voice) from 1.85, two equal beats on “Thir-tin” at 1.95 / 2.45 |
 | 4.20–5.60 | Freeze: record scratch, Mimi the clerk “Thirty tickets!” (bubble) ×30, the ticket avalanche (ドサーッ!), 「シーン…」 |
 | 5.60–6.90 | Mimi (out of role) pops up: 「それ「30」に聞こえてる〜！！」 |
-| 6.90–9.90 | Stress card 13は後ろを強く・長く！: thir-TEEN vs THIR-ty, stress dots and a pitch line; learner word at 7.35, native “thirteen” at 8.6 |
+| 6.90–9.90 | Stress card 13は後ろを強く・長く！: thir-TEEN vs THIR-ty, stress dots and a pitch line; learner word at 7.35, native isolated “Thirteen.” at 8.6 |
 | 9.90–14.00 | Real Lanclo daily lesson on “Thirteen tickets, please.” (simulator, fixture data), お手本 tapped at 10.5 |
 | 14.00–16.60 | Fixed: “thirTEEN tickets, please.”, Mimi hands over 13 tickets |
 | 16.60–17.90 | End card, CTA tap at 17.2 |

@@ -78,8 +78,8 @@ m.sfx(rustle(0.8, 5), AV - 0.1, g=0.6)           # the avalanche
 m.sfx(poof() * 0.6, AV + 0.2)                     # thud: buried
 m.sfx(boing(True), M)
 m.sfx(whoosh(0.3, 0.3), C)
-m.voice('learner-thirteen.wav', CL, start=0.30, length=1.0)    # the card: "Thirtin" (flat)
-m.voice('native-thirteen.wav', CN, start=0.18, length=0.60)    # "thirTEEN"
+m.voice('learner-thirteen.wav', CL, start=0.27, length=1.03)   # the card: "Thirtin" (flat); speech 0.305-1.26 s, edges <= -46 dB
+m.voice('native-thirteen-word.wav', CN, start=0.31, length=1.01)  # the card: the isolated word "Thirteen." (stress on TEEN); speech 0.35-1.29 s, 40 ms pre-roll, cut after the n decays
 m.sfx(pofu() * 0.5, CN - 0.35)
 m.sfx(ding(), A - 0.35)
 m.sfx(whoosh(0.3, 0.3), A)

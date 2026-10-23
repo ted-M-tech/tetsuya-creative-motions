@@ -15,6 +15,13 @@
       "wavSha256": "397ce8526e8675a8e0eb42bf69d03e3b0851742a20730437ebcd28af8cb6c3e6",
       "at": "2026-10-23T20:34:00+00:00",
       "note": "take 1 of 3 kept (takes 2 and 3 measured worse: see PROCESS.md)"
+    },
+    "native-thirteen-word": {
+      "text": "Thirteen.",
+      "style": "Speak fluent, warm General American English like a native teacher saying the number thirteen clearly to contrast it with thirty. The first syllable 'thir' is quiet, short and LOW in pitch; then a crisp aspirated t and the stressed syllable TEEN: louder, clearly HIGHER in pitch and LONGER, a held bright 'ee' that falls only at the very end: 'thir-TEEEN.' Natural, not exaggerated. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "835d7c2d0522613f9606b1d85d7153d1c91b7ee3de310801859d6d5d66ac8ea5",
+      "at": "2026-10-23T21:46:45+00:00",
+      "note": "take 2 of 2 kept (take 1 stressed THIR: see PROCESS.md)"
     }
   },
   "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"

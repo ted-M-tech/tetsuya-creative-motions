@@ -9,6 +9,11 @@
    "id": "native-thirteen",
    "text": "Thirteen tickets, please.",
    "style": "Speak fluent, warm General American English like a native speaker ordering at a ticket booth. Use native vowel and consonant sounds, smooth linking and natural intonation. In 'thirteen' the main stress is clearly on the SECOND syllable: thir-TEEN, a clear aspirated t and a long, bright, high 'ee' vowel held a little, the first syllable 'thir' short and light. Contrast it clearly with 'thirty'."
+  },
+  {
+   "id": "native-thirteen-word",
+   "text": "Thirteen.",
+   "style": "Speak fluent, warm General American English like a native teacher saying the number thirteen clearly to contrast it with thirty. The first syllable 'thir' is quiet, short and LOW in pitch; then a crisp aspirated t and the stressed syllable TEEN: louder, clearly HIGHER in pitch and LONGER, a held bright 'ee' that falls only at the very end: 'thir-TEEEN.' Natural, not exaggerated."
   }
  ]
 }
