@@ -26,6 +26,13 @@
 5. Mix: takes trimmed to speech with heads and tails kept (silencedetect -45 dB: A 0.12–1.12 s, B 0.19–0.94 s, C 0.15–1.57 s of the take); kit bed and levels unchanged; soft taps for the countdown, pofu for the reveal, a whoosh for Mimi's turn-away; the rule punch line comes after C's “me” so no pop lands on it. Episode 1's -14 LUFS post-gain + limiter step kept: -14.2 LUFS / -1.9 dBTP in the WAV, -14.3 LUFS / -1.9 dBTP in both cuts. Voice sections measure 9–14 dB (mean) above the bed-only sections.
 6. Layout check on the contact sheet: captions at the top, subtitles at `bottom: 410px` over the feet only, never a face; the rule subtitle cut to two lines. `hyperframes check`: 0 errors (lint warnings for missing ids on subtitle clips, as in episode 1).
 
+## Draft v2 (2026-10-23, platform safe zones)
+
+- Owner: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」 Commander: the bristling / ぷいっ Mimi and the small Mimi on the rule card sat in the right action rail (x > 900, y 820–1520); EN subtitles must sit fully above y 1500 within x 60–880; the hook's first line must start at y ≥ 200.
+- Layout: hook, question, answer, rule title and the comment card start at y ≥ 200 (hook 96 / 100 px); cards moved to y 445 and 370 px high; Mimi moved to x 600 (face left of 900), her turn-away is a hop and tilt without sliding right; the 「ぷいっ！」 and 「Bでしょ！」 bubbles moved out of the rail; the rule-card arrows end at x 890; the rule Mimi (200 px, x 690) sits next to a narrower punch line; subtitles at `bottom: 430px` (box bottom y 1490), x 60–880.
+- Checked on a zone-overlay sheet (EN cut, frames every ~1.5 s, the three zones drawn): no text, bubble or small Mimi in the rail; faces left of x 900; nothing meaningful below y 1500 except the kit end card's App Store badge (kit level, unchanged). Loudness unchanged: -14.3 LUFS / -1.9 dBTP in both cuts.
+- v1 drafts moved to Drive `old/` with a `_v1` suffix.
+
 ## Open questions
 
 - Owner's ear on A: the fall is real but gentle (~2.5 semitones from “cuse” to “me”); it no longer rises, but it is less dramatic than B and C. Regeneration limit reached.
