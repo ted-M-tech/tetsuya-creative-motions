@@ -3,7 +3,7 @@
 # Source (not in Git): renders/app/thirteen.mov (capture.sh + app-capture/Walkthrough.swift + PATCH=app-capture/thirteen-lesson.patch),
 # kept in Drive as <prefix>_assets/thirteen-lesson-take.mov; resampled to 60 fps first (simctl records variable frame rate).
 #   SEG_A  the sentence with its score (お手本 tapped 0.6 s in)
-#   SEG_B  the record button pressed
+#   SEG_B  the record button pressed (0.1 s in)
 #   SEG_C  the flagged word row (Model / Your voice / Practice / Save). Stop before the offline fixture shows its scoring error.
 set -e
 cd "$(dirname "$0")/.."
