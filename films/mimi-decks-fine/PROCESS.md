@@ -49,3 +49,8 @@ Notion Content Calendar ID 065（Drive「065. Beyond Im Fine Thank You」、Pref
 
 - 単語帳のユニットはカードが長く（例文・使い方つき）、遅いスワイプでは後半のカードに届くまで1分以上かかる。録画は速いスワイプで進め、編集で早送りにする。
 - `ps -o etimes` は macOS にない（ウォッチドッグは `etime` を使う）。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Decks_ImFine_2026-10-23.mp4`, `Decks_ImFine_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
