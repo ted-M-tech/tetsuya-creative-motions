@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNS ショート #062。シリーズ「Can You Hear It?（聞き分けクイズ）」第2話。視聴者はコメントで A / B / C を答える。17.8秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。**ドラフト**（2026-10-23）、オーナー確認待ち。
+Lanclo SNS ショート #062。シリーズ「Can You Hear It?（聞き分けクイズ）」第2話。視聴者はコメントで A / B / C を答える。17.8秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。完成版（2026-10-23、オーナー承認済み）。
 
 1フレーム目から毛を逆立てた Mimi、A ↘ / B ↗ / C ↗↗ の3枚のカードとフック「どのExcuse meで怒った？」。カウントダウン 3-2-1 の間に、オーナー本人の声（US）で下がる “Excuse me.”（A）、上がる “Excuse me?”（B）、me を強く急上昇させる “Excuse ME?!”（C）が流れ、問いは「怒ったのはどれ？」。友だちは「Bでしょ！」。正解は C、カードの下に意味（すみません／もう一度？／は？）、Mimi が怒って「ぷいっ！」とそっぽを向く。Mimi のまとめカード「上げ下げで意味が変わる！」：↘ すみません／↗ もう一度？／ME↗↗ は？、3つをもう一度、「ME を強く↗↗ ＝ ケンカ腰！」。最後に「A？B？C？コメントで！」とエンドカード。
 
@@ -19,7 +19,7 @@ Lanclo SNS ショート #062。シリーズ「Can You Hear It?（聞き分けク
 
 - 声：3つともオーナー本人の登録済み Lanclo ボイス（accent `us`、イントネーションごとに style 指定、`kits/mimi-short/scripts/ownvoice.py`）。WAV は生体データのため Git に入れない（Drive `062. Can You Hear It 2 - Excuse Me/Hear2_ExcuseMe_assets/own-voice/`）。F0 の音響チェックは [PROCESS.md](PROCESS.md)。
 - キャスト：Mimi と友だちのみ（ライブラリのポーズ）。Mimi の一人称の台詞はなし（使うなら「僕」）。
-- ドラフト：Lanclo の Google Drive `002.SNS/062. Can You Hear It 2 - Excuse Me/`（`Hear2_ExcuseMe_draft_2026-10-23.mp4`、`Hear2_ExcuseMe_draft_EN-subs_2026-10-23.mp4`）。
+- 完成版：Lanclo の Google Drive `002.SNS/062. Can You Hear It 2 - Excuse Me/`（`Hear2_ExcuseMe_2026-10-23.mp4`、`Hear2_ExcuseMe_EN-subs_2026-10-23.mp4`）。
 - 再現手順：[source/README.md](source/README.md)。
 
-![ドラフトのフレーム](process/00-draft-frames.jpg)
+![フレーム](process/00-draft-frames.jpg)

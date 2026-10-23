@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #062, episode 2 of the series “Can You Hear It?” (a listening quiz; viewers answer A / B / C in the comments). 17.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). **Draft** (2026-10-23), waiting for the owner's review.
+Lanclo SNS short #062, episode 2 of the series “Can You Hear It?” (a listening quiz; viewers answer A / B / C in the comments). 17.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Final, owner approved on 2026-10-23.
 
 Frame 1: Mimi bristling, three cards A ↘ / B ↗ / C ↗↗ and the hook 「どのExcuse meで怒った？」. A countdown 3-2-1 while the owner's own voice (US) plays “Excuse me.” falling (A), “Excuse me?” rising (B) and “Excuse ME?!” with a sharp rise on “me” (C); the question is 「怒ったのはどれ？」. The Friend guesses 「Bでしょ！」; the answer is C, the meanings show under the cards (すみません / もう一度？ / は？), Mimi bristles and turns away 「ぷいっ！」. Mimi's summary card: 「上げ下げで意味が変わる！」 ↘ すみません / ↗ もう一度？ / ME↗↗ は？, all three takes again, 「ME を強く↗↗ ＝ ケンカ腰！」. Then 「A？B？C？コメントで！」 and the end card.
 
@@ -19,8 +19,8 @@ Learning point (US English): a falling “Excuse me.” gets attention or apolog
 
 - Voices: all three takes are the owner's registered Lanclo voice, accent `us` with a style per intonation, via `kits/mimi-short/scripts/ownvoice.py`. WAVs are biometric and not in Git (Drive `062. Can You Hear It 2 - Excuse Me/Hear2_ExcuseMe_assets/own-voice/`). F0 contours checked acoustically: see [PROCESS.md](PROCESS.md).
 - Cast: Mimi and her Friend only (library poses). Mimi has no first-person line here (it would be 「僕」).
-- Draft files in Lanclo's Google Drive `002.SNS/062. Can You Hear It 2 - Excuse Me/`: `Hear2_ExcuseMe_draft_2026-10-23.mp4`, `Hear2_ExcuseMe_draft_EN-subs_2026-10-23.mp4`, own-voice WAVs in `Hear2_ExcuseMe_assets/`.
+- Final files in Lanclo's Google Drive `002.SNS/062. Can You Hear It 2 - Excuse Me/`: `Hear2_ExcuseMe_2026-10-23.mp4`, `Hear2_ExcuseMe_EN-subs_2026-10-23.mp4`, own-voice WAVs in `Hear2_ExcuseMe_assets/`.
 - Series template and layout notes: films/mimi-hear-can/README.md “Series template” (this episode is its three-option form: cards 320 px at left 40 / 380 / 720, countdown under the cards, one rule row per option with a contour arrow).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
 
-![Draft frames](process/00-draft-frames.jpg)
+![Frames](process/00-draft-frames.jpg)
