@@ -11,7 +11,7 @@ from pathlib import Path
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import Mix, boing, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import SR, Mix, boing, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 C = json.loads((SRC / 'cues.json').read_text())
 # Each take trimmed to its speech (measured: us-cant speech 0.32-1.40 s, us-can 0.22-0.98 s; heads/tails kept).
@@ -44,4 +44,29 @@ m.sfx(pop_seq(3, 0.05, base=74), C['ask'] + 0.15)
 m.bed(0.0, C['end'])
 m.end_chord(C['end'])
 m.sfx(pochi(), C['TAP'])
-print(m.write(SRC / 'hf/assets/mix.wav'))
+# the limiter below squeezes the voice peaks (about 2-3 dB); lower the bed and SFX by the same amount first so the
+# voice / bed / SFX balance after the limiter matches the kit's (measured: 2026-10-23, see PROCESS.md)
+m.m *= 10 ** (-3.0 / 20)
+m.s *= 10 ** (-3.0 / 20)
+out = m.write(SRC / 'hf/assets/mix.wav')
+# loudnorm's single pass stops short of -14 on a short, voice-sparse film (true peak bound): measure, add the missing gain
+# in front of a 4x-oversampled limiter (true peak <= -1.5 dBTP), and measure again (as films/mimi-katakana-mcdonalds). The voice / SFX / bed balance is unchanged.
+import re, shutil, subprocess  # noqa: E402
+
+
+def lufs(f):
+    err = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(f), '-af', 'loudnorm=print_format=json', '-f', 'null', '-'],
+                         capture_output=True, text=True).stderr
+    d = json.loads(re.search(r'\{[^{}]*\}', err[err.rfind('Parsed_loudnorm'):]).group(0))
+    return float(d['input_i']), float(d['input_tp'])
+
+
+for _ in range(4):
+    i, tp = lufs(out)
+    if abs(i + 14) < 0.3 and tp <= -1.5:
+        break
+    tmp = out.with_suffix('.tmp.wav')
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af',
+                    f'aresample=192000,volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.8:level=false:attack=1:release=60,aresample={SR}', '-ar', str(SR), str(tmp)], check=True)
+    shutil.move(tmp, out)
+print(out, 'I=%.1f LUFS TP=%.1f dBTP' % lufs(out))

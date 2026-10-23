@@ -21,8 +21,15 @@
 | `us-cant` “I can't swim.” | ~140 ms | ~200 ms (0.64–0.84 s) | ~600 / ~1900 Hz (open /æ/) | ~20–40 ms closure, no audible release | ~80–85 Hz vs ~60–118 Hz (creaky) |
 
    So “can” is reduced and short (half the length, closed schwa-like vowel, little aspiration) and “can't” has a twice-as-long open /æ/ with a strongly aspirated k and an unreleased t: the contrast the film teaches. One nuance for the owner's ear: the can take has its pitch peak on “can” itself (the reduced syllable is higher than “swim”), while length and vowel quality say “unstressed”. Not regenerated, since the requested check passed; flagged as an open question. Whisper not used.
-5. Mix: takes trimmed to speech with heads and tails kept (us-cant 0.28–1.48 s, us-can 0.18–1.06 s of the take); kit bed and levels unchanged; soft taps for the countdown, pofu for the reveal. Measured: voice segments RMS about -13 to -17 dB vs bed-only segments about -25 dB; true peak -1.5 dBFS; integrated -16.6 LUFS after Mix.write's loudnorm (sparse voice, peak-limited).
+5. Mix: takes trimmed to speech with heads and tails kept (us-cant 0.28–1.48 s, us-can 0.18–1.06 s of the take); kit bed and levels unchanged; soft taps for the countdown, pofu for the reveal. v1 measured -16.6 LUFS after Mix.write's loudnorm (sparse voice, peak-bound); fixed in v2 (below).
 6. Layout fixes after the first contact sheet: the rule-card subtitle covered Mimi's face, so the rows were tightened, Mimi moved up and right, the rule subtitle cut to two lines; the 「キャン」 punch line ran off the right edge (moved left); the end-card subtitle covered the CTA, so it sits at the top on the end card only. HyperFrames contrast fixes (A orange #d57333, grey #7e90a0). `hyperframes check`: 0 errors.
+
+## Draft v2 (2026-10-23, commander review)
+
+- Commander: loudness to -14 LUFS integrated (true peak ≤ -1.5 dBTP) without changing the voice / BGM / SFX balance, copying films/mimi-katakana-mcdonalds' approach; the rule title 「t じゃなく、母音を聞く！」 was cut off at the left edge.
+- `scripts/mix.py` now measures after Mix.write, adds the missing gain in front of a 4x-oversampled limiter and measures again (up to 4 passes) → -14.2 LUFS, -1.9 dBTP in the WAV; the rendered cuts measure -14.2 LUFS, -1.7 dBTP. The limiter squeezes the voice peaks, so the bed and SFX are lowered 3 dB before Mix.write; voice-to-bed gaps measured after: hook bed vs voice A 8.8 dB (v1 8.8), rule bed vs “can” 11.3 dB (v1 11.8).
+- Rule title: 76 px (the struck t 88 px), 50 px side margins, one line; fully inside the frame.
+- v1 drafts moved to Drive `old/` with a `_v1` suffix.
 
 ## Open questions
 
