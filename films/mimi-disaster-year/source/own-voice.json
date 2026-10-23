@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-ear",
+   "text": "Happy New Ear!",
+   "style": "Speak English as a cheerful Japanese learner greeting a friend on New Year's morning, bright and warm. Say every word exactly as written: 'Ear' is the body part and starts directly on the vowel, like Japanese 'iyaa', with NO 'y' sound before it, so a listener clearly hears 'Happy New Ear!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-year",
+   "text": "Happy New Year!",
+   "accent": "us"
+  }
+ ]
+}
