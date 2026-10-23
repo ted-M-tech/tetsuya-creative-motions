@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      /* Katakana Traps 3 (stress): hotel / guitar / shampoo. Beats: hook -> slip -> explain -> model -> challenge -> reveal -> cta -> end.
+         Built on episode 1's layout (say bubble, card rows with dots, CTA, end card); the stressed syllable is the .big dot.
+         The cue sheet is ../cues.json (same numbers as scripts/mix.py). */
+      #root { background: #f6efe6; }
+      #scene { position: absolute; inset: 0; transform-origin: 50% 60%; }
+      #plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .learner { left: 20px; top: 890px; width: 460px; }
+      .other { left: 500px; top: 900px; width: 420px; }
+      /* The hook: huge, on screen from frame 1 */
+      #hook { position: absolute; left: 36px; right: 36px; top: 170px; background: #ffffff; border-radius: 48px; padding: 30px 30px 34px;
+              box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 96px; font-weight: 700; line-height: 1.25; color: #273b4b; }
+      #hook .hot { color: #e5484d; }
+      /* three word chips with a dot per syllable (big = the strong one) */
+      .chips { position: absolute; left: 20px; right: 20px; top: 500px; display: flex; justify-content: center; gap: 22px; }
+      .chip { background: #ffffff; border: 6px solid #273b4b; border-radius: 40px; padding: 14px 26px 16px; text-align: center; box-shadow: 0 10px 24px rgba(39, 59, 75, 0.16); }
+      .chip .w { font-size: 74px; font-weight: 700; color: #273b4b; line-height: 1.1; white-space: nowrap; }
+      .chip .en { font-family: "Helvetica Neue", Arial, sans-serif; }
+      .chip .en b { color: #2a8dff; }
+      .chip .meter { display: flex; gap: 14px; align-items: center; justify-content: center; height: 70px; margin-top: 8px; }
+      .chip .meter i { display: block; width: 30px; height: 30px; border-radius: 50%; background: #d7dee5; }
+      .chip .meter i.big { width: 60px; height: 60px; }
+      #chips .chip.on { border-color: #e5484d; }
+      #chips .meter i.on { background: #e5484d; }
+      #ok-chips .chip.on { border-color: #2a8dff; }
+      #ok-chips .meter i.on { background: #2a8dff; }
+      #huh { position: absolute; left: 700px; top: 760px; font-size: 150px; font-weight: 700; color: #2a8dff; -webkit-text-stroke: 8px #ffffff; paint-order: stroke fill; }
+      #shrink-cap { top: 720px; right: 180px; }
+      #ok-cap { top: 720px; right: 180px; }
+      /* The explain card: per word, katakana (big dot first) vs English (big dot second) */
+      .type { position: absolute; inset: 0; background: #fbfcfd; }
+      #c-title { position: absolute; left: 0; right: 0; top: 190px; text-align: center; font-size: 76px; font-weight: 700; color: #273b4b; line-height: 1.3; }
+      #c-title strong { color: #2a8dff; }
+      .row { position: absolute; left: 40px; right: 180px; height: 220px; border-radius: 44px; background: #f1f5f9; border: 6px solid transparent;
+             display: flex; align-items: center; padding: 0 26px; }
+      #row-1 { top: 300px; } #row-2 { top: 540px; } #row-3 { top: 780px; }
+      .row .ng { width: 270px; text-align: center; }
+      .row .ng .w { font-size: 54px; font-weight: 700; color: #6f8193; white-space: nowrap; }
+      .row .ng .w b { color: #e5484d; margin-left: 6px; }
+      .row .ng .dots { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; height: 60px; }
+      .row .ng .dots i { display: block; width: 24px; height: 24px; border-radius: 50%; background: #e5a3a5; }
+      .row .ng .dots i.big { width: 50px; height: 50px; background: #e5484d; }
+      .row .arrow { width: 50px; text-align: center; font-size: 64px; font-weight: 700; color: #7f8e9b; }
+      .row .ok { flex: 1; display: flex; justify-content: center; align-items: flex-end; gap: 34px; }
+      .row .ok div { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .row .ok i { display: block; width: 56px; height: 56px; border-radius: 50%; background: #c9d3dc; }
+      .row .ok i.big { width: 116px; height: 116px; }
+      .row .ok i.on { background: #2a8dff; }
+      .row .ok span { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 58px; color: #273b4b; }
+      .row .ok span.big { font-size: 86px; color: #2a8dff; }
+      #c-tip { position: absolute; left: 40px; right: 180px; top: 1022px; text-align: center; }
+      #c-tip > span { display: inline-block; background: #273b4b; color: #ffffff; font-size: 56px; white-space: nowrap; font-weight: 700; padding: 18px 40px; border-radius: 50px; }
+      #c-tip b { color: #ffd84a; }
+      #c-mimi { position: absolute; left: 60px; top: 1128px; width: 190px; height: auto; transform-origin: 50% 100%; }
+      #c-who { position: absolute; left: 280px; right: auto; top: 1170px; justify-content: flex-start; }
+      /* challenge + reveal: "Japanese は？" */
+      #quiz { position: absolute; inset: 0; background: #fbfcfd; }
+      #q-title { position: absolute; left: 36px; right: 36px; top: 180px; background: #ffffff; border-radius: 48px; padding: 30px 30px 36px;
+                 box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 110px; font-weight: 700; line-height: 1.2; color: #273b4b; }
+      #q-title .en { font-family: "Helvetica Neue", Arial, sans-serif; color: #2a8dff; }
+      #q-sub { position: absolute; left: 0; right: 0; top: 450px; text-align: center; font-size: 60px; font-weight: 700; color: #5b7f9f; }
+      #q-dots { position: absolute; left: 40px; right: 40px; top: 540px; height: 340px; border-radius: 44px; background: #f1f5f9; display: flex;
+                justify-content: center; align-items: flex-end; gap: 60px; padding-bottom: 30px; box-sizing: border-box; }
+      #q-dots div { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      #q-dots i { display: block; width: 90px; height: 90px; border-radius: 50%; background: #c9d3dc; }
+      #q-dots i.on { background: #2a8dff; }
+      #q-dots span { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 74px; color: #273b4b; }
+      #q-dots span.big { color: #2a8dff; }
+      #q-timer { position: absolute; left: 140px; right: 140px; top: 910px; height: 22px; border-radius: 11px; background: #e3e9ef; overflow: hidden; }
+      #q-timer i { display: block; height: 100%; width: 100%; background: #e5484d; transform-origin: 0 50%; }
+      #q-ans { position: absolute; left: 40px; right: 180px; top: 895px; text-align: center; }
+      #q-ans > span { display: inline-block; background: #273b4b; color: #ffffff; font-size: 62px; white-space: nowrap; font-weight: 700; padding: 18px 40px; border-radius: 50px; }
+      #q-ans .en { font-family: "Helvetica Neue", Arial, sans-serif; }
+      #q-ans b { color: #ffd84a; }
+      #q-note { position: absolute; left: 60px; right: 200px; top: 1022px; text-align: center; font-size: 32px; line-height: 1.35; font-weight: 700; color: #7b8d9e; }
+      #q-note .en { font-family: "Helvetica Neue", Arial, sans-serif; }
+      #q-mimi { position: absolute; left: 570px; top: 1110px; width: 280px; height: auto; transform-origin: 50% 100%; }
+      #q-friend, #q-friend-b { position: absolute; left: 170px; top: 1090px; width: 280px; height: auto; transform-origin: 50% 100%; }
+      #q-friend-b { opacity: 0; }
+      /* CTA: the comment question, before the end card */
+      #cta { position: absolute; inset: 0; background: #fbfcfd; }
+      #cta-q { position: absolute; left: 36px; right: 36px; top: 170px; background: #ffffff; border-radius: 48px; padding: 40px 30px 44px;
+               box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.25; color: #273b4b; }
+      #cta-q em { font-style: normal; color: #e5484d; }
+      #cta-sub { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font-size: 64px; font-weight: 700; color: #5b7f9f; }
+      .qm { position: absolute; font-size: 150px; font-weight: 700; color: #2a8dff; -webkit-text-stroke: 8px #ffffff; paint-order: stroke fill; }
+      #cta-mimi { position: absolute; left: 30px; top: 920px; width: 440px; height: auto; transform-origin: 50% 100%; }
+      #cta-friend { position: absolute; left: 470px; top: 930px; width: 440px; height: auto; transform-origin: 50% 100%; }
+      /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      /* platform safe zones: the end card column sits a little higher so the badge clears the bottom 420 px */
+      #end { padding-top: 250px; }
+      #end .line { font-size: 44px; }
+      .sub { position: absolute; left: 60px; right: 200px; bottom: 420px; display: flex; justify-content: center; align-items: flex-end; }
+      .sub span { display: block; max-width: 820px; box-sizing: border-box; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 34px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.2" data-width="1080" data-height="1920">
+      <!-- hook + slip, and the model beat: the hotel lobby -->
+      <div id="scene">
+        <img id="plate" src="assets/art/plate.webp" alt="" />
+        <img id="other-a" class="cast other clip" src="assets/art/pose-perk.webp" alt="" data-start="0" data-duration="2.0" data-track-index="3" />
+        <img id="other-b" class="cast other clip" src="assets/art/pose-tilt.webp" alt="" style="width: 450px; left: 480px;" data-start="2.0" data-duration="2.05" data-track-index="3" />
+        <img id="other-c" class="cast other clip" src="assets/art/pose-grin.webp" alt="" style="width: 430px;" data-start="7.55" data-duration="2.2" data-track-index="3" />
+        <img id="learner-a" class="cast learner clip" src="assets/art/pose-friend-hello.webp" alt="" data-start="0" data-duration="3.45" data-track-index="2" />
+        <img id="learner-b" class="cast learner clip" src="assets/art/pose-friend-oops.webp" alt="" data-start="3.45" data-duration="0.6" data-track-index="2" />
+        <img id="learner-c" class="cast learner clip" src="assets/art/pose-friend-hello.webp" alt="" data-start="7.55" data-duration="1.45" data-track-index="2" />
+        <img id="learner-d" class="cast learner clip" src="assets/art/pose-friend-yay.webp" alt="" style="width: 475px;" data-start="9.0" data-duration="0.75" data-track-index="2" />
+      </div>
+
+      <!-- hook: on screen from frame 1 -->
+      <div id="hook" class="clip" data-start="0" data-duration="3.45" data-track-index="6"><span class="hot">ホテル</span>、<br />強いのはどこ？</div>
+      <!-- hook + slip: the three katakana chips, one dot per syllable, the first one big (Japanese head-high) -->
+      <div id="chips" class="chips clip" data-start="0" data-duration="4.05" data-track-index="7">
+        <div class="chip"><div class="w">ホテル</div><div class="meter"><i class="big"></i><i></i><i></i></div></div>
+        <div class="chip"><div class="w">ギター</div><div class="meter"><i class="big"></i><i></i></div></div>
+        <div class="chip"><div class="w">シャンプー</div><div class="meter"><i class="big"></i><i></i></div></div>
+      </div>
+      <div id="huh" class="clip" data-start="2.05" data-duration="2.0" data-track-index="11">?</div>
+      <div id="shrink-cap" class="caption clip" data-start="3.45" data-duration="0.6" data-track-index="10"><span>カタカナは<em>頭</em>が強い</span></div>
+
+      <!-- explain: Mimi taps the beat -->
+      <div id="card" class="type clip" data-start="4.05" data-duration="3.5" data-track-index="14">
+        <div id="c-title">英語は<strong>2つめ</strong>が強い！</div>
+        <div id="row-1" class="row">
+          <div class="ng"><div class="w">ホテル<b>×</b></div><div class="dots"><i class="big"></i><i></i><i></i></div></div>
+          <div class="arrow">→</div>
+          <div class="ok"><div><i></i><span>ho</span></div><div><i class="big"></i><span class="big">TEL</span></div></div>
+        </div>
+        <div id="row-2" class="row">
+          <div class="ng"><div class="w">ギター<b>×</b></div><div class="dots"><i class="big"></i><i></i></div></div>
+          <div class="arrow">→</div>
+          <div class="ok"><div><i></i><span>gui</span></div><div><i class="big"></i><span class="big">TAR</span></div></div>
+        </div>
+        <div id="row-3" class="row">
+          <div class="ng"><div class="w">シャンプー<b>×</b></div><div class="dots"><i class="big"></i><i></i></div></div>
+          <div class="arrow">→</div>
+          <div class="ok"><div><i></i><span>sham</span></div><div><i class="big"></i><span class="big">POO</span></div></div>
+        </div>
+        <div id="c-tip"><span><b>2つめ</b>を 強く・長く・高く</span></div>
+        <img id="c-mimi" src="assets/art/pose-point.webp" alt="" />
+        <div id="c-who" class="tag model"><span>お手本＝自分の声</span></div>
+      </div>
+
+      <!-- model: the Friend says all three right -->
+      <div id="ok-chips" class="chips clip" data-start="7.55" data-duration="2.2" data-track-index="7">
+        <div class="chip"><div class="w en">ho<b>TEL</b></div><div class="meter"><i></i><i class="big"></i></div></div>
+        <div class="chip"><div class="w en">gui<b>TAR</b></div><div class="meter"><i></i><i class="big"></i></div></div>
+        <div class="chip"><div class="w en">sham<b>POO</b></div><div class="meter"><i></i><i class="big"></i></div></div>
+      </div>
+      <div id="ok-cap" class="caption clip" data-start="7.55" data-duration="2.2" data-track-index="10"><span id="ok-c"><strong>2つめ</strong>を強く → <strong>通じる！</strong></span></div>
+      <div id="hearts" class="sparkles clip" data-start="9.4" data-duration="0.35" data-track-index="8"></div>
+
+      <!-- challenge (1 s) + reveal: "Japanese" said alone -->
+      <div id="quiz" class="clip" data-start="9.75" data-duration="3.0" data-track-index="15">
+        <div id="q-title"><span class="en">Japanese</span> は？</div>
+        <div id="q-sub">強いのはどこ？</div>
+        <div id="q-dots">
+          <div><i></i><span>ja</span></div><div><i></i><span>pa</span></div><div><i></i><span>nese</span></div>
+        </div>
+        <div id="q-timer"><i></i></div>
+        <div id="q-ans"><span><span class="en">ja-pa-<b>NESE</b></span>（<b>3つめ</b>）</span></div>
+        <div id="q-note">※単語だけのとき<br />（名詞の前は <span class="en">JApanese FOOD</span> のように前へ）</div>
+        <img id="q-friend" src="assets/art/pose-friend-puzzled.webp" alt="" />
+        <img id="q-friend-b" src="assets/art/pose-friend-amazed.webp" alt="" />
+        <img id="q-mimi" src="assets/art/pose-confident.webp" alt="" />
+      </div>
+
+      <!-- cta: the comment question -->
+      <div id="cta" class="clip" data-start="12.75" data-duration="2.0" data-track-index="16">
+        <div id="cta-q">次に<em>通じない</em><br />カタカナは？</div>
+        <div id="cta-sub">コメントで教えてね</div>
+        <div class="qm" style="left: 120px; top: 690px; transform: rotate(-12deg);">?</div>
+        <div class="qm" style="left: 480px; top: 650px;">?</div>
+        <div class="qm" style="left: 780px; top: 690px; transform: rotate(12deg);">?</div>
+        <img id="cta-mimi" src="assets/art/pose-point.webp" alt="" />
+        <img id="cta-friend" src="assets/art/pose-friend-yay.webp" alt="" />
+      </div>
+
+      <div id="end" class="end clip" data-start="14.75" data-duration="1.45" data-track-index="19"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="1.2" data-track-index="24"><span>“Hotel”: which part is strong?</span></div>
+      <div class="sub clip" data-start="1.2" data-duration="2.85" data-track-index="24"><span>Katakana stresses the start:<br />HO-te-ru, GI-taa, SHAN-puu.</span></div>
+      <div class="sub clip" data-start="4.05" data-duration="3.5" data-track-index="24"><span>Stress syllable 2: ho-TEL, gui-TAR, sham-POO.<br />Louder, longer, higher. Model: your own voice.</span></div>
+      <div class="sub clip" data-start="7.55" data-duration="2.2" data-track-index="24"><span>Stress the second syllable → understood!</span></div>
+      <div class="sub clip" data-start="9.75" data-duration="1.0" data-track-index="24"><span>And “Japanese”? Where's the stress?</span></div>
+      <div class="sub clip" data-start="10.75" data-duration="2.0" data-track-index="24"><span>ja-pa-NESE, said on its own.<br />Before a noun it moves forward: JApanese FOOD.</span></div>
+      <div class="sub clip" data-start="12.75" data-duration="2.0" data-track-index="24"><span>Which katakana word fails next? Tell us in the comments.</span></div>
+      <div class="sub clip" data-start="14.75" data-duration="1.45" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="16.2" data-track-index="20" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("hearts"), [[760, 1000, "#ff8fb1"], [860, 900, "#ffd84a"], [140, 980, "#ffd84a"], [420, 900, "#ff8fb1"]]);
+      // Cue sheet (seconds), same as ../cues.json and scripts/mix.py
+      const SLIP = 1.2, L_AT = [1.2, 1.8, 2.53], TILT = 2.0, SHRINK = 3.45, EXPLAIN = 4.05, E_AT = [4.35, 5.13, 5.845], TIP = 6.65;
+      const MODEL = 7.55, F_AT = [7.7, 8.33, 8.895], CHALLENGE = 9.75, REVEAL = 10.75, J_AT = [10.85, 11.75], CTA = 12.75, E = 14.75, TAP = 15.35;
+      const LB = [[0.14, 0.29, 0.42], [0.27, 0.47], [0.22, 0.56]];   // measured syllables inside each learner clip
+      const MB = [[0.11, 0.32], [0.09, 0.24], [0.175, 0.435]];          // measured syllables inside each model take (from its start)
+      const JB = [0.09, 0.24, 0.34];                                   // "Japanese"
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const all = (s) => Array.from(document.querySelectorAll(s));
+      const pulse = (el, at, s) => tl.fromTo(el, { scale: s }, { scale: 1, duration: 0.18, ease: "back.out(3)", immediateRender: false }, at);
+
+      // hook (0-SLIP): the hook card from frame 1, the three chips pop in
+      tl.fromTo("#hook", { scale: 1.06 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 0);
+      tl.fromTo("#chips .chip", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, stagger: 0.15, ease: "back.out(2.5)" }, 0.12);
+      tl.fromTo("#scene", { scale: 1.0 }, { scale: 1.05, duration: EXPLAIN, ease: "none" }, 0);
+      tl.fromTo("#learner-a", { x: -160 }, { x: 0, duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#other-a", { y: 0 }, { y: -14, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 0.3);
+      // slip: the Friend says each word head-high; its chip lights, dots on the measured syllables (the first one big)
+      const chips = all("#chips .chip");
+      chips.forEach((chip, w) => {
+        tl.set(chip, { className: "chip on" }, L_AT[w] - 0.05);
+        pulse(chip, L_AT[w] - 0.05, 1.12);
+        if (w > 0) tl.set(chips[w - 1], { className: "chip" }, L_AT[w] - 0.05);
+        Array.from(chip.querySelectorAll(".meter i")).forEach((el, i) => {
+          tl.set(el, { className: i === 0 ? "big on" : "on" }, L_AT[w] + LB[w][i] - 0.03);
+          pulse(el, L_AT[w] + LB[w][i] - 0.03, i === 0 ? 1.6 : 1.3);
+        });
+        tl.fromTo("#learner-a", { y: 0 }, { y: -18, duration: 0.12, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, L_AT[w]);
+      });
+      // Mimi tilts her head: "?"
+      tl.fromTo("#other-b", { rotation: 0 }, { rotation: 6, duration: 0.35, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, TILT);
+      tl.fromTo("#huh", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(3)" }, TILT + 0.05);
+      tl.to("#hook", { y: -40, opacity: 0, duration: 0.15 }, SHRINK - 0.15);
+      k.pop("#shrink-cap span", SHRINK);
+
+      // explain: one row per word; the model take plays as its row lights; Mimi taps the strong beat
+      tl.fromTo("#card", { opacity: 0 }, { opacity: 1, duration: 0.12 }, EXPLAIN);
+      tl.fromTo("#c-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, EXPLAIN + 0.05);
+      tl.fromTo(["#row-1", "#row-2", "#row-3"], { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, stagger: 0.07, ease: "power3.out" }, EXPLAIN + 0.08);
+      tl.fromTo("#c-mimi", { y: 400 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, EXPLAIN + 0.15);
+      tl.set(["#c-tip", "#c-who"], { opacity: 0 }, 0);
+      [1, 2, 3].forEach((r, w) => {
+        tl.to(`#row-${r}`, { borderColor: "#2a8dff", duration: 0.1 }, E_AT[w] - 0.1);
+        if (w < 2) tl.to(`#row-${r}`, { borderColor: "rgba(0,0,0,0)", duration: 0.1 }, E_AT[w + 1] - 0.15);
+        all(`#row-${r} .ok i`).forEach((el, i) => {
+          tl.set(el, { className: i === 1 ? "big on" : "on" }, E_AT[w] + MB[w][i] - 0.03);
+          pulse(el, E_AT[w] + MB[w][i] - 0.03, i === 1 ? 1.35 : 1.2);
+        });
+        // the tap: Mimi bobs on the strong syllable
+        tl.fromTo("#c-mimi", { y: 0, rotation: 0 }, { y: -30, rotation: -6, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, E_AT[w] + MB[w][1] - 0.08);
+      });
+      k.tagIn("#c-who", E_AT[0] - 0.1);
+      tl.fromTo("#c-tip", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)", immediateRender: false }, TIP);
+
+      // model: back in the lobby, the Friend says all three right, chips in English with the big dot second
+      tl.set("#scene", { scale: 1, x: 0 }, MODEL);
+      k.pop("#ok-c", MODEL + 0.05);
+      tl.fromTo("#ok-chips .chip", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, stagger: 0.08, ease: "back.out(2.5)" }, MODEL);
+      all("#ok-chips .chip").forEach((chip, w) => {
+        tl.set(chip, { className: "chip on" }, F_AT[w] - 0.05);
+        Array.from(chip.querySelectorAll(".meter i")).forEach((el, i) => {
+          tl.set(el, { className: i === 1 ? "big on" : "on" }, F_AT[w] + MB[w][i] - 0.03);
+          pulse(el, F_AT[w] + MB[w][i] - 0.03, i === 1 ? 1.6 : 1.3);
+        });
+        tl.fromTo("#learner-c", { y: 0 }, { y: -18, duration: 0.12, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }, F_AT[w]);
+      });
+      tl.fromTo("#other-c", { y: 0 }, { y: -30, duration: 0.18, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, F_AT[1]);
+      tl.fromTo("#learner-d", { y: 0 }, { y: -30, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, F_AT[2] + 0.1);
+      k.twinkle("#hearts", F_AT[2] + 0.4);
+
+      // challenge: "Japanese は？" with a one-second timer, all dots equal and grey
+      tl.fromTo("#quiz", { opacity: 0 }, { opacity: 1, duration: 0.12 }, CHALLENGE);
+      tl.fromTo("#q-title", { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, CHALLENGE + 0.03);
+      tl.fromTo("#q-dots div", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, stagger: 0.06, ease: "power3.out" }, CHALLENGE + 0.1);
+      tl.fromTo("#q-timer i", { scaleX: 1 }, { scaleX: 0, duration: REVEAL - CHALLENGE - 0.1, ease: "none" }, CHALLENGE + 0.1);
+      tl.fromTo(["#q-friend", "#q-mimi"], { y: 400 }, { y: 0, duration: 0.25, stagger: 0.06, ease: "back.out(1.6)" }, CHALLENGE + 0.08);
+      tl.set(["#q-ans", "#q-note"], { opacity: 0 }, 0);
+      // reveal: ja-pa-NESE (the take twice), the third dot grows
+      tl.to("#q-timer", { opacity: 0, duration: 0.1 }, REVEAL - 0.05);
+      tl.to("#q-sub", { opacity: 0, duration: 0.1 }, REVEAL);
+      const qd = all("#q-dots i");
+      J_AT.forEach((at, n) => qd.forEach((el, i) => {
+        if (n === 0) {
+          tl.set(el, { className: "on" }, at + JB[i] - 0.03);
+          if (i === 2) tl.to(el, { width: 190, height: 190, duration: 0.2, ease: "back.out(2)" }, at + JB[i] - 0.03);
+        }
+        pulse(el, at + JB[i] - 0.03, i === 2 ? 1.3 : 1.15);
+      }));
+      tl.set(all("#q-dots span")[2], { className: "big", fontSize: 104 }, J_AT[0] + JB[2] - 0.03);
+      tl.fromTo("#q-ans", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)", immediateRender: false }, J_AT[0] + 0.5);
+      tl.fromTo("#q-note", { opacity: 0 }, { opacity: 1, duration: 0.2, immediateRender: false }, J_AT[0] + 0.7);
+      tl.to("#q-friend", { opacity: 0, duration: 0.05 }, REVEAL + 0.15);
+      tl.to("#q-friend-b", { opacity: 1, duration: 0.05 }, REVEAL + 0.15);
+      tl.fromTo("#q-friend-b", { y: 0 }, { y: -26, duration: 0.16, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, REVEAL + 0.2);
+      tl.fromTo("#q-mimi", { y: 0, rotation: 0 }, { y: -30, rotation: -6, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, J_AT[1] + JB[2] - 0.08);
+
+      // cta: the question before the end card
+      tl.fromTo("#cta", { opacity: 0 }, { opacity: 1, duration: 0.12 }, CTA);
+      tl.fromTo("#cta-q", { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, CTA + 0.05);
+      tl.fromTo("#cta-sub", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2 }, CTA + 0.35);
+      tl.fromTo(".qm", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, stagger: 0.12, ease: "back.out(3)" }, CTA + 0.2);
+      tl.fromTo(["#cta-mimi", "#cta-friend"], { y: 500 }, { y: 0, duration: 0.3, stagger: 0.08, ease: "back.out(1.6)" }, CTA + 0.1);
+      tl.fromTo("#cta-friend", { y: 0 }, { y: -24, duration: 0.2, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, CTA + 0.6);
+
+      k.end(E);
+      k.tapCta(TAP);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

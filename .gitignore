@@ -261,3 +261,11 @@ films/mimi-katakana-mansion/**/*.wav
 films/mimi-katakana-mansion/**/*.mp4
 films/mimi-katakana-mansion/**/*.mov
 films/mimi-katakana-mansion/**/*.mp3
+films/mimi-katakana-hotel/source/hf/assets/
+films/mimi-katakana-hotel/source/hf/.hyperframes/
+films/mimi-katakana-hotel/source/hf/.thumbnails/
+films/mimi-katakana-hotel/source/renders/
+films/mimi-katakana-hotel/**/*.wav
+films/mimi-katakana-hotel/**/*.mp4
+films/mimi-katakana-hotel/**/*.mov
+films/mimi-katakana-hotel/**/*.mp3
