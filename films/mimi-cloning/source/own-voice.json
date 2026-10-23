@@ -1,0 +1,9 @@
+{"lines": [
+  {"id": "before", "text": "Please leave the light on.", "accent": "learner"},
+  {"id": "model", "text": "Please leave the light on.", "accent": "us"},
+  {"id": "take-us", "text": "I can't park the car by the water.", "accent": "us"},
+  {"id": "take-uk", "text": "I can't park the car by the water.", "accent": "uk"},
+  {"id": "low", "text": "Please leave the light on.", "style": "Speak fluent General American English in a very deep, low, booming bass voice, like a movie-trailer narrator: heavy and resonant, the pitch as low as possible. Native vowels, accurate stress, smooth linking. Not slow: the whole line in about one and a half seconds."},
+  {"id": "high", "text": "Please leave the light on.", "style": "Speak fluent General American English in a very high, bright, squeaky voice, like an excited cartoon character: the pitch as high as possible, light and quick. Native vowels, accurate stress, smooth linking."},
+  {"id": "fast", "text": "What do you want to do about it?", "style": "Speak fluent, casual General American English very fast, like a native talking to a friend: heavy linking and reductions (\"whaddaya wanna do aboudit\"), stress-timed rhythm, flapped t, no pauses, the whole line in about one second."}
+]}
