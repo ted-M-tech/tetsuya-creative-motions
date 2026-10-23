@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #058, episode 1 of the new series “Katakana Traps” (one katakana word that fails abroad per episode; the CTA asks viewers for the next word). **Draft** (2026-10-23). 15.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #058, episode 1 of the new series “Katakana Traps” (one katakana word that fails abroad per episode; the CTA asks viewers for the next word). Final, owner approved on 2026-10-23. 15.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a fast-food counter. The Friend asks the clerk (Mimi in a role outfit: striped shirt and visor) for 「マクドナルド」, six even katakana beats, while a six-dot meter fills. Mimi the clerk, blank: “Sorry…?”. Mimi out of role explains on a card: six equal dots vs three dots with a big middle one, mc-DON-alds (DONを強く), the model twice in the owner's own voice. Back at the counter the Friend says it right: “McDonald's?” → “Oh! Next door!”. CTA 「次に通じないカタカナは？」, then the end card.
 
@@ -17,10 +17,10 @@ Scene: a fast-food counter. The Friend asks the clerk (Mimi in a role outfit: st
 
 - Cast: Mimi (also as the clerk) and her Friend only. No side cast, no Kokoro, no app shot (the optional lesson shot was skipped for tempo).
 - Voices: learner and model are the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `058. Katakana Traps 1 - McDonalds/KT1_McDonalds_assets/own-voice/`).
-- Draft files in Lanclo's Google Drive `002.SNS/058. Katakana Traps 1 - McDonalds/` (`KT1_McDonalds_draft_2026-10-23.mp4`, `KT1_McDonalds_draft_EN-subs_2026-10-23.mp4`).
+- Final files in Lanclo's Google Drive `002.SNS/058. Katakana Traps 1 - McDonalds/` (`KT1_McDonalds_2026-10-23.mp4`, `KT1_McDonalds_EN-subs_2026-10-23.mp4`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
 
-![Draft frames](process/00-draft-frames.jpg)
+![Frames](process/00-draft-frames.jpg)
 
 ## Series template (episodes 2+)
 
