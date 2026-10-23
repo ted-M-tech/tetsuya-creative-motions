@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-berry": {
+      "text": "Thank you berry much!",
+      "style": "Speak English as a friendly Japanese learner thanking a shopkeeper, bright and sincere. Say every word exactly as written: 'berry' starts with a clear B, both lips closed and then popping open, like the fruit 'berry' or Japanese 'beri', so a listener clearly hears 'Thank you berry much!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "5f66a23aa4977a4e76561e74dd4bc445a51736f67a5527bd50b2941af76e07a4",
+      "at": "2026-10-23T20:34:54+00:00"
+    },
+    "native-very": {
+      "text": "Thank you very much!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "755baa1bbb9fdda973744267522ec56253df19cc39f78811f2d8f6fefcd7bb84",
+      "at": "2026-10-23T20:34:56+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
