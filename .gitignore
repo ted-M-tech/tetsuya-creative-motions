@@ -269,3 +269,12 @@ films/mimi-katakana-hotel/**/*.wav
 films/mimi-katakana-hotel/**/*.mp4
 films/mimi-katakana-hotel/**/*.mov
 films/mimi-katakana-hotel/**/*.mp3
+films/mimi-hear-can/source/hf/assets/
+films/mimi-hear-can/source/hf/.hyperframes/
+films/mimi-hear-can/source/hf/.thumbnails/
+films/mimi-hear-can/source/renders/
+films/mimi-hear-can/**/*.wav
+films/mimi-hear-can/**/*.mp3
+films/mimi-hear-can/**/*.m4a
+films/mimi-hear-can/**/*.mov
+films/mimi-hear-can/**/*.mp4

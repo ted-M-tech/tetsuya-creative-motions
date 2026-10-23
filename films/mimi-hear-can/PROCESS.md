@@ -1,0 +1,49 @@
+# PROCESS
+
+## The owner's words
+
+- 2026-10-23 request: 「動画をさらに生成していく。…まずはここに企画。リストを出して。バズるSNSかつ、必要なら機能紹介とか効果的な学習とか。フックでばずらせる構成ね。チームで議論して構成案・リストを見せて」
+- 2026-10-23 approval: 「いいね。これらを作ろう。キャラとか乱発するな。基本今までのキャラメイン。メインはうさぎ二人ね。あとテンポよく。進めて。」
+- Standing cast rule (kits/mimi-short/cast/README.md): 「なんでちょこちょこ新しいキャラ出てるの？メインキャラは二人。ミミと友達。そこメインで回して。…」
+
+## Steps and decisions
+
+1. Brief from the batch commander ([prompts/00-commander-brief.txt](prompts/00-commander-brief.txt)) and the Notion row (061, team review: “best comment bait of the round”). Episode 1 of a new series, so the layout was rebuilt from films/mimi-disaster-hat/source as a quiz with generic beat ids (hook, play, reveal, rule, ask, end) and the times moved to `source/cues.json`.
+2. Cast: Mimi + Friend only, all library poses (Friend `dreamy` listening → `tease` pointing “Aでしょ！” → `shock` → `yay`; Mimi `confident` → `tease` grin → `point` on the rule card → `jump`). The first pick (`friend-puzzled`, `friend-proud`) held a camera and a rice bowl, which read oddly in a quiz; swapped. No codex-p run, no new art.
+3. Quiz order: A = “I can't swim.”, B = “I can swim.”, question 「can はどっち？」. The Friend picks A because he heard no t — exactly the trap the rule card explains. The answers appear under the cards only at the reveal.
+4. Voice: `own-voice.json` → ownvoice.py, 2 paid generations, 0 regenerations (direction verbatim in own-voice.json: can reduced to a weak k'n with the stress on “swim”; can't with a full, long /æ/ and a soft, barely heard t).
+
+   Acoustic check with Praat (`source/scripts/check_voice.py`; 20 ms frames, F1/F2 over the voiced part, the share of energy above 4 kHz for the k aspiration and the s):
+
+| | k release / aspiration | voiced “can(’t)” (vowel + n) | vowel F1 / F2 | t | F0 on can(’t) vs swim |
+|---|---|---|---|---|---|
+| `us-can` “I can swim.” | ~40 ms | ~100 ms (0.48–0.57 s) | ~300 / ~1750 Hz (reduced, nasal) | — | ~128 Hz vs 71–90 Hz |
+| `us-cant` “I can't swim.” | ~140 ms | ~200 ms (0.64–0.84 s) | ~600 / ~1900 Hz (open /æ/) | ~20–40 ms closure, no audible release | ~80–85 Hz vs ~60–118 Hz (creaky) |
+
+   So “can” is reduced and short (half the length, closed schwa-like vowel, little aspiration) and “can't” has a twice-as-long open /æ/ with a strongly aspirated k and an unreleased t: the contrast the film teaches. One nuance for the owner's ear: the can take has its pitch peak on “can” itself (the reduced syllable is higher than “swim”), while length and vowel quality say “unstressed”. Not regenerated, since the requested check passed; flagged as an open question. Whisper not used.
+5. Mix: takes trimmed to speech with heads and tails kept (us-cant 0.28–1.48 s, us-can 0.18–1.06 s of the take); kit bed and levels unchanged; soft taps for the countdown, pofu for the reveal. v1 measured -16.6 LUFS after Mix.write's loudnorm (sparse voice, peak-bound); fixed in v2 (below).
+6. Layout fixes after the first contact sheet: the rule-card subtitle covered Mimi's face, so the rows were tightened, Mimi moved up and right, the rule subtitle cut to two lines; the 「キャン」 punch line ran off the right edge (moved left); the end-card subtitle covered the CTA, so it sits at the top on the end card only. HyperFrames contrast fixes (A orange #d57333, grey #7e90a0). `hyperframes check`: 0 errors.
+
+## Draft v2 (2026-10-23, commander review)
+
+- Commander: loudness to -14 LUFS integrated (true peak ≤ -1.5 dBTP) without changing the voice / BGM / SFX balance, copying films/mimi-katakana-mcdonalds' approach; the rule title 「t じゃなく、母音を聞く！」 was cut off at the left edge.
+- `scripts/mix.py` now measures after Mix.write, adds the missing gain in front of a 4x-oversampled limiter and measures again (up to 4 passes) → -14.2 LUFS, -1.9 dBTP in the WAV; the rendered cuts measure -14.2 LUFS, -1.7 dBTP. The limiter squeezes the voice peaks, so the bed and SFX are lowered 3 dB before Mix.write; voice-to-bed gaps measured after: hook bed vs voice A 8.8 dB (v1 8.8), rule bed vs “can” 11.3 dB (v1 11.8).
+- Rule title: 76 px (the struck t 88 px), 50 px side margins, one line; fully inside the frame.
+- v1 drafts moved to Drive `old/` with a `_v1` suffix.
+
+## Draft v3 (2026-10-23, platform safe zones)
+
+- Owner: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」 Commander: the right-side Mimi and the small Mimi on the rule card sat in the right action rail (x > 900, y 820–1520); EN subtitles must end above y 1500 within x 60–880; top captions start at y ≥ 200.
+- Moved: cards 410 px wide at x 50–880 (top 440), countdown between them; Friend x 20–340 and Mimi x 570–870 (top ~1050); bubbles kept left of x 880 (「えっ！？」 on two lines); rule rows x 40–880, rule Mimi x 620–870; hook, question, answer, rule title and ask card start at y ≥ 200; subtitles `left 60 / right 200 / bottom 425`, shortened so none is over three lines; sparkles and confetti out of the rail.
+- Checked with a zone-overlay sheet of the EN cut every ~1.5 s ([process/01-safe-zones-v3.jpg](process/01-safe-zones-v3.jpg)). Audio unchanged (-14.2 LUFS, -1.7 dBTP). v2 drafts moved to Drive `old/` with a `_v2` suffix.
+
+## Open questions
+
+- Owner's ear on the two takes (is “can” heard as weak enough with its higher pitch?).
+- Length 16.1 s (brief ~17 s): kept tight for tempo.
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Hear1_Can_2026-10-23.mp4`, `Hear1_Can_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
+- Repo record: finalized on a fresh branch `feat/mimi-hear-can-final` from `main` holding only the current tracked tree of this film (the first draft commit on `feat/mimi-hear-can` had staged media that was untracked afterwards; that branch is not merged, so its history never reaches `main`).
