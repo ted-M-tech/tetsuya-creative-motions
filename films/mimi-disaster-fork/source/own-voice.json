@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-fuck",
+   "text": "Excuse me, can I get a fuck?",
+   "style": "Speak English as a polite, slightly shy Japanese beginner calling a waiter in a restaurant. Say every word exactly as written. The last word is the American swear word: say it with exactly the same vowel as in 'fun', 'fudge', 'cup' and 'duck' (/ʌ/: mouth half open, jaw a little dropped, tongue flat in the middle, lips spread and relaxed, NOT rounded), very short, with no 'o', no 'aw' and no r, then a crisp k, so a listener clearly hears 'can I get a fuck?' Keep 'Excuse me, can I get a' flowing as one phrase with only a tiny pause after 'Excuse me'. Slightly flat, syllable-by-syllable Japanese-style timing, an innocent rising question. Natural, not a caricature."
+  },
+  {
+   "id": "native-fork",
+   "text": "Excuse me, can I get a fork?",
+   "accent": "us"
+  }
+ ]
+}

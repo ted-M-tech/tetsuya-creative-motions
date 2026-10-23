@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-fuck": {
+      "text": "Excuse me, can I get a fuck?",
+      "style": "Speak English as a polite, slightly shy Japanese beginner calling a waiter in a restaurant. Say every word exactly as written. The last word is the American swear word: say it with exactly the same vowel as in 'fun', 'fudge', 'cup' and 'duck' (/ʌ/: mouth half open, jaw a little dropped, tongue flat in the middle, lips spread and relaxed, NOT rounded), very short, with no 'o', no 'aw' and no r, then a crisp k, so a listener clearly hears 'can I get a fuck?' Keep 'Excuse me, can I get a' flowing as one phrase with only a tiny pause after 'Excuse me'. Slightly flat, syllable-by-syllable Japanese-style timing, an innocent rising question. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "fe89a2de72c3f5d0e69c756b46b76e32e232153f9bb114e23191fd42e0a98451",
+      "at": "2026-10-22T22:51:02+00:00"
+    },
+    "native-fork": {
+      "text": "Excuse me, can I get a fork?",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "12689fa6e447ec164cd14f38ea606eff710f32799bd10f7eb34cd4d08279aad5",
+      "at": "2026-10-22T22:49:43+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
