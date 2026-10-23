@@ -25,9 +25,14 @@
 5. Card: 「V」は歯を唇に！ — very: 上の歯を下唇に軽く当てて声を; berry: 両唇を閉じると berry（いちご）; the learner word (0.80–1.20 s of the take) at 8.5 s, the model word (0.64–0.90 s) at 9.6 s.
 6. App: `app-capture/Walkthrough.swift` + `very-lesson.patch` (capture-only fixture tweak: the first daily sentence becomes “Thank you very much!” and the fixture finding points at “very” /v/). The lesson screen, お手本 button, score card and flagged-word row are the real app (`lesson.model`, `lesson.record`, `feedback.scores` in native-ios origin/main); the sentence, the feedback wording and the score are fixture data. Cut with `scripts/app_track.sh`.
 7. Sound: `scripts/mix.py` (kit Mix): boing, rewind, record scratch, freeze, six soft thuds as the strawberries land; no side cast voice (“More berries!” is a bubble only); the bed stops at the freeze and returns with Mimi; voice loudest, BGM ~21 dB under.
-8. Checked with `hyperframes check` and a contact sheet of the key moments ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)).
+8. Loudness: after `Mix.write`, the mix is measured and the missing gain added in front of a limiter (the step from films/mimi-katakana-mcdonalds), so the film sits at -14.1 LUFS integrated, true peak -1.6 dBTP, balance unchanged.
+9. Checked with `hyperframes check` and a contact sheet of the key moments ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)).
 
 ## Uncertain / for review
 
 - The learner voice is the owner's (a young adult man) on the Friend.
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
+
+## Commander review (2026-10-23)
+
+- Draft v1 was -15 LUFS and the small Mimi on the card and app beats sat in the bottom 400 px. Fixed in v2: loudness step added to `scripts/mix.py`; card Mimi (170 px, centred between the columns) and app Mimi (260 px) moved up to end above y = 1520. v1 cuts moved to Drive `old/` with `_v1`.
