@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "us-ship",
+   "text": "I saw a ship.",
+   "style": "Speak fluent, relaxed General American English, a calm everyday statement. In 'ship' use the short, lax American /ɪ/ vowel as in 'sit' and 'bit': quick, relaxed and slightly open, with relaxed lips, never stretched into 'ee'. Keep the vowel very short and go straight to a crisp unreleased-to-soft p. Sentence stress on 'ship', natural stress-timed rhythm, falling intonation at the end."
+  },
+  {
+   "id": "us-sheep",
+   "text": "I saw a sheep.",
+   "style": "Speak fluent, relaxed General American English at a normal conversational speed, one smooth phrase with no pause: 'I saw a' is quick and light and runs straight into 'sheep'. Only the vowel of 'sheep' is long: a tense, bright 'ee' as in 'see', lips spread in a smile, held noticeably long (sheeep) before a soft p. Sentence stress on 'sheep', falling intonation at the end."
+  }
+ ]
+}
