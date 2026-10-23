@@ -6,9 +6,9 @@ Episode 2 of the feature-led series "How Do You Say It?" ([episode 1](../mimi-sa
 
 0:18.05 / 1080×1920, 60 fps / two cuts: Japanese captions only, and with English subtitles (`kits/mimi-short/render-cuts.sh`) / -14 LUFS, true peak ≤ -1.5 dBTP / platform safe zones kept (bottom 420 px, right action rail, top 200 px) / the owner's own voice for the English lines / 2D Mimi and her Friend (pose swap + HyperFrames) beside a simulator recording of the iOS app
 
-Status: draft (2026-10-23), in Drive `002.SNS/064. How Do You Say It 2 - Otsukaresama/` as `Say2_Otsukaresama_draft_2026-10-23.mp4` and `Say2_Otsukaresama_draft_EN-subs_2026-10-23.mp4`.
+Status: final, owner approved on 2026-10-23. Final files in Drive `002.SNS/064. How Do You Say It 2 - Otsukaresama/` as `Say2_Otsukaresama_2026-10-23.mp4` and `Say2_Otsukaresama_EN-subs_2026-10-23.mp4`.
 
-![Draft frames with the platform safe zones](process/00-draft-frames.jpg)
+![Frames with the platform safe zones](process/00-draft-frames.jpg)
 
 ## Files
 

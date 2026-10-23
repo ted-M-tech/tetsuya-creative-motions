@@ -38,3 +38,8 @@ Notion Content Calendar ID 64（Drive「064. How Do You Say It 2 - Otsukaresama�
 - 作成の答えが複数のときの画面（意味を選択）は、1つのときとは別の流れ。複数候補の本物の答えを見せるときは、ウォークスルーで候補の行をタップする手順が要る。
 - UI テストの待ち（`Thread.sleep`）は、画面録画のうえでは思った長さにならないことがある（候補は8秒出ていたのに、下書きは0.05秒で保存された）。録画のコマで確かめてから切る。
 - `alimiter` の上限はサンプルのピーク。トゥルーピーク -1.5 dBTP を守るには、上限を下げて測り直す。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the card keeps "See you tomorrow!" for leaving, as delivered; the Drive cuts were renamed without `_draft_`: `Say2_Otsukaresama_2026-10-23.mp4`, `Say2_Otsukaresama_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
