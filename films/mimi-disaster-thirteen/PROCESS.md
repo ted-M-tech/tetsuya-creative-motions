@@ -35,3 +35,7 @@
 - The native “thirteen” has its stress as a pitch jump on TEEN; the “ee” is not much longer than “thir” (the take that made it longer lost the pitch accent).
 - Mimi the clerk's “Thirty tickets!” is a bubble without voice (no side cast, no Japanese TTS).
 - The flagged-word feedback text in the app shot is written for the capture; the UI and the IPA line are the real app.
+
+## Commander review (2026-10-23)
+
+- Direction: in the stress card and app beats (6.9–14.0) the small Mimi at the bottom-left reached into the bottom ~400 px; move her up so nothing meaningful sits below y=1520. Done: card Mimi 210 px wide at y 1215 (card columns 890 px tall), app Mimi 300 px wide at y 1128; both end above 1520. Re-rendered (-14.0 LUFS, no new voice); the first drafts moved to Drive `old/` with `_v1`.
