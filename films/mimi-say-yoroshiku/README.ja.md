@@ -6,8 +6,8 @@
 
 0:18.6 / 1080×1920・60fps / 日本語字幕のみと英語字幕つきの2本 / 英語はオーナー本人の声 / 2DのMimiと友だち（ポーズ切り替え＋HyperFrames）＋iOSアプリのシミュレーター録画
 
-状態：下書き（2026-10-23）。Drive `002.SNS/063. How Do You Say It 1 - Yoroshiku Onegaishimasu/` の `Say1_Yoroshiku_draft_2026-10-23.mp4`、`Say1_Yoroshiku_draft_EN-subs_2026-10-23.mp4`。
+状態：完成版（2026-10-23、オーナー承認済み）。完成版は Drive `002.SNS/063. How Do You Say It 1 - Yoroshiku Onegaishimasu/` の `Say1_Yoroshiku_2026-10-23.mp4`、`Say1_Yoroshiku_EN-subs_2026-10-23.mp4`。
 
-![下書きフレーム](process/00-draft-frames.jpg)
+![フレーム](process/00-draft-frames.jpg)
 
 制作の経緯は [PROCESS.md](PROCESS.md)、統合プロンプトは [PROMPT.md](PROMPT.md)、作り直しとシリーズの型は [source/README.md](source/README.md)。

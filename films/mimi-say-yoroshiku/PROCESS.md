@@ -48,3 +48,8 @@ Notion Content Calendar ID 63（Drive「063. How Do You Say It 1 - Yoroshiku One
 
 - ffmpeg で倍速の区間を切るとき、`-t` を `-i` の後ろに置くと出力の長さになり、倍速分だけ後ろがずれる。入力の長さは `-ss … -t … -i` で指定する。
 - 作成の AI は temperature 0.2 でも毎回言い回しが変わる。複数回取って全部記録し、どれを使ったかを書く。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Say1_Yoroshiku_2026-10-23.mp4`, `Say1_Yoroshiku_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
