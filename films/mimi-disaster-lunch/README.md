@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #050 (series “Pronunciation Disasters”, episode 9). 20.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Status: draft for the owner's review.
+Lanclo SNS short #050 (series “Pronunciation Disasters”, episode 9). 20.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a park date. Mimi's Friend asks Coco “Shall we have lunch?” but the vowel comes out round and long: “Shall we have launch?”. Coco puts on a space helmet, salutes (“Launch? Roger! Three, two, one... liftoff!”) and a big cute rocket takes off through the frame. Mimi flies in riding a rocket: 「それ「launch」（ロケット打ち上げ）に聞こえてる〜！！」. Not rude: a pure visual gag.
 
@@ -21,5 +21,5 @@ Format: the series template ([mimi-disaster-sit](../mimi-disaster-sit/); source 
 
 - Voices: learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py` (Gemini gemini-3.8-flash-tts); biometric, not in Git (Drive `050. Pronunciation Disasters 9 - Lunch or Launch/Disasters9_Lunch_assets/own-voice/`). Coco is Kokoro English (`source/assets/voice/`).
 - The slip was measured, not transcribed: learner vowel ≈ 180 ms, F1 ≈ 480 / F2 ≈ 840 Hz (back, rounded /ɔː/) vs native “lunch” ≈ 90 ms, F1 ≈ 690 / F2 ≈ 1100 Hz (/ʌ/). See [PROCESS.md](PROCESS.md).
-- Draft files in Lanclo's Google Drive `002.SNS/050. Pronunciation Disasters 9 - Lunch or Launch/` (`Disasters9_Lunch_draft_2026-10-22.mp4`, `Disasters9_Lunch_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters9_Lunch_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/050. Pronunciation Disasters 9 - Lunch or Launch/` (`Disasters9_Lunch_2026-10-22.mp4`, `Disasters9_Lunch_EN-subs_2026-10-22.mp4`, raw material in `Disasters9_Lunch_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

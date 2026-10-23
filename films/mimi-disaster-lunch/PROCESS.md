@@ -30,3 +30,7 @@
 
 - The learner voice is the owner's (a young adult man) on the Friend; “Shall we have launch?” is the slip (the vowel only), the subtitle reads it as a rocket launch.
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters9_Lunch_2026-10-22.mp4`, `Disasters9_Lunch_EN-subs_2026-10-22.mp4`).
