@@ -33,6 +33,12 @@
 - Checked on a zone-overlay sheet (EN cut, frames every ~1.5 s, the three zones drawn): no text, bubble or small Mimi in the rail; faces left of x 900; nothing meaningful below y 1500 except the kit end card's App Store badge (kit level, unchanged). Loudness unchanged: -14.3 LUFS / -1.9 dBTP in both cuts.
 - v1 drafts moved to Drive `old/` with a `_v1` suffix.
 
+## Draft v3 (2026-10-23, see-through angry Mimi)
+
+- Owner: 「62透過されている？」 The library pose `angry.webp` had lost its white body fill in an old cutout, so the background showed through Mimi in the hook and the reveal. The commander made a filled copy (same size; enclosed body, face and ears filled white, outline untouched), kept in this episode as `source/art/pose-angry-filled.webp` and staged by `scripts/art.sh`; both angry shots use it. The shared kit library is unchanged.
+- Every other pose in the film (`flat`, `confident`, `point`, `jump`, `friend-dreamy`, `friend-tease`, `friend-shock`, `friend-yay`) checked on a dark background: all fills are opaque.
+- Loudness unchanged (-14.3 LUFS / -1.9 dBTP). v2 drafts moved to Drive `old/` with a `_v2` suffix.
+
 ## Open questions
 
 - Owner's ear on A: the fall is real but gentle (~2.5 semitones from “cuse” to “me”); it no longer rises, but it is less dramatic than B and C. Regeneration limit reached.
