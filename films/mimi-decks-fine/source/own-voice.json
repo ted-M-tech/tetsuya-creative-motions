@@ -1,0 +1,6 @@
+{"lines": [
+  {"id": "fine", "text": "I'm fine, thank you. And you?",
+   "style": "Speak English as a Japanese learner reciting a textbook dialogue: stiff and robotic, flat monotone pitch, every word evenly spaced and equally stressed, like reading the sentence aloud in class. Clear and correct words, slightly katakana-like vowels. Natural, not a caricature. Brisk: the whole line in about two seconds."},
+  {"id": "casual", "text": "All good! What's new?",
+   "style": "Speak fluent, relaxed General American English to a close friend: warm, upbeat and casual, a smile in the voice, natural linking (\"what's new\" flows together), stress on \"good\" and \"new\". Quick, about one and a half seconds."}
+]}

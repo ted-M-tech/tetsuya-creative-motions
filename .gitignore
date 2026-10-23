@@ -302,3 +302,8 @@ films/mimi-say-otsukare/**/*.wav
 films/mimi-say-otsukare/**/*.mp3
 films/mimi-say-otsukare/**/*.mov
 films/mimi-say-otsukare/**/*.mp4
+
+# 065 mimi-decks-fine: edit assets (own-voice mix), simulator takes and renders stay out of Git
+films/mimi-decks-fine/source/hf/assets/
+films/mimi-decks-fine/source/renders/
+films/mimi-decks-fine/renders/
