@@ -25,8 +25,9 @@ OTHERS, COCO, SQUINT, VS = 15.0, 17.9, 20.8, (22.5, 22.75)
 REAL, PANELS = 24.4, (24.9, 25.6, 26.3)
 LECT, QUOTE, CYCLE = 29.4, 31.45, (34.35, 34.7, 35.05)
 RES, AETE, PILLS = 36.6, 40.4, (41.0, 41.35)
-MONT = (42.4, 44.0, 45.6, 47.2, 48.8)
-CLOSE, END, CTA_TAP, DUR = 50.4, 53.0, 53.6, 54.6
+MAP, FEAT, SUMMARY = 42.4, ((44.0, 2), (46.2, 1), (48.4, 2), (50.6, 2), (52.8, 1)), 55.0
+WORD, WEAK = (57.2, 59.6, 62.6, 65.2), (60.6, 61.0, 61.4)
+CLOSE, END, CTA_TAP, DUR = 66.8, 69.0, 69.6, 70.6
 CALM = (24.4, 40.4)   # the reflective middle: the bed drops further
 
 m = Mix(DUR, voice_dir=SRC / 'assets/voice')
@@ -66,8 +67,20 @@ for i, at in enumerate(CYCLE):
 m.sfx(ding(0.08), AETE + 0.05)
 for at in PILLS:
     m.sfx(pop_seq(1, 0.05, base=79), at)
-for at in MONT:
+# The map: pieces laid out, each feature snaps its pieces in
+m.sfx(whoosh(0.35, 0.2), MAP)
+m.sfx(pop_seq(11, 0.07, base=72, vel=0.1), MAP + 0.3)
+for at, n in FEAT:
     m.sfx(whoosh(0.25, 0.15), at - 0.05)
+    for j in range(n):
+        m.sfx(pop_seq(2, 0.04, base=81), at + 0.9 + j * 0.3)
+m.sfx(ding(0.08), SUMMARY + 0.5)
+# Mimi's word: soft pops, the weak spots, a little jump
+for at in WORD:
+    m.sfx(pofu() * 0.35, at + 0.1)
+for at in WEAK:
+    m.sfx(pop_seq(1, 0.05, base=74), at)
+m.sfx(pop_seq(4, 0.06, base=79), WORD[3] + 0.2)
 m.sfx(pop_seq(3, 0.05, base=79), CLOSE + 0.05)
 m.bed(0.0, END)
 tt = np.arange(m.n) / SR
@@ -90,6 +103,14 @@ with wave.open(str(raw), 'wb') as w:
     w.writeframes((np.stack([mix, mix], 1) * 32767).astype(np.int16).tobytes())
 meas = subprocess.run(['ffmpeg', '-hide_banner', '-i', str(raw), '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr
 lufs = float(meas[meas.rindex('I:'):].split()[1])
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(raw), '-af', f'volume={-14.0 - lufs:.2f}dB,alimiter=limit=0.84:level=false', '-ar', str(SR), str(out)], check=True)
+TARGET = -13.1  # the HyperFrames render (AAC) lands about 0.9 dB below the WAV; measured on v2/v3, the MP4 reads -14
+gain = TARGET - lufs
+for _ in range(3):  # the limiter eats a little: measure the output and correct the gain
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(raw), '-af', f'volume={gain:.2f}dB,alimiter=limit=0.84:level=false', '-ar', str(SR), str(out)], check=True)
+    got = subprocess.run(['ffmpeg', '-hide_banner', '-i', str(out), '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    got = float(got[got.rindex('I:'):].split()[1])
+    if abs(got - TARGET) < 0.3:
+        break
+    gain += TARGET - got
 raw.unlink()
-print(out, f'(was {lufs} LUFS)')
+print(out, f'(mix {lufs} LUFS, out {got} LUFS)')

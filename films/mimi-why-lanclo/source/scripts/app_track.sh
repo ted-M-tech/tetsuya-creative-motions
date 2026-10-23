@@ -1,5 +1,5 @@
 #!/bin/sh
-# Cut the montage clips (one per feature) from earlier films' simulator takes; each clip 1.6 s at 1x, 60 fps.
+# Cut the montage clips (one per feature) from earlier films' simulator takes; each clip 2.2 s at 1x, 60 fps.
 # Sources (not in Git; copied from Lanclo Drive, each resampled to 60 fps first because the takes are variable frame rate):
 #   renders/app/describe.mov  021. Keep Talking for 3 Minutes/FreeSpeech_assets/simulator_free-speech-describe.mov
 #                             (photo description, 最大 3:00 under the record button from 36.25)
@@ -15,7 +15,7 @@ for f in describe debate roleplay loop; do
   [ -f $A/$f-60.mp4 ] || ffmpeg -v error -y -i $A/$f.mov -an -vf fps=60 -c:v libx264 -pix_fmt yuv420p -crf 14 -preset fast $A/$f-60.mp4
 done
 mkdir -p hf/assets/app
-cut() { ffmpeg -v error -y -ss $3 -i $A/$1 -t 1.6 -an -vf "fps=60,scale=1206:2622,format=yuv420p" -c:v libx264 -crf 16 hf/assets/app/$2.mp4; }
+cut() { ffmpeg -v error -y -ss $3 -i $A/$1 -t 2.2 -an -vf "fps=60,scale=1206:2622,format=yuv420p" -c:v libx264 -crf 16 hf/assets/app/$2.mp4; }
 cut describe-60.mp4 photo 36.9
 cut debate-60.mp4 debate 47.3
 cut roleplay-60.mp4 roleplay 45.3
