@@ -35,6 +35,8 @@
 
 7. Commander review (2026-10-23): content approved, keep the `model` beat and the small JApanese FOOD note. The owner on safe zones: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」 Fixed for TikTok / Reels / Shorts UI: EN subtitles moved fully above y 1500 and inside x 60–880 (34 px, max two lines); nothing with text, no bubble and no small Mimi in the right rail (x > 900, y 820–1520): the lobby cast, the 「?」, the captions, the card rows / tip / tag, the reveal answer and footnote and the CTA question marks shifted left; the first text line of every top card starts at y ≥ 200; the end card column raised so the App Store badge clears the bottom. Verified on a zone-overlay sheet every ~1.5 s of the EN cut ([process/00-draft-frames.jpg](process/00-draft-frames.jpg): purple top 200 px, orange right rail, red bottom 420 px, green subtitle box). Loudness unchanged (-14.3 LUFS, -1.6 dBTP). The first draft moved to Drive `old/` with a `_v1` suffix.
 
+8. Voice-cut audit (commander, 2026-10-23; the owner heard clipped English in another episode): three heads were cut, the g of “Gitaa”, the sh of “Shanpuu” and the sh of the us “shampoo”. Clip bounds widened (learner clips 0.25–0.84 / 1.53–2.30 / 2.96–3.82 s, us-guitar from 0.24, us-shampoo from 0.245) and placed earlier by the same amount, so every word sounds at the same moment and the dots stay on the measured syllables (beats shifted in `cues.json`). Every voice placement now starts and ends on a 10 ms window at least 38 dB below that clip's peak (heads −38.0 to −50.4 dB, tails −38.4 dB or quieter). Loudness −14.3 LUFS, −1.5 dBTP. The previous draft moved to Drive `old/` with a `_v2` suffix.
+
 ## Uncertain / for review
 
 - 16.2 s (the brief said about 17–18 s); kept short for tempo.

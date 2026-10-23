@@ -207,10 +207,10 @@
       K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
       K.sparkles(document.getElementById("hearts"), [[760, 1000, "#ff8fb1"], [860, 900, "#ffd84a"], [140, 980, "#ffd84a"], [420, 900, "#ff8fb1"]]);
       // Cue sheet (seconds), same as ../cues.json and scripts/mix.py
-      const SLIP = 1.2, L_AT = [1.25, 1.95, 2.65], TILT = 2.0, SHRINK = 3.45, EXPLAIN = 4.05, E_AT = [4.35, 5.15, 5.95], TIP = 6.65;
-      const MODEL = 7.55, F_AT = [7.7, 8.35, 9.0], CHALLENGE = 9.75, REVEAL = 10.75, J_AT = [10.85, 11.75], CTA = 12.75, E = 14.75, TAP = 15.35;
-      const LB = [[0.09, 0.24, 0.37], [0.12, 0.32], [0.10, 0.44]];   // measured syllables inside each learner clip
-      const MB = [[0.11, 0.32], [0.07, 0.22], [0.07, 0.33]];          // measured syllables inside each model take (from its start)
+      const SLIP = 1.2, L_AT = [1.2, 1.8, 2.53], TILT = 2.0, SHRINK = 3.45, EXPLAIN = 4.05, E_AT = [4.35, 5.13, 5.845], TIP = 6.65;
+      const MODEL = 7.55, F_AT = [7.7, 8.33, 8.895], CHALLENGE = 9.75, REVEAL = 10.75, J_AT = [10.85, 11.75], CTA = 12.75, E = 14.75, TAP = 15.35;
+      const LB = [[0.14, 0.29, 0.42], [0.27, 0.47], [0.22, 0.56]];   // measured syllables inside each learner clip
+      const MB = [[0.11, 0.32], [0.09, 0.24], [0.175, 0.435]];          // measured syllables inside each model take (from its start)
       const JB = [0.09, 0.24, 0.34];                                   // "Japanese"
       const tl = gsap.timeline({ paused: true });
       const k = K.kit(tl);
