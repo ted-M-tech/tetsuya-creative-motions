@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #053 (series “Pronunciation Disasters”, episode 12). Draft. 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #053 (series “Pronunciation Disasters”, episode 12). 18.8 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a sunny street. Coco shows off her new straw sun hat; Mimi's Friend compliments it, “I love your hat!”, but the katakana “ハット” comes out as “I love your hut!”. *Pop*: a little wooden cabin lands on Coco's head (「シーン…」, “My… hut?!”). Mimi pops up pointing: 「それ「hut」（小屋）に聞こえてる〜！！」. A pure, silly visual gag; nothing rude.
 
@@ -20,7 +20,7 @@ Scene: a sunny street. Coco shows off her new straw sun hat; Mimi's Friend compl
 - Voices: the learner and model takes are the owner's registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py` (Gemini gemini-3.8-flash-tts); WAVs are biometric and not in Git (Drive `053. Pronunciation Disasters 12 - Hat or Hut/Disasters12_Hat_assets/own-voice/`). Coco is Kokoro English `af_bella` (`source/assets/voice/`).
 - Cast: Mimi, her Friend (the learner) and Coco (recurring side cast). Mimi's Japanese first person is 「僕」 (she has no first-person line here).
 
-![Draft frames](process/00-draft-frames.jpg)
+![Final frames](process/00-final-frames.jpg)
 
-- Draft files in Lanclo's Google Drive `002.SNS/053. Pronunciation Disasters 12 - Hat or Hut/` (`Disasters12_Hat_draft_2026-10-22.mp4`, `Disasters12_Hat_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters12_Hat_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/053. Pronunciation Disasters 12 - Hat or Hut/` (`Disasters12_Hat_2026-10-22.mp4`, `Disasters12_Hat_EN-subs_2026-10-22.mp4`, raw material in `Disasters12_Hat_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

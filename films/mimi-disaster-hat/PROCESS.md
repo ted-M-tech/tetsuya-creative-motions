@@ -30,9 +30,13 @@
 4. Card: 「ア」と「エ」の間で！ — hat: 口を横に大きく 「ア」と「エ」の間; hut: 短くゆるい「ア」だと hut（小屋）; learner word at 8.5 s, native word at 9.6 s.
 5. App: `app-capture/Walkthrough.swift` + `hat-lesson.patch` (capture-only fixture tweak: the first daily sentence becomes “I love your hat!” and the fixture finding points at “hat” /æ/). The lesson screen, お手本 button, score card and flagged-word row are the real app (`lesson.model`, `lesson.record`, `feedback.scores` in native-ios origin/main); the sentence, the feedback wording and the score are fixture data. Cut with `scripts/app_track.sh`.
 6. Sound: `scripts/mix.py` (kit Mix): boing, rewind, record scratch, freeze, a soft poof when the cabin lands, Coco (Kokoro `af_bella`) “My… hut?!”; the freeze uses 041’s desaturate layer (#9aa6b2, saturation blend; 042’s yellow multiply was that episode’s joke only); the bed stops at the freeze and returns with Mimi; voice loudest, BGM ~21 dB under.
-7. Checked with `hyperframes check` and a contact sheet of the key moments ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)): captions top, bottom 400 px clear apart from the subtitle.
+7. Checked with `hyperframes check` and a contact sheet of the key moments ([process/00-final-frames.jpg](process/00-final-frames.jpg)): captions top, bottom 400 px clear apart from the subtitle.
 
 ## Uncertain / for review
 
 - The learner voice is the owner's (a young adult man) on the Friend.
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters12_Hat_2026-10-22.mp4`, `Disasters12_Hat_EN-subs_2026-10-22.mp4`).
