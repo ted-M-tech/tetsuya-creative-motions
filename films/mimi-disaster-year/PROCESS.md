@@ -33,6 +33,8 @@
 
 8. v2 (commander review, 2026-10-23): loudness raised to -14 LUFS with the post-gain + -1.5 dBTP limiter step from films/mimi-katakana-mcdonalds `scripts/mix.py` (balance unchanged; measured -13.9 LUFS on the WAV, -13.7 LUFS / -1.5 dBTP on both cuts); the small Mimi on the card (width 170, top 1280) and in the app beat (width 290, top 1150) moved up so she ends above y = 1520 (bottom 400 px clear). v1 drafts moved to Drive `old/` with `_v1`.
 
+9. v3 (platform safe zones; the owner, 2026-10-23: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」): EN subtitles moved fully above y 1500 within x 60–880 (card and app subtitles shortened; the end-card subtitle sits at the top); the right-hand Mimi (scene, freeze, yell, fix, punchline) moved left so her face stays left of x 900; 「新しい耳です。」 and the お手本 tag out of the right rail; the mouth-card columns narrowed to x 40–880; the small Mimi on the card moved beside the title; the hook, punchline, card title and app caption start at y ≥ 200. Verified on a zone-overlay contact sheet of the EN cut. Loudness unchanged (-13.7 LUFS, -1.5 dBTP). The kit end card's App Store badge still sits just inside the bottom 420 px (kit-wide, unchanged). v2 drafts moved to Drive `old/` with `_v2`.
+
 ## Uncertain / for review
 
 - The learner voice is the owner's (a young adult man) on the Friend.
