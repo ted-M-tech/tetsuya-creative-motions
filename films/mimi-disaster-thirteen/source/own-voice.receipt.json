@@ -1,0 +1,21 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-thirteen": {
+      "text": "Thirtin tickets, please.",
+      "style": "Speak English as a cheerful, polite Japanese learner ordering at a ticket booth, a bit flat and syllable-by-syllable. 'Thirtin' is a deliberate mispronunciation of 'thirteen': say it exactly as spelled, like 'certain' with 'th': stress on the FIRST syllable 'THIR', the second syllable a short, weak, unstressed 'tin' with no long 'ee', so it sounds almost like 'thirty'. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "7fedc9f75cf71627cea141c9a699fb7992f79e215e57a4a7a5425f322401e7c2",
+      "at": "2026-10-23T20:36:28+00:00",
+      "note": "take 3 of 3 kept"
+    },
+    "native-thirteen": {
+      "text": "Thirteen tickets, please.",
+      "style": "Speak fluent, warm General American English like a native speaker ordering at a ticket booth. Use native vowel and consonant sounds, smooth linking and natural intonation. In 'thirteen' the main stress is clearly on the SECOND syllable: thir-TEEN, a clear aspirated t and a long, bright, high 'ee' vowel held a little, the first syllable 'thir' short and light. Contrast it clearly with 'thirty'. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "397ce8526e8675a8e0eb42bf69d03e3b0851742a20730437ebcd28af8cb6c3e6",
+      "at": "2026-10-23T20:34:00+00:00",
+      "note": "take 1 of 3 kept (takes 2 and 3 measured worse: see PROCESS.md)"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
