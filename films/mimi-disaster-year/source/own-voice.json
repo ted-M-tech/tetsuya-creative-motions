@@ -1,0 +1,24 @@
+{
+ "lines": [
+  {
+   "id": "learner-ear",
+   "text": "Happy New Ear!",
+   "style": "Speak English as a cheerful Japanese learner greeting a friend on New Year's morning, bright and warm. Say every word exactly as written: 'Ear' is the body part and starts directly on the vowel, like Japanese 'iyaa', with NO 'y' sound before it, so a listener clearly hears 'Happy New Ear!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-year",
+   "text": "Happy New Year!",
+   "accent": "us"
+  },
+  {
+   "id": "native-year-word",
+   "text": "Year.",
+   "style": "Speak fluent General American English like a native speaker saying one word clearly and calmly, as in a pronunciation lesson. 'Year' starts with a clear, quick 'y' glide as in 'yes' (tongue high near the roof of the mouth), then the vowel and an American r. Natural, not exaggerated."
+  },
+  {
+   "id": "learner-ear-word",
+   "text": "Ear.",
+   "style": "Speak English as a Japanese learner saying one word on its own, as in a pronunciation lesson. Say 'Ear' (the body part) like Japanese 'iyaa': start directly on the vowel 'ee' with NO 'y' sound before it, then an open 'ah', no American r. Natural, not a caricature."
+  }
+ ]
+}
