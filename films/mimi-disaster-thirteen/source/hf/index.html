@@ -152,6 +152,37 @@
       .col .panel svg { display: block; width: 100%; height: 150px; }
       .col .gag { top: 18px !important; right: 18px !important; width: 90px !important; }
       .col .panel .body { padding: 6px 0 10px; }
+      /* PLATFORM SAFE ZONES (owner 2026-10-23): bottom 420 px (y > 1500) and the right rail (x > 900, y 820-1520) hold nothing
+         meaningful; the first caption line starts at y >= 200. */
+      .sub { left: 60px !important; right: 200px !important; bottom: 420px !important; }
+      .sub span { max-width: 820px !important; }
+      .sub.top { bottom: auto !important; top: 230px; }
+      #hook { top: 170px !important; }
+      #punch .pt { top: 170px !important; }
+      #rew span { top: 1180px !important; }
+      #c-title { top: 210px !important; }
+      .col { top: 340px !important; height: 820px !important; }
+      #c-mimi { top: 1175px !important; width: 145px !important; }
+      #app .caption { top: 210px !important; }
+      #device { left: 330px !important; top: 430px !important; width: 420px !important; height: 914px !important; border-radius: 64px !important; }
+      #a-mimi { top: 1040px !important; width: 240px !important; left: 20px !important; }
+      #own { left: 30px !important; right: auto !important; top: 930px !important; justify-content: flex-start !important; }
+      #own span { font-size: 44px !important; }
+      #clerk, #clerk2 { left: 390px !important; }
+      #clerk-r { left: 360px !important; width: 540px !important; }
+      #say, #ok-say { left: 440px !important; right: 200px !important; top: 1050px !important; font-size: 54px !important; }
+      #pon { left: 400px !important; }
+      #fx-word { left: 440px !important; }
+      #p-heard { left: 520px !important; }
+      .col { width: 400px !important; }
+      #col-ok { left: 60px !important; right: auto !important; }
+      #col-ng { left: 480px !important; right: auto !important; }
+      .col .panel { width: 340px !important; }
+      .col .tip { font-size: 42px !important; }
+      #p-heard { left: 470px !important; }
+      .end { padding-top: 350px !important; }
+      .end img.mimi { width: 460px !important; }
+      .end .line { font-size: 42px !important; }
     </style>
   </head>
   <body>
@@ -171,7 +202,7 @@
       </div>
       <div id="punch" class="clip" data-start="0" data-duration="1.5" data-track-index="21">
         <img class="pplate" src="assets/art/booth.webp" alt="" />
-        <img class="pcast" src="assets/art/mimi-clerk-tickets.webp" alt="" style="left: 440px; top: 470px; width: 580px;" />
+        <img class="pcast" src="assets/art/mimi-clerk-tickets.webp" alt="" style="left: 360px; top: 470px; width: 540px;" />
         <img class="pplate" src="assets/art/booth-counter.webp" alt="" style="top: 1028px; height: auto; bottom: auto;" />
         <img class="pcast" id="p-buried" src="assets/art/friend-buried.webp" alt="" style="left: -10px; top: 880px; width: 600px;" />
         <div id="p-rain"></div>
@@ -189,7 +220,7 @@
       <div id="x30" class="clip" data-start="4.4" data-duration="1.2" data-track-index="23">×30</div>
       <div id="fx-word" class="clip" data-start="5.0" data-duration="0.6" data-track-index="10">シーン…</div>
 
-      <img id="mimi" class="clip" src="assets/art/pose-scream.webp" alt="" style="left: 520px; top: 980px; width: 520px;" data-start="5.6" data-duration="1.3" data-track-index="11" />
+      <img id="mimi" class="clip" src="assets/art/pose-scream.webp" alt="" style="left: 430px; top: 980px; width: 520px;" data-start="5.6" data-duration="1.3" data-track-index="11" />
       <div id="yell" class="bubble clip" data-start="5.65" data-duration="1.25" data-track-index="12">それ「<b class="b2">30</b>」に<br />聞こえてる〜！！</div>
       <div id="flash" class="clip" data-start="5.6" data-duration="0.4" data-track-index="13"></div>
 
@@ -248,7 +279,7 @@
       <div class="sub clip" data-start="6.9" data-duration="3.0" data-track-index="24"><span>13: stress the end, long “ee”: thir-TEEN. Flat or front-heavy sounds like THIR-ty (30).</span></div>
       <div class="sub clip" data-start="9.9" data-duration="4.1" data-track-index="24"><span>The model is your own voice. Fix the stress in “thirteen”.</span></div>
       <div class="sub clip" data-start="14.0" data-duration="2.6" data-track-index="24"><span>This time, exactly 13 tickets.</span></div>
-      <div class="sub clip" data-start="16.6" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+      <div class="sub top clip" data-start="16.6" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.9" data-track-index="20" data-volume="1"></audio>
     </div>
