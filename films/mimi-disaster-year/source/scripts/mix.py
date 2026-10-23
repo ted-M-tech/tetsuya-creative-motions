@@ -53,8 +53,9 @@ m.sfx(freeze(0.45), F + 0.1)
 m.sfx(pofu() * 0.5, F + 0.25)                      # Mimi solemnly holds out the earmuffs
 m.sfx(boing(True), M)
 m.sfx(whoosh(0.3, 0.3), C)
-m.voice('learner-ear.wav', CL, start=1.33, length=0.70)   # "Ear"
-m.voice('native-year.wav', CN, start=0.70, length=0.42)   # "Year": the glide starts at 0.74 s (F2 up to ~2670 Hz)
+# card: isolated one-word takes (no cut inside connected speech); 40 ms pre-roll, cut after the voicing decays (both edges <= -38 dB)
+m.voice('learner-ear-word.wav', CL, start=0.35, length=0.57)    # "Ear": onset 0.39 s straight on 「イ」 (F1 ~300, F2 ~2700), no glide, no r
+m.voice('native-year-word.wav', CN, start=0.26, length=0.70)    # "Year": onset 0.30 s, /j/ F1 ~230, F2 2040 -> 2600 Hz, then r (F3 ~1800)
 m.sfx(pofu() * 0.5, CN - 0.35)
 m.sfx(ding(), A - 0.35)
 m.sfx(whoosh(0.3, 0.3), A)
@@ -90,5 +91,10 @@ for _ in range(3):
     tmp = out.with_suffix('.tmp.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af',
                     f'volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.84:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
+    shutil.move(tmp, out)
+# headroom for the AAC encode (it overshoots ~0.1 dB): a final -1.7 dBTP limiter pass when the true peak is above it
+if lufs(out)[1] > -1.7:
+    tmp = out.with_suffix('.tmp.wav')
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af', 'alimiter=limit=0.82:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
     shutil.move(tmp, out)
 print(out, 'I=%.1f LUFS TP=%.1f dBTP' % lufs(out))
