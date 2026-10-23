@@ -1,0 +1,13 @@
+{
+ "lines": [
+  {
+   "id": "friend-you-are-tired",
+   "text": "You are tired!",
+   "accent": "learner",
+   "style": "Speak English as a Japanese beginner who learned it from textbooks: slightly katakana-like vowels, flat syllable-by-syllable timing, every syllable equally stressed. Say it brightly and kindly, waving goodbye to a colleague at the end of the workday, meaning it as a friendly greeting (like the Japanese 'otsukaresama'). Natural, not a caricature."
+  },
+  {"id": "see-you-tomorrow", "text": "See you tomorrow!", "accent": "us"},
+  {"id": "thanks-for-today", "text": "Thanks for today!", "accent": "us"},
+  {"id": "good-work-today", "text": "Good work today!", "accent": "us"}
+ ]
+}
