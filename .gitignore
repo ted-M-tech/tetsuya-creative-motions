@@ -243,3 +243,9 @@ films/mimi-disaster-six/source/art/ref/
 !films/mimi-disaster-six/source/assets/voice/
 films/mimi-katakana-mcdonalds/source/hf/assets/
 films/mimi-katakana-mcdonalds/source/renders/
+films/mimi-katakana-mansion/source/hf/assets/
+films/mimi-katakana-mansion/source/renders/
+films/mimi-katakana-mansion/**/*.wav
+films/mimi-katakana-mansion/**/*.mp4
+films/mimi-katakana-mansion/**/*.mov
+films/mimi-katakana-mansion/**/*.mp3
