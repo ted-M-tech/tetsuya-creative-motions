@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      /* 066 「治ったはずのRが…」: hook + real app (films/mimi-quitter shape), horror parody kept light and cute.
+         Beats: hook (dark room, the L creeps up) -> flashback (right, confetti) -> some time later -> the slip (light, the L is back)
+         -> the real lesson overview with the "/ɹ/ (right) · 再確認" row -> said right again, the L waves bye -> end card. */
+      #root { background: #f6efe6; }
+      #scene { position: absolute; inset: 0; transform-origin: 40% 60%; }
+      #plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .fr { left: 30px; top: 900px; width: 560px; }
+      .mi { left: 540px; top: 930px; width: 520px; }
+      #dark { position: absolute; inset: 0; background: #1b2347; mix-blend-mode: multiply; opacity: 0; }
+      #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 45% 55%, rgba(0,0,0,0) 40%, rgba(12,16,40,0.55) 100%); opacity: 0; }
+      #sepia { position: absolute; inset: 0; background: #ffe7b8; mix-blend-mode: multiply; opacity: 0; }
+      /* the ghost L: a soft, cute letter ghost (not a character of the cast; a prop like the heard-* gags) */
+      .ghost { position: absolute; left: 470px; top: 380px; width: 520px; height: 820px; transform-origin: 30% 100%; }
+      .ghost svg { width: 100%; height: 100%; overflow: visible; }
+      #hook { position: absolute; left: 40px; right: 40px; top: 120px; background: rgba(255,255,255,0.96); border-radius: 48px; padding: 30px 24px 36px;
+              box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.25; color: #273b4b; }
+      #hook b { font-family: "Helvetica Neue", Arial, sans-serif; color: #2a8dff; font-size: 128px; }
+      .tagline { position: absolute; left: 40px; top: 120px; background: #273b4b; color: #ffe7b8; font-size: 56px; font-weight: 700; padding: 14px 34px; border-radius: 40px; }
+      .say { position: absolute; left: 50px; top: 690px; background: #ffffff; border: 6px solid #273b4b; border-radius: 48px; border-bottom-left-radius: 10px;
+             padding: 18px 40px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 92px; font-weight: 700; color: #273b4b; line-height: 1.15; white-space: nowrap; }
+      .say .ok { color: #2a8dff; }
+      .say .bad { color: #e5484d; display: inline-block; }
+      #later { position: absolute; inset: 0; background: #141a33; display: flex; align-items: center; justify-content: center; }
+      #later span { font-size: 110px; font-weight: 700; color: #ffffff; letter-spacing: 0.04em; }
+      #tadaima { position: absolute; left: 640px; top: 560px; white-space: nowrap; background: #4b4277; color: #fff; font-size: 64px; font-weight: 700; padding: 16px 34px;
+                 border-radius: 40px; border-bottom-left-radius: 10px; }
+      #yell { left: auto; right: 30px; top: 830px; font-size: 62px; text-align: center; }
+      #confetti { position: absolute; inset: 0; pointer-events: none; }
+      #confetti i { position: absolute; width: 26px; height: 40px; border-radius: 6px; }
+      #hearts { position: absolute; inset: 0; }
+      /* The real app */
+      #app { position: absolute; inset: 0; background: #eef3f9; }
+      #device { position: absolute; left: 250px; top: 500px; width: 580px; height: 1262px; border-radius: 86px; background: #1d2733; padding: 16px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 70%; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 70px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #status { position: absolute; left: 0; right: 0; top: 0; height: 6.4%; background: #f2f2f7; }
+      #status b { position: absolute; left: 13%; top: 32%; font-size: 24px; font-family: -apple-system, "Helvetica Neue", sans-serif; color: #111; }
+      #status i { position: absolute; left: 36%; top: 24%; width: 28%; height: 46%; border-radius: 22px; background: #000; }
+      #hl { position: absolute; left: 3.5%; right: 3.5%; top: 66.3%; height: 7.8%; border: 6px solid #e5484d; border-radius: 22px; opacity: 0; }
+      #label { position: absolute; left: 40px; right: 40px; top: 1190px; display: flex; justify-content: center; }
+      #label span { display: block; background: #ffffff; border: 6px solid #2a8dff; border-radius: 40px; padding: 18px 40px; font-size: 70px; font-weight: 700; color: #273b4b;
+                    box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25); white-space: nowrap; }
+      #label b { font-family: "Helvetica Neue", Arial, sans-serif; color: #2a8dff; }
+      #a-mimi { position: absolute; left: 740px; top: 1330px; width: 320px; height: auto; transform-origin: 50% 100%; }
+      #app .caption { top: 170px; }
+      /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.6" data-width="1080" data-height="1920">
+      <div id="scene">
+        <img id="plate" src="assets/art/living.webp" alt="" />
+        <!-- the ghost L (behind the Friend) -->
+        <div id="ghost" class="ghost clip" data-start="0" data-duration="9.1" data-track-index="2">
+          <svg viewBox="0 0 520 820">
+            <defs><filter id="soft"><feGaussianBlur stdDeviation="3" /></filter></defs>
+            <path id="gbody" d="M60 40 Q60 10 100 10 L200 10 Q240 10 240 40 L240 560 L470 560 Q510 560 510 600 L510 720
+                     Q480 760 450 720 Q420 680 390 720 Q360 760 330 720 Q300 680 270 720 Q240 760 210 720 Q180 680 150 720 Q120 760 90 720 Q60 690 60 700 Z"
+                  fill="#5b4f8f" fill-opacity="0.82" stroke="#2b2450" stroke-width="10" stroke-linejoin="round" filter="url(#soft)" />
+            <ellipse cx="120" cy="170" rx="22" ry="30" fill="#fff" /><ellipse cx="190" cy="170" rx="22" ry="30" fill="#fff" />
+            <circle cx="124" cy="178" r="11" fill="#1d1838" /><circle cx="194" cy="178" r="11" fill="#1d1838" />
+            <ellipse cx="96" cy="230" rx="20" ry="11" fill="#ff9cc0" fill-opacity="0.8" /><ellipse cx="220" cy="230" rx="20" ry="11" fill="#ff9cc0" fill-opacity="0.8" />
+            <path d="M138 232 Q155 250 172 232" fill="none" stroke="#1d1838" stroke-width="7" stroke-linecap="round" />
+            <g id="ghand"><ellipse cx="262" cy="330" rx="40" ry="32" fill="#5b4f8f" stroke="#2b2450" stroke-width="9" /></g>
+          </svg>
+        </div>
+        <div id="ghost2" class="ghost clip" style="left: 470px; top: 300px;" data-start="14.0" data-duration="2.3" data-track-index="2">
+          <svg viewBox="0 0 520 820">
+            <path d="M60 40 Q60 10 100 10 L200 10 Q240 10 240 40 L240 560 L470 560 Q510 560 510 600 L510 720
+                     Q480 760 450 720 Q420 680 390 720 Q360 760 330 720 Q300 680 270 720 Q240 760 210 720 Q180 680 150 720 Q120 760 90 720 Q60 690 60 700 Z"
+                  fill="#8f86c0" fill-opacity="0.75" stroke="#2b2450" stroke-width="10" stroke-linejoin="round" />
+            <path d="M100 170 Q120 150 140 170 M170 170 Q190 150 210 170" fill="none" stroke="#1d1838" stroke-width="9" stroke-linecap="round" />
+            <ellipse cx="96" cy="225" rx="20" ry="11" fill="#ff9cc0" /><ellipse cx="220" cy="225" rx="20" ry="11" fill="#ff9cc0" />
+            <path d="M138 228 Q155 246 172 228" fill="none" stroke="#1d1838" stroke-width="7" stroke-linecap="round" />
+            <g id="ghand2"><ellipse cx="268" cy="250" rx="40" ry="32" fill="#8f86c0" stroke="#2b2450" stroke-width="9" /></g>
+          </svg>
+        </div>
+        <img id="f-hook" class="cast fr clip" src="assets/art/friend-ask.webp" alt="" data-start="0" data-duration="2.3" data-track-index="3" />
+        <img id="f-fb" class="cast fr clip" src="assets/art/friend-yay.webp" alt="" data-start="2.3" data-duration="2.7" data-track-index="3" />
+        <img id="m-fb" class="cast mi clip" src="assets/art/jump.webp" alt="" data-start="2.3" data-duration="2.7" data-track-index="4" />
+        <img id="f-say" class="cast fr clip" src="assets/art/friend-ask.webp" alt="" data-start="6.1" data-duration="0.85" data-track-index="3" />
+        <img id="f-shrink" class="cast fr clip" src="assets/art/friend-shrink.webp" alt="" data-start="6.95" data-duration="2.15" data-track-index="3" />
+        <img id="m-light" class="cast mi clip" src="assets/art/mimi-flashlight.webp" alt="" style="left: 560px; top: 1000px; width: 500px;" data-start="7.85" data-duration="1.25" data-track-index="4" />
+        <img id="f-ok" class="cast fr clip" src="assets/art/friend-nod.webp" alt="" data-start="14.0" data-duration="2.3" data-track-index="3" />
+        <div id="sepia"></div>
+        <div id="dark"></div>
+        <div id="vig"></div>
+      </div>
+
+      <!-- Hook: on screen from frame 1 -->
+      <div id="hook" class="clip" data-start="0" data-duration="2.3" data-track-index="6">治ったはずの<br /><b>R</b> が…</div>
+      <!-- Flashback -->
+      <div id="t-fb" class="tagline clip" data-start="2.3" data-duration="2.7" data-track-index="6">あの日…</div>
+      <div id="say1" class="say clip" data-start="2.42" data-duration="2.58" data-track-index="7">That's <span class="ok">right</span>! ✓</div>
+      <div id="confetti" class="clip" data-start="3.0" data-duration="2.0" data-track-index="8"></div>
+      <div id="cap-fb" class="caption clip" data-start="3.1" data-duration="1.9" data-track-index="9" style="top: 250px;"><span id="c-fb"><strong>R</strong>、完ぺき！</span></div>
+      <!-- Some time later -->
+      <div id="later" class="clip" data-start="5.0" data-duration="1.1" data-track-index="10"><span id="l-txt">しばらくして…</span></div>
+      <!-- The slip comes back -->
+      <div id="say2" class="say clip" data-start="6.2" data-duration="2.9" data-track-index="7">That's <span class="bad">light</span>!</div>
+      <div id="tadaima" class="clip" data-start="7.05" data-duration="2.05" data-track-index="11">ただいま〜</div>
+      <div id="cap-sl" class="caption clip" data-start="6.95" data-duration="2.15" data-track-index="9" style="top: 140px;"><span id="c-sl"><em>L</em> が戻ってきた…！</span></div>
+      <div id="yell" class="bubble clip" data-start="7.95" data-duration="1.15" data-track-index="12">出た〜！</div>
+
+      <!-- The real app: the lesson overview (simulator, fixture with a capture-only re-check row: see app-capture/) -->
+      <div id="app">
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="9.1" data-duration="4.9" data-track-index="14"></video>
+            <div id="status"><b>9:41</b><i></i></div>
+            <div id="hl"></div>
+          </div>
+        </div>
+        <div id="label"><span id="l-row"><b>/ɹ/ (right)</b> · 再確認</span></div>
+        <img id="a-mimi" src="assets/art/point.webp" alt="" />
+        <div class="caption small"><span id="a-cap">忘れた頃に、<br /><strong>また確かめるよ</strong></span></div>
+      </div>
+
+      <!-- Payoff: said right again; the L waves bye -->
+      <div id="say3" class="say clip" data-start="14.1" data-duration="2.2" data-track-index="7">That's <span class="ok">right</span>! ✓</div>
+      <div id="bye" class="clip" data-start="14.95" data-duration="1.35" data-track-index="11" style="position:absolute; left: 690px; top: 230px; white-space: nowrap; background: #8f86c0; color: #fff; font-size: 64px; font-weight: 700; padding: 16px 34px; border-radius: 40px; border-bottom-left-radius: 10px;">またね〜</div>
+      <div id="hearts" class="sparkles clip" data-start="14.6" data-duration="1.7" data-track-index="8"></div>
+
+      <div id="end" class="end clip" data-start="16.3" data-duration="1.3" data-track-index="19"></div>
+
+      <!-- English subtitles (one track) -->
+      <div id="sub-1" class="sub clip" data-start="0" data-duration="2.3" data-track-index="24"><span>My R was fixed… or so I thought.</span></div>
+      <div id="sub-2" class="sub clip" data-start="2.3" data-duration="2.7" data-track-index="24"><span>That day… “That's right!” A perfect R!</span></div>
+      <div id="sub-3" class="sub clip" data-start="5.0" data-duration="1.1" data-track-index="24"><span>Some time later…</span></div>
+      <div id="sub-4" class="sub clip" data-start="6.1" data-duration="3.0" data-track-index="24"><span>“That's light!” The L is back… “I'm home~” “There it is!”</span></div>
+      <div id="sub-5" class="sub clip" data-start="9.1" data-duration="4.9" data-track-index="24"><span>Just when you forget it, I’ll check it again.</span></div>
+      <div id="sub-6" class="sub clip" data-start="14.0" data-duration="2.3" data-track-index="24"><span>“That's right!” — “See you~”</span></div>
+      <div id="sub-7" class="sub clip" data-start="16.3" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.6" data-track-index="20" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("hearts"), [[640, 1000, "#ffd84a"], [980, 960, "#ffd84a"], [860, 880, "#ff8fb1"], [120, 960, "#ffd84a"], [520, 1180, "#ff8fb1"]]);
+      // confetti
+      const cf = document.getElementById("confetti"), cols = ["#ffd84a", "#ff8fb1", "#2a8dff", "#7bd389", "#ffffff"];
+      for (let i = 0; i < 26; i++) { const p = document.createElement("i"); p.style.left = (40 + (i * 397) % 1000) + "px"; p.style.top = "-60px"; p.style.background = cols[i % 5]; cf.appendChild(p); }
+      // Cue sheet (seconds), same as scripts/mix.py
+      const FL = 2.3, V1 = 2.42, CONF = 3.05, SK = 5.0, SL = 6.1, V2 = 6.2, GH = 6.95, MI = 7.85, A = 9.1, ZOOM = 10.2, LBL = 10.55, LINE = 11.3, X = 14.0, V3 = 14.1, BYE = 14.95, E = 16.3;
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      tl.set("#dark", { opacity: 0.62 }, 0);
+      tl.set("#vig", { opacity: 1 }, 0);
+      tl.set("#app", { opacity: 0 }, 0);
+      tl.set("#app", { opacity: 1 }, A);
+      tl.set("#app", { opacity: 0 }, X);
+      // Hook (0-FL): dark room, the camera creeps in, the L rises slowly behind the unaware Friend; the lights flicker once
+      tl.fromTo("#scene", { scale: 1.0 }, { scale: 1.08, duration: FL, ease: "none" }, 0);
+      tl.fromTo("#ghost", { y: 260, opacity: 0.0 }, { y: 0, opacity: 1, duration: 1.0, ease: "sine.out" }, 0);
+      tl.fromTo("#ghost", { rotation: -2 }, { rotation: 2, duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 0.1);
+      tl.fromTo("#f-hook", { y: 0 }, { y: -10, duration: 0.35, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0);
+      tl.fromTo("#dark", { opacity: 0.62 }, { opacity: 0.45, duration: 0.06, yoyo: true, repeat: 3, immediateRender: false }, 1.0);
+      tl.fromTo("#hook b", { scale: 1 }, { scale: 1.15, duration: 0.16, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 0.4);
+      tl.fromTo("#hook", { y: 0 }, { y: 4, duration: 0.05, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, 1.0);
+
+      // Flashback (FL-SK): the room is bright and warm, the Friend nails "right", confetti, Mimi cheers
+      tl.set("#ghost", { opacity: 0 }, FL);
+      tl.set("#scene", { scale: 1.0 }, FL);
+      tl.set(["#dark", "#vig"], { opacity: 0 }, FL);
+      tl.set("#sepia", { opacity: 0.45 }, FL);
+      tl.fromTo("#t-fb", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, FL);
+      tl.fromTo("#say1", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, V1);
+      tl.fromTo("#say1 .ok", { scale: 1 }, { scale: 1.25, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, V1 + 0.32);
+      document.querySelectorAll("#confetti i").forEach((p, i) => {
+        tl.fromTo(p, { y: 0, rotation: 0 }, { y: 1500 + (i % 4) * 120, rotation: 360 + i * 40, duration: 1.8, ease: "power1.in" }, CONF + (i % 6) * 0.04);
+      });
+      tl.fromTo("#f-fb", { y: 0 }, { y: -36, duration: 0.18, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, CONF);
+      tl.fromTo("#m-fb", { x: 400 }, { x: 0, duration: 0.25, ease: "back.out(1.6)" }, FL + 0.1);
+      tl.fromTo("#m-fb", { y: 0 }, { y: -44, duration: 0.16, yoyo: true, repeat: 7, ease: "power2.out", immediateRender: false }, CONF + 0.1);
+      k.pop("#c-fb", CONF + 0.05);
+
+      // Some time later
+      tl.fromTo("#later", { opacity: 0 }, { opacity: 1, duration: 0.12 }, SK);
+      tl.fromTo("#l-txt", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" }, SK + 0.1);
+
+      // The slip comes back (SL-A): dark again, "That's light!", the L rises behind: "ただいま〜", the Friend shrinks, Mimi with a flashlight
+      tl.set("#sepia", { opacity: 0 }, SL);
+      tl.set("#dark", { opacity: 0.62 }, SL);
+      tl.set("#vig", { opacity: 1 }, SL);
+      tl.set("#scene", { scale: 1.04 }, SL);
+      tl.fromTo("#say2", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, V2);
+      tl.fromTo("#say2 .bad", { scale: 1 }, { scale: 1.3, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, V2 + 0.49);
+      tl.set("#ghost", { opacity: 1, y: 300 }, SL);
+      tl.to("#ghost", { y: 0, duration: 0.45, ease: "back.out(1.4)" }, GH);
+      tl.fromTo("#ghand", { rotation: 0, transformOrigin: "240px 350px" }, { rotation: -25, duration: 0.18, yoyo: true, repeat: 7, ease: "sine.inOut", immediateRender: false }, GH + 0.3);
+      tl.fromTo("#tadaima", { scale: 0.5, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, GH + 0.1);
+      tl.fromTo("#f-shrink", { x: 0 }, { x: -8, duration: 0.05, yoyo: true, repeat: 9, ease: "none" }, GH);
+      tl.to("#scene", { scale: 1.12, duration: 0.25, ease: "power3.out" }, GH);
+      k.pop("#c-sl", GH + 0.05);
+      tl.to("#dark", { opacity: 0.5, duration: 0.15 }, MI);
+      tl.fromTo("#m-light", { y: 640, rotation: -360, scale: 0.4 }, { y: 0, rotation: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, MI);
+      tl.to("#scene", { scale: 1.04, duration: 0.25, ease: "power2.out" }, MI);
+      tl.fromTo("#yell", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, MI + 0.1);
+      tl.to("#tadaima", { x: -10, duration: 0.05, yoyo: true, repeat: 5 }, MI + 0.1);
+
+      // The real app (A-X): the overview, zoom on the re-check row, the big label, Mimi's line
+      tl.fromTo("#device", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, A);
+      tl.fromTo("#a-mimi", { y: 320 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, A + 0.15);
+      tl.to("#device", { scale: 1.45, y: -300, duration: 0.5, ease: "power2.inOut" }, ZOOM);
+      tl.fromTo("#hl", { opacity: 0 }, { opacity: 1, duration: 0.15 }, LBL - 0.1);
+      tl.fromTo("#label", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)" }, LBL);
+      k.pop("#a-cap", LINE);
+      tl.fromTo("#a-mimi", { y: 0 }, { y: -18, duration: 0.2, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, LINE);
+      tl.fromTo("#hl", { scale: 1 }, { scale: 1.04, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, LINE + 0.5);
+
+      // Payoff (X-E): bright room, said right again, the L (now pale and smiling) waves bye and floats away
+      tl.set(["#dark", "#vig"], { opacity: 0 }, X);
+      tl.set("#scene", { scale: 1.0 }, X);
+      tl.fromTo("#say3", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, V3);
+      tl.fromTo("#f-ok", { y: 0 }, { y: -30, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, V3 + 0.5);
+      tl.fromTo("#ghand2", { rotation: -20, transformOrigin: "240px 270px" }, { rotation: 25, duration: 0.2, yoyo: true, repeat: 7, ease: "sine.inOut" }, X);
+      tl.fromTo("#bye", { scale: 0.5, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, BYE);
+      tl.to(["#ghost2", "#bye"], { y: -260, opacity: 0, duration: 0.7, ease: "power2.in" }, BYE + 0.55);
+      k.twinkle("#hearts", V3 + 0.6);
+
+      k.end(E);
+      k.tapCta(E + 0.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

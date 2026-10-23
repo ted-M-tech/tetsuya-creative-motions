@@ -1,0 +1,9 @@
+# Capture-only fixture tweak for the Mimi short "The R Came Back" (never committed to the app):
+# the lesson's fifth sentence (the Open slot) becomes a re-check of a former main key, /ɹ/ (right), exactly as
+# packages/core/src/weaknessRanking.ts lessonSlots() fills it (fill('open', due, true): key, label, category, words, recheck),
+# so LessonReasonChip shows the real row "/ɹ/ (right) · 再確認" ("%@ · check again"). The target word is highlighted as the writer's targetWord.
+--- a/native-ios/Lanclo/Core/VisualQAData.swift
++++ b/native-ios/Lanclo/Core/VisualQAData.swift
+@@
+-        default: return .init(slot: "open", key: nil, label: nil, category: nil, words: [])
++        default: return .init(slot: "open", key: "en:sounds:/ɹ/", label: "/ɹ/", category: "sounds", words: ["right", "room"], recheck: true, targetWord: "room")
