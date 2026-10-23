@@ -56,8 +56,9 @@ for i in range(6):                                  # strawberries thud onto the
     m.sfx(pofu() * 0.35, F + 0.32 + i * 0.12)
 m.sfx(boing(True), M)
 m.sfx(whoosh(0.3, 0.3), C)
-m.voice('learner-berry.wav', CL, start=0.80, length=0.40)   # "berry" alone
-m.voice('native-very.wav', CN, start=0.64, length=0.26)     # "very" alone
+# the card words are separate one-word takes: in the sentences "berry"/"very" run straight into "much" (no gap to cut at)
+m.voice('word-berry.wav', CL, start=0.25, length=0.87)      # "Berry.": voice bar from 0.29, lip release 0.40, decays by 1.08
+m.voice('word-very.wav', CN, start=0.22, length=0.58)       # "Very.": frication from 0.26, decays by 0.76
 m.sfx(pofu() * 0.5, CN - 0.35)
 m.sfx(ding(), A - 0.35)
 m.sfx(whoosh(0.3, 0.3), A)

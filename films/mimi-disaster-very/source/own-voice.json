@@ -9,6 +9,16 @@
    "id": "native-very",
    "text": "Thank you very much!",
    "accent": "us"
+  },
+  {
+   "id": "word-berry",
+   "text": "Berry.",
+   "style": "Speak English as a friendly Japanese learner saying one word on its own, clearly. Say it exactly as written: 'Berry' starts with a clear B, both lips closed and then popping open, like the fruit 'berry' or Japanese 'beri'. Slightly flat Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "word-very",
+   "text": "Very.",
+   "accent": "us"
   }
  ]
 }

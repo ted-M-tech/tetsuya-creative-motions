@@ -13,6 +13,18 @@
       "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
       "wavSha256": "755baa1bbb9fdda973744267522ec56253df19cc39f78811f2d8f6fefcd7bb84",
       "at": "2026-10-23T20:34:56+00:00"
+    },
+    "word-berry": {
+      "text": "Berry.",
+      "style": "Speak English as a friendly Japanese learner saying one word on its own, clearly. Say it exactly as written: 'Berry' starts with a clear B, both lips closed and then popping open, like the fruit 'berry' or Japanese 'beri'. Slightly flat Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d9cc9e9adc188f67d4b163a44ed9aa300db3e6c1e0117d7e3b9d65ee690cc5ca",
+      "at": "2026-10-23T21:41:16+00:00"
+    },
+    "word-very": {
+      "text": "Very.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9b1c64cfd62567626b6bca0809a3e6ede784c672ff3d7a04277773580f0fe291",
+      "at": "2026-10-23T21:41:18+00:00"
     }
   },
   "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
