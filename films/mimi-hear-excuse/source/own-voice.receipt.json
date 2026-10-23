@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "us-a-fall": {
+      "text": "Excuse me.",
+      "style": "Speak fluent General American English. Say it as a polite, slightly apologetic statement while stepping past someone, with a FALLING tune exactly like saying 'Thank you.' with a period: the first part is higher and the pitch goes DOWN on 'me'. Put the stress on 'CUSE' at a clearly raised, bright pitch, then let your voice fall a lot, smoothly and audibly, so 'me' is about half as high, low and soft at the end. Downward, final, finished. Absolutely no upward rise on 'me', no questioning tone. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "af7ce93d9af175bc2f44988427927894cecb47594c1f70fdb652ecdf7ee9edab",
+      "at": "2026-10-23T20:58:03+00:00"
+    },
+    "us-b-rise": {
+      "text": "Excuse me?",
+      "style": "Speak fluent, relaxed General American English. You did not catch what someone said and politely ask them to repeat it, meaning 'Pardon?'. Neutral, curious and friendly, not annoyed. Normal stress on 'CUSE', then a clear, gentle question rise at the end: the pitch goes up smoothly on 'me'. Moderate loudness, no extra emphasis on 'me'. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "c10bfa99169e872cd7f2deeb8f55541f2663e67c4d5cd343546faf55cdb39008",
+      "at": "2026-10-23T20:56:42+00:00"
+    },
+    "us-c-offended": {
+      "text": "Excuse ME?!",
+      "style": "Speak fluent General American English. You are offended and indignant: someone just said something rude to you and you cannot believe it. Say 'excuse' quickly and low, then put heavy, loud stress on 'ME' and draw it out, with a big, sharp pitch rise on 'ME' that jumps far higher than the rise of a normal question, sliding up to a very high end. Incredulous, sassy, a bit outraged, like 'How dare you?'. Not shouting, but clearly offended. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "5af9db9c561f89b1c4d4ee2ee9b3975d670d729b78a292c5c98cd5c443f03fdf",
+      "at": "2026-10-23T20:56:44+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

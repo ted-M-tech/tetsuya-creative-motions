@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-katakana": {
+      "text": "Makudonarudo.",
+      "style": "Say this one word as a Japanese person reading the katakana word マクドナルド aloud at a fast-food counter, cheerful and confident. Pronounce it exactly as written in Japanese: six short, even syllables ma-ku-do-na-ru-do, every syllable with its own clear vowel (ma, ku, do, na, ru, do), flat Japanese pitch with no English stress, a light Japanese tapped r in ru. Steady, about one and a half seconds. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "bf42c47098a229134e399d963aceeb00500c113f22355e56adca8467876c14e4",
+      "at": "2026-10-23T20:34:38+00:00"
+    },
+    "us-mcdonalds": {
+      "text": "McDonald's.",
+      "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner. Three syllables only: a quick reduced 'mc' (like 'muk'), a strong, loud, higher-pitched stressed 'DON' (as in 'Donald'), and a short reduced 'alds' ending in a z sound. Do not add any vowel after the consonants. Native rhythm, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9a622a0bbea0708a866dfa8a387ef80f3572c22dd88e6c4496c2889d8368e975",
+      "at": "2026-10-23T20:34:40+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
