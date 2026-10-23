@@ -63,7 +63,7 @@ films/mimi-daily/source/hf/.thumbnails/
 films/mimi-daily/source/hf/assets/app/
 !films/mimi-daily/source/assets/voice/
 
-# Lanclo SNS theme BGM (OpenTracks licence: do not redistribute); kept in Lanclo's Google Drive 002.SNS/_BGM/
+# Lanclo SNS theme BGM (OpenTracks licence: do not redistribute); fetched from Lanclo's private repo by kits/mimi-short/scripts/fetch-bgm.sh
 kits/mimi-short/library/bgm/
 films/mimi-action-add/source/rive/*/build/
 films/mimi-action-add/source/hf/assets/
@@ -210,3 +210,34 @@ films/mimi-why-lanclo/source/hf/.hyperframes/
 films/mimi-why-lanclo/source/hf/.thumbnails/
 films/mimi-why-lanclo/source/renders/
 !films/mimi-why-lanclo/source/assets/voice/
+films/mimi-disaster-hat/source/hf/assets/
+films/mimi-disaster-hat/source/renders/
+films/mimi-disaster-light/source/hf/assets/
+films/mimi-disaster-light/source/hf/.hyperframes/
+films/mimi-disaster-light/source/hf/.thumbnails/
+films/mimi-disaster-light/source/renders/
+films/mimi-disaster-light/source/art/ref/
+!films/mimi-disaster-light/source/assets/voice/
+films/mimi-disaster-fork/source/hf/assets/
+films/mimi-disaster-fork/source/hf/.hyperframes/
+films/mimi-disaster-fork/source/hf/.thumbnails/
+films/mimi-disaster-fork/source/renders/
+films/mimi-disaster-fork/source/art/ref/
+!films/mimi-disaster-fork/source/assets/voice/
+films/mimi-disaster-lunch/source/hf/assets/
+films/mimi-disaster-lunch/source/hf/.hyperframes/
+films/mimi-disaster-lunch/source/hf/.thumbnails/
+films/mimi-disaster-lunch/source/renders/
+!films/mimi-disaster-lunch/source/assets/voice/
+films/mimi-disaster-walk/source/hf/assets/
+films/mimi-disaster-walk/source/hf/.hyperframes/
+films/mimi-disaster-walk/source/hf/.thumbnails/
+films/mimi-disaster-walk/source/renders/
+films/mimi-disaster-walk/source/art/ref/
+!films/mimi-disaster-walk/source/assets/voice/
+films/mimi-disaster-six/source/hf/assets/
+films/mimi-disaster-six/source/hf/.hyperframes/
+films/mimi-disaster-six/source/hf/.thumbnails/
+films/mimi-disaster-six/source/renders/
+films/mimi-disaster-six/source/art/ref/
+!films/mimi-disaster-six/source/assets/voice/

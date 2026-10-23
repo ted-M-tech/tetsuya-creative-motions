@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-hut",
+   "text": "I love your hut!",
+   "style": "Speak English as a friendly Japanese learner giving a warm compliment, bright and sincere. Say every word exactly as written: 'hut' rhymes with 'but' and 'cut', a short relaxed 'uh' vowel like Japanese 'a' in 'hatto', so a listener clearly hears 'I love your hut!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-hat",
+   "text": "I love your hat!",
+   "style": "Speak fluent, warm General American English like a native speaker giving a sincere compliment. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural intonation. 'hat' has a clear, bright American short-a vowel as in 'cat', 'bad', 'happy' (the mouth wide, between 'a' and 'e'), never the 'uh' of 'hut' or 'cut'."
+  }
+ ]
+}

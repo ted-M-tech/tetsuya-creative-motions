@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-sex",
+   "text": "A table for sex, please.",
+   "style": "Speak English as a cheerful, polite Japanese beginner at a restaurant entrance, a little loud and happy. Say every word exactly as written: 'sex' rhymes with 'next' and 'checks', an open short 'e' vowel like in 'bed' (/sɛks/), a hissy s at both ends, so a listener clearly hears 'A table for sex, please.' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-six",
+   "text": "A table for six, please.",
+   "accent": "us"
+  }
+ ]
+}
