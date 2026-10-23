@@ -18,7 +18,7 @@ import numpy as np
 
 SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SRC.parents[2] / 'kits/mimi-short/scripts'))
-from sfx import SR, Mix, ding, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
+from sfx import SR, Mix, ding, lowpass, pochi, pofu, pop_seq, tap, whoosh  # noqa: E402
 
 # Cue sheet (seconds); hf/index.html uses the same times.
 ASK = 0.1          # Mimi's bubble "How's it going?"
@@ -53,12 +53,27 @@ m.sfx(pop_seq(3, 0.05, base=79), FIVE + 0.15)
 m.bed(0.0, END)
 m.end_chord(END)
 m.sfx(pochi(), END + 0.6)
-out = m.write(SRC / 'hf/assets/mix.wav')
+# Static mix (same bus balance and ducking as Mix.write, but no dynamic loudnorm: its single pass lifted the voiceless
+# app beat to about -14.5 LUFS). One gain for the whole film: -14 LUFS integrated, but never more than puts the
+# un-ducked bed (the voiceless app beat) at BED_RMS; then a limiter keeps the true peak under -1.5 dBTP.
+BED_RMS = -26.0  # dBFS RMS of the BGM-only stretch, as in the other films' bed
+env = lowpass(np.abs(m.v), 0.002)
+duck = lowpass(1 - 0.75 * np.clip(env / (env.max() * 0.12 + 1e-9), 0, 1), 0.0008)
+mix = m.v + 0.35 * lowpass(m.s, 0.35) + 0.55 * m.m * duck
+mix /= np.abs(mix).max() / 0.9
+out = SRC / 'hf/assets/mix.wav'
+out.parent.mkdir(parents=True, exist_ok=True)
 
 
-# loudnorm's single pass stops short of -14 on a short, voice-sparse film (true peak bound): measure, add the missing gain
-# in front of a limiter (0.8, true peak under -1.5 dBTP), and measure again. The balance between voice, SFX and bed is unchanged.
-# (Same step as films/mimi-katakana-mcdonalds/source/scripts/mix.py.)
+def save(x, path):
+    import wave
+    with wave.open(str(path), 'wb') as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes((np.stack([x, x], 1).clip(-1, 1) * 32767).astype(np.int16).tobytes())
+
+
 def lufs(f):
     err = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(f), '-af', 'loudnorm=print_format=json', '-f', 'null', '-'],
                          capture_output=True, text=True).stderr
@@ -66,12 +81,21 @@ def lufs(f):
     return float(d['input_i']), float(d['input_tp'])
 
 
-for _ in range(3):
-    i, tp = lufs(out)
-    if abs(i + 14) < 0.3 and tp <= -1.5:
-        break
-    tmp = out.with_suffix('.tmp.wav')
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(out), '-af',
-                    f'volume={-14 - i + 0.1:.2f}dB,alimiter=limit=0.8:level=false:attack=1:release=60', '-ar', str(SR), str(tmp)], check=True)
-    shutil.move(tmp, out)
-print(out, 'I=%.1f LUFS TP=%.1f dBTP' % lufs(out))
+def rms_db(x, a, b):
+    seg = x[int(a * SR):int(b * SR)]
+    return 20 * np.log10(np.sqrt(np.mean(seg ** 2)) + 1e-12)
+
+
+# Commander review (2026-10-23): keep the bed quiet; reach -14 only if the bed stays at its cap. The voice lines have a high
+# crest factor, so with the bed at BED_RMS the film lands near -17 LUFS integrated: the quieter result is kept on purpose.
+raw = out.with_suffix('.raw.wav')
+save(mix, raw)
+i0, _ = lufs(raw)
+bed = rms_db(mix, 6.0, 10.0)                       # the voiceless app beat (whooshes and taps included)
+gain = min(-14.0 - i0, BED_RMS - bed)
+subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(raw), '-af',
+                f'volume={gain:.2f}dB,alimiter=limit=0.8:level=false:attack=1:release=60', '-ar', str(SR), str(out)], check=True)
+raw.unlink()
+i, tp = lufs(out)
+print(out, 'I=%.1f LUFS TP=%.1f dBTP; gain %.1f dB (to -14: %.1f, bed cap: %.1f); app-beat RMS %.1f dBFS, voice RMS %.1f / %.1f dBFS' % (
+    i, tp, gain, -14.0 - i0, BED_RMS - bed, bed + gain, rms_db(mix, 0.75, 3.6) + gain, rms_db(mix, 12.95, 14.35) + gain))
