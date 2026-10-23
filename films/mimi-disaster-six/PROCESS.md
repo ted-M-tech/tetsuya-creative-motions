@@ -30,10 +30,14 @@ The TTS would not open the vowel to /ɛ/ in four generations (the regeneration l
 5. App: `app-capture/Walkthrough.swift` + `six-lesson.patch` (capture-only fixture tweak: the first daily sentence becomes “A table for six, please.” and the fixture finding points at “six”, /ɪ/). Lesson screen, お手本 button, record button, score card and flagged-word row are the real app (identifiers `lesson.model`, `lesson.record`, `feedback.scores` on native-voice-clone origin/main); sentence, feedback wording and score are fixture data. Cut with `scripts/app_track.sh`. The first take showed 「sex」 uncensored in the fixture feedback text; the patch was changed to name only 「セ」 and the take redone (raw take in Drive `Disasters7_Six_assets/six-lesson-take.mov`).
 6. Sound: `scripts/mix.py` (kit Mix), as episode 6: boing on the punchline, tape rewind, record scratch and the bed stopping dead at the freeze, the slip and the model word on the card, the native line again at the fix.
 7. Commander note (2026-10-22): episode 6's yellow multiply freeze layer was a pee joke for that episode only and tints the Friend; the freeze uses episode 5's desaturate layer (#9aa6b2, saturation blend) so the Friend stays white.
-8. Checked with `hyperframes check`, ffprobe (1080×1920, 60 fps, no rotation, 20.05 s) and a contact sheet ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)).
+8. Checked with `hyperframes check`, ffprobe (1080×1920, 60 fps, no rotation, 20.05 s) and a contact sheet ([process/00-final-frames.jpg](process/00-final-frames.jpg)).
 
 ## Uncertain / for review
 
 - The learner word is an edited take (see 3). If it sounds processed on earphones, the alternative is a fresh generation with a different text trick, which needs the owner's OK (paid, limit reached).
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
 - The learner voice is the owner's (a young adult man) on the Friend.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters7_Six_2026-10-22.mp4`, `Disasters7_Six_EN-subs_2026-10-22.mp4`).

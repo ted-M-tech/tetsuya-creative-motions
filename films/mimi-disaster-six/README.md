@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #048 (series “Pronunciation Disasters”, episode 7). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Status: draft for the owner's review.
+Lanclo SNS short #048 (series “Pronunciation Disasters”, episode 7). 20.0 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a restaurant entrance: Mimi’s Friend tells Pippa the host “A table for six, please.” with the i opened toward /e/, and it lands as “sex”. Pippa freezes, blushing, covering her eyes. Mimi jumps in, blushing too.
 
@@ -21,7 +21,7 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/))
 
 - Voices: the learner and model takes are the owner's (Tetsuya's) registered Lanclo voice via `kits/mimi-short/scripts/ownvoice.py`; the learner take's vowel was edited to a real /ɛ/ (see [PROCESS.md](PROCESS.md)). The WAVs are biometric data and are not in Git (Drive `048. Pronunciation Disasters 7 - Six or Sx/Disasters7_Six_assets/own-voice/`). Pippa is Kokoro English (`source/assets/voice/`).
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
-- Draft files in Lanclo's Google Drive `002.SNS/048. Pronunciation Disasters 7 - Six or Sx/` (`Disasters7_Six_draft_2026-10-22.mp4`, `Disasters7_Six_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters7_Six_assets/`).
-![Draft frames](process/00-draft-frames.jpg)
+- Final files in Lanclo's Google Drive `002.SNS/048. Pronunciation Disasters 7 - Six or Sx/` (`Disasters7_Six_2026-10-22.mp4`, `Disasters7_Six_EN-subs_2026-10-22.mp4`, raw material in `Disasters7_Six_assets/`).
+![Final frames](process/00-final-frames.jpg)
 
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
