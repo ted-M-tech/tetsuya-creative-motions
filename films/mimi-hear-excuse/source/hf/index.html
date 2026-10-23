@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      /* Can You Hear It? 2 - Excuse Me (listening quiz, three options). Beats: hook -> play -> reveal -> rule -> ask -> end (cue sheet: ../cues.json).
+         Series template: swap the hook text, the option cards (#opt-a / #opt-b / #opt-c), the answer, the rule card
+         rows and the guess / reaction bubbles; keep the ids and the layout (see ../../README.md "Series template"). */
+      #root { background: #fdf4e6; }
+      #studio { position: absolute; inset: 0;
+                background: radial-gradient(ellipse 900px 700px at 50% 38%, #fffaf2 0%, #fdf1df 60%, #f7e4c8 100%); }
+      #studio i { position: absolute; border-radius: 50%; opacity: 0.55; }
+      /* hook */
+      #hook { position: absolute; left: 30px; right: 30px; top: 200px; text-align: center; font-size: 96px; font-weight: 700; line-height: 1.15; color: #273b4b; }
+      #hook .en { font-family: "Helvetica Neue", Arial, sans-serif; color: #2886f3; }
+            #hook .s { display: block; font-size: 100px; color: #e5484d; }
+      #q { position: absolute; left: 0; right: 0; top: 180px; display: flex; justify-content: center; }
+      #q span { background: #273b4b; color: #ffffff; font-size: 88px; font-weight: 700; padding: 18px 54px 24px; border-radius: 60px; }
+      #q b { color: #ff9ea1; }
+      /* option cards: three, 320 px wide, each with its intonation contour arrow */
+      .opt { position: absolute; top: 445px; width: 320px; height: 370px; border-radius: 52px; background: #ffffff; border: 8px solid #273b4b;
+             box-shadow: 0 18px 0 #273b4b; display: flex; flex-direction: column; align-items: center; padding-top: 10px; box-sizing: border-box; }
+      #opt-a { left: 40px; }
+      #opt-b { left: 380px; }
+      #opt-c { left: 720px; }
+      .opt .L { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 165px; font-weight: 800; line-height: 1; }
+      #opt-a .L { color: #d57333; }
+      #opt-b .L { color: #8a5cf6; }
+      #opt-c .L { color: #0e8a6b; }
+      .opt svg.ar { width: 220px; height: 110px; margin-top: 2px; overflow: visible; }
+      .opt .ans { position: absolute; left: 6px; right: 6px; bottom: 16px; text-align: center; font-size: 54px; font-weight: 700; color: #273b4b; opacity: 0; white-space: nowrap; }
+      .opt .mark { position: absolute; right: -36px; top: -44px; width: 124px; height: 124px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                   font-size: 88px; font-weight: 700; color: #ffffff; opacity: 0; }
+      #opt-a .mark, #opt-b .mark { background: #e5484d; }
+      #opt-c .mark { background: #2a8dff; }
+      /* countdown: under the cards, between the bunnies */
+      #cd { position: absolute; left: 420px; top: 880px; width: 190px; height: 190px; border-radius: 50%; background: #273b4b; border: 8px solid #ffffff;
+            box-shadow: 0 10px 30px rgba(39, 59, 75, 0.3); }
+      #cd b { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Helvetica Neue", Arial, sans-serif;
+              font-size: 124px; font-weight: 800; color: #ffffff; opacity: 0; }
+      /* the two bunnies */
+      .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .friend { left: 30px; top: 990px; width: 350px; }
+      .mimi { left: 600px; top: 1000px; width: 340px; }
+      .say { position: absolute; background: #ffffff; border: 6px solid #273b4b; border-radius: 44px; padding: 14px 30px 18px;
+             font-size: 54px; font-weight: 700; line-height: 1.25; color: #273b4b; white-space: nowrap; }
+      .say em { font-style: normal; color: #8a5cf6; font-family: "Helvetica Neue", Arial, sans-serif; }
+      #f-say { left: 40px; top: 860px; border-bottom-left-radius: 10px; font-size: 60px; }
+      #f-oops { left: 0; right: 0; margin: 0 auto; width: max-content; top: 880px; }
+      #m-say { left: 330px; top: 1010px; border-bottom-right-radius: 10px; font-size: 64px; }
+      #answer { position: absolute; left: 0; right: 0; top: 180px; display: flex; justify-content: center; }
+      #answer span { background: #ffffff; border: 6px solid #273b4b; color: #273b4b; font-size: 92px; font-weight: 700; padding: 14px 54px 22px; border-radius: 60px; }
+      #answer b { display: inline-block; font-family: "Helvetica Neue", Arial, sans-serif; color: #0e8a6b; font-size: 110px; }
+      /* the rule card: Mimi's summary, one row per intonation */
+      #rule { position: absolute; inset: 0; background: #fbfcfd; }
+      #r-title { position: absolute; left: 50px; right: 50px; top: 200px; text-align: center; font-size: 76px; white-space: nowrap; font-weight: 700; color: #273b4b; line-height: 1.25; }
+      #r-title em { font-style: normal; color: #2a8dff; }
+      .row { position: absolute; left: 40px; right: 40px; height: 245px; border-radius: 44px; background: #f1f5f9; border: 6px solid transparent;
+             padding: 22px 36px; box-sizing: border-box; }
+      #row-a { top: 330px; }
+      #row-b { top: 590px; }
+      #row-c { top: 850px; }
+      .row .en { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 84px; font-weight: 700; color: #273b4b; line-height: 1.1; white-space: nowrap; }
+      #row-c .en .st { display: inline-block; color: #e5484d; font-size: 108px; }
+      .row .rl { font-size: 64px; font-weight: 700; color: #273b4b; line-height: 1.2; margin-top: 18px; white-space: nowrap; }
+      #row-a .rl em { font-style: normal; color: #d57333; }
+      #row-b .rl em { font-style: normal; color: #8a5cf6; }
+      #row-c .rl em { font-style: normal; color: #e5484d; }
+      .row .rl small { font-size: 44px; color: #5b7f9f; }
+      .row svg.ar { position: absolute; right: 150px; top: 26px; width: 200px; height: 100px; overflow: visible; }
+      #r-mimi { position: absolute; left: 690px; top: 1110px; width: 200px; height: auto; transform-origin: 50% 100%; }
+      #r-hit { position: absolute; left: 30px; top: 1150px; background: #273b4b; color: #ffffff; font-size: 46px; font-weight: 700; padding: 18px 40px 22px;
+               border-radius: 50px; border-bottom-right-radius: 10px; white-space: nowrap; }
+      #r-hit b { color: #ff9ea1; font-family: "Helvetica Neue", Arial, sans-serif; }
+      /* ask for a comment */
+      #ask { position: absolute; left: 40px; right: 40px; top: 180px; background: #ffffff; border-radius: 56px; border: 8px solid #273b4b; box-shadow: 0 16px 0 #273b4b;
+             text-align: center; padding: 26px 20px 36px; }
+      #ask .ab { display: block; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 160px; font-weight: 800; line-height: 1.05; }
+      #ask .ab .a { color: #d57333; }
+      #ask .ab .b { color: #8a5cf6; }
+      #ask .ab .c { color: #0e8a6b; }
+      #ask .big { display: block; font-size: 116px; font-weight: 700; color: #273b4b; line-height: 1.2; }
+      #ask .small { display: block; font-size: 50px; font-weight: 700; color: #5b7f9f; margin-top: 10px; }
+      .sparkles { position: absolute; inset: 0; }
+      /* English subtitles: above the platform bottom zone (box bottom at y 1490) and left of the right rail (x 60-880). <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 60px; right: 200px; bottom: 430px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 820px; box-sizing: border-box; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; font-family: "Helvetica Neue", Arial, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.8" data-width="1080" data-height="1920">
+      <div id="studio"></div>
+
+      <!-- hook + play: the three cards with their contour arrows are on frame 1 -->
+      <div id="opt-a" class="opt"><div class="L">A</div><svg class="ar" data-c="#d57333" data-p="20,28 120,36 222,104" viewBox="0 0 250 125"></svg><div class="ans">すみません</div><div class="mark">×</div></div>
+      <div id="opt-b" class="opt"><div class="L">B</div><svg class="ar" data-c="#8a5cf6" data-p="20,100 120,92 222,24" viewBox="0 0 250 125"></svg><div class="ans">もう一度？</div><div class="mark">×</div></div>
+      <div id="opt-c" class="opt"><div class="L">C</div><svg class="ar" data-c="#0e8a6b" data-p="16,112 96,106 150,70 226,-6" data-w="20" viewBox="0 0 250 125"></svg><div class="ans">は？</div><div class="mark">○</div></div>
+      <div id="cd" class="clip" data-start="1.8" data-duration="4.9" data-track-index="3"><b id="cd3">3</b><b id="cd2">2</b><b id="cd1">1</b></div>
+
+      <img id="friend1" class="cast friend clip" src="assets/art/pose-friend-dreamy.webp" alt="" data-start="0" data-duration="6.0" data-track-index="4" />
+      <img id="friend2" class="cast friend clip" src="assets/art/pose-friend-tease.webp" alt="" data-start="6.0" data-duration="1.4" data-track-index="4" />
+      <img id="friend3" class="cast friend clip" src="assets/art/pose-friend-shock.webp" alt="" data-start="7.4" data-duration="2.0" data-track-index="4" />
+      <img id="friend4" class="cast friend clip" src="assets/art/pose-friend-yay.webp" alt="" data-start="14.8" data-duration="1.6" data-track-index="4" />
+      <img id="mimi0" class="cast mimi clip" src="assets/art/pose-angry-filled.webp" alt="" data-start="0" data-duration="1.8" data-track-index="5" />
+      <img id="mimi1" class="cast mimi clip" src="assets/art/pose-confident.webp" alt="" data-start="1.8" data-duration="5.4" data-track-index="5" />
+      <img id="mimi2" class="cast mimi clip" src="assets/art/pose-angry-filled.webp" alt="" data-start="7.2" data-duration="0.7" data-track-index="5" />
+      <img id="mimi3" class="cast mimi clip" src="assets/art/pose-flat.webp" alt="" data-start="7.9" data-duration="1.5" data-track-index="5" />
+      <img id="mimi4" class="cast mimi clip" src="assets/art/pose-jump.webp" alt="" data-start="14.8" data-duration="1.6" data-track-index="5" />
+
+      <div id="hook" class="clip" data-start="0" data-duration="1.8" data-track-index="6">どの<span class="en">Excuse me</span>で<span class="s">怒った？</span></div>
+      <div id="q" class="clip" data-start="1.8" data-duration="4.9" data-track-index="6"><span><b>怒った</b>のはどれ？</span></div>
+      <div id="answer" class="clip" data-start="6.7" data-duration="2.7" data-track-index="6"><span>正解は… <b id="ans-c">C</b></span></div>
+
+      <div id="f-say" class="say clip" data-start="6.0" data-duration="0.7" data-track-index="7"><em>B</em>でしょ！</div>
+      <div id="f-oops" class="say clip" data-start="7.45" data-duration="1.95" data-track-index="7">えっ、<em>B</em>じゃないの！？</div>
+      <div id="m-say" class="say clip" data-start="7.9" data-duration="1.5" data-track-index="8">ぷいっ！</div>
+
+      <!-- rule: Mimi's summary card, the three takes again -->
+      <div id="rule" class="clip" data-start="9.4" data-duration="5.4" data-track-index="10">
+        <div id="r-title"><em>上げ下げ</em>で意味が変わる！</div>
+        <div id="row-a" class="row">
+          <div class="en">Excuse me.</div>
+          <div class="rl">↘ <em>すみません</em> <small>（呼びかけ・おわび）</small></div>
+          <svg class="ar" data-c="#d57333" data-p="20,28 120,36 222,104" viewBox="0 0 250 125"></svg>
+        </div>
+        <div id="row-b" class="row">
+          <div class="en">Excuse me?</div>
+          <div class="rl">↗ <em>もう一度？</em> <small>（聞き返し）</small></div>
+          <svg class="ar" data-c="#8a5cf6" data-p="20,100 120,92 222,24" viewBox="0 0 250 125"></svg>
+        </div>
+        <div id="row-c" class="row">
+          <div class="en">Excuse <span class="st">ME</span>?!</div>
+          <div class="rl"><span style="font-family: 'Helvetica Neue', Arial, sans-serif">ME</span>↗↗ <em>は？</em> <small>（ムッとした）</small></div>
+          <svg class="ar" data-c="#e5484d" data-p="16,112 96,106 150,70 226,-6" data-w="20" viewBox="0 0 250 125"></svg>
+        </div>
+        <img id="r-mimi" src="assets/art/pose-point.webp" alt="" />
+        <div id="r-hit" class="clip" data-start="13.45" data-duration="1.35" data-track-index="11"><b>ME</b> を強く↗↗ ＝ ケンカ腰！</div>
+      </div>
+
+      <!-- ask: the comment prompt -->
+      <div id="ask" class="clip" data-start="14.8" data-duration="1.6" data-track-index="12">
+        <span class="ab"><span class="a">A</span>？<span class="b">B</span>？<span class="c">C</span>？</span>
+        <span class="big">コメントで！</span>
+        <span class="small">最初、どれだと思った？</span>
+      </div>
+      <div id="sp" class="sparkles clip" data-start="14.9" data-duration="1.5" data-track-index="13"></div>
+
+      <div id="end" class="end clip" data-start="16.4" data-duration="1.4" data-track-index="19"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="1.8" data-track-index="24"><span>Which “Excuse me” made Mimi angry?</span></div>
+      <div class="sub clip" data-start="1.8" data-duration="4.2" data-track-index="24"><span>Which one sounds offended? A, B or C?</span></div>
+      <div class="sub clip" data-start="6.0" data-duration="0.7" data-track-index="24"><span>Friend: It's B, for sure!</span></div>
+      <div class="sub clip" data-start="6.7" data-duration="0.75" data-track-index="24"><span>The answer is… C!</span></div>
+      <div class="sub clip" data-start="7.45" data-duration="1.95" data-track-index="24"><span>Friend: What, not B?! / Mimi: Hmph!</span></div>
+      <div class="sub clip" data-start="9.4" data-duration="4.05" data-track-index="24"><span>Rise and fall change the meaning!<br />↘ sorry · ↗ pardon? · ME↗↗ offended</span></div>
+      <div class="sub clip" data-start="13.45" data-duration="1.35" data-track-index="24"><span>Stress “ME” with a sharp rise → you sound offended!</span></div>
+      <div class="sub clip" data-start="14.8" data-duration="1.6" data-track-index="24"><span>A, B or C? Which did you pick first? Tell us in the comments!</span></div>
+      <div class="sub clip" style="top: 250px; bottom: auto" data-start="16.4" data-duration="1.4" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.8" data-track-index="20" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("sp"), [[120, 900, "#ffd84a"], [820, 900, "#ff8fb1"], [520, 820, "#ffd84a"], [560, 1160, "#ffd84a"], [430, 1220, "#ff8fb1"]]);
+      // studio confetti dots (fixed positions: deterministic)
+      const studio = document.getElementById("studio");
+      [[90, 320, 26, "#ffd84a"], [990, 340, 20, "#ff8fb1"], [530, 880, 18, "#7cc0ff"], [60, 880, 16, "#8a5cf6"], [1010, 880, 24, "#d57333"], [470, 1380, 18, "#ffd84a"], [620, 1300, 22, "#7cc0ff"]]
+        .forEach(([x, y, r, c]) => { const i = document.createElement("i"); Object.assign(i.style, { left: x + "px", top: y + "px", width: r + "px", height: r + "px", background: c }); studio.appendChild(i); });
+      // intonation contour arrows (cards and rule rows): a polyline with a head along its last segment
+      document.querySelectorAll("svg.ar").forEach((g) => {
+        const pts = g.dataset.p.split(" ").map((q) => q.split(",").map(Number)), w = Number(g.dataset.w || 16), c = g.dataset.c;
+        const ns = "http://www.w3.org/2000/svg", pl = document.createElementNS(ns, "polyline");
+        const [x1, y1] = pts[pts.length - 2], [x2, y2] = pts[pts.length - 1], a = Math.atan2(y2 - y1, x2 - x1), h = w * 2.2;
+        const end = [x2 - Math.cos(a) * h * 0.6, y2 - Math.sin(a) * h * 0.6];
+        pl.setAttribute("points", pts.slice(0, -1).concat([end]).map((p) => p.join(",")).join(" "));
+        Object.entries({ fill: "none", stroke: c, "stroke-width": w, "stroke-linecap": "round", "stroke-linejoin": "round" }).forEach(([k2, v]) => pl.setAttribute(k2, v));
+        const hd = document.createElementNS(ns, "polygon");
+        const p1 = [x2 - Math.cos(a - 0.5) * h, y2 - Math.sin(a - 0.5) * h], p2 = [x2 - Math.cos(a + 0.5) * h, y2 - Math.sin(a + 0.5) * h];
+        hd.setAttribute("points", [[x2, y2], p1, p2].map((p) => p.join(",")).join(" "));
+        hd.setAttribute("fill", c);
+        g.appendChild(pl); g.appendChild(hd);
+      });
+
+      // Cue sheet (seconds), same as ../cues.json and scripts/mix.py
+      const PLAY = 1.8, PA = 2.0, PB = 3.3, PC = 4.35, GUESS = 6.0, REVEAL = 6.7, RC = 7.2, TURN = 7.9, RULE = 9.4, RL1 = 9.85, RL2 = 11.0, RL3 = 11.95,
+        RULE_HIT = 13.45, ASK = 14.8, E = 16.4;
+      const LEN_A = 1.0, LEN_B = 0.75, LEN_C = 1.42;   // the trimmed takes (A falling, B rising, C sharp rise on ME)
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // hook (0-PLAY): the hook text and the three cards from frame 1; Mimi bristling (offended), the Friend listening
+      tl.fromTo("#hook", { scale: 1.06 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 0);
+      tl.fromTo(["#opt-a", "#opt-b", "#opt-c"], { rotation: (i) => [-4, 3, -3][i] }, { rotation: 0, duration: 0.35, ease: "back.out(2.5)" }, 0);
+      tl.fromTo("#mimi0", { x: 0 }, { x: 8, duration: 0.05, yoyo: true, repeat: 15, ease: "none" }, 0.1);
+      tl.fromTo("#mimi0", { scaleY: 1 }, { scaleY: 1.05, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.9);
+      tl.fromTo("#friend1", { rotation: 0 }, { rotation: -3, duration: 0.4, yoyo: true, repeat: 13, ease: "sine.inOut" }, 0);
+      tl.to("#hook", { y: -40, opacity: 0, duration: 0.15 }, PLAY - 0.15);
+
+      // play: countdown 3 with A, 2 with B, 1 with C; the playing card lights up and its arrow draws along
+      k.pop("#q span", PLAY);
+      tl.fromTo("#cd", { scale: 0.4 }, { scale: 1, duration: 0.2, ease: "back.out(3)" }, PLAY);
+      [["#cd3", PLAY, PB - 0.15], ["#cd2", PB - 0.15, PC - 0.15], ["#cd1", PC - 0.15, REVEAL]].forEach(([id, a, b]) => {
+        tl.fromTo(id, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.18, ease: "back.out(3)", immediateRender: false }, a);
+        tl.to(id, { opacity: 0, duration: 0.08 }, b - 0.08);
+      });
+      function play(card, at, len, color) {
+        tl.to(card, { scale: 1.06, borderColor: color, boxShadow: "0 18px 0 " + color, duration: 0.15 }, at - 0.1);
+        tl.fromTo(card + " svg.ar", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: len, ease: "none", immediateRender: false }, at);
+        tl.to(card, { scale: 1, borderColor: "#273b4b", boxShadow: "0 18px 0 #273b4b", duration: 0.15 }, at + len);
+      }
+      play("#opt-a", PA, LEN_A, "#d57333");
+      play("#opt-b", PB, LEN_B, "#8a5cf6");
+      play("#opt-c", PC, LEN_C, "#0e8a6b");
+      tl.fromTo("#mimi1", { rotation: 0 }, { rotation: 4, duration: 0.25, yoyo: true, repeat: 15, ease: "sine.inOut", immediateRender: false }, PA);
+
+      // the Friend's guess
+      tl.fromTo("#friend2", { y: 40, scaleY: 0.92 }, { y: 0, scaleY: 1, duration: 0.25, ease: "back.out(2)" }, GUESS);
+      tl.fromTo("#f-say", { scale: 0.5, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2.5)" }, GUESS);
+      tl.to("#opt-b", { y: -20, duration: 0.15, yoyo: true, repeat: 1 }, GUESS + 0.05);
+
+      // reveal: 正解は… C; the meanings show under the cards; Mimi bristles and turns away (hmph), the Friend was wrong
+      tl.to("#cd", { scale: 0, duration: 0.15 }, REVEAL - 0.15);
+      tl.to("#q", { opacity: 0, duration: 0.1 }, REVEAL - 0.1);
+      k.pop("#answer span", REVEAL);
+      tl.set("#ans-c", { opacity: 0 }, REVEAL);
+      tl.fromTo("#ans-c", { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(3)", immediateRender: false }, RC);
+      tl.to("#opt-c", { borderColor: "#2a8dff", boxShadow: "0 18px 0 #2a8dff", scale: 1.06, duration: 0.15 }, RC);
+      tl.fromTo("#opt-c .mark", { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(3)", immediateRender: false }, RC);
+      tl.fromTo(["#opt-a .mark", "#opt-b .mark"], { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.22, stagger: 0.08, ease: "back.out(3)", immediateRender: false }, RC + 0.1);
+      tl.to(".opt svg.ar", { y: -14, scale: 0.8, duration: 0.15 }, RC);
+      tl.fromTo(".opt .ans", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.08, immediateRender: false }, RC + 0.1);
+      tl.fromTo("#mimi2", { y: 30, scale: 0.9 }, { y: 0, scale: 1.08, duration: 0.2, ease: "back.out(3)" }, RC);
+      tl.fromTo("#mimi2", { x: 0 }, { x: 10, duration: 0.04, yoyo: true, repeat: 11, ease: "none", immediateRender: false }, RC + 0.2);
+      tl.fromTo("#friend3", { x: 0 }, { x: 12, duration: 0.05, yoyo: true, repeat: 7, immediateRender: false }, 7.4);
+      tl.fromTo("#f-oops", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2.5)" }, 7.45);
+      // hmph: a hop, a tilt away and a slide toward the edge
+      tl.fromTo("#mimi3", { y: 0, rotation: 0, x: 0 }, { y: -50, rotation: 10, duration: 0.15, ease: "power2.out" }, TURN);
+      tl.to("#mimi3", { y: 0, x: -10, rotation: 10, duration: 0.25, ease: "power2.in" }, TURN + 0.15);
+      tl.fromTo("#m-say", { scale: 0.5, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2.5)" }, TURN + 0.05);
+
+      // rule: Mimi's summary card; the three takes again, each row lights while it plays and its arrow draws
+      tl.fromTo("#rule", { opacity: 0 }, { opacity: 1, duration: 0.12 }, RULE);
+      tl.fromTo("#r-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, RULE + 0.05);
+      tl.fromTo(["#row-a", "#row-b", "#row-c"], { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, stagger: 0.08, ease: "power3.out" }, RULE + 0.1);
+      tl.fromTo("#r-mimi", { y: 400 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, RULE + 0.2);
+      [["#row-a", RL1, LEN_A, "#d57333", RL2], ["#row-b", RL2, LEN_B, "#8a5cf6", RL3], ["#row-c", RL3, LEN_C, "#e5484d", RULE_HIT]].forEach(([r, at, len, c, next]) => {
+        tl.to(r, { borderColor: c, scale: 1.02, duration: 0.15 }, at - 0.1);
+        tl.fromTo(r + " svg.ar", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: len, ease: "none", immediateRender: false }, at);
+        tl.to(r, { borderColor: "rgba(0,0,0,0)", scale: 1, duration: 0.15 }, next - 0.2);
+      });
+      tl.fromTo("#row-c .en .st", { scale: 1 }, { scale: 1.15, duration: 0.18, yoyo: true, repeat: 1, transformOrigin: "50% 80%", immediateRender: false }, RL3 + 0.95);
+      tl.fromTo("#r-mimi", { rotation: 0 }, { rotation: -4, duration: 0.3, yoyo: true, repeat: 11, ease: "sine.inOut", immediateRender: false }, RL1);
+      tl.fromTo("#r-hit", { scale: 0.5, opacity: 0, transformOrigin: "100% 100%" }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.5)" }, RULE_HIT);
+      tl.fromTo("#r-mimi", { y: 0 }, { y: -30, duration: 0.15, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, RULE_HIT);
+
+      // ask: A? B? C? comment
+      tl.set(["#opt-a", "#opt-b", "#opt-c", "#cd"], { opacity: 0 }, RULE);
+      tl.fromTo("#ask", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.2)" }, ASK);
+      tl.fromTo("#ask .ab", { scale: 1 }, { scale: 1.08, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, ASK + 0.3);
+      tl.fromTo(["#friend4", "#mimi4"], { y: 0 }, { y: -36, duration: 0.18, yoyo: true, repeat: 5, stagger: 0.09, ease: "power2.out", immediateRender: false }, ASK + 0.1);
+      k.twinkle("#sp", ASK + 0.2);
+
+      k.end(E);
+      k.tapCta(E + 0.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

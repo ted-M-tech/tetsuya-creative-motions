@@ -278,3 +278,12 @@ films/mimi-hear-can/**/*.mp3
 films/mimi-hear-can/**/*.m4a
 films/mimi-hear-can/**/*.mov
 films/mimi-hear-can/**/*.mp4
+films/mimi-hear-excuse/source/hf/assets/
+films/mimi-hear-excuse/source/hf/.hyperframes/
+films/mimi-hear-excuse/source/hf/.thumbnails/
+films/mimi-hear-excuse/source/renders/
+films/mimi-hear-excuse/source/assets/own-voice/
+films/mimi-hear-excuse/**/*.wav
+films/mimi-hear-excuse/**/*.mp3
+films/mimi-hear-excuse/**/*.mp4
+films/mimi-hear-excuse/**/*.mov
