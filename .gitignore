@@ -292,3 +292,13 @@ films/mimi-hear-excuse/**/*.mov
 films/mimi-say-yoroshiku/source/hf/assets/
 films/mimi-say-yoroshiku/source/hf/.hyperframes/
 films/mimi-say-yoroshiku/source/hf/.thumbnails/
+# 064 How Do You Say It? 2 (mimi-say-otsukare)
+films/mimi-say-otsukare/source/hf/assets/
+films/mimi-say-otsukare/source/hf/.hyperframes/
+films/mimi-say-otsukare/source/hf/.thumbnails/
+films/mimi-say-otsukare/source/renders/
+films/mimi-say-otsukare/source/assets/
+films/mimi-say-otsukare/**/*.wav
+films/mimi-say-otsukare/**/*.mp3
+films/mimi-say-otsukare/**/*.mov
+films/mimi-say-otsukare/**/*.mp4
