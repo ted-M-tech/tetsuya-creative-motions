@@ -1,4 +1,4 @@
-# 治ったはずのRが…（The R Came Back）— 2D Mimiショート（ドラフト）
+# 治ったはずのRが…（The R Came Back）— 2D Mimiショート
 
 [English](README.md) · **日本語**
 
@@ -6,7 +6,7 @@
 
 0:17.6 / 1080×1920・60fps / 日本語の字幕・吹き出し、友だちの英語はオーナー本人の登録済みの声 / 公式2Dポーズ＋GSAP、実アプリ（シミュレーター、QAフィクスチャに撮影専用の再確認行）＋HyperFrames
 
-2本：日本語のみ（`mimi-recheck-r.mp4`）と英語字幕つき（`mimi-recheck-r-en.mp4`）。ドラフトはLanclo Google Drive `002.SNS/066. The R Came Back/`（`Recheck_R_draft_2026-10-23.mp4`、`Recheck_R_draft_EN-subs_2026-10-23.mp4`、自分の声のクリップと生の収録は `Recheck_R_assets/`）。NotionコンテンツカレンダーID 066。
+2本：日本語のみ（`mimi-recheck-r.mp4`）と英語字幕つき（`mimi-recheck-r-en.mp4`）。完成版（2026-10-23、オーナー承認済み）はLanclo Google Drive `002.SNS/066. The R Came Back/`（`Recheck_R_2026-10-23.mp4`、`Recheck_R_EN-subs_2026-10-23.mp4`、自分の声のクリップと生の収録は `Recheck_R_assets/`）。NotionコンテンツカレンダーID 066。
 
 ## ファイル
 

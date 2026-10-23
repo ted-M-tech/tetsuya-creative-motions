@@ -40,3 +40,8 @@ Drive の v1 は `old/` に `_v1` をつけて移した。
 - 右のアクション列（x > 900、y 820–1520）から吹き出し「出た〜！」とアプリ場面の小さなMimiを外した（Mimiはラベルの左へ）。Mimiの顔も x 900 より左に寄せた。
 - 上の字幕・フックの1行目は y 200 以降から。
 - ゾーンを重ねたコンタクトシートで確認。Drive の v2 は `old/` に `_v2` で移した。音量（−14 LUFS）と回数のマスクはそのまま。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the L-shaped ghost letter prop stays, as delivered; the Drive cuts were renamed without `_draft_`: `Recheck_R_2026-10-23.mp4`, `Recheck_R_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).

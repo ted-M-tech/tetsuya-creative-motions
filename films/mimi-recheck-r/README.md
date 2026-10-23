@@ -1,4 +1,4 @@
-# The R Came Back — a 2D Mimi short (draft)
+# The R Came Back — a 2D Mimi short
 
 **English** · [日本語](README.ja.md)
 
@@ -6,7 +6,7 @@ Hook from the first frame: 「治ったはずのRが…」 (The R I thought I'd 
 
 0:17.6 / 1080×1920, 60 fps / Japanese captions and bubbles, the Friend's English in the owner's own registered voice / official 2D poses + GSAP, real app (simulator, QA fixture with a capture-only re-check row) + HyperFrames
 
-Two cuts: Japanese only (`mimi-recheck-r.mp4`) and with English subtitles (`mimi-recheck-r-en.mp4`). Draft files in Lanclo's Google Drive `002.SNS/066. The R Came Back/` (`Recheck_R_draft_2026-10-23.mp4`, `Recheck_R_draft_EN-subs_2026-10-23.mp4`; own-voice clips and the raw take in `Recheck_R_assets/`). Notion Content Calendar ID 066.
+Two cuts: Japanese only (`mimi-recheck-r.mp4`) and with English subtitles (`mimi-recheck-r-en.mp4`). Final, owner approved on 2026-10-23; final files in Lanclo's Google Drive `002.SNS/066. The R Came Back/` (`Recheck_R_2026-10-23.mp4`, `Recheck_R_EN-subs_2026-10-23.mp4`; own-voice clips and the raw take in `Recheck_R_assets/`). Notion Content Calendar ID 066.
 
 ## Files
 
