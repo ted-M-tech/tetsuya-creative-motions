@@ -21,8 +21,13 @@
    - Learner: speech 0.27–0.96 s; six band-energy (300–2500 Hz) peaks at 0.32, 0.50, 0.58, 0.71, 0.82, 0.88 s, all within 4.2 dB of each other (even, no stressed syllable); voiced almost throughout (0.33–0.42, 0.49–0.54, 0.56–0.86, 0.89–0.96) and it ends on a voiced vowel with formants (the final “do”), i.e. vowels after the consonants: 6 beats.
    - Model: speech 0.28–1.13 s; a stop closure (silence 0.48–0.54) between “mc” and “DON”; “DON” is the longest (≈0.29 s) and loudest nucleus (peak at 0.59 s, “mc” −3.4 dB, “alds” −9.3 dB); the word ends in unvoiced frication (0.97–1.13, “dz”) with no vowel after it: 3 syllables, stress on DON.
    The measured beats drive the dot meters (`LEARNER_BEATS`, `MODEL_BEATS` in `cues.json`). Needs a human listen.
-5. Sound (`scripts/mix.py`, kit Mix): a soft sine tick per beat (no bell), boing on “Sorry…?”, the bed drops to 25 % from “Sorry…?” until the card and comes back; the model take plays twice on the card and once more when the Friend says it right (the Friend is voiced by the owner). Voice 10–16 dB over the bed; peaks −1.5 dBFS. Integrated loudness of the render is −17.2 LUFS (kit loudnorm with TP −1.5 on a short, voice-sparse film; 053 measured −15.0). Left as is: quieter is the safe side on earphones.
-6. Checked with `hyperframes check` (layout overflows on the card fixed) and a contact sheet ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)): captions top, faces clear, the explain-card Mimi moved up so the English subtitle does not cover her.
+5. Sound (`scripts/mix.py`, kit Mix): a soft sine tick per beat (no bell), boing on “Sorry…?”, the bed drops to 25 % from “Sorry…?” until the card and comes back; the model take plays twice on the card and once more when the Friend says it right (the Friend is voiced by the owner). Voice 10–16 dB over the bed; peaks −1.5 dBFS. The kit's single-pass loudnorm (TP −1.5) left this short, voice-sparse film at −17.2 LUFS in v1; v2 measures the written mix and adds the missing gain in front of a −1.5 dBTP limiter (end of `scripts/mix.py`), the balance between voice, SFX and bed unchanged: mix −14.3 LUFS / −1.4 dBTP, rendered cuts −13.8 LUFS, peak −1.2 dBFS.
+6. Checked with `hyperframes check` (layout overflows on the card fixed) and a contact sheet ([process/00-draft-frames.jpg](process/00-draft-frames.jpg)): captions top, faces clear, the explain-card Mimi sits beside the tip, right of the 英語○ card, above the bottom 400 px (v2).
+
+## Commander review (2026-10-23, v2)
+
+- Loudness to −14 LUFS via the mix (series consistency), voice on top, true peak ≤ −1 dBTP: done as above.
+- Explain card: Mimi moved out of the bottom ~400 px (now 1170–1460 px, beside the tip; the tip and お手本 tag are left-aligned). v1 drafts moved to Drive `old/` (`*_v1.mp4`).
 
 ## Uncertain / for review
 
