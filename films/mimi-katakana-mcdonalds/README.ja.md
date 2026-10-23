@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNSショート #058。新シリーズ「カタカナの罠」第1話（毎回、海外で通じないカタカナ語を1つ。最後に「次は？」とコメントを募る）。**ドラフト**（2026-10-23）。15.5秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
+Lanclo SNSショート #058。新シリーズ「カタカナの罠」第1話（毎回、海外で通じないカタカナ語を1つ。最後に「次は？」とコメントを募る）。完成版（2026-10-23、オーナー承認済み）。15.5秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
 
 ファストフードのカウンター。友だちが店員（役の衣装のミミ：ボーダーシャツとサンバイザー）に「マクドナルド」とカタカナ6拍で言い、6つの点のメーターが埋まる。店員ミミは無表情で「Sorry…?」。役を降りたミミがカードで説明：等しい6つの点と、真ん中だけ大きい3つの点。mc-DON-alds（DONを強く）、お手本はオーナー自身の声で2回。カウンターに戻り、友だちが正しく「McDonald's?」→「Oh! Next door!」。「次に通じないカタカナは？」のあとエンドカード。
 
@@ -17,5 +17,5 @@ Lanclo SNSショート #058。新シリーズ「カタカナの罠」第1話（�
 
 - キャストはミミ（店員役も）と友だちのみ。アプリ画面なし（テンポ優先で省略）。
 - 声：オーナーの登録音声（`ownvoice.py`）。WAVはGitに入れず、Drive `058. Katakana Traps 1 - McDonalds/KT1_McDonalds_assets/own-voice/`。
-- ドラフト：Drive `002.SNS/058. Katakana Traps 1 - McDonalds/`（`KT1_McDonalds_draft_2026-10-23.mp4`、`KT1_McDonalds_draft_EN-subs_2026-10-23.mp4`）。
+- 完成版：Drive `002.SNS/058. Katakana Traps 1 - McDonalds/`（`KT1_McDonalds_2026-10-23.mp4`、`KT1_McDonalds_EN-subs_2026-10-23.mp4`）。
 - シリーズの型（第2話以降）：[README.md の Series template](README.md#series-template-episodes-2)。再現手順：[source/README.md](source/README.md)。

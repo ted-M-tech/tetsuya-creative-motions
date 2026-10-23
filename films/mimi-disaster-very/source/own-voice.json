@@ -1,0 +1,24 @@
+{
+ "lines": [
+  {
+   "id": "learner-berry",
+   "text": "Thank you berry much!",
+   "style": "Speak English as a friendly Japanese learner thanking a shopkeeper, bright and sincere. Say every word exactly as written: 'berry' starts with a clear B, both lips closed and then popping open, like the fruit 'berry' or Japanese 'beri', so a listener clearly hears 'Thank you berry much!' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "native-very",
+   "text": "Thank you very much!",
+   "accent": "us"
+  },
+  {
+   "id": "word-berry",
+   "text": "Berry.",
+   "style": "Speak English as a friendly Japanese learner saying one word on its own, clearly. Say it exactly as written: 'Berry' starts with a clear B, both lips closed and then popping open, like the fruit 'berry' or Japanese 'beri'. Slightly flat Japanese-style timing. Natural, not a caricature."
+  },
+  {
+   "id": "word-very",
+   "text": "Very.",
+   "accent": "us"
+  }
+ ]
+}
