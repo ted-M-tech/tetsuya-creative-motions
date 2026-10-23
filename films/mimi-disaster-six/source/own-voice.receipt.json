@@ -1,0 +1,20 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-sex": {
+      "text": "A table for sex, please.",
+      "style": "Speak English as a cheerful, polite Japanese beginner at a restaurant entrance, a little loud and happy. Say every word exactly as written: 'sex' rhymes with 'next' and 'checks', an open short 'e' vowel like in 'bed' (/sɛks/), a hissy s at both ends, so a listener clearly hears 'A table for sex, please.' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f18e471c1f83c898ac6cb57efcda974ac9a7e197a3836d1a42d5b5d6f64c2e4e",
+      "at": "2026-10-22T22:46:00+00:00",
+      "note": "Take 1 of 4, vowel edited. All four generations (text 'sex' x3, then 'secks') came out with a lax /ɪ/-like vowel (F1 380-455 Hz, F2 1900-2400 Hz; native 'six' F1 ~470, F2 ~1900), i.e. still 'six'. Regeneration budget used up, so the vowel of take 1 (1.795-1.872 s) was moved to /ɛ/ with a Praat source-filter edit (F1 x1.35, F2 x0.92; LPC inverse filter + FormantGrid filter, 15 ms crossfades): now F1 ~600 Hz, F2 ~1750-2100 Hz. wavSha256 is the edited file; the four raw takes are in Drive own-voice/takes/."
+    },
+    "native-six": {
+      "text": "A table for six, please.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "c45be1efb31677a350ecc0b3b93c337bbd7247caf7aea20af6019676c7949396",
+      "at": "2026-10-22T22:49:21+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
