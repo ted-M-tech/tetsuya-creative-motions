@@ -31,6 +31,12 @@
 - Rule title: 76 px (the struck t 88 px), 50 px side margins, one line; fully inside the frame.
 - v1 drafts moved to Drive `old/` with a `_v1` suffix.
 
+## Draft v3 (2026-10-23, platform safe zones)
+
+- Owner: 「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」 Commander: the right-side Mimi and the small Mimi on the rule card sat in the right action rail (x > 900, y 820–1520); EN subtitles must end above y 1500 within x 60–880; top captions start at y ≥ 200.
+- Moved: cards 410 px wide at x 50–880 (top 440), countdown between them; Friend x 20–340 and Mimi x 570–870 (top ~1050); bubbles kept left of x 880 (「えっ！？」 on two lines); rule rows x 40–880, rule Mimi x 620–870; hook, question, answer, rule title and ask card start at y ≥ 200; subtitles `left 60 / right 200 / bottom 425`, shortened so none is over three lines; sparkles and confetti out of the rail.
+- Checked with a zone-overlay sheet of the EN cut every ~1.5 s ([process/01-safe-zones-v3.jpg](process/01-safe-zones-v3.jpg)). Audio unchanged (-14.2 LUFS, -1.7 dBTP). v2 drafts moved to Drive `old/` with a `_v2` suffix.
+
 ## Open questions
 
 - Owner's ear on the two takes (is “can” heard as weak enough with its higher pitch?).
