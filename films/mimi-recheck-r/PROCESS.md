@@ -1,0 +1,47 @@
+# 制作過程：治ったはずのRが…（066 The R Came Back）
+
+## オーナーの言葉（原文）
+
+2026-10-23 依頼：「動画をさらに生成していく。…まずはここに企画。リストを出して。バズるSNSかつ、必要なら機能紹介とか効果的な学習とか。フックでばずらせる構成ね。チームで議論して構成案・リストを見せて」
+
+2026-10-23 承認：「いいね。これらを作ろう。キャラとか乱発するな。基本今までのキャラメイン。メインはうさぎ二人ね。あとテンポよく。進めて。」
+
+（バッチ制作。指揮セッションの企画：フック「治ったはずのRが…」、ホラーパロディだが軽くかわいく、回想→しばらくして→言い間違い→実アプリの再確認の行→Lおばけがバイバイ。）
+
+## 機能の確認（Lanclo origin/main）
+
+- デイリーレッスンの概要（`native-ios/Lanclo/Views/LessonHomeDetails.swift`）：見出し「デイリーレッスン」、「Mimiが気づいた: …。」、各文の理由チップ `LessonReasonChip`（`Views/LessonLevel.swift`）。再確認は `slot.recheck == true` で `"\(label) · check again"`、日本語 `"%@ · 再確認"`（Localizable.xcstrings）。音のラベルは例の単語つき：`/ɹ/ (right)`（docs/features/personalized-lessons.md）。
+- 再確認の作られ方：`packages/core/src/weaknessRanking.ts` の `lessonSlots()` が、以前メインだったキーで再確認の時期が来たものを Open 枠に `fill('open', due, true)` で入れる（key・label・category・words・recheck）。時期（3日・7日）は画面では言わない。
+- 「解決した」まとめ（"/θ/ hasn't come up…"）はドキュメントで Planned（未実装）なので出さない。
+- 注意：依頼文の「今日の練習のポイント」はレッスン概要の見出しではなく、Mimiのまとめ（`MimiReportView.swift`、初回レッスン）の見出し。概要の実際の表示（デイリーレッスン／Mimiが気づいた）をそのまま撮り、字幕にはこの語を使っていない。
+- フィクスチャに再確認の行はない（`Core/VisualQAData.swift` の `qaSlot`：/l/ ×2、stress、rhythm、Open）。撮影専用パッチ `source/app-capture/recheck-row.patch` で Open 枠だけを `lessonSlots()` と同じ形の /ɹ/ 再確認（words: right, room、targetWord: room）にした。アプリには入れない。
+- 撮影：`--uitesting --visual-fixtures --qa-route /practice/daily --qa-lesson-overview`、日本語（LessonLevelUITests / FeedbackFiveUITests と同じ起動引数）。
+
+## 判断
+
+- キャストはMimiと友だちだけ。Lおばけは文字の小道具（SVG）で、キャラクターとしては扱わない。新しいポーズなし（Pronunciation Disasters 11 の living・friend-ask・mimi-flashlight とライブラリ）。
+- 声：友だちの英語はオーナーの声2本だけ（us “That's right!”、learner スタイル “That's light!”）。最後の正しい “That's right!” は us のテイクを再利用。
+- 発音の確認（音響）：Praat（parselmouth）でフォルマントを確認。us-right の語頭（0.60–0.68 s）は F3 が約1600–1780 Hz まで下がり、はっきりした /ɹ/。learner-light の語頭（0.71–0.80 s）は F1 約250–300 Hz、F3 約2500–3700 Hz で F3 の落ち込みなし＝ /l/。Whisperは使っていない。
+- 怖くしない：暗さは乗算 0.62、音は低くやわらかいドゥンと短調パッドだけ。おばけには目とほっぺ、最後は笑顔で手を振る。
+- 音量：声が一番上、フックのドゥンは声より約5 dB下に下げた。
+
+## 指揮セッションのレビュー（2026-10-23、v2）
+
+1. 音量：Mix.write の loudnorm は短く声の少ない作品で −14 に届かない（v1 は約 −17 LUFS）。mimi-katakana-mcdonalds と同じく、測ってから足りないゲインをかけ、リミッター（−2 dBFS、true peak を −1.5 dBTP 以下に保つ）を通して測り直す。v2 は −14.2 LUFS、TP −1.75 dBTP。声・SFX・BGMのバランスは同じ。
+2. アプリの画面からフィクスチャの回数（1–3行目の「今週4回」「今週2回」、「最大6語」）を背景色の四角でマスク。/l/ (light) などの行ラベルは残す。
+3. 大きなラベル「/ɹ/ (right) · 再確認」と小さなMimiを下400 pxの外へ（ズームを上げて、ラベルを5行目のすぐ下、Mimiをその横に）。
+Drive の v1 は `old/` に `_v1` をつけて移した。
+
+## プラットフォームのセーフエリア（2026-10-23、v3）
+
+オーナー：「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」
+
+- 英語字幕は下420 pxより上（箱の下端 y 1500）、x 60–880 に収め、1行に短くした。エンドカードの字幕だけはCTAと重ならないよう上（y 230）。
+- 右のアクション列（x > 900、y 820–1520）から吹き出し「出た〜！」とアプリ場面の小さなMimiを外した（Mimiはラベルの左へ）。Mimiの顔も x 900 より左に寄せた。
+- 上の字幕・フックの1行目は y 200 以降から。
+- ゾーンを重ねたコンタクトシートで確認。Drive の v2 は `old/` に `_v2` で移した。音量（−14 LUFS）と回数のマスクはそのまま。
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the L-shaped ghost letter prop stays, as delivered; the Drive cuts were renamed without `_draft_`: `Recheck_R_2026-10-23.mp4`, `Recheck_R_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
