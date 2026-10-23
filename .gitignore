@@ -241,3 +241,12 @@ films/mimi-disaster-six/source/hf/.thumbnails/
 films/mimi-disaster-six/source/renders/
 films/mimi-disaster-six/source/art/ref/
 !films/mimi-disaster-six/source/assets/voice/
+films/mimi-hear-excuse/source/hf/assets/
+films/mimi-hear-excuse/source/hf/.hyperframes/
+films/mimi-hear-excuse/source/hf/.thumbnails/
+films/mimi-hear-excuse/source/renders/
+films/mimi-hear-excuse/source/assets/own-voice/
+films/mimi-hear-excuse/**/*.wav
+films/mimi-hear-excuse/**/*.mp3
+films/mimi-hear-excuse/**/*.mp4
+films/mimi-hear-excuse/**/*.mov
