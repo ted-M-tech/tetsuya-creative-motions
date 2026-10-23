@@ -15,17 +15,17 @@
       #plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
       .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
       .fr { left: 30px; top: 900px; width: 560px; }
-      .mi { left: 540px; top: 930px; width: 520px; }
+      .mi { left: 470px; top: 930px; width: 520px; }
       #dark { position: absolute; inset: 0; background: #1b2347; mix-blend-mode: multiply; opacity: 0; }
       #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 45% 55%, rgba(0,0,0,0) 40%, rgba(12,16,40,0.55) 100%); opacity: 0; }
       #sepia { position: absolute; inset: 0; background: #ffe7b8; mix-blend-mode: multiply; opacity: 0; }
       /* the ghost L: a soft, cute letter ghost (not a character of the cast; a prop like the heard-* gags) */
       .ghost { position: absolute; left: 470px; top: 380px; width: 520px; height: 820px; transform-origin: 30% 100%; }
       .ghost svg { width: 100%; height: 100%; overflow: visible; }
-      #hook { position: absolute; left: 40px; right: 40px; top: 120px; background: rgba(255,255,255,0.96); border-radius: 48px; padding: 30px 24px 36px;
+      #hook { position: absolute; left: 40px; right: 40px; top: 175px; background: rgba(255,255,255,0.96); border-radius: 48px; padding: 30px 24px 36px;
               box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.25; color: #273b4b; }
       #hook b { font-family: "Helvetica Neue", Arial, sans-serif; color: #2a8dff; font-size: 128px; }
-      .tagline { position: absolute; left: 40px; top: 120px; background: #273b4b; color: #ffe7b8; font-size: 56px; font-weight: 700; padding: 14px 34px; border-radius: 40px; }
+      .tagline { position: absolute; left: 40px; top: 200px; background: #273b4b; color: #ffe7b8; font-size: 56px; font-weight: 700; padding: 14px 34px; border-radius: 40px; }
       .say { position: absolute; left: 50px; top: 690px; background: #ffffff; border: 6px solid #273b4b; border-radius: 48px; border-bottom-left-radius: 10px;
              padding: 18px 40px; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 92px; font-weight: 700; color: #273b4b; line-height: 1.15; white-space: nowrap; }
       .say .ok { color: #2a8dff; }
@@ -34,7 +34,7 @@
       #later span { font-size: 110px; font-weight: 700; color: #ffffff; letter-spacing: 0.04em; }
       #tadaima { position: absolute; left: 640px; top: 560px; white-space: nowrap; background: #4b4277; color: #fff; font-size: 64px; font-weight: 700; padding: 16px 34px;
                  border-radius: 40px; border-bottom-left-radius: 10px; }
-      #yell { left: auto; right: 30px; top: 830px; font-size: 62px; text-align: center; }
+      #yell { left: 520px; right: auto; top: 850px; font-size: 62px; text-align: center; }
       #confetti { position: absolute; inset: 0; pointer-events: none; }
       #confetti i { position: absolute; width: 26px; height: 40px; border-radius: 6px; }
       #hearts { position: absolute; inset: 0; }
@@ -50,16 +50,16 @@
       #hl { position: absolute; left: 3.5%; right: 3.5%; top: 66.3%; height: 7.8%; border: 6px solid #e5484d; border-radius: 22px; opacity: 0; }
       .mask { position: absolute; display: block; background: #fcfcfc; }
       .mask.canvas { background: #efeff3; }
-      #label { position: absolute; left: 20px; right: 300px; top: 1090px; display: flex; justify-content: center; }
-      #label span { display: block; background: #ffffff; border: 6px solid #2a8dff; border-radius: 40px; padding: 18px 40px; font-size: 70px; font-weight: 700; color: #273b4b;
+      #label { position: absolute; left: 280px; right: 180px; top: 1090px; display: flex; justify-content: center; }
+      #label span { display: block; background: #ffffff; border: 6px solid #2a8dff; border-radius: 40px; padding: 16px 30px; font-size: 58px; font-weight: 700; color: #273b4b;
                     box-shadow: 0 16px 40px rgba(39, 59, 75, 0.25); white-space: nowrap; }
       #label b { font-family: "Helvetica Neue", Arial, sans-serif; color: #2a8dff; }
-      #a-mimi { position: absolute; left: 780px; top: 1110px; width: 280px; height: auto; transform-origin: 50% 100%; }
-      #app .caption { top: 170px; }
+      #a-mimi { position: absolute; left: 20px; top: 1110px; width: 260px; height: auto; transform-origin: 50% 100%; }
+      #app .caption { top: 200px; }
       /* English subtitles: bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
       body.no-subs .sub { display: none; }
-      .sub { position: absolute; left: 30px; right: 30px; bottom: 150px; display: flex; justify-content: center; }
-      .sub span { display: block; max-width: 1000px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+      .sub { position: absolute; left: 60px; right: 200px; bottom: 420px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 820px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
                   font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
     </style>
   </head>
@@ -97,7 +97,7 @@
         <img id="m-fb" class="cast mi clip" src="assets/art/jump.webp" alt="" data-start="2.3" data-duration="2.7" data-track-index="4" />
         <img id="f-say" class="cast fr clip" src="assets/art/friend-ask.webp" alt="" data-start="6.1" data-duration="0.85" data-track-index="3" />
         <img id="f-shrink" class="cast fr clip" src="assets/art/friend-shrink.webp" alt="" data-start="6.95" data-duration="2.15" data-track-index="3" />
-        <img id="m-light" class="cast mi clip" src="assets/art/mimi-flashlight.webp" alt="" style="left: 560px; top: 1000px; width: 500px;" data-start="7.85" data-duration="1.25" data-track-index="4" />
+        <img id="m-light" class="cast mi clip" src="assets/art/mimi-flashlight.webp" alt="" style="left: 490px; top: 1000px; width: 500px;" data-start="7.85" data-duration="1.25" data-track-index="4" />
         <img id="f-ok" class="cast fr clip" src="assets/art/friend-nod.webp" alt="" data-start="14.0" data-duration="2.3" data-track-index="3" />
         <div id="sepia"></div>
         <div id="dark"></div>
@@ -110,13 +110,13 @@
       <div id="t-fb" class="tagline clip" data-start="2.3" data-duration="2.7" data-track-index="6">あの日…</div>
       <div id="say1" class="say clip" data-start="2.42" data-duration="2.58" data-track-index="7">That's <span class="ok">right</span>! ✓</div>
       <div id="confetti" class="clip" data-start="3.0" data-duration="2.0" data-track-index="8"></div>
-      <div id="cap-fb" class="caption clip" data-start="3.1" data-duration="1.9" data-track-index="9" style="top: 250px;"><span id="c-fb"><strong>R</strong>、完ぺき！</span></div>
+      <div id="cap-fb" class="caption clip" data-start="3.1" data-duration="1.9" data-track-index="9" style="top: 300px;"><span id="c-fb"><strong>R</strong>、完ぺき！</span></div>
       <!-- Some time later -->
       <div id="later" class="clip" data-start="5.0" data-duration="1.1" data-track-index="10"><span id="l-txt">しばらくして…</span></div>
       <!-- The slip comes back -->
       <div id="say2" class="say clip" data-start="6.2" data-duration="2.9" data-track-index="7">That's <span class="bad">light</span>!</div>
       <div id="tadaima" class="clip" data-start="7.05" data-duration="2.05" data-track-index="11">ただいま〜</div>
-      <div id="cap-sl" class="caption clip" data-start="6.95" data-duration="2.15" data-track-index="9" style="top: 140px;"><span id="c-sl"><em>L</em> が戻ってきた…！</span></div>
+      <div id="cap-sl" class="caption clip" data-start="6.95" data-duration="2.15" data-track-index="9" style="top: 200px;"><span id="c-sl"><em>L</em> が戻ってきた…！</span></div>
       <div id="yell" class="bubble clip" data-start="7.95" data-duration="1.15" data-track-index="12">出た〜！</div>
 
       <!-- The real app: the lesson overview (simulator, fixture with a capture-only re-check row: see app-capture/) -->
@@ -147,12 +147,12 @@
 
       <!-- English subtitles (one track) -->
       <div id="sub-1" class="sub clip" data-start="0" data-duration="2.3" data-track-index="24"><span>My R was fixed… or so I thought.</span></div>
-      <div id="sub-2" class="sub clip" data-start="2.3" data-duration="2.7" data-track-index="24"><span>That day… “That's right!” A perfect R!</span></div>
+      <div id="sub-2" class="sub clip" data-start="2.3" data-duration="2.7" data-track-index="24"><span>That day… a perfect R!</span></div>
       <div id="sub-3" class="sub clip" data-start="5.0" data-duration="1.1" data-track-index="24"><span>Some time later…</span></div>
-      <div id="sub-4" class="sub clip" data-start="6.1" data-duration="3.0" data-track-index="24"><span>“That's light!” The L is back… “I'm home~” “There it is!”</span></div>
+      <div id="sub-4" class="sub clip" data-start="6.1" data-duration="3.0" data-track-index="24"><span>“That's light!” The L is back!</span></div>
       <div id="sub-5" class="sub clip" data-start="9.1" data-duration="4.9" data-track-index="24"><span>Just when you forget it, I’ll check it again.</span></div>
       <div id="sub-6" class="sub clip" data-start="14.0" data-duration="2.3" data-track-index="24"><span>“That's right!” — “See you~”</span></div>
-      <div id="sub-7" class="sub clip" data-start="16.3" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+      <div id="sub-7" class="sub clip" style="top: 230px; bottom: auto;" data-start="16.3" data-duration="1.3" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
 
       <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.6" data-track-index="20" data-volume="1"></audio>
     </div>
