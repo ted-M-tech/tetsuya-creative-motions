@@ -243,3 +243,11 @@ films/mimi-disaster-six/source/art/ref/
 !films/mimi-disaster-six/source/assets/voice/
 films/mimi-katakana-mcdonalds/source/hf/assets/
 films/mimi-katakana-mcdonalds/source/renders/
+films/mimi-katakana-hotel/source/hf/assets/
+films/mimi-katakana-hotel/source/hf/.hyperframes/
+films/mimi-katakana-hotel/source/hf/.thumbnails/
+films/mimi-katakana-hotel/source/renders/
+films/mimi-katakana-hotel/**/*.wav
+films/mimi-katakana-hotel/**/*.mp4
+films/mimi-katakana-hotel/**/*.mov
+films/mimi-katakana-hotel/**/*.mp3
