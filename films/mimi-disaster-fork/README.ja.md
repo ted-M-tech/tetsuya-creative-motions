@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNS ショート #051（シリーズ「Pronunciation Disasters / 発音で大事故」第10話）。ドラフト。18.55秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。
+Lanclo SNS ショート #051（シリーズ「Pronunciation Disasters / 発音で大事故」第10話）。18.55秒、1080×1920、60fps、2カット（日本語のみ／英語字幕つき）。
 
 場面：レストランで友だちが店員のピッパに「Excuse me, can I get a fork?」。「フォーク」が短く平たい「ア」になり r もないので F-word に聞こえ、店内が凍りつく（隣の席のブルーノもスプーンを止める）。ピッパはトレイを落とす。Mimiが巨大フォークを持って登場「それ「F★ck」（放送禁止）に聞こえてる〜！！」。
 
@@ -11,4 +11,5 @@ Lanclo SNS ショート #051（シリーズ「Pronunciation Disasters / 発音�
 - 声：学習者テイクとお手本はオーナーの登録済みLanclo音声（ownvoice.py）。WAVは生体データなのでGitに入れず、Drive `051. Pronunciation Disasters 10 - Fork or Fck/Disasters10_Fork_assets/own-voice/` に保管。ピッパはKokoro英語。
 - 画面上の下品な単語は必ず★で伏せ字。音声では聞こえる（そこがオチ）。
 - Mimiの一人称は「僕」。言い間違えるのは「友だち」、他の役は共通サブキャスト（ピッパ、ブルーノ）。
+- 完成版：Lanclo の Google Drive `002.SNS/051. Pronunciation Disasters 10 - Fork or Fck/`（`Disasters10_Fork_2026-10-22.mp4`、`Disasters10_Fork_EN-subs_2026-10-22.mp4`、素材は `Disasters10_Fork_assets/`）。
 - 作り直し方：[source/README.md](source/README.md)

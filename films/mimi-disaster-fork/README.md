@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #051 (series “Pronunciation Disasters”, episode 10). Draft. 18.55 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #051 (series “Pronunciation Disasters”, episode 10). 18.55 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: a cosy family restaurant. Mimi’s Friend raises a hand and calls Pippa (the recurring duck, here a waiter): “Excuse me, can I get a fork?”, but “フォーク” comes out short and flat, a /ʌ/ with no r, so it lands as the F-word. The whole restaurant freezes (Bruno at the next table stops mid-spoon), Pippa drops her tray: “Sorry… a WHAT?!”. Mimi drops in holding a giant fork: 「それ「F★ck」（放送禁止）に聞こえてる〜！！」. Gag object: a giant fork with a censor bar of stars.
 
@@ -23,7 +23,7 @@ Format: the pilot's series template ([mimi-disaster-sit](../mimi-disaster-sit/))
 - On screen the rude word is always censored with ★; it is audible in the audio (that is the joke).
 - The slip was checked by measurement, not Whisper: see [PROCESS.md](PROCESS.md).
 
-![Draft frames](process/00-final-frames.jpg)
+![Final frames](process/00-final-frames.jpg)
 
-- Draft files in Lanclo's Google Drive `002.SNS/051. Pronunciation Disasters 10 - Fork or Fck/` (`Disasters10_Fork_draft_2026-10-22.mp4`, `Disasters10_Fork_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters10_Fork_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/051. Pronunciation Disasters 10 - Fork or Fck/` (`Disasters10_Fork_2026-10-22.mp4`, `Disasters10_Fork_EN-subs_2026-10-22.mp4`, raw material in `Disasters10_Fork_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).

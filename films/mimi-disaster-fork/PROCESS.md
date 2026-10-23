@@ -35,3 +35,7 @@ Restaurant: the Friend calls Pippa (waiter): “Excuse me, can I get a fork?” 
 
 - Is the slip funny enough by ear? Formants say open unrounded /ʌ/ with no r; the owner should listen (take 3, 2.52–3.08 s).
 - The flagged-word feedback text in the app shot is written for the capture; the UI is real.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters10_Fork_2026-10-22.mp4`, `Disasters10_Fork_EN-subs_2026-10-22.mp4`).
