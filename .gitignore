@@ -205,6 +205,12 @@ films/mimi-disaster-peace/source/hf/.thumbnails/
 films/mimi-disaster-peace/source/renders/
 films/mimi-disaster-peace/source/art/ref/
 !films/mimi-disaster-peace/source/assets/voice/
+films/mimi-disaster-light/source/hf/assets/
+films/mimi-disaster-light/source/hf/.hyperframes/
+films/mimi-disaster-light/source/hf/.thumbnails/
+films/mimi-disaster-light/source/renders/
+films/mimi-disaster-light/source/art/ref/
+!films/mimi-disaster-light/source/assets/voice/
 films/mimi-disaster-fork/source/hf/assets/
 films/mimi-disaster-fork/source/hf/.hyperframes/
 films/mimi-disaster-fork/source/hf/.thumbnails/
