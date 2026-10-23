@@ -1,0 +1,16 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi (white bunny, BLUE inner ears, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT, pink cheeks, dot eyes, mitten hands, small feet);
+sheet.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears, dark-grey tip on the ear at the viewer's RIGHT, soft orange patch around the eye at the viewer's RIGHT, the same L headphones);
+smile.webp and deadpan.webp = Pippa the duck (white duck, orange beak and feet, red-and-white striped uniform shirt, red visor cap with NO logo, no headphones, one head taller than Mimi);
+landmark.png = a background plate of the same series (style reference for the plate only).
+Match every character EXACTLY (shapes, markings, colours, headphones, proportions, navy outline weight). Characters: plain pure white background, full body, centred, same scale and head size as master.webp. No text, no letters, no numbers, no logos anywhere except the white "L" on headphones.
+
+Save as PNG in art/ (relative to the current directory):
+1) art/pippa-host-smile.png — Pippa (exact design) as a restaurant host: her same striped shirt and red visor plus a small black waist apron, holding two closed menus against her chest with one wing, the other wing raised in a polite welcome, warm smile with closed happy eyes. She faces the viewer's LEFT.
+2) art/pippa-host-cover.png — the SAME Pippa (identical design, apron), totally flustered: both wings covering her eyes, face blushing bright pink-red, little steam puffs above her head, a sweat drop, three tiny pink hearts floating around her, the two menus dropped on the floor at her feet. Cheeky and cute, nothing rude. She faces the viewer's LEFT.
+3) art/mimi-blush-yell.png — Mimi (exact design) jumping into the frame mid-air, cheeks blushing bright red, eyes squeezed into > < shapes, mouth wide open shouting, both mittens raised beside her face in panic, ears flying, small sweat drops. Front view.
+4) art/heard-heart.png — a kawaii "what the listener heard" icon, square 1024x1024, subject filling about 80%: a plump pink heart with a shy blushing face, covering its eyes with two tiny hands, small sparkles and two tiny hearts around it. Tasteful and cute, no anatomy, nothing explicit.
+Background plate (no characters):
+5) art/restaurant.png — the entrance of a cosy restaurant in the same flat style and soft colours as landmark.png, portrait 1080x1920: warm wood walls, hanging pendant lamps, a small wooden host stand at the viewer's RIGHT with a closed menu on it and a tiny vase, several tables with white tablecloths and chairs in the soft background, a potted plant at the left, warm wood floor filling the bottom 35% of the image (floor horizon around 62% of the height). Leave the centre and the floor empty for characters. No text, no signs, no logos.
+Do not modify other files. List the saved paths when done.
+If a file listed above already exists in art/, keep it as is and do not redraw it; use it as the design reference for the matching second pose.

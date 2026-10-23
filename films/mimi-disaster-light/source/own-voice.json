@@ -1,0 +1,5 @@
+{"lines": [
+  {"id": "learner-right", "text": "Could you turn on the right?",
+   "style": "Speak English as a polite, slightly hesitant Japanese beginner asking a favour in a dark room. The word 'light' comes out with a clear, strongly rounded English R, the tongue pulled back and touching nothing, exactly like 'right', so a listener clearly hears 'Could you turn on the right?' Slightly flat, syllable-by-syllable Japanese-style timing. Natural, not a caricature."},
+  {"id": "native-light", "text": "Could you turn on the light?", "accent": "us"}
+]}

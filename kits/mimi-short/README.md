@@ -9,12 +9,13 @@ Shared parts of every Mimi short (15–25 s vertical, 2D official style, HyperFr
 | `scripts/ownvoice.py` | The owner's registered voice (Gemini TTS) for an episode's English lines from `own-voice.json`; accents `us`, `uk`, `learner`, `native`. Paid per line; the WAVs are biometric and stay out of Git (Drive only), Git keeps `own-voice.receipt.json` |
 | `scripts/rig2d.py` | Rive route: the library rig plus `add_pose()` (episode poses by path), `lipsync()` (mouth from any voice clip, cached) and `build_shots()` |
 | `scripts/render_rive.sh` | Rive project → PNG frames → MP4 (60 fps) (Rive route) |
+| `scripts/fetch-bgm.sh` | Copies the theme from Lanclo's private repo (`native-voice-clone` `origin/main:design/sns-bgm/`, `LANCLO_REPO` to override) into `library/bgm/` (ignored by Git; the licence forbids redistribution). Without access, put your own track at `library/bgm/everyone-get-up.mp3` |
 | `scripts/cutout.sh` | Drawn image on white → trimmed transparent WebP (`FUZZ=30` for props with a soft glow) |
-| `scripts/sfx.py` | `Mix` (voice / SFX / music buses, ducking, -14 LUFS), the bed (Lanclo SNS theme「Everyone Get Up」from `library/bgm/`, not in Git: copy it from Lanclo's Google Drive `002.SNS/_BGM/`; else the code-made 100 BPM bed), end chord / theme fade-out, SFX softened and kept low, SFX: tap, whoosh, pofu, boing, clang, poof, freeze, shatter, mokugyo, pencil, pop_seq, ding, bell |
+| `scripts/sfx.py` | `Mix` (voice / SFX / music buses, ducking, -14 LUFS), the bed (Lanclo SNS theme「Everyone Get Up」from `library/bgm/everyone-get-up.mp3`, not in Git; a missing file is fetched once with `scripts/fetch-bgm.sh`, then `bed()` stops with an error; `MIMI_BGM=builtin` builds with the code-made 100 BPM bed on purpose), end chord / theme fade-out, SFX softened and kept low, SFX: tap, whoosh, pofu, boing, clang, poof, freeze, shatter, mokugyo, pencil, pop_seq, ding, bell |
 | `render-cuts.sh` | Renders an episode twice: with English subtitles (`.sub` clips) and Japanese only (`<body class="no-subs">`) |
 | `hf/kit.css`, `hf/kit.js` | The look and motion helpers: camera wrapper, phone UI on the desk plate, captions, speech bubble, playback tags, radar result card, sparkles, end card (`k.end(at)`, then `k.tapCta(at + 0.6)` taps the「7日間無料ではじめる」button; pair it with `sfx.pochi()` in the mix) |
 | `brand/` | End-card Mimi, Lanclo mark, App Store badge |
-| `stage.sh` | Copies `hf/`, `brand/`, the fonts and `library/props/` into an episode's HyperFrames project as `assets/kit/` (not in Git) |
+| `stage.sh` | Fetches the theme BGM if missing, copies `hf/`, `brand/`, the fonts and `library/props/` into an episode's HyperFrames project as `assets/kit/` (not in Git) |
 
 ## Real app screens
 
@@ -29,7 +30,7 @@ kits/mimi-short/scripts/cutout.sh $F/art/<pose>.png $F/art/<pose>.webp
 # 2. voices: Kokoro for the side cast ($F/scripts/voices.sh), the owner's voice for the English lines
 python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json
 # 3. app take (optional): app-capture/capture.sh, then $F/scripts/app_track.sh
-# 4. sound and edit
+# 4. sound and edit (the theme BGM: kits/mimi-short/scripts/fetch-bgm.sh, or your own track at library/bgm/everyone-get-up.mp3)
 uv run --no-project --with numpy python $F/scripts/mix.py
 kits/mimi-short/stage.sh $F/hf             # then copy the episode's poses into $F/hf/assets/art/
 (cd $F/hf && npx --yes hyperframes@0.8.181 check)
@@ -45,7 +46,7 @@ kits/mimi-short/scripts/cutout.sh $F/art/<pose>.png $F/art/cut/<pose>.webp     #
 # 2. shots: $F/scripts/shots.py imports the kit rig, add_pose() the new poses, defines acts and SHOTS
 uv run --no-project --with scipy --with pillow --with numpy python $F/scripts/shots.py
 $F/scripts/render.sh                       # -> $F/hf/assets/shots/*.mp4
-# 3. sound: $F/scripts/mix.py builds a sfx.Mix from the cue sheet
+# 3. sound: $F/scripts/mix.py builds a sfx.Mix from the cue sheet (theme BGM via scripts/fetch-bgm.sh, or MIMI_BGM=builtin)
 uv run --no-project --with numpy python $F/scripts/mix.py
 # 4. edit
 kits/mimi-short/stage.sh $F/hf

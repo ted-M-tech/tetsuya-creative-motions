@@ -1,8 +1,9 @@
 """Mimi shorts sound kit: voice placement, code-made SFX, the Lanclo SNS theme bed, ducking and loudness.
 
 The bed is the Lanclo SNS theme, OpenTracks「Everyone Get Up」(Anonyment), read from library/bgm/everyone-get-up.mp3.
-It is not in Git (the licence forbids passing the file on): copy it from Lanclo's Google Drive, 002.SNS/_BGM/.
-Without it the code-made 100 BPM mallet bed plays instead.
+It is not in Git (the licence forbids passing the file on): scripts/fetch-bgm.sh copies it from Lanclo's private repo,
+and bed() runs that once when the file is missing. Without the theme, bed() stops with an error: put your own track at
+that path, or set MIMI_BGM=builtin to build deliberately with the code-made 100 BPM mallet bed (earlier episodes).
 
 An episode's mix.py builds a Mix, places its cues, and calls write():
 
@@ -14,6 +15,7 @@ An episode's mix.py builds a Mix, places its cues, and calls write():
     m.end_chord(14.0)
     m.write('hf/assets/mix.wav')
 """
+import os
 import subprocess
 import wave
 from pathlib import Path
@@ -22,6 +24,7 @@ import numpy as np
 
 SR = 48000
 THEME = Path(__file__).resolve().parent.parent / 'library/bgm/everyone-get-up.mp3'
+FETCH_BGM = Path(__file__).resolve().parent / 'fetch-bgm.sh'
 THEME_GAIN = 0.1  # with the 0.55 music bus: about 21 dB under the narration
 _rng = np.random.default_rng(7)
 
@@ -207,8 +210,14 @@ class Mix:
 
     def bed(self, start, end, joy_from=None):
         """The theme from start, eased in, running on to the end of the film (end_chord fades it out).
-        Without the theme file: a 100 BPM D-major mallet arpeggio over a pad, an octave lift on off-beats from joy_from."""
-        if THEME.exists():
+        MIMI_BGM=builtin: a 100 BPM D-major mallet arpeggio over a pad, an octave lift on off-beats from joy_from."""
+        builtin = os.environ.get('MIMI_BGM') == 'builtin'
+        if not builtin and not THEME.exists():
+            subprocess.run(['sh', str(FETCH_BGM)])
+        if not builtin and not THEME.exists():
+            raise FileNotFoundError(f'No theme BGM at {THEME}. Run kits/mimi-short/scripts/fetch-bgm.sh, put your own track '
+                                    'there, or set MIMI_BGM=builtin for the code-made bed.')
+        if not builtin:
             x = load(THEME, 0.0, self.duration - start)
             f = int(0.4 * SR)
             x[:f] *= np.linspace(0, 1, f)
