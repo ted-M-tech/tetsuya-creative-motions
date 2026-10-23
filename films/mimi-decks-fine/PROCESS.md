@@ -1,0 +1,33 @@
+# 制作の経緯
+
+Notion Content Calendar ID 065（Drive「065. Beyond Im Fine Thank You」、Prefix `Decks_ImFine`）。バッチ 055–066 の1本。オーナーの言葉（原文）：
+
+> 2026-10-23 依頼：「動画をさらに生成していく。…まずはここに企画。リストを出して。バズるSNSかつ、必要なら機能紹介とか効果的な学習とか。フックでばずらせる構成ね。チームで議論して構成案・リストを見せて」
+
+> 2026-10-23 承認：「いいね。これらを作ろう。キャラとか乱発するな。基本今までのキャラメイン。メインはうさぎ二人ね。あとテンポよく。進めて。」
+
+> 2026-10-23（セーフエリア）：「セーフティエリアって大丈夫？被ってもいいけどすべてが隠れないようにね。」
+
+承認された企画（コーディネーターの要約）：フック「I'm fine, thank you. しか言えない」。Mimiが "How's it going?"、友だちがロボットのように "I'm fine, thank you, and you?"。Mimiがあくび、「間違いじゃないけど教科書っぽい」。実アプリ：マイノート → 単語帳 → スラング・カジュアル → カード → 保存。友だちが単語帳に本当にある言い方でやり直し、ハイタッチ。エンドカード。キャストはMimiと友だちだけ（Notionの当初案のBrunoは使わない）。デッキの語数・件数は出さない、監修・正確さの主張もしない。
+
+## アプリで確かめたこと（Lanclo origin/main 5f5571ad、native-ios が正）
+
+- 単語帳はiOSのマイノートの「単語帳」（`native-ios/Lanclo/Views/OfficialDecksScreen.swift`）：デッキ一覧 → ユニット一覧 → ユニットのカード（用語、IPA、意味、使い方、例文）。カードごとの保存ボタン（`decks.save.<id>`、`SavedNoteButton`、押すとすぐ保存されタグのメニューが出る）、下に「すべて保存」「学習」。
+- デッキ名：初級／中級／上級／ビジネス／句動詞・イディオム／スラング・カジュアル。一覧とユニットに「N語・保存済みN」が出る（`OfficialDeckCopy.counts`）ので、編集で全部マスクした。
+- 撮影は `LancloUITests/OfficialDecksUITests.swift` の `testBundledJapaneseCatalogBrowseAndSave` と同じ起動（`--qa-notes`、`--qa-route /vocabulary`、同梱の本物のデッキ、ネットワークと音声なし）。撮影専用パッチなし。
+- 返しの言い方は `packages/core/decks/source/slang-casual/04.json`（ユニット4「あいさつ・お礼・謝罪」）から：`how's it going`（調子はどう）、`all good`（全部大丈夫・問題ない）、`what's new`（何か変わったことある）。"How's it going?" への自然な返しで、デッキにあるものとして「All good! What's new?」にした（ブリーフの "and you?" に当たる聞き返しも、同じユニットの what's new）。「Not bad」などはデッキにないので使わない。
+
+## 判断
+
+- Mimiの "How's it going?" は吹き出しだけ（声なし）。オーナーの声を両方のうさぎに当てると一人で話しているように聞こえるため。声は友だちの2行だけ。
+- 声（ownvoice.py、有料）：2行、各1回の生成、再生成なし。`fine` は教科書を読み上げるロボット口調（style指定）、`casual` は自然なアメリカ英語。Whisperはタイムスタンプと言葉の確認だけ（"I'm fine. Thank you. And you?" / "All good. What's new?"、余計な語なし）。
+- 新しいポーズ2つ（codex-p、キャスト参照画像つき）：`mimi-yawn`（あくび）と `highfive`（Mimiと友だちのハイタッチ）。1回目のハイタッチは手が合っているのが分かりにくく（頬を寄せているように見えた）、`prompts/02-codex-highfive-retry.txt` で1回やり直して採用。参考にした mimi-origin の highfive は友だちがベレー帽なので使わなかった。ほかはライブラリの friend-speech（紙を持つ＝教科書っぽい）、friend-shrink、friend-hello、speak-open、point。
+- 録画は2回。1回目はユニット内のスクロールが足りず all good に届かなかった（Drive には上げない）。2回目は届いたがカードを上に寄せる動作が効かず、カードは画面下のまま保存した。編集で端末を1.4倍に寄せて見せた（35秒ほどのスクロールの停滞は使っていない）。スクロール部分は45倍速で1秒。
+- xcodebuild の test-without-building がテスト終了後も終わらず、1回目は手で止めた（シミュレーターのロックは毎回解放）。
+- 音：キットの Mix.write のあと、mimi-katakana-mcdonalds と同じ後処理（不足分のゲイン＋リミッター）で −14.1 LUFS、トゥルーピーク −1.6 dBTP。リミッターは 0.8（0.84 だと −1.3 dBTP だった）。
+- セーフエリア（コーディネーター指示）：英語字幕は y≤1500・x 60–880 に収め、エンドカードの英語字幕は上（y 230）へ。右の操作列（x>900, y 820–1520）にラベル・吹き出し・小さいMimiを置かない（説明ラベルは x 60–880、保存時の小さいMimiは左下）。キャラの顔は x 900 より左。フックの1行目は y≥200。
+
+## 学んだこと
+
+- 単語帳のユニットはカードが長く（例文・使い方つき）、遅いスワイプでは後半のカードに届くまで1分以上かかる。録画は速いスワイプで進め、編集で早送りにする。
+- `ps -o etimes` は macOS にない（ウォッチドッグは `etime` を使う）。

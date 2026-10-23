@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "fine": {
+      "text": "I'm fine, thank you. And you?",
+      "style": "Speak English as a Japanese learner reciting a textbook dialogue: stiff and robotic, flat monotone pitch, every word evenly spaced and equally stressed, like reading the sentence aloud in class. Clear and correct words, slightly katakana-like vowels. Natural, not a caricature. Brisk: the whole line in about two seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "1d1289101f2c3b9948971d3f9d8a6540a6cb86979813766fe5e88bdfc60c003e",
+      "at": "2026-10-23T20:36:03+00:00"
+    },
+    "casual": {
+      "text": "All good! What's new?",
+      "style": "Speak fluent, relaxed General American English to a close friend: warm, upbeat and casual, a smile in the voice, natural linking (\"what's new\" flows together), stress on \"good\" and \"new\". Quick, about one and a half seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "8ee23f535be9b8b2d315533ba185b2bfbc2ab8ec45b3263f80454a9edfdf6e45",
+      "at": "2026-10-23T20:36:05+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
