@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #059, episode 2 of “Katakana Traps” (a meaning trap: the word is said fine, it just means something else). **Draft** (2026-10-23). 15.1 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #059, episode 2 of “Katakana Traps” (a meaning trap: the word is said fine, it just means something else). Final, owner approved on 2026-10-23. 15.1 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: Mimi and the Friend chatting on a street. Frame 1: 「マンション住み＝豪邸持ち？」 with Mimi's thought bubble of a castle with a fountain. The Friend (owner's own voice): “I live in a mansion.” Mimi's bubble (caption only): “Wow, you're rich!”, the castle grows; the Friend panics. Mimi's card: English mansion＝大豪邸; Japanese マンション = apartment (US) / flat (UK) / condo (owned), with the model “I live in an apartment.” twice in the owner's own voice. Quick-fire trap card: コンセント → outlet, クレーム → complaint (own voice each). CTA 「他の和製英語トラップ、コメントで！」 while Mimi's castle bubble deflates, then the end card.
 
@@ -17,7 +17,7 @@ Scene: Mimi and the Friend chatting on a street. Frame 1: 「マンション住�
 
 - Cast: Mimi and the Friend only. No side cast, no Kokoro, no app shot.
 - Voices: four lines in the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `059. Katakana Traps 2 - Mansion/KT2_Mansion_assets/own-voice/`).
-- Draft files in Lanclo's Google Drive `002.SNS/059. Katakana Traps 2 - Mansion/` (`KT2_Mansion_draft_2026-10-23.mp4`, `KT2_Mansion_draft_EN-subs_2026-10-23.mp4`).
+- Final files in Lanclo's Google Drive `002.SNS/059. Katakana Traps 2 - Mansion/` (`KT2_Mansion_2026-10-23.mp4`, `KT2_Mansion_EN-subs_2026-10-23.mp4`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
 
-![Draft frames](process/00-draft-frames.jpg)
+![Frames](process/00-draft-frames.jpg)

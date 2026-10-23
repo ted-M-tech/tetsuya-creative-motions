@@ -30,3 +30,8 @@
 - The Friend's line is normal English on purpose; the joke is only the meaning, carried by the castle bubble and Mimi's “Wow, you're rich!”.
 - The castle bubble deflating sits inside the CTA beat (12.1 s) so the end card still starts at 13.6 s.
 - The owner's (adult male) voice on the Friend and as the model, as in earlier episodes.
+
+## Owner approval
+
+- 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `KT2_Mansion_2026-10-23.mp4`, `KT2_Mansion_EN-subs_2026-10-23.mp4`).
+- Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
