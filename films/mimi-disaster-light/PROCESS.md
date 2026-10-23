@@ -27,3 +27,7 @@
 - Bruno's "turning right" is a squash-and-shift animation of one pose (the sign keeps pointing right) rather than a drawn turnaround.
 - Length 19.75 s (the learner take is slow, 3.0 s).
 - The learner voice is the owner's (young adult man) on the Friend, as accepted.
+
+## Owner approval
+
+- 2026-10-22: 「6本ともOK。限定公開して」 (episodes 7–12 approved as delivered; the Drive cuts were renamed without `_draft_`: `Disasters11_Light_2026-10-22.mp4`, `Disasters11_Light_EN-subs_2026-10-22.mp4`).

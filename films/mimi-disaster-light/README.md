@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #052 (series "Pronunciation Disasters", episode 11). **Draft** (2026-10-22). 19.75 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #052 (series "Pronunciation Disasters", episode 11). 19.75 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Scene: at Bruno's home (the recurring bear as the host dad) the room is dark. Mimi's Friend asks "Could you turn on the light?" and it comes out as "turn on the right". Bruno, puzzled, obediently turns RIGHT, holding a right-arrow sign, again and again: still dark. Mimi pops up with a flashlight: 「それ「right」（右）に聞こえてる〜！！」. When the line is said right, the light comes on.
 
@@ -24,5 +24,5 @@ Format: the series template ([mimi-disaster-sit](../mimi-disaster-sit/README.md#
 
 ![Frames](process/00-final-frames.jpg)
 
-- Draft files in Lanclo's Google Drive `002.SNS/052. Pronunciation Disasters 11 - Light or Right/` (`Disasters11_Light_draft_2026-10-22.mp4`, `Disasters11_Light_draft_EN-subs_2026-10-22.mp4`, raw material in `Disasters11_Light_assets/`).
+- Final files in Lanclo's Google Drive `002.SNS/052. Pronunciation Disasters 11 - Light or Right/` (`Disasters11_Light_2026-10-22.mp4`, `Disasters11_Light_EN-subs_2026-10-22.mp4`, raw material in `Disasters11_Light_assets/`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
