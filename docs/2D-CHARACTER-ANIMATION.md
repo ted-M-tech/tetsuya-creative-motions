@@ -72,7 +72,7 @@ The kit is Lanclo's, but the shape is general. Copy `kits/mimi-short/` to `kits/
 | Character library | `library/` (poses, props, backgrounds, official art). `sync-library.sh` pulls Lanclo's; fill yours by hand or with your own sync |
 | Cast | `cast/`: your main character(s) and their reference images, the side cast and their Kokoro voices, and the codex-p prompt template with your character's markings |
 | Brand | `brand/` (end-card character, logo, store badge) and the end-card text in `hf/kit.js` (`endCard`, `tapCta`) and `hf/kit.css` |
-| BGM | `library/bgm/everyone-get-up.mp3` (`THEME` in `scripts/sfx.py`; not in Git, the theme is licensed separately); without it `sfx.py` plays its code-made bed |
+| BGM | `library/bgm/everyone-get-up.mp3` (`THEME` in `scripts/sfx.py`; not in Git, the theme is licensed separately). `scripts/fetch-bgm.sh` copies it from Lanclo's private repo; anyone else puts their own track there. Without it `sfx.py` stops with an error; `MIMI_BGM=builtin` plays its code-made bed on purpose |
 | Voice | Kokoro for everyone, or your own registered voice in place of `ownvoice.py` (its account and voice name are Lanclo's) |
 
 Minimum steps, end to end:
