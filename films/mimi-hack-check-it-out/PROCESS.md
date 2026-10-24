@@ -39,3 +39,7 @@
 - 「チェケラ」 is used as the familiar Japanese spelling of the phrase, not as a pronunciation target.
 - The owner's (adult male) voice on the Friend, as in earlier episodes; the Friend's smooth line reuses the model take.
 - Drive folder `072. Pronunciation Hacks 1 - Check It Out` did not exist yet; created with the name from the brief.
+
+## Owner approval
+
+- 2026-10-23: 「あと全部確認した。YouTubeあげてOK」 (the v2 draft approved as delivered; the Drive cuts were renamed without `_draft_`: `Hacks1_CheckItOut_2026-10-23.mp4`, `Hacks1_CheckItOut_EN-subs_2026-10-23.mp4`).
