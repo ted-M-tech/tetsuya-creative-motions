@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNSショート #075。「Pronunciation Hacks（発音のコツ）」第4話。ドラフト（2026-10-23、オーナー確認待ち）。15.0秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
+Lanclo SNSショート #075。「Pronunciation Hacks（発音のコツ）」第4話。完成版（2026-10-23、オーナー承認済み）。15.0秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
 
 コツ：**milk は1音節**。カタカナのミルクは3拍（mi-ru-ku、r と k のあとに母音）。英語の milk は l と k のあとに母音なし。最後の L は暗いL（舌先を上の歯ぐきに、舌の奥を持ち上げる。やわらかい「ゥ」っぽく聞こえることが多い）。
 
@@ -20,4 +20,4 @@ Lanclo SNSショート #075。「Pronunciation Hacks（発音のコツ）」第4
 
 - キャストはミミと友だちのみ。新規ポーズはミミのバリスタ2枚（codex-p）、ほかはライブラリ。サブキャスト・Kokoro・アプリ画面なし。
 - 声：オーナーの登録音声（`ownvoice.py`）3行。WAVはGitに入れず、Drive `075. Pronunciation Hacks 4 - Milk/Hacks4_Milk_assets/own-voice/`。
-- ドラフト：Drive `002.SNS/075. Pronunciation Hacks 4 - Milk/`（`Hacks4_Milk_draft_2026-10-23.mp4`、`Hacks4_Milk_draft_EN-subs_2026-10-23.mp4`）。
+- 完成版：Drive `002.SNS/075. Pronunciation Hacks 4 - Milk/`（`Hacks4_Milk_2026-10-23.mp4`、`Hacks4_Milk_EN-subs_2026-10-23.mp4`）。

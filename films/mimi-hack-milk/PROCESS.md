@@ -35,3 +35,7 @@
 - 「L は舌先を上に / 奥は こもった「ゥ」」 is the whole tongue hint (on-screen space); the EN subtitle says it in full (tongue tip up, back of the tongue raised, like a soft “u”).
 - The owner's (adult male) voice on the Friend, as in earlier episodes.
 - Drive folder `075. Pronunciation Hacks 4 - Milk` did not exist yet; created with the name from the brief.
+
+## Owner approval
+
+- 2026-10-23: 「あと全部確認した。YouTubeあげてOK」 (the last draft approved as delivered; the Drive cuts were renamed without `_draft_`: `Hacks4_Milk_2026-10-23.mp4`, `Hacks4_Milk_EN-subs_2026-10-23.mp4`).
