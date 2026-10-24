@@ -324,3 +324,15 @@ films/mimi-slang-no-cap/**/*.mp3
 films/mimi-slang-no-cap/**/*.m4a
 films/mimi-slang-no-cap/**/*.mov
 films/mimi-slang-no-cap/**/*.mp4
+# 070 mimi-slang-ghosted: edit assets (own-voice mix), simulator takes, renders and any media stay out of Git
+films/mimi-slang-ghosted/source/hf/assets/
+films/mimi-slang-ghosted/source/hf/.hyperframes/
+films/mimi-slang-ghosted/source/hf/.thumbnails/
+films/mimi-slang-ghosted/source/renders/
+films/mimi-slang-ghosted/source/assets/
+films/mimi-slang-ghosted/renders/
+films/mimi-slang-ghosted/**/*.wav
+films/mimi-slang-ghosted/**/*.mp3
+films/mimi-slang-ghosted/**/*.m4a
+films/mimi-slang-ghosted/**/*.mov
+films/mimi-slang-ghosted/**/*.mp4

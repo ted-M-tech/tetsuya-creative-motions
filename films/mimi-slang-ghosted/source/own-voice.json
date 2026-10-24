@@ -1,0 +1,10 @@
+{"lines": [
+  {"id": "ghosted", "text": "You got ghosted.",
+   "style": "Speak fluent, casual General American English to a friend who is staring at a phone with no reply: gently teasing, a knowing little smile in the voice, stress on \"ghosted\", falling intonation. Quick, about one and a half seconds."},
+  {"id": "huh", "text": "Ghosted...?",
+   "style": "Speak English as a confused friend who just heard the word and wonders if it means a real ghost: one word, puzzled, rising question intonation, a little slow. About one second."},
+  {"id": "ghost", "text": "Ghost.",
+   "style": "Speak fluent, natural General American English, clear and friendly, like saying a new slang word for a learner: one word, falling intonation. About one second."},
+  {"id": "example", "text": "I didn't mean to ghost you; my phone broke.",
+   "style": "Speak fluent, casual General American English to a friend, apologetic and a little sheepish: a short beat after \"ghost you\", stress on \"ghost\" and \"broke\". Natural pace, about two and a half seconds."}
+]}
