@@ -42,7 +42,7 @@ A series has a fixed cast in [kits/mimi-short/cast/](../kits/mimi-short/cast/REA
 ## Voices
 
 - **Side cast and other parts**: Kokoro, locally: `npx hyperframes tts "<line>" -v <voice> -o assets/voice/<file>.wav` (see any `source/scripts/voices.sh`). These WAVs are committed. Kokoro's Japanese was garbled, so Japanese lines are speech bubbles and captions, not voice.
-- **The learner's and the model's English**: the owner's own voice, registered with Gemini TTS, through `kits/mimi-short/scripts/ownvoice.py` and the episode's `own-voice.json`. Accents `us`, `uk`, `learner` (a Japanese beginner) and `native` (with `language`); `style` replaces the preset (for example a learner who clearly says the wrong word). The voice is biometric: the WAVs never go in Git, only to the episode's Drive folder; Git keeps `own-voice.receipt.json` (text, style, hashes, no voice ID). Each call is a paid generation in the owner's voice: generate only the lines needed (existing clips are skipped; `--force <id>` regenerates one).
+- **The learner's and the model's English**: the owner's own voice, registered with Gemini TTS, through `kits/mimi-short/scripts/ownvoice.py` and the episode's `own-voice.json`. Accents `us`, `uk`, `learner` (a Japanese beginner) and `native` (with `language`); `style` replaces the preset (for example a learner who clearly says the wrong word). The voice is biometric: the WAVs never go in Git, only to the episode's Drive folder; Git keeps `own-voice.receipt.json` (text, style, hashes, no voice ID). Each call is a paid generation in the owner's voice: generate only the lines needed (existing clips are skipped; `--force <id>` regenerates one). The script uses only Lanclo's internal tools Gemini project (`lanclo-internal-tools`, key in `~/.config/lanclo/gemini-internal.env`), never the production project or its key; the voice is registered there with fresh consent. A run stops at 20 provider calls unless `--max-calls` raises it, and `--dry-run` shows the plan without a call.
 - **Checking a mispronunciation**: a transcript is not proof. Whisper's language model "corrects" the wrong word back to the intended one. Use Whisper for word timestamps only, then check the sound itself (formants with Praat, a fricative's spectral centre, silencedetect for word starts) and have a person listen. Examples: the take notes in [mimi-disaster-coke](../films/mimi-disaster-coke/PROCESS.md) and the US/UK check in [mimi-tuning](../films/mimi-tuning/PROCESS.md).
 
 ## Showing the real app
@@ -73,7 +73,7 @@ The kit is Lanclo's, but the shape is general. Copy `kits/mimi-short/` to `kits/
 | Cast | `cast/`: your main character(s) and their reference images, the side cast and their Kokoro voices, and the codex-p prompt template with your character's markings |
 | Brand | `brand/` (end-card character, logo, store badge) and the end-card text in `hf/kit.js` (`endCard`, `tapCta`) and `hf/kit.css` |
 | BGM | `library/bgm/everyone-get-up.mp3` (`THEME` in `scripts/sfx.py`; not in Git, the theme is licensed separately). `scripts/fetch-bgm.sh` copies it from Lanclo's private repo; anyone else puts their own track there. Without it `sfx.py` stops with an error; `MIMI_BGM=builtin` plays its code-made bed on purpose |
-| Voice | Kokoro for everyone, or your own registered voice in place of `ownvoice.py` (its account and voice name are Lanclo's) |
+| Voice | Kokoro for everyone, or your own registered voice in place of `ownvoice.py` (its project, `lanclo-internal-tools`, and voice name are Lanclo's) |
 
 Minimum steps, end to end:
 
