@@ -18,12 +18,14 @@ Credentials: only ~/.config/lanclo/gemini-internal.env (0600), the internal tool
     GEMINI_API_KEY=...
     GEMINI_PROJECT_ID=lanclo-internal-tools
 The owner creates it (Gemini capacity architecture, step O6). There is no fallback: without it the script stops. It refuses
-the production project (myvoicetutor-production-01), the production key file gemini-dedicated.env (also through a symlink)
-and a key identical to the production key. The SNS voice must be registered in the internal project as VOICE_NAME with a
+any other project id (only lanclo-internal-tools passes), a symlink, a file readable by group/others, a file that is the
+same file as another ~/.config/lanclo/*.env (hard link) and a key that appears in any GEMINI*/MVT_GEMINI* value of another
+~/.config/lanclo/*.env (production, legacy, renamed or rotated copies). The SNS voice must be registered in the internal project as VOICE_NAME with a
 fresh consent recording (owner step O7); this script only looks the voice up and never registers one.
 
 Budget: a run makes at most --max-calls provider calls (default 20: one voice lookup plus one call per generated or
---force regenerated line). The plan is printed first; a larger plan is refused before any call. --dry-run validates the
+--force regenerated line). The plan is printed first; a larger plan is refused before any call. The plan is a lower bound: a paginated voice list
+costs one call per page, and the run stops before the call that would exceed the budget. --dry-run validates the
 config and prints the plan without calling the provider.
 """
 import argparse
@@ -61,39 +63,62 @@ PRODUCTION_PROJECT = 'myvoicetutor-production-01'
 DEFAULT_MAX_CALLS = 20
 
 
-def read_env(path):
+INTERNAL_PROJECT = 'lanclo-internal-tools'
+
+
+def read_env(path, strict=True):
+    """KEY=value lines (optional export, shell quoting, # comments). strict: a malformed line stops the run cleanly."""
     env = {}
-    for line in path.read_text().splitlines():
-        p = shlex.split(line, comments=True)
+    for n, line in enumerate(path.read_text().splitlines(), 1):
+        try:
+            p = shlex.split(line, comments=True)
+        except ValueError:
+            if strict:
+                sys.exit(f'ownvoice: line {n} of ~/{INTERNAL_ENV} cannot be parsed (unbalanced quotes?); refusing.')
+            continue
         if p and p[0] == 'export':
             p = p[1:]
         if len(p) == 1 and '=' in p[0]:
             k, v = p[0].split('=', 1)
-            env[k] = v
+            env[k] = v.strip()
     return env
 
 
 def key():
-    """The internal tools project key. Exits (never prints the key) unless the config is the internal project."""
-    path, prod = Path.home() / INTERNAL_ENV, Path.home() / PRODUCTION_ENV
-    if not path.is_file():
-        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} is missing. The owner creates it for project lanclo-internal-tools '
-                 '(Gemini capacity architecture, step O6) with GEMINI_API_KEY and GEMINI_PROJECT_ID=lanclo-internal-tools, '
-                 'then re-registers the SNS voice there with fresh consent (step O7). '
+    """The internal tools project key. Exits (never prints a key) unless the config is the internal project."""
+    path = Path.home() / INTERNAL_ENV
+    if not path.exists() and not path.is_symlink():
+        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} is missing. The owner creates it for project {INTERNAL_PROJECT} '
+                 f'(Gemini capacity architecture, step O6) with GEMINI_API_KEY and GEMINI_PROJECT_ID={INTERNAL_PROJECT}, '
+                 'mode 0600, then registers the SNS voice there with fresh consent (step O7). '
                  f'There is no fallback to ~/{PRODUCTION_ENV}.')
-    if path.resolve() == prod.resolve() or path.resolve().name == prod.name:
-        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} points at the production key file {prod.name}; refusing.')
+    if path.is_symlink() or not path.is_file():
+        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} must be a regular file, not a symlink; refusing.')
+    st = path.stat()
+    if st.st_mode & 0o077:
+        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} is readable by group/others (mode {st.st_mode & 0o777:o}); chmod 600 it.')
     env = read_env(path)
-    project = env.get('GEMINI_PROJECT_ID', '').strip()
-    if not project:
-        sys.exit(f'ownvoice: GEMINI_PROJECT_ID is not set in ~/{INTERNAL_ENV} (expected lanclo-internal-tools); refusing.')
-    if project == PRODUCTION_PROJECT:
-        sys.exit(f'ownvoice: ~/{INTERNAL_ENV} names the production project {PRODUCTION_PROJECT}; refusing.')
-    k = env.get('GEMINI_API_KEY', '').strip()
+    project = env.get('GEMINI_PROJECT_ID', '')
+    if project != INTERNAL_PROJECT:
+        sys.exit(f'ownvoice: GEMINI_PROJECT_ID in ~/{INTERNAL_ENV} must be {INTERNAL_PROJECT} '
+                 f'({"not set" if not project else "production project" if project == PRODUCTION_PROJECT else "other project"}); refusing.')
+    k = env.get('GEMINI_API_KEY', '')
     if not k:
         sys.exit(f'ownvoice: GEMINI_API_KEY is not set in ~/{INTERNAL_ENV}.')
-    if prod.is_file() and read_env(prod).get('GEMINI_API_KEY', '').strip() == k:
-        sys.exit(f'ownvoice: the key in ~/{INTERNAL_ENV} is the production key from {prod.name}; refusing.')
+    # Every other Lanclo env file (production, legacy, renamed or rotated copies) must not share this file, key or project.
+    for other in sorted(path.parent.glob('*.env')):
+        if other.name == path.name:
+            continue
+        try:
+            if other.samefile(path):
+                sys.exit(f'ownvoice: ~/{INTERNAL_ENV} is the same file as {other.name}; refusing.')
+            o = read_env(other, strict=False)
+        except OSError:
+            continue
+        if any(v == k for n, v in o.items() if n.startswith(('GEMINI', 'MVT_GEMINI'))):
+            sys.exit(f'ownvoice: the key in ~/{INTERNAL_ENV} is also in {other.name}; refusing.')
+        if o.get('MVT_GOOGLE_PROJECT') == project:
+            sys.exit(f'ownvoice: {other.name} declares MVT_GOOGLE_PROJECT={project} too; refusing.')
     return k, project
 
 
