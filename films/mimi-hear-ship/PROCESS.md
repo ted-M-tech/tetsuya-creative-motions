@@ -40,3 +40,7 @@
 
 - Owner's ear on the final sheep take (direction “only the vowel long”): does the sentence still sound natural next to the ship take?
 - Length 16.2 s (brief ~16 s).
+
+## Owner approval
+
+- 2026-10-23: 「あと全部確認した。YouTubeあげてOK」 (the v2 draft approved as delivered; the Drive cuts were renamed without `_draft_`: `Hear3_Ship_2026-10-23.mp4`, `Hear3_Ship_EN-subs_2026-10-23.mp4`).
