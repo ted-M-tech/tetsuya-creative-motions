@@ -1,0 +1,43 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "us-fast": {
+      "text": "I wanna go. I'm gonna try.",
+      "style": "Speak fluent, natural, casual General American English like a native speaker chatting with a friend, quick and relaxed. Say 'wanna' (not 'want to') and 'gonna' (not 'going to') fully reduced, as everyday native speech: I-wanna-go, I'm-gonna-try. Fast native speed, a short natural breath between the two sentences, friendly and upbeat. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "41d7aba22a4ae64122ce029025399b633863b14fac0ae21f4458e12d94ff73b2",
+      "at": "2026-10-24T00:19:53+00:00"
+    },
+    "us-want-to": {
+      "text": "Want to.",
+      "style": "Speak General American English slowly and very clearly, as a careful teacher saying two separate words for a learner: 'want' then 'to', with a clear t at the end of 'want' and a clear 'to' (too). Slow, deliberate, calm. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "0dc374949fdc4a8609f83afffcbfc200bcd49546501a176f947865f285715431",
+      "at": "2026-10-24T00:19:55+00:00"
+    },
+    "us-wanna": {
+      "text": "Wanna.",
+      "style": "Speak fluent, natural General American English like a native speaker, saying the casual reduced word 'wanna' (wah-nuh) as one short word at normal native speed, relaxed and friendly. No t sound. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "961b59af1d1edc5ec902bbd6a044c880544f90dcca07db8e6a1fe314d3e32f40",
+      "at": "2026-10-24T00:19:57+00:00"
+    },
+    "us-going-to": {
+      "text": "Going to.",
+      "style": "Speak General American English slowly and very clearly, as a careful teacher saying two separate words for a learner: 'going' then 'to', with a clear 'to' (too). Slow, deliberate, calm. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "2ebd7d9a54e38d7d807c3daaf0f1330520c83656759d07908b514db8ad0e7321",
+      "at": "2026-10-24T00:19:59+00:00"
+    },
+    "us-gonna": {
+      "text": "Gonna.",
+      "style": "Speak fluent, natural General American English like a native speaker, saying the casual reduced word 'gonna' (guh-nuh) as one short word at normal native speed, relaxed and friendly. No t sound. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "79f4052d1c3acfc8a56a083646b4871210f226ca41bda01949872234d121ebfd",
+      "at": "2026-10-24T00:20:01+00:00"
+    },
+    "us-im-gonna-try": {
+      "text": "I'm gonna try!",
+      "style": "Speak fluent, natural, casual General American English, cheerful and proud, like a learner who just got it. Say 'gonna' fully reduced (I'm-gonna-try), one smooth phrase at natural native speed. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9491843d3fb73105ad202e8d81096490aadb0951cd269d3578b017745a808e9c",
+      "at": "2026-10-24T00:20:03+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

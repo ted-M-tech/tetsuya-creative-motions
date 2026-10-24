@@ -1,0 +1,14 @@
+{
+ "lines": [
+  {
+   "id": "learner-katakana",
+   "text": "Bitamin.",
+   "style": "Say this one word as a Japanese person reading the katakana word ビタミン aloud at a pharmacy counter, cheerful and confident. Pronounce it exactly as written in Japanese: four short, even beats bi-ta-mi-n, starting with a Japanese B made with both lips closed (never a V), a clear Japanese i vowel in bi and mi, a short clear a in ta, and a final Japanese moraic n. Flat, level Japanese pitch with no English stress: the first beat is not louder or longer than the others. Steady, about one second. Natural, not a caricature."
+  },
+  {
+   "id": "us-vitamin",
+   "text": "Vitamin.",
+   "style": "Speak fluent, natural General American English like a native speaker, clearly and warmly, as a model for a learner, saying the word on its own. Three syllables, VAI-ta-min. It must begin with a clear, soft, continuous voiced V: the upper front teeth rest lightly on the lower lip and the voice buzzes through the gap for a short moment, a smooth 'vvv' that glides into the vowel; the two lips never touch, so there is no B and no pop. The first syllable 'VAI' (rhymes with 'eye') is strongly stressed: clearly louder, longer and higher in pitch than the rest. Then a short, light, reduced 'ta' (a soft flapped t) and a short, clear 'min' ending in n. Smooth, steady voice with no creak; falling at the end like a confident statement. Native rhythm, not slowed down."
+  }
+ ]
+}

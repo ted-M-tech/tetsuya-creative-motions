@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "friend-i-will-receive": {
+      "text": "I will receive!",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: slightly katakana-like vowels, flat syllable-by-syllable timing, every syllable equally stressed. Say it brightly and happily, hands together at the dinner table just before eating, meaning it as the Japanese 'itadakimasu'. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "2a2ba5e5a1fdfec1e54e2800363359e4368687a3b350e68b2af5b65f290d098e",
+      "at": "2026-10-23T22:58:52+00:00"
+    },
+    "lets-eat": {
+      "text": "Let's eat!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "c8c630da68f78b700d9e128a1da936335faf9086bd0d6fadb1816b0e35bd9c44",
+      "at": "2026-10-23T22:58:55+00:00"
+    },
+    "this-looks-great": {
+      "text": "This looks great!",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "997bd235a9cdf65bc3731a3fcb4c42b28838b2ca1a33e5137ec11cfbe80cc083",
+      "at": "2026-10-23T22:58:57+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

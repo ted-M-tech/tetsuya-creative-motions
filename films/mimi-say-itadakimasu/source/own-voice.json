@@ -1,0 +1,12 @@
+{
+ "lines": [
+  {
+   "id": "friend-i-will-receive",
+   "text": "I will receive!",
+   "accent": "learner",
+   "style": "Speak English as a Japanese beginner who learned it from textbooks: slightly katakana-like vowels, flat syllable-by-syllable timing, every syllable equally stressed. Say it brightly and happily, hands together at the dinner table just before eating, meaning it as the Japanese 'itadakimasu'. Natural, not a caricature."
+  },
+  {"id": "lets-eat", "text": "Let's eat!", "accent": "us"},
+  {"id": "this-looks-great", "text": "This looks great!", "accent": "us"}
+ ]
+}

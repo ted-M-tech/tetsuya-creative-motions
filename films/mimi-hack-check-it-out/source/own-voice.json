@@ -1,0 +1,19 @@
+{
+ "lines": [
+  {
+   "id": "learner-robot",
+   "text": "Check. It. Out.",
+   "style": "Speak English as a Japanese beginner reading a textbook word by word, like a stiff robot. Say the three words 'Check', 'It', 'Out' as three separate, isolated words with a full stop after each: a clear silent pause of about half a second between the words, no linking at all, flat equal pitch on every word, each word clipped and complete on its own. Light Japanese accent. Natural, not a caricature."
+  },
+  {
+   "id": "us-check-it-out",
+   "text": "Check it out!",
+   "style": "Speak fluent, natural General American English like a native speaker, friendly and upbeat, as a model for a learner. Say the phrase as one smooth unit with no pause between the words: the final k of 'check' flows straight into 'it', and the t of 'it' flows straight into 'out' (che-ki-tout). Stress on 'out'. Native speed, not slowed down."
+  },
+  {
+   "id": "us-pick-it-up",
+   "text": "Pick it up!",
+   "style": "Speak fluent, natural General American English like a native speaker, friendly and upbeat, as a model for a learner. Say the phrase as one smooth unit with no pause between the words: the final k of 'pick' flows straight into 'it', and the t of 'it' flows straight into 'up' (pi-ki-tup). Stress on 'up'. Native speed, not slowed down."
+  }
+ ]
+}

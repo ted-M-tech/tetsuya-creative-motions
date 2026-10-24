@@ -1,0 +1,7 @@
+Per-film brief from the batch commander (2026-10-23), verbatim:
+
+- Film id: mimi-hear-ship. Notion ID 078, page https://app.notion.com/p/402b82f03a848117a51dff875ac143a1 (read it). Drive folder "078. Can You Hear It 3 - Ship or Sheep", Prefix Hear3_Ship.
+- Series template: films/mimi-hear-can (ep1) and films/mimi-hear-excuse (ep2) on origin/main — copy source/, keep beat ids and its -14 LUFS post-gain step.
+- Point: ship /ɪ/ short and relaxed vs sheep /iː/ long and tense (lips spread).
+- Story (~16 s): hook 「ship？sheep？聞き分けて」 with A/B cards. Own-voice us plays "I saw a ship." / "I saw a sheep." in random order with a 3-2-1 countdown. Reveal; the Friend guessed wrong. Rule card 「ship＝短くゆるむ / sheep＝長く、口を横に引く」, both again. Ask 「A？B？コメントで！」, end card + tap. Cast: Mimi + Friend only.
+- Verify vowel duration and F1/F2 difference acoustically. Report in Japanese with zone-overlay and contact sheet paths.

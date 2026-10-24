@@ -1,0 +1,3 @@
+{"run":1,"status":200,"at":"2026-10-23T22:56:08.577Z","body":{"candidates":[{"term":"Let's eat!","meaning":"いただきます（食事を始めるときのあいさつ）"}]}}
+{"run":2,"status":200,"at":"2026-10-23T22:56:12.582Z","body":{"candidates":[{"term":"Let's eat.","meaning":"いただきます（食事を始める時の合図）"}]}}
+{"run":3,"status":200,"at":"2026-10-23T22:56:16.466Z","body":{"candidates":[{"term":"Let's eat.","meaning":"いただきます（食事を始めるときの表現）"}]}}

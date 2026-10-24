@@ -1,0 +1,30 @@
+{
+ "_": "Pronunciation Hacks cue sheet (seconds on the film clock); scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip, tip, model, fix, cta, end. Takes are placed with (at, start, length): `start`/`length` cut each take at measured silence.",
+ "HOOK_V": 0.2,
+ "SLIP": 2.0,
+ "LV": 2.1,
+ "ROBOT": 4.5,
+ "TIP": 5.1,
+ "ARC1": 5.45,
+ "ARC2": 5.75,
+ "M1": 6.1,
+ "MODEL": 7.3,
+ "ARC3": 7.5,
+ "ARC4": 7.7,
+ "M2": 7.95,
+ "FIX": 9.0,
+ "FV": 9.2,
+ "HIGH": 10.4,
+ "CTA": 11.8,
+ "E": 13.6,
+ "TAP": 14.2,
+ "END": 15.2,
+ "TAKES": {
+  "learner-robot.wav": [0.28, 2.82],
+  "us-check-it-out.wav": [0.14, 1.02],
+  "us-pick-it-up.wav": [0.20, 0.72]
+ },
+ "LEARNER_WORDS": [0.04, 1.26, 2.32],
+ "CHECK_WORDS": [0.06, 0.24, 0.43],
+ "PICK_WORDS": [0.04, 0.22, 0.30]
+}
