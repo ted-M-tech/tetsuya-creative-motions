@@ -1,0 +1,35 @@
+{
+ "_": "Katakana Traps 4 (Vitamin) cue sheet (seconds on the film clock); scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip, explain, model, cta, end. *_BEATS = measured syllable nuclei, seconds from the take start; *_CUT = [start, length] of the placed segment inside the take.",
+ "SLIP": 1.3,
+ "SORRY": 2.6,
+ "SHRINK": 3.2,
+ "EXPLAIN": 4.6,
+ "EL": 5.0,
+ "EM1": 6.6,
+ "EM2": 7.9,
+ "MODEL": 9.4,
+ "OK": 10.6,
+ "CTA": 12.0,
+ "E": 14.2,
+ "TAP": 14.8,
+ "END": 15.5,
+ "LEARNER_BEATS": [
+  0.4,
+  0.56,
+  0.67,
+  0.8
+ ],
+ "MODEL_BEATS": [
+  0.43,
+  0.555,
+  0.7
+ ],
+ "LEARNER_CUT": [
+  0.2,
+  0.8
+ ],
+ "MODEL_CUT": [
+  0.2,
+  0.75
+ ]
+}

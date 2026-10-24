@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-robot": {
+      "text": "Check. It. Out.",
+      "style": "Speak English as a Japanese beginner reading a textbook word by word, like a stiff robot. Say the three words 'Check', 'It', 'Out' as three separate, isolated words with a full stop after each: a clear silent pause of about half a second between the words, no linking at all, flat equal pitch on every word, each word clipped and complete on its own. Light Japanese accent. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9f34ea6519e908f4c62fd4fac509b0c23c070258b752de5b7fbc0100b200f228",
+      "at": "2026-10-23T22:56:22+00:00"
+    },
+    "us-check-it-out": {
+      "text": "Check it out!",
+      "style": "Speak fluent, natural General American English like a native speaker, friendly and upbeat, as a model for a learner. Say the phrase as one smooth unit with no pause between the words: the final k of 'check' flows straight into 'it', and the t of 'it' flows straight into 'out' (che-ki-tout). Stress on 'out'. Native speed, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "523ec66af186a22edb37f12f205c2590826518e67e79884b66d7bfafe2f72f12",
+      "at": "2026-10-23T22:56:24+00:00"
+    },
+    "us-pick-it-up": {
+      "text": "Pick it up!",
+      "style": "Speak fluent, natural General American English like a native speaker, friendly and upbeat, as a model for a learner. Say the phrase as one smooth unit with no pause between the words: the final k of 'pick' flows straight into 'it', and the t of 'it' flows straight into 'up' (pi-ki-tup). Stress on 'up'. Native speed, not slowed down. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "a297886d539906e54c945bbeafbd65975d74a2bb2cee7fcf1fecd2bcb9737ddb",
+      "at": "2026-10-23T22:56:26+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
