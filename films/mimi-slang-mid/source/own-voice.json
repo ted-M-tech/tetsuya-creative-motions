@@ -1,0 +1,8 @@
+{"lines": [
+  {"id": "verdict", "text": "It's... mid.",
+   "style": "Speak fluent, casual General American English to a friend after tasting their cooking: flat, unimpressed, deadpan, a short hesitant pause after \"It's...\", then \"mid\" said plainly with falling intonation. About one and a half seconds."},
+  {"id": "thanks", "text": "Mid? Thanks!",
+   "style": "Speak English as a happy, proud friend who thinks he was just complimented on his cooking: \"Mid?\" with a bright rising tone, then a delighted, cheerful \"Thanks!\". About one and a half seconds."},
+  {"id": "mid", "text": "Mid.",
+   "style": "Speak fluent, natural General American English, clear and friendly, like saying a new slang word for a learner: one word, falling intonation. About one second."}
+]}

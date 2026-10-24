@@ -1,0 +1,13 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "verdict": {
+      "text": "It's... mid.",
+      "style": "Speak fluent, casual General American English to a friend after tasting their cooking: flat, unimpressed, deadpan, a short hesitant pause after \"It's...\", then \"mid\" said plainly with falling intonation. About one and a half seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "764eeb8b9ab08eef0e3ea82a3eaae6632f76871f3d4b4223be9a4c433b4f1afa",
+      "at": "2026-10-24T00:28:14+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
