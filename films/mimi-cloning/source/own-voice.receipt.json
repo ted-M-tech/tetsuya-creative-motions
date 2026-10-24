@@ -16,37 +16,35 @@
       "at": "2026-10-21T21:46:15+00:00",
       "reusedFrom": "mimi-no-shadowing"
     },
-    "take-us": {
-      "text": "I can't park the car by the water.",
-      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
-      "wavSha256": "764af2bbfe951c66a8012aef26d8ec99cea26f9f30569b3a434df51e8cd9c23d",
-      "at": "2026-10-21T21:45:47+00:00",
-      "reusedFrom": "mimi-us-uk"
-    },
-    "take-uk": {
-      "text": "I can't park the car by the water.",
-      "style": "Speak fluent, clearly British English (Southern Standard British / RP), so a listener instantly hears it is British, not American. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Non-rhotic: drop the r after vowels (\"car\", \"water\"). Crisp, unflapped t (\"better\", \"water\" with a clear t). Long broad a in \"can't\", \"bath\", \"ask\". Rounded short o in \"hot\", \"lot\". British intonation with a gentle rise and fall. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
-      "wavSha256": "3066611f9549c2c0868be1abcc7ddb04de95a114856ec3c90415199c4812bb60",
-      "at": "2026-10-21T21:45:44+00:00",
-      "reusedFrom": "mimi-us-uk"
-    },
     "low": {
-      "text": "Please leave the light on.",
-      "style": "Speak fluent General American English in a very deep, low, booming bass voice, like a movie-trailer narrator: heavy and resonant, the pitch as low as possible. Native vowels, accurate stress, smooth linking. Not slow: the whole line in about one and a half seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
-      "wavSha256": "2c518d90f8cd2a27b27db9955e5ff71972e07831c76dd0b4bb970c496a4d3ec0",
-      "at": "2026-10-23T22:37:14+00:00"
+      "text": "Leave the light on.",
+      "style": "Speak fluent General American English in a very deep, low, booming bass voice, like a movie-trailer narrator: heavy and resonant, the pitch as low as possible. Native vowels, accurate stress, smooth linking. Quick: the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f08451cd5346e7b49342c5742c8aa3deced56cf55374d2902b281029e24ad4cc",
+      "at": "2026-10-23T23:04:02+00:00"
     },
     "high": {
-      "text": "Please leave the light on.",
-      "style": "Speak fluent General American English in a very high, bright, squeaky voice, like an excited cartoon character: the pitch as high as possible, light and quick. Native vowels, accurate stress, smooth linking. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
-      "wavSha256": "69712008aa2180f3a07bbf8d4301243d66dc05933386379829d13b1c5cf22091",
-      "at": "2026-10-23T22:34:17+00:00"
+      "text": "Leave the light on.",
+      "style": "Speak fluent General American English in a very high, bright, squeaky voice, like an excited cartoon character: the pitch as high as possible, light and quick. Native vowels, accurate stress, smooth linking. Quick: the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d6a1cfcc41f359afd141d4c225374935ddb85d39fdf076e36f72a723be34179c",
+      "at": "2026-10-23T23:04:05+00:00"
     },
     "fast": {
       "text": "What do you want to do about it?",
       "style": "Speak fluent, casual General American English very fast, like a native talking to a friend: heavy linking and reductions (\"whaddaya wanna do aboudit\"), stress-timed rhythm, flapped t, no pauses, the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
       "wavSha256": "d383e343f1f223a5de34f07bd70973e9edb9b60eee05af2313d636a82f4244ca",
       "at": "2026-10-23T22:34:19+00:00"
+    },
+    "us-short": {
+      "text": "I can't park the car.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "637b22f4fb4c7e8ce4d260f0925c758e2a9dc7c1a58467627166926391af7536",
+      "at": "2026-10-23T23:04:07+00:00"
+    },
+    "uk-short": {
+      "text": "I can't park the car.",
+      "style": "Speak fluent, clearly British English (Southern Standard British / RP), so a listener instantly hears it is British, not American. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Non-rhotic: drop the r after vowels (\"car\", \"water\"). Crisp, unflapped t (\"better\", \"water\" with a clear t). Long broad a in \"can't\", \"bath\", \"ask\". Rounded short o in \"hot\", \"lot\". British intonation with a gentle rise and fall. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "e076b657a0f01b92debd394aaaa20dcd976a5ffac184e2e0d687506979fb9a67",
+      "at": "2026-10-23T23:04:09+00:00"
     }
   },
   "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"

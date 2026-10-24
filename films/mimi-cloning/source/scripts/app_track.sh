@@ -1,5 +1,5 @@
 #!/bin/sh
-# The app track on the film's clock (31.3-35.6).
+# The app track on the film's clock (28.3-32.6).
 # Source (not in Git): a fresh take with app-capture/ModelWalkthrough.swift (2026-10-23, QA fixture, app origin/main 9ef0df1b),
 # kept in Drive 067/Cloning_assets/sim-daily-model_fixture.mov -> renders/app/daily.mov; resampled to 60 fps: renders/app/daily-60.mp4.
 # Measured on it: the daily lesson "Please leave the light on." is on screen from 27.0 (home before it, not used).
