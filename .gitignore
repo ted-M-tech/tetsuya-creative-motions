@@ -324,3 +324,15 @@ films/mimi-slang-no-cap/**/*.mp3
 films/mimi-slang-no-cap/**/*.m4a
 films/mimi-slang-no-cap/**/*.mov
 films/mimi-slang-no-cap/**/*.mp4
+# 069 mimi-slang-hangry: edit assets (own-voice mix), simulator takes, renders and any media stay out of Git
+films/mimi-slang-hangry/source/hf/assets/
+films/mimi-slang-hangry/source/hf/.hyperframes/
+films/mimi-slang-hangry/source/hf/.thumbnails/
+films/mimi-slang-hangry/source/renders/
+films/mimi-slang-hangry/source/assets/
+films/mimi-slang-hangry/renders/
+films/mimi-slang-hangry/**/*.wav
+films/mimi-slang-hangry/**/*.mp3
+films/mimi-slang-hangry/**/*.m4a
+films/mimi-slang-hangry/**/*.mov
+films/mimi-slang-hangry/**/*.mp4

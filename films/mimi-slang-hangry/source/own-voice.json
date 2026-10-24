@@ -1,0 +1,8 @@
+{"lines": [
+  {"id": "youre", "text": "You're hangry!",
+   "style": "Speak fluent, casual General American English to a grumpy friend, playfully diagnosing him with a knowing grin in the voice: stress on \"hang\" in \"hangry\", bright and punchy, falling at the end. About one second."},
+  {"id": "example", "text": "I'm getting hangry; let's find lunch.",
+   "style": "Speak fluent, casual General American English as a hungry, grumpy friend who is a little whiny and impatient: a short beat after \"hangry\", stress on \"hang\" and \"lunch\". Quick and natural, about two seconds."},
+  {"id": "term", "text": "Hangry.",
+   "style": "Speak fluent, natural General American English, clear and friendly, like saying a new slang word for a learner: one word, stress on the first syllable \"hang\", falling intonation. About one second."}
+]}

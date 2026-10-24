@@ -1,0 +1,19 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "youre": {
+      "text": "You're hangry!",
+      "style": "Speak fluent, casual General American English to a grumpy friend, playfully diagnosing him with a knowing grin in the voice: stress on \"hang\" in \"hangry\", bright and punchy, falling at the end. About one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "2c44c614ba296421cf3191ea94a2fbe5d96bbb4896b7a62fc102255d24bc1f3d",
+      "at": "2026-10-24T00:25:39+00:00"
+    },
+    "example": {
+      "text": "I'm getting hangry; let's find lunch.",
+      "style": "Speak fluent, casual General American English as a hungry, grumpy friend who is a little whiny and impatient: a short beat after \"hangry\", stress on \"hang\" and \"lunch\". Quick and natural, about two seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d7e9e14bfd0906daa8cd96176b17452fc62c2c2b123687e7042bfffd9c7b3d95",
+      "at": "2026-10-24T00:28:15+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

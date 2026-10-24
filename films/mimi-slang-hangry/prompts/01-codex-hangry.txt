@@ -1,0 +1,10 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi (white bunny, blue inner ears, dot eyes, pink cheeks, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT); sheet.webp and aww.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears,
+dark-grey tip on the ear at the viewer's RIGHT, soft orange patch around the eye at the viewer's RIGHT, navy-and-blue
+headphones with a white "L" on the cup at the viewer's LEFT).
+Match the character EXACTLY (shapes, markings, colours, headphones, proportions, outline weight). Plain pure white
+background, full body, centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L" on the headphones.
+Every fill must be opaque (the body is solid white with navy outlines, nothing see-through).
+Make two separate images and save each as PNG in the current directory:
+1. art/friend-hangry.png — the Friend alone, standing, grumpy and hungry before lunch: both mitten paws hold an OPEN, completely EMPTY bento lunch box (soft orange box, cream inside, nothing in it, the lid not shown) tilted toward the viewer so we see it is empty; frowning flat eyes with angled brows, a pouting wavy mouth, a navy anger mark (four-curve cross vein symbol) floating by the head, two small grey steam puffs from the head, and a small navy wavy "growl" squiggle near the tummy. Body turned three-quarter toward the viewer's RIGHT.
+2. art/friend-lunch.png — the Friend alone, standing, happy again after food: holding one rice ball (white triangle with a dark nori strip) up in one mitten paw, the other paw on the tummy, eyes happily closed (upturned arcs), big open smile, pink cheeks, two small sparkles. Body turned three-quarter toward the viewer's RIGHT.

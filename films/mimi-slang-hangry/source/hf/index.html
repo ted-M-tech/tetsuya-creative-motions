@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <!-- 069 Real Slang 2「お腹すいてイライラ＝？」 (hangry). Built from films/mimi-slang-no-cap (series template): same beat ids hook, gag, meaning,
+         app, cta, end and the same look; card rows quoted from the deck; all rows in within 0.55 s. Times = scripts/mix.py. -->
+    <style>
+      #root { background: #eef3f9; overflow: hidden; }
+      .pose { position: absolute; height: auto; transform-origin: 50% 100%; }
+      #floor { position: absolute; left: -100px; right: -100px; top: 1400px; height: 620px; background: #e2ebf4; border-radius: 50% 50% 0 0 / 60px 60px 0 0; }
+      /* Hook title: on screen from the first frame */
+      #hook { position: absolute; left: 30px; right: 30px; top: 190px; text-align: center; }
+      #hook span { display: inline-block; background: #ffffff; color: #273b4b; font-size: 74px; font-weight: 700; line-height: 1.3; white-space: nowrap;
+                   padding: 22px 52px; border-radius: 40px; box-shadow: 0 14px 40px rgba(39, 59, 75, 0.14); }
+      #hook em { font-style: normal; color: #e5484d; }
+      /* the gag: the tummy growls */
+      #growl { position: absolute; left: 70px; top: 1290px; font-size: 64px; font-weight: 800; color: #344f69; }
+      /* the two bunnies: Friend on the left, Mimi on the right */
+      #f-hangry { left: 10px; top: 880px; width: 500px; }
+      #m-tilt { left: 500px; top: 920px; width: 420px; }
+      #m-point-big { left: 470px; top: 900px; width: 450px; }
+      #m-tease { left: 500px; top: 930px; width: 420px; }
+      .bubble.en { font-family: inherit; font-size: 56px; }
+      #b-youre { top: 640px; }
+      #b-example { top: 600px; }
+      /* meaning: the deck card */
+      #meaning { position: absolute; left: 50px; right: 200px; top: 300px; background: #ffffff; border-radius: 48px; padding: 36px 44px 34px;
+                 box-shadow: 0 20px 50px rgba(39, 59, 75, 0.16); color: #273b4b; box-sizing: border-box; }
+      #meaning .row { margin-bottom: 22px; }
+      #meaning .term { font-size: 84px; font-weight: 800; line-height: 1.1; }
+      #meaning .term small { font-size: 40px; font-weight: 700; color: #5b7f9f; margin-left: 14px; vertical-align: middle; }
+      #meaning .gloss { font-size: 64px; font-weight: 700; color: #2a8dff; margin-top: 8px; }
+      #meaning .blend { font-size: 44px; font-weight: 700; color: #5b7f9f; margin-bottom: 4px; }
+      #meaning .blend b { color: #2a8dff; } #meaning .blend i { font-style: normal; color: #e5484d; font-weight: 700; }
+      #meaning .ex { font-size: 40px; line-height: 1.35; background: #eef2f5; border-radius: 26px; padding: 20px 26px; margin-top: 18px; }
+      #meaning .ex b { display: block; font-weight: 700; }
+      #meaning .ex span { display: block; color: #5b7f9f; font-size: 38px; margin-top: 6px; }
+      #m-point { left: 40px; top: 1185px; width: 160px; }
+      #f-amazed { left: 680px; top: 1180px; width: 175px; }
+      /* The phone */
+      #device { position: absolute; left: 255px; top: 440px; width: 570px; height: 1240px; border-radius: 82px; background: #1d2733; padding: 15px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); transform-origin: 50% 50%; box-sizing: border-box; }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 68px; overflow: hidden; background: #f2f2f7; }
+      #zp { position: absolute; inset: 0; transform-origin: 50% 70%; }
+      #zp video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .mask { position: absolute; background: #ffffff; }
+      .tap { position: absolute; width: 80px; height: 80px; margin: -40px 0 0 -40px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      #label { position: absolute; left: 60px; right: 200px; top: 345px; display: flex; justify-content: center; }
+      #label span { display: block; background: #344f69; color: #ffffff; font-size: 50px; white-space: nowrap; font-weight: 700; padding: 18px 40px; border-radius: 44px; }
+      #m-mini { left: 20px; top: 1220px; width: 240px; }
+      /* cta */
+      #f-lunch { left: 30px; top: 870px; width: 480px; }
+      #m-jump { left: 520px; top: 860px; width: 450px; }
+      /* English subtitles: one line under everything, above the bottom safe zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 60px; right: 200px; bottom: 430px; display: flex; justify-content: center; }
+      .sub span { display: block; max-width: 820px; box-sizing: border-box; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 38px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.8" data-width="1080" data-height="1920">
+      <div id="floor"></div>
+
+      <!-- hook 0-3.0: the Friend, grumpy with an empty bento; Mimi: "You're hangry!" -->
+      <img id="f-hangry" class="pose clip" src="assets/art/friend-hangry.webp" alt="" data-start="0" data-duration="5.9" data-track-index="2" />
+      <img id="m-tilt" class="pose clip" src="assets/art/tilt.webp" alt="" data-start="0" data-duration="1.1" data-track-index="3" />
+      <img id="m-point-big" class="pose clip" src="assets/art/point.webp" alt="" data-start="1.1" data-duration="1.9" data-track-index="3" />
+      <div id="b-youre" class="bubble from-right en clip" data-start="1.15" data-duration="1.85" data-track-index="4">You’re <b style="color:#e5484d">hangry!</b></div>
+      <div id="growl" class="clip" data-start="0" data-duration="3.0" data-track-index="6">ぐぅ〜</div>
+
+      <!-- gag 3.0-5.9: the Friend admits it with the deck example -->
+      <img id="m-tease" class="pose clip" src="assets/art/tease.webp" alt="" data-start="3.0" data-duration="2.9" data-track-index="3" />
+      <div id="b-example" class="bubble from-left en clip" data-start="3.1" data-duration="2.8" data-track-index="5">I’m getting <b style="color:#e5484d">hangry</b>;<br />let’s find lunch.</div>
+
+      <!-- meaning 5.9-10.1: the deck card, wording from packages/core/decks/source/slang-casual/06.json; every row is in by 6.45 -->
+      <div id="meaning" class="clip" data-start="5.9" data-duration="4.2" data-track-index="7">
+        <div class="row" id="r0"><div class="blend"><b>hungry</b> ＋ <i>angry</i></div></div>
+        <div class="row" id="r1"><div class="term">hangry</div><div class="gloss">＝ 空腹でいらいらした</div></div>
+        <div class="row" id="r2"><div class="ex" id="ex1"><b>I’m getting hangry; let’s find lunch.</b><span>空腹でいらいらしてきた。昼食の店を探そう。</span></div></div>
+        <div class="row" id="r3"><div class="ex" id="ex2"><b>A snack helped my hangry mood.</b><span>軽食で空腹によるいらいらが和らいだ。</span></div></div>
+      </div>
+      <img id="m-point" class="pose clip" src="assets/art/point.webp" alt="" data-start="5.9" data-duration="4.2" data-track-index="8" />
+      <img id="f-amazed" class="pose clip" src="assets/art/friend-amazed.webp" alt="" data-start="7.4" data-duration="2.7" data-track-index="9" />
+
+      <!-- app 10.1-14.5: My Notes → 単語帳 → スラング・カジュアル → ユニット6 → "hangry" → save -->
+      <div id="stage">
+        <div id="device">
+          <div id="screen">
+            <div id="zp">
+              <video id="a-list" class="clip" src="assets/app/list.mp4" muted playsinline data-start="10.1" data-duration="1.0" data-track-index="10"></video>
+              <video id="a-units" class="clip" src="assets/app/units.mp4" muted playsinline data-start="11.1" data-duration="0.9" data-track-index="11"></video>
+              <video id="a-unit" class="clip" src="assets/app/unit.mp4" muted playsinline data-start="12.0" data-duration="0.4" data-track-index="12"></video>
+              <video id="a-scroll" class="clip" src="assets/app/scroll.mp4" muted playsinline data-start="12.4" data-duration="0.6" data-track-index="13"></video>
+              <video id="a-card" class="clip" src="assets/app/card.mp4" muted playsinline data-start="13.0" data-duration="0.5" data-track-index="14"></video>
+              <video id="a-saved" class="clip" src="assets/app/saved.mp4" muted playsinline data-start="13.5" data-duration="1.0" data-track-index="15"></video>
+              <!-- deck and unit sizes are not shown: the 「…語・保存済み…」 lines are masked -->
+              <div id="mask-list" class="clip" data-start="10.1" data-duration="1.0" data-track-index="16">
+                <div class="mask" style="left:8.5%; width:50%; top:30.1%; height:2.3%"></div>
+                <div class="mask" style="left:8.5%; width:50%; top:40.7%; height:2.3%"></div>
+                <div class="mask" style="left:8.5%; width:50%; top:51.3%; height:2.3%"></div>
+                <div class="mask" style="left:8.5%; width:50%; top:61.9%; height:2.3%"></div>
+                <div class="mask" style="left:8.5%; width:50%; top:72.5%; height:2.3%"></div>
+                <div class="mask" style="left:8.5%; width:50%; top:83.1%; height:2.3%"></div>
+              </div>
+              <div id="mask-units" class="clip" data-start="11.1" data-duration="0.9" data-track-index="16">
+                <div class="mask" style="left:17.5%; width:52%; top:25.7%; height:2.3%"></div>
+                <div class="mask" style="left:17.5%; width:52%; top:38.8%; height:2.3%"></div>
+                <div class="mask" style="left:17.5%; width:52%; top:51.8%; height:2.3%"></div>
+                <div class="mask" style="left:17.5%; width:52%; top:65.0%; height:2.3%"></div>
+                <div class="mask" style="left:17.5%; width:52%; top:78.0%; height:2.3%"></div>
+                <!-- unit 6's count line shows through the glass tab bar: a clean tab bar from the deck list on top -->
+                <img src="assets/app/tabbar.png" alt="" style="position:absolute; left:5.307%; top:90.54%; width:89.39%; height:6.94%; border-radius:41px" />
+              </div>
+              <div id="t1" class="tap clip" style="left:40%; top:82.5%" data-start="10.95" data-duration="0.3" data-track-index="17"></div>
+              <div id="t2" class="tap clip" style="left:45%; top:89%" data-start="11.9" data-duration="0.3" data-track-index="17"></div>
+              <div id="t3" class="tap clip" style="left:83.4%; top:25.8%" data-start="13.45" data-duration="0.3" data-track-index="17"></div>
+            </div>
+          </div>
+        </div>
+        <div id="label" class="clip" data-start="13.0" data-duration="1.5" data-track-index="18"><span>hangry ＝ 空腹でいらいらした</span></div>
+        <img id="m-mini" class="pose clip" src="assets/art/point.webp" alt="" data-start="13.5" data-duration="1.0" data-track-index="19" />
+      </div>
+
+      <!-- cta 14.5-16.3 -->
+      <img id="f-lunch" class="pose clip" src="assets/art/friend-lunch.webp" alt="" data-start="14.5" data-duration="1.8" data-track-index="2" />
+      <img id="m-jump" class="pose clip" src="assets/art/jump.webp" alt="" data-start="14.5" data-duration="1.8" data-track-index="3" />
+
+      <!-- Hook title on top of everything for the first 3.0 s -->
+      <div id="hook" class="clip" data-start="0" data-duration="3.0" data-track-index="20"><span>お腹すいて<em>イライラ</em>＝？</span></div>
+
+      <!-- Captions (one track) -->
+      <div class="caption small clip" data-start="3.0" data-duration="2.9" data-track-index="21"><span id="c1">空腹でいらいらしてきた。<br />昼食の店を探そう。</span></div>
+      <div class="caption small clip" data-start="10.1" data-duration="2.3" data-track-index="21"><span id="c2">マイノートの<strong>単語帳</strong>に<br />スラング・カジュアル</span></div>
+      <div class="caption small clip" data-start="12.4" data-duration="2.1" data-track-index="21"><span id="c3">カードを<strong>保存！</strong></span></div>
+      <div class="caption clip" data-start="14.5" data-duration="1.8" data-track-index="21"><span id="c4">次のスラングは？<br /><strong>コメントで</strong></span></div>
+
+      <div id="end" class="end clip" data-start="16.3" data-duration="1.5" data-track-index="22"></div>
+
+      <!-- English subtitles (one track); the meaning is the deck's English gloss -->
+      <div class="sub clip" data-start="0.0" data-duration="3.0" data-track-index="24"><span>Hungry and irritated = ?</span></div>
+      <div class="sub clip" data-start="5.9" data-duration="4.2" data-track-index="24"><span>hangry: irritable because you are hungry</span></div>
+      <div class="sub clip" data-start="10.1" data-duration="2.3" data-track-index="24"><span>My Notes → Word decks → Slang &amp; casual</span></div>
+      <div class="sub clip" data-start="12.4" data-duration="2.1" data-track-index="24"><span>Save the card!</span></div>
+      <div class="sub clip" data-start="14.5" data-duration="1.8" data-track-index="24"><span>Which slang next? Tell us in the comments</span></div>
+      <div class="sub clip" style="top:230px; bottom:auto" data-start="16.3" data-duration="1.5" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="17.8" data-track-index="30" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+
+      // hook (0-3.0): the Friend fumes over the empty bento, the tummy growls; Mimi points: "You're hangry!"
+      tl.fromTo("#f-hangry", { rotation: -2 }, { rotation: 2, duration: 0.12, yoyo: true, repeat: 23, ease: "sine.inOut" }, 0);
+      tl.fromTo("#growl", { x: 0, scale: 1 }, { x: 10, scale: 1.12, duration: 0.15, yoyo: true, repeat: 9, ease: "sine.inOut" }, 0);
+      tl.fromTo("#hook span", { scale: 1 }, { scale: 1.05, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 0.35);
+      tl.fromTo("#m-tilt", { rotation: 0 }, { rotation: -5, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.2);
+      tl.fromTo("#m-point-big", { x: 30, y: 0 }, { x: 0, y: -20, duration: 0.14, ease: "back.out(2)" }, 1.1);
+      k.pop("#b-youre", 1.15);
+
+      // gag (3.0-5.9): the Friend admits it (deck example), Mimi teases
+      tl.fromTo("#m-tease", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 3.0);
+      tl.fromTo("#f-hangry", { y: 0 }, { y: -18, duration: 0.16, yoyo: true, repeat: 5, ease: "power2.out", immediateRender: false }, 3.2);
+      k.pop("#b-example", 3.1);
+      k.pop("#c1", 3.0);
+
+      // meaning (5.9-10.1): every row is in by 6.45 (never half empty); the spoken example lights up
+      tl.fromTo("#meaning", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 5.9);
+      tl.set(["#r1", "#r2", "#r3"], { autoAlpha: 0 }, 0);
+      k.pop("#r0", 5.95);
+      tl.set("#r1", { autoAlpha: 1 }, 6.1); k.pop("#r1", 6.1);
+      tl.set("#r2", { autoAlpha: 1 }, 6.3); k.pop("#r2", 6.3);
+      tl.set("#r3", { autoAlpha: 1 }, 6.45); k.pop("#r3", 6.45);
+      tl.fromTo("#ex1", { boxShadow: "0 0 0 0px #2a8dff" }, { boxShadow: "0 0 0 6px #2a8dff", duration: 0.15 }, 7.4);
+      tl.to("#ex1", { boxShadow: "0 0 0 0px #2a8dff", duration: 0.15 }, 9.9);
+      tl.fromTo("#m-point", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(1.8)" }, 6.0);
+      tl.fromTo("#f-amazed", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 7.4);
+
+      // app (10.1-14.5)
+      tl.set("#stage", { autoAlpha: 0 }, 0); tl.set("#stage", { autoAlpha: 1 }, 10.1); tl.set("#stage", { autoAlpha: 0 }, 14.5);
+      tl.fromTo("#device", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 10.1);
+      k.ripple("#t1", 10.95); k.ripple("#t2", 11.9); k.ripple("#t3", 13.45);
+      tl.fromTo("#device", { scale: 1, y: 0, transformOrigin: "50% 25%" }, { scale: 1.35, y: 120, duration: 0.3, ease: "power2.inOut" }, 13.0);
+      tl.fromTo("#label", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, 13.05);
+      tl.fromTo("#m-mini", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(1.8)" }, 13.5);
+      k.pop("#c2", 10.1); k.pop("#c3", 12.4);
+
+      // cta (14.5-16.3)
+      tl.fromTo(["#f-lunch", "#m-jump"], { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(1.6)" }, 14.5);
+      tl.fromTo("#m-jump", { y: 0 }, { y: -40, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, 14.8);
+      tl.fromTo("#f-lunch", { y: 0 }, { y: -24, duration: 0.2, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, 14.9);
+      k.pop("#c4", 14.5);
+
+      // end (16.3-17.8)
+      k.end(16.3);
+      k.tapCta(16.9);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
