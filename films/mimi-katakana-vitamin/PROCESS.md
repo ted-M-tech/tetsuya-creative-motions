@@ -29,6 +29,10 @@
 6. Series look (commander, 2026-10-23): the card CSS was diffed against episode 1 and the drift removed: the katakana / English row dot and text sizes back to episode 1 (74 px dots and 62 px katakana, the stressed dot 190 px and 104 px “VI”), the tip font 56 px, the English strings in captions and titles back to the kit font (Helvetica only inside the tip, the note and the say bubble, as in episode 1). Colour roles unchanged from the series: red #e5484d for katakana ×, blue #2a8dff for English ○ and the stressed dot, navy #273b4b text, #5b7f9f labels, yellow #ffd84a in the tip. Rows put their label on the left (as the rows in episode 3) to make room for the V panel.
 7. Checked with `hyperframes check` (0 errors) and an overlay contact sheet ([process/00-draft-frames.jpg](process/00-draft-frames.jpg), EN cut every ~1.5 s, zones drawn): hook readable from frame 1; top text from y ≥ 200; EN subtitles inside x 60–880 with the box bottom at y 1490; nothing in the right rail (the “min” of the English row ends at x ≈ 865, the faces of pharmacist Mimi stay left of x 900, the bubbles end at x 890); captions never over faces. Only Mimi and the Friend on screen; no Japanese first person in the text; no fixture text, no counts.
 
+## Commander review (2026-10-23, v2)
+
+- The card, captions and tip spelled the stressed syllable “VI” while the US model says VAI-ta-min: screen and sound disagreed. v2 follows the model: the stressed-dot label 「VAI」, the tip 「VAI-ta-min（VAIを強く）」, the captions 「ビじゃなくて VAI！」 and 「VAIを強く → 通じた！」, the EN subtitles to match (the pronunciations kept on one line), and the note is now 「※英国では VIT-a-min」. No new voice generation; layout, sound and loudness unchanged (both cuts −14.3 LUFS, −2.1 dBTP). Safe-zone sheet redone (“min” ends at x ≈ 870). v1 cuts moved to Drive `old/` with `_v1`.
+
 ## Uncertain / for review
 
 - The V onset of the model is soft (a short frication into the vowel, as natural speech has it); a human listen should confirm it reads as V on earphones.
