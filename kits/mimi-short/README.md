@@ -6,7 +6,8 @@ Shared parts of every Mimi short (15–25 s vertical, 2D official style, HyperFr
 |---|---|
 | `library/` | Synced copy of the Lanclo Mimi 2D library (`design/mimi-2d`: poses, props, plates, lip-sync cache; plus the official art). App-ready `.riv` files live in the library itself (`design/mimi-2d/riv/`). `library/SOURCE` names the commit. Refresh with `scripts/sync-library.sh`; never edit by hand |
 | `cast/` | The fixed cast (Mimi, her Friend, the Android bunny, the side cast Bruno / Pippa / Coco with their Kokoro voices) and the codex-p prompt template for new poses: [cast/README.md](cast/README.md) |
-| `scripts/ownvoice.py` | The owner's registered voice (Gemini TTS) for an episode's English lines from `own-voice.json`; accents `us`, `uk`, `learner`, `native`. Paid per line; the WAVs are biometric and stay out of Git (Drive only), Git keeps `own-voice.receipt.json` |
+| `scripts/ownvoice.py` | The owner's registered voice (Gemini TTS) for an episode's English lines from `own-voice.json`; accents `us`, `uk`, `learner`, `native`. Paid per line; the WAVs are biometric and stay out of Git (Drive only), Git keeps `own-voice.receipt.json`. Uses only the internal tools project `lanclo-internal-tools` through `~/.config/lanclo/gemini-internal.env` (mode 0600, `GEMINI_API_KEY`, `GEMINI_PROJECT_ID=lanclo-internal-tools`); refuses any other project, a symlink or hard link, and a key found in another `~/.config/lanclo/*.env`, and stops at 20 provider calls a run unless `--max-calls` says otherwise. `--dry-run` checks the config and prints the plan without a call |
+| `scripts/internal-gemini-key.mjs` | The same internal-project key and guards for Node scripts (the episodes' `compose_probe.mjs`): `internalGeminiKey()` returns the key or throws, never printing it |
 | `scripts/rig2d.py` | Rive route: the library rig plus `add_pose()` (episode poses by path), `lipsync()` (mouth from any voice clip, cached) and `build_shots()` |
 | `scripts/render_rive.sh` | Rive project → PNG frames → MP4 (60 fps) (Rive route) |
 | `scripts/fetch-bgm.sh` | Copies the theme from Lanclo's private repo (`native-voice-clone` `origin/main:design/sns-bgm/`, `LANCLO_REPO` to override) into `library/bgm/` (ignored by Git; the licence forbids redistribution). Without access, put your own track at `library/bgm/everyone-get-up.mp3` |
@@ -28,6 +29,7 @@ F=films/<id>/source        # start from a similar episode's source/, e.g. films/
 # 1. new poses: codex-p with the cast references (cast/README.md), then
 kits/mimi-short/scripts/cutout.sh $F/art/<pose>.png $F/art/<pose>.webp
 # 2. voices: Kokoro for the side cast ($F/scripts/voices.sh), the owner's voice for the English lines
+python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json --dry-run   # config + planned call count, no call
 python3 kits/mimi-short/scripts/ownvoice.py $F/own-voice.json
 # 3. app take (optional): app-capture/capture.sh, then $F/scripts/app_track.sh
 # 4. sound and edit (the theme BGM: kits/mimi-short/scripts/fetch-bgm.sh, or your own track at library/bgm/everyone-get-up.mp3)

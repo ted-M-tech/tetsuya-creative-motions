@@ -29,7 +29,7 @@ kits/mimi-short/render-cuts.sh $F/hf mimi-say-yoroshiku   # renders/mimi-say-yor
 
 | File | Role |
 |---|---|
-| `scripts/compose_probe.mjs` | Calls Lanclo's real server composer (`vocabularyApi` in `voice-web/cloudflare/vocabulary.ts`, purpose `compose`, study language `en`, meanings `ja`) with the production route's dedicated Gemini key from `~/.config/lanclo/gemini-dedicated.env`; prints only the response |
+| `scripts/compose_probe.mjs` | Calls Lanclo's real server composer (`vocabularyApi` in `voice-web/cloudflare/vocabulary.ts`, purpose `compose`, study language `en`, meanings `ja`) with the internal tools Gemini key (`lanclo-internal-tools`, `~/.config/lanclo/gemini-internal.env` through `kits/mimi-short/scripts/internal-gemini-key.mjs`, which refuses any other project or the production key; `GEMINI_STATELESS_PROJECT: 'dedicated'` only picks the handler's key slot); prints only the response |
 | `app-capture/ComposeWalkthrough.swift` | Walkthrough UI test (Japanese UI, QA fixtures): マイノート › すべて › 追加 › type the input in three chunks › フレーズを作成 › the result › 保存 › the list |
 | `app-capture/compose-result.patch` | Capture-only: the QA composer fixture returns the real answer for this input (plus a 2 s wait so 生成を中止 shows); never committed to the app |
 | `scripts/app_track.sh` | Cuts the take onto the film's clock (typing ×1.3, the generation wait and the save wait skipped) |

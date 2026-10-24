@@ -1,13 +1,11 @@
-// Calls Lanclo's real server compose handler (voice-web/cloudflare/vocabulary.ts, origin/main) with the dedicated Gemini key.
+// Calls Lanclo's real server compose handler (voice-web/cloudflare/vocabulary.ts, origin/main) with the internal tools Gemini key
+// (lanclo-internal-tools, kits/mimi-short/scripts/internal-gemini-key.mjs; GEMINI_STATELESS_PROJECT is routing only).
 // Never prints the key. usage: node compose.mjs <nvc worktree> <input> [runs]
-import {readFileSync} from 'node:fs';
-import {homedir} from 'node:os';
+import {internalGeminiKey} from '../../../../kits/mimi-short/scripts/internal-gemini-key.mjs';
 const [repo, input, runs='1'] = process.argv.slice(2);
-const env = Object.fromEntries(readFileSync(homedir()+'/.config/lanclo/gemini-dedicated.env','utf8').split('\n')
-  .map(l=>l.replace(/^export\s+/,'').trim()).filter(l=>l.includes('=')&&!l.startsWith('#'))
-  .map(l=>{const i=l.indexOf('=');return [l.slice(0,i),l.slice(i+1).replace(/^['"]|['"]$/g,'')]}));
+const key = internalGeminiKey();
 const {vocabularyApi} = await import(repo+'/voice-web/cloudflare/vocabulary.ts');
-const owner = {env:{GEMINI_STATELESS_PROJECT:'dedicated',GEMINI_DEDICATED_API_KEY:env.GEMINI_API_KEY},
+const owner = {env:{GEMINI_STATELESS_PROJECT:'dedicated',GEMINI_DEDICATED_API_KEY:key},
   state:{storage:{get:async()=>undefined},waitUntil:()=>{}}};
 for (let i=0;i<Number(runs);i++){
   const body = JSON.stringify({purpose:'compose',input,language:'en',meaningLocale:'ja',consent:true});

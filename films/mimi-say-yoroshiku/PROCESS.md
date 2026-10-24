@@ -53,3 +53,7 @@ Notion Content Calendar ID 63（Drive「063. How Do You Say It 1 - Yoroshiku One
 
 - 2026-10-23: 「全部OK」 (all twelve shorts of the 055–066 batch approved as delivered; the Drive cuts were renamed without `_draft_`: `Say1_Yoroshiku_2026-10-23.mp4`, `Say1_Yoroshiku_EN-subs_2026-10-23.mp4`).
 - Earlier owner notes in the same review round (2026-10-23): 「56の英語音声少し切れている？」 (clipped English in 056; led to the voice-cut audit of every episode); 「62透過されている？」 (the see-through angry pose in 062; fixed there with a filled pose).
+
+## 履歴
+
+- 2026-10-24: `compose_probe.mjs`（この話と mimi-say-itadakimasu・mimi-say-otsukare）を本番の `gemini-dedicated.env` から内部ツールプロジェクト `lanclo-internal-tools` のキー（`~/.config/lanclo/gemini-internal.env`、共通の `kits/mimi-short/scripts/internal-gemini-key.mjs`）に移した。上の3回の答えは移す前に本番キーで取ったもの。
