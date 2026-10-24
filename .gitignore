@@ -311,6 +311,16 @@ films/mimi-recheck-r/source/hf/assets/
 films/mimi-recheck-r/source/hf/.hyperframes/
 films/mimi-recheck-r/source/hf/.thumbnails/
 films/mimi-recheck-r/source/renders/
+# 077 How Do You Say It? 3 (mimi-say-itadakimasu)
+films/mimi-say-itadakimasu/source/hf/assets/
+films/mimi-say-itadakimasu/source/hf/.hyperframes/
+films/mimi-say-itadakimasu/source/hf/.thumbnails/
+films/mimi-say-itadakimasu/source/renders/
+films/mimi-say-itadakimasu/source/assets/
+films/mimi-say-itadakimasu/**/*.wav
+films/mimi-say-itadakimasu/**/*.mp3
+films/mimi-say-itadakimasu/**/*.mov
+films/mimi-say-itadakimasu/**/*.mp4
 films/mimi-katakana-vitamin/source/hf/assets/
 films/mimi-katakana-vitamin/source/hf/.hyperframes/
 films/mimi-katakana-vitamin/source/hf/.thumbnails/

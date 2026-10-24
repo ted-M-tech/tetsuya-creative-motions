@@ -1,0 +1,2 @@
+{"run":1,"status":200,"at":"2026-10-23T22:57:50.385Z","request":{"purpose":"example","term":"Let's eat!","meaning":"いただきます（食事を始めるときのあいさつ）","language":"en","translationLocale":"ja","consent":true},"body":{"example":"Everything looks so delicious, let's eat!","translation":"どれもすごく美味しそうだね、いただきます！"}}
+{"run":2,"status":200,"at":"2026-10-23T22:57:56.282Z","request":{"purpose":"example","term":"Let's eat!","meaning":"いただきます（食事を始めるときのあいさつ）","language":"en","translationLocale":"ja","consent":true},"body":{"example":"Dinner is ready, so let's eat!","translation":"ご飯ができたから、いただきます！"}}
