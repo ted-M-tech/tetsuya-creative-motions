@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNSショート #074。シリーズ「Pronunciation Hacks（発音のコツ）」第3話。ドラフト（2026-10-23、オーナー確認待ち）。16.9秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。第1話 [mimi-hack-check-it-out](../mimi-hack-check-it-out/README.ja.md) のテンプレートから作成。
+Lanclo SNSショート #074。シリーズ「Pronunciation Hacks（発音のコツ）」第3話。完成版（2026-10-23、オーナー承認済み）。16.9秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。第1話 [mimi-hack-check-it-out](../mimi-hack-check-it-out/README.ja.md) のテンプレートから作成。
 
 コツ：**くだけた会話**では want to → **wanna**、going to → **gonna**（to がとけて na になる）。カードに小さく注意：会話だけ、文章では want to。
 
@@ -20,4 +20,4 @@ Lanclo SNSショート #074。シリーズ「Pronunciation Hacks（発音のコ�
 
 - キャストはミミと友だちのみ（ライブラリのポーズのみ、新規作画なし）。アプリ画面なし。
 - 声：オーナーの登録音声（`ownvoice.py`）6行。WAVはGitに入れず、Drive `074. Pronunciation Hacks 3 - Wanna and Gonna/Hacks3_Wanna_assets/own-voice/`。
-- ドラフト：Drive `002.SNS/074. Pronunciation Hacks 3 - Wanna and Gonna/`（`Hacks3_Wanna_draft_2026-10-23.mp4`、`Hacks3_Wanna_draft_EN-subs_2026-10-23.mp4`）。
+- 完成版：Drive `002.SNS/074. Pronunciation Hacks 3 - Wanna and Gonna/`（`Hacks3_Wanna_2026-10-23.mp4`、`Hacks3_Wanna_EN-subs_2026-10-23.mp4`）。

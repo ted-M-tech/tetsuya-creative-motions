@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #074, episode 3 of “Pronunciation Hacks” (one quick, correct tip per episode; the CTA asks for the next tip). Draft, 2026-10-23 (awaiting the owner's review). 16.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Built from the series template, [films/mimi-hack-check-it-out](../mimi-hack-check-it-out/README.md#series-template-episodes-2).
+Lanclo SNS short #074, episode 3 of “Pronunciation Hacks” (one quick, correct tip per episode; the CTA asks for the next tip). Final, owner approved on 2026-10-23. 16.9 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles). Built from the series template, [films/mimi-hack-check-it-out](../mimi-hack-check-it-out/README.md#series-template-episodes-2).
 
 Tip: in **casual speech** “want to” → **wanna** and “going to” → **gonna** (the “to” melts into “na”). Small note on the card: casual speech only; in writing keep “want to”.
 
@@ -20,7 +20,7 @@ Scene: a cafe. Frame 1: 「ネイティブ、toを言ってない？」 while Mi
 
 - Cast: Mimi and her Friend only, all library poses (no new art). No side cast, no Kokoro, no app shot.
 - Voices: six lines of the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `074. Pronunciation Hacks 3 - Wanna and Gonna/Hacks3_Wanna_assets/own-voice/`).
-- Drafts in Lanclo's Google Drive `002.SNS/074. Pronunciation Hacks 3 - Wanna and Gonna/` (`Hacks3_Wanna_draft_2026-10-23.mp4`, `Hacks3_Wanna_draft_EN-subs_2026-10-23.mp4`).
+- Finals in Lanclo's Google Drive `002.SNS/074. Pronunciation Hacks 3 - Wanna and Gonna/` (`Hacks3_Wanna_2026-10-23.mp4`, `Hacks3_Wanna_EN-subs_2026-10-23.mp4`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
 
 ![Frames](process/00-draft-frames.jpg)

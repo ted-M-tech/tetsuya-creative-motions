@@ -38,3 +38,7 @@
 - Fast line played three times (hook, slip, fix): intended as the listening game; if it feels repetitive, the hook could go silent.
 - The owner's (adult male) voice on both Mimi's lines and the Friend's line, as in earlier episodes.
 - Drive folder `074. Pronunciation Hacks 3 - Wanna and Gonna` did not exist; created with the name from the brief.
+
+## Owner approval
+
+- 2026-10-23: 「あと全部確認した。YouTubeあげてOK」 (the last draft approved as delivered; the Drive cuts were renamed without `_draft_`: `Hacks3_Wanna_2026-10-23.mp4`, `Hacks3_Wanna_EN-subs_2026-10-23.mp4`).
