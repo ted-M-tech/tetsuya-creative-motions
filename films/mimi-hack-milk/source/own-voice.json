@@ -1,0 +1,19 @@
+{
+ "lines": [
+  {
+   "id": "learner-miruku",
+   "text": "Mi-ru-ku, please.",
+   "style": "Speak English as a Japanese beginner ordering at a café, reading the katakana word ミルク: say 'milk' as three separate, even Japanese syllables 'mi', 'ru', 'ku', each ending in a clear vowel, with a clear 'u' vowel after the r and another clear 'u' vowel after the k, a Japanese tapped r instead of an English l, flat equal pitch on every syllable, then 'please' with a light Japanese accent. Friendly and a little unsure. Natural, not a caricature."
+  },
+  {
+   "id": "us-milk",
+   "text": "Milk.",
+   "style": "Speak fluent, natural General American English like a native speaker, as a clear model for a learner. Say the single word 'milk' on its own as ONE short syllable: a short 'i', then a dark L (the back of the tongue raised, sounding a little like a soft 'u'), straight into a k with a light release and NO vowel after the k. Calm, friendly, natural speed, not slowed down, no extra words."
+  },
+  {
+   "id": "us-milk-please",
+   "text": "Milk, please.",
+   "style": "Speak fluent, natural General American English like a native speaker, ordering at a café, friendly and confident. 'Milk' is ONE short syllable: a short 'i', a dark L, then the k with no vowel after it; then 'please'. Natural native speed."
+  }
+ ]
+}
