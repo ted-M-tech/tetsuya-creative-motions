@@ -311,6 +311,16 @@ films/mimi-recheck-r/source/hf/assets/
 films/mimi-recheck-r/source/hf/.hyperframes/
 films/mimi-recheck-r/source/hf/.thumbnails/
 films/mimi-recheck-r/source/renders/
+films/mimi-katakana-vitamin/source/hf/assets/
+films/mimi-katakana-vitamin/source/hf/.hyperframes/
+films/mimi-katakana-vitamin/source/hf/.thumbnails/
+films/mimi-katakana-vitamin/source/renders/
+films/mimi-katakana-vitamin/source/assets/
+films/mimi-katakana-vitamin/**/*.wav
+films/mimi-katakana-vitamin/**/*.mp4
+films/mimi-katakana-vitamin/**/*.mov
+films/mimi-katakana-vitamin/**/*.mp3
+films/mimi-katakana-vitamin/**/*.m4a
 films/mimi-hack-check-it-out/source/hf/assets/
 films/mimi-hack-check-it-out/source/renders/
 films/mimi-hack-check-it-out/source/assets/
