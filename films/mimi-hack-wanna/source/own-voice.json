@@ -1,0 +1,34 @@
+{
+ "lines": [
+  {
+   "id": "us-fast",
+   "text": "I wanna go. I'm gonna try.",
+   "style": "Speak fluent, natural, casual General American English like a native speaker chatting with a friend, quick and relaxed. Say 'wanna' (not 'want to') and 'gonna' (not 'going to') fully reduced, as everyday native speech: I-wanna-go, I'm-gonna-try. Fast native speed, a short natural breath between the two sentences, friendly and upbeat."
+  },
+  {
+   "id": "us-want-to",
+   "text": "Want to.",
+   "style": "Speak General American English slowly and very clearly, as a careful teacher saying two separate words for a learner: 'want' then 'to', with a clear t at the end of 'want' and a clear 'to' (too). Slow, deliberate, calm."
+  },
+  {
+   "id": "us-wanna",
+   "text": "Wanna.",
+   "style": "Speak fluent, natural General American English like a native speaker, saying the casual reduced word 'wanna' (wah-nuh) as one short word at normal native speed, relaxed and friendly. No t sound."
+  },
+  {
+   "id": "us-going-to",
+   "text": "Going to.",
+   "style": "Speak General American English slowly and very clearly, as a careful teacher saying two separate words for a learner: 'going' then 'to', with a clear 'to' (too). Slow, deliberate, calm."
+  },
+  {
+   "id": "us-gonna",
+   "text": "Gonna.",
+   "style": "Speak fluent, natural General American English like a native speaker, saying the casual reduced word 'gonna' (guh-nuh) as one short word at normal native speed, relaxed and friendly. No t sound."
+  },
+  {
+   "id": "us-im-gonna-try",
+   "text": "I'm gonna try!",
+   "style": "Speak fluent, natural, casual General American English, cheerful and proud, like a learner who just got it. Say 'gonna' fully reduced (I'm-gonna-try), one smooth phrase at natural native speed."
+  }
+ ]
+}
