@@ -1,0 +1,50 @@
+{
+ "_": "Pronunciation Hacks 4 (milk) cue sheet (seconds on the film clock); scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip, tip, model, fix, cta, end. Takes are placed with (at, start, length): `start`/`length` cut each take at measured silence.",
+ "HOOK_V": 0.3,
+ "SLIP": 2.6,
+ "ROBOT": 2.8,
+ "TIP": 4.2,
+ "B1": 4.45,
+ "B2": 4.7,
+ "B3": 4.95,
+ "X": 5.3,
+ "MODEL": 5.8,
+ "B4": 6.0,
+ "M1": 6.2,
+ "TONGUE": 6.9,
+ "M2": 7.6,
+ "FIX": 8.4,
+ "FV": 8.6,
+ "HIGH": 9.6,
+ "CTA": 11.6,
+ "E": 13.4,
+ "TAP": 14.0,
+ "END": 15.0,
+ "TAKES": {
+  "learner-miruku.wav": [
+   0.2,
+   2.2
+  ],
+  "us-milk.wav": [
+   0.24,
+   0.6
+  ],
+  "us-milk-please.wav": [
+   0.15,
+   0.71
+  ]
+ },
+ "LEARNER_WORDS": [
+  0.08,
+  0.36,
+  0.74,
+  1.46
+ ],
+ "MILK_WORDS": [
+  0.05
+ ],
+ "PLEASE_WORDS": [
+  0.07,
+  0.405
+ ]
+}

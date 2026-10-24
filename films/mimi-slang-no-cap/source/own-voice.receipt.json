@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "claim": {
+      "text": "No cap, I practiced that move fifty times.",
+      "style": "Speak fluent, casual General American English to a friend, bragging playfully and very sure of yourself: a confident grin in the voice, a short beat after \"No cap,\", stress on \"cap\" and \"fifty\". Quick and punchy, about two and a half seconds. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "9e4206f8aca40ea5b440301809bd1a8953c69713eaba5254ccc338fcf1055d09",
+      "at": "2026-10-23T22:58:08+00:00"
+    },
+    "huh": {
+      "text": "Cap...?",
+      "style": "Speak English as a confused friend who just heard the word and looks around for a hat: one word, puzzled, rising question intonation, a little slow. About one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f37fbd560e220c5da1d773bf74d745490aa92962054f1974f33ed1e1a611dd61",
+      "at": "2026-10-23T22:58:10+00:00"
+    },
+    "nocap": {
+      "text": "No cap.",
+      "style": "Speak fluent, natural General American English, clear and friendly, like saying a new slang phrase for a learner: two words, stress on \"cap\", falling intonation. About one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "e8bcb1db25fb9f4ac3f617d44d04fded8001e0f22cd1f1e54a103c58b1d776ca",
+      "at": "2026-10-23T22:58:12+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
