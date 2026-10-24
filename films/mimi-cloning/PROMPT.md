@@ -1,6 +1,6 @@
 # Prompt (consolidated)
 
-This is a consolidated prompt for rebuilding draft v3, written after the fact; it is not the owner's original request (quoted in [PROCESS.md](PROCESS.md)).
+This is a consolidated prompt for rebuilding the final (v3), written after the fact; it is not the owner's original request (quoted in [PROCESS.md](PROCESS.md)).
 
 Make a 35.6-second vertical (1080×1920, 60 fps) Lanclo short on the shared kit (`kits/mimi-short`), Mimi and her Friend only, library poses only. Mimi's Japanese first person is 僕. Every English line is the owner's registered voice (`source/own-voice.json`). Captions at the top (first line from y 200), English subtitles at x 60–880 with the box bottom at y ≤ 1500 (the end-card subtitle at the top), nothing meaningful in the right action rail (x > 900, y 820–1520).
 
