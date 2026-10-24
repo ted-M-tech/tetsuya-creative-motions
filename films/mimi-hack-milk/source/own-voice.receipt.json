@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "learner-miruku": {
+      "text": "Mi-ru-ku, please.",
+      "style": "Speak English as a Japanese beginner ordering at a café, reading the katakana word ミルク: say 'milk' as three separate, even Japanese syllables 'mi', 'ru', 'ku', each ending in a clear vowel, with a clear 'u' vowel after the r and another clear 'u' vowel after the k, a Japanese tapped r instead of an English l, flat equal pitch on every syllable, then 'please' with a light Japanese accent. Friendly and a little unsure. Natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "521d8ffb6c0dc7cb4d4111d2fd9e25de9084bbdcdf0561213f30d41add3c07d9",
+      "at": "2026-10-24T00:19:57+00:00"
+    },
+    "us-milk": {
+      "text": "Milk.",
+      "style": "Speak fluent, natural General American English like a native speaker, as a clear model for a learner. Say the single word 'milk' on its own as ONE short syllable: a short 'i', then a dark L (the back of the tongue raised, sounding a little like a soft 'u'), straight into a k with a light release and NO vowel after the k. Calm, friendly, natural speed, not slowed down, no extra words. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "6fd9e1c486f410a04ef05cab3352a6c18608da338721a3fbc1086d3273b9743f",
+      "at": "2026-10-24T00:20:00+00:00"
+    },
+    "us-milk-please": {
+      "text": "Milk, please.",
+      "style": "Speak fluent, natural General American English like a native speaker, ordering at a café, friendly and confident. 'Milk' is ONE short syllable: a short 'i', a dark L, then the k with no vowel after it; then 'please'. Natural native speed. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "0387b04f16ee343604c35ea6f35ab7029ed70fcc96ebdf26575f4b3b0cee8a8a",
+      "at": "2026-10-24T00:20:36+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}
