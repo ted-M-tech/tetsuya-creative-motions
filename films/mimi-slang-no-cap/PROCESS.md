@@ -33,3 +33,9 @@ Notion Content Calendar ID 068（Drive「068. Real Slang 1 - No Cap」、Prefix 
 
 - `timeout` コマンドは macOS にない。ウォッチドッグは `sleep N; pkill -f ...` をバックグラウンドで。
 - 速いスワイプはシミュレーター録画にスクロールのフレームを残さないことがある。スクロールを見せたいならゆっくり、見せないなら編集でつなぐ。
+
+## オーナー承認
+
+> 2026-10-23：「あと全部確認した。YouTubeあげてOK」
+
+下書きのまま完成版にした（変更なし）。Driveの2本は `_draft_` を外して `Slang1_NoCap_2026-10-23.mp4`、`Slang1_NoCap_EN-subs_2026-10-23.mp4` に改名。

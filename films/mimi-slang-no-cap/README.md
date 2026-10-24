@@ -2,13 +2,13 @@
 
 **English** · [日本語](README.ja.md)
 
-Status: **draft** (2026-10-23, waiting for the owner's review).
+Status: **final** (2026-10-23, owner approved).
 
 Episode 1 of the series **Real Slang**: one card from Lanclo's official Slang & casual word deck per episode. Hook from the first frame:「"No cap" = 帽子なし？」 ("No cap" = no hat?) over a crossed-out baseball cap. Mimi brags with the deck's own example, "No cap, I practiced that move fifty times." The Friend pats his head and looks for a hat: "Cap…?" (「帽子…どこ？」). A meaning card in the deck's wording: no cap ＝ うそなしで・まじで (with that example and its translation), cap ＝ うそ・大げさな話, and the deck's tip 「帽子ではなくうその意味。」. The real app (simulator, shipped deck content): My Notes → 単語帳 → スラング・カジュアル → ユニット3 賛成・反対・返事 → the "no cap" card → save. Comment prompt:「次のスラングは？コメントで」. End card with the CTA tap.
 
 0:17.4 / 1080×1920, 60 fps / three English clips in the owner's voice, Japanese captions and cards / official 2D poses + GSAP, real app (simulator) + HyperFrames
 
-Notion Content Calendar ID 068. Two cuts: Japanese only (`mimi-slang-no-cap.mp4`) and with English subtitles (`mimi-slang-no-cap-en.mp4`); drafts in Lanclo's Google Drive `002.SNS/068. Real Slang 1 - No Cap/` (`Slang1_NoCap_draft_2026-10-23.mp4`, `Slang1_NoCap_draft_EN-subs_2026-10-23.mp4`; raw take and own-voice WAVs in `Slang1_NoCap_assets/`).
+Notion Content Calendar ID 068. Two cuts: Japanese only (`mimi-slang-no-cap.mp4`) and with English subtitles (`mimi-slang-no-cap-en.mp4`); finals in Lanclo's Google Drive `002.SNS/068. Real Slang 1 - No Cap/` (`Slang1_NoCap_2026-10-23.mp4`, `Slang1_NoCap_EN-subs_2026-10-23.mp4`; raw take and own-voice WAVs in `Slang1_NoCap_assets/`).
 
 ![Frames](process/00-draft-frames.jpg)
 
