@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #076, episode 4 of “Katakana Traps” (stress + the V sound). Draft v2 (2026-10-23), waiting for the owner's review. 15.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #076, episode 4 of “Katakana Traps” (stress + the V sound). Final (v2), owner approved on 2026-10-23. 15.5 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Frame 1: 「ビタミン、通じない？」. At a pharmacy counter the Friend asks the pharmacist (Mimi in a role outfit: a white pharmacist coat) for 「ビタミン」 the katakana way, four even beats starting with a B (owner's own voice, learner style), while a four-dot meter fills. Pharmacist Mimi, blank: “Sorry…?”; caption 「ビじゃなくて VAI！」. A card: katakana × (four equal dots ビ・タ・ミ・ン) vs English ○ (VAI · ta · min, the first dot big), the model twice in the owner's own voice (US, VAI-ta-min), a V mouth panel 「V＝上の歯を下唇に」 and the tip 「VAI-ta-min（VAIを強く）」; a small note 「※英国では VIT-a-min」. Back at the counter the Friend says it right, the pharmacist smiles with a vitamin bottle: “Right here!”. CTA 「次に通じないカタカナは？」, then the end card.
 
@@ -18,7 +18,7 @@ Frame 1: 「ビタミン、通じない？」. At a pharmacy counter the Friend 
 - Cast: Mimi (also as the pharmacist) and her Friend only. No side cast, no Kokoro, no app shot.
 - Art: three new pharmacist poses of Mimi and a pharmacy plate drawn with codex-p ([prompts/01-codex-mimi-pharmacist.txt](prompts/01-codex-mimi-pharmacist.txt)); the V mouth panel is reused from [films/mimi-disaster-very](../mimi-disaster-very/README.md).
 - Voices: two lines in the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py` (one regeneration of the model line for a real V onset); WAVs are biometric and not in Git (Drive `076. Katakana Traps 4 - Vitamin/KT4_Vitamin_assets/own-voice/`). Stress and the V onset verified acoustically, see [PROCESS.md](PROCESS.md).
-- Draft files in Lanclo's Google Drive `002.SNS/076. Katakana Traps 4 - Vitamin/` (`KT4_Vitamin_draft_2026-10-23.mp4`, `KT4_Vitamin_draft_EN-subs_2026-10-23.mp4`).
+- Final files in Lanclo's Google Drive `002.SNS/076. Katakana Traps 4 - Vitamin/` (`KT4_Vitamin_2026-10-23.mp4`, `KT4_Vitamin_EN-subs_2026-10-23.mp4`).
 - Loudness: -14.3 LUFS integrated, -2.1 dBTP (both cuts).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md). Series template: [episode 1](../mimi-katakana-mcdonalds/README.md#series-template-episodes-2).
 

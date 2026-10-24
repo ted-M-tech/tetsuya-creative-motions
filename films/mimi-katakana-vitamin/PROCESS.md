@@ -38,3 +38,7 @@
 - The V onset of the model is soft (a short frication into the vowel, as natural speech has it); a human listen should confirm it reads as V on earphones.
 - “Sorry…?” and “Right here!” are bubbles only (no voice).
 - The owner's (adult male) voice on the Friend, as in earlier episodes.
+
+## Owner approval
+
+- 2026-10-23: 「あと全部確認した。YouTubeあげてOK」 (the v2 draft approved as delivered; the Drive cuts were renamed without `_draft_`: `KT4_Vitamin_2026-10-23.mp4`, `KT4_Vitamin_EN-subs_2026-10-23.mp4`).
