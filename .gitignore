@@ -318,3 +318,11 @@ films/mimi-hack-check-it-out/**/*.wav
 films/mimi-hack-check-it-out/**/*.mp4
 films/mimi-hack-check-it-out/**/*.mov
 films/mimi-hack-check-it-out/**/*.mp3
+films/mimi-hack-water/source/hf/assets/
+films/mimi-hack-water/source/renders/
+films/mimi-hack-water/source/assets/
+films/mimi-hack-water/**/*.wav
+films/mimi-hack-water/**/*.mp4
+films/mimi-hack-water/**/*.mov
+films/mimi-hack-water/**/*.mp3
+films/mimi-hack-water/**/*.m4a

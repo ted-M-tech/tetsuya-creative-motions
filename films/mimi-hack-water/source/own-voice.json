@@ -1,0 +1,19 @@
+{
+ "lines": [
+  {
+   "id": "learner-wota",
+   "text": "Wo-o-ta-a, please.",
+   "style": "Speak English as a Japanese beginner reading the katakana word ウォーター (wo-o-ta-a) for 'water', then 'please'. Say 'Wo-o-ta-a' slowly as four even katakana syllables with long flat vowels: wo-o, then a hard, clearly aspirated t with a puff of air (ta), then a long a-a with no r sound at all. Then a short 'please.' Flat equal pitch, a little hesitant, light Japanese accent. Natural, not a caricature."
+  },
+  {
+   "id": "us-water",
+   "text": "Water.",
+   "style": "Speak fluent, natural General American English like a native speaker, as a model for a learner. Say the single word 'Water.' on its own, stress on the first syllable WA. The t between the vowels is a flap: one very quick light tap of the tongue tip, like a soft d (wa-der), never a hard t with a puff of air. Rhotic r-coloured ending. Native speed, calm and clear, falling intonation."
+  },
+  {
+   "id": "us-better",
+   "text": "Better.",
+   "style": "Speak fluent, natural General American English like a native speaker, as a model for a learner. Say the single word 'Better.' on its own, stress on the first syllable BE. The double t between the vowels is a flap: one very quick light tap of the tongue tip, like a soft d (be-der), never a hard t with a puff of air. Rhotic r-coloured ending. Native speed, calm and clear, falling intonation."
+  }
+ ]
+}

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      /* Pronunciation Hacks: series layout (episode 2, US flap T: water / better). Beats: hook -> slip -> tip -> model -> fix -> cta -> end.
+         Per episode swap: the hook, the learner's wrong reading (#say words), the tip card (title, the two phrases and their marks),
+         the fix line, the plate. The cue sheet is ../cues.json (same numbers as scripts/mix.py). */
+      #root { background: #f6efe6; }
+      #scene { position: absolute; inset: 0; transform-origin: 50% 60%; }
+      #plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); transform-origin: 50% 0; }
+      .cast { position: absolute; height: auto; transform-origin: 50% 100%; }
+      .learner { left: -30px; top: 820px; width: 530px; }
+      .other { left: 470px; top: 830px; width: 450px; }
+      .both { left: 40px; top: 830px; width: 820px; }
+      .en { font-family: "Helvetica Neue", Arial, sans-serif; }
+      /* The hook: huge, on screen from frame 1 */
+      #hook { position: absolute; left: 36px; right: 36px; top: 165px; background: #ffffff; border-radius: 48px; padding: 30px 30px 36px;
+              box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-weight: 700; line-height: 1.2; color: #273b4b; }
+      #hook .hot { display: inline-block; color: #e5484d; font-size: 124px; }
+      #hook .eq { display: block; font-size: 100px; }
+      #hook .eq b { color: #2a8dff; }
+      #hook .small { display: block; font-size: 52px; color: #5b7f9f; margin-top: 10px; }
+      /* speech bubbles */
+      .say { position: absolute; left: 40px; top: 560px; background: #ffffff; border: 6px solid #273b4b; border-radius: 48px; border-bottom-left-radius: 10px;
+             padding: 18px 36px 22px; font-size: 92px; font-weight: 700; color: #273b4b; line-height: 1.15; }
+      #say { display: flex; align-items: center; gap: 14px; }
+      #say .w { display: inline-block; color: #e5484d; opacity: 0.25; }
+      #say .gap { display: inline-block; width: 70px; height: 12px; border-top: 12px dotted #e5484d; opacity: 0; }
+      #robot { position: absolute; left: 60px; top: 730px; font-size: 80px; font-weight: 700; color: #ffffff;
+               -webkit-text-stroke: 10px #273b4b; paint-order: stroke fill; }
+      #slip-cap { top: 230px; }
+      /* linked phrase: a pair (final consonant + next vowel) gets an arc under it, drawn on cue */
+      .ph { white-space: nowrap; }
+      .pair { position: relative; display: inline-block; white-space: pre; }
+      .pair .c { color: #e5484d; }
+      .pair .v { color: #2a8dff; }
+      .pair svg { position: absolute; top: 86%; height: 0.55em; overflow: visible; }
+      .pair path { fill: none; stroke: #2a8dff; stroke-width: 10; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+      .pair .v.up { position: absolute; left: 50%; top: 84%; transform: translateX(-50%); font-size: 0.38em; line-height: 1; opacity: 0; }
+      #plate-front { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); transform-origin: 50% 0; clip-path: inset(1236px 0 0 0); }
+      #c-tongue { position: absolute; right: 34px; top: 64px; width: 230px; text-align: center; }
+      #c-tongue svg { width: 230px; height: 190px; overflow: visible; }
+      #c-tongue div { font-size: 40px; font-weight: 700; color: #5b7f9f; margin-top: -4px; }
+      #row-1 .ph, #row-2 .ph { padding-right: 230px; }
+      #c-uk { position: absolute; left: 60px; top: 1108px; font-size: 38px; font-weight: 700; color: #5b7f9f; }
+      /* the tip card */
+      .type { position: absolute; inset: 0; background: #fbfcfd; }
+      #c-title { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-size: 74px; font-weight: 700; color: #273b4b; line-height: 1.3; }
+      #c-title em { font-style: normal; color: #e5484d; }
+      #c-title strong { color: #2a8dff; }
+      .row { position: absolute; left: 40px; right: 40px; border-radius: 44px; background: #f1f5f9; border: 6px solid transparent; padding: 20px 20px 26px; }
+      #row-1 { top: 410px; height: 330px; }
+      #row-2 { top: 770px; height: 330px; }
+      .row .lab { font-size: 44px; font-weight: 700; color: #5b7f9f; text-align: left; padding-left: 16px; }
+      .row .ph { display: block; text-align: center; font-size: 150px; font-weight: 700; color: #273b4b; margin-top: 40px; line-height: 1.15; }
+      #c-tip { position: absolute; left: 60px; top: 1170px; transform-origin: 50% 50%; }
+      #c-tip > span { display: inline-block; background: #273b4b; color: #ffffff; font-size: 56px; line-height: 1.3; font-weight: 700; padding: 16px 40px; border-radius: 40px; }
+      #c-tip b { color: #ffd84a; }
+      #c-mimi { position: absolute; left: 670px; top: 1150px; width: 270px; height: auto; transform-origin: 50% 100%; }
+      #c-who { position: absolute; left: auto; right: 70px; top: 426px; justify-content: flex-end; }
+      #c-who span { font-size: 40px; padding: 10px 26px; }
+      /* fix: the smooth line */
+      #ok-say .pair svg { top: -34%; }
+      #ok-cap { top: 230px; }
+      /* CTA */
+      #cta { position: absolute; inset: 0; background: #fbfcfd; }
+      #cta-q { position: absolute; left: 36px; right: 36px; top: 165px; background: #ffffff; border-radius: 48px; padding: 40px 30px 44px;
+               box-shadow: 0 16px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 104px; font-weight: 700; line-height: 1.25; color: #273b4b; }
+      #cta-q em { font-style: normal; color: #e5484d; }
+      #cta-sub { position: absolute; left: 0; right: 0; top: 480px; text-align: center; font-size: 64px; font-weight: 700; color: #5b7f9f; }
+      .qm { position: absolute; font-size: 150px; font-weight: 700; color: #2a8dff; -webkit-text-stroke: 8px #ffffff; paint-order: stroke fill; }
+      #cta-mimi { position: absolute; left: -20px; top: 930px; width: 500px; height: auto; transform-origin: 50% 100%; }
+      #cta-friend { position: absolute; left: 430px; top: 950px; width: 470px; height: auto; transform-origin: 50% 100%; }
+      /* English subtitles: above the platform zone. <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 60px; width: 820px; bottom: 430px; display: flex; justify-content: center; }
+      .sub.top { bottom: auto; top: 220px; }
+      .sub span { display: block; max-width: 820px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 36px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15.2" data-width="1080" data-height="1920">
+      <!-- hook, slip and fix: the restaurant; Mimi plays the waiter (role outfit) -->
+      <div id="scene">
+        <img id="plate" src="assets/art/plate.webp" alt="" />
+        <img id="other-a" class="cast other clip" src="assets/art/pose-waiter-empty.webp" alt="" data-start="0" data-duration="4.3" data-track-index="3" />
+        <img id="other-b" class="cast other clip" src="assets/art/pose-waiter-sorry.webp" alt="" data-start="4.3" data-duration="0.8" data-track-index="3" />
+        <img id="other-c" class="cast other clip" src="assets/art/pose-waiter-sorry.webp" alt="" data-start="9.0" data-duration="1.4" data-track-index="3" />
+        <img id="both" class="cast other clip" src="assets/art/pose-waiter-serve.webp" alt="" data-start="10.4" data-duration="1.4" data-track-index="4" />
+        <img id="learner-a" class="cast learner clip" src="assets/art/pose-friend-hello.webp" alt="" data-start="0" data-duration="2.0" data-track-index="2" />
+        <img id="learner-b" class="cast learner clip" src="assets/art/pose-friend-order.webp" alt="" data-start="2.0" data-duration="3.1" data-track-index="2" />
+        <img id="learner-c" class="cast learner clip" src="assets/art/pose-friend-order.webp" alt="" data-start="9.0" data-duration="1.4" data-track-index="2" />
+        <img id="learner-d" class="cast learner clip" src="assets/art/pose-friend-yay.webp" alt="" data-start="10.4" data-duration="1.4" data-track-index="2" />
+        <img id="plate-front" src="assets/art/plate.webp" alt="" />
+      </div>
+
+      <!-- hook: on screen from frame 1 -->
+      <div id="hook" class="clip" data-start="0" data-duration="2.0" data-track-index="6">
+        <span class="hot">“ウォーター”</span><span class="eq">じゃ <b>水</b>が出ない</span><span class="small">アメリカ英語の t のコツ</span>
+      </div>
+      <!-- slip: katakana reading, the waiter does not get it -->
+      <div id="slip-cap" class="caption clip" data-start="2.1" data-duration="3.0" data-track-index="10"><span id="slip-c">カタカナで言うと…</span></div>
+      <div id="say" class="say en clip" data-start="2.0" data-duration="3.1" data-track-index="7">
+        <span class="w">Wo-o-</span><span class="w">ta-a,</span><span class="w">please.</span>
+      </div>
+      <div id="robot" class="clip" data-start="4.55" data-duration="0.55" data-track-index="11">キョトン…</div>
+
+      <!-- tip + model: the tap card (US English) -->
+      <div id="card" class="type clip" data-start="5.1" data-duration="3.9" data-track-index="14">
+        <div id="c-title">母音にはさまれた <em class="en">t</em> は<br />軽い<strong>ラ</strong>（d）に</div>
+        <div id="row-1" class="row">
+          <div class="lab">US（アメリカ英語）</div>
+          <div class="ph en">wa<span class="pair" id="p1"><span class="c">t</span><span class="v up">ラ</span><svg style="top: -26%; left: -15%; width: 130%;" viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M50 34 L50 4 M22 36 L10 12 M78 36 L90 12" /></svg></span>er</div>
+          <div id="c-tongue">
+            <svg viewBox="0 0 230 190" aria-hidden="true">
+              <path d="M14 70 Q70 18 150 26 Q200 32 222 70" fill="none" stroke="#273b4b" stroke-width="9" stroke-linecap="round" />
+              <rect x="22" y="58" width="26" height="30" rx="6" fill="#ffffff" stroke="#273b4b" stroke-width="7" />
+              <path d="M14 168 Q110 196 222 150" fill="none" stroke="#273b4b" stroke-width="9" stroke-linecap="round" />
+              <path id="c-tongue-t" d="M222 150 Q170 96 110 110 Q76 116 58 84 Q70 140 130 160 Q180 168 222 150 Z" fill="#ff8fb1" stroke="#273b4b" stroke-width="7" stroke-linejoin="round" />
+              <g id="c-tongue-hit" stroke="#2a8dff" stroke-width="8" stroke-linecap="round"><path d="M60 46 L66 30" /><path d="M78 52 L92 40" /><path d="M44 48 L36 34" /></g>
+            </svg>
+            <div>舌先でポン</div>
+          </div>
+        </div>
+        <div id="row-2" class="row">
+          <div class="lab">US（アメリカ英語）</div>
+          <div class="ph en">be<span class="pair" id="p3"><span class="c">tt</span><span class="v up">ラ</span><svg style="top: -26%; left: -15%; width: 130%;" viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M50 34 L50 4 M22 36 L10 12 M78 36 L90 12" /></svg></span>er</div>
+        </div>
+        <div id="c-uk">※イギリス英語は t をはっきり言うことが多い</div>
+        <div id="c-tip"><span>舌先で上の歯ぐきを<br /><b>ポンと1回</b> 弾くだけ</span></div>
+        <img id="c-mimi" src="assets/art/pose-presenter.webp" alt="" />
+        <div id="c-who" class="tag model"><span>お手本＝自分の声</span></div>
+      </div>
+
+      <!-- fix: the Friend says it with a tap (the model take again); the water arrives -->
+      <div id="ok-cap" class="caption clip" data-start="9.0" data-duration="2.8" data-track-index="10"><span id="ok-c">軽く弾いたら → <strong>通じた！</strong></span></div>
+      <div id="ok-say" class="say en clip" data-start="9.05" data-duration="2.75" data-track-index="7">
+        <span class="ph">Wa<span class="pair"><span class="c">t</span><svg style="left: -15%; width: 130%;" viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M50 34 L50 4 M22 36 L10 12 M78 36 L90 12" /></svg></span>er!</span>
+      </div>
+      <div id="hearts" class="sparkles clip" data-start="10.5" data-duration="1.3" data-track-index="8"></div>
+
+      <!-- cta: the next tip -->
+      <div id="cta" class="clip" data-start="11.8" data-duration="1.8" data-track-index="16">
+        <div id="cta-q">次の<em>コツ</em>は？</div>
+        <div id="cta-sub">知りたい発音、コメントで！</div>
+        <div class="qm" style="left: 120px; top: 640px; transform: rotate(-12deg);">?</div>
+        <div class="qm" style="left: 440px; top: 610px;">?</div>
+        <div class="qm" style="left: 760px; top: 650px; transform: rotate(12deg);">?</div>
+        <img id="cta-mimi" src="assets/art/pose-point.webp" alt="" />
+        <img id="cta-friend" src="assets/art/pose-friend-hello.webp" alt="" />
+      </div>
+
+      <div id="end" class="end clip" data-start="13.6" data-duration="1.6" data-track-index="19"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="2.0" data-track-index="24"><span>Say “wōtā” and no water comes. A US English t trick.</span></div>
+      <div class="sub clip" data-start="2.0" data-duration="3.1" data-track-index="24"><span>Katakana style… the waiter doesn't get it.</span></div>
+      <div class="sub clip" data-start="5.1" data-duration="2.2" data-track-index="24"><span>US English: a t between vowels is a quick tap, like a light d. The model is your own voice.</span></div>
+      <div class="sub clip" data-start="7.3" data-duration="1.7" data-track-index="24"><span>Same in “better”. UK English: usually a clear t.</span></div>
+      <div class="sub clip" data-start="9.0" data-duration="2.8" data-track-index="24"><span>A light tap → here's your water!</span></div>
+      <div class="sub clip" data-start="11.8" data-duration="1.8" data-track-index="24"><span>Which tip next? Tell us in the comments.</span></div>
+      <div class="sub top clip" data-start="13.6" data-duration="1.6" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="15.2" data-track-index="20" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("hearts"), [[700, 960, "#ff8fb1"], [820, 1060, "#ffd84a"], [120, 1000, "#ffd84a"], [430, 880, "#ff8fb1"]]);
+      // Cue sheet (seconds), same as ../cues.json and scripts/mix.py
+      const HOOK_V = 0.2, SLIP = 2.0, LV = 2.1, ROBOT = 4.55, TIP = 5.1, ARC1 = 5.45, ARC2 = 5.75, M1 = 6.1;
+      const MODEL = 7.3, ARC3 = 7.5, ARC4 = 7.7, M2 = 7.95, FIX = 9.0, FV = 9.2, HIGH = 10.4, CTA = 11.8, E = 13.6, TAP = 14.2;
+      const LW = [0.08, 0.88, 1.66], WT = 0.33, BT = 0.33, FT = 0.33;  // measured word starts in the learner take; the flap (t closure) inside each model take
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const all = (s) => Array.from(document.querySelectorAll(s));
+      // a tap mark is "drawn" left to right by opening a clip on its svg
+      const arcs = (sel) => all(sel + " svg").filter((el) => !el.closest("#c-tongue"));
+      tl.set(arcs("body"), { clipPath: "inset(-20% 100% -20% -5%)" }, 0);
+      const draw = (sel, at, d = 0.25) => tl.to(arcs(sel), { clipPath: "inset(-20% -5% -20% -5%)", duration: d, ease: "power2.out" }, at);
+      // the t turns blue and its ラ shows on the measured flap of the take
+      const flap = (p, at) => {
+        tl.to(p + " .c", { color: "#2a8dff", duration: 0.08 }, at - 0.04);
+        tl.fromTo(p + " .up", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.15, ease: "back.out(3)", immediateRender: false }, at - 0.04);
+        tl.fromTo(p, { scale: 1.14 }, { scale: 1, duration: 0.22, ease: "back.out(3)", immediateRender: false }, at - 0.04);
+      };
+      // the tongue tip taps the ridge once
+      const tongue = (at) => {
+        tl.fromTo("#c-tongue-t", { rotation: 0, svgOrigin: "222 150" }, { rotation: -7, duration: 0.07, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, at - 0.07);
+        tl.fromTo("#c-tongue-hit", { opacity: 0, scale: 0.6, svgOrigin: "62 60" }, { opacity: 1, scale: 1, duration: 0.1, yoyo: true, repeat: 1, repeatDelay: 0.15, immediateRender: false }, at);
+      };
+
+      // hook (0-SLIP): the card; the Friend calls the waiter, Mimi the waiter holds an empty glass
+      tl.fromTo("#hook", { scale: 1.06 }, { scale: 1, duration: 0.25, ease: "back.out(2)" }, 0);
+      tl.fromTo("#hook .hot", { rotation: 0 }, { rotation: -4, duration: 0.08, yoyo: true, repeat: 5, immediateRender: false }, HOOK_V + 0.1);
+      tl.fromTo("#hook .eq", { scale: 1.12 }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, HOOK_V + 0.1);
+      tl.fromTo("#scene", { scale: 1.0 }, { scale: 1.05, duration: SLIP, ease: "none" }, 0);
+      tl.fromTo("#learner-a", { x: -160 }, { x: 0, duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#learner-a", { rotation: 0 }, { rotation: -4, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 0.6);
+      tl.fromTo("#other-a", { x: 160 }, { x: 0, duration: 0.35, ease: "power2.out" }, 0.1);
+      tl.fromTo("#other-a", { y: 0 }, { y: -14, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 1.2);
+
+      // slip: each chunk lights on its measured start; the waiter stays blank, then "Sorry?"
+      tl.to("#hook", { y: -40, opacity: 0, duration: 0.15 }, SLIP - 0.15);
+      tl.set("#scene", { scale: 1 }, SLIP);
+      tl.fromTo("#say", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, SLIP);
+      k.pop("#slip-c", SLIP + 0.1);
+      all("#say .w").forEach((el, i) => {
+        tl.to(el, { opacity: 1, duration: 0.04 }, LV + LW[i] - 0.03);
+        tl.fromTo("#learner-b", { rotation: i % 2 ? 3 : -3 }, { rotation: 0, duration: 0.12, ease: "steps(2)", immediateRender: false }, LV + LW[i] - 0.03);
+      });
+      tl.fromTo("#other-b", { rotation: 0 }, { rotation: 4, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, 4.3);
+      tl.fromTo("#robot", { y: 20, scale: 0.8, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, ROBOT);
+      tl.to("#slip-c", { opacity: 0, duration: 0.1 }, ROBOT);
+
+      // tip: the card; the tap mark draws under the t, the tongue taps, then the model plays and the t turns into a light ラ
+      tl.fromTo("#card", { opacity: 0 }, { opacity: 1, duration: 0.12 }, TIP);
+      tl.fromTo("#c-title", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, TIP + 0.05);
+      tl.fromTo("#row-1", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, TIP + 0.1);
+      tl.fromTo("#c-mimi", { y: 400 }, { y: 0, duration: 0.25, ease: "back.out(1.6)" }, TIP + 0.2);
+      tl.set(["#row-2", "#c-tip", "#c-who", "#c-uk"], { opacity: 0 }, 0);
+      draw("#p1", ARC1);
+      tongue(ARC2);
+      tl.to("#row-1", { borderColor: "#2a8dff", duration: 0.15 }, M1 - 0.1);
+      flap("#p1", M1 + WT);
+      tongue(M1 + WT);
+      k.tagIn("#c-who", M1 - 0.1);
+      tl.fromTo("#c-mimi", { rotation: 0 }, { rotation: -5, duration: 0.3, yoyo: true, repeat: 11, ease: "sine.inOut", immediateRender: false }, TIP + 0.5);
+      // model: "better", the same tap; the UK note and the takeaway
+      tl.to("#row-1", { borderColor: "rgba(0,0,0,0)", duration: 0.15 }, MODEL);
+      tl.fromTo("#row-2", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out", immediateRender: false }, MODEL);
+      draw("#p3", ARC3);
+      tl.fromTo("#c-uk", { opacity: 0 }, { opacity: 1, duration: 0.2, immediateRender: false }, ARC4);
+      tl.to("#row-2", { borderColor: "#2a8dff", duration: 0.15 }, M2 - 0.1);
+      flap("#p3", M2 + BT);
+      tongue(M2 + BT);
+      tl.fromTo("#c-tip", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2)", immediateRender: false }, M2 + 0.5);
+
+      // fix: back in the restaurant, the Friend orders with a tap (the mark draws on the flap); Mimi serves the water
+      tl.fromTo("#ok-say", { scale: 0.6, opacity: 0, transformOrigin: "0% 100%" }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, FIX + 0.05);
+      draw("#ok-say", FV + FT - 0.05, 0.25);
+      tl.to("#ok-say .c", { color: "#2a8dff", duration: 0.08 }, FV + FT - 0.04);
+      k.pop("#ok-c", FIX + 0.6);
+      tl.fromTo("#learner-c", { y: 0 }, { y: -18, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, FV + 0.1);
+      tl.fromTo("#both", { x: 60, scale: 0.92 }, { x: 0, scale: 1, duration: 0.25, ease: "back.out(2)" }, HIGH);
+      tl.fromTo("#learner-d", { y: 0 }, { y: -30, duration: 0.18, yoyo: true, repeat: 3, ease: "power2.out", immediateRender: false }, HIGH + 0.2);
+      k.twinkle("#hearts", HIGH + 0.15);
+
+      // cta: the question before the end card
+      tl.fromTo("#cta", { opacity: 0 }, { opacity: 1, duration: 0.12 }, CTA);
+      tl.fromTo("#cta-q", { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" }, CTA + 0.05);
+      tl.fromTo("#cta-sub", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2 }, CTA + 0.3);
+      tl.fromTo(".qm", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, stagger: 0.1, ease: "back.out(3)" }, CTA + 0.2);
+      tl.fromTo(["#cta-mimi", "#cta-friend"], { y: 500 }, { y: 0, duration: 0.3, stagger: 0.08, ease: "back.out(1.6)" }, CTA + 0.1);
+      tl.fromTo("#cta-friend", { y: 0 }, { y: -24, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, CTA + 0.6);
+
+      k.end(E);
+      k.tapCta(TAP);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

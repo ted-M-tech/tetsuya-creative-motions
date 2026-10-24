@@ -1,0 +1,40 @@
+{
+ "_": "Pronunciation Hacks 2 (water) cue sheet (seconds on the film clock); scripts/mix.py and hf/index.html use the same numbers. Beat ids: hook, slip, tip, model, fix, cta, end. Takes are placed with (at, start, length): `start`/`length` cut each take at measured silence.",
+ "HOOK_V": 0.2,
+ "SLIP": 2.0,
+ "LV": 2.1,
+ "ROBOT": 4.55,
+ "TIP": 5.1,
+ "ARC1": 5.45,
+ "ARC2": 5.75,
+ "M1": 6.1,
+ "MODEL": 7.3,
+ "ARC3": 7.5,
+ "ARC4": 7.7,
+ "M2": 7.95,
+ "FIX": 9.0,
+ "FV": 9.2,
+ "HIGH": 10.4,
+ "CTA": 11.8,
+ "E": 13.6,
+ "TAP": 14.2,
+ "END": 15.2,
+ "TAKES": {
+  "learner-wota.wav": [
+   0.24,
+   2.5
+  ],
+  "us-water.wav": [
+   0.14,
+   0.8
+  ],
+  "us-better.wav": null
+ },
+ "LEARNER_WORDS": [
+  0.08,
+  0.88,
+  1.66
+ ],
+ "WATER_FLAP": 0.33,
+ "BETTER_FLAP": null
+}
