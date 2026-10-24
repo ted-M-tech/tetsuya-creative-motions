@@ -311,6 +311,16 @@ films/mimi-recheck-r/source/hf/assets/
 films/mimi-recheck-r/source/hf/.hyperframes/
 films/mimi-recheck-r/source/hf/.thumbnails/
 films/mimi-recheck-r/source/renders/
+films/mimi-hear-ship/source/hf/assets/
+films/mimi-hear-ship/source/hf/.hyperframes/
+films/mimi-hear-ship/source/hf/.thumbnails/
+films/mimi-hear-ship/source/renders/
+films/mimi-hear-ship/source/assets/own-voice/
+films/mimi-hear-ship/**/*.wav
+films/mimi-hear-ship/**/*.mp3
+films/mimi-hear-ship/**/*.m4a
+films/mimi-hear-ship/**/*.mov
+films/mimi-hear-ship/**/*.mp4
 # 077 How Do You Say It? 3 (mimi-say-itadakimasu)
 films/mimi-say-itadakimasu/source/hf/assets/
 films/mimi-say-itadakimasu/source/hf/.hyperframes/
