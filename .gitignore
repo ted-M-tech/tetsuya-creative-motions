@@ -318,3 +318,16 @@ films/mimi-hack-check-it-out/**/*.wav
 films/mimi-hack-check-it-out/**/*.mp4
 films/mimi-hack-check-it-out/**/*.mov
 films/mimi-hack-check-it-out/**/*.mp3
+
+# 068 mimi-slang-no-cap: edit assets (own-voice mix), simulator takes, renders and any media stay out of Git
+films/mimi-slang-no-cap/source/hf/assets/
+films/mimi-slang-no-cap/source/hf/.hyperframes/
+films/mimi-slang-no-cap/source/hf/.thumbnails/
+films/mimi-slang-no-cap/source/renders/
+films/mimi-slang-no-cap/source/assets/
+films/mimi-slang-no-cap/renders/
+films/mimi-slang-no-cap/**/*.wav
+films/mimi-slang-no-cap/**/*.mp3
+films/mimi-slang-no-cap/**/*.m4a
+films/mimi-slang-no-cap/**/*.mov
+films/mimi-slang-no-cap/**/*.mp4
