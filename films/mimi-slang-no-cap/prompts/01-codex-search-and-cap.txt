@@ -1,0 +1,10 @@
+Use your image generation tool. The attached images are the canonical Lanclo cast in the official 2D style:
+master.webp = Mimi (white bunny, blue inner ears, dot eyes, pink cheeks, navy-and-blue headphones with a white "L" on the cup at the viewer's LEFT); sheet.webp and aww.webp = Mimi's Friend (white bunny, sleepy flat line eyes, pink inner ears,
+dark-grey tip on the ear at the viewer's RIGHT, soft orange patch around the eye at the viewer's RIGHT, navy-and-blue
+headphones with a white "L" on the cup at the viewer's LEFT).
+Match the character EXACTLY (shapes, markings, colours, headphones, proportions, outline weight). Plain pure white
+background, full body, centred, same scale and head size as master.webp. No text, no letters, no logos except the white "L" on the headphones.
+Every fill must be opaque (the body is solid white with navy outlines, nothing see-through).
+Make two separate images and save each as PNG in the current directory:
+1. art/friend-search.png — the Friend alone, standing, searching around for a hat that is not there: one mitten paw raised flat above the eyes like a visor (looking into the distance), leaning forward a little, the other paw patting the top of the own head between the ears, puzzled open mouth, one small sweat drop, a navy "?" floating next to the head. NO hat on the head. Body turned three-quarter toward the viewer's RIGHT.
+2. art/cap.png — a prop only, no character: one baseball cap in the same flat 2D style (navy outline of the same weight, flat fills): soft blue crown with a lighter blue brim, a small button on top, seen from a three-quarter front angle, no logo, no letters, no text. Plain pure white background, centred, about the size of Mimi's head in master.webp.

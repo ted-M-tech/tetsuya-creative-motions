@@ -1,0 +1,8 @@
+{"lines": [
+  {"id": "claim", "text": "No cap, I practiced that move fifty times.",
+   "style": "Speak fluent, casual General American English to a friend, bragging playfully and very sure of yourself: a confident grin in the voice, a short beat after \"No cap,\", stress on \"cap\" and \"fifty\". Quick and punchy, about two and a half seconds."},
+  {"id": "huh", "text": "Cap...?",
+   "style": "Speak English as a confused friend who just heard the word and looks around for a hat: one word, puzzled, rising question intonation, a little slow. About one second."},
+  {"id": "nocap", "text": "No cap.",
+   "style": "Speak fluent, natural General American English, clear and friendly, like saying a new slang phrase for a learner: two words, stress on \"cap\", falling intonation. About one second."}
+]}

@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Lanclo SNSショート #072。新シリーズ「Pronunciation Hacks（発音のコツ）」第1話（毎回、短く正しいコツを1つ。最後に「次のコツは？」）。ドラフト（2026-10-23、オーナー確認待ち）。15.2秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
+Lanclo SNSショート #072。新シリーズ「Pronunciation Hacks（発音のコツ）」第1話（毎回、短く正しいコツを1つ。最後に「次のコツは？」）。完成版（2026-10-23、オーナー承認済み）。15.2秒、1080×1920、60fps、2本（日本語のみ／英語字幕つき）。
 
 コツ：**リンキング**。語末の子音が次の語の母音につながる（check‿it‿out、pick‿it‿up）。この回は子音→母音のリンキングだけ（フラップTは扱わない）。
 
@@ -20,5 +20,5 @@ Lanclo SNSショート #072。新シリーズ「Pronunciation Hacks（発音の�
 
 - キャストはミミと友だちのみ（ライブラリのポーズのみ、新規作画なし）。アプリ画面なし（テンポ優先）。
 - 声：オーナーの登録音声（`ownvoice.py`）3行。WAVはGitに入れず、Drive `072. Pronunciation Hacks 1 - Check It Out/Hacks1_CheckItOut_assets/own-voice/`。
-- ドラフト：Drive `002.SNS/072. Pronunciation Hacks 1 - Check It Out/`（`Hacks1_CheckItOut_draft_2026-10-23.mp4`、`Hacks1_CheckItOut_draft_EN-subs_2026-10-23.mp4`）。
+- 完成版：Drive `002.SNS/072. Pronunciation Hacks 1 - Check It Out/`（`Hacks1_CheckItOut_2026-10-23.mp4`、`Hacks1_CheckItOut_EN-subs_2026-10-23.mp4`）。
 - シリーズの作り方（第2話以降）は [README.md](README.md#series-template-episodes-2) の Series template。

@@ -2,7 +2,7 @@
 
 [日本語](README.ja.md)
 
-Lanclo SNS short #072, episode 1 of the new series “Pronunciation Hacks” (one quick, correct pronunciation tip per episode; the CTA asks for the next tip). Draft, 2026-10-23 (awaiting the owner's review). 15.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
+Lanclo SNS short #072, episode 1 of the new series “Pronunciation Hacks” (one quick, correct pronunciation tip per episode; the CTA asks for the next tip). Final, owner approved on 2026-10-23. 15.2 s, 1080×1920, 60 fps, two cuts (Japanese only / English subtitles).
 
 Tip: **linking**. A word's final consonant joins the next word's vowel: check‿it‿out, pick‿it‿up. This episode is only about consonant→vowel linking (no flap-T claim; that is a later episode).
 
@@ -20,7 +20,7 @@ Scene: a meeting room with a whiteboard. Frame 1: 「チェケラ ＝ Check it o
 
 - Cast: Mimi and her Friend only, all library poses (no new art). No side cast, no Kokoro, no app shot (the optional daily-lesson shot was skipped for tempo).
 - Voices: three lines of the owner's registered voice via `kits/mimi-short/scripts/ownvoice.py`; WAVs are biometric and not in Git (Drive `072. Pronunciation Hacks 1 - Check It Out/Hacks1_CheckItOut_assets/own-voice/`).
-- Drafts in Lanclo's Google Drive `002.SNS/072. Pronunciation Hacks 1 - Check It Out/` (`Hacks1_CheckItOut_draft_2026-10-23.mp4`, `Hacks1_CheckItOut_draft_EN-subs_2026-10-23.mp4`).
+- Finals in Lanclo's Google Drive `002.SNS/072. Pronunciation Hacks 1 - Check It Out/` (`Hacks1_CheckItOut_2026-10-23.mp4`, `Hacks1_CheckItOut_EN-subs_2026-10-23.mp4`).
 - Rebuild: [source/README.md](source/README.md). Making-of: [PROCESS.md](PROCESS.md). Prompt: [PROMPT.md](PROMPT.md). Credits: [CREDITS.md](CREDITS.md).
 
 ![Frames](process/00-draft-frames.jpg)
