@@ -6,7 +6,7 @@ Episode 3 of the feature-led series "How Do You Say It?" (template: [episode 1](
 
 0:17.30 / 1080×1920, 60 fps / two cuts: Japanese captions only, and with English subtitles (`kits/mimi-short/render-cuts.sh`) / -14 LUFS, true peak ≤ -1.5 dBTP / platform safe zones kept (bottom 420 px, right action rail, top 200 px) / the owner's own voice for the English lines / 2D Mimi and her Friend (library poses + HyperFrames) beside a simulator recording of the iOS app
 
-Status: draft for the owner's review (2026-10-23). Drive `002.SNS/077. How Do You Say It 3 - Itadakimasu/`: `Say3_Itadakimasu_draft_2026-10-23.mp4`, `Say3_Itadakimasu_draft_EN-subs_2026-10-23.mp4`.
+Status: final, owner approved (2026-10-23). Drive `002.SNS/077. How Do You Say It 3 - Itadakimasu/`: `Say3_Itadakimasu_2026-10-23.mp4`, `Say3_Itadakimasu_EN-subs_2026-10-23.mp4`.
 
 ![Frames with the platform safe zones](process/00-draft-frames.jpg)
 

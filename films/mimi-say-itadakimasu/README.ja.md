@@ -6,7 +6,7 @@
 
 0:17.30 / 1080×1920・60fps / 日本語字幕のみと英語字幕つきの2本 / -14 LUFS・トゥルーピーク -1.5 dBTP 以下 / プラットフォームのセーフエリア（下420px・右のアクション列・上200px）を守る / 英語はオーナー本人の声 / 2DのMimiと友だち（ライブラリのポーズ＋HyperFrames）＋iOSアプリのシミュレーター録画
 
-状態：オーナー確認待ちの下書き（2026-10-23）。Drive `002.SNS/077. How Do You Say It 3 - Itadakimasu/` の `Say3_Itadakimasu_draft_2026-10-23.mp4`、`Say3_Itadakimasu_draft_EN-subs_2026-10-23.mp4`。
+状態：完成版（2026-10-23、オーナー承認済み）。Drive `002.SNS/077. How Do You Say It 3 - Itadakimasu/` の `Say3_Itadakimasu_2026-10-23.mp4`、`Say3_Itadakimasu_EN-subs_2026-10-23.mp4`。
 
 ![フレーム（セーフエリアの線つき）](process/00-draft-frames.jpg)
 
