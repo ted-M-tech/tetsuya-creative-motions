@@ -311,3 +311,10 @@ films/mimi-recheck-r/source/hf/assets/
 films/mimi-recheck-r/source/hf/.hyperframes/
 films/mimi-recheck-r/source/hf/.thumbnails/
 films/mimi-recheck-r/source/renders/
+films/mimi-hack-check-it-out/source/hf/assets/
+films/mimi-hack-check-it-out/source/renders/
+films/mimi-hack-check-it-out/source/assets/
+films/mimi-hack-check-it-out/**/*.wav
+films/mimi-hack-check-it-out/**/*.mp4
+films/mimi-hack-check-it-out/**/*.mov
+films/mimi-hack-check-it-out/**/*.mp3
