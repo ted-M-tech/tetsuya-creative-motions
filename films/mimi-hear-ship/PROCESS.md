@@ -29,6 +29,13 @@
 7. Safe zones: overlay sheet of the EN cut every ~1.5 s ([process/01-safe-zones.jpg](process/01-safe-zones.jpg)): subtitles end at y 1495 within x 60–880; no text, bubble or face in the right rail (Mimi x 570–870, rule Mimi x 620–870); top texts start at y ≥ 200.
 8. Delivery: both cuts 1080×1920, 60 fps, 16.2 s, no rotation side data, -14.2 LUFS, -1.8 dBTP. Drive: `Hear3_Ship_draft_2026-10-23.mp4`, `Hear3_Ship_draft_EN-subs_2026-10-23.mp4`.
 
+## Draft v2 (2026-10-23, owner review)
+
+- Owner: 「078みた。フォントの色とか変わってる？統一感出して過去と」
+- Commander: episode 1 colours the two target words blue #2a8dff / red #e5484d (hook, question pill, card answers, rule card); v1 had switched them to the A / B card colours (purple / orange) and drifted in other styles.
+- Fix: the A / B cards keep episode 1's colours (A orange, B purple); ship = blue, sheep = red everywhere, like can / can't (hook, 「sheep はどっち？」 pill in episode 1's light red #ff9ea1 on navy, answers under the cards, rule rows, bars, borders and highlights, the 「口を横に「イー」→sheep」 pill, the ask line). ○ blue / × red marks as in episode 1. The style block now differs from episode 1 only in content: rule title back to 76 px (text shortened to 「長さと口の形を聞く！」), row tops / heights 320 / 345 and 685 / 410, the long word 100 px like CAN'T, grey syllable bars for “I saw a” plus the coloured vowel bar (ship 120 px, sheep 240 px), cast and bubble positions back to episode 1's; removed #c96a2c, #ffc08a and the extra grey bar labels. The card icons stay (content).
+- Side by side with episode 1: [process/02-v2-vs-061.jpg](process/02-v2-vs-061.jpg). Safe zones re-checked ([process/01-safe-zones.jpg](process/01-safe-zones.jpg)). Audio unchanged (-14.2 LUFS, -1.8 dBTP). v1 drafts moved to Drive `old/` with a `_v1` suffix.
+
 ## Open questions
 
 - Owner's ear on the final sheep take (direction “only the vowel long”): does the sentence still sound natural next to the ship take?
