@@ -311,6 +311,17 @@ films/mimi-recheck-r/source/hf/assets/
 films/mimi-recheck-r/source/hf/.hyperframes/
 films/mimi-recheck-r/source/hf/.thumbnails/
 films/mimi-recheck-r/source/renders/
+# 067 mimi-cloning: edit assets (own-voice mix), simulator takes, own-voice WAVs and renders stay out of Git
+films/mimi-cloning/source/hf/assets/
+films/mimi-cloning/source/hf/.hyperframes/
+films/mimi-cloning/source/hf/.thumbnails/
+films/mimi-cloning/source/renders/
+films/mimi-cloning/source/assets/own-voice/
+films/mimi-cloning/renders/
+films/mimi-cloning/**/*.wav
+films/mimi-cloning/**/*.mp3
+films/mimi-cloning/**/*.mov
+films/mimi-cloning/**/*.mp4
 films/mimi-hear-ship/source/hf/assets/
 films/mimi-hear-ship/source/hf/.hyperframes/
 films/mimi-hear-ship/source/hf/.thumbnails/

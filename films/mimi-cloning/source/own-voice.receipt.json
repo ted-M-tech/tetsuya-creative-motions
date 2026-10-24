@@ -1,0 +1,51 @@
+{
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Lanclo private practice",
+  "lines": {
+    "before": {
+      "text": "Please leave the light on.",
+      "style": "Speak English as a Japanese beginner who learned it from textbooks: katakana-like vowels added after consonants, r and l mixed up, flat syllable-by-syllable timing, every syllable equally stressed, a little hesitant. Keep it natural, not a caricature. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "827032c42015c4d1833a3f5c48f8208e59287da3104380965af3cfea0e8689c5",
+      "at": "2026-10-21T21:46:12+00:00",
+      "reusedFrom": "mimi-no-shadowing"
+    },
+    "model": {
+      "text": "Please leave the light on.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d369e0d4e3da7e202ec528ccad94e71813c200c626bec7ddb4a6984cd29aa386",
+      "at": "2026-10-21T21:46:15+00:00",
+      "reusedFrom": "mimi-no-shadowing"
+    },
+    "low": {
+      "text": "Leave the light on.",
+      "style": "Speak fluent General American English in a very deep, low, booming bass voice, like a movie-trailer narrator: heavy and resonant, the pitch as low as possible. Native vowels, accurate stress, smooth linking. Quick: the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "f08451cd5346e7b49342c5742c8aa3deced56cf55374d2902b281029e24ad4cc",
+      "at": "2026-10-23T23:04:02+00:00"
+    },
+    "high": {
+      "text": "Leave the light on.",
+      "style": "Speak fluent General American English in a very high, bright, squeaky voice, like an excited cartoon character: the pitch as high as possible, light and quick. Native vowels, accurate stress, smooth linking. Quick: the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d6a1cfcc41f359afd141d4c225374935ddb85d39fdf076e36f72a723be34179c",
+      "at": "2026-10-23T23:04:05+00:00"
+    },
+    "fast": {
+      "text": "What do you want to do about it?",
+      "style": "Speak fluent, casual General American English very fast, like a native talking to a friend: heavy linking and reductions (\"whaddaya wanna do aboudit\"), stress-timed rhythm, flapped t, no pauses, the whole line in about one second. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "d383e343f1f223a5de34f07bd70973e9edb9b60eee05af2313d636a82f4244ca",
+      "at": "2026-10-23T22:34:19+00:00"
+    },
+    "us-short": {
+      "text": "I can't park the car.",
+      "style": "Speak fluent General American English. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Reduced unstressed syllables, stress-timed rhythm, rhotic r, flapped t. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "637b22f4fb4c7e8ce4d260f0925c758e2a9dc7c1a58467627166926391af7536",
+      "at": "2026-10-23T23:04:07+00:00"
+    },
+    "uk-short": {
+      "text": "I can't park the car.",
+      "style": "Speak fluent, clearly British English (Southern Standard British / RP), so a listener instantly hears it is British, not American. Use native vowel and consonant sounds, accurate word stress, smooth linking and natural sentence intonation. Non-rhotic: drop the r after vowels (\"car\", \"water\"). Crisp, unflapped t (\"better\", \"water\" with a clear t). Long broad a in \"can't\", \"bath\", \"ask\". Rounded short o in \"hot\", \"lot\". British intonation with a gentle rise and fall. Preserve the selected speaker’s vocal identity. Read the supplied text verbatim. Do not add any words or commentary.",
+      "wavSha256": "e076b657a0f01b92debd394aaaa20dcd976a5ffac184e2e0d687506979fb9a67",
+      "at": "2026-10-23T23:04:09+00:00"
+    }
+  },
+  "voiceIdentitySha256": "7dabe94c5210d6c2525a1e68f223888bfa40daf5b636d465bbba61f796562e14"
+}

@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/kit/kit.css" />
+    <script src="assets/kit/kit.js"></script>
+    <style>
+      #root { background: #eef3f9; }
+      .stage { position: absolute; inset: 0; transform-origin: 50% 70%; }
+      .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: rgba(39, 59, 75, 0.06); }
+      #s-hook, #s-vids { background: linear-gradient(#efecf5, #e2deec); }
+      #s-count { background: linear-gradient(#f4f1ea, #e9e3d6); }
+      #s-idea, #s-name { background: radial-gradient(circle at 50% 40%, #ffffff 0, #e7f0fa 75%); }
+      #s-res { background: linear-gradient(#f2f8ff, #dcecff); }
+      #s-app, #s-use { background: linear-gradient(#f2f8ff, #dcecff); }
+      /* Characters: feet at y 1540, faces left of x 900 (platform action rail) */
+      .ch { position: absolute; height: auto; transform-origin: 50% 100%; bottom: 380px; }
+      /* Hook card (first text line from y 230) */
+      #hook { position: absolute; left: 50px; right: 50px; top: 170px; background: #ffffff; border-radius: 44px; padding: 56px 26px 40px;
+              box-shadow: 0 14px 40px rgba(39, 59, 75, 0.18); text-align: center; font-size: 86px; font-weight: 700; line-height: 1.28; color: #273b4b; }
+      #hook strong { color: #e5484d; }
+      /* Voice lanes */
+      .lanes { position: absolute; left: 50px; width: 830px; background: #ffffff; border-radius: 36px; padding: 18px 30px;
+               box-shadow: 0 12px 34px rgba(39, 59, 75, 0.12); }
+      .lane { display: flex; align-items: center; gap: 22px; height: 104px; }
+      .lane b { width: 230px; font-size: 40px; line-height: 1.2; color: #273b4b; }
+      .lane .bars { position: relative; flex: 1; height: 90px; }
+      .lane .bars i { position: absolute; bottom: 45px; width: 14px; height: 8px; margin-bottom: -4px; border-radius: 7px; background: #c9d3dc; }
+      .lane.native .bars i.on { background: #9a86c9; }
+      .lane.me .bars i.on { background: #2a8dff; }
+      .lane.low .bars i.on { background: #344f69; }
+      .lane.high .bars i.on { background: #f08a5d; }
+      #lanes0 { top: 590px; }
+      .verdict { position: absolute; z-index: 5; font-size: 80px; font-weight: 700; color: #e5484d; -webkit-text-stroke: 7px #ffffff; paint-order: stroke fill; }
+      #v-bad { left: 500px; top: 900px; }
+      /* YouTube / Netflix: brand-like colours and plain type only (no logos, no official letterforms) */
+      .vid { position: absolute; width: 360px; height: 210px; border-radius: 34px; box-shadow: 0 14px 30px rgba(39, 59, 75, 0.25);
+             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; font-family: "Helvetica Neue", Arial, sans-serif; }
+      .vid.yt { background: #ff0000; color: #ffffff; }
+      .vid.yt i { display: block; width: 0; height: 0; border-left: 50px solid #ffffff; border-top: 30px solid transparent; border-bottom: 30px solid transparent; margin-left: 12px; }
+      .vid.yt b { font-size: 46px; font-weight: 700; }
+      .vid.nf { background: #141414; color: #e50914; }
+      .vid.nf b { font-size: 70px; font-weight: 800; letter-spacing: 0.01em; }
+      #again { position: absolute; left: 560px; top: 1180px; font-size: 50px; font-weight: 700; color: #5b6b78; }
+      /* Countdown */
+      #why { position: absolute; left: 0; right: 0; top: 190px; display: flex; justify-content: center; }
+      #why span { background: #273b4b; color: #ffffff; font-size: 54px; font-weight: 700; padding: 16px 48px; border-radius: 60px; }
+      .reason { position: absolute; left: 50px; width: 830px; top: 330px; display: flex; align-items: center; gap: 26px; }
+      .reason .num { width: 230px; height: 230px; border-radius: 50%; background: #e5484d; color: #ffffff; font-size: 170px; font-weight: 700;
+                     display: flex; align-items: center; justify-content: center; line-height: 1; flex: none; box-shadow: 0 12px 30px rgba(229, 72, 77, 0.3); }
+      .reason .t b { display: block; white-space: nowrap; font-size: 84px; font-weight: 700; line-height: 1.15; color: #273b4b; }
+      .reason .t b strong { color: #e5484d; }
+      .reason .t span { display: block; margin-top: 10px; font-size: 46px; font-weight: 700; color: #5b6b78; }
+      #lanes3 { top: 610px; }
+      #phrase { position: absolute; left: 50px; width: 830px; top: 620px; background: #ffffff; border-radius: 36px; padding: 30px 30px; text-align: center;
+                box-shadow: 0 12px 34px rgba(39, 59, 75, 0.12); }
+      #phrase .slow { font-size: 52px; font-weight: 700; color: #273b4b; }
+      #phrase .linked { margin-top: 14px; font-size: 64px; font-weight: 700; color: #2a8dff; letter-spacing: -0.02em; }
+      #accents { position: absolute; left: 50px; width: 830px; top: 620px; display: flex; gap: 22px; justify-content: center; }
+      .acc { width: 190px; height: 190px; border-radius: 40px; background: #ffffff; box-shadow: 0 12px 30px rgba(39, 59, 75, 0.14);
+             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+      .acc b { font-size: 72px; font-weight: 700; color: #273b4b; line-height: 1; }
+      .acc span { white-space: nowrap; font-size: 25px; font-weight: 700; color: #5b6b78; }
+      .acc.on { background: #2a8dff; } .acc.on b, .acc.on span { color: #ffffff; }
+      .acc.q b { color: #9aa7b2; }
+      /* Copy cards */
+      .type { position: absolute; inset: 0; background: #fbfcfd; }
+      .type .big { position: absolute; left: 50px; width: 830px; top: 300px; font-size: 92px; font-weight: 700; text-align: center; line-height: 1.38; color: #273b4b; }
+      .type .big em { font-style: normal; color: #e5484d; }
+      /* The idea */
+      #bulb { position: absolute; left: 150px; top: 640px; width: 220px; height: auto; transform-origin: 50% 100%; }
+      #glow { position: absolute; left: 80px; top: 600px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 216, 74, 0.55), rgba(255, 216, 74, 0) 70%); }
+      .biz { position: absolute; left: 560px; font-size: 44px; font-weight: 700; color: #273b4b; background: #ffffff; padding: 16px 30px; border-radius: 40px;
+             box-shadow: 0 8px 24px rgba(39, 59, 75, 0.12); white-space: nowrap; }
+      /* SHADOWING -> CLONING */
+      #word { position: absolute; left: 40px; width: 860px; top: 560px; height: 230px; }
+      #word .w { position: absolute; left: 0; right: 0; top: 0; text-align: center; font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+                 font-weight: 900; font-size: 128px; line-height: 230px; letter-spacing: 0.01em; }
+      #w-old { color: #273b4b; }
+      #w-new { color: #2a8dff; }
+      #strike { position: absolute; left: 30px; top: 108px; width: 800px; height: 18px; border-radius: 9px; background: #e5484d; transform-origin: 0 50%; }
+      #w-sub { position: absolute; left: 40px; width: 860px; top: 800px; text-align: center; font-size: 46px; font-weight: 700; color: #5b6b78; }
+      /* Name origin: LANguage CLOning -> Lanclo */
+      #origin { position: absolute; left: 40px; width: 860px; top: 470px; text-align: center; font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+                font-weight: 900; font-size: 110px; line-height: 1.25; color: #c3ccd4; }
+      #origin .hl { color: #2a8dff; }
+      #lockup { position: absolute; left: 40px; width: 860px; top: 520px; display: flex; align-items: center; justify-content: center; gap: 30px; }
+      #lockup img { width: 170px; height: 170px; }
+      #lockup span { font-size: 170px; font-weight: 700; color: #273b4b; letter-spacing: 0.01em; }
+      /* Research card (exact LP wording; content kept left of x 880) */
+      #card { position: absolute; left: 40px; width: 860px; top: 170px; background: #ffffff; border-radius: 44px; padding: 50px 44px 30px;
+              box-shadow: 0 14px 40px rgba(39, 59, 75, 0.16); }
+      #card .ttl { font-size: 54px; font-weight: 700; color: #273b4b; text-align: center; line-height: 1.3; }
+      #card .ratio { text-align: center; color: #2a8dff; font-weight: 700; line-height: 1; margin: 12px 0 18px; }
+      #card .ratio span { font-size: 64px; } #card .ratio b { font-size: 190px; }
+      .row { margin-top: 18px; }
+      .row .lb { display: flex; justify-content: space-between; font-size: 36px; font-weight: 700; color: #273b4b; }
+      .row .lb strong { color: #2a8dff; }
+      .row .tr { margin-top: 8px; height: 40px; border-radius: 20px; background: #eef2f5; overflow: hidden; }
+      .row .tr div { height: 100%; border-radius: 20px; background: #9aa7b2; transform-origin: 0 50%; }
+      .row.own .tr div { background: #2a8dff; }
+      #card .lim { margin-top: 26px; font-size: 31px; font-weight: 700; color: #5b6b78; text-align: center; line-height: 1.4; }
+      #card .src { margin-top: 8px; font-size: 22px; color: #66737e; text-align: center; font-family: "Helvetica Neue", Arial, sans-serif; }
+      .bubble.say { top: auto; left: 400px; max-width: 480px; font-size: 48px; border-top-left-radius: 8px; }
+      /* The phone (real app) */
+      #device { position: absolute; left: 350px; top: 450px; width: 414px; height: 900px; border-radius: 74px; background: #1d2733; padding: 14px;
+                box-shadow: 0 30px 70px rgba(39, 59, 75, 0.28); }
+      #screen { position: relative; width: 100%; height: 100%; border-radius: 60px; overflow: hidden; background: #f2f2f7; }
+      #screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #a-label { position: absolute; left: 4%; right: 4%; top: 27%; height: 56%; background: #ffffff; border-radius: 30px; box-shadow: 0 8px 22px rgba(39, 59, 75, 0.12);
+                 display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center; }
+      #a-label b { font-size: 44px; line-height: 1.35; font-weight: 700; color: #273b4b; }
+      #a-label b strong { color: #2a8dff; }
+      #a-label .bars { position: relative; width: 340px; height: 90px; }
+      #a-label .bars i { position: absolute; bottom: 45px; width: 12px; height: 8px; margin-bottom: -4px; border-radius: 6px; background: #c9d3dc; }
+      #a-label .bars i.on { background: #2a8dff; }
+      .tap { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 6px solid #2a8dff; background: rgba(42, 141, 255, 0.18); }
+      /* English subtitles: above the platform caption area (box bottom y <= 1500) and left of the action rail (x 60-880).
+         <body class="no-subs"> renders the Japanese-only cut. */
+      body.no-subs .sub { display: none; }
+      .sub { position: absolute; left: 60px; width: 820px; bottom: 430px; display: flex; justify-content: center; z-index: 30; }
+      .sub.top { bottom: auto; top: 220px; }
+      .sub span { display: block; max-width: 820px; background: rgba(39, 59, 75, 0.88); color: #ffffff; font-size: 36px; line-height: 1.35;
+                  font-weight: 700; text-align: center; padding: 12px 26px; border-radius: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35.6" data-width="1080" data-height="1920">
+      <!-- 0-2.4 Hook: the model runs ahead, the Friend lags behind -->
+      <div id="s-hook" class="stage">
+        <div class="floor"></div>
+        <img id="h-friend" class="ch" src="assets/art/friend-oops.webp" alt="" style="left:-10px; width:540px" />
+        <div class="lanes" id="lanes0">
+          <div class="lane native"><b>お手本</b><div class="bars" id="b-nat"></div></div>
+          <div class="lane me"><b>自分</b><div class="bars" id="b-me"></div></div>
+        </div>
+      </div>
+      <div id="hook" class="clip" data-start="0" data-duration="2.4" data-track-index="4">シャドーイング、<br /><strong>続かなかった</strong>人へ</div>
+      <div id="v-bad" class="verdict clip" data-start="1.4" data-duration="1.0" data-track-index="5">ズレズレ…</div>
+
+      <!-- 2.4-4.4 YouTube / Netflix, many times -->
+      <div id="s-vids" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div class="vid yt" id="vd1" style="left:520px; top:560px; transform:rotate(-4deg)"><i></i><b>YouTube</b></div>
+        <div class="vid nf" id="vd2" style="left:520px; top:860px; transform:rotate(3deg)"><b>Netflix</b></div>
+        <div id="again">↻ 何回も…</div>
+        <img id="v-friend" class="ch" src="assets/art/friend-shock.webp" alt="" style="left:-10px; width:520px" />
+        <img id="v-friend2" class="ch" src="assets/art/friend-shrink.webp" alt="" style="left:-10px; width:520px; opacity:0" />
+      </div>
+
+      <!-- 4.4-13.3 Reasons numbered 1-2-3 (v3; ids r3/r2/r1 kept from v2): 1 voice quality, 2 rhythm, 3 accent -->
+      <div id="s-count" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div id="why"><span>シャドーイングが続かない理由</span></div>
+        <div class="reason" id="r3"><div class="num">1</div><div class="t"><b><strong>声質</strong>が違う</b><span>高さも響きも、別人</span></div></div>
+        <div class="reason" id="r2" style="opacity:0"><div class="num">2</div><div class="t"><b><strong>リズム</strong>が違う</b><span>速い・つながる</span></div></div>
+        <div class="reason" id="r1" style="opacity:0"><div class="num">3</div><div class="t"><b><strong>アクセント</strong>が違う</b><span>どれをまねる？</span></div></div>
+        <div class="lanes" id="lanes3">
+          <div class="lane low"><b>低い声</b><div class="bars" id="b-low"></div></div>
+          <div class="lane high"><b>高い声</b><div class="bars" id="b-high"></div></div>
+        </div>
+        <div id="phrase" style="opacity:0"><div class="slow">What do you want to do about it?</div><div class="linked" id="linked">“Whaddaya wanna do aboudit?”</div></div>
+        <div id="accents" style="opacity:0">
+          <div class="acc" id="ac-us"><b>US</b><span>アメリカ</span></div>
+          <div class="acc" id="ac-uk"><b>UK</b><span>イギリス</span></div>
+          <div class="acc q" id="ac-au"><b>AU</b><span>オーストラリア</span></div>
+          <div class="acc q" id="ac-q"><b>…?</b><span>ほかにも</span></div>
+        </div>
+        <img id="c-f3" class="ch" src="assets/art/friend-puzzled.webp" alt="" style="left:-20px; width:470px" />
+        <img id="c-f2" class="ch" src="assets/art/friend-swamped.webp" alt="" style="left:-40px; width:560px; opacity:0" />
+        <img id="c-f1" class="ch" src="assets/art/friend-shrink.webp" alt="" style="left:-20px; width:470px; opacity:0" />
+        <img id="c-mimi" class="ch" src="assets/art/presenter.webp" alt="" style="left:470px; width:420px" />
+      </div>
+
+      <!-- 13.3-14.6 The real problem -->
+      <div id="s-concl" class="type clip" data-start="13.3" data-duration="1.3" data-track-index="8">
+        <div id="big1" class="big">自分に合うお手本、<br />探すのが<br /><em>いちばん難しい</em></div>
+        <img id="cc-friend" class="ch" src="assets/art/friend-shrink.webp" alt="" style="left:220px; width:440px" />
+      </div>
+
+      <!-- 14.6-17.2 The idea -->
+      <div id="s-idea" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div id="glow" style="opacity:0"></div>
+        <img id="bulb" src="assets/art/bulb.webp" alt="" style="opacity:0" />
+        <div class="biz" id="bz1" style="top:620px">ナレーション</div>
+        <div class="biz" id="bz2" style="top:760px">吹き替え</div>
+        <div class="biz" id="bz3" style="top:900px">接客・案内</div>
+        <div class="biz" id="bz4" style="top:1040px">ゲーム</div>
+        <img id="i-mimi" class="ch" src="assets/art/perk.webp" alt="" style="left:20px; width:460px" />
+      </div>
+
+      <!-- 17.2-23.0 SHADOWING -> CLONING -> LANguage CLOning -> Lanclo -->
+      <div id="s-name" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div id="word"><div class="w" id="w-old">SHADOWING</div><div id="strike"></div><div class="w" id="w-new" style="opacity:0">CLONING</div></div>
+        <div id="w-sub">シャドーイング → <b style="color:#2a8dff">クローニング</b></div>
+        <div id="origin" style="opacity:0"><div><span class="hl" id="o-lan">LAN</span><span class="dim">GUAGE</span></div><div><span class="hl" id="o-clo">CLO</span><span class="dim">NING</span></div></div>
+        <div id="lockup" style="opacity:0"><img src="assets/kit/brand/mark.png" alt="" /><span>Lanclo</span></div>
+        <img id="n-mimi" class="ch" src="assets/art/confident.webp" alt="" style="left:10px; width:500px" />
+        <img id="n-mimi2" class="ch" src="assets/art/grin.webp" alt="" style="left:10px; width:500px; opacity:0" />
+        <img id="n-friend" class="ch" src="assets/art/friend-tsukkomi.webp" alt="" style="left:480px; width:420px; opacity:0" />
+        <div id="n-spark" class="sparkles"></div>
+      </div>
+
+      <!-- 23.0-28.3 Research (exact LP wording, voice-web/src/landing/ResearchEvidence.tsx) -->
+      <div id="s-res" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div id="card">
+          <div class="ttl">英語の抑揚テスト、得点の伸び</div>
+          <div class="ratio" id="ratio"><span>約</span><b>1.3</b><span>倍</span></div>
+          <div class="row"><div class="lb"><span>ネイティブのお手本</span><span>+65.52</span></div><div class="tr"><div id="bar-n" style="width:65.52%"></div></div></div>
+          <div class="row own"><div class="lb"><strong>自分の声のお手本</strong><strong>+86.61</strong></div><div class="tr"><div id="bar-o" style="width:86.61%"></div></div></div>
+          <div class="lim">66人・12週間の研究。<br />Lancloの効果検証ではありません</div>
+          <div class="src">Li, Lian &amp; Yodkamlue (2020)</div>
+        </div>
+        <img id="r-friend" class="ch" src="assets/art/friend-amazed.webp" alt="" style="left:-10px; width:420px; opacity:0" />
+        <img id="r-friend2" class="ch" src="assets/art/friend-nod.webp" alt="" style="left:-10px; width:420px; opacity:0" />
+      </div>
+      <div id="say1" class="bubble say clip" style="top:1180px" data-start="25.0" data-duration="1.6" data-track-index="6">すごい！</div>
+      <div id="say2" class="bubble say clip" style="top:1120px" data-start="26.6" data-duration="1.7" data-track-index="6">たしかに…<br />自分の声なら、<br />まねしやすい！</div>
+
+      <!-- 28.3-32.6 The real app: today's lesson, the model in your own voice -->
+      <div id="s-app" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <div id="device">
+          <div id="screen">
+            <video id="a-app" class="clip" src="assets/app/app.mp4" muted playsinline data-start="28.3" data-duration="4.3" data-track-index="9"></video>
+            <div id="a-label"><b>お手本は<br /><strong>自分の声</strong>で<br />ネイティブの発音</b><div class="bars" id="b-app"></div></div>
+            <div id="tap1" class="tap clip" style="left:16%; top:86.8%" data-start="29.1" data-duration="0.3" data-track-index="11"></div>
+          </div>
+        </div>
+        <img id="a-mimi" class="ch" src="assets/art/point.webp" alt="" style="left:-30px; width:380px" />
+      </div>
+
+      <!-- 32.6-34.0 Let's try it -->
+      <div id="s-use" class="stage" style="opacity:0">
+        <div class="floor"></div>
+        <img id="u-pair" class="ch" src="assets/art/highfive.webp" alt="" style="left:40px; width:820px" />
+        <div id="u-spark" class="sparkles"></div>
+      </div>
+
+      <!-- Captions (one track, top) -->
+      <div class="caption small clip" data-start="2.4" data-duration="1.1" data-track-index="13"><span id="c1">YouTubeやNetflixで、<br />何回もやったんだ</span></div>
+      <div class="caption small clip" data-start="3.5" data-duration="0.9" data-track-index="13"><span id="c2">でも、<em>難しかった…</em></span></div>
+      <div class="caption small clip" data-start="14.6" data-duration="1.3" data-track-index="13"><span id="c3">AIで、<strong>声が作れる</strong>時代。<br />いろんなビジネスで使われてる</span></div>
+      <div class="caption small clip" data-start="15.9" data-duration="1.3" data-track-index="13"><span id="c4">英語の<strong>発音練習</strong>にも、<br />使えるんじゃない？</span></div>
+      <div class="caption small clip" data-start="17.2" data-duration="2.1" data-track-index="13"><span id="c5">お手本を、自分の声に。<br />名付けて<strong>“クローニング”</strong>！</span></div>
+      <div class="caption small clip" data-start="19.3" data-duration="2.0" data-track-index="13"><span id="c5b">Language Cloning…<br />だから<strong>“Lanclo”</strong>にしたんだ！</span></div>
+      <div class="caption small clip" data-start="21.3" data-duration="1.7" data-track-index="13"><span id="c6"><strong>僕</strong>が勝手に名付けたんだ。<br />かっこいいでしょ？</span></div>
+      <div class="caption small clip" data-start="28.3" data-duration="2.6" data-track-index="13"><span id="c7">今日の一文を、<br /><strong>自分の声</strong>のお手本で</span></div>
+      <div class="caption small clip" data-start="30.9" data-duration="1.7" data-track-index="13"><span id="c8">これが<strong>クローニング</strong>！</span></div>
+      <div class="caption clip" data-start="32.6" data-duration="1.4" data-track-index="13"><span id="c9">よし、<strong>使ってみよう！</strong></span></div>
+
+      <div id="end" class="end clip" data-start="34.0" data-duration="1.6" data-track-index="14"></div>
+
+      <!-- English subtitles (one track) -->
+      <div class="sub clip" data-start="0" data-duration="2.4" data-track-index="24"><span>For anyone who gave up on shadowing. — Out of sync…</span></div>
+      <div class="sub clip" data-start="2.4" data-duration="1.1" data-track-index="24"><span>I tried it so many times on YouTube and Netflix.</span></div>
+      <div class="sub clip" data-start="3.5" data-duration="0.9" data-track-index="24"><span>But it was hard…</span></div>
+      <div class="sub clip" data-start="4.4" data-duration="3.2" data-track-index="24"><span>Why shadowing doesn’t stick — 1: a different voice. Pitch and tone, someone else.</span></div>
+      <div class="sub clip" data-start="7.6" data-duration="2.2" data-track-index="24"><span>2: a different rhythm. Fast, and the words run together.</span></div>
+      <div class="sub clip" data-start="9.8" data-duration="3.5" data-track-index="24"><span>3: a different accent. American, British, Australian… which one do I copy?</span></div>
+      <div class="sub clip" data-start="13.3" data-duration="1.3" data-track-index="24"><span>Finding a model that fits you is the hardest part.</span></div>
+      <div class="sub clip" data-start="14.6" data-duration="1.3" data-track-index="24"><span>AI can make voices now. Lots of businesses use it.</span></div>
+      <div class="sub clip" data-start="15.9" data-duration="1.3" data-track-index="24"><span>Couldn’t it work for pronunciation practice, too?</span></div>
+      <div class="sub clip" data-start="17.2" data-duration="2.1" data-track-index="24"><span>Make the model your own voice. I call it “Cloning”!</span></div>
+      <div class="sub clip" data-start="19.3" data-duration="2.0" data-track-index="24"><span>Language Cloning… that’s why it’s called “Lanclo”!</span></div>
+      <div class="sub clip" data-start="21.3" data-duration="1.7" data-track-index="24"><span>I made the name up myself. Cool, right?</span></div>
+      <div class="sub clip" data-start="23.0" data-duration="2.0" data-track-index="24"><span>English intonation test: about 1.3× the score gain. (66 learners, 12 weeks; not a test of Lanclo)</span></div>
+      <div class="sub clip" data-start="25.0" data-duration="1.6" data-track-index="24"><span>Wow!</span></div>
+      <div class="sub clip" data-start="26.6" data-duration="1.7" data-track-index="24"><span>Makes sense… my own voice is easier to copy!</span></div>
+      <div class="sub clip" data-start="28.3" data-duration="2.6" data-track-index="24"><span>Today’s sentence, with a model in your own voice</span></div>
+      <div class="sub clip" data-start="30.9" data-duration="1.7" data-track-index="24"><span>That’s Cloning!</span></div>
+      <div class="sub clip" data-start="32.6" data-duration="1.4" data-track-index="24"><span>Okay, let’s try it!</span></div>
+      <div class="sub top clip" data-start="34.0" data-duration="1.6" data-track-index="24"><span>Native pronunciation, in your own voice.<br />Start free for 7 days.</span></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="35.6" data-track-index="16" data-volume="1"></audio>
+    </div>
+    <script>
+      const K = window.MimiKit;
+      K.endCard(document.getElementById("end"), "自分の声で、ネイティブの発音を。", "7日間無料ではじめる");
+      K.sparkles(document.getElementById("n-spark"), [[60, 700], [460, 760], [120, 1000], [420, 980]]);
+      K.sparkles(document.getElementById("u-spark"), [[80, 760], [800, 780], [140, 1180], [760, 1160]]);
+      const N = 24;
+      ["#b-nat", "#b-me", "#b-low", "#b-high", "#b-app"].forEach((id) => {
+        const el = document.querySelector(id);
+        el.innerHTML = Array.from({ length: N }, (_, i) => `<i style="left:${(i * 100) / N}%"></i>`).join("");
+      });
+
+      const tl = gsap.timeline({ paused: true });
+      const k = K.kit(tl);
+      const show = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); tl.set(sel, { opacity: 0 }, to); };
+      const swap = (a, b, at) => { tl.set(a, { opacity: 0 }, at); tl.set(b, { opacity: 1 }, at); };
+      const slideIn = (sel, at) => tl.fromTo(sel, { x: 120 }, { x: 0, duration: 0.2, ease: "power3.out" }, at);
+      const popIn = (sel, at, s = 1.5) => tl.fromTo(sel, { scale: s, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(3)" }, at);
+      const hop = (sel, at, n = 1, h = 30) => tl.fromTo(sel, { y: 0 }, { y: -h, duration: 0.14, yoyo: true, repeat: n * 2 - 1, ease: "power2.out" }, at);
+      // A voice drawn on a lane: bars from x0 to x1 (fractions) light up while it speaks (measured speech spans)
+      const speak = (id, at, dur, x0, x1, seed) => {
+        document.querySelectorAll(id + " i").forEach((b, i) => {
+          const f = i / N; if (f < x0 || f > x1) return;
+          const t = at + (dur * (f - x0)) / Math.max(0.001, x1 - x0);
+          const h = 26 + 58 * Math.abs(Math.sin(i * 1.7 + seed));
+          tl.set(b, { className: "on" }, t);
+          tl.fromTo(b, { height: 8 }, { height: h, duration: 0.12, ease: "power2.out", immediateRender: false }, t);
+        });
+      };
+
+      // 0-2.4 Hook: on screen from frame 1
+      tl.set("#s-hook", { opacity: 0 }, 2.4);
+      tl.fromTo("#hook", { scale: 1.12 }, { scale: 1, duration: 0.2, ease: "back.out(2)" }, 0);
+      speak("#b-nat", 0.21, 1.5, 0.0, 0.55, 0.3);       // model: 0.21-1.71
+      speak("#b-me", 0.60, 1.8, 0.2, 0.95, 1.1);        // the Friend: from 0.60, late and long (runs on under the next card)
+      tl.fromTo("#h-friend", { x: 0 }, { x: 6, duration: 0.05, yoyo: true, repeat: 34, ease: "none" }, 0.6);
+      popIn("#v-bad", 1.4);
+
+      // 2.4-4.4 YouTube / Netflix
+      show("#s-vids", 2.4, 4.4); slideIn("#s-vids", 2.4);
+      tl.fromTo("#vd1", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(2.5)" }, 2.5);
+      tl.fromTo("#vd2", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(2.5)" }, 2.7);
+      tl.fromTo("#again", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.16 }, 2.95);
+      tl.to(["#vd1", "#vd2"], { rotation: "+=5", duration: 0.1, yoyo: true, repeat: 3 }, 3.0);
+      k.pop("#c1", 2.4); k.pop("#c2", 3.5);
+      swap("#v-friend", "#v-friend2", 3.5);
+      tl.to(["#vd1", "#vd2", "#again"], { y: 120, rotation: 15, opacity: 0.35, duration: 0.4, ease: "power2.in", stagger: 0.04 }, 3.55);
+
+      // 4.4-13.3 Countdown
+      show("#s-count", 4.4, 13.3); slideIn("#s-count", 4.4);
+      popIn("#why", 4.42, 0.8);
+      const reason = (sel, at) => { tl.fromTo(sel + " .num", { scale: 2.2, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.18, ease: "back.out(2.5)" }, at);
+                                    tl.fromTo(sel + " .t", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "power2.out" }, at + 0.06); };
+      // 3: voice quality (low 4.77-6.56, high 6.63-7.52)
+      reason("#r3", 4.45);
+      tl.fromTo("#lanes3", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18 }, 4.5);
+      speak("#b-low", 4.77, 1.79, 0.0, 1.0, 0.4);
+      speak("#b-high", 6.63, 0.89, 0.0, 0.6, 2.1);
+      tl.to("#c-mimi", { rotation: -4, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 4.8);
+      hop("#c-f3", 6.65, 2, 20);
+      // 2: rhythm (fast 7.97-8.76, again 8.92-9.71)
+      tl.set(["#r3", "#lanes3"], { opacity: 0 }, 7.6); tl.set("#r2", { opacity: 1 }, 7.6); reason("#r2", 7.6);
+      swap("#c-f3", "#c-f2", 7.6);
+      tl.fromTo("#phrase", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18 }, 7.65);
+      tl.fromTo("#phrase .slow", { scaleX: 1 }, { scaleX: 0.82, duration: 0.8, ease: "power2.in" }, 7.97);
+      tl.fromTo("#linked", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.5)" }, 8.9);
+      tl.fromTo("#c-f2", { rotation: -3 }, { rotation: 3, duration: 0.1, yoyo: true, repeat: 15, ease: "sine.inOut" }, 7.95);
+      // 1: accent (US 10.13-11.63, UK 11.66-13.29)
+      tl.set(["#r2", "#phrase"], { opacity: 0 }, 9.8); tl.set("#r1", { opacity: 1 }, 9.8); reason("#r1", 9.8);
+      swap("#c-f2", "#c-f1", 9.8);
+      tl.fromTo("#accents", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 9.82);
+      ["#ac-us", "#ac-uk", "#ac-au", "#ac-q"].forEach((s, i) => tl.fromTo(s, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.15, ease: "back.out(2)" }, 9.82 + i * 0.06));
+      tl.set("#ac-us", { className: "acc on" }, 10.1); tl.set("#ac-us", { className: "acc" }, 11.64);
+      tl.set("#ac-uk", { className: "acc on" }, 11.65); tl.set("#ac-uk", { className: "acc" }, 13.3);
+      k.press("#ac-us", 10.1, 1.08); k.press("#ac-uk", 11.65, 1.08);
+      tl.to(["#ac-au", "#ac-q"], { rotation: 6, duration: 0.12, yoyo: true, repeat: 3 }, 12.6);
+      hop("#c-f1", 12.6, 1, 18);
+
+      // 13.3-14.6 The real problem
+      tl.fromTo("#s-concl", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 13.3);
+      tl.fromTo("#big1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 13.32);
+      tl.fromTo("#cc-friend", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" }, 13.38);
+
+      // 14.6-17.2 The idea
+      show("#s-idea", 14.6, 17.2); slideIn("#s-idea", 14.6);
+      k.pop("#c3", 14.6); k.pop("#c4", 15.9);
+      ["#bz1", "#bz2", "#bz3", "#bz4"].forEach((s, i) => tl.fromTo(s, { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.16, ease: "back.out(2)" }, 14.75 + i * 0.1));
+      tl.to(["#bz1", "#bz2", "#bz3", "#bz4"], { x: 60, opacity: 0, duration: 0.18, stagger: 0.03 }, 15.8);
+      tl.fromTo("#bulb", { y: 40, scale: 0.4, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.5)" }, 15.9);
+      tl.fromTo("#glow", { scale: 0.5, opacity: 0 }, { scale: 1.2, opacity: 1, duration: 0.3, ease: "power2.out" }, 15.95);
+      hop("#i-mimi", 15.9, 2, 36);
+
+      // 17.2-23.0 SHADOWING -> CLONING -> LANguage CLOning -> Lanclo
+      show("#s-name", 17.2, 23.0); slideIn("#s-name", 17.2);
+      k.pop("#c5", 17.2); k.pop("#c5b", 19.3); k.pop("#c6", 21.3);
+      tl.fromTo("#w-old", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.14, ease: "back.out(2)" }, 17.2);
+      tl.fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power2.out" }, 17.55);
+      tl.to(["#w-old", "#strike"], { y: 60, opacity: 0, duration: 0.16, ease: "power2.in" }, 17.8);
+      tl.fromTo("#w-new", { clipPath: "inset(0 100% 0 0)", opacity: 1 }, { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: 0.32, ease: "power2.out" }, 17.82);
+      tl.fromTo("#w-new", { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1 }, 18.15);
+      tl.fromTo("#w-sub", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18 }, 18.15);
+      hop("#n-mimi", 18.15, 1, 30);
+      // origin: CLONING drops to the second line under LANGUAGE, LAN + CLO light up, the rest fades, they merge into Lanclo
+      tl.to(["#w-new", "#w-sub"], { opacity: 0, duration: 0.12 }, 19.3);
+      tl.fromTo("#origin", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "power2.out" }, 19.3);
+      tl.fromTo(["#o-lan", "#o-clo"], { color: "#273b4b" }, { color: "#2a8dff", duration: 0.15 }, 19.55);
+      tl.to("#origin .dim", { opacity: 0, duration: 0.2 }, 19.8);
+      tl.to("#origin", { scale: 0.7, opacity: 0, duration: 0.18, ease: "power2.in" }, 19.95);
+      tl.fromTo("#lockup", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 20.1);
+      k.twinkle("#n-spark", 20.2);
+      swap("#n-mimi", "#n-mimi2", 21.3); hop("#n-mimi2", 21.35, 2, 26);
+      tl.fromTo("#n-friend", { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.2, ease: "power3.out" }, 21.8);
+
+      // 23.0-28.3 Research
+      show("#s-res", 23.0, 28.3); slideIn("#s-res", 23.0);
+      tl.fromTo("#bar-n", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 23.3);
+      tl.fromTo("#bar-o", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 23.65);
+      tl.fromTo("#ratio", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "back.out(2.5)" }, 24.2);
+      tl.fromTo("#r-friend", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 25.0);
+      k.pop("#say1", 25.0); hop("#r-friend", 25.1, 2, 30);
+      swap("#r-friend", "#r-friend2", 26.6); k.pop("#say2", 26.6);
+      tl.fromTo("#r-friend2", { rotation: 0 }, { rotation: -4, duration: 0.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, 26.7);
+
+      // 28.3-32.6 The app (model 29.26-30.76)
+      show("#s-app", 28.3, 32.6);
+      tl.fromTo("#device", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 28.3);
+      tl.fromTo("#a-mimi", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.25, ease: "power3.out" }, 28.3);
+      tl.fromTo("#a-label", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 28.5);
+      k.ripple("#tap1", 29.1);
+      speak("#b-app", 29.26, 1.5, 0.0, 1.0, 0.3);
+      k.pop("#c7", 28.3); k.pop("#c8", 30.9);
+      hop("#a-mimi", 30.9, 2, 28);
+
+      // 32.6-34.0 Let's try it
+      show("#s-use", 32.6, 34.0);
+      tl.fromTo("#u-pair", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 32.6);
+      hop("#u-pair", 32.85, 2, 34);
+      k.twinkle("#u-spark", 32.9);
+      k.pop("#c9", 32.6);
+
+      k.end(34.0);
+      k.tapCta(34.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
